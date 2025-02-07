@@ -1,22 +1,49 @@
-<div align="center">
-    <h1>Generative AI Fundamentals for .NET</h1>
-    <h2>Lesson 3.3: Agents and Conclusions </h2>
-    <p><em>Learn how to create Agentic AI in .NET!</em></p>
-</div>
+# AI Agents
+
+In this lesson learn to create an AI entity that... makes decisions and executes actions without continuous human interaction? That's right, AI agents are able to perform specific tasks independently.
 
 ---
-## Agents / Assistants
-![Agents / Assistants](../03-CoreGenerativeAITechniques/images/Agents-Assistants.png)
 
-Agents are AI applications which have some autonomy, and can perform tasks following workflows using certain LLM archtectures. Usually, agents need plugins to perform tasks, native functions, and optimized logic to invoke functions in the right order.
+**INSERT: LESSON 3 AGENT VIDEO HERE**
 
-In our demos, we have the following structure:
+AI agents allow LLMs to evolve from assistants into entities capable of taking actions on behalf of users. Agents are even able to interact with other agents to perform tasks. Some of the key attributes of an agent include a level of **autonomy** allowing the agent to initiate actions based on their programming which leads to the ability for **decision-making** based on pre-defined objectives. They are also **adaptable** in that they learn and adjust to improve performance over time.
 
-- `Agent Client`: The client that hosts the agent, configuring the connection to the Cloud, AI models and be the base for the agent.
-- `Agent`: The agent itself, with the logic to perform the tasks, using the plugins and functions to perform the tasks. Agents can be shaped as needed to solve and perform tasks.
-- `Tools`: Tools are the plugins and functions that the agent uses to perform the tasks. They can be used to perform tasks, like getting the weather, sending emails, or even controlling IoT devices.
+> 🧑‍🏫**Learn more**: Learn more about the fundamentals of AI Agents [Generative AI for Beginners: AI Agents](https://github.com/microsoft/generative-ai-for-beginners/tree/main/17-ai-agents).
 
-In the `src/Agents-01-Simple` we can see how to create a simple agent that gets helps in simple math, look into the Agent Client code:
+## Creating an AI Agent
+
+We'll be working with a couple of new concepts in order to build an AI agent in .NET. We'll have to do some additional setup in Azure AI Foundry to get things started.
+
+> 🧑‍💻**Code sample:** We'll be working from the [AgentLabs-01-Simple sample](./src/AgentLabs-01-Simple/) for this lesson.
+>
+> We did include some more advanced samples in the `/src/` folder as well. You can view the README's of [AgentLabs-02-Functions](./src/AgentLabs-02-Functions/) or [AgentLabs-03-OpenAPIs](./src/AgentLabs-03-OpenAPIs/) or [AgentLabs-03-PythonParksInformationServer](./src/AgentLabs-03-PythonParksInformationServer/) for more info on them.
+
+### Azure AI Agent Service
+
+We're going to introduce a new Azure Service that will help us build agents, the appropriately named [Azure AI Agent Service](https://learn.microsoft.com/azure/ai-services/agents/overview).
+
+To run the code samples included in this lesson, you'll need to perform some additional setup in Azure AI Foundry. You can follow [these instructions to setup a **Basic Agent**](https://learn.microsoft.com/azure/ai-services/agents/quickstart?pivots=programming-language-csharp).
+
+### Azure AI Projects library
+
+Agents are composed of 3 parts. The **LLM** or the model. **State** or the context (much like a conversation) that helps guide decisions based off of past results. And **Tools** which are like [functions we learned about before](./01-lm-completions-functions.md#function-calling) that allow a bridge between the model and external systems.
+
+So, in theory, you could build AI Agents with what you've learned already. But the **Azure AI Projects for .NET** library makes developing agents easier by providing an API that streamlines a lot of the typical tasks for you.
+
+There are a couple of concepts (which map to classes) to understand when working with the Azure AI Projects library.
+
+- `AgentClient`: The overall client that creates and hosts the agents, manages threads in which they run, and handles the connection to the cloud.
+- `Agent`: The agent that holds instructions on what it's to do as well as definitions for tools it has access to.
+- `ThreadMessage`: These are messages - almost like prompts we learned about before - that get passed to the agent. Agents also create `ThreadMessage` objects to communicate.
+- `AgentThread`: A thread on which messages are passed to the agent on. The thread is started and can be provided additional instructions and then is polled as to its status.
+
+Let's see a simple example of this in action!
+
+### Build a math agent
+
+
+
+
 
 ```csharp
 // Configure the connection to the Cloud, AI models and be the base for the agent
