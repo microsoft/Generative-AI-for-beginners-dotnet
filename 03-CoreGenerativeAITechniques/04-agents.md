@@ -159,4 +159,4 @@ Think of agents as AI assistants with agency - they don't just respond, they act
 
 You've come a long way! From learning about simple one and done text completions to building agents!
 
-In the [next lesson see some real-life practical examples](../04-Practical.NETGenAISamples/readme.md) of using everything together.
+In the [next lesson see some real-life practical examples](../04-PracticalSamples/readme.md) of using everything together.
