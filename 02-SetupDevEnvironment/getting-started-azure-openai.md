@@ -90,7 +90,7 @@ Now let’s update the code to use the newly deployed model. First we'll need to
 1. Open the terminal and switch to the project directory:
 
     ```bash
-    cd 02-SettingUp.NETDev/src/BasicChat-01MEAI/
+    cd 02-SetupDevEnvironment/src/BasicChat-01MEAI/
     ```
 
 1. Run the following commands to add the required package:
@@ -147,7 +147,7 @@ Now let’s update the code to use the newly deployed model. First we'll need to
     ...
     ```
 
-> ⚠️ **Note**: Something not working? [Open an issue](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new?template=Blank+issue) and we'll help you out.
+> 🙋 **Need help?**: Something not working? [Open an issue](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new?template=Blank+issue) and we'll help you out.
 
 ## Summary
 

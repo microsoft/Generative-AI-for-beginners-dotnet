@@ -14,7 +14,9 @@ A text completion itself is not a chat application, it is one and done interacti
 
 ### Text completions
 
-Let's see how you would use text completions using the **Microsoft.Extensions.AI** library in .NET. [Here is a working example of this application](./src/BasicChat-01MEAI/) you can follow along with.
+Let's see how you would use text completions using the **Microsoft.Extensions.AI** library in .NET. 
+
+> 🧑‍💻**Sample code**: [Here is a working example of this application](./src/BasicChat-01MEAI/) you can follow along with.
 
 ```csharp
 
@@ -43,6 +45,8 @@ Console.WriteLine(response.Message);
 > 🗒️**Note:** This example showed GitHub Models as the hosting service. If you want to use Ollama, [check out this example](./src/BasicChat-03Ollama/) (it instantiates a different `IChatClient`).
 > 
 > If you want to use Azure AI Foundry you can use the same code, but you will need to change the endpoint and the credentials.
+
+> 🙋 **Need help?**: If you encounter any issues, [open an issue in the repository](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new).
 
 ### Chat applications
 
@@ -96,11 +100,15 @@ while (true)
 
 > 🗒️**Note:** This can also be done with Semantic Kernel. [Check out the code here](./src/BasicChat-02SK/).
 
+> 🙋 **Need help?**: If you encounter any issues, [open an issue in the repository](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new).
+
 ## Function calling
 
 **INSERT: FUNCTIONS EXPLANATION VIDEO HERE**
 
 When building AI applications you are not limited to just text-based interactions. It is possible to extend the functionality of the chatbot by calling pre-defined functions in your code based off user input. In other words, function calls serve as a bridge between the model and external systems.
+
+> 🧑‍💻**Sample code**: [Here is a working example of this application](./src/MEAIFunctions/) you can follow along with.
 
 ### Function calling in chat applications
 
@@ -153,10 +161,20 @@ There are a couple of setup steps you need to take in order to call functions wi
     var responseTwo = await client.CompleteAsync("Should I bring an umbrella with me today?", chatOptions); // will call the function
     ```
 
+> 🙋 **Need help?**: If you encounter any issues, [open an issue in the repository](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new).
+
 ## Summary
 
 In this lesson, we learned how to use text completions, start and manage a chat conversation, and call functions in chat applications.
 
 In the next lesson you'll see how to start chatting with data and build what's known as a Retrieval Augmented Generation (RAG) model chatbot - and work with vision and audio in an AI application!
 
-[Let's build a RAG app!](./02-retrieval-augmented-generation.md)
+## Additional resources
+
+- [Build an AI chat app with .NET](https://learn.microsoft.com/dotnet/ai/quickstarts/get-started-openai?tabs=azd&pivots=openai)
+- [Execute a local .NET function](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-azure-openai-tool?tabs=azd&pivots=openai)
+- [Chat with a local AI model](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-local-ai)
+
+## Up next
+
+👉 [Let's build a RAG app!](./02-retrieval-augmented-generation.md)
