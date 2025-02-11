@@ -41,13 +41,13 @@ You'll learn how to implement Generative AI into .NET projects, from basic text 
 
 ## 🗃️ Lessons
 
-| #   | **Lesson Link** | **Description** | **Video** | **Extra Learning** |
-| --- | --- | --- | --- | --- |
-| 01  | [**Intro to Generative AI Basics for .NET Developers**](./01-IntroToGenAI/readme.md) | <ul><li>Overview of generative models and their applications in .NET</li></ul> | [![Watch the video](./images/01-videocover.jpg)](https://microsoft-my.sharepoint.com/:v:/p/brunocapuano/EYehflkLCx9Di3QcSKOVNRMBGH_YS-6f-qtVrE-O5iB3iA?e=ypAQ4b&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) | [Learn More](https://aka.ms/genainet) |
-| 02  | [**Setting Up for .NET Development with Generative AI**](./02-SetupDevEnvironment/readme.md) | <ul><li>Using libraries like `Microsoft.Extensions.AI` and `OpenAI .NET`.</li><li>Choosing between GitHub Models API and local models like Ollama.</li></ul> | [![Watch the video](./images/02-videocover.jpg)](https://microsoft-my.sharepoint.com/:v:/p/brunocapuano/ERTkzBSAfKJEiLw2HLnzHnkBMEbpk17hniaVfr8lCm6how?e=gWOr33&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) | [Learn More](https://aka.ms/genainet) |
-| 03  | [**Core Generative AI Techniques with .NET**](./03-CoreGenerativeAITechniques/readme.md) | <ul><li>Text generation, conversational flows, and multimodal capabilities (vision and audio).</li></ul> | [![Watch the video](./images/03-videocover.jpg)](https://microsoft-my.sharepoint.com/:v:/p/brunocapuano/ERTkzBSAfKJEiLw2HLnzHnkBMEbpk17hniaVfr8lCm6how?e=gWOr33&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) | [Learn More](https://aka.ms/genainet) |
-| 04  | [**Practical .NET Generative AI Samples**](./04-PracticalSamples/readme.md) | <ul><li>Chatbots using libraries like `Microsoft.Extensions.AI`, `Semantic Kernel` and `OpenAI .NET`.</li><li>Video analyzers</li><li>Document Automation.</li></ul> | [![Watch the video](./images/04-videocover.jpg)](https://microsoft-my.sharepoint.com/:v:/p/brunocapuano/ERTkzBSAfKJEiLw2HLnzHnkBMEbpk17hniaVfr8lCm6how?e=gWOr33&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) | [Learn More](https://aka.ms/genainet) |
-| 05  | [**Responsible Use of Generative AI in .NET Apps**](./05-ResponsibleGenAI/readme.md) | <ul><li>Ethical considerations, bias mitigation, and secure implementations.</li></ul> | [![Watch the video](./images/05-videocover.jpg)](https://microsoft-my.sharepoint.com/:v:/p/brunocapuano/ERTkzBSAfKJEiLw2HLnzHnkBMEbpk17hniaVfr8lCm6how?e=gWOr33&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) | [Learn More](https://aka.ms/genainet) |
+| #   | **Lesson Link** | **Description** |
+| --- | --- | --- |
+| 01  | [**Intro to Generative AI Basics for .NET Developers**](./01-IntroToGenAI/readme.md) | <ul><li>Overview of generative models and their applications in .NET</li></ul> |
+| 02  | [**Setting Up for .NET Development with Generative AI**](./02-SetupDevEnvironment/readme.md) | <ul><li>Using libraries like **Microsoft.Extensions.AI** and **Semantic Kernel**.</li><li>Setup providers like GitHub Models, Azure AI Foundry, and local development like Ollama.</li></ul> |
+| 03  | [**Core Generative AI Techniques with .NET**](./03-CoreGenerativeAITechniques/readme.md) | <ul><li>Text generation and conversational flows.</li><li> Multimodal capabilities (vision and audio).</li><li>Agents</li></ul> |
+| 04  | [**Practical .NET Generative AI Samples**](./04-PracticalSamples/readme.md) | <ul><li>Complete samples demonstrating GenAI in real-life scenarios</li><li>Semantic search applications.</li><li>Multiple agent applications</li></ul> |
+| 05  | [**Responsible Use of Generative AI in .NET Apps**](./05-ResponsibleGenAI/readme.md) | <ul><li>Ethical considerations, bias mitigation, and secure implementations.</li></ul> |
 
 
 ## 🛠️ What You Need
@@ -76,11 +76,11 @@ Then when you're ready to expand we also have guides for:
 
 Contributions are welcome! Here's how you can help:
 
-- [Report issues](https://aka.ms/genainet/issues) or bugs in the repo.
+- [Report issues](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new) or bugs in the repo.
 
-- Improve existing code samples or add new ones, [creating a pull request](https://aka.ms/genainet/issues)
+- Improve existing code samples or add new ones, fork this repo and propose some changes!
 - Suggest additional lessons or enhancements.
-- Do you have suggestions or found spelling or code errors?, [create a pull request](https://aka.ms/genainet/issues)
+- Do you have suggestions or found spelling or code errors?, [create a pull request](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/compare)
 
 Check the [CONTRIBUTING.md](CONTRIBUTING.md) file for details on how to get involved.
 
