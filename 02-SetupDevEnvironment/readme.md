@@ -1,12 +1,12 @@
-# Lesson 2: Setting Up the Development Environment for This Course
+# Setting Up the Development Environment for This Course
 
 This lesson will guide you through setting up your development environment for this course. To ensure your success we've prepared a devcontainer configuration that will provide all the tooling you need to complete the course. You can run the devcontainer in GitHub Codespaces (recommended) or locally on your machine. And we also demonstrate how to set up your GitHub access tokens to interact with GitHub Models.
 
-*We have you covered with guides to setup Azure OpenAI and Ollama, if desired.*
+*We have you covered with guides to setup [Azure OpenAI](getting-started-azure-openai.md) and [Ollama](getting-started-ollama.md), if desired.*
 
 ---
 
-#### What you'll learn in this lesson:
+## What you'll learn in this lesson:
 
 - ⚡ How to setup a development environment with GitHub Codepaces
 - 🤖 Configure your development environment to access LLMs via GitHub Models, Azure OpenAI, or Ollama
@@ -14,24 +14,6 @@ This lesson will guide you through setting up your development environment for t
 - 🎯 Finally, everything ready to complete the rest of the course
 
 Let's dive in and set up your development environment! 🏃‍♂️
-
-#### Index
-
-- [Lesson 2: Setting Up the Development Environment for This Course](#lesson-2-setting-up-the-development-environment-for-this-course)
-      - [What you'll learn in this lesson:](#what-youll-learn-in-this-lesson)
-      - [Index](#index)
-  - [Which AI service should I use for this course?](#which-ai-service-should-i-use-for-this-course)
-  - [Learn and test AI models with GitHub Models](#learn-and-test-ai-models-with-github-models)
-  - [Pre-flight check: Setting up GitHub Access Tokens](#pre-flight-check-setting-up-github-access-tokens)
-    - [Creating a Personal Access Token for GitHub Model access](#creating-a-personal-access-token-for-github-model-access)
-  - [Creating a GitHub Codespace](#creating-a-github-codespace)
-    - [Choosing Your development container](#choosing-your-development-container)
-  - [Verifying your Codespace is running correctly with GitHub Models](#verifying-your-codespace-is-running-correctly-with-github-models)
-  - [Summary](#summary)
-    - [Additional Resources](#additional-resources)
-  - [Next Steps](#next-steps)
-
----
 
 ## Which AI service should I use for this course?
 
@@ -125,7 +107,7 @@ Once your Codespace is fully loaded and configured, lets run a sample app to ver
 1. Switch to the proper directory by running the following command:
 
     ```bash
-    cd 02-SettingUp.NETDev\src\BasicChat-01MEAI
+    cd 02-SetupDevEnvironment\src\BasicChat-01MEAI
     ```
 
 1. Then run the application with the following command:
@@ -142,7 +124,7 @@ Once your Codespace is fully loaded and configured, lets run a sample app to ver
     ...
     ```
 
-> ⚠️ **Note**: Something not working? [Open an issue](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new?template=Blank+issue) and we'll help you out.
+> 🙋 **Need help?**: Something not working? [Open an issue](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new?template=Blank+issue) and we'll help you out.
 
 ## Summary
 
@@ -150,7 +132,7 @@ In this lesson, you learned how to set up your development environment for the r
 
 ### Additional Resources
 
-- Test this guide with other LLMs orquestrators!
+- Test this guide with other hosting providers!
     - [Azure OpenAI](getting-started-azure-openai.md)
     - [Ollama](getting-started-ollama.md)
 - [GitHub Codespaces Documentation](https://docs.github.com/en/codespaces)
@@ -160,4 +142,4 @@ In this lesson, you learned how to set up your development environment for the r
 
 Next, we'll explore how to create your first AI application! 🚀
 
-[Core Generative AI Techniques](../03-CoreGenerativeAITechniques/readme.md)
+👉 [Core Generative AI Techniques](../03-CoreGenerativeAITechniques/readme.md)

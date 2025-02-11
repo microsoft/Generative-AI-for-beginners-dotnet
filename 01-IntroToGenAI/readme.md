@@ -11,12 +11,6 @@ Refresh your generative AI knowledge and understand the .NET tooling available t
 - 🌟 Understand fundamental concepts of generative AI and their applications
 - 🔍 Explore the .NET tooling for AI development including MEAI, Semantic Kernel, and Azure OpenAI
 
-## Index
-
-1. [A quick refresh on Generative AI concepts](#a-quick-refresh-on-generative-ai-concepts)
-1. [.NET AI Development tooling](#ai-development-tools-and-libraries-for-net)
-
-
 ## Generative AI Fundamentals for .NET
 
 Before we dive in to some code, let's take a  minute to review some generative AI (GenAI) concepts. In this lesson, **Generative AI Fundamentals for .NET**, we'll refresh some fundamental GenAI concepts so you can understand why certain things are done like they are. And we'll introduce the tooling and SDKs you'll use to build apps, like **MEAI** (Microsoft.Extensions.AI), **Semantic Kernel**, and the **AI Toolkit Extension for VS Code**.
