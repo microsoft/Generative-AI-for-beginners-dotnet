@@ -1,6 +1,6 @@
 # Lesson 2: Setting Up the Development Environment for This Course
 
-*This lesson will guide you through setting up your development environment for this course. To ensure your success we've prepared a devcontainer configuration that will provide all the tooling you need to complete the course. You can run the devcontainer in GitHub Codespaces (recommended) or locally on your machine. And we also demonstrate how to set up your GitHub access tokens to interact with GitHub Models.*
+This lesson will guide you through setting up your development environment for this course. To ensure your success we've prepared a devcontainer configuration that will provide all the tooling you need to complete the course. You can run the devcontainer in GitHub Codespaces (recommended) or locally on your machine. And we also demonstrate how to set up your GitHub access tokens to interact with GitHub Models.
 
 *We have you covered with guides to setup Azure OpenAI and Ollama, if desired.*
 
@@ -17,12 +17,19 @@ Let's dive in and set up your development environment! 🏃‍♂️
 
 #### Index
 
-1. [Which AI service should I use for this course?](#which-ai-service-should-i-use-for-this-course)
-1. [GitHub Models overview](#learn-and-test-ai-models-with-github-models)
-1. [Pre-Flight Check: Setting up GitHub Access Tokens](#pre-flight-check-setting-up-github-access-tokens)
-1. [Creating a GitHub Codespace](#creating-a-github-codespace)
-1. [Testing the Codespace](#verifying-your-codespace-is-running-correctly-with-github-models)
-1. [Summary](#summary)
+- [Lesson 2: Setting Up the Development Environment for This Course](#lesson-2-setting-up-the-development-environment-for-this-course)
+      - [What you'll learn in this lesson:](#what-youll-learn-in-this-lesson)
+      - [Index](#index)
+  - [Which AI service should I use for this course?](#which-ai-service-should-i-use-for-this-course)
+  - [Learn and test AI models with GitHub Models](#learn-and-test-ai-models-with-github-models)
+  - [Pre-flight check: Setting up GitHub Access Tokens](#pre-flight-check-setting-up-github-access-tokens)
+    - [Creating a Personal Access Token for GitHub Model access](#creating-a-personal-access-token-for-github-model-access)
+  - [Creating a GitHub Codespace](#creating-a-github-codespace)
+    - [Choosing Your development container](#choosing-your-development-container)
+  - [Verifying your Codespace is running correctly with GitHub Models](#verifying-your-codespace-is-running-correctly-with-github-models)
+  - [Summary](#summary)
+    - [Additional Resources](#additional-resources)
+  - [Next Steps](#next-steps)
 
 ---
 
