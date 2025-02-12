@@ -6,7 +6,9 @@ In this lesson learn how vision AI allows your apps to generate and interpret im
 
 ## Vision
 
-**INSERT: LESSON 3 VISION VIDEO HERE**
+[![Vision AI explainer](https://img.youtube.com/vi/QXbASt1KXuw/0.jpg)](https://youtu.be/QXbASt1KXuw?feature=shared)
+
+_⬆️Click the image to watch the video⬆️_
 
 Vision-based AI approaches are used to generate and interpret images. This can useful for a wide range of applications, such as image recognition, image generation, and image manipulation. Current models are multimodal, meaning they can accept a variety of inputs, such as text, images, and audio, and generate a variety of outputs. In this case, we are going to focus on image recognition.
 
@@ -78,7 +80,9 @@ Here's a point I want to drive home. We're conversing with a language model, or 
 
 ## Audio AI
 
-**INSERT: LESSON 3 AUDIO VIDEO HERE**
+[![Audio AI explainer video](https://img.youtube.com/vi/fuquPXRNqCo/0.jpg)](https://youtu.be/fuquPXRNqCo?feature=shared)
+
+_⬆️Click the image to watch the video⬆️_
 
 Real-time audio techniques allow your apps to generate audio and transcribe it in real-time. This can be useful for a wide range of applications, such as voice recognition, speech synthesis, and audio manipulation.
 

@@ -4,7 +4,9 @@ In this lesson learn to create an AI entity that... makes decisions and executes
 
 ---
 
-**INSERT: LESSON 3 AGENT VIDEO HERE**
+[![Agents explainer video](https://img.youtube.com/vi/Btkmw1Bosh0/0.jpg)](https://youtu.be/Btkmw1Bosh0?feature=shared)
+
+_⬆️Click the image to watch the video⬆️_
 
 AI agents allow LLMs to evolve from assistants into entities capable of taking actions on behalf of users. Agents are even able to interact with other agents to perform tasks. Some of the key attributes of an agent include a level of **autonomy** allowing the agent to initiate actions based on their programming which leads to the ability for **decision-making** based on pre-defined objectives. They are also **adaptable** in that they learn and adjust to improve performance over time.
 

@@ -4,7 +4,9 @@ In this lesson learn how to use **Retrieval-Augmented Generation (RAG)** in your
 
 ---
 
-**INSERT: LESSON 3 RAG VIDEO HERE**
+[![RAG explainer video](https://img.youtube.com/vi/Av1FCQf83QU/0.jpg)](https://youtu.be/Av1FCQf83QU?feature=shared)
+
+_⬆️Click the image to watch the video⬆️_
 
 Retrieval Augmented Generation (RAG) is a technique used to augment the response of a language model with information retrieved from a data store.
 

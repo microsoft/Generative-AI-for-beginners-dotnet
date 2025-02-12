@@ -22,7 +22,9 @@ See all the concepts you've learned in action in these real-world and practical 
     - [Next steps](#next-steps)
 
 
-**INSERT: LESSON 4 INTRO VIDEO HERE**
+[![overall explainer video](https://img.youtube.com/vi/Ky4CACXJqR8/0.jpg)](https://youtu.be/Ky4CACXJqR8?feature=shared)
+
+_⬆️Click the image to watch the video⬆️_
 
 ## eShopLite Demos
 
@@ -33,6 +35,10 @@ These demos use [Azure OpenAI](https://azure.microsoft.com/products/ai-services/
 The first demo, we show how to use the Semantic Kernel to enhance the search capabilities, which can understand the context of the user's queries and provide accurate results. 
 
 ### eShopLite with semantic search
+
+[![eShop Semantic Search explainer video](https://img.youtube.com/vi/FlkruF6USro/0.jpg)](https://youtu.be/FlkruF6USro?feature=shared)
+
+_⬆️Click the image to watch the video⬆️_
 
 In eShopLite with semantic search, we use Semantic Kernel to enhance the search capabilities of the e-commerce application. Semantic Kernel helps us create a more robust search engine that can understand the context of the user's queries and provide more accurate results.
 
@@ -229,9 +235,13 @@ In the image, we can see the Application Insights dashboard, providing how the s
 
 > 💡 **Pro Tip**: For more information on eShopLite with Semantic Search, look at the repository to learn more: https://aka.ms/netaieshoplitesemanticsearch
 
-### eShopLite with realtime analysis
+### eShopLite with realtime audio
 
-In eShopLite with real-time analysis, we use the real-time audio capabilities of GPT-4o to analyze the conversations between the customer and the chatbot, providing a more personalized and engaging experience. For example, if a customer asks for a product recommendation, the chatbot can analyze the customer's request in real-time and provide a more accurate and relevant response.
+[![eShop with real-time audio explainer video](https://img.youtube.com/vi/bx0hRNdr_bQ/0.jpg)](https://youtu.be/bx0hRNdr_bQ?feature=shared)
+
+_⬆️Click the image to watch the video⬆️_
+
+In eShopLite with real-time audio, we use the real-time audio capabilities of GPT-4o to analyze the conversations between the customer and the chatbot, providing a more personalized and engaging experience. For example, if a customer asks for a product recommendation, the chatbot can analyze the customer's request in real-time and provide a more accurate and relevant response.
 
 > 🧑‍💻**Sample**: Check out the [eShopLite semantic search sample](https://aka.ms/netaieshopliterealtimechat)
 
@@ -306,6 +316,10 @@ Each tool is added to the session options, and the conversation session is start
 > 🧑‍💻**Sample**: Check out the [eShopLite semantic search sample](https://aka.ms/netaieshopliterealtimechat)
 
 ## Creative Writer Agent
+
+[![Creative Writing Agent explainer video](https://img.youtube.com/vi/ZjZWilI_5z8/0.jpg)](https://youtu.be/ZjZWilI_5z8?feature=shared)
+
+_⬆️Click the image to watch the video⬆️_
 
 Agents are a big topic in the current AI landscape, and to demonstrate their capabilities, we'll use the Creative Writer Agent, a tool that can generate creative and engaging text based on the user's input, helping to write researched, specific, and engaging content.
 
