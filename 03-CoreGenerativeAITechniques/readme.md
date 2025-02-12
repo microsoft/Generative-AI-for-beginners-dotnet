@@ -22,4 +22,4 @@ For this lesson, we will subdivide the content into the following sections:
 
 Starting with Langauge Model completions and Chat applications and function implementations with language models in .NET.
 
-[Go to part 1 - completions, chat and functions](./01-lm-completions-functions.md)
+👉 [Go to part 1 - completions, chat and functions](./01-lm-completions-functions.md)

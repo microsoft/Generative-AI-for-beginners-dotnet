@@ -18,8 +18,8 @@ See all the concepts you've learned in action in these real-world and practical 
     - [eShopLite with realtime analysis](#eshoplite-with-realtime-analysis)
   - [Creative Writer Agent](#creative-writer-agent)
   - [Summary](#summary)
-    - [Additional Resources](#additional-resources)
-    - [Next Steps](#next-steps)
+    - [Additional resources](#additional-resources)
+    - [Next steps](#next-steps)
 
 
 **INSERT: LESSON 4 INTRO VIDEO HERE**
@@ -484,13 +484,13 @@ Those are just a few examples of how you can use GenAI in your applications. The
 
 > 🙋 **Need help?**: If you encounter any issues, open an issue in the repository.
 
-### Additional Resources
+### Additional resources
 
 - [eShopLite with DeepSeek](https://aka.ms/netaieshoplitedeepseekr1)
 - [eShopLite with Azure AI Search](https://aka.ms/netaieshoplitesemanticsearchazureaisearch)
 
-### Next Steps
+### Next steps
 
 Learn about responsible AI practices and how to ensure that your AI models are ethical and have a positive impact!
 
-[Responsible AI](../05-ResponsibleGenAI/readme.md)
+👉 [Responsible AI](../05-ResponsibleGenAI/readme.md)

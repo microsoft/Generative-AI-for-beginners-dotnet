@@ -16,7 +16,7 @@ One key thing to keep in mind when building agents is that they are focused on d
 
 We'll be working with a couple of new concepts in order to build an AI agent in .NET. We'll be using a new SDK and will have to do some additional setup in Azure AI Foundry to get things started.
 
-> 🧑‍💻**Code sample:** We'll be working from the [AgentLabs-01-Simple sample](./src/AgentLabs-01-Simple/) for this lesson.
+> 🧑‍💻**Sample code**: We'll be working from the [AgentLabs-01-Simple sample](./src/AgentLabs-01-Simple/) for this lesson.
 >
 > We did include some more advanced samples in the `/src/` folder as well. You can view the README's of [AgentLabs-02-Functions](./src/AgentLabs-02-Functions/) or [AgentLabs-03-OpenAPIs](./src/AgentLabs-03-OpenAPIs/) or [AgentLabs-03-PythonParksInformationServer](./src/AgentLabs-03-PythonParksInformationServer/) for more info on them.
 
@@ -138,7 +138,7 @@ We'll be building a single purpose agent that acts as a tutor to math students. 
     }
     ```
 
-> 🙋 **Need help?**: If you encounter any issues, open an issue in the repository.
+> 🙋 **Need help?**: If you encounter any issues, [open an issue in the repository](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new).
 
 The logical next step is to start to use multiple agents to create an automous system. A next step might be to have an agent that checks to see if the user has a premium account or not.
 
@@ -155,8 +155,15 @@ And you learned how to use the **Azure AI Agents** service with the **Azure AI P
 
 Think of agents as AI assistants with agency - they don't just respond, they act based on their programming and objectives.
 
+## Additional resources
+
+- [Build a minimal agent with .NET](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-assistants?pivots=openai)
+- [Multi-agent orchestration](https://techcommunity.microsoft.com/blog/educatordeveloperblog/using-azure-ai-agent-service-with-autogen--semantic-kernel-to-build-a-multi-agen/4363121)
+- [Semantic Kernel Agent Framework](https://learn.microsoft.com/semantic-kernel/frameworks/agent/?pivots=programming-language-csharp)
+- [AI Agents - Beginners Series to GenAI](https://github.com/microsoft/generative-ai-for-beginners/tree/main/17-ai-agents)
+
 ## Next Steps
 
 You've come a long way! From learning about simple one and done text completions to building agents!
 
-In the [next lesson see some real-life practical examples](../04-PracticalSamples/readme.md) of using everything together.
+👉 [In the next lesson see some real-life practical examples](../04-PracticalSamples/readme.md) of using everything together.

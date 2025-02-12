@@ -1,22 +1,15 @@
-# Lesson 1: Getting Started with AI Development Tools
+# Getting Started with AI Development Tools
 
-*Refresh your generative AI knowledge and understand the .NET tooling available to help you to develop generative AI applications.*
+Refresh your generative AI knowledge and understand the .NET tooling available to help you to develop generative AI applications.
 
 ---
 
-[![Watch the video](../images/01-videocover.jpg)](https://microsoft-my.sharepoint.com/:v:/p/brunocapuano/ERTkzBSAfKJEiLw2HLnzHnkBMEbpk17hniaVfr8lCm6how?e=gWOr33&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+**INSERT: LESSON 1 VIDEO**
 
-#### What you'll learn in this lesson:
+## What you'll learn in this lesson:
 
 - 🌟 Understand fundamental concepts of generative AI and their applications
 - 🔍 Explore the .NET tooling for AI development including MEAI, Semantic Kernel, and Azure OpenAI
-
-#### Index
-
-1. [A quick refresh on Generative AI concepts](#a-quick-refresh-on-generative-ai-concepts)
-1. [.NET AI Development tooling](#ai-development-tools-and-libraries-for-net)
-
----
 
 ## Generative AI Fundamentals for .NET
 
@@ -48,7 +41,7 @@ Some best practices for prompt engineering include, prompt design, clear instruc
 
 And it's important to note there are different types of prompts when developing applications. For example, you'll be responsbile for setting **system prompts** that set the base rules and context for the model's response. The data the user of your application feeds into the model are known as **user prompts**. And **assistant prompts** are the responses the model generates based on the system and user prompts.
 
-> ⚠️ **Note**: Learn more about prompt engineering in our [Generative AI for Beginners](https://github.com/microsoft/generative-ai-for-beginners/tree/main/04-prompt-engineering-fundamentals)
+> 🧑‍🏫 **Learn more**: Learn more about prompt engineering in [Prompt Engineering chapter of GenAI for Beginners course](https://github.com/microsoft/generative-ai-for-beginners/tree/main/04-prompt-engineering-fundamentals)
 
 #### Tokens, embeddings, and agents - oh my!
 
@@ -93,7 +86,8 @@ Using an unified API, MEAI allows developers to work with different AI services,
 
 > 🏎️ **Quick start**: For a quick start with MEAI, [check out the blog post](https://devblogs.microsoft.com/dotnet/introducing-microsoft-extensions-ai-preview/).
 >
-> 📖 **Docs**: Learn more about Microsoft.Extensions.AI (MEAI) in our [MEAI documentation](https://learn.microsoft.com/dotnet/ai/ai-extensions)
+> 📖 **Docs**: Learn more about Microsoft.Extensions.AI (MEAI) in the [MEAI documentation](https://learn.microsoft.com/dotnet/ai/ai-extensions)
+ 
 
 #### Semantic Kernel (SK)
 
@@ -123,31 +117,7 @@ In Semantic Kernel, a full loop would look like the diagram below:
 
 ![*Figure: Semantic Kernel (SK) full loop.*](./images/semantic-kernel-full-loop.png)
 
-> 📖 **Docs**: Learn more about Semantic Kernel in our [Semantic Kernel documentation](https://learn.microsoft.com/semantic-kernel/overview/)
-
-#### AI Toolkit Extension for Visual Studio Code
-
-For our course, we are going to use GitHub Models and Codespaces, and that means we can use the AI Toolkit Extension for VS Code. This extension allows you to interact with AI models, test prompts, fine-tune and deploy models, running from your local machine or from Codespaces. To use the AI Toolkit Extension, you can install it from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-windows-ai-studio.windows-ai-studio), and then, you can start testing prompts, and models, from your local VS Code.
-
-![*Figure: AI Toolkit Extension for Visual Studio Code.*](./images/ai-toolkit-extension.png)
-
-> ⚠️ **Attention**: For optimized performance, we recommend to have at least one GPU available in your machine, or use a Codespace with GPU enabled. Look at the cheat sheet for more information on what model to select for your machine.
-
-| Platform(s) | GPU Available | Model Name | Size (GB) |
-|-------------|----------------|------------|-----------|
-| Windows     | Yes            | Phi-3-mini-4k-directml-int4-awq-block-128-onnx | 2.13 |
-| Linux       | Yes            | Phi-3-mini-4k-cuda-int4-onnx | 2.30 |
-| Windows, Mac, Linux | No | Phi-3-mini-4k-cpu-int4-rtn-block-32-acc-level-4-onnx | 2.72 |
-
-> 📖 **Docs**: Learn more about the AI Toolkit Extension in our [AI Toolkit Extension documentation](https://learn.microsoft.com/windows/ai/toolkit/)
-
-#### Ollama and ONNX for local models
-
-Ollama and ONNX enable running AI models locally without cloud dependencies. ONNX provides an open format for machine learning models, ensuring interoperability and allowing .NET applications to utilize local AI models efficiently. Ollama is a lightweight SDK that simplifies the integration of ONNX models, enabling developers to run AI models locally without cloud dependencies.
-
-For local applications, Small Language Models (SLMs) are more ideal, as most LLMs require a lot of resources, and are more suitable for bigger applications, and cloud-based applications.
-
-> 📖 **Docs**: Learn more about Ollama and ONNX in our [Local Windows AI documentation](https://learn.microsoft.com/windows/ai/models) 
+> 📖 **Docs**: Learn more about Semantic Kernel in the [Semantic Kernel documentation](https://learn.microsoft.com/semantic-kernel/overview/)
 
 ## Conclusion
 
@@ -159,4 +129,4 @@ In the next chapters, we'll explore these scenarios in detail, providing hands-o
 
 Next up, we'll get your development environment setup! So you'll be ready to dive into the world of generative AI with .NET!
 
-[Set up your AI development environment](/02-SettingUp.NETDev/readme.md)
+👉 [Set up your AI development environment](/02-SetupDevEnvironment/readme.md)

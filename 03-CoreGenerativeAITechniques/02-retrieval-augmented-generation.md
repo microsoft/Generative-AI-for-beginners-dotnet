@@ -33,7 +33,9 @@ You may have heard of vector databases. These are databases that store data in a
 
 We'll use the Microsoft.Extension.AI along with the [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) and [Microsoft.SemanticKernel.Connectors.InMemory](https://www.nuget.org/packages/Microsoft.SemanticKernel.Connectors.InMemory) libraries to implement RAG below. 
 
-> 🗒️**Note:** You can also see how to implement a RAG app [using Semantic Kernel by itself in our sample source code here](./src/RAGSimple-01SK/).
+> 🧑‍💻**Sample code:** You can follow along with the [sample code here](../03-CoreGenerativeAITechniques/src/RAGSimple-02MEAIVectorsMemory/).
+> 
+> You can also see how to implement a RAG app [using Semantic Kernel by itself in our sample source code here](./src/RAGSimple-01SK/).
 
 ### Populating the knowledge store
 
@@ -161,6 +163,15 @@ conversation.Add(new ChatMessage(ChatRole.Assistant, response.Message));
 Console.WriteLine($"Bot:> {response.Message.Text});
 ```
 
+> 🙋 **Need help?**: If you encounter any issues, [open an issue in the repository](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new).
+
+## Additional resources
+
+- [GenAI for Beginners: RAG and Vector Databases](https://github.com/microsoft/generative-ai-for-beginners/blob/main/15-rag-and-vector-databases/README.md)
+- [Build a .NET Vector AI Search App](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-ai-chat-with-data?tabs=azd&pivots=openai)
+
+## Next up
+
 Now that you've seen what it takes to implement RAG, you can see how it can be a powerful tool in your AI applications. It can provide more accurate responses, up-to-date information, and domain-specific knowledge to your users.
 
-Next up let's learn about adding [Vision and Audio to your AI applications](03-vision-audio.md).
+👉 [Next up let's learn about adding Vision and Audio to your AI applications](03-vision-audio.md).

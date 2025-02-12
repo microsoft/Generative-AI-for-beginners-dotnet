@@ -39,7 +39,7 @@ Once your Codespace is fully loaded and configured, lets run a sample app to ver
 1. Switch to the proper directory by running the following command:
 
     ```bash
-    cd 02-SettingUp.NETDev/src/BasicChat-03Ollama/
+    cd 02-SetupDevEnvironment/src/BasicChat-03Ollama/
     ```
 
 1. Then run the application with the following command:
@@ -59,7 +59,7 @@ Once your Codespace is fully loaded and configured, lets run a sample app to ver
     ...
     ```
 
-> ⚠️ **Note**: Something not working? [Open an issue](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new?template=Blank+issue) and we'll help you out.
+> 🙋 **Need help?**: Something not working? [Open an issue](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new?template=Blank+issue) and we'll help you out.
 
 ## Swap out the model in Ollama
 
@@ -97,7 +97,7 @@ One of the cool things about Ollama is that it's easy to change models. The curr
     ...
     ```
 
-> ⚠️ **Note**: Something not working? [Open an issue](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new?template=Blank+issue) and we'll help you out.
+> 🙋 **Need help?**: Something not working? [Open an issue](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new?template=Blank+issue) and we'll help you out.
 
 ## Summary
 

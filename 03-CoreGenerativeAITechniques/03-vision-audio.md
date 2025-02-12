@@ -18,6 +18,8 @@ Ok - so we're going to put the model through it's paces and ask it if it can tel
 
 ![A composite showing both images the example will use. The first is several runners but only showing their legs. The second is a German restaurant receipt](./images/example-visual-image.png)
 
+> 🧑‍💻**Sample code**: You can follow [along with sample code here](./src/Vision-01MEAI-GitHubModels/).
+
 1. We're using MEAI and GitHub Models, so instantiate the `IChatClient` as we have been. Also start to create a chat history.
 
     ```csharp
@@ -72,6 +74,8 @@ Ok - so we're going to put the model through it's paces and ask it if it can tel
 
 Here's a point I want to drive home. We're conversing with a language model, or more appropriately a multi-modal model that can handle text as well as image (and audio) interactions. And we're carrying on the conversation with the model as normal. Sure it's a different type of object we're sending to the model, `AIContent` instead of a `string`, but the workflow is the same.
 
+> 🙋 **Need help?**: If you encounter any issues, [open an issue in the repository](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new).
+
 ## Audio AI
 
 **INSERT: LESSON 3 AUDIO VIDEO HERE**
@@ -87,6 +91,8 @@ To setup an Azure AI Speech Service model, [follow these directions](../02-Setti
 ### Implementing speech-to-text with Cognitive Services
 
 You'll need the **Microsoft.CognitiveServices.Speech** NuGet package for this example.
+
+> 🧑‍💻**Sample code**: You can follow [along with sample code here](./src/Audio-01-SpeechMic/).
 
 1. The first thing we'll do (after grabbing the key and region of the model's deployment) is instantiate a `SpeechTranslationConfig` object. This will enable us to direct the model that we'll be taking in spoken English and translating to written Spanish.
 
@@ -135,10 +141,18 @@ You'll need the **Microsoft.CognitiveServices.Speech** NuGet package for this ex
 
 Using AI to process audio is a bit different than what we have been doing because we are using Azure AI Speech services to do so, but the results of translating spoken audio to text is pretty powerful.
 
+> 🙋 **Need help?**: If you encounter any issues, [open an issue in the repository](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new).
+
 We have another example that [demonstrates how to perform real-time audio conversation with Azure Open AI](./src/Audio-02-RealTimeAudio/) - check it out!
 
----
+
+## Additional resources
+
+- [Generate images with AI and .NET](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-openai-generate-images?tabs=azd&pivots=openai)
+
+
+## Up next
 
 You've learned how to add vision and audio capabilities to your .NET applications, in the next lesson find out how to create AI that has some ability to act autonomously.
 
-[Check out AI Agents](./04-agents.md).
+👉 [Check out AI Agents](./04-agents.md).
