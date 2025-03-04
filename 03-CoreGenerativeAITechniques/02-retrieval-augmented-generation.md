@@ -171,6 +171,7 @@ Console.WriteLine($"Bot:> {response.Message.Text});
 
 - [GenAI for Beginners: RAG and Vector Databases](https://github.com/microsoft/generative-ai-for-beginners/blob/main/15-rag-and-vector-databases/README.md)
 - [Build a .NET Vector AI Search App](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-ai-chat-with-data?tabs=azd&pivots=openai)
+- [AI Chatbot with Retrieval-Augmented Generation (RAG) for .NET](https://github.com/AsterixBG/my-first-ai-ragbot)
 
 ## Next up
 
