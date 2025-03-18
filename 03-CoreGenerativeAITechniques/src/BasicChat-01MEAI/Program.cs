@@ -3,6 +3,7 @@ using Azure.AI.Inference;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 using System.Text;
+using ChatRole = Microsoft.Extensions.AI.ChatRole;
 
 var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN");
 if(string.IsNullOrEmpty(githubToken))
@@ -16,16 +17,30 @@ IChatClient client = new ChatCompletionsClient(
         new AzureKeyCredential(githubToken))
         .AsChatClient("Phi-3.5-MoE-instruct");
 
-// here we're building the prompt
-StringBuilder prompt = new StringBuilder();
-prompt.AppendLine("You will analyze the sentiment of the following product reviews. Each line is its own review. Output the sentiment of each review in a bulleted list and then provide a generate sentiment of all reviews. ");
-prompt.AppendLine("I bought this product and it's amazing. I love it!");
-prompt.AppendLine("This product is terrible. I hate it.");
-prompt.AppendLine("I'm not sure about this product. It's okay.");
-prompt.AppendLine("I found this product based on the other reviews. It worked for a bit, and then it didn't.");
+// assume IChatClient is instantiated as before
 
-// send the prompt to the model and wait for the text completion
-var response = await client.GetResponseAsync(prompt.ToString());
+List<ChatMessage> conversation =
+[
+    new (ChatRole.System, "You are a product review assistant. Your job is to help people write great product reviews. Keep asking questions on the person's experience with the product until you have enough information to write a review. Then write the review for them and ask if they are happy with it.")
+];
 
-// display the response
-Console.WriteLine(response.Message);
+Console.Write("Start typing a review (type 'q' to quit): ");
+
+// Loop to read messages from the console
+while (true)
+{    
+    string message = Console.ReadLine();
+
+    if (message.ToLower() == "q")
+    {
+        break;
+    }
+
+    conversation.Add(new ChatMessage(ChatRole.User, message));
+
+    // Process the message with the chat client (example)
+    var response = await client.GetResponseAsync(conversation);
+    conversation.Add(response.Message);
+    
+    Console.WriteLine(response.Message.Text);    
+}
