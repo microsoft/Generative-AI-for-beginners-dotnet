@@ -111,7 +111,7 @@ Azure AI Foundry モデルを使用するには、Azure AI Foundry ポータル�
     using Azure.AI.OpenAI;
     using Microsoft.Extensions.AI;
 
-1. Create new variables to hold the model name, endpoint, and API key:
+1. モデル名、エンドポイント、API key を保持するための新しい変数を作成します。
 
     ```csharp
     var deploymentName = "< deployment name > "; // 例: "gpt-4o-mini"
