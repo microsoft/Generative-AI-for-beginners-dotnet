@@ -130,7 +130,7 @@ Azure AI Foundry モデルを使用するには、Azure AI Foundry ポータル�
     .AsChatClient(deploymentName);
     ```
 
-1. Run the following command in the terminal:
+1. ターミナルで次のコマンドを実行します。
 
     ```bash
     dotnet run
