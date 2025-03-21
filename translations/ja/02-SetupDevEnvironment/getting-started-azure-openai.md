@@ -136,7 +136,7 @@ Azure AI Foundry モデルを使用するには、Azure AI Foundry ポータル�
     dotnet run
     ```
 
-1. You should see output similar to the following:
+1. 次のような出力が表示されます。
 
     ```bash
     人工知能 (AI) とは、人間の知能を模倣するようにプログラムされた機械を指します。AI は、人間の知能を必要とするタスクをコンピューターやシステムが実行できるようにするさまざまな技術やアプローチを包含しています。これには以下のタスクが含まれます：
