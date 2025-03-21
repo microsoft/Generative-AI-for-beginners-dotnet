@@ -121,7 +121,7 @@ Azure AI Foundry モデルを使用するには、Azure AI Foundry ポータル�
 
     Making sure to replace `< deployment name >`, and `< endpoint >` with the values you noted above.
 
-1. Replace the `IChatClient` creation with the following code:
+1. `IChatClient` の作成を次のコードに置き換えます。
 
     ```csharp
     IChatClient client = new AzureOpenAIClient(
