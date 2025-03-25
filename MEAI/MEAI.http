@@ -1,0 +1,6 @@
+@MEAI_HostAddress = http://localhost:5137
+
+GET {{MEAI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

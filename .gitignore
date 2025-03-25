@@ -399,3 +399,5 @@ FodyWeavers.xsd
 
 .venv/
 .env
+
+**/appsettings.LocalDebug.json
