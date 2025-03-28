@@ -1,6 +1,6 @@
 # AI Agents
 
-In this lesson learn to create an AI entity that... makes decisions and executes actions without continuous human interaction? That's right, AI agents are able to perform specific tasks independently.
+In this lesson, you will learn to create an AI entity that... makes decisions and executes actions without continuous human interaction? That's right, AI agents are able to perform specific tasks independently.
 
 ---
 
