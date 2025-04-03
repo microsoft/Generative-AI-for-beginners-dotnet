@@ -1,11 +1,44 @@
-﻿using Microsoft.Extensions.Configuration;
-using OpenCvSharp;
+﻿using System.ClientModel;
 using Azure.AI.OpenAI;
-using System.ClientModel;
 using Microsoft.Extensions.AI;
-using System;
+using Microsoft.Extensions.Configuration;
+using OpenCvSharp;
 
+SpectreConsoleOutput.DisplayTitle("MEAI - AOAI");
 
+// define video file and data folder
+SpectreConsoleOutput.DisplayTitleH1("Video file and data folder");
+string videoFile = VideosHelper.GetVideoFilePathCar();
+string dataFolderPath = VideosHelper.CreateDataFolder();
+Console.WriteLine();
+
+var systemPrompt = PromptsHelper.SystemPrompt;
+var userPrompt = PromptsHelper.UserPromptInsuranceCarAnalysis;
+
+//////////////////////////////////////////////////////
+/// VIDEO ANALYSIS using OpenCV
+//////////////////////////////////////////////////////
+
+SpectreConsoleOutput.DisplayTitleH1("Video Analysis using OpenCV");
+
+// Extract the frames from the video
+var video = new VideoCapture(videoFile);
+var frames = new List<Mat>();
+while (video.IsOpened())
+{
+    var frame = new Mat();
+    if (!video.Read(frame) || frame.Empty())
+        break;
+    // resize the frame to half of its size if the with is greater than 800
+    if (frame.Width > 800)
+    {
+        Cv2.Resize(frame, frame, new OpenCvSharp.Size(frame.Width / 2, frame.Height / 2));
+    }
+    frames.Add(frame);
+}
+video.Release();
+SpectreConsoleOutput.DisplaySubtitle("Total Frames", frames.Count.ToString());
+SpectreConsoleOutput.DisplayTitleH3("Video Analysis using OpenCV done!");
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 var endpoint = config["AZURE_OPENAI_ENDPOINT"];
