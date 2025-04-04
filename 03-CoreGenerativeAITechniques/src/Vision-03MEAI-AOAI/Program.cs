@@ -29,7 +29,7 @@ while (video.IsOpened())
     var frame = new Mat();
     if (!video.Read(frame) || frame.Empty())
         break;
-    // resize the frame to half of its size if the with is greater than 800
+    // resize the frame to half of its size if the width is greater than 800
     if (frame.Width > 800)
     {
         Cv2.Resize(frame, frame, new OpenCvSharp.Size(frame.Width / 2, frame.Height / 2));
