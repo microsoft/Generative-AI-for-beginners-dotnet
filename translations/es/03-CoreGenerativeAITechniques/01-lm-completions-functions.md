@@ -132,7 +132,7 @@ Hay algunos pasos de configuración que necesitas realizar para llamar funciones
         return $"The weather is {temperature} degrees C and {conditions}.";
     }
 
-```
+    ```
 
 2. Luego, vamos a crear un objeto `ChatOptions` que le indicará a MEAI qué funciones están disponibles.
 
@@ -143,7 +143,7 @@ Hay algunos pasos de configuración que necesitas realizar para llamar funciones
         Tools = [AIFunctionFactory.Create(GetTheWeather)]
     };
 
-```
+    ```
 
 3. Cuando instanciemos el objeto `IChatClient`, querremos especificar que usaremos invocación de funciones.
 

@@ -88,7 +88,7 @@ Real-time audio techniques allow your apps to generate audio and transcribe it i
 
 But we're going to have to transition away from MEAI and from the model we were using to Azure AI Speech Services.
 
-To setup an Azure AI Speech Service model, [follow these directions](../02-SettingUp.NETDev/getting-started-azure-openai.md) but instead of choosing an OpenAI model, choose **Azure-AI-Speech**.
+To setup an Azure AI Speech Service model, [follow these directions](../02-SetupDevEnvironment/getting-started-azure-openai.md) but instead of choosing an OpenAI model, choose **Azure-AI-Speech**.
 
 > **🗒️Note:>** Audio is coming to MEAI, but as of this writing isn't available yet. When it is available we'll update this course.
 
