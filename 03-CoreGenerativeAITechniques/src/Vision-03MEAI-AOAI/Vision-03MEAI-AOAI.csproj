@@ -16,8 +16,8 @@
 
 	<ItemGroup>
 	  <PackageReference Include="Azure.AI.OpenAI" Version="2.1.0" />
-	  <PackageReference Include="Microsoft.Extensions.AI.AzureAIInference" Version="9.4.3-preview.1.25230.7" />
-	  <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.4.3-preview.1.25230.7" />
+	  <PackageReference Include="Microsoft.Extensions.AI.AzureAIInference" Version="9.5.0-preview.1.25262.9" />
+	  <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.5.0-preview.1.25262.9" />
 	  <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.0" />
 	  <PackageReference Include="OpenCvSharp4" Version="4.10.0.20241108" />
 	  <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.10.0.20241108" />
