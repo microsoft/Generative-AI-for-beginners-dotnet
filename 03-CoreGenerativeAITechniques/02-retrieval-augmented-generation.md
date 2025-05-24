@@ -38,6 +38,8 @@ We'll use the Microsoft.Extension.AI along with the [Microsoft.Extensions.Vector
 > 🧑‍💻**Sample code:** You can follow along with the [sample code here](../03-CoreGenerativeAITechniques/src/RAGSimple-02MEAIVectorsMemory/).
 > 
 > You can also see how to implement a RAG app [using Semantic Kernel by itself in our sample source code here](./src/RAGSimple-01SK/).
+>
+> 🗒️**Note:** While the tutorial below demonstrates concepts using GitHub Models for clarity (with the `https://models.inference.ai.azure.com` endpoint), all the actual code samples in the repository are implemented using Ollama with local models (connecting to `http://localhost:11434`). To run the sample code, you'll need to have Ollama set up as described in the [Getting Started with Ollama](../02-SetupDevEnvironment/getting-started-ollama.md) guide.
 
 ### Populating the knowledge store
 
@@ -81,6 +83,7 @@ We'll use the Microsoft.Extension.AI along with the [Microsoft.Extensions.Vector
 3. Our next task then is to convert our knowledge store (the `movieData` object) into embeddings and then store them into the in-memory vector store. When we create the embeddings we'll use a different model - an embeddings model instead of a language model.
 
     ```csharp
+    // When using GitHub Models:
     var endpoint = new Uri("https://models.inference.ai.azure.com");
     var modelId = "text-embedding-3-small";
     var credential = new AzureKeyCredential(githubToken); // githubToken is retrieved from the environment variables
@@ -88,6 +91,10 @@ We'll use the Microsoft.Extension.AI along with the [Microsoft.Extensions.Vector
     IEmbeddingGenerator<string, Embedding<float>> generator =
             new EmbeddingsClient(endpoint, credential)
         .AsEmbeddingGenerator(modelId);
+
+    // When using Ollama (as in the actual code samples):
+    // IEmbeddingGenerator<string, Embedding<float>> generator =
+    //     new OllamaEmbeddingGenerator(new Uri("http://localhost:11434/"), "all-minilm");
 
     foreach (var movie in movieData)
     {
@@ -99,9 +106,17 @@ We'll use the Microsoft.Extension.AI along with the [Microsoft.Extensions.Vector
     }
     ```
 
-    Our generator object is of an `IEmbeddingGenerator<string, Embedding<float>>` type. This means it is expecting inputs of `string` and outputs of `Embedding<float>`. We're again using GitHub Models and that means the **Microsoft.Extensions.AI.AzureAIInference** package. But you could use **Ollama** or **Azure OpenAI** just as easily.
+    Our generator object is of an `IEmbeddingGenerator<string, Embedding<float>>` type. This means it is expecting inputs of `string` and outputs of `Embedding<float>`. 
+    
+    The example above shows two implementations:
+    - Using GitHub Models with the **Microsoft.Extensions.AI.AzureAIInference** package
+    - Using Ollama with the **Microsoft.Extensions.AI.Ollama** package (which is what the actual code samples use)
+    
+    You can use either approach based on your preference, but note that the code samples in the repository use Ollama.
 
 > 🗒️**Note:** Generally you'll only be creating embeddings for your knowledge store once and then storing them. This won't be done every single time you run the application. But since we're using an in-memory store, we need to because the data gets wiped every time the application restarts.
+>
+> When using Ollama as in the sample code, make sure you have the necessary models installed by running the appropriate `ollama pull` commands as described in the [Getting Started with Ollama](../02-SetupDevEnvironment/getting-started-ollama.md) guide.
 
 ### Retrieving the knowledge
 
@@ -110,6 +125,9 @@ We'll use the Microsoft.Extension.AI along with the [Microsoft.Extensions.Vector
     ```csharp
     // generate the embedding vector for the user's prompt
     var query = "I want to see family friendly movie";
+    
+    // Using the same embedding generator as initialized earlier
+    // (this would be either GitHub Models or Ollama depending on your setup)
     var queryEmbedding = await generator.GenerateEmbeddingVectorAsync(query);
 
     var searchOptions = new VectorSearchOptions
@@ -141,7 +159,19 @@ So we could do something like the following while looping through the results of
 
 ```csharp
 
-// assuming chatClient is instatiated as before to a language model
+// assuming chatClient is instantiated as before to a language model
+// For GitHub Models:
+// IChatClient chatClient = new ChatCompletionsClient(
+//     endpoint: new Uri("https://models.inference.ai.azure.com"),
+//     new AzureKeyCredential(githubToken))
+//     .AsIChatClient("gpt-4o-mini");
+
+// For Ollama (as in the sample code):
+// var builder = Kernel.CreateBuilder().AddOllamaChatCompletion(
+//     modelId: "phi4-mini", 
+//     endpoint: new Uri("http://localhost:11434"));
+// Kernel kernel = builder.Build();
+
 // assuming the vector search is done as above
 // assuming List<ChatMessage> conversation object is already instantiated and has a system prompt
 
@@ -164,6 +194,8 @@ conversation.Add(new ChatMessage(ChatRole.Assistant, response.Message));
 //display the conversation
 Console.WriteLine($"Bot:> {response.Message.Text});
 ```
+
+> 📝 **Note:** The actual code samples in the repository use different approaches to the same concept. For example, the `RAGSimple-10SKOllama` sample uses `KernelMemory` with Ollama models for both text generation and embedding generation, while this tutorial presents a simpler conceptual overview. Check the specific sample code for the implementation details, and make sure you have the required Ollama models installed.
 
 > 🙋 **Need help?**: If you encounter any issues, [open an issue in the repository](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new).
 
