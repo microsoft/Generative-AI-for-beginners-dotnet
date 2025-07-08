@@ -84,11 +84,14 @@ We'll use the Microsoft.Extension.AI along with the [Microsoft.Extensions.Vector
 3. Our next task then is to convert our knowledge store (the `movieData` object) into embeddings and then store them into the in-memory vector store. When we create the embeddings we'll use a different model - an embeddings model instead of a language model.
 
     ```csharp
-    var endpoint = new Uri("https://models.inference.ai.azure.com");
-    var modelId = "text-embedding-3-small";
     // get embeddings generator and generate embeddings for movies
-    IEmbeddingGenerator<string, Embedding<float>> generator =
-        new OllamaEmbeddingGenerator(new Uri("http://localhost:11434/"), "all-minilm");
+    var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN") ?? throw new InvalidOperationException("GITHUB_TOKEN environment variable is not set.");
+    var endpoint = new Uri("https://models.inference.ai.azure.com");
+    var modelId = "text-embedding-3-small"; 
+
+    var embeddingsClient = new EmbeddingsClient(endpoint, new AzureKeyCredential(githubToken));
+    IEmbeddingGenerator<string, Embedding<float>> generator = embeddingsClient.AsIEmbeddingGenerator(modelId);
+
     foreach (var movie in movieData)
     {
         movie.Vector = await generator.GenerateVectorAsync(movie.Description);

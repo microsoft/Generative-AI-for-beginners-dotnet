@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.AI;
+﻿using Azure;
+using Azure.AI.Inference;
+using Microsoft.Extensions.AI;
 using Microsoft.SemanticKernel.Connectors.InMemory;
 
 var vectorStore = new InMemoryVectorStore();
@@ -9,8 +11,12 @@ await movies.EnsureCollectionExistsAsync();
 var movieData = MovieFactory<int>.GetMovieVectorList();
 
 // get embeddings generator and generate embeddings for movies
-IEmbeddingGenerator<string, Embedding<float>> generator =
-    new OllamaEmbeddingGenerator(new Uri("http://localhost:11434/"), "all-minilm");
+var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN") ?? throw new InvalidOperationException("GITHUB_TOKEN environment variable is not set.");
+var endpoint = new Uri("https://models.inference.ai.azure.com");
+var modelId = "text-embedding-3-small"; 
+
+var embeddingsClient = new EmbeddingsClient(endpoint, new AzureKeyCredential(githubToken));
+IEmbeddingGenerator<string, Embedding<float>> generator = embeddingsClient.AsIEmbeddingGenerator(modelId);
 foreach (var movie in movieData)
 {
     movie.Vector = await generator.GenerateVectorAsync(movie.Description);
