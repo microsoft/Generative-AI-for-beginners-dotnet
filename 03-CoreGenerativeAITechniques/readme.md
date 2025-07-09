@@ -29,3 +29,18 @@ For this lesson, we will subdivide the content into the following sections:
 Starting with Language Model completions and Chat applications and function implementations with language models in .NET.
 
 👉 [Go to part 1 - completions, chat and functions](./01-lm-completions-functions.md)
+
+---
+
+## Want to know more?
+
+📚 **[Detailed Project Documentation](./docs/projects-documentation.md)** - Comprehensive guide covering all sample projects in this lesson, including:
+
+- **Basic Chat Projects** - Learn different approaches to building chat applications with MEAI, Semantic Kernel, and local Ollama models
+- **Functions & Plugins** - Explore function calling, custom plugins, and tool integration across multiple AI frameworks  
+- **RAG (Retrieval-Augmented Generation)** - Discover vector databases, embeddings, and document retrieval with various storage backends
+- **Vision Analysis** - Computer vision capabilities using GitHub Models, Azure OpenAI, and local multimodal models
+- **Audio Processing** - Speech recognition, real-time audio processing, and voice-enabled AI applications
+- **AI Agents** - Agent orchestration, state management, and complex multi-tool workflows
+
+Each project includes detailed dependency analysis, step-by-step setup instructions, demo scenarios, and relevant AI technique tags for easy navigation.
