@@ -11,10 +11,10 @@
 		<PackageReference Include="Microsoft.KernelMemory.Abstractions" Version="0.98.250508.3" />
 		<PackageReference Include="Microsoft.KernelMemory.AI.Ollama" Version="0.98.250508.3" />
 		<PackageReference Include="Microsoft.KernelMemory.Core" Version="0.98.250508.3" />
-		<PackageReference Include="Microsoft.SemanticKernel" Version="1.55.0">
+		<PackageReference Include="Microsoft.SemanticKernel" Version="1.61.0">
 		  <TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
 		<PackageReference Include="Microsoft.SemanticKernel.Connectors.Ollama" Version="1.54.0-alpha" />
-		<PackageReference Include="Spectre.Console" Version="0.50.1-preview.0.8" />
+		<PackageReference Include="Spectre.Console" Version="0.50.1-preview.0.22" />
 	</ItemGroup>
 </Project>
