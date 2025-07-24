@@ -9,13 +9,31 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.0-preview.5.25277.114" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.0-preview.5.25277.114" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.0-preview.5.25277.114" />
-    <PackageReference Include="System.Drawing.Common" Version="9.0.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.0-preview.6.25358.103" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.0-preview.6.25358.103" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.0-preview.6.25358.103" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.7" />
   </ItemGroup>
 
   <ItemGroup>
+
+    <PackageReference Include="Azure.AI.OpenAI" Version="2.2.0-beta.5" />
+
+    <PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="9.7.0" />
+
+    <PackageReference Include="Microsoft.Extensions.ServiceDiscovery" Version="9.3.1" />
+
+    <PackageReference Include="OllamaSharp" Version="5.3.3" />
+
+    <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.12.0" />
+
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.12.0" />
+
+    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.12.0" />
+
+    <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.12.0" />
+
+    <PackageReference Include="OpenTelemetry.Instrumentation.Runtime" Version="1.12.0" />
     <ProjectReference Include="..\SpaceAINet.GameActionProcessor\SpaceAINet.GameActionProcessor.csproj" />
     <ProjectReference Include="..\SpaceAINet.Screenshot\SpaceAINet.Screenshot.csproj" />
     <ProjectReference Include="..\SpaceAINet.ServiceDefaults\SpaceAINet.ServiceDefaults.csproj" />
