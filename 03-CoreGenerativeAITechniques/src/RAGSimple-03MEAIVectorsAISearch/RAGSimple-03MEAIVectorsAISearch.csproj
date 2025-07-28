@@ -9,9 +9,9 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Azure.Identity" Version="1.14.0" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.5" />
-		<PackageReference Include="Microsoft.Extensions.VectorData.Abstractions" Version="9.5.0" />
+		<PackageReference Include="Azure.Identity" Version="1.14.2" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.7" />
+		<PackageReference Include="Microsoft.Extensions.VectorData.Abstractions" Version="9.7.0" />
 		<PackageReference Include="Microsoft.SemanticKernel.Connectors.AzureAISearch" Version="1.54.0-preview" />
 		<PackageReference Include="Microsoft.Extensions.AI.Ollama" Version="9.5.0-preview.1.25265.7" />
 	</ItemGroup>

@@ -10,12 +10,12 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Azure.Identity" Version="1.14.1" />
-		<PackageReference Include="Microsoft.Extensions.AI" Version="9.7.0" />
+		<PackageReference Include="Azure.Identity" Version="1.14.2" />
+		<PackageReference Include="Microsoft.Extensions.AI" Version="9.7.1" />
 		<PackageReference Include="Microsoft.Extensions.AI.AzureAIInference" Version="9.7.0-preview.1.25356.2" />
 		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.7.0-preview.1.25356.2" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.7" />
-		<PackageReference Include="Microsoft.SemanticKernel" Version="1.55.0" />
+		<PackageReference Include="Microsoft.SemanticKernel" Version="1.61.0" />
 	</ItemGroup>
 
 </Project>
