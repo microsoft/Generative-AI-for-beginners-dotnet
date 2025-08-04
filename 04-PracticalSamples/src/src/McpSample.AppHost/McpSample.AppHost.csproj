@@ -13,7 +13,7 @@
 
 
 	<ItemGroup>
-		<PackageReference Include="Aspire.Hosting.AppHost" Version="9.3.1" />
+		<PackageReference Include="Aspire.Hosting.AppHost" Version="9.4.0" />
 		<PackageReference Include="ModelContextProtocol" Version="0.3.0-preview.3" />
 	</ItemGroup>
 
