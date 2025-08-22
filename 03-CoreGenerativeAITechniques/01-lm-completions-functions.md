@@ -114,9 +114,9 @@ while (true)
 
     // Process the message with the chat client (example)
     var response = await client.GetResponseAsync(conversation);
-    conversation.Add(response.Message);
+    conversation.AddRange(response.Messages);
     
-    Console.WriteLine(response.Message.Text);    
+    Console.WriteLine(response.Text);    
 }
 ```
 

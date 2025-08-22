@@ -124,10 +124,14 @@ Once your Codespace is fully loaded and configured, let's run a sample app to ve
 1. Open the terminal. You can open a terminal window by typing **Ctrl+\`** (backtick) on Windows or **Cmd+`** on macOS.
 
 1. Switch to the proper directory by running the following command:
-
+   If you're using Windows Command Prompt (CMD) or PowerShell:
     ```bash
     cd 02-SetupDevEnvironment\src\BasicChat-01MEAI
     ```
+    or If you're using Linux, macOS, Git Bash, WSL, or the VS Code terminal
+   ```bash
+   cd 02-SetupDevEnvironment/src/BasicChat-01MEAI
+   ```
 
 1. Then run the application with the following command:
 
