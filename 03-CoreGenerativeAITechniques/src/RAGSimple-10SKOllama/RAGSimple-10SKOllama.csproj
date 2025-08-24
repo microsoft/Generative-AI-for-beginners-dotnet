@@ -16,6 +16,6 @@
 		  <TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
 		<PackageReference Include="Microsoft.SemanticKernel.Connectors.Ollama" Version="1.54.0-alpha" />
-		<PackageReference Include="Spectre.Console" Version="0.50.1-preview.0.22" />
+		<PackageReference Include="Spectre.Console" Version="0.50.1-preview.0.24" />
 	</ItemGroup>
 </Project>

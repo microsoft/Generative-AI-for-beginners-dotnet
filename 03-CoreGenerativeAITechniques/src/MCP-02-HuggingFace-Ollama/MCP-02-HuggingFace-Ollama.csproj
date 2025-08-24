@@ -14,7 +14,7 @@
 		<PackageReference Include="ModelContextProtocol" Version="0.3.0-preview.3" />
 		<PackageReference Include="ModelContextProtocol-SemanticKernel" Version="0.3.0" />
 		<PackageReference Include="ModelContextProtocol.Core" Version="0.3.0-preview.3" />
-		<PackageReference Include="OllamaSharp" Version="5.3.3" />
+		<PackageReference Include="OllamaSharp" Version="5.3.4" />
 	</ItemGroup>
 
 </Project>

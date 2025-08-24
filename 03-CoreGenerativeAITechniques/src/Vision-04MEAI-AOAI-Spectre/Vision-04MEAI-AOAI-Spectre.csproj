@@ -22,7 +22,7 @@
 		<PackageReference Include="OpenCvSharp4" Version="4.11.0.20250507" />
 		<PackageReference Include="OpenCvSharp4.runtime.win" Version="4.11.0.20250507" />
 		<PackageReference Include="OpenCvSharp4_.runtime.ubuntu.20.04-x64" Version="4.10.0.20240616" />
-		<PackageReference Include="Spectre.Console" Version="0.50.1-preview.0.22" />
+		<PackageReference Include="Spectre.Console" Version="0.50.1-preview.0.24" />
 		<PackageReference Include="Spectre.Console.Json" Version="0.50.0" />
 	</ItemGroup>
 
