@@ -11,7 +11,7 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Azure.Identity" Version="1.14.2" />
+		<PackageReference Include="Azure.Identity" Version="1.15.0" />
 		<PackageReference Include="Microsoft.Extensions.AI" Version="9.7.1-preview" />
 		<PackageReference Include="Microsoft.Extensions.AI.AzureAIInference" Version="9.7.1-preview" />
 		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.7.1-preview.1.25365.4" />
