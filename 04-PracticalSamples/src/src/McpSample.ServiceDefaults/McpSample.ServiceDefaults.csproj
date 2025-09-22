@@ -6,6 +6,7 @@
     <IsAspireSharedProject>true</IsAspireSharedProject>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="ModelContextProtocol.Core" Version="0.3.0-preview.4" />
 	  <FrameworkReference Include="Microsoft.AspNetCore.App" />
 	  <PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="9.8.0" />
 	  <PackageReference Include="Microsoft.Extensions.ServiceDiscovery" Version="9.3.1" />
