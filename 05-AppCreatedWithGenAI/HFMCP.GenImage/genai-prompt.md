@@ -32,7 +32,7 @@ Create a new Settings.razor page with secure configuration management:
 #### Required Settings Fields
 
 - **Hugging Face Access Token** (masked input, required)
-- **Model Name** (text input, default: "gpt-4.1-mini") - allows user to type any model name
+- **Model Name** (text input, default: "gpt-4o-mini") - allows user to type any model name
 
 #### AI Provider Settings (Choose One)
 
