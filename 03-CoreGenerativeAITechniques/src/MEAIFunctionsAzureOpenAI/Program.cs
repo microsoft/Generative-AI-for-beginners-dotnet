@@ -8,7 +8,7 @@ var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 
 var endpoint = config["endpoint"];
 var apiKey = new ApiKeyCredential(config["apikey"]);
-var deploymentName = "gpt-4.1-mini";
+var deploymentName = "gpt-4o-mini";
 
 IChatClient client = new AzureOpenAIClient(new Uri(endpoint), apiKey)
     .GetChatClient(deploymentName)
