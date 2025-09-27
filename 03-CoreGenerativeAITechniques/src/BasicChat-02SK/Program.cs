@@ -11,7 +11,7 @@ if (string.IsNullOrEmpty(githubToken))
     var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
     githubToken = config["GITHUB_TOKEN"];
 }
-var modelId = "Phi-3.5-mini-instruct";
+var modelId = "Phi-4-mini-instruct";
 var uri = "https://models.github.ai/inference";
 
 
