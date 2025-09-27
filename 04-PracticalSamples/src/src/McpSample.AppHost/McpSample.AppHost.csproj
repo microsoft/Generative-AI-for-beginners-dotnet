@@ -14,7 +14,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Aspire.Hosting.AppHost" Version="9.4.2" />
-		<PackageReference Include="ModelContextProtocol" Version="0.3.0-preview.3" />
+		<PackageReference Include="ModelContextProtocol" Version="0.3.0-preview.4" />
 	</ItemGroup>
 
 	<ItemGroup>
