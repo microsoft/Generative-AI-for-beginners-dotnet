@@ -10,7 +10,7 @@ if (string.IsNullOrEmpty(openai_apikey))
 }
 
 IChatClient client =
-    new OpenAI.Chat.ChatClient("gpt-4o-mini", openai_apikey)
+    new OpenAI.Chat.ChatClient("gpt-4.1-mini", openai_apikey)
     .AsIChatClient();
 
 // here we're building the prompt
