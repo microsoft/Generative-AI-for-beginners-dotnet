@@ -37,13 +37,13 @@ Here's a quick rundown of the services:
 
 The Ollama Codespace will provision all the necessary models that you need. However, if you are working in local mode, once you have installed Ollama, you need to pull the models for the lessons you want to run.
 
-- For lesson "**02 - Setting Up for .NET Development with Generative AI**" and project [MEAIFunctionsOllama](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/tree/main/02-SetupDevEnvironment/src/BasicChat-03Ollama) you need to pull a model like [phi4-mini](https://ollama.com/library/phi4-mini) or [llama3.2](https://ollama.com/library/llama3.2)  by entering in terminal
+- For lesson "**02 - Setting Up for .NET Development with Generative AI**" and project [BasicChat-03Ollama](../samples/CoreGenerativeAITechniques/BasicChat-03Ollama/) you need to pull a model like [phi4-mini](https://ollama.com/library/phi4-mini) or [llama3.2](https://ollama.com/library/llama3.2)  by entering in terminal
 
 ```bash
 ollama pull phi4-mini
 ```
 
-- For lesson "**03 - Core Generative AI Techniques with .NET**", when running the ollama projects like [RAGSimple-10SKOllama](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/tree/main/03-CoreGenerativeAITechniques/src/RAGSimple-10SKOllama),  you need to pull the models [all-minilm](https://ollama.com/library/all-minilm) and [phi4-mini](https://ollama.com/library/phi4-mini) by entering in terminal:
+- For lesson "**03 - Core Generative AI Techniques with .NET**", when running the ollama projects like [RAGSimple-10SKOllama](../samples/CoreGenerativeAITechniques/RAGSimple-10SKOllama/),  you need to pull the models [all-minilm](https://ollama.com/library/all-minilm) and [phi4-mini](https://ollama.com/library/phi4-mini) by entering in terminal:
 
 ```bash
 ollama pull phi4-mini
@@ -126,11 +126,11 @@ Once your Codespace is fully loaded and configured, let's run a sample app to ve
 1. Switch to the proper directory by running the following command:
    If you're using Windows Command Prompt (CMD) or PowerShell:
     ```bash
-    cd 02-SetupDevEnvironment\src\BasicChat-01MEAI
+    cd samples\CoreGenerativeAITechniques\BasicChat-01MEAI
     ```
     or If you're using Linux, macOS, Git Bash, WSL, or the VS Code terminal
    ```bash
-   cd 02-SetupDevEnvironment/src/BasicChat-01MEAI
+   cd samples/CoreGenerativeAITechniques/BasicChat-01MEAI
    ```
 
 1. Then run the application with the following command:

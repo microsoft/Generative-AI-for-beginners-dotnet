@@ -12,7 +12,7 @@ Image and video generation AI represents the next frontier in creative applicati
 
 The `gpt-image-1` model represents a significant advancement in image generation capabilities. Let's explore how to use it in a .NET application:
 
-> 🧑‍💻**Sample code**: [Here is a working example of this application](./src/ImageGeneration-01/) you can follow along with.
+> 🧑‍💻**Sample code**: [Here is a working example of this application](../../samples/CoreGenerativeAITechniques/ImageGeneration-01/) you can follow along with.
 
 #### How to run the sample code
 
@@ -100,7 +100,7 @@ This code:
 
 The `sora` model enables video generation from text prompts, bringing motion and temporal dynamics to your AI-generated content. Let's explore how to use it:
 
-> 🧑‍💻**Sample code**: [Here are working examples for video generation](./src/VideoGeneration-AzureSora-01/) and [using the AzureSoraSDK](./src/VideoGeneration-AzureSoraSDK-02/) you can follow along with.
+> 🧑‍💻**Sample code**: [Here are working examples for video generation](../../samples/CoreGenerativeAITechniques/VideoGeneration-AzureSora-01/) and [using the AzureSoraSDK](../../samples/CoreGenerativeAITechniques/VideoGeneration-AzureSoraSDK-02/) you can follow along with.
 
 #### Using REST API Approach
 

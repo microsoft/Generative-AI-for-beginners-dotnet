@@ -509,11 +509,15 @@ Those are just a few examples of how you can use GenAI in your applications. The
 
 ### Additional resources
 
+**External samples:**
 - [eShopLite with DeepSeek](https://aka.ms/eshoplite/deepseekr1/repo)
 - [eShopLite with ChromaDB](https://aka.ms/eshoplite/chromadb/repo)
 - [eShopLite with DeepSeek](https://aka.ms/eshoplite/deepseekr1/repo)
 - [eShopLite with MCP](https://aka.ms/eshoplite/mcp/repo)
 - [eShopLite with Azure AI Search](https://aka.ms/eshoplite/AzureAISearch/repo)
+
+**Local samples in this repository:**
+- [MCP (Model Context Protocol) Sample](../samples/PraticalSamples/) - A complete Aspire-based sample demonstrating MCP integration with chat capabilities
 
 ### Next steps
 
