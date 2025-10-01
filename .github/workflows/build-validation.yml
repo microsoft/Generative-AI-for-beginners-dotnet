@@ -1,64 +1,58 @@
 name: .NET Build Validation
 
-'on':
+"on":
   pull_request:
-    branches: [ main ]
+    branches: [main]
     paths:
-    - '02-SetupDevEnvironment/**/*.cs'
-    - '02-SetupDevEnvironment/**/*.csproj'
-    - '02-SetupDevEnvironment/**/*.sln'
-    - '02-SetupDevEnvironment/**/*.json'
-    - '03-CoreGenerativeAITechniques/**/*.cs'
-    - '03-CoreGenerativeAITechniques/**/*.csproj'
-    - '03-CoreGenerativeAITechniques/**/*.sln'
-    - '03-CoreGenerativeAITechniques/**/*.json'
-    - '04-PracticalSamples/**/*.cs'
-    - '04-PracticalSamples/**/*.csproj'
-    - '04-PracticalSamples/**/*.sln'
-    - '04-PracticalSamples/**/*.razor'
-    - '04-PracticalSamples/**/*.json'
-    - '05-AppCreatedWithGenAI/**/*.cs'
-    - '05-AppCreatedWithGenAI/**/*.csproj'
-    - '05-AppCreatedWithGenAI/**/*.sln'
-    - '05-AppCreatedWithGenAI/**/*.razor'
-    - '05-AppCreatedWithGenAI/**/*.json'
-    - '.github/workflows/build-validation.yml'
+      - "samples/CoreGenerativeAITechniques/**/*.cs"
+      - "samples/CoreGenerativeAITechniques/**/*.csproj"
+      - "samples/CoreGenerativeAITechniques/**/*.sln"
+      - "samples/CoreGenerativeAITechniques/**/*.json"
+      - "samples/PracticalSamples/**/*.cs"
+      - "samples/PracticalSamples/**/*.csproj"
+      - "samples/PracticalSamples/**/*.sln"
+      - "samples/PracticalSamples/**/*.razor"
+      - "samples/PracticalSamples/**/*.json"
+      - "05-AppCreatedWithGenAI/**/*.cs"
+      - "05-AppCreatedWithGenAI/**/*.csproj"
+      - "05-AppCreatedWithGenAI/**/*.sln"
+      - "05-AppCreatedWithGenAI/**/*.razor"
+      - "05-AppCreatedWithGenAI/**/*.json"
+      - ".github/workflows/build-validation.yml"
 
 jobs:
   build:
     name: Build .NET Projects
     runs-on: ubuntu-latest
-    
+
     strategy:
-      fail-fast: false  # Show results for all projects even if some fail
+      fail-fast: false # Show results for all projects even if some fail
       matrix:
         solution:
-        - path: "02-SetupDevEnvironment/src/GettingReadySamples.sln"
-          name: "Setup Samples"
-        - path: "03-CoreGenerativeAITechniques/src/CoreGenerativeAITechniques.sln"
-          name: "Core Techniques"
-        - path: "04-PracticalSamples/src/Aspire.MCP.Sample.sln"
-          name: "Practical Samples"
-        - path: "05-AppCreatedWithGenAI/HFMCP.GenImage/HFMCP.GenImage.sln"
-          name: "HFMCP GenImage App"
-        - path: "05-AppCreatedWithGenAI/SpaceAINet/SpaceAINet.sln"
-          name: "SpaceAINet App"
+          - path: "samples/CoreGenerativeAITechniques/CoreGenerativeAITechniques.sln"
+            name: "Core Techniques"
+          - path: "samples/PracticalSamples/Aspire.MCP.Sample.sln"
+            name: "Practical Samples"
+          - path: "05-AppCreatedWithGenAI/HFMCP.GenImage/HFMCP.GenImage.sln"
+            name: "HFMCP GenImage App"
+          - path: "05-AppCreatedWithGenAI/SpaceAINet/SpaceAINet.sln"
+            name: "SpaceAINet App"
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Setup .NET 9.0
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '9.0.x'
+      - name: Setup .NET 9.0
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
 
-    - name: Restore dependencies for ${{ matrix.solution.name }}
-      run: dotnet restore "${{ matrix.solution.path }}"
+      - name: Restore dependencies for ${{ matrix.solution.name }}
+        run: dotnet restore "${{ matrix.solution.path }}"
 
-    - name: Build ${{ matrix.solution.name }}
-      run: dotnet build "${{ matrix.solution.path }}" --no-restore --configuration Release --verbosity minimal
+      - name: Build ${{ matrix.solution.name }}
+        run: dotnet build "${{ matrix.solution.path }}" --no-restore --configuration Release --verbosity minimal
 
-    - name: Display build result
-      if: success()
-      run: echo "✅ ${{ matrix.solution.name }} build succeeded"
+      - name: Display build result
+        if: success()
+        run: echo "✅ ${{ matrix.solution.name }} build succeeded"

@@ -6,10 +6,6 @@ En esta lección, aprenderá cómo ejecutar modelos de IA generativa localmente 
 
 ## Introducción
 
-[![Video sobre AI Toolkit y Docker](https://img.youtube.com/vi/1GwmV1PGRjI/maxresdefault.jpg)](https://youtu.be/1GwmV1PGRjI?feature=shared)
-
-_⬆️ Haga clic en la imagen para ver el video ⬆️_
-
 La capacidad de ejecutar modelos de IA localmente ofrece múltiples ventajas como privacidad, reducción de costos y control total sobre la ejecución del modelo. En esta lección, aprenderá a ejecutar varios modelos con Microsoft AI Toolkit y Docker.
 
 ## Microsoft AI Toolkit

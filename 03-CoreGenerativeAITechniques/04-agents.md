@@ -18,12 +18,12 @@ One key thing to keep in mind when building agents is that they are focused on d
 
 We'll be working with a couple of new concepts in order to build an AI agent in .NET. We'll be using a new SDK and will have to do some additional setup in Azure AI Foundry to get things started.
 
-> 🧑‍💻**Sample code**: We'll be working from the [AgentLabs-01-Simple sample](./src/AgentLabs-01-Simple/) for this lesson.
+> 🧑‍💻**Sample code**: We'll be working from the [AgentLabs-01-Simple sample](../../samples/CoreGenerativeAITechniques/AgentLabs-01-Simple/) for this lesson.
 >
 > We also have more advanced agent examples:
-> - [AgentLabs-02-Functions](./src/AgentLabs-02-Functions/) - Showing how to create custom functions for your agents
-> - [AgentLabs-03-OpenAPIs](./src/AgentLabs-03-OpenAPIs/) - Demonstrating how agents can use OpenAPI specifications
-> - [AgentLabs-03-PythonParksInformationServer](./src/AgentLabs-03-PythonParksInformationServer/) - A Python server that works with the OpenAPI example
+> - [AgentLabs-02-Functions](../../samples/CoreGenerativeAITechniques/AgentLabs-02-Functions/) - Showing how to create custom functions for your agents
+> - [AgentLabs-03-OpenAPIs](../../samples/CoreGenerativeAITechniques/AgentLabs-03-OpenAPIs/) - Demonstrating how agents can use OpenAPI specifications
+> - [AgentLabs-03-PythonParksInformationServer](../../samples/CoreGenerativeAITechniques/AgentLabs-03-PythonParksInformationServer/) - A Python server that works with the OpenAPI example
 
 ### Azure AI Agent Service
 
@@ -85,7 +85,7 @@ We'll be building a single purpose agent that acts as a tutor to math students. 
 
     A couple of things to note here. The first is the `tools` parameter. We're creating a `CodeInterpreterToolDefinition` object (that is apart of the **Azure.AI.Projects** SDK) that will allow the agent to create and execute code.
 
-    > 🗒️**Note**: You can create your own tools too. See the [Functions](./src/AgentLabs-02-Functions/) to learn more.
+    > 🗒️**Note**: You can create your own tools too. See the [Functions](../../samples/CoreGenerativeAITechniques/AgentLabs-02-Functions/) to learn more.
 
     Second note the `instructions` that are being sent along. It's a prompt and we're limiting it to answering math questions. Then last creating the agent is an async operation. That's because it's creating an object within Azure AI Foundry Agents service. So we both `await` the `CreateAgentAsync` function and then grab the `Value` of its return to get at the actual `Agent` object. You'll see this pattern occur over and over again when creating objects with the **Azure.AI.Projects** SDK.
 

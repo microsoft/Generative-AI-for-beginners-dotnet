@@ -13,7 +13,7 @@
   - 작업 상태를 폴링하고 결과 비디오 파일을 자동으로 다운로드하기.
   - 생성된 비디오를 데스크톱에 저장하여 쉽게 보기.
 - 공식 문서 보기: [Azure OpenAI Sora 비디오 생성](https://learn.microsoft.com/azure/ai-services/openai/concepts/video-generation)
-- 샘플 찾기: [레슨 3: 핵심 생성 AI 기술 /src/VideoGeneration-AzureSora-01/Program.cs](../../../03-CoreGenerativeAITechniques/src/VideoGeneration-AzureSora-01/Program.cs)
+- 샘플 찾기: [레슨 3: 핵심 생성 AI 기술 /src/VideoGeneration-AzureSora-01/Program.cs](../../../samples/CoreGenerativeAITechniques/VideoGeneration-AzureSora-01/Program.cs)
 
 ### 새로운 eShopLite 시나리오: 동시 에이전트 오케스트레이션 (2025년 6월)
 

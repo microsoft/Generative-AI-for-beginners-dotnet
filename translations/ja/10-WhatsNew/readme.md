@@ -13,7 +13,7 @@
   - ジョブの状態をポーリングして生成された動画ファイルを自動的にダウンロードする。
   - 生成された動画をデスクトップに保存して簡単に表示する。
 - 公式ドキュメントを確認：[Azure OpenAI Sora動画生成](https://learn.microsoft.com/azure/ai-services/openai/concepts/video-generation)
-- サンプルはこちら：[レッスン3：コア生成AI技術 /src/VideoGeneration-AzureSora-01/Program.cs](../../../03-CoreGenerativeAITechniques/src/VideoGeneration-AzureSora-01/Program.cs)
+- サンプルはこちら：[レッスン3：コア生成AI技術 /src/VideoGeneration-AzureSora-01/Program.cs](../../../samples/CoreGenerativeAITechniques/VideoGeneration-AzureSora-01/Program.cs)
 
 ### 新しいeShopLiteシナリオ：並行エージェントオーケストレーション（2025年6月）
 

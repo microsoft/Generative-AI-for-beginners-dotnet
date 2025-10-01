@@ -13,7 +13,7 @@ Cette page suit l'historique des nouvelles fonctionnalités, outils et modèles 
   - Interroger le statut du travail et télécharger automatiquement le fichier vidéo résultant.
   - Sauvegarder la vidéo générée sur votre bureau pour un visionnage facile.
 - Voir la documentation officielle : [Génération vidéo Azure OpenAI Sora](https://learn.microsoft.com/azure/ai-services/openai/concepts/video-generation)
-- Trouvez l'exemple dans [Leçon 3 : Techniques IA génératives fondamentales /src/VideoGeneration-AzureSora-01/Program.cs](../../../03-CoreGenerativeAITechniques/src/VideoGeneration-AzureSora-01/Program.cs)
+- Trouvez l'exemple dans [Leçon 3 : Techniques IA génératives fondamentales /src/VideoGeneration-AzureSora-01/Program.cs](../../../samples/CoreGenerativeAITechniques/VideoGeneration-AzureSora-01/Program.cs)
 
 ### Nouveau scénario eShopLite : Orchestration d'agents concurrents (Juin 2025)
 

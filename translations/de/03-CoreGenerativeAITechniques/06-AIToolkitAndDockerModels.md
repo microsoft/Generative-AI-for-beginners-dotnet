@@ -6,13 +6,7 @@ In dieser Lektion lernen Sie, wie Sie generative KI-Modelle lokal auf Ihrem Ger�
 
 ## Einführung
 
-Die Möglichkeit, KI-Modelle lokal auszuführen, bietet mehrere Vorteile wie Privatsphäre, reduzierte Kosten und volle Kontrolle über die Modellausführung. In dieser Lektion lernen Sie, wie Sie verschiedene Modelle mit dem Microsoft AI Toolkit und Docker ausführen können.
-
-## Videoanleitung
-
-[![Video zu AI Toolkit und Docker](https://img.youtube.com/vi/1GwmV1PGRjI/maxresdefault.jpg)](https://youtu.be/1GwmV1PGRjI?feature=shared)
-
-_⬆️ Klicken Sie auf das Bild, um das Video anzusehen ⬆️_
+La Möglichkeit, KI-Modelle lokal auszuführen, bietet mehrere Vorteile wie Privatsphäre, reduzierte Kosten und volle Kontrolle über die Modellausführung. In dieser Lektion lernen Sie, wie Sie verschiedene Modelle mit dem Microsoft AI Toolkit und Docker ausführen können.
 
 ## Microsoft AI Toolkit
 

@@ -16,7 +16,7 @@ Image generation AI allows you to create original images from text descriptions 
 
 Let's explore how to generate images using Azure OpenAI in a .NET application:
 
-> 🧑‍💻**Sample code**: [Here is a working example of this application](./src/ImageGeneration-01/) you can follow along with.
+> 🧑‍💻**Sample code**: [Here is a working example of this application](../../samples/CoreGenerativeAITechniques/ImageGeneration-01/) you can follow along with.
 
 #### How to run the sample code
 

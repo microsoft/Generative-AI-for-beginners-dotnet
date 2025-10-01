@@ -6,10 +6,6 @@ Dans cette leçon, vous apprendrez comment exécuter des modèles d'IA générat
 
 ## Introduction
 
-[![Vidéo sur AI Toolkit et Docker](https://img.youtube.com/vi/1GwmV1PGRjI/maxresdefault.jpg)](https://youtu.be/1GwmV1PGRjI?feature=shared)
-
-_⬆️ Cliquez sur l'image pour regarder la vidéo ⬆️_
-
 La capacité d'exécuter des modèles d'IA localement offre plusieurs avantages comme la confidentialité, la réduction des coûts et le contrôle total sur l'exécution du modèle. Dans cette leçon, vous apprendrez à exécuter différents modèles avec Microsoft AI Toolkit et Docker.
 
 ## Microsoft AI Toolkit

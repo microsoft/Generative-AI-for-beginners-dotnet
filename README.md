@@ -40,8 +40,8 @@ We're constantly improving this course with the latest AI tools, models, and pra
 
   Explore new C# console app samples that show how to use the Hugging Face MCP Server to generate images directly from your code.
 
-  - [Try the sample using GitHub Models or Azure AI Foundry](./03-CoreGenerativeAITechniques/src/MCP-01-HuggingFace/Program.cs)
-  - [Use Ollama for local model inference](./03-CoreGenerativeAITechniques/src/MCP-02-HuggingFace-Ollama/Program.cs)
+  - [Try the sample using GitHub Models or Azure AI Foundry](./samples/CoreGenerativeAITechniques/MCP-01-HuggingFace/Program.cs)
+  - [Use Ollama for local model inference](./samples/CoreGenerativeAITechniques/MCP-02-HuggingFace-Ollama/Program.cs)
 
 - **🕹️ Apps Generated with AI**
 
@@ -52,6 +52,15 @@ We're constantly improving this course with the latest AI tools, models, and pra
   Try it out and see how AI can master classic arcade gameplay!
   - **New Sample: [Console GPU Viewer](./05-AppCreatedWithGenAI/ConsoleGpuViewer/README.md)**
   A lightweight console utility that demonstrates GPU diagnostics and how to integrate local model runners or visual tooling into console-based .NET apps. Useful for testing GPU availability before running local inference models.
+
+## � Comprehensive Sample Collection
+
+This course includes **60+ complete, runnable code samples** organized in the [`samples/`](./samples/) folder:
+
+- **[CoreGenerativeAITechniques/](./samples/CoreGenerativeAITechniques/)** - 30+ samples covering chat apps, RAG implementations, vision/audio processing, AI agents, and more
+- **[PracticalSamples/](./samples/PraticalSamples/)** - Real-world applications including MCP (Model Context Protocol) implementations with Aspire
+
+Each sample is self-contained with its own project file, dependencies, and README. Perfect for learning, experimentation, or as starting points for your own projects.
 
 ## 🚀 Introduction
 
@@ -76,7 +85,7 @@ You'll learn how to implement Generative AI into .NET projects, from basic text 
 | --- | --- | --- |
 | 01  | [**Intro to Generative AI Basics for .NET Developers**](./01-IntroToGenAI/readme.md) | <ul><li>Overview of generative models and their applications in .NET</li></ul> |
 | 02  | [**Setting Up for .NET Development with Generative AI**](./02-SetupDevEnvironment/readme.md) | <ul><li>Using libraries like **Microsoft.Extensions.AI** and **Semantic Kernel**.</li><li>Setup providers like GitHub Models, Azure AI Foundry, and local development like Ollama.</li></ul> |
-| 03  | [**Core Generative AI Techniques with .NET**](./03-CoreGenerativeAITechniques/readme.md) | <ul><li>Text generation and conversational flows.</li><li> Multimodal capabilities (vision and audio).</li><li>Agents</li></ul> |
+| 03  | [**Core Generative AI Techniques with .NET**](./03-CoreGenerativeAITechniques/readme.md) | <ul><li>Text generation and conversational flows with multiple chat app variants</li><li>RAG (Retrieval Augmented Generation) with multiple vector stores</li><li>Multimodal capabilities (vision and audio processing)</li><li>AI Agents and function calling</li><li>Local and cloud model integration</li></ul> |
 | 04  | [**Practical .NET Generative AI Samples**](./04-PracticalSamples/readme.md) | <ul><li>Complete samples demonstrating GenAI in real-life scenarios</li><li>Semantic search applications.</li><li>Multiple agent applications</li></ul> |
 | 05  | [**.NET Apps created using GenAI tools (aka: Vibe Coding Prompts)**](./05-AppCreatedWithGenAI/readme.md) | <ul><li>Sample .NET apps generated using Generative AI tools like GitHub Copilot Agent.</li><li>First sample: **Retro Invaders retro console game 👾**</li></ul> |
 | 06  | [**Responsible Use of Generative AI in .NET Apps**](./09-ResponsibleGenAI/readme.md) | <ul><li>Ethical considerations, bias mitigation, and secure implementations.</li></ul> |
