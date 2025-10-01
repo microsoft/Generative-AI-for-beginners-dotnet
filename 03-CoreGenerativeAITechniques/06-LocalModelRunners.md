@@ -194,7 +194,7 @@ This repository includes two demos for Foundry Local:
 
 ### 1. Semantic Kernel with Foundry Local
 
-The [AIFoundryLocal-01-SK-Chat](../../samples/CoreGenerativeAITechniques/AIFoundryLocal-01-SK-Chat/Program.cs) project shows how to use Semantic Kernel to chat with a model running via Foundry Local.
+The [AIFoundryLocal-01-SK-Chat](../samples/CoreGenerativeAITechniques/AIFoundryLocal-01-SK-Chat/Program.cs) project shows how to use Semantic Kernel to chat with a model running via Foundry Local.
 
 ```csharp
 #pragma warning disable SKEXP0001, SKEXP0003, SKEXP0010, SKEXP0011, SKEXP0050, SKEXP0052
@@ -247,7 +247,7 @@ while (true)
 
 ### 2. Microsoft Extensions for AI with Foundry Local
 
-The [AIFoundryLocal-01-MEAI-Chat](../../samples/CoreGenerativeAITechniques/AIFoundryLocal-01-MEAI-Chat/Program.cs) project demonstrates how to use Microsoft Extensions for AI to interact with Foundry Local models.
+The [AIFoundryLocal-01-MEAI-Chat](../samples/CoreGenerativeAITechniques/AIFoundryLocal-01-MEAI-Chat/Program.cs) project demonstrates how to use Microsoft Extensions for AI to interact with Foundry Local models.
 
 ```csharp
 using OpenAI;

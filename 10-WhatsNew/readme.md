@@ -29,11 +29,11 @@ We're excited to introduce a new section featuring full applications generated w
     - Poll for job status and download the resulting video file automatically.
     - Save the generated video to your desktop for easy viewing.
   - See the official docs: [Azure OpenAI Sora video generation](https://learn.microsoft.com/azure/ai-services/openai/concepts/video-generation)
-  - Find the sample in [Lesson 3: Core Generative AI Techniques /src/VideoGeneration-AzureSora-01/Program.cs](./03-CoreGenerativeAITechniques/src/VideoGeneration-AzureSora-01/Program.cs)
+  - Find the sample in [Lesson 3: Core Generative AI Techniques /src/VideoGeneration-AzureSora-01/Program.cs](../samples/CoreGenerativeAITechniques/VideoGeneration-AzureSora-01/Program.cs)
 
 - **New: Azure OpenAI Image Generation Model (`gpt-image-1`)**: Lesson 3 now features code samples for using the new Azure OpenAI image generation model, `gpt-image-1`. Learn how to generate images from .NET using the latest Azure OpenAI capabilities.
   - See the official: [How to use Azure OpenAI image generation models](https://learn.microsoft.com/azure/ai-services/openai/how-to/dall-e?tabs=gpt-image-1) and [openai-dotnet image generation guide](https://github.com/openai/openai-dotnet?tab=readme-ov-file#how-to-generate-images) for more details.
-  - Find the sample in [Lesson 3: Core Generative AI Techniques .. /src/ImageGeneration-01.csproj](./03-CoreGenerativeAITechniques/src/ImageGeneration-01/ImageGeneration-01.csproj).
+  - Find the sample in [Lesson 3: Core Generative AI Techniques .. /src/ImageGeneration-01.csproj](../samples/CoreGenerativeAITechniques/ImageGeneration-01/ImageGeneration-01.csproj).
 
 - **New Scenario: Concurrent Agent Orchestration in eShopLite**: The [eShopLite repository](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent) now features a scenario demonstrating concurrent agent orchestration using Semantic Kernel. This scenario showcases how multiple agents can work in parallel to analyze user queries and provide valuable insights for future analysis.
 
