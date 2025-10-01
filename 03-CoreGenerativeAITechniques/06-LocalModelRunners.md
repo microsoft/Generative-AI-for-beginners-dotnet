@@ -90,8 +90,8 @@ docker run -d -p 12434:8080 \
 
 [Foundry Local](https://learn.microsoft.com/azure/ai-foundry/foundry-local/) is an open-source, cross-platform solution for running Microsoft AI models on your own hardware. It supports Windows, Linux, and macOS, and is designed for privacy, performance, and flexibility.
 
-- **Official documentation:** https://learn.microsoft.com/azure/ai-foundry/foundry-local/
-- **GitHub repository:** https://github.com/microsoft/Foundry-Local/tree/main
+- **Official documentation:** <https://learn.microsoft.com/azure/ai-foundry/foundry-local/>
+- **GitHub repository:** <https://github.com/microsoft/Foundry-Local/tree/main>
 
 ### Key Features - Foundry Local
 
