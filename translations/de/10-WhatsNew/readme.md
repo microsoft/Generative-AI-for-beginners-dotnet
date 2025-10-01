@@ -13,7 +13,7 @@ Diese Seite verfolgt die Geschichte neuer Funktionen, Tools und Modelle, die dem
   - Den Auftragsstatus abfragt und die resultierende Videodatei automatisch herunterlädt.
   - Das generierte Video auf dem Desktop zur einfachen Anzeige speichert.
 - Siehe die offizielle Dokumentation: [Azure OpenAI Sora Video-Generierung](https://learn.microsoft.com/azure/ai-services/openai/concepts/video-generation)
-- Finden Sie das Beispiel unter [Lektion 3: Grundlegende Generative KI-Techniken /src/VideoGeneration-AzureSora-01/Program.cs](../../../03-CoreGenerativeAITechniques/src/VideoGeneration-AzureSora-01/Program.cs)
+- Finden Sie das Beispiel unter [Lektion 3: Grundlegende Generative KI-Techniken /src/VideoGeneration-AzureSora-01/Program.cs](../../../samples/CoreGenerativeAITechniques/VideoGeneration-AzureSora-01/Program.cs)
 
 ### Neues eShopLite Szenario: Parallele Agent-Orchestrierung (Juni 2025)
 

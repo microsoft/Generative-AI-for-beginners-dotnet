@@ -6,9 +6,10 @@ This folder contains **60+ complete, runnable code samples** that demonstrate pr
 
 ### 🔥 [CoreGenerativeAITechniques/](./CoreGenerativeAITechniques/)
 
-**Multiple samples** covering the core concepts of Generative AI development in .NET, the concepts are explained in [Chapter 03](../03-CoreGenerativeAITechniques/README.md):
+**Multiple samples** covering the core concepts of Generative AI development in .NET, the concepts are explained in [Chapter 03](../03-CoreGenerativeAITechniques/readme.md):
 
 #### 💬 **Chat Applications**
+
 - **BasicChat-01MEAI** - Simple chat using Microsoft.Extensions.AI with GitHub Models
 - **BasicChat-02SK** - Chat implementation using Semantic Kernel
 - **BasicChat-03Ollama** - Local chat using Ollama models
@@ -18,6 +19,7 @@ This folder contains **60+ complete, runnable code samples** that demonstrate pr
 - **BasicChat-07Ollama-gpt-oss** - OpenAI GPT-OSS model with Ollama
 
 #### 🔍 **RAG (Retrieval Augmented Generation)**
+
 - **RAGSimple-01SK** - Basic RAG with Semantic Kernel
 - **RAGSimple-02MEAIVectorsMemory** - In-memory vector store RAG
 - **RAGSimple-03MEAIVectorsAISearch** - Azure AI Search integration
@@ -26,33 +28,39 @@ This folder contains **60+ complete, runnable code samples** that demonstrate pr
 - **RAGSimple-15Ollama-DeepSeekR1** - Advanced reasoning with DeepSeek-R1
 
 #### 🎯 **Function Calling & Tools**
+
 - **MEAIFunctions** - Function calling with Microsoft.Extensions.AI
 - **MEAIFunctionsAzureOpenAI** - Azure OpenAI function integration
 - **MEAIFunctionsOllama** - Local function calling with Ollama
 - **SKFunctions01** - Semantic Kernel function examples
 
 #### 🤖 **AI Agents**
+
 - **AgentLabs-01-Simple** - Basic agent implementation
 - **AgentLabs-02-Functions** - Agents with custom functions
 - **AgentLabs-03-OpenAPIs** - OpenAPI specification integration
 - **AgentLabs-03-PythonParksInformationServer** - Python service integration
 
-#### 👁️ **Vision & Multimodal** 
+#### 👁️ **Vision & Multimodal**
+
 - **Vision-01MEAI-GitHubModels** - Image analysis with GitHub Models
 - **Vision-02MEAI-Ollama** - Local vision models with Ollama
 - **Vision-03MEAI-AOAI** - Azure OpenAI vision capabilities
 - **Vision-04MEAI-AOAI-Spectre** - Advanced UI with Spectre Console
 
 #### 🎵 **Audio Processing**
+
 - **Audio-01-SpeechMic** - Speech recognition and synthesis
 - **Audio-02-RealTimeAudio** - Real-time audio conversation
 
 #### 🎨 **Image & Video Generation**
+
 - **ImageGeneration-01** - DALL-E image generation
 - **VideoGeneration-AzureSora-01** - Video generation with Azure Sora
 - **VideoGeneration-AzureSoraSDK-02** - Sora SDK implementation
 
 #### 🐳 **Local Model Runners**
+
 - **DockerModels-01-SK-Chat** - Docker-based model hosting
 - **DockerModels-02-MEAI-Chat** - MEAI with Docker models
 - **AIToolkit-01-SK-Chat** - AI Toolkit integration
@@ -61,12 +69,13 @@ This folder contains **60+ complete, runnable code samples** that demonstrate pr
 - **AIFoundryLocal-01-MEAI-Chat** - MEAI with local foundry
 
 #### 🔗 **MCP (Model Context Protocol)**
+
 - **MCP-01-HuggingFace** - Hugging Face MCP server integration
 - **MCP-02-HuggingFace-Ollama** - MCP with local Ollama models
 
 ### 🏗️ [PracticalSamples/](./PracticalSamples/)
 
-**Real-world applications** demonstrating enterprise patterns, the concepts are explained in [Chapter 04](../04-PracticalGenerativeAIScenarios/README.md):
+**Real-world applications** demonstrating enterprise patterns, the concepts are explained in [Chapter 04](../04-PracticalSamples/readme.md):
 
 - **Aspire.MCP.Sample** - Complete .NET Aspire application with MCP integration
   - **McpSample.AppHost** - Aspire orchestration host
@@ -77,12 +86,15 @@ This folder contains **60+ complete, runnable code samples** that demonstrate pr
 ## 🚀 How to Use These Samples
 
 ### Prerequisites
+
 - .NET 9 SDK or later
 - Visual Studio 2022 or VS Code
 - Git for cloning
 
 ### Quick Start
+
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/microsoft/Generative-AI-for-beginners-dotnet-workshop.git
    cd Generative-AI-for-beginners-dotnet-workshop/samples
@@ -94,6 +106,7 @@ This folder contains **60+ complete, runnable code samples** that demonstrate pr
    - **Ollama** (Local) - Install Ollama and pull models
 
 3. **Run any sample:**
+
    ```bash
    cd CoreGenerativeAITechniques/BasicChat-01MEAI
    dotnet run
@@ -104,12 +117,14 @@ This folder contains **60+ complete, runnable code samples** that demonstrate pr
 Most samples support multiple AI providers. Common configuration patterns:
 
 #### GitHub Models (Recommended for beginners)
+
 ```bash
 # Set your GitHub token
 export GITHUB_TOKEN="your_github_token_here"
 ```
 
 #### Azure OpenAI
+
 ```bash
 dotnet user-secrets set "AZURE_OPENAI_ENDPOINT" "your_endpoint"
 dotnet user-secrets set "AZURE_OPENAI_APIKEY" "your_api_key"
@@ -117,6 +132,7 @@ dotnet user-secrets set "AZURE_OPENAI_MODEL" "gpt-4o-mini"
 ```
 
 #### Ollama (Local models)
+
 ```bash
 # Install Ollama and pull a model
 ollama pull phi4-mini
@@ -139,13 +155,14 @@ ollama pull phi4-mini
 ## 🎓 Learning Resources
 
 Each sample includes:
+
 - ✅ **Complete source code** with detailed comments
 - ✅ **Project file** with all dependencies
 - ✅ **Configuration examples** for multiple providers
 
 ## 🤝 Contributing
 
-Found a bug or want to add a new sample? 
+Found a bug or want to add a new sample?
 
 1. **Report issues** - [Create an issue](https://github.com/microsoft/Generative-AI-for-beginners-dotnet-workshop/issues)
 2. **Submit samples** - Fork, add your sample, and submit a PR

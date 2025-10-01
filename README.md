@@ -40,8 +40,8 @@ We're constantly improving this course with the latest AI tools, models, and pra
 
   Explore new C# console app samples that show how to use the Hugging Face MCP Server to generate images directly from your code.
 
-  - [Try the sample using GitHub Models or Azure AI Foundry](./03-CoreGenerativeAITechniques/src/MCP-01-HuggingFace/Program.cs)
-  - [Use Ollama for local model inference](./03-CoreGenerativeAITechniques/src/MCP-02-HuggingFace-Ollama/Program.cs)
+  - [Try the sample using GitHub Models or Azure AI Foundry](./samples/CoreGenerativeAITechniques/MCP-01-HuggingFace/Program.cs)
+  - [Use Ollama for local model inference](./samples/CoreGenerativeAITechniques/MCP-02-HuggingFace-Ollama/Program.cs)
 
 - **🕹️ Apps Generated with AI**
 

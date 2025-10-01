@@ -13,7 +13,7 @@
   - 輪詢工作狀態並自動下載產生的影片檔案。
   - 將產生的影片儲存到桌面以便輕鬆檢視。
 - 查看官方文件：[Azure OpenAI Sora 影片產生](https://learn.microsoft.com/azure/ai-services/openai/concepts/video-generation)
-- 在這裡找到範例：[第3課：核心生成式 AI 技術 /src/VideoGeneration-AzureSora-01/Program.cs](../../../03-CoreGenerativeAITechniques/src/VideoGeneration-AzureSora-01/Program.cs)
+- 在這裡找到範例：[第3課：核心生成式 AI 技術 /src/VideoGeneration-AzureSora-01/Program.cs](../../../samples/CoreGenerativeAITechniques/VideoGeneration-AzureSora-01/Program.cs)
 
 ### 新增 eShopLite 情境：並發代理協調（2025年6月）
 

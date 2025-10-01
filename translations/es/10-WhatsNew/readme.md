@@ -13,7 +13,7 @@ Esta página rastrea el historial de nuevas características, herramientas y mod
   - Consultar el estado del trabajo y descargar automáticamente el archivo de video resultante.
   - Guardar el video generado en tu escritorio para una visualización fácil.
 - Ve la documentación oficial: [Generación de video Azure OpenAI Sora](https://learn.microsoft.com/azure/ai-services/openai/concepts/video-generation)
-- Encuentra el ejemplo en [Lección 3: Técnicas de IA Generativa Fundamentales /src/VideoGeneration-AzureSora-01/Program.cs](../../../03-CoreGenerativeAITechniques/src/VideoGeneration-AzureSora-01/Program.cs)
+- Encuentra el ejemplo en [Lección 3: Técnicas de IA Generativa Fundamentales /src/VideoGeneration-AzureSora-01/Program.cs](../../../samples/CoreGenerativeAITechniques/VideoGeneration-AzureSora-01/Program.cs)
 
 ### Nuevo Escenario eShopLite: Orquestación de Agentes Concurrentes (Junio 2025)
 

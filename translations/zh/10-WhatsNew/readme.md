@@ -13,7 +13,7 @@
   - 轮询任务状态并自动下载生成的视频文件。
   - 将生成的视频保存到桌面以便轻松查看。
 - 查看官方文档：[Azure OpenAI Sora 视频生成](https://learn.microsoft.com/azure/ai-services/openai/concepts/video-generation)
-- 在这里找到示例：[第3课：核心生成式 AI 技术 /src/VideoGeneration-AzureSora-01/Program.cs](../../../03-CoreGenerativeAITechniques/src/VideoGeneration-AzureSora-01/Program.cs)
+- 在这里找到示例：[第3课：核心生成式 AI 技术 /src/VideoGeneration-AzureSora-01/Program.cs](../../../samples/CoreGenerativeAITechniques/VideoGeneration-AzureSora-01/Program.cs)
 
 ### 新增 eShopLite 场景：并发代理编排（2025年6月）
 
