@@ -6,10 +6,6 @@
 
 ## 介绍
 
-[![AI Toolkit 和 Docker 视频](https://img.youtube.com/vi/1GwmV1PGRjI/maxresdefault.jpg)](https://youtu.be/1GwmV1PGRjI?feature=shared)
-
-_⬆️ 点击图片观看视频 ⬆️_
-
 在本地运行 AI 模型的能力提供了诸多优势，如隐私保护、成本降低和对模型执行的完全控制。在本课程中，您将学习如何使用 Microsoft AI Toolkit 和 Docker 运行各种模型。
 
 ## Microsoft AI Toolkit

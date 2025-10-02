@@ -6,11 +6,7 @@
 
 ## 소개
 
-[![AI Toolkit 및 Docker 비디오](https://img.youtube.com/vi/1GwmV1PGRjI/maxresdefault.jpg)](https://youtu.be/1GwmV1PGRjI?feature=shared)
-
-_⬆️ 비디오를 보려면 이미지를 클릭하세요 ⬆️_
-
-AI 모델을 로컬에서 실행하는 기능은 개인정보 보호, 비용 절감, 모델 실행에 대한 완전한 제어와 같은 여러 이점을 제공합니다. 이 수업에서는 Microsoft AI Toolkit과 Docker를 사용하여 다양한 모델을 실행하는 방법을 배웁니다.
+AI 모델을 로컬에서 실행하는 기능은 개인정보 보호, 비용 절감, 모델 실행에 대한 완전한 제어와 같은 여러 이점을 제공합니다。이 수업에서는 Microsoft AI Toolkit과 Docker를 사용하여 다양한 모델을 실행하는 방법을 배웁니다。
 
 ## Microsoft AI Toolkit
 
