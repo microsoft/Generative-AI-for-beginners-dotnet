@@ -15,7 +15,7 @@
 	<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.9" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.9" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-		<PackageReference Include="OllamaSharp" Version="5.4.5" />
+		<PackageReference Include="OllamaSharp" Version="5.4.7" />
 	</ItemGroup>
 
 </Project>
