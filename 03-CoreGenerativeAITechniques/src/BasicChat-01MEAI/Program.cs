@@ -14,7 +14,7 @@ if(string.IsNullOrEmpty(githubToken))
 IChatClient client = new ChatCompletionsClient(
         endpoint: new Uri("https://models.github.ai/inference"),
         new AzureKeyCredential(githubToken))
-        .AsIChatClient("Phi-3.5-MoE-instruct");
+        .AsIChatClient("Phi-4-mini-instruct");
 
 // here we're building the prompt
 StringBuilder prompt = new StringBuilder();

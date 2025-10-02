@@ -8,12 +8,6 @@ In dieser Lektion lernen Sie, wie Sie generative KI-Modelle lokal auf Ihrem Ger�
 
 Die Möglichkeit, KI-Modelle lokal auszuführen, bietet mehrere Vorteile wie Privatsphäre, reduzierte Kosten und volle Kontrolle über die Modellausführung. In dieser Lektion lernen Sie, wie Sie verschiedene Modelle mit dem Microsoft AI Toolkit und Docker ausführen können.
 
-## Videoanleitung
-
-[![Video zu AI Toolkit und Docker](https://img.youtube.com/vi/1GwmV1PGRjI/maxresdefault.jpg)](https://youtu.be/1GwmV1PGRjI?feature=shared)
-
-_⬆️ Klicken Sie auf das Bild, um das Video anzusehen ⬆️_
-
 ## Microsoft AI Toolkit
 
 Das Microsoft AI Toolkit ist eine Sammlung von Werkzeugen und Bibliotheken, mit denen Sie lokale KI-Modelle in .NET-Anwendungen integrieren können. Es unterstützt eine Vielzahl von Modelltypen und Aufgaben.
