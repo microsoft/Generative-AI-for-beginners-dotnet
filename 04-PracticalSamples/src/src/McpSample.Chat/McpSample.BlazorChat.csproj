@@ -15,7 +15,7 @@
 		<PackageReference Include="Microsoft.Extensions.AI.AzureAIInference" Version="9.5.0-preview.1.25265.7" />
 		<PackageReference Include="Microsoft.Extensions.AI.Ollama" Version="9.5.0-preview.1.25265.7" />
 		<PackageReference Include="ModelContextProtocol" Version="0.3.0-preview.4" />
-		<PackageReference Include="OpenAI" Version="2.2.0" />
+		<PackageReference Include="OpenAI" Version="2.5.0" />
 	</ItemGroup>
 
 
