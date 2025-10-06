@@ -143,7 +143,7 @@ We have a lot of other content to help your learning journey. Check out:
 - [Generative AI for Beginners](https://aka.ms/genai-beginners)
 - [Generative AI for Beginners .NET](https://aka.ms/genainet)
 - [Generative AI with JavaScript](https://aka.ms/genai-js-course)
-- [Generative AI with Java](https://aka.ms/genai-java)
+- [Generative AI with Java](https://github.com/microsoft/Generative-AI-for-beginners-java)
 - [AI for Beginners](https://aka.ms/ai-beginners)
 - [AI Agents for Beginners - A Course](https://aka.ms/ai-agents-beginners)
 - [Data Science for Beginners](https://aka.ms/datascience-beginners)
