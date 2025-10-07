@@ -23,7 +23,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.AI" Version="9.9.0" />
 		<PackageReference Include="Microsoft.Extensions.AI.Ollama" Version="9.5.0-preview.1.25265.7" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.7">
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.9">
 		  <TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
 		<PackageReference Include="OpenCvSharp4.runtime.win" Version="4.11.0.20250507" />
