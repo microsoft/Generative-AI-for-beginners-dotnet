@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/1 Simple/">
+    <Project Path="AgentFx01/AgentFx01.csproj" />
+    <Project Path="AgentFx02/AgentFx02.csproj" />
+  </Folder>
+  <Folder Name="/2 AI Foundry/">
+    <Project Path="AgentFx-AIFoundry-01/AgentFx-AIFoundry-01.csproj" />
+  </Folder>
+  <Folder Name="/3 Ollama/">
+    <Project Path="AgentFx-Ollama-01/AgentFx-Ollama-01.csproj" />
+  </Folder>
+  <Folder Name="/4 Image Generation/">
+    <Project Path="AgentFx-ImageGen-01/AgentFx-ImageGen-01.csproj" Id="25c06364-ad74-420c-96af-f607d96fa496" />
+  </Folder>
+  <Folder Name="/5 MultiModel Agents/">
+    <Project Path="AgentFx-MultiModel/AgentFx-MultiModel.csproj" />
+  </Folder>
+</Solution>
