@@ -32,26 +32,17 @@ Don't forget to [star (🌟) this repo](https://docs.github.com/en/get-started/e
 
 We're constantly improving this course with the latest AI tools, models, and practical samples:
 
-- **� New! Basic Chat App for OpenAI gpt-oss Model!**
+- **🤖 NEW! Microsoft Agent Framework (AgentFx) Lesson**
 
-  Try out our new [Basic Chat application](./03-CoreGenerativeAITechniques/src/BasicChat-07Ollama-gpt-oss) designed to test the [OpenAI gpt-oss model](https://openai.com/index/introducing-gpt-oss/). This sample demonstrates how to use the latest open-source model from OpenAI in a .NET console app, making it easy to experiment with conversational AI locally or in the cloud.
+  We've added a comprehensive new lesson on the Microsoft Agent Framework - the next evolution in .NET AI development! Learn how to:
+  - Build orchestrated AI agent systems with specialized roles
+  - Create multi-model workflows combining GitHub Models, Azure AI Foundry, and Ollama
+  - Integrate with Model Context Protocol (MCP) for enhanced capabilities
+  - Design sequential and concurrent agent workflows for complex tasks
+  
+  👉 [Explore Lesson 06: Microsoft Agent Framework](./06-AgentFx/readme.md)
 
-- **🖼️ Hugging Face MCP Server Image Generation Samples!**
-
-  Explore new C# console app samples that show how to use the Hugging Face MCP Server to generate images directly from your code.
-
-  - [Try the sample using GitHub Models or Azure AI Foundry](./03-CoreGenerativeAITechniques/src/MCP-01-HuggingFace/Program.cs)
-  - [Use Ollama for local model inference](./03-CoreGenerativeAITechniques/src/MCP-02-HuggingFace-Ollama/Program.cs)
-
-- **🕹️ Apps Generated with AI**
-
-  We're excited to introduce a new section featuring full applications generated with AI tools like GitHub Copilot Agent. These apps demonstrate how generative AI can be used to build real-world .NET solutions leveraging AI as a co-pilot.
-
-  - **First Sample: [SpaceAINet Console App](./05-AppCreatedWithGenAI/SpaceAINet/README.md)**
-  **SpaceAINet** is an AI-powered Space Battle game for .NET 9, designed to showcase how modern AI models can play classic games. The solution allows you to run the game with either local AI models (via Ollama) or cloud-based models (via Azure AI Foundry), which analyze the game state and predict the next best action to win.
-  Try it out and see how AI can master classic arcade gameplay!
-  - **New Sample: [Console GPU Viewer](./05-AppCreatedWithGenAI/ConsoleGpuViewer/README.md)**
-  A lightweight console utility that demonstrates GPU diagnostics and how to integrate local model runners or visual tooling into console-based .NET apps. Useful for testing GPU availability before running local inference models.
+[View all previous updates in our What's New archive](./10-WhatsNew/readme.md)
 
 ## 🚀 Introduction
 
@@ -79,7 +70,8 @@ You'll learn how to implement Generative AI into .NET projects, from basic text 
 | 03  | [**Core Generative AI Techniques with .NET**](./03-CoreGenerativeAITechniques/readme.md) | <ul><li>Text generation and conversational flows.</li><li> Multimodal capabilities (vision and audio).</li><li>Agents</li></ul> |
 | 04  | [**Practical .NET Generative AI Samples**](./04-PracticalSamples/readme.md) | <ul><li>Complete samples demonstrating GenAI in real-life scenarios</li><li>Semantic search applications.</li><li>Multiple agent applications</li></ul> |
 | 05  | [**.NET Apps created using GenAI tools (aka: Vibe Coding Prompts)**](./05-AppCreatedWithGenAI/readme.md) | <ul><li>Sample .NET apps generated using Generative AI tools like GitHub Copilot Agent.</li><li>First sample: **Retro Invaders retro console game 👾**</li></ul> |
-| 06  | [**Responsible Use of Generative AI in .NET Apps**](./09-ResponsibleGenAI/readme.md) | <ul><li>Ethical considerations, bias mitigation, and secure implementations.</li></ul> |
+| 06  | [**Microsoft Agent Framework (AgentFx)**](./06-AgentFx/readme.md) | <ul><li>Build powerful orchestrated AI agent systems.</li><li>Multi-model agent workflows.</li><li>Integration with Model Context Protocol (MCP).</li></ul> |
+| 07  | [**Responsible Use of Generative AI in .NET Apps**](./09-ResponsibleGenAI/readme.md) | <ul><li>Ethical considerations, bias mitigation, and secure implementations.</li></ul> |
 
 ## 🌐 Multi-Language Support
 
