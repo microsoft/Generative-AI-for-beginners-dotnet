@@ -4,7 +4,7 @@ Build powerful, orchestrated AI agents with Microsoft Agent Framework - the next
 
 ---
 
-## What you'll learn in this lesson:
+## What you'll learn in this lesson
 
 - 🤖 Understanding the Microsoft Agent Framework and its architecture
 - 🔗 Creating and orchestrating multiple AI agents
@@ -30,21 +30,27 @@ Unlike traditional single-model AI applications, AgentFx enables you to:
 Before diving into AgentFx, it's important to understand how agents differ from traditional AI model interactions:
 
 ### Traditional Single-Model Approach
+
 ```
 User Input → AI Model → Response
 ```
+
 In this approach, you send a prompt to an AI model and receive a response. This works well for simple tasks but becomes limited when dealing with complex, multi-step problems.
 
 ### Agent-Based Approach
+
 ```
 User Input → Agent 1 (Research) → Agent 2 (Analysis) → Agent 3 (Writing) → Final Output
 ```
+
 With agents, you can break down complex tasks into specialized steps, with each agent focusing on what it does best. Agents can also use tools, access external data, and make decisions about when to hand off work to other agents.
 
 ## Key Concepts in Microsoft Agent Framework
 
 ### 1. AIAgent
+
 The core building block of AgentFx is the `AIAgent` class. Each agent has:
+
 - **Name**: A unique identifier for the agent
 - **Instructions**: System prompt defining the agent's behavior and expertise
 - **Chat Client**: The underlying AI model (via `IChatClient` from Microsoft.Extensions.AI)
@@ -73,7 +79,7 @@ Before starting with AgentFx, ensure you have:
 - **.NET 9 SDK** or later
 - **AI Provider Access**: At least one of the following:
   - GitHub Token for GitHub Models
-  - Azure AI Foundry endpoint and API key
+  - Azure AI Foundry endpoint using managed identities o using an API key
   - Ollama installed locally
 
 ### Installation
@@ -99,11 +105,13 @@ This lesson includes several code samples demonstrating different aspects of Age
 This sample demonstrates the simplest agent setup - a single "Writer" agent that creates stories.
 
 **Key Concepts**:
+
 - Creating a `ChatClientAgent`
 - Configuring agent instructions
 - Running a simple agent task
 
 **How to run**:
+
 ```bash
 cd 06-AgentFx/src/AgentFx01
 dotnet user-secrets set "GITHUB_TOKEN" "your-github-token"
@@ -115,11 +123,13 @@ dotnet run
 This advanced sample shows how to orchestrate three different agents using three different AI providers in a sequential workflow.
 
 **Workflow**:
+
 1. **Researcher Agent** (GitHub Models) - Gathers information
 2. **Writer Agent** (Azure AI Foundry) - Creates content
 3. **Reviewer Agent** (Ollama local) - Provides feedback
 
 **Key Concepts**:
+
 - Multi-model orchestration
 - Sequential agent workflows
 - Provider-agnostic agent design
@@ -131,6 +141,7 @@ See the [detailed README](./src/AgentFx-MultiModel/README.md) for setup and conf
 Demonstrates how to create an agent using Azure AI Foundry as the provider.
 
 **How to run**:
+
 ```bash
 cd 06-AgentFx/src/AgentFx-AIFoundry-01
 dotnet user-secrets set "endpoint" "https://<your-endpoint>.services.ai.azure.com/"
@@ -143,13 +154,15 @@ dotnet run
 Shows how to use local AI models via Ollama with AgentFx.
 
 **Prerequisites**:
+
 ```bash
-# Install Ollama from https://ollama.ai
+# Install Ollama from https://ollama.com
 ollama pull llama3.2
-ollama serve
+ollama run llama3.2
 ```
 
 **How to run**:
+
 ```bash
 cd 06-AgentFx/src/AgentFx-Ollama-01
 dotnet run
@@ -160,6 +173,7 @@ dotnet run
 This sample demonstrates how agents can interact with tools like the Hugging Face MCP Server for image generation.
 
 **Key Concepts**:
+
 - Agent tool integration
 - Model Context Protocol (MCP) usage
 - Multi-modal agent capabilities
@@ -219,27 +233,35 @@ The Model Context Protocol (MCP) provides a standardized way for agents to inter
 When building with Microsoft Agent Framework, keep these best practices in mind:
 
 ### 1. Clear Agent Instructions
+
 Write specific, clear instructions for each agent:
+
 ```csharp
 Instructions = "You are a technical writer. Write clear, concise documentation " +
                "for a technical audience. Use examples and code snippets where appropriate."
 ```
 
 ### 2. Agent Naming
+
 Use descriptive names that reflect the agent's role:
+
 ```csharp
 Name = "TechnicalWriter"  // Good
-Name = "Agent1"            // Avoid
+Name = "Agent1"           // Avoid, please no!
 ```
 
 ### 3. Provider Selection
+
 Choose AI providers based on your needs:
+
 - **GitHub Models**: Quick prototyping and development
 - **Azure AI Foundry**: Production workloads with enterprise features
 - **Ollama**: Local development, privacy-sensitive data
 
 ### 4. Error Handling
+
 Always handle agent failures gracefully:
+
 ```csharp
 try
 {
@@ -253,7 +275,9 @@ catch (Exception ex)
 ```
 
 ### 5. Configuration Management
+
 Use user secrets or environment variables for API keys:
+
 ```bash
 dotnet user-secrets set "GITHUB_TOKEN" "your-token"
 dotnet user-secrets set "endpoint" "your-endpoint"
@@ -273,6 +297,7 @@ If you're familiar with Semantic Kernel agents from Lesson 3, you might wonder h
 | **Flexibility** | Very flexible with plugins | Focused on agent orchestration |
 
 Both frameworks have their place:
+
 - Use **Semantic Kernel** for complex, reasoning-heavy applications with many plugins
 - Use **AgentFx** for focused, multi-step workflows with specialized agents
 
@@ -281,24 +306,28 @@ Both frameworks have their place:
 Microsoft Agent Framework excels in scenarios like:
 
 ### 1. Content Creation Pipeline
+
 - Research agent gathers information
 - Writing agent creates draft
 - Editor agent refines content
 - SEO agent optimizes for search
 
 ### 2. Customer Support System
+
 - Triage agent categorizes issues
 - Research agent finds relevant documentation
 - Response agent formulates answers
 - Quality agent reviews responses
 
 ### 3. Data Analysis Workflow
+
 - Extraction agent pulls data from sources
 - Analysis agent processes and identifies patterns
 - Visualization agent creates charts
 - Summary agent generates insights
 
 ### 4. Software Development Assistant
+
 - Requirements agent clarifies specifications
 - Design agent creates architecture
 - Implementation agent generates code
@@ -334,5 +363,6 @@ Ready to put your agent skills into practice?
 👉 [Continue to Lesson 07 - Responsible Use of Generative AI](../09-ResponsibleGenAI/readme.md)
 
 Or explore more advanced agent scenarios:
+
 - [Practical .NET Generative AI Samples](../04-PracticalSamples/readme.md)
 - [Apps Created with GenAI Tools](../05-AppCreatedWithGenAI/readme.md)
