@@ -9,7 +9,7 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Azure.Identity" Version="1.16.0" />
+		<PackageReference Include="Azure.Identity" Version="1.17.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.9" />
 		<PackageReference Include="Microsoft.Extensions.VectorData.Abstractions" Version="9.7.0" />
 		<PackageReference Include="Microsoft.SemanticKernel.Connectors.AzureAISearch" Version="1.54.0-preview" />
