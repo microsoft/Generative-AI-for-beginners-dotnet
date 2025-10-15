@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="ChatApp20/ChatApp20.AppHost/ChatApp20.AppHost.csproj" />
+  <Project Path="ChatApp20/ChatApp20.ServiceDefaults/ChatApp20.ServiceDefaults.csproj" />
+  <Project Path="ChatApp20/ChatApp20.Web/ChatApp20.Web.csproj" />
+</Solution>
