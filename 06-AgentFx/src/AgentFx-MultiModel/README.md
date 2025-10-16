@@ -15,12 +15,12 @@ This console application demonstrates the Microsoft Agent Framework with **3 dif
 ### Install Ollama
 
 ```bash
-# Install Ollama from https://ollama.ai
+# Install Ollama from https://ollama.com
 # Pull the llama3.2 model
 ollama pull llama3.2
 
 # Start Ollama server (if not already running)
-ollama serve
+ollama run
 ```
 
 ## Configuration
