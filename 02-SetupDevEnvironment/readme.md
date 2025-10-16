@@ -88,7 +88,7 @@ Before we do anything else, we need to configure essential security credentials 
 
     - Under "Note", provide a descriptive name (e.g., `GenAI-DotNet-Course-Token`)
     - Set an expiration date (recommended: 7 days for security best practices)
-    - There is no need adding any permissions to this token.
+    - **Important**: You must select the **`models:read`** permission scope for this token to work with GitHub Models.
 
 > 💡 **Security Tip**: Always use the minimum required scope and shortest practical expiration time for your access tokens. This follows the principle of least privilege and helps maintain your account's tokens safe.
 
@@ -150,6 +150,37 @@ Once your Codespace is fully loaded and configured, let's run a sample app to ve
 > 🙋 **Need help?**: Something not working? [Open an issue](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new?template=Blank+issue) and we'll help you out.
 
 ## Troubleshooting
+
+### Error: Authentication Failed or 401 (Unauthorized)
+
+If you encounter an error like:
+```
+Azure.RequestFailedException: Status: 401 (Unauthorized)
+ErrorCode: (empty)
+Content: (empty)
+```
+
+Or see errors in the stack trace mentioning:
+```
+at Azure.AI.Inference.ChatCompletionsClient.CompleteAsync(...)
+at Microsoft.Extensions.AI.AzureAIInferenceChatClient.GetResponseAsync(...)
+```
+
+This typically means your GitHub Personal Access Token is missing the required permissions:
+
+1. **Missing `models:read` scope**: As of May 15, 2025, GitHub Models requires the `models:read` permission scope for Personal Access Tokens. If you created your token before this date or didn't select this scope, you'll get authentication errors.
+
+**Quick Fix**:
+1. Go to [GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)](https://github.com/settings/tokens)
+2. Find your existing token (e.g., `GenAI-DotNet-Course-Token`)
+3. Click **Edit** or **Delete** and create a new one
+4. When creating the new token, make sure to check the **`models:read`** scope checkbox
+5. Copy the new token and update your `GITHUB_TOKEN` environment variable
+
+To update the token in your Codespace:
+- Delete your existing Codespace
+- Update the repository secrets if you're using Codespaces secrets
+- Create a new Codespace with the updated token
 
 ### Error: Unknown model or 404 (Not Found)
 

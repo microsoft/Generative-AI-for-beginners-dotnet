@@ -71,7 +71,7 @@ Avant toute chose, nous devons configurer les informations d'identification esse
 
     - Sous "Note", fournissez un nom descriptif (par ex. `GenAI-DotNet-Course-Token`)
     - Définissez une date d'expiration (recommandé : 7 jours pour respecter les bonnes pratiques de sécurité)
-    - Aucun besoin d'ajouter des permissions à ce jeton.
+    - **Important** : Vous devez sélectionner la permission **`models:read`** pour que ce jeton fonctionne avec GitHub Models.
 
 > 💡 **Astuce de sécurité** : Utilisez toujours la portée minimale requise et la durée d'expiration la plus courte possible pour vos jetons d'accès. Cela suit le principe du moindre privilège et aide à sécuriser vos jetons.
 
