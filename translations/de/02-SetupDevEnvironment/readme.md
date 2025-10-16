@@ -71,7 +71,7 @@ Bevor wir irgendetwas anderes tun, müssen wir wichtige Sicherheitsanmeldedaten 
 
     - Geben Sie unter "Note" einen beschreibenden Namen an (z. B. `GenAI-DotNet-Course-Token`)
     - Legen Sie ein Ablaufdatum fest (empfohlen: 7 Tage für optimale Sicherheitspraktiken)
-    - Es ist nicht notwendig, diesem Token Berechtigungen hinzuzufügen.
+    - **Wichtig**: Sie müssen den Berechtigungsbereich **`models:read`** auswählen, damit dieses Token mit GitHub Models funktioniert.
 
 > 💡 **Sicherheitstipp**: Verwenden Sie immer den minimal erforderlichen Umfang und die kürzest mögliche Ablaufzeit für Ihre Zugriffstokens. Dies folgt dem Prinzip der minimalen Berechtigung und hilft, die Sicherheit Ihrer Kontotokens zu gewährleisten.
 

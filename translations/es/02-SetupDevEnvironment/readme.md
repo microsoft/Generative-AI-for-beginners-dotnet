@@ -71,7 +71,7 @@ Antes de continuar, necesitamos configurar credenciales de seguridad esenciales 
 
     - En "Note", proporciona un nombre descriptivo (por ejemplo, `GenAI-DotNet-Course-Token`)
     - Establece una fecha de expiración (recomendado: 7 días para seguir las mejores prácticas de seguridad)
-    - No es necesario agregar permisos adicionales a este token.
+    - **Importante**: Debes seleccionar el permiso **`models:read`** para que este token funcione con GitHub Models.
 
 > 💡 **Consejo de Seguridad**: Siempre usa el alcance mínimo necesario y el tiempo de expiración más corto posible para tus tokens de acceso. Esto sigue el principio de privilegio mínimo y ayuda a mantener seguros los tokens de tu cuenta.
 
