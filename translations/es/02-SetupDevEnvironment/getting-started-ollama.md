@@ -73,10 +73,13 @@ Una de las cosas geniales de Ollama es que es fácil cambiar de modelo. La aplic
 
     Puedes obtener más información sobre el modelo [Phi3.5](https://ollama.com/library/phi3.5) y otros modelos disponibles en la [biblioteca de Ollama](https://ollama.com/library/).
 
-1. Edita la inicialización del cliente de chat en `Program.cs` para usar el nuevo modelo:
+1. Abre `02-SetupDevEnvironment/src/BasicChat-03Ollama/Program.cs` en tu editor.
+
+    Actualiza la inicialización del cliente de chat para usar el nuevo modelo cambiando las líneas 6-7:
 
     ```csharp
-    IChatClient client = new OllamaChatClient(new Uri("http://localhost:11434/"), "phi3.5");
+    IChatClient client =
+        new OllamaChatClient(new Uri("http://localhost:11434/"), "phi3.5");
     ```
 
 1. Finalmente, ejecuta la aplicación con el siguiente comando:

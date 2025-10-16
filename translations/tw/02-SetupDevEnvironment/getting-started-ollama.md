@@ -73,10 +73,13 @@ Ollama 的一個有趣功能是可以輕鬆更換模型。目前的應用程式�
 
     你可以在 [Phi3.5](https://ollama.com/library/phi3.5) 和 [Ollama library](https://ollama.com/library/) 中了解更多關於此模型及其他可用模型的資訊。
 
-2. 編輯 `Program.cs` 中的聊天客戶端初始化代碼，改為使用新模型：
+2. 在編輯器中開啟 `02-SetupDevEnvironment/src/BasicChat-03Ollama/Program.cs`。
+
+    修改第 6-7 行以更新聊天客戶端初始化代碼來使用新模型：
 
     ```csharp
-    IChatClient client = new OllamaChatClient(new Uri("http://localhost:11434/"), "phi3.5");
+    IChatClient client =
+        new OllamaChatClient(new Uri("http://localhost:11434/"), "phi3.5");
     ```
 
 3. 最後，使用以下命令運行應用程式：
