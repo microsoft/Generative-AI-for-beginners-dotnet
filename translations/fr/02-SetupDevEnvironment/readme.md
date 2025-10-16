@@ -128,6 +128,45 @@ Une fois que votre Codespace est complètement chargé et configuré, testons un
 
 > 🙋 **Besoin d'aide ?** : Un problème ? [Ouvrez une issue](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new?template=Blank+issue) et nous vous aiderons.
 
+## Dépannage
+
+### Erreur : Modèle inconnu ou 404 (Not Found)
+
+Si vous rencontrez une erreur comme :
+```
+Azure.RequestFailedException: Unknown model: /Phi-3.5-MoE-instruct
+Status: 404 (Not Found)
+ErrorCode: unknown_model
+```
+
+Cela signifie généralement l'une des situations suivantes :
+
+1. **Votre code fait référence à un modèle déprécié** : Certains modèles ont été dépréciés ou supprimés de GitHub Models. Par exemple, `Phi-3.5-MoE-instruct` a été déprécié en septembre 2025. Assurez-vous que votre code utilise le modèle actuellement pris en charge.
+
+2. **Votre fork du dépôt est obsolète** : Si vous avez forké ce dépôt avant les mises à jour récentes, votre code peut faire référence à d'anciens noms de modèles. Pour corriger cela :
+   - Récupérez les dernières modifications du dépôt en amont
+   - Assurez-vous que votre fichier `Program.cs` dans `02-SetupDevEnvironment/src/BasicChat-01MEAI` utilise `Phi-4-mini-instruct` (et non les anciens noms de modèles)
+
+3. **Erreur de frappe dans le nom du modèle** : Vérifiez que le nom du modèle dans votre code correspond exactement aux modèles disponibles dans [GitHub Models](https://github.com/marketplace?type=models).
+
+**Solution rapide** : 
+- Ouvrez `/02-SetupDevEnvironment/src/BasicChat-01MEAI/Program.cs`
+- Vérifiez que le nom du modèle est `Phi-4-mini-instruct` :
+  ```csharp
+  .AsIChatClient("Phi-4-mini-instruct");
+  ```
+
+Pour obtenir la liste la plus récente des modèles disponibles, visitez le [GitHub Models Marketplace](https://github.com/marketplace?type=models).
+
+### Guide de migration des modèles
+
+Si vous mettez à jour un ancien code qui utilisait des modèles dépréciés, voici une référence rapide :
+
+| Modèle déprécié | Remplacement actuel |
+|-----------------|---------------------|
+| Phi-3.5-MoE-instruct | Phi-4-mini-instruct |
+| Phi-3.5-mini-instruct | Phi-4-mini-instruct |
+
 ## Résumé
 
 Dans cette leçon, vous avez appris à configurer votre environnement de développement pour le reste du cours. Vous avez créé un Codespace GitHub et l'avez configuré pour utiliser GitHub Models, Azure OpenAI ou Ollama. Vous avez également appris à créer un jeton d'accès personnel pour GitHub Models et à exécuter une application exemple pour vérifier que tout fonctionne correctement.
