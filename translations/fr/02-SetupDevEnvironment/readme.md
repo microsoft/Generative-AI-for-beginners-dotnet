@@ -162,10 +162,12 @@ Pour obtenir la liste la plus récente des modèles disponibles, visitez le [Git
 
 Si vous mettez à jour un ancien code qui utilisait des modèles dépréciés, voici une référence rapide :
 
-| Modèle déprécié | Remplacement actuel |
-|-----------------|---------------------|
+| Modèle déprécié (GitHub Models) | Remplacement actuel |
+|----------------------------------|---------------------|
 | Phi-3.5-MoE-instruct | Phi-4-mini-instruct |
 | Phi-3.5-mini-instruct | Phi-4-mini-instruct |
+
+> **Note** : Ce guide de migration s'applique uniquement à **GitHub Models**. Si vous utilisez des exécuteurs de modèles locaux comme Ollama ou Foundry Local, ces plateformes peuvent toujours prendre en charge les modèles Phi-3.5. Consultez la documentation de votre plateforme spécifique pour connaître les modèles disponibles.
 
 ## Résumé
 

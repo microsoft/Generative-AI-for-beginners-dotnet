@@ -183,10 +183,12 @@ For the latest list of available models, visit the [GitHub Models Marketplace](h
 
 If you're updating old code that used deprecated models, here's a quick reference:
 
-| Deprecated Model | Current Replacement |
-|-----------------|---------------------|
+| Deprecated Model (GitHub Models) | Current Replacement |
+|----------------------------------|---------------------|
 | Phi-3.5-MoE-instruct | Phi-4-mini-instruct |
 | Phi-3.5-mini-instruct | Phi-4-mini-instruct |
+
+> **Note**: This migration guide applies to **GitHub Models** only. If you're using local model runners like Ollama or Foundry Local, those platforms may still support Phi-3.5 models. Check your specific platform's documentation for available models.
 
 ## Summary
 
