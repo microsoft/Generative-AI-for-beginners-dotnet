@@ -2,6 +2,25 @@
 
 This page tracks the history of new features, tools, and models added to the course. Check back for updates!
 
+## January 2026
+
+### **🆕 New! Basic Chat App for OpenAI gpt-oss Model**
+
+Try out our new [Basic Chat application](../03-CoreGenerativeAITechniques/src/BasicChat-07Ollama-gpt-oss) designed to test the [OpenAI gpt-oss model](https://openai.com/index/introducing-gpt-oss/). This sample demonstrates how to use the latest open-source model from OpenAI in a .NET console app, making it easy to experiment with conversational AI locally or in the cloud.
+
+### **🖼️ Hugging Face MCP Server Image Generation Samples**
+
+Explore new C# console app samples that show how to use the Hugging Face MCP Server to generate images directly from your code.
+
+- [Try the sample using GitHub Models or Azure AI Foundry](../03-CoreGenerativeAITechniques/src/MCP-01-HuggingFace/Program.cs)
+- [Use Ollama for local model inference](../03-CoreGenerativeAITechniques/src/MCP-02-HuggingFace-Ollama/Program.cs)
+
+### **🕹️ Apps Generated with AI - Console GPU Viewer**
+
+We've added a new sample to the Apps Generated with AI section:
+
+- **[Console GPU Viewer](../05-AppCreatedWithGenAI/ConsoleGpuViewer/README.md)**: A lightweight console utility that demonstrates GPU diagnostics and how to integrate local model runners or visual tooling into console-based .NET apps. Useful for testing GPU availability before running local inference models.
+
 ## July 2025
 
 ### **🕹️ New! Apps Generated with AI**
