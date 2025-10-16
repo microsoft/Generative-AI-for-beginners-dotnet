@@ -149,6 +149,47 @@ Once your Codespace is fully loaded and configured, let's run a sample app to ve
 
 > 🙋 **Need help?**: Something not working? [Open an issue](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new?template=Blank+issue) and we'll help you out.
 
+## Troubleshooting
+
+### Error: Unknown model or 404 (Not Found)
+
+If you encounter an error like:
+```
+Azure.RequestFailedException: Unknown model: /Phi-3.5-MoE-instruct
+Status: 404 (Not Found)
+ErrorCode: unknown_model
+```
+
+This typically means one of the following:
+
+1. **Your code references a deprecated model**: Some models have been deprecated or removed from GitHub Models. For example, `Phi-3.5-MoE-instruct` was deprecated in September 2025. Make sure your code uses the current supported model.
+
+2. **Your repository fork is outdated**: If you forked this repository before recent updates, your code might reference old model names. To fix this:
+   - Pull the latest changes from the upstream repository
+   - Ensure your `Program.cs` file in `02-SetupDevEnvironment/src/BasicChat-01MEAI` uses `Phi-4-mini-instruct` (not older model names)
+
+3. **Model name typo**: Double-check that the model name in your code exactly matches the available models in [GitHub Models](https://github.com/marketplace?type=models).
+
+**Quick Fix**: 
+- Open `/02-SetupDevEnvironment/src/BasicChat-01MEAI/Program.cs`
+- Verify the model name is `Phi-4-mini-instruct`:
+  ```csharp
+  .AsIChatClient("Phi-4-mini-instruct");
+  ```
+
+For the latest list of available models, visit the [GitHub Models Marketplace](https://github.com/marketplace?type=models).
+
+### Model Migration Guide
+
+If you're updating old code that used deprecated models, here's a quick reference:
+
+| Deprecated Model (GitHub Models) | Current Replacement |
+|----------------------------------|---------------------|
+| Phi-3.5-MoE-instruct | Phi-4-mini-instruct |
+| Phi-3.5-mini-instruct | Phi-4-mini-instruct |
+
+> **Note**: This migration guide applies to **GitHub Models** only. If you're using local model runners like Ollama or Foundry Local, those platforms may still support Phi-3.5 models. Check your specific platform's documentation for available models.
+
 ## Summary
 
 In this lesson, you learned how to set up your development environment for the rest of the course. You created a GitHub Codespace and configured it to use GitHub Models, Azure OpenAI, or Ollama. You also learned how to create a personal access token for GitHub Models and how to run a sample application to verify everything is working correctly.
