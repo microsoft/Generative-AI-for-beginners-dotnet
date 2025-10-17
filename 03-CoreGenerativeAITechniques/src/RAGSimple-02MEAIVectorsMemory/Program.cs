@@ -1,5 +1,7 @@
 ﻿// This sample demonstrates RAG using GitHub Models for embeddings.
-// To use Ollama instead, see RAGSimple-01SK or RAGSimple-10SKOllama samples.
+// To use Ollama instead, replace the GitHub Models code with:
+// new OllamaEmbeddingGenerator(new Uri("http://localhost:11434/"), "all-minilm")
+// Or see RAGSimple-01SK or RAGSimple-10SKOllama samples for complete Ollama examples.
 
 using Azure;
 using Azure.AI.Inference;
