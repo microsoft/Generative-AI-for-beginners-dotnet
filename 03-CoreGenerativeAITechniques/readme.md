@@ -34,3 +34,10 @@ For this lesson, we will subdivide the content into the following sections:
 ## Want to know more?
 
 See the [Project Documentation](./docs/projects.md) for detailed breakdowns, dependencies, and demo instructions for every project in this lesson.
+
+## Troubleshooting
+
+Having issues with chat APIs? Check out our [Common Chat API Issues and Solutions](./docs/troubleshooting-chat-api.md) guide for help with:
+- Understanding chat message lists and conversation history
+- Fixing "response.Messages does not exist" errors
+- Proper usage of GetResponseAsync with conversation context

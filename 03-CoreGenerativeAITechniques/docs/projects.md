@@ -10,6 +10,7 @@ Welcome to the documentation for all hands-on projects in the `03-CoreGenerative
 - [BasicChat-02SK](#basicchat-02sk)
 - [BasicChat-03Ollama](#basicchat-03ollama)
 - [BasicChat-04OllamaSK](#basicchat-04ollamask)
+- [BasicChat-10ConversationHistory](#basicchat-10conversationhistory)
 - [SKFunctions01](#skfunctions01)
 - [RAGSimple-01SK](#ragsimple-01sk)
 - [RAGSimple-02MEAIVectorsMemory](#ragsimple-02meaivectorsmemory)
@@ -126,6 +127,36 @@ A .NET 9 console chat app using Semantic Kernel and Ollama connector for advance
 2. `dotnet run` in `BasicChat-04OllamaSK`
 
 **Tags:** #SemanticKernel #Ollama #Chat #Functions
+
+---
+
+## BasicChat-10ConversationHistory
+
+**Description:**
+A .NET 9 console app demonstrating the **correct way** to handle conversation history with `GetResponseAsync`. This example addresses the common issue where developers try to use `response.Messages` (which doesn't exist).
+
+**Dependencies:**
+- Microsoft.Extensions.AI.Ollama: Local LLM integration
+- Microsoft.Extensions.Configuration.UserSecrets: Configuration
+
+**Main Features:**
+- Proper conversation history management
+- Shows correct usage of `response.Text` or `response.Message`
+- Demonstrates three different ways to add AI responses to conversation
+- Comprehensive documentation on common mistakes
+
+**How to Run:**
+1. Start Ollama: `ollama serve`
+2. Pull model: `ollama pull phi4-mini`
+3. `dotnet run` in `BasicChat-10ConversationHistory`
+4. Type "conversation" to start chatting
+
+**Common Issue Solved:**
+This example specifically addresses the error: `'ChatCompletion' does not contain a definition for 'Messages'`
+
+See the [README](../src/BasicChat-10ConversationHistory/README.md) for detailed explanation of the issue and solutions.
+
+**Tags:** #Ollama #MEAI #Chat #ConversationHistory #Troubleshooting
 
 ---
 
