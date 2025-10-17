@@ -1,5 +1,10 @@
-﻿using Microsoft.Extensions.AI;
+﻿// This sample demonstrates RAG using GitHub Models for embeddings and Azure AI Search for vector storage.
+// To use Ollama for embeddings instead, replace the GitHub Models code with:
+// new OllamaEmbeddingGenerator(new Uri("http://localhost:11434/"), "all-minilm")
+
+using Microsoft.Extensions.AI;
 using Azure;
+using Azure.AI.Inference;
 using Azure.Search.Documents.Indexes;
 using Microsoft.SemanticKernel.Connectors.AzureAISearch;
 using Microsoft.Extensions.Configuration;
@@ -15,8 +20,14 @@ await movies.EnsureCollectionExistsAsync();
 var movieData = MovieFactory<string>.GetMovieVectorList();
 
 // get embeddings generator and generate embeddings for movies
+var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN") 
+    ?? throw new InvalidOperationException("Missing GITHUB_TOKEN environment variable. Set it to use GitHub Models.");
+
 IEmbeddingGenerator<string, Embedding<float>> generator =
-    new OllamaEmbeddingGenerator(new Uri("http://localhost:11434/"), "all-minilm");
+    new EmbeddingsClient(
+        endpoint: new Uri("https://models.github.ai/inference"),
+        new AzureKeyCredential(githubToken))
+    .AsIEmbeddingGenerator("text-embedding-3-small");
 foreach (var movie in movieData)
 {
     movie.Vector = await generator.GenerateVectorAsync(movie.Description);
