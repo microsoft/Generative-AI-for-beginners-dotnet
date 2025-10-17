@@ -47,15 +47,18 @@ using Microsoft.Extensions.AI;
 using Microsoft.SemanticKernel.Connectors.InMemory;
 ```
 
-> 🧑‍💻**Sample code:** You can follow along with the [sample code here](./src/RAGSimple-02MEAIVectorsMemory/).
->
-> You can also see how to implement a RAG app [using Semantic Kernel by itself in our sample source code here](./src/RAGSimple-01SK/).
+> 🧑‍💻**Sample code:** You can follow along with the [sample code here](./src/RAGSimple-02MEAIVectorsMemory/) which uses **GitHub Models**.
 >
 > We have additional RAG examples for different vector stores and models:
 >
+> **Using GitHub Models or Azure OpenAI:**
+> - [RAGSimple-02MEAIVectorsMemory](./src/RAGSimple-02MEAIVectorsMemory/) - Using GitHub Models with in-memory vector store (matches tutorial code)
 > - [RAGSimple-03MEAIVectorsAISearch](./src/RAGSimple-03MEAIVectorsAISearch/) - Using Azure AI Search as a vector store
 > - [RAGSimple-04MEAIVectorsQdrant](./src/RAGSimple-04MEAIVectorsQdrant/) - Using Qdrant as a vector store
-> - [RAGSimple-10SKOllama](./src/RAGSimple-10SKOllama/) - Using Semantic Kernel with Ollama
+>
+> **Using Ollama (local models):**
+> - [RAGSimple-01SK](./src/RAGSimple-01SK/) - Using Semantic Kernel with Ollama
+> - [RAGSimple-10SKOllama](./src/RAGSimple-10SKOllama/) - Using Semantic Kernel with Ollama and enhanced console output
 > - [RAGSimple-15Ollama-DeepSeekR1](./src/RAGSimple-15Ollama-DeepSeekR1/) - Using Ollama with DeepSeek-R1 model
 
 ### Populating the knowledge store

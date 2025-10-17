@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.AI;
+using Azure;
+using Azure.AI.Inference;
 using Microsoft.SemanticKernel.Connectors.Qdrant;
 using Qdrant.Client;
 
@@ -10,8 +12,14 @@ await movies.EnsureCollectionExistsAsync();
 var movieData = MovieFactory<ulong>.GetMovieVectorList();
 
 // get embeddings generator and generate embeddings for movies
+var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN") 
+    ?? throw new InvalidOperationException("Missing GITHUB_TOKEN environment variable. Set it to use GitHub Models.");
+
 IEmbeddingGenerator<string, Embedding<float>> generator =
-    new OllamaEmbeddingGenerator(new Uri("http://localhost:11434/"), "all-minilm");
+    new EmbeddingsClient(
+        endpoint: new Uri("https://models.github.ai/inference"),
+        new AzureKeyCredential(githubToken))
+    .AsIEmbeddingGenerator("text-embedding-3-small");
 foreach (var movie in movieData)
 {
     movie.Vector = await generator.GenerateVectorAsync(movie.Description);
