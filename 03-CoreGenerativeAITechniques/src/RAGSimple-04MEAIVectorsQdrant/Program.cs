@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.AI;
+﻿// This sample demonstrates RAG using GitHub Models for embeddings and Qdrant for vector storage.
+// To use Ollama for embeddings instead, replace the GitHub Models code with:
+// new OllamaEmbeddingGenerator(new Uri("http://localhost:11434/"), "all-minilm")
+
+using Microsoft.Extensions.AI;
 using Azure;
 using Azure.AI.Inference;
 using Microsoft.SemanticKernel.Connectors.Qdrant;

@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.AI;
+﻿// This sample demonstrates RAG using GitHub Models for embeddings and Azure AI Search for vector storage.
+// To use Ollama for embeddings instead, replace the GitHub Models code with:
+// new OllamaEmbeddingGenerator(new Uri("http://localhost:11434/"), "all-minilm")
+
+using Microsoft.Extensions.AI;
 using Azure;
 using Azure.AI.Inference;
 using Azure.Search.Documents.Indexes;

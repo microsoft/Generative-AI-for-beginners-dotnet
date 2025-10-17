@@ -1,4 +1,7 @@
-﻿using Azure;
+﻿// This sample demonstrates RAG using GitHub Models for embeddings.
+// To use Ollama instead, see RAGSimple-01SK or RAGSimple-10SKOllama samples.
+
+using Azure;
 using Azure.AI.Inference;
 using Microsoft.Extensions.AI;
 using Microsoft.SemanticKernel.Connectors.InMemory;
