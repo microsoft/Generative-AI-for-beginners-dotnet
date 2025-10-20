@@ -11,7 +11,7 @@
 	<ItemGroup>
 		<PackageReference Include="Azure.AI.OpenAI" Version="2.2.0-beta.5" />
 		<PackageReference Include="Azure.Identity" Version="1.17.0" />
-		<PackageReference Include="Microsoft.Extensions.AI" Version="9.8.0" />
+		<PackageReference Include="Microsoft.Extensions.AI" Version="9.10.0" />
 		<PackageReference Include="Microsoft.Extensions.AI.AzureAIInference" Version="9.5.0-preview.1.25265.7" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.9" />
 		<PackageReference Include="Microsoft.Extensions.VectorData.Abstractions" Version="9.7.0" />
