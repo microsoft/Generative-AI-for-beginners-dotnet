@@ -154,7 +154,7 @@ A .NET 9 console app demonstrating the **correct way** to handle conversation hi
 **Common Issue Solved:**
 This example specifically addresses the error: `'ChatCompletion' does not contain a definition for 'Messages'`
 
-See the [README](../src/BasicChat-10ConversationHistory/README.md) for detailed explanation of the issue and solutions.
+See the [README](../../samples/CoreSamples/BasicChat-10ConversationHistory/README.md) for detailed explanation of the issue and solutions.
 
 **Tags:** #Ollama #MEAI #Chat #ConversationHistory #Troubleshooting
 

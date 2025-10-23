@@ -44,11 +44,11 @@ Wir verbessern diesen Kurs kontinuierlich mit den neuesten KI-Tools, Modellen un
     - Den Auftragsstatus abfragt und die resultierende Videodatei automatisch herunterlädt.
     - Das generierte Video auf dem Desktop zur einfachen Anzeige speichert.
   - Siehe die offizielle Dokumentation: [Azure OpenAI Sora Video-Generierung](https://learn.microsoft.com/azure/ai-services/openai/concepts/video-generation)
-  - Finden Sie das Beispiel unter [Lektion 3: Grundlegende Generative KI-Techniken /src/VideoGeneration-AzureSora-01/Program.cs](../../03-CoreGenerativeAITechniques/src/VideoGeneration-AzureSora-01/Program.cs)
+  - Finden Sie das Beispiel unter [Lektion 3: Grundlegende Generative KI-Techniken /src/VideoGeneration-AzureSora-01/Program.cs](../../samples/CoreSamples/VideoGeneration-AzureSora-01/Program.cs)
 
 - **Neu: Azure OpenAI Bild-Generierungsmodell (`gpt-image-1`)**: Lektion 3 bietet jetzt Codebeispiele für die Verwendung des neuen Azure OpenAI Bild-Generierungsmodells `gpt-image-1`. Lernen Sie, wie Sie Bilder aus .NET mit den neuesten Azure OpenAI-Funktionen generieren.
   - Siehe die offizielle Dokumentation: [Wie man Azure OpenAI Bild-Generierungsmodelle verwendet](https://learn.microsoft.com/azure/ai-services/openai/how-to/dall-e?tabs=gpt-image-1) und den [openai-dotnet Bild-Generierungsleitfaden](https://github.com/openai/openai-dotnet?tab=readme-ov-file#how-to-generate-images) für weitere Details.
-  - Finden Sie das Beispiel unter [Lektion 3: Grundlegende Generative KI-Techniken .. /src/ImageGeneration-01.csproj](../../03-CoreGenerativeAITechniques/src/ImageGeneration-01/ImageGeneration-01.csproj).
+  - Finden Sie das Beispiel unter [Lektion 3: Grundlegende Generative KI-Techniken .. /src/ImageGeneration-01.csproj](../../samples/CoreSamples/ImageGeneration-01/ImageGeneration-01.csproj).
 
 - **Neues Szenario: Parallele Agent-Orchestrierung in eShopLite**: Das [eShopLite Repository](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent) bietet jetzt ein Szenario, das parallele Agent-Orchestrierung mit Semantic Kernel demonstriert. Dieses Szenario zeigt, wie mehrere Agenten parallel arbeiten können, um Benutzeranfragen zu analysieren und wertvolle Erkenntnisse für zukünftige Analysen zu liefern.
 

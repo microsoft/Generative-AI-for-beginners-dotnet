@@ -23,7 +23,7 @@ To run the sample code, you'll need to:
 3. Open a terminal in your codespace (Ctrl+` or Cmd+`)
 4. Navigate to the sample code directory:
    ```bash
-   cd 03-CoreGenerativeAITechniques/src/ImageGeneration-01
+   cd samples/CoreSamples/ImageGeneration-01
    ```
 5. Run the application:
    ```bash

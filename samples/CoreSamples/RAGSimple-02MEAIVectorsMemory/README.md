@@ -24,7 +24,7 @@ This sample demonstrates Retrieval-Augmented Generation (RAG) using Microsoft.Ex
 2. Get a GitHub Token:
    - Go to https://github.com/settings/tokens
    - Generate a new token with appropriate permissions
-   - Or follow the setup guide: [Getting Started with GitHub Models](../../../02-SetupDevEnvironment/getting-started-github-models.md)
+   - Or follow the setup guide: [Getting Started with GitHub Models](../../../02-SetupDevEnvironment/readme.md)
 
 ## Running the Sample
 
