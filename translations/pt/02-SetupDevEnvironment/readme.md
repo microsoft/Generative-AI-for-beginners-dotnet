@@ -109,8 +109,10 @@ Depois que seu Codespace estiver totalmente carregado e configurado, vamos execu
 1. Mude para o diretório correto executando o seguinte comando:
 
     ```bash
-    cd 02-SetupDevEnvironment\src\BasicChat-01MEAI
+    cd 02-SetupDevEnvironment/src/BasicChat-01MEAI
     ```
+
+    > **Nota**: GitHub Codespaces executa um ambiente Linux, portanto sempre use barras normais (`/`) em caminhos, independentemente do seu sistema operacional local.
 
 1. Em seguida, execute o aplicativo com o seguinte comando:
 

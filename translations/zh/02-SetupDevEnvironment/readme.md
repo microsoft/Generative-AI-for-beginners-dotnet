@@ -109,8 +109,10 @@ _⬆️点击图片观看视频⬆️_
 1. 使用以下命令切换到正确的目录：  
 
     ```bash
-    cd 02-SetupDevEnvironment\src\BasicChat-01MEAI
+    cd 02-SetupDevEnvironment/src/BasicChat-01MEAI
     ```
+
+    > **注意**: GitHub Codespaces 运行的是 Linux 环境，因此无论您的本地操作系统是什么，都应该在路径中使用正斜杠 (`/`)。
 
 1. 使用以下命令运行应用程序：  
 

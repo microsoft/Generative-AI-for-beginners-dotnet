@@ -109,8 +109,10 @@ Codespace が完全にロードされ、設定が完了したら、サンプル�
 1. 次のコマンドを実行して、適切なディレクトリに移動します：
 
     ```bash
-    cd 02-SetupDevEnvironment\src\BasicChat-01MEAI
+    cd 02-SetupDevEnvironment/src/BasicChat-01MEAI
     ```
+
+    > **注意**: GitHub Codespaces は Linux 環境で実行されるため、ローカルのオペレーティングシステムに関係なく、パスには常にフォワードスラッシュ (`/`) を使用してください。
 
 1. 次に、以下のコマンドでアプリケーションを実行します：
 
