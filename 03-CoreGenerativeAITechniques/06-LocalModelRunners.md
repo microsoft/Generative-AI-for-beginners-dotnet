@@ -113,7 +113,7 @@ The AI Toolkit for Visual Studio Code provides a way to run AI models locally on
 
 ### 1. Semantic Kernel with AI Toolkit
 
-The [AIToolkit-01-SK-Chat](./src/AIToolkit-01-SK-Chat/) project shows how to use Semantic Kernel to chat with a model running via AI Toolkit for Visual Studio Code.
+The [AIToolkit-01-SK-Chat](../samples/CoreSamples/AIToolkit-01-SK-Chat/) project shows how to use Semantic Kernel to chat with a model running via AI Toolkit for Visual Studio Code.
 
 ```csharp
 // Example code demonstrating AI Toolkit for Visual Studio Code with Semantic Kernel integration
@@ -128,7 +128,7 @@ var kernel = builder.Build();
 
 ### 2. Microsoft Extensions for AI with AI Toolkit
 
-The [AIToolkit-02-MEAI-Chat](./src/AIToolkit-02-MEAI-Chat/) project demonstrates how to use Microsoft Extensions for AI to interact with AI Toolkit for Visual Studio Code models.
+The [AIToolkit-02-MEAI-Chat](../samples/CoreSamples/AIToolkit-02-MEAI-Chat/) project demonstrates how to use Microsoft Extensions for AI to interact with AI Toolkit for Visual Studio Code models.
 
 ```csharp
 // Example code demonstrating AI Toolkit for Visual Studio Code with MEAI
@@ -145,7 +145,7 @@ In this repository, we have two examples that demonstrate how to interact with D
 
 ### 1. Semantic Kernel with Docker Models
 
-The [DockerModels-01-SK-Chat](./src/DockerModels-01-SK-Chat/) project shows how to use Semantic Kernel to chat with a model running in Docker.
+The [DockerModels-01-SK-Chat](../samples/CoreSamples/DockerModels-01-SK-Chat/) project shows how to use Semantic Kernel to chat with a model running in Docker.
 
 ```csharp
 var model = "ai/deepseek-r1-distill-llama";
@@ -166,7 +166,7 @@ history.AddSystemMessage("You are a useful chatbot. Always reply in a funny way 
 
 ### 2. Microsoft Extensions for AI with Docker Models
 
-The [DockerModels-02-MEAI-Chat](./src/DockerModels-02-MEAI-Chat/) project demonstrates how to use Microsoft Extensions for AI to interact with Docker-based models.
+The [DockerModels-02-MEAI-Chat](../samples/CoreSamples/DockerModels-02-MEAI-Chat/) project demonstrates how to use Microsoft Extensions for AI to interact with Docker-based models.
 
 ```csharp
 var model = "ai/deepseek-r1-distill-llama";
@@ -194,7 +194,7 @@ This repository includes two demos for Foundry Local:
 
 ### 1. Semantic Kernel with Foundry Local
 
-The [AIFoundryLocal-01-SK-Chat](./src/AIFoundryLocal-01-SK-Chat/Program.cs) project shows how to use Semantic Kernel to chat with a model running via Foundry Local.
+The [AIFoundryLocal-01-SK-Chat](../samples/CoreSamples/AIFoundryLocal-01-SK-Chat/Program.cs) project shows how to use Semantic Kernel to chat with a model running via Foundry Local.
 
 ```csharp
 #pragma warning disable SKEXP0001, SKEXP0003, SKEXP0010, SKEXP0011, SKEXP0050, SKEXP0052
@@ -247,7 +247,7 @@ while (true)
 
 ### 2. Microsoft Extensions for AI with Foundry Local
 
-The [AIFoundryLocal-01-MEAI-Chat](./src/AIFoundryLocal-01-MEAI-Chat/Program.cs) project demonstrates how to use Microsoft Extensions for AI to interact with Foundry Local models.
+The [AIFoundryLocal-01-MEAI-Chat](../samples/CoreSamples/AIFoundryLocal-01-MEAI-Chat/Program.cs) project demonstrates how to use Microsoft Extensions for AI to interact with Foundry Local models.
 
 ```csharp
 using OpenAI;

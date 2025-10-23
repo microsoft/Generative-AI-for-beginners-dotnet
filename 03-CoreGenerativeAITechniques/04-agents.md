@@ -18,12 +18,12 @@ One key thing to keep in mind when building agents is that they are focused on d
 
 We'll be working with a couple of new concepts in order to build an AI agent in .NET. We'll be using a new SDK and will have to do some additional setup in Azure AI Foundry to get things started.
 
-> 🧑‍💻**Sample code**: We'll be working from the [AgentLabs-01-Simple sample](./src/AgentLabs-01-Simple/) for this lesson.
+> 🧑‍💻**Sample code**: We'll be working from the [AgentLabs-01-Simple sample](../samples/CoreSamples/AgentLabs-01-Simple/) for this lesson.
 >
 > We also have more advanced agent examples:
-> - [AgentLabs-02-Functions](./src/AgentLabs-02-Functions/) - Showing how to create custom functions for your agents
-> - [AgentLabs-03-OpenAPIs](./src/AgentLabs-03-OpenAPIs/) - Demonstrating how agents can use OpenAPI specifications
-> - [AgentLabs-03-PythonParksInformationServer](./src/AgentLabs-03-PythonParksInformationServer/) - A Python server that works with the OpenAPI example
+> - [AgentLabs-02-Functions](../samples/CoreSamples/AgentLabs-02-Functions/) - Showing how to create custom functions for your agents
+> - [AgentLabs-03-OpenAPIs](../samples/CoreSamples/AgentLabs-03-OpenAPIs/) - Demonstrating how agents can use OpenAPI specifications
+> - [AgentLabs-03-PythonParksInformationServer](../samples/CoreSamples/AgentLabs-03-PythonParksInformationServer/) - A Python server that works with the OpenAPI example
 
 ### Azure AI Agent Service
 

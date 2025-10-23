@@ -14,6 +14,7 @@ See all the concepts you've learned in action in these real-world and practical 
 - [Canonical Generative AI Samples](#canonical-generative-ai-samples)
   - [What you'll achieve](#what-youll-achieve)
   - [Included samples](#included-samples)
+  - [Aspire MCP Sample (Local)](#aspire-mcp-sample-local)
   - [eShopLite Demos](#eshoplite-demos)
     - [eShopLite with semantic search - In Memory](#eshoplite-with-semantic-search)
     - [eShopLite with semantic search - Azure AI Search](#eshoplite-with-semantic-search-using-azure-ai-search)
@@ -27,6 +28,26 @@ See all the concepts you've learned in action in these real-world and practical 
 [![overall explainer video](./images/LIM_GAN_09_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson4-overview)
 
 _⬆️Click the image to watch the video⬆️_
+
+## Aspire MCP Sample (Local)
+
+Before diving into the eShopLite demos, we have a local sample that demonstrates the **Model Context Protocol (MCP)** integration with **.NET Aspire**. This sample shows how to build a chat application that leverages MCP servers for enhanced AI capabilities.
+
+> 🧑‍💻**Sample**: Check out the [Aspire MCP Sample code](../samples/PracticalSamples/) in this repository.
+
+The Aspire MCP Sample includes:
+- **McpSample.AppHost**: .NET Aspire orchestration for the application
+- **McpSample.Chat**: Blazor-based chat interface
+- **McpSample.AspNetCoreServer**: ASP.NET Core backend integrating with MCP servers
+- **McpSample.ServiceDefaults**: Shared service configurations
+
+To run this sample locally:
+```bash
+cd samples/PracticalSamples/src
+dotnet run --project McpSample.AppHost/McpSample.AppHost.csproj
+```
+
+This sample demonstrates how MCP can be used to connect AI models with external tools and services, enabling more powerful and contextual AI interactions.
 
 ## eShopLite Demos
 
