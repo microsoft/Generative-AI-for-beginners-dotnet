@@ -13,7 +13,7 @@
   - 轮询任务状态并自动下载生成的视频文件。
   - 将生成的视频保存到桌面以便轻松查看。
 - 查看官方文档：[Azure OpenAI Sora 视频生成](https://learn.microsoft.com/azure/ai-services/openai/concepts/video-generation)
-- 在这里找到示例：[第3课：核心生成式 AI 技术 /src/VideoGeneration-AzureSora-01/Program.cs](../../../03-CoreGenerativeAITechniques/src/VideoGeneration-AzureSora-01/Program.cs)
+- 在这里找到示例：[第3课：核心生成式 AI 技术 /src/VideoGeneration-AzureSora-01/Program.cs](../../../samples/CoreSamples/VideoGeneration-AzureSora-01/Program.cs)
 
 ### 新增 eShopLite 场景：并发代理编排（2025年6月）
 
@@ -33,7 +33,7 @@
 
 ### 使用 AI Toolkit 和 Docker 运行本地模型
 
-- **新增：使用 AI Toolkit 和 Docker 运行本地模型**：探索使用 [Visual Studio Code 的 AI Toolkit](https://code.visualstudio.com/docs/intelligentapps/overview) 和 [Docker Model Runner](https://docs.docker.com/model-runner/) 本地运行模型的新示例。源代码位于 [./03-CoreGenerativeAITechniques/src/](./03-CoreGenerativeAITechniques/src/)，演示了如何使用 Semantic Kernel 和 Microsoft Extensions for AI 与这些模型进行交互。
+- **新增：使用 AI Toolkit 和 Docker 运行本地模型**：探索使用 [Visual Studio Code 的 AI Toolkit](https://code.visualstudio.com/docs/intelligentapps/overview) 和 [Docker Model Runner](https://docs.docker.com/model-runner/) 本地运行模型的新示例。源代码位于 [../../../samples/CoreSamples/](../../../samples/CoreSamples/)，演示了如何使用 Semantic Kernel 和 Microsoft Extensions for AI 与这些模型进行交互。
 
 ## 2025年3月
 

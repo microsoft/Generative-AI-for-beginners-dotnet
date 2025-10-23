@@ -13,7 +13,7 @@ Cette page suit l'historique des nouvelles fonctionnalités, outils et modèles 
   - Interroger le statut du travail et télécharger automatiquement le fichier vidéo résultant.
   - Sauvegarder la vidéo générée sur votre bureau pour un visionnage facile.
 - Voir la documentation officielle : [Génération vidéo Azure OpenAI Sora](https://learn.microsoft.com/azure/ai-services/openai/concepts/video-generation)
-- Trouvez l'exemple dans [Leçon 3 : Techniques IA génératives fondamentales /src/VideoGeneration-AzureSora-01/Program.cs](../../../03-CoreGenerativeAITechniques/src/VideoGeneration-AzureSora-01/Program.cs)
+- Trouvez l'exemple dans [Leçon 3 : Techniques IA génératives fondamentales /src/VideoGeneration-AzureSora-01/Program.cs](../../../samples/CoreSamples/VideoGeneration-AzureSora-01/Program.cs)
 
 ### Nouveau scénario eShopLite : Orchestration d'agents concurrents (Juin 2025)
 
@@ -33,7 +33,7 @@ Cette page suit l'historique des nouvelles fonctionnalités, outils et modèles 
 
 ### Exécuter des modèles locaux avec AI Toolkit et Docker
 
-- **Nouveau : Exécuter des modèles locaux avec AI Toolkit et Docker** : Explorez de nouveaux exemples pour exécuter des modèles localement en utilisant [AI Toolkit pour Visual Studio Code](https://code.visualstudio.com/docs/intelligentapps/overview) et [Docker Model Runner](https://docs.docker.com/model-runner/). Le code source se trouve dans [./03-CoreGenerativeAITechniques/src/](./03-CoreGenerativeAITechniques/src/) et démontre comment utiliser Semantic Kernel et Microsoft Extensions pour AI pour interagir avec ces modèles.
+- **Nouveau : Exécuter des modèles locaux avec AI Toolkit et Docker** : Explorez de nouveaux exemples pour exécuter des modèles localement en utilisant [AI Toolkit pour Visual Studio Code](https://code.visualstudio.com/docs/intelligentapps/overview) et [Docker Model Runner](https://docs.docker.com/model-runner/). Le code source se trouve dans [../../../samples/CoreSamples/](../../../samples/CoreSamples/) et démontre comment utiliser Semantic Kernel et Microsoft Extensions pour AI pour interagir avec ces modèles.
 
 ## Mars 2025
 

@@ -13,7 +13,7 @@
   - 작업 상태를 폴링하고 결과 비디오 파일을 자동으로 다운로드하기.
   - 생성된 비디오를 데스크톱에 저장하여 쉽게 보기.
 - 공식 문서 보기: [Azure OpenAI Sora 비디오 생성](https://learn.microsoft.com/azure/ai-services/openai/concepts/video-generation)
-- 샘플 찾기: [레슨 3: 핵심 생성 AI 기술 /src/VideoGeneration-AzureSora-01/Program.cs](../../../03-CoreGenerativeAITechniques/src/VideoGeneration-AzureSora-01/Program.cs)
+- 샘플 찾기: [레슨 3: 핵심 생성 AI 기술 /src/VideoGeneration-AzureSora-01/Program.cs](../../../samples/CoreSamples/VideoGeneration-AzureSora-01/Program.cs)
 
 ### 새로운 eShopLite 시나리오: 동시 에이전트 오케스트레이션 (2025년 6월)
 
@@ -33,7 +33,7 @@
 
 ### AI Toolkit과 Docker로 로컬 모델 실행
 
-- **새로운 기능: AI Toolkit과 Docker로 로컬 모델 실행**: [Visual Studio Code용 AI Toolkit](https://code.visualstudio.com/docs/intelligentapps/overview)과 [Docker Model Runner](https://docs.docker.com/model-runner/)를 사용하여 로컬에서 모델을 실행하는 새로운 샘플을 탐색해 보세요. 소스 코드는 [./03-CoreGenerativeAITechniques/src/](./03-CoreGenerativeAITechniques/src/)에 있으며 Semantic Kernel과 Microsoft Extensions for AI를 사용하여 이러한 모델과 상호 작용하는 방법을 보여줍니다.
+- **새로운 기능: AI Toolkit과 Docker로 로컬 모델 실행**: [Visual Studio Code용 AI Toolkit](https://code.visualstudio.com/docs/intelligentapps/overview)과 [Docker Model Runner](https://docs.docker.com/model-runner/)를 사용하여 로컬에서 모델을 실행하는 새로운 샘플을 탐색해 보세요. 소스 코드는 [../../../samples/CoreSamples/](../../../samples/CoreSamples/)에 있으며 Semantic Kernel과 Microsoft Extensions for AI를 사용하여 이러한 모델과 상호 작용하는 방법을 보여줍니다.
 
 ## 2025년 3월
 

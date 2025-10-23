@@ -90,7 +90,7 @@ Now let’s update the code to use the newly deployed model. First we'll need to
 1. Open the terminal and switch to the project directory:
 
     ```bash
-    cd 02-SetupDevEnvironment/src/BasicChat-01MEAI/
+    cd samples/CoreSamples/BasicChat-01MEAI/
     ```
 
 1. Run the following commands to add the required package:
@@ -102,7 +102,7 @@ Now let’s update the code to use the newly deployed model. First we'll need to
 
 [More information about Azure.AI.OpenAI](https://www.nuget.org/packages/Azure.AI.OpenAI/2.2.0-beta.2).
 
-1. Open `/workspaces/Generative-AI-for-beginners-dotnet/02-SetupDevEnvironment/src/BasicChat-01MEAI/Program.cs`.
+1. Open `/workspaces/Generative-AI-for-beginners-dotnet/samples/CoreSamples/BasicChat-01MEAI/Program.cs`.
 
     Add the following using statements at the top of the file:
 

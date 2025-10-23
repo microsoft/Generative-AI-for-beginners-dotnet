@@ -13,7 +13,7 @@
   - ジョブの状態をポーリングして生成された動画ファイルを自動的にダウンロードする。
   - 生成された動画をデスクトップに保存して簡単に表示する。
 - 公式ドキュメントを確認：[Azure OpenAI Sora動画生成](https://learn.microsoft.com/azure/ai-services/openai/concepts/video-generation)
-- サンプルはこちら：[レッスン3：コア生成AI技術 /src/VideoGeneration-AzureSora-01/Program.cs](../../../03-CoreGenerativeAITechniques/src/VideoGeneration-AzureSora-01/Program.cs)
+- サンプルはこちら：[レッスン3：コア生成AI技術 /src/VideoGeneration-AzureSora-01/Program.cs](../../../samples/CoreSamples/VideoGeneration-AzureSora-01/Program.cs)
 
 ### 新しいeShopLiteシナリオ：並行エージェントオーケストレーション（2025年6月）
 
@@ -33,7 +33,7 @@
 
 ### AI ToolkitとDockerを使用してローカルモデルを実行
 
-- **新機能：AI ToolkitとDockerを使用してローカルモデルを実行**：[Visual Studio Code用AI Toolkit](https://code.visualstudio.com/docs/intelligentapps/overview)と[Docker Model Runner](https://docs.docker.com/model-runner/)を使用してローカルでモデルを実行する新しいサンプルを探索してください。ソースコードは[./03-CoreGenerativeAITechniques/src/](./03-CoreGenerativeAITechniques/src/)にあり、Semantic KernelとMicrosoft Extensions for AIを使用してこれらのモデルと相互作用する方法を示しています。
+- **新機能：AI ToolkitとDockerを使用してローカルモデルを実行**：[Visual Studio Code用AI Toolkit](https://code.visualstudio.com/docs/intelligentapps/overview)と[Docker Model Runner](https://docs.docker.com/model-runner/)を使用してローカルでモデルを実行する新しいサンプルを探索してください。ソースコードは[../../../samples/CoreSamples/](../../../samples/CoreSamples/)にあり、Semantic KernelとMicrosoft Extensions for AIを使用してこれらのモデルと相互作用する方法を示しています。
 
 ## 2025年3月
 
