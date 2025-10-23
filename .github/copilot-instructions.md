@@ -3,12 +3,13 @@
 
 ## Project Purpose & Structure
 - This repo is a hands-on .NET course for Generative AI, focused on real-world, runnable code and live coding.
-- Lessons are organized in numbered folders (e.g., `01-IntroToGenAI/`, `03-CoreGenerativeAITechniques/`), each with a `readme.md` and code in `src/`.
+- Lessons are organized in numbered folders (e.g., `01-IntroToGenAI/`, `03-CoreGenerativeAITechniques/`), each with a `readme.md` and code in the root sample folder.
 - Key technologies: .NET 9+, Microsoft.Extensions.AI (MEAI), Semantic Kernel, Azure OpenAI, Ollama (local models), GitHub Models.
 - Multi-language support: see `translations/` for localized docs.
 
 ## Architecture & Patterns
-- Each lesson is self-contained; sample apps (e.g., `05-AppCreatedWithGenAI/SpaceAINet/`) demonstrate full-stack AI integration.
+- Each lesson is self-contained; (e.g., `05-AppCreatedWithGenAI/SpaceAINet/`) demonstrate full-stack AI integration.
+- Samples are created inside the sample folder for organization.
 - AI model calls are always abstracted behind service classes (e.g., `SpaceAINet.GameActionProcessor`), enabling easy provider swapping and testability.
 - API keys and endpoints are never hardcoded—use user secrets or environment variables (see lesson READMEs for details).
 - For SpaceAINet and similar apps:
@@ -30,6 +31,7 @@
 
 ## Project-Specific Conventions
 - All lessons include a short video, code sample, and step-by-step guide.
+- The code samples can be found at the `samples` folder
 - Use `02-SetupDevEnvironment/getting-started-azure-openai.md` and `getting-started-ollama.md` for setup.
 - AI integration is always via service abstraction (never direct model calls in UI or game logic).
 - Use key bindings in sample apps to toggle AI modes, save screenshots, and display FPS (see app README for details).
@@ -45,6 +47,7 @@
 - `README.md` (root): Course overview, lesson map, and links to translations.
 - `01-IntroToGenAI/`, `02-SetupDevEnvironment/`, ...: Lesson folders with guides and code.
 - `05-AppCreatedWithGenAI/SpaceAINet/`: Example of a full AI-powered .NET app (see `README.md` inside for architecture and usage).
+- `samples/`: Contains all sample applications.
 - `translations/`: Localized documentation.
 - `CONTRIBUTING.MD`: Contribution and PR guidelines.
 
