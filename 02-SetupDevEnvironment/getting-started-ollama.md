@@ -39,7 +39,7 @@ Once your Codespace is fully loaded and configured, let's run a sample app to ve
 1. Switch to the proper directory by running the following command:
 
     ```bash
-    cd 02-SetupDevEnvironment/src/BasicChat-03Ollama/
+    cd samples/CoreSamples/BasicChat-03Ollama/
     ```
 
 1. Then run the application with the following command:
@@ -73,7 +73,7 @@ One of the cool things about Ollama is that it's easy to change models. The samp
 
     You can learn more about the [Phi3.5](https://ollama.com/library/phi3.5) and other available models in the [Ollama library](https://ollama.com/library/).
 
-1. Open `02-SetupDevEnvironment/src/BasicChat-03Ollama/Program.cs` in your editor.
+1. Open `samples/CoreSamples/BasicChat-03Ollama/Program.cs` in your editor.
 
     Update the chat client initialization to use the new model by changing line 6-7:
 

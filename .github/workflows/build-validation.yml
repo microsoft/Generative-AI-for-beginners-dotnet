@@ -4,24 +4,12 @@ name: .NET Build Validation
   pull_request:
     branches: [ main ]
     paths:
-    - '02-SetupDevEnvironment/**/*.cs'
-    - '02-SetupDevEnvironment/**/*.csproj'
-    - '02-SetupDevEnvironment/**/*.sln'
-    - '02-SetupDevEnvironment/**/*.json'
-    - '03-CoreGenerativeAITechniques/**/*.cs'
-    - '03-CoreGenerativeAITechniques/**/*.csproj'
-    - '03-CoreGenerativeAITechniques/**/*.sln'
-    - '03-CoreGenerativeAITechniques/**/*.json'
-    - '04-PracticalSamples/**/*.cs'
-    - '04-PracticalSamples/**/*.csproj'
-    - '04-PracticalSamples/**/*.sln'
-    - '04-PracticalSamples/**/*.razor'
-    - '04-PracticalSamples/**/*.json'
-    - '05-AppCreatedWithGenAI/**/*.cs'
-    - '05-AppCreatedWithGenAI/**/*.csproj'
-    - '05-AppCreatedWithGenAI/**/*.sln'
-    - '05-AppCreatedWithGenAI/**/*.razor'
-    - '05-AppCreatedWithGenAI/**/*.json'
+    - 'samples/**/*.cs'
+    - 'samples/**/*.csproj'
+    - 'samples/**/*.sln'
+    - 'samples/**/*.slnx'
+    - 'samples/**/*.razor'
+    - 'samples/**/*.json'
     - '.github/workflows/build-validation.yml'
 
 jobs:
@@ -33,16 +21,16 @@ jobs:
       fail-fast: false  # Show results for all projects even if some fail
       matrix:
         solution:
-        - path: "02-SetupDevEnvironment/src/GettingReadySamples.sln"
-          name: "Setup Samples"
-        - path: "03-CoreGenerativeAITechniques/src/CoreGenerativeAITechniques.sln"
-          name: "Core Techniques"
-        - path: "04-PracticalSamples/src/Aspire.MCP.Sample.sln"
-          name: "Practical Samples"
-        - path: "05-AppCreatedWithGenAI/HFMCP.GenImage/HFMCP.GenImage.sln"
+        - path: "samples/CoreSamples/CoreGenerativeAITechniques.sln"
+          name: "Core Samples"
+        - path: "samples/PracticalSamples/Aspire.MCP.Sample.sln"
+          name: "Practical Samples - Aspire MCP"
+        - path: "samples/AppsWithGenAI/HFMCP.GenImage/HFMCP.GenImage.sln"
           name: "HFMCP GenImage App"
-        - path: "05-AppCreatedWithGenAI/SpaceAINet/SpaceAINet.sln"
+        - path: "samples/AppsWithGenAI/SpaceAINet/SpaceAINet.sln"
           name: "SpaceAINet App"
+        - path: "samples/AgentFx/AgentFx-Demos.slnx"
+          name: "AgentFx Demos"
 
     steps:
     - name: Checkout code

@@ -13,7 +13,7 @@ Diese Seite verfolgt die Geschichte neuer Funktionen, Tools und Modelle, die dem
   - Den Auftragsstatus abfragt und die resultierende Videodatei automatisch herunterlädt.
   - Das generierte Video auf dem Desktop zur einfachen Anzeige speichert.
 - Siehe die offizielle Dokumentation: [Azure OpenAI Sora Video-Generierung](https://learn.microsoft.com/azure/ai-services/openai/concepts/video-generation)
-- Finden Sie das Beispiel unter [Lektion 3: Grundlegende Generative KI-Techniken /src/VideoGeneration-AzureSora-01/Program.cs](../../../03-CoreGenerativeAITechniques/src/VideoGeneration-AzureSora-01/Program.cs)
+- Finden Sie das Beispiel unter [Lektion 3: Grundlegende Generative KI-Techniken /src/VideoGeneration-AzureSora-01/Program.cs](../../../samples/CoreSamples/VideoGeneration-AzureSora-01/Program.cs)
 
 ### Neues eShopLite Szenario: Parallele Agent-Orchestrierung (Juni 2025)
 
@@ -33,7 +33,7 @@ Diese Seite verfolgt die Geschichte neuer Funktionen, Tools und Modelle, die dem
 
 ### Lokale Modelle mit AI Toolkit und Docker ausführen
 
-- **Neu: Lokale Modelle mit AI Toolkit und Docker ausführen**: Entdecken Sie neue Beispiele für das lokale Ausführen von Modellen mit [AI Toolkit für Visual Studio Code](https://code.visualstudio.com/docs/intelligentapps/overview) und [Docker Model Runner](https://docs.docker.com/model-runner/). Der Quellcode befindet sich in [./03-CoreGenerativeAITechniques/src/](./03-CoreGenerativeAITechniques/src/) und zeigt, wie man Semantic Kernel und Microsoft Extensions für AI verwendet, um mit diesen Modellen zu interagieren.
+- **Neu: Lokale Modelle mit AI Toolkit und Docker ausführen**: Entdecken Sie neue Beispiele für das lokale Ausführen von Modellen mit [AI Toolkit für Visual Studio Code](https://code.visualstudio.com/docs/intelligentapps/overview) und [Docker Model Runner](https://docs.docker.com/model-runner/). Der Quellcode befindet sich in [../../../samples/CoreSamples/](../../../samples/CoreSamples/) und zeigt, wie man Semantic Kernel und Microsoft Extensions für AI verwendet, um mit diesen Modellen zu interagieren.
 
 ## März 2025
 

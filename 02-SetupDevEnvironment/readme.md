@@ -37,13 +37,13 @@ Here's a quick rundown of the services:
 
 The Ollama Codespace will provision all the necessary models that you need. However, if you are working in local mode, once you have installed Ollama, you need to pull the models for the lessons you want to run.
 
-- For lesson "**02 - Setting Up for .NET Development with Generative AI**" and project [MEAIFunctionsOllama](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/tree/main/02-SetupDevEnvironment/src/BasicChat-03Ollama) you need to pull a model like [phi4-mini](https://ollama.com/library/phi4-mini) or [llama3.2](https://ollama.com/library/llama3.2)  by entering in terminal
+- For lesson "**02 - Setting Up for .NET Development with Generative AI**" and project [BasicChat-03Ollama](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/tree/main/samples/CoreSamples/BasicChat-03Ollama) you need to pull a model like [phi4-mini](https://ollama.com/library/phi4-mini) or [llama3.2](https://ollama.com/library/llama3.2)  by entering in terminal
 
 ```bash
 ollama pull phi4-mini
 ```
 
-- For lesson "**03 - Core Generative AI Techniques with .NET**", when running the ollama projects like [RAGSimple-10SKOllama](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/tree/main/03-CoreGenerativeAITechniques/src/RAGSimple-10SKOllama),  you need to pull the models [all-minilm](https://ollama.com/library/all-minilm) and [phi4-mini](https://ollama.com/library/phi4-mini) by entering in terminal:
+- For lesson "**03 - Core Generative AI Techniques with .NET**", when running the ollama projects like [RAGSimple-10SKOllama](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/tree/main/samples/CoreSamples/RAGSimple-10SKOllama),  you need to pull the models [all-minilm](https://ollama.com/library/all-minilm) and [phi4-mini](https://ollama.com/library/phi4-mini) by entering in terminal:
 
 ```bash
 ollama pull phi4-mini
@@ -125,8 +125,13 @@ Once your Codespace is fully loaded and configured, let's run a sample app to ve
 
 1. Switch to the proper directory by running the following command:
 
+   If you're using Windows Command Prompt (CMD) or PowerShell:
+    ```bash
+    cd samples\CoreSamples\BasicChat-01MEAI
+    ```
+    or If you're using Linux, macOS, Git Bash, WSL, or the VS Code terminal
    ```bash
-   cd 02-SetupDevEnvironment/src/BasicChat-01MEAI
+   cd samples/CoreSamples/BasicChat-01MEAI
    ```
 
    > **Note**: GitHub Codespaces runs a Linux environment, so always use forward slashes (`/`) in paths, regardless of your local operating system.
@@ -195,12 +200,12 @@ This typically means one of the following:
 
 2. **Your repository fork is outdated**: If you forked this repository before recent updates, your code might reference old model names. To fix this:
    - Pull the latest changes from the upstream repository
-   - Ensure your `Program.cs` file in `02-SetupDevEnvironment/src/BasicChat-01MEAI` uses `Phi-4-mini-instruct` (not older model names)
+   - Ensure your `Program.cs` file in `samples/CoreSamples/BasicChat-01MEAI` uses `Phi-4-mini-instruct` (not older model names)
 
 3. **Model name typo**: Double-check that the model name in your code exactly matches the available models in [GitHub Models](https://github.com/marketplace?type=models).
 
 **Quick Fix**: 
-- Open `/02-SetupDevEnvironment/src/BasicChat-01MEAI/Program.cs`
+- Open `/samples/CoreSamples/BasicChat-01MEAI/Program.cs`
 - Verify the model name is `Phi-4-mini-instruct`:
   ```csharp
   .AsIChatClient("Phi-4-mini-instruct");

@@ -139,7 +139,7 @@ conversation.Add(response.Message);
 
 - See [BasicChat-10ConversationHistory](../src/BasicChat-10ConversationHistory/) for a complete working example
 - See [BasicChat-05AIFoundryModels](../src/BasicChat-05AIFoundryModels/) for streaming conversation example
-- [Microsoft.Extensions.AI Documentation](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.ai)
+- [Microsoft.Extensions.AI Documentation](https://learn.microsoft.com/dotnet/api/microsoft.extensions.ai)
 
 ## Need More Help?
 

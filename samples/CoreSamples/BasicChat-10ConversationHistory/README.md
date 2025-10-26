@@ -108,6 +108,6 @@ See `BasicChat-05AIFoundryModels` for a complete streaming example.
 
 ## See Also
 
-- [Microsoft.Extensions.AI Documentation](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.ai)
+- [Microsoft.Extensions.AI Documentation](https://learn.microsoft.com/dotnet/api/microsoft.extensions.ai)
 - BasicChat-01MEAI - Simple single-turn conversation
 - BasicChat-05AIFoundryModels - Streaming conversation with history

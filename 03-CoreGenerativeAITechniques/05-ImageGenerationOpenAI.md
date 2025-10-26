@@ -16,7 +16,7 @@ Image generation AI allows you to create original images from text descriptions 
 
 Let's explore how to generate images using Azure OpenAI in a .NET application:
 
-> 🧑‍💻**Sample code**: [Here is a working example of this application](./src/ImageGeneration-01/) you can follow along with.
+> 🧑‍💻**Sample code**: [Here is a working example of this application](../samples/CoreSamples/ImageGeneration-01/) you can follow along with.
 
 #### How to run the sample code
 
@@ -27,7 +27,8 @@ To run the sample code, you'll need to:
 3. Open a terminal in your codespace (Ctrl+` or Cmd+`)
 4. Navigate to the sample code directory:
    ```bash
-   cd 03-CoreGenerativeAITechniques/src/ImageGeneration-01
+   cd samples/CoreSamples/ImageGeneration-01
+   ```
    ```
 5. Run the application:
    ```bash

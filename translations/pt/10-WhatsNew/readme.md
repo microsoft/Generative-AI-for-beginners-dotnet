@@ -13,7 +13,7 @@ Esta página acompanha o histórico de novas funcionalidades, ferramentas e mode
   - Fazer polling do status do trabalho e baixar automaticamente o arquivo de vídeo resultante.
   - Salvar o vídeo gerado na sua área de trabalho para visualização fácil.
 - Veja a documentação oficial: [Geração de vídeo Azure OpenAI Sora](https://learn.microsoft.com/azure/ai-services/openai/concepts/video-generation)
-- Encontre o exemplo em [Lição 3: Técnicas de IA Generativa Fundamentais /src/VideoGeneration-AzureSora-01/Program.cs](../../../03-CoreGenerativeAITechniques/src/VideoGeneration-AzureSora-01/Program.cs)
+- Encontre o exemplo em [Lição 3: Técnicas de IA Generativa Fundamentais /src/VideoGeneration-AzureSora-01/Program.cs](../../../samples/CoreSamples/VideoGeneration-AzureSora-01/Program.cs)
 
 ### Novo Cenário eShopLite: Orquestração de Agentes Concorrentes (Junho 2025)
 
@@ -33,7 +33,7 @@ Esta página acompanha o histórico de novas funcionalidades, ferramentas e mode
 
 ### Executar Modelos Locais com AI Toolkit e Docker
 
-- **Novo: Executar Modelos Locais com AI Toolkit e Docker**: Explore novos exemplos para executar modelos localmente usando [AI Toolkit para Visual Studio Code](https://code.visualstudio.com/docs/intelligentapps/overview) e [Docker Model Runner](https://docs.docker.com/model-runner/). O código-fonte está em [./03-CoreGenerativeAITechniques/src/](./03-CoreGenerativeAITechniques/src/) e demonstra como usar Semantic Kernel e Microsoft Extensions para AI para interagir com esses modelos.
+- **Novo: Executar Modelos Locais com AI Toolkit e Docker**: Explore novos exemplos para executar modelos localmente usando [AI Toolkit para Visual Studio Code](https://code.visualstudio.com/docs/intelligentapps/overview) e [Docker Model Runner](https://docs.docker.com/model-runner/). O código-fonte está em [../../../samples/CoreSamples/](../../../samples/CoreSamples/) e demonstra como usar Semantic Kernel e Microsoft Extensions para AI para interagir com esses modelos.
 
 ## Março 2025
 

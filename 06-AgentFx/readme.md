@@ -104,26 +104,26 @@ This lesson includes multiple code samples demonstrating different aspects of th
 
 | Sample | Description | Key Concepts | Provider |
 |--------|-------------|-------------|----------|
-| [AgentFx01](./src/AgentFx01/) | Single agent that writes creative stories | Basic agent setup, ChatClientAgent | GitHub Models |
-| [AgentFx02](./src/AgentFx02/) | Two-agent workflow: Writer + Editor | Sequential workflows, agent chaining | GitHub Models |
-| [AgentFx-AIFoundry-01](./src/AgentFx-AIFoundry-01/) | Single agent using Azure AI Foundry | Azure CLI authentication, managed identity | Azure AI Foundry |
-| [AgentFx-Ollama-01](./src/AgentFx-Ollama-01/) | Single agent using local Ollama models | Local AI inference, privacy-focused | Ollama (local) |
+| [AgentFx01](../samples/AgentFx/AgentFx01/) | Single agent that writes creative stories | Basic agent setup, ChatClientAgent | GitHub Models |
+| [AgentFx02](../samples/AgentFx/AgentFx02/) | Two-agent workflow: Writer + Editor | Sequential workflows, agent chaining | GitHub Models |
+| [AgentFx-AIFoundry-01](../samples/AgentFx/AgentFx-AIFoundry-01/) | Single agent using Azure AI Foundry | Azure CLI authentication, managed identity | Azure AI Foundry |
+| [AgentFx-Ollama-01](../samples/AgentFx/AgentFx-Ollama-01/) | Single agent using local Ollama models | Local AI inference, privacy-focused | Ollama (local) |
 
 ### Advanced Multi-Provider Samples
 
 | Sample | Description | Key Concepts | Providers |
 |--------|-------------|-------------|-----------|
-| [AgentFx-MultiModel](./src/AgentFx-MultiModel/) | Three-agent workflow across multiple providers | Multi-provider orchestration, OpenTelemetry tracing | GitHub Models or Azure OpenAI + Ollama |
-| [AgentFx-MultiAgents](./src/AgentFx-MultiAgents/) | Researcher-Writer-Reviewer workflow with persistent agents | Azure AI Foundry persistent agents, flexible configuration | Azure AI Foundry + Azure OpenAI/GitHub Models + Ollama |
+| [AgentFx-MultiModel](../samples/AgentFx/AgentFx-MultiModel/) | Three-agent workflow across multiple providers | Multi-provider orchestration, OpenTelemetry tracing | GitHub Models or Azure OpenAI + Ollama |
+| [AgentFx-MultiAgents](../samples/AgentFx/AgentFx-MultiAgents/) | Researcher-Writer-Reviewer workflow with persistent agents | Azure AI Foundry persistent agents, flexible configuration | Azure AI Foundry + Azure OpenAI/GitHub Models + Ollama |
 
 ### Integration & Web Samples
 
 | Sample | Description | Key Concepts | Provider |
 |--------|-------------|-------------|----------|
-| [AgentFx-ImageGen-01](./src/AgentFx-ImageGen-01/) | Agent that generates images using Hugging Face MCP | MCP integration, tool usage, multi-modal | GitHub Models or Azure OpenAI |
-| [AgentFx-AIWebChatApp-Simple](./src/AgentFx-AIWebChatApp-Simple/) | Simple web-based chat application | Web integration, Blazor UI | Configurable |
-| [AgentFx-AIWebChatApp-Middleware](./src/AgentFx-AIWebChatApp-Middleware/) | Web chat with middleware pattern | Custom middleware, request processing | Configurable |
-| [AgentFx-AIWebChatApp-MutliAgent](./src/AgentFx-AIWebChatApp-MutliAgent/) | Web chat with multiple agents | Multi-agent web apps, agent selection | Configurable |
+| [AgentFx-ImageGen-01](../samples/AgentFx/AgentFx-ImageGen-01/) | Agent that generates images using Hugging Face MCP | MCP integration, tool usage, multi-modal | GitHub Models or Azure OpenAI |
+| [AgentFx-AIWebChatApp-Simple](../samples/AgentFx/AgentFx-AIWebChatApp-Simple/) | Simple web-based chat application | Web integration, Blazor UI | Configurable |
+| [AgentFx-AIWebChatApp-Middleware](../samples/AgentFx/AgentFx-AIWebChatApp-Middleware/) | Web chat with middleware pattern | Custom middleware, request processing | Configurable |
+| [AgentFx-AIWebChatApp-MutliAgent](../samples/AgentFx/AgentFx-AIWebChatApp-MutliAgent/) | Web chat with multiple agents | Multi-agent web apps, agent selection | Configurable |
 
 ### Quick Start Guide
 
@@ -135,7 +135,7 @@ This lesson includes multiple code samples demonstrating different aspects of th
 
 **For advanced scenarios**, explore:
 
-1. **AgentFx-MultiAgents** - See [detailed README](./src/AgentFx-MultiAgents/README.md) for multi-provider orchestration
+1. **AgentFx-MultiAgents** - See [detailed README](../samples/AgentFx/AgentFx-MultiAgents/README.md) for multi-provider orchestration
 2. **AgentFx-ImageGen-01** - Learn MCP integration
 3. **AgentFx-AIWebChatApp-MutliAgent** - Build web-based agent systems
 
@@ -146,7 +146,7 @@ Each sample includes configuration instructions in its source code comments. Gen
 **GitHub Models** (requires GitHub token):
 
 ```bash
-cd 06-AgentFx/src/<sample-folder>
+cd samples/AgentFx/<sample-folder>
 dotnet user-secrets set "GITHUB_TOKEN" "your-github-token"
 dotnet run
 ```
@@ -154,7 +154,7 @@ dotnet run
 **Azure AI Foundry** (requires Azure CLI login):
 
 ```bash
-cd 06-AgentFx/src/<sample-folder>
+cd samples/AgentFx/<sample-folder>
 dotnet user-secrets set "endpoint" "https://<your-endpoint>.services.ai.azure.com/"
 dotnet user-secrets set "deploymentName" "gpt-4o-mini"
 az login
@@ -166,7 +166,7 @@ dotnet run
 ```bash
 # Install Ollama from https://ollama.com
 ollama pull llama3.2
-cd 06-AgentFx/src/<sample-folder>
+cd samples/AgentFx/<sample-folder>
 dotnet run
 ```
 
@@ -216,7 +216,7 @@ The Model Context Protocol (MCP) provides a standardized way for agents to inter
 - Interact with file systems
 - And more
 
-> 🧑‍💻 **Sample code**: Check out the [AgentFx-ImageGen-01 sample](./src/AgentFx-ImageGen-01/) for a practical MCP integration example.
+> 🧑‍💻 **Sample code**: Check out the [AgentFx-ImageGen-01 sample](../samples/AgentFx/AgentFx-ImageGen-01/) for a practical MCP integration example.
 
 > 🧑‍🏫 **Learn more**: Explore the [Model Context Protocol C# SDK](https://github.com/modelcontextprotocol/csharp-sdk) for detailed information.
 

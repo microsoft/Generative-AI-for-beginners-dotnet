@@ -20,12 +20,12 @@ Ok - so we're going to put the model through its paces and ask it if it can tell
 
 ![A composite showing both images the example will use. The first is several runners but only showing their legs. The second is a German restaurant receipt](./images/example-visual-image.png)
 
-> 🧑‍💻**Sample code**: You can follow [along with sample code here](./src/Vision-01MEAI-GitHubModels/).
+> 🧑‍💻**Sample code**: You can follow [along with sample code here](../samples/CoreSamples/Vision-01MEAI-GitHubModels/).
 >
 > We also have examples showing vision capabilities with:
-> - [Ollama](./src/Vision-02MEAI-Ollama/) - Using local Ollama models for vision tasks
-> - [Azure OpenAI](./src/Vision-03MEAI-AOAI/) - Using Azure OpenAI for vision tasks
-> - [Azure OpenAI with Spectre UI](./src/Vision-04MEAI-AOAI-Spectre/) - A more advanced UI using the Spectre console library
+> - [Ollama](../samples/CoreSamples/Vision-02MEAI-Ollama/) - Using local Ollama models for vision tasks
+> - [Azure OpenAI](../samples/CoreSamples/Vision-03MEAI-AOAI/) - Using Azure OpenAI for vision tasks
+> - [Azure OpenAI with Spectre UI](../samples/CoreSamples/Vision-04MEAI-AOAI-Spectre/) - A more advanced UI using the Spectre console library
 
 1. We're using MEAI and GitHub Models, so instantiate the `IChatClient` as we have been. Also start to create a chat history.
 
@@ -118,7 +118,7 @@ To setup an Azure AI Speech Service model, [follow these directions](../02-Setup
 
 You'll need the **Microsoft.CognitiveServices.Speech** NuGet package for this example.
 
-> 🧑‍💻**Sample code**: You can follow [along with sample code here](./src/Audio-01-SpeechMic/).
+> 🧑‍💻**Sample code**: You can follow [along with sample code here](../samples/CoreSamples/Audio-01-SpeechMic/).
 
 1. The first thing we'll do (after grabbing the key and region of the model's deployment) is instantiate a `SpeechTranslationConfig` object. This will enable us to direct the model that we'll be taking in spoken English and translating to written Spanish.
 
@@ -185,7 +185,7 @@ Using AI to process audio is a bit different than what we have been doing becaus
 
 > 🙋 **Need help?**: If you encounter any issues, [open an issue in the repository](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new).
 
-We have another example that [demonstrates how to perform real-time audio conversation with Azure Open AI](./src/Audio-02-RealTimeAudio/) - check it out!
+We have another example that [demonstrates how to perform real-time audio conversation with Azure Open AI](../samples/CoreSamples/Audio-02-RealTimeAudio/) - check it out!
 
 
 ## Additional resources
