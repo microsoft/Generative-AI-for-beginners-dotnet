@@ -11,6 +11,7 @@
   </Folder>
   <Folder Name="/4 Image Generation/">
     <Project Path="AgentFx-ImageGen-01/AgentFx-ImageGen-01.csproj" Id="25c06364-ad74-420c-96af-f607d96fa496" />
+    <Project Path="AgentFx-ImageGen-02/AgentFx-ImageGen-02.csproj" Id="5c192bf7-4138-464e-8149-05d91ae7f24d" />
   </Folder>
   <Folder Name="/5 MultiModel Agents/">
     <Project Path="AgentFx-MultiAgents/AgentFx-MultiAgents.csproj" Id="80a4fb26-9e52-44b0-8980-a8b2cac436d4" />
