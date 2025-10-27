@@ -21,7 +21,7 @@ public static class ImageGenerator
         var deploymentName = config["deploymentName"] ?? "gpt-5-mini";
 
         // You will need to set these environment variables or edit the following values.
-        var endpoint = config["FLUX_AZURE_OPENAI_ENDPOINT"];
+        var endpoint = config["endpoint"];
         var deployment = config["FLUX_DEPLOYMENT_NAME"];
         var apiVersion = config["FLUX_OPENAI_API_VERSION"];
         var apiKey = config["AZURE_OPENAI_API_KEY"];
