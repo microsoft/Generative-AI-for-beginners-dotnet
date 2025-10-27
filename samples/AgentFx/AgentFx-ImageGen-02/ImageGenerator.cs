@@ -26,6 +26,11 @@ public static class ImageGenerator
         var apiVersion = config["FLUX_OPENAI_API_VERSION"];
         var apiKey = config["AZURE_OPENAI_API_KEY"];
 
+        if (!endpoint.EndsWith('/'))
+        {
+            endpoint += '/';
+        }
+
         var basePath = $"openai/deployments/{deployment}/images";
         var urlParams = $"?api-version={apiVersion}";
 
