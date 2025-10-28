@@ -88,7 +88,7 @@ internal static class StreamConsoleHelper
         var trimmed = updateText.TrimEnd();
         bool endsWithSentence = trimmed.EndsWith('.') || trimmed.EndsWith('!') || trimmed.EndsWith('?');
         bool containsNewline = updateText.Contains("\n");
-        bool tooLong = _accum.Length >250;
+        bool tooLong = _accum.Length > 250;
 
         if (endsWithSentence || containsNewline || tooLong)
         {
