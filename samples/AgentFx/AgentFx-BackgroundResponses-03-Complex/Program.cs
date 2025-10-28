@@ -62,7 +62,26 @@ internal static class BackgroundResponsesDemo
             }
         }
 
-        StreamConsoleHelper.PrintLabeled("After interruption", latestReceivedUpdate?.Text ?? "<no content received>");
+        StreamConsoleHelper.PrintSection("Start simple questions");
+        question = "solve 2 + 2 ";
+        StreamConsoleHelper.PrintLabeled("Question 1", question);
+        StreamConsoleHelper.StartAccumulatedStream();
+        await foreach (var update in agent.RunStreamingAsync(question, thread, options))
+        {
+            StreamConsoleHelper.AccumulateAndPrint(update.Text);
+        }
+        StreamConsoleHelper.FlushAccumulated();
+
+        question = "Tell me the capital of Italy";
+        StreamConsoleHelper.PrintLabeled("Question 2", question);
+        StreamConsoleHelper.StartAccumulatedStream();
+        await foreach (var update in agent.RunStreamingAsync(question, thread, options))
+        {
+            StreamConsoleHelper.AccumulateAndPrint(update.Text);
+        }
+        StreamConsoleHelper.FlushAccumulated();
+        StreamConsoleHelper.PrintSection("End simple questions");
+
         Console.WriteLine();
 
         // Continuation phase: resume from the captured continuation token to receive the rest

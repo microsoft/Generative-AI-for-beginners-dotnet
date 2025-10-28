@@ -20,5 +20,6 @@
   <Folder Name="/6 Background Responses/">
     <Project Path="AgentFx-BackgroundResponses-01-Simple/AgentFx-BackgroundResponses-01-Simple.csproj" Id="69a8fc80-9f2e-41db-8388-c5fdc4fe1328" />
     <Project Path="AgentFx-BackgroundResponses-02-Tools/AgentFx-BackgroundResponses-02-Tools.csproj" Id="a8c55714-88d3-4fdf-bb0f-3a1dbaf0bf3e" />
+    <Project Path="AgentFx-BackgroundResponses-03-Complex/AgentFx-BackgroundResponses-03-Complex.csproj" Id="d02a14d8-3d2d-444b-a907-4bddf28614fe" />
   </Folder>
 </Solution>
