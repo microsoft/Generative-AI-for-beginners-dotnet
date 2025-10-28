@@ -31,7 +31,7 @@ Before diving into AgentFx, it's important to understand how agents differ from 
 
 ### Traditional Single-Model Approach
 
-```
+```text
 User Input → AI Model → Response
 ```
 
@@ -39,7 +39,7 @@ In this approach, you send a prompt to an AI model and receive a response. This 
 
 ### Agent-Based Approach
 
-```
+```text
 User Input → Agent 1 (Research) → Agent 2 (Analysis) → Agent 3 (Writing) → Final Output
 ```
 
@@ -108,6 +108,9 @@ This lesson includes multiple code samples demonstrating different aspects of th
 | [AgentFx02](../samples/AgentFx/AgentFx02/) | Two-agent workflow: Writer + Editor | Sequential workflows, agent chaining | GitHub Models |
 | [AgentFx-AIFoundry-01](../samples/AgentFx/AgentFx-AIFoundry-01/) | Single agent using Azure AI Foundry | Azure CLI authentication, managed identity | Azure AI Foundry |
 | [AgentFx-Ollama-01](../samples/AgentFx/AgentFx-Ollama-01/) | Single agent using local Ollama models | Local AI inference, privacy-focused | Ollama (local) |
+| [AgentFx-BackgroundResponses-01-Simple](../samples/AgentFx/AgentFx-BackgroundResponses-01-Simple/) | Background responses with continuation tokens | Streaming interruption, response continuation | Configurable |
+| [AgentFx-BackgroundResponses-02-Tools](../samples/AgentFx/AgentFx-BackgroundResponses-02-Tools/) | Background responses with tool integration | Tool usage during background processing | Configurable |
+| [AgentFx-BackgroundResponses-03-Complex](../samples/AgentFx/AgentFx-BackgroundResponses-03-Complex/) | Complex background responses with multiple queries | Interleaved queries, continuation management | Configurable |
 
 ### Advanced Multi-Provider Samples
 
@@ -132,12 +135,14 @@ This lesson includes multiple code samples demonstrating different aspects of th
 1. **AgentFx01** - Learn basic agent creation
 2. **AgentFx02** - Understand agent workflows
 3. **AgentFx-Ollama-01** - Try local models
+4. **AgentFx-BackgroundResponses-01-Simple** - Basic background responses
 
 **For advanced scenarios**, explore:
 
 1. **AgentFx-MultiAgents** - See [detailed README](../samples/AgentFx/AgentFx-MultiAgents/README.md) for multi-provider orchestration
-2. **AgentFx-ImageGen-01** - Learn MCP integration
-3. **AgentFx-AIWebChatApp-MutliAgent** - Build web-based agent systems
+2. **AgentFx-BackgroundResponses-03-Complex** - Advanced background response patterns
+3. **AgentFx-ImageGen-01** - Learn MCP integration
+4. **AgentFx-AIWebChatApp-MutliAgent** - Build web-based agent systems
 
 ### Running the Samples
 
@@ -205,6 +210,29 @@ var reviewResult = await reviewer.RunAsync(articleResult.Text);
 2. **Cost Optimization**: Use expensive models only where needed
 3. **Quality Control**: Agents can review and improve each other's work
 4. **Flexibility**: Easy to add, remove, or modify agents in the workflow
+
+## Agent Background Responses
+
+AgentFx supports background responses, allowing agents to continue generating output even after you stop listening to streaming updates. This feature is useful for:
+
+- **Interrupting long-running responses** to handle immediate queries
+- **Resuming generation** from where you left off using continuation tokens
+- **Interleaving short queries** with long-running background tasks
+- **Managing complex workflows** that require both real-time and background processing
+
+Background responses enable more sophisticated agent interactions by letting you:
+
+1. Start streaming a response from an agent
+2. Capture a continuation token during streaming
+3. Stop the stream to handle other tasks
+4. Resume the original response later using the token
+
+> 🧑‍💻 **Sample code**: Explore the background responses samples:
+>
+> - [AgentFx-BackgroundResponses-01-Simple](../samples/AgentFx/AgentFx-BackgroundResponses-01-Simple/) - Basic background response pattern
+> - [AgentFx-BackgroundResponses-03-Complex](../samples/AgentFx/AgentFx-BackgroundResponses-03-Complex/) - Advanced workflows with interleaved queries
+>
+> 🧑‍🏫 **Learn more**: See the [Background Responses detailed guide](./README-BackgroundResponses.md) for comprehensive documentation and examples.
 
 ## Integration with Model Context Protocol (MCP)
 

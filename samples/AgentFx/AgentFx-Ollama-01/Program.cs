@@ -10,9 +10,9 @@ AIAgent writer = new ChatClientAgent(
     new ChatClientAgentOptions
     {
         Name = "Writer",
-        Instructions = "Write stories that are engaging and creative."
+        Instructions = "Write short stories that are engaging and creative, and always add bad jokes to them."
     });
 
-AgentRunResponse response = await writer.RunAsync("Write a short story about a haunted house.");
+AgentRunResponse response = await writer.RunAsync("Write a short story about .NET Conf.");
 
 Console.WriteLine(response.Text);
