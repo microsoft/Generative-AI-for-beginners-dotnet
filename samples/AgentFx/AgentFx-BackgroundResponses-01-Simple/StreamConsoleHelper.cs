@@ -101,7 +101,7 @@ internal static class StreamConsoleHelper
     /// </summary>
     public static void FlushAccumulated()
     {
-        if (_accum.Length >0)
+        if (_accum.Length > 0)
         {
             FlushAccumulatedInternal(null);
         }
