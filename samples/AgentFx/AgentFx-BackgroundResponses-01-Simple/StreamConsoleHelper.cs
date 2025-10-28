@@ -77,7 +77,7 @@ internal static class StreamConsoleHelper
             return; // nothing to accumulate
         }
 
-        if (_accum.Length ==0)
+        if (_accum.Length == 0)
         {
             _firstTimestamp = DateTime.Now.ToString("HH:mm:ss.fff");
         }
