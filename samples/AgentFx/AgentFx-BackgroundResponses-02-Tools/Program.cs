@@ -40,7 +40,7 @@ internal static class BackgroundResponsesWithToolsDemo
         AgentThread thread = agent.GetNewThread();
         AgentRunResponseUpdate? latestReceivedUpdate = null;
 
-        var question = "How is the the weather in Toronto";
+        var question = "How is the weather in Toronto";
 
         BackgroundConsoleHelper.PrintHeader("Background Responses (tools) — streaming with interruption and continuation");
         StreamConsoleHelper.PrintLabeled("Question", question);
