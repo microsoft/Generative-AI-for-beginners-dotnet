@@ -1,4 +1,4 @@
-# AgentFx Background Responses � Simple Sample
+# AgentFx Background Responses - Simple Sample
 
 This sample demonstrates how to use the Agent Framework "Background Responses" feature with a minimal console app.
 
