@@ -13,8 +13,10 @@
 
 
 	<ItemGroup>
-		<PackageReference Include="Aspire.Hosting.AppHost" Version="9.5.1" />
-		<PackageReference Include="ModelContextProtocol" Version="0.3.0-preview.4" />
+		<PackageReference Include="Aspire.Dashboard.Sdk.linux-x64" Version="9.5.2" />
+		<PackageReference Include="Aspire.Hosting.AppHost" Version="9.5.2" />
+		<PackageReference Include="Aspire.Hosting.Orchestration.linux-x64" Version="9.5.2" />
+		<PackageReference Include="ModelContextProtocol" Version="0.4.0-preview.3" />
 	</ItemGroup>
 
 	<ItemGroup>

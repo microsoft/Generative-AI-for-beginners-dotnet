@@ -9,11 +9,11 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.KernelMemory.SemanticKernelPlugin" Version="0.73.240906.1" />
-		<PackageReference Include="Microsoft.SemanticKernel" Version="1.20.0" />
-		<PackageReference Include="Microsoft.SemanticKernel.Plugins.Memory" Version="1.20.0-alpha" />
+		<PackageReference Include="Microsoft.KernelMemory.SemanticKernelPlugin" Version="0.98.250508.3" />
+		<PackageReference Include="Microsoft.SemanticKernel" Version="1.66.0" />
+		<PackageReference Include="Microsoft.SemanticKernel.Plugins.Memory" Version="1.66.0-alpha" />
 		<PackageReference Include="SmartComponents.LocalEmbeddings.SemanticKernel" Version="0.1.0-preview10148" />
-		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
+		<PackageReference Include="System.Linq.Async" Version="7.0.0-preview.1.g24680b5469" />
 	</ItemGroup>
 
 </Project>
