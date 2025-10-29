@@ -28,9 +28,19 @@ To run the sample code, you'll need to:
 2. Ensure you have configured your GitHub Token as described in the [Pre-flight check section](../02-SetupDevEnvironment/readme.md#pre-flight-check-setting-up-github-access-tokens)
 3. Open a terminal in your codespace (Ctrl+` or Cmd+`)
 4. Navigate to the sample code directory:
+   
+   If you're using Windows Command Prompt (CMD) or PowerShell:
+   ```bash
+   cd samples\CoreSamples\BasicChat-01MEAI
+   ```
+   
+   If you're using Linux, macOS, Git Bash, WSL, or the VS Code terminal:
    ```bash
    cd samples/CoreSamples/BasicChat-01MEAI
    ```
+   
+   > **Note**: GitHub Codespaces runs a Linux environment, so always use forward slashes (`/`) in paths when working in Codespaces, regardless of your local operating system.
+
 5. Run the application:
    ```bash
    dotnet run

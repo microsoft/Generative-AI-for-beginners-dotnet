@@ -155,6 +155,11 @@ Each application is fully functional and can be run independently with proper AI
 
 ### Quick Start by Category
 
+> **Note**: Use the appropriate path separator for your platform:
+> - **Windows (CMD/PowerShell)**: Use backslashes `\` (e.g., `samples\CoreSamples\BasicChat-01MEAI`)
+> - **Linux/macOS/Git Bash/WSL**: Use forward slashes `/` (e.g., `samples/CoreSamples/BasicChat-01MEAI`)
+> - **GitHub Codespaces**: Always use forward slashes `/` (runs Linux environment)
+
 #### 1. **Learning Core Concepts** (Start here!)
 
 ```bash
