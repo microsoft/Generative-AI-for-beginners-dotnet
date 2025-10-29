@@ -18,6 +18,10 @@
   - Screenshots and FPS toggles are built-in for debugging and demonstration.
 
 ## Developer Workflows
+- **Code Formatting (Required Before Each Commit):**
+  - Run `dotnet format` before committing any changes to ensure proper C# code formatting and style
+  - Ensure all code builds with `dotnet build` and passes tests with `dotnet test`
+  - Verify formatting with `dotnet format --verify-no-changes` if linting is enabled
 - **Build & Run:**
   - Use standard .NET CLI: `dotnet build`, `dotnet run` from the relevant project folder (e.g., `cd 05-AppCreatedWithGenAI/SpaceAINet/SpaceAINet.Console`).
   - For local AI: ensure Ollama is running and the required model is pulled (e.g., `ollama pull phi4-mini`).
@@ -29,6 +33,15 @@
 - **Testing:**
   - Run sample apps in the lesson `src/` folders to verify model integration and workflow.
 
+## Code Standards & Best Practices
+- Follow C# and .NET best practices (naming conventions, async/await patterns, nullable reference types)
+- Use modern .NET features (top-level statements, file-scoped namespaces, pattern matching) where appropriate
+- Write unit tests for new functionality when possible (use xUnit or MSTest)
+- Document public APIs, sample usage, and complex logic
+- Prefer dependency injection and configuration via `appsettings.json` for new .NET projects
+- Keep code and documentation accessible for beginners—add comments and links to docs where helpful
+- For AI integrations (Azure OpenAI, Ollama, etc.), follow official SDK and security guidelines
+
 ## Project-Specific Conventions
 - All lessons include a short video, code sample, and step-by-step guide.
 - The code samples can be found at the `samples` folder
@@ -36,6 +49,7 @@
 - AI integration is always via service abstraction (never direct model calls in UI or game logic).
 - Use key bindings in sample apps to toggle AI modes, save screenshots, and display FPS (see app README for details).
 - For translations, update the corresponding `translations/<lang>/README.md`.
+- Maintain existing code structure and organization—place new samples in the correct lesson folder
 
 ## Integration Points & External Dependencies
 - **Azure OpenAI:** Requires endpoint, model name, and API key (see `02-SetupDevEnvironment/getting-started-azure-openai.md`).
