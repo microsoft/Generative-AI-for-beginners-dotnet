@@ -70,7 +70,7 @@ internal static class BackgroundResponsesDemo
     {
         // create a temporary thread, do not persist after
         var tempThread = agent.GetNewThread();
-        tempThread = await RunQuestionWithThread(agent, tempThread, persistAfter: false);
+        await RunQuestionWithThread(agent, tempThread, persistAfter: false);
 
         PersistingUI.PrintMessage(string.Empty);
         PersistingUI.PrintMessage("[press a key to go back to main menu]");
