@@ -111,6 +111,8 @@ This lesson includes multiple code samples demonstrating different aspects of th
 | [AgentFx-BackgroundResponses-01-Simple](../samples/AgentFx/AgentFx-BackgroundResponses-01-Simple/) | Background responses with continuation tokens | Streaming interruption, response continuation | Configurable |
 | [AgentFx-BackgroundResponses-02-Tools](../samples/AgentFx/AgentFx-BackgroundResponses-02-Tools/) | Background responses with tool integration | Tool usage during background processing | Configurable |
 | [AgentFx-BackgroundResponses-03-Complex](../samples/AgentFx/AgentFx-BackgroundResponses-03-Complex/) | Complex background responses with multiple queries | Interleaved queries, continuation management | Configurable |
+| [AgentFx-Persisting-01-Simple](../samples/AgentFx/AgentFx-Persisting-01-Simple/) | Persisting conversations: serialize and resume AgentThread | Thread serialization, resume across restarts | Configurable |
+| [AgentFx-Persisting-02-Menu](../samples/AgentFx/AgentFx-Persisting-02-Menu/) | Interactive console for persisting and resuming AgentThreads | Menu-driven persist/load flow, Temp storage demo | Configurable |
 
 ### Advanced Multi-Provider Samples
 
