@@ -150,6 +150,14 @@ Each sample includes configuration instructions in its source code comments. Gen
 
 **GitHub Models** (requires GitHub token):
 
+Windows (CMD/PowerShell):
+```bash
+cd samples\AgentFx\<sample-folder>
+dotnet user-secrets set "GITHUB_TOKEN" "your-github-token"
+dotnet run
+```
+
+Linux/macOS/Git Bash/WSL/Codespaces:
 ```bash
 cd samples/AgentFx/<sample-folder>
 dotnet user-secrets set "GITHUB_TOKEN" "your-github-token"
@@ -158,6 +166,16 @@ dotnet run
 
 **Azure AI Foundry** (requires Azure CLI login):
 
+Windows (CMD/PowerShell):
+```bash
+cd samples\AgentFx\<sample-folder>
+dotnet user-secrets set "endpoint" "https://<your-endpoint>.services.ai.azure.com/"
+dotnet user-secrets set "deploymentName" "gpt-4o-mini"
+az login
+dotnet run
+```
+
+Linux/macOS/Git Bash/WSL/Codespaces:
 ```bash
 cd samples/AgentFx/<sample-folder>
 dotnet user-secrets set "endpoint" "https://<your-endpoint>.services.ai.azure.com/"
@@ -168,12 +186,23 @@ dotnet run
 
 **Ollama** (requires local installation):
 
+Windows (CMD/PowerShell):
+```bash
+# Install Ollama from https://ollama.com
+ollama pull llama3.2
+cd samples\AgentFx\<sample-folder>
+dotnet run
+```
+
+Linux/macOS/Git Bash/WSL/Codespaces:
 ```bash
 # Install Ollama from https://ollama.com
 ollama pull llama3.2
 cd samples/AgentFx/<sample-folder>
 dotnet run
 ```
+
+> **Note**: GitHub Codespaces runs a Linux environment, so always use forward slashes (`/`) in paths when working in Codespaces, regardless of your local operating system.
 
 ## Agent Workflows in Detail
 
