@@ -270,6 +270,65 @@ Background responses enable more sophisticated agent interactions by letting you
 >
 > 🧑‍🏫 **Learn more**: See the [Background Responses detailed guide](./README-BackgroundResponses.md) for comprehensive documentation and examples.
 
+## Persisted Conversations
+
+AgentFx supports persisting and resuming conversations using the `AgentThread` object. This feature enables you to:
+
+- **Save conversation state** across sessions or after application restarts
+- **Resume conversations** with full context preserved
+- **Store conversations** in databases, files, or cloud storage
+- **Maintain agent memory** for long-running interactions
+
+Persisted conversations work by serializing the `AgentThread` to JSON, which can then be stored and later deserialized to continue the conversation.
+
+### How It Works
+
+1. **Create an agent and thread**: Initialize your agent and get a new thread
+2. **Run conversations**: Execute prompts against the thread to build conversation history
+3. **Serialize the thread**: Convert the thread state to JSON using `Serialize()` or `SerializeAsync()`
+4. **Store the state**: Save the JSON to your preferred storage (file, database, blob storage)
+5. **Deserialize and resume**: Load the JSON and rehydrate the thread using `DeserializeThread()`
+6. **Continue the conversation**: Use the resumed thread to maintain full context
+
+### Example
+
+```csharp
+// Create an agent
+var agent = client.CreateAIAgent(
+    name: "Assistant",
+    instructions: "You are a helpful assistant");
+
+// Create a new thread and run a conversation
+var thread = agent.GetNewThread();
+var response = await agent.RunAsync("My name is Bruno", thread);
+
+// Serialize and save the thread
+var threadJson = thread.Serialize(JsonSerializerOptions.Web).GetRawText();
+await File.WriteAllTextAsync("agent_thread.json", threadJson);
+
+// Later: Load and deserialize the thread
+var loadedJson = await File.ReadAllTextAsync("agent_thread.json");
+var reloaded = JsonSerializer.Deserialize<JsonElement>(loadedJson);
+var resumedThread = agent.DeserializeThread(reloaded, JsonSerializerOptions.Web);
+
+// Continue the conversation with context
+var nextResponse = await agent.RunAsync("What is my name?", resumedThread);
+// The agent remembers: "Your name is Bruno"
+```
+
+### Key Considerations
+
+- **Agent consistency**: You must use the same agent type to deserialize threads, as different agents may have unique internal implementations
+- **Storage flexibility**: The framework abstracts storage details - some agents (like Azure AI Foundry) persist history in the service, while others (like OpenAI chat completion) manage state in-memory
+- **Production storage**: For production scenarios, use reliable storage like cloud databases or blob storage instead of local files
+
+> 🧑‍💻 **Sample code**: Explore the persisted conversation samples:
+>
+> - [AgentFx-Persisting-01-Simple](../samples/AgentFx/AgentFx-Persisting-01-Simple/) - Basic thread serialization and resumption
+> - [AgentFx-Persisting-02-Menu](../samples/AgentFx/AgentFx-Persisting-02-Menu/) - Interactive menu-driven persist/load workflow
+>
+> 🧑‍🏫 **Learn more**: See the official [Persisted Conversations tutorial](https://learn.microsoft.com/en-us/agent-framework/tutorials/agents/persisted-conversation) and [Agent Memory guide](https://learn.microsoft.com/en-us/agent-framework/user-guide/agents/agent-memory) for detailed documentation.
+
 ## Integration with Model Context Protocol (MCP)
 
 The Model Context Protocol (MCP) provides a standardized way for agents to interact with external tools and services. AgentFx seamlessly integrates with MCP to enable agents to:
