@@ -1,5 +1,4 @@
-﻿
-using System.ClientModel;
+﻿using System.ClientModel;
 
 /// <summary>
 /// Small helper to keep console printing consistent and easy to read.
@@ -11,9 +10,12 @@ internal static class StreamConsoleHelper
     private static readonly System.Text.StringBuilder _accum = new System.Text.StringBuilder();
     private static string? _firstTimestamp;
 
-    public static void PrintHeader(string text)
+    public static void PrintHeader(string text, bool clearConsole = true)
     {
-        Console.Clear();
+        if (clearConsole)
+        {
+            Console.Clear();
+        }
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine(new string('=',60));
         Console.WriteLine(text);
@@ -174,5 +176,16 @@ internal static class StreamConsoleHelper
     internal static void AccumulateAndPrint(string text)
     {
         AccumulateAndPrint(text, "");
+    }
+
+    // New helper method: start accumulation, append the provided text, and immediately flush.
+    // Useful for callers that have a single response text and want it printed using the
+    // same accumulation rules (sentence assembly, newline handling) without manually calling
+    // StartAccumulatedStream / AccumulateAndPrint / FlushAccumulated each time.
+    public static void PrintAccumulatedLine(string text, string? continuationToken = null)
+    {
+        StartAccumulatedStream();
+        AccumulateAndPrint(text, continuationToken);
+        FlushAccumulated();
     }
 }

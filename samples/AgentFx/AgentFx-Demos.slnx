@@ -22,4 +22,8 @@
     <Project Path="AgentFx-BackgroundResponses-02-Tools/AgentFx-BackgroundResponses-02-Tools.csproj" Id="a8c55714-88d3-4fdf-bb0f-3a1dbaf0bf3e" />
     <Project Path="AgentFx-BackgroundResponses-03-Complex/AgentFx-BackgroundResponses-03-Complex.csproj" Id="d02a14d8-3d2d-444b-a907-4bddf28614fe" />
   </Folder>
+  <Folder Name="/7 Persisting Conversations/">
+    <Project Path="AgentFx-Persisting-01-Simple/AgentFx-Persisting-01-Simple.csproj" Id="cbce1a16-7258-4d75-af26-725d6c0c5ab4" />
+    <Project Path="AgentFx-Persisting-02-Menu/AgentFx-Persisting-02-Menu.csproj" Id="b7e2e2c1-4e2a-4e2b-9e2c-2e2d2e2e2e2f" />
+  </Folder>
 </Solution>

@@ -6,7 +6,7 @@ This directory contains all the code samples for the **Generative AI for Beginne
 
 ## Directory Structure
 
-```
+```text
 samples/
 ├── CoreSamples/          # Core AI techniques and fundamental concepts
 ├── AgentFx/              # Microsoft Agent Framework samples
@@ -23,7 +23,7 @@ samples/
 
 This folder contains fundamental samples demonstrating core Generative AI techniques with .NET. These samples cover the essential building blocks for AI-enabled applications and are referenced throughout Lessons 02 and 03.
 
-### What you'll find:
+### What you'll find in CoreSamples
 
 - **Chat & Completions** - Basic text generation and conversational AI using various providers (GitHub Models, Azure OpenAI, Ollama) and frameworks (Microsoft.Extensions.AI, Semantic Kernel)
 - **Function Calling** - Extending AI capabilities by allowing models to call custom functions and external tools
@@ -45,13 +45,59 @@ This folder includes over 40 samples demonstrating different techniques, provide
 
 This folder contains samples demonstrating the **Microsoft Agent Framework** for building sophisticated multi-agent AI systems.
 
-### What you'll find:
+### What you'll find in AgentFx
 
 - **Basic Samples** - Single and dual-agent workflows demonstrating fundamental agent creation and orchestration patterns
 - **Advanced Multi-Provider Samples** - Complex workflows combining multiple AI providers (Azure OpenAI, GitHub Models, Ollama) in sophisticated agent orchestrations
 - **Integration & Web Samples** - Web-based chat applications with Blazor UI, middleware patterns, and MCP integrations for tool usage (e.g., image generation)
 
 This folder includes 11 samples ranging from simple single-agent scenarios to complex multi-agent systems with persistent state and web interfaces.
+
+### Highlighted AgentFx samples
+
+Below are a few highlighted samples and short run notes copied into this central README so there are no per-sample README files under `samples/AgentFx/`.
+
+- AgentFx-BackgroundResponses-01-Simple
+
+  This simple sample demonstrates background responses (continuation tokens) using a minimal console app. It shows how to start streaming a response, capture a continuation token, stop the stream, and later resume the generation using that token.
+
+  Run (from repository root):
+
+  ```powershell
+  cd .\samples\AgentFx\AgentFx-BackgroundResponses-01-Simple
+  dotnet build
+  dotnet run
+  ```
+
+  Files of interest: `Program.cs`, `StreamConsoleHelper.cs`, `ResponseClientProvider.cs`.
+
+- AgentFx-Persisting-01-Simple
+
+  Demonstrates creating an `AgentThread`, serializing it to JSON (saved as `agent_thread.json` in the app folder), and reloading it later to resume the conversation. Useful to learn how to persist conversation state across restarts.
+
+  Run (from repository root):
+
+  ```powershell
+  cd .\samples\AgentFx\AgentFx-Persisting-01-Simple
+  # configure user-secrets or env vars for your provider (endpoint, deploymentName, apikey)
+  dotnet build
+  dotnet run
+  ```
+
+- AgentFx-Persisting-02-Menu
+
+  Interactive console menu sample that lets you create, persist, and load `AgentThread` sessions. Saved thread files use the system temporary folder by default and the sample prints the saved filename when persisting.
+
+  Run (from repository root):
+
+  ```powershell
+  cd .\samples\AgentFx\AgentFx-Persisting-02-Menu
+  # configure provider credentials (user-secrets/env) if needed
+  dotnet build
+  dotnet run
+  ```
+
+  Files of interest: `PersistingUI.cs`, `Program.cs`, `StreamConsoleHelper.cs`.
 
 ---
 
@@ -62,9 +108,10 @@ This folder includes 11 samples ranging from simple single-agent scenarios to co
 
 This folder contains practical, real-world samples demonstrating AI integration patterns in production-ready scenarios.
 
-### What you'll find:
+### What you'll find in PracticalSamples
 
 A comprehensive **.NET Aspire MCP Sample** showcasing the **Model Context Protocol (MCP)** integration with a complete multi-project solution including:
+
 - .NET Aspire orchestration for managing distributed services
 - Blazor-based chat interface for user interactions
 - ASP.NET Core backend integrating with MCP servers
@@ -72,13 +119,6 @@ A comprehensive **.NET Aspire MCP Sample** showcasing the **Model Context Protoc
 
 **Run the sample:**
 
-Windows (CMD/PowerShell):
-```bash
-cd samples\PracticalSamples\src
-dotnet run --project McpSample.AppHost\McpSample.AppHost.csproj
-```
-
-Linux/macOS/Git Bash/WSL/Codespaces:
 ```bash
 cd samples/PracticalSamples/src
 dotnet run --project McpSample.AppHost/McpSample.AppHost.csproj
@@ -93,7 +133,7 @@ dotnet run --project McpSample.AppHost/McpSample.AppHost.csproj
 
 This folder showcases complete, production-quality applications created with the assistance of Generative AI tools like GitHub Copilot Agent, demonstrating "vibe coding" - building real software through AI-assisted development.
 
-### What you'll find:
+### What you'll find
 
 - **SpaceAINet** - A retro space invaders console game with AI-powered enemy behavior that can analyze game state in real-time and make strategic decisions using Azure OpenAI or Ollama
 - **HFMCP.GenImage** - An image generation application using Hugging Face's MCP Server, demonstrating multi-modal AI capabilities with .NET Aspire orchestration
@@ -122,13 +162,6 @@ Each application is fully functional and can be run independently with proper AI
 
 #### 1. **Learning Core Concepts** (Start here!)
 
-Windows (CMD/PowerShell):
-```bash
-cd samples\CoreSamples\BasicChat-01MEAI
-dotnet run
-```
-
-Linux/macOS/Git Bash/WSL/Codespaces:
 ```bash
 cd samples/CoreSamples/BasicChat-01MEAI
 dotnet run
@@ -136,13 +169,6 @@ dotnet run
 
 #### 2. **Building Agents**
 
-Windows (CMD/PowerShell):
-```bash
-cd samples\AgentFx\AgentFx01
-dotnet run
-```
-
-Linux/macOS/Git Bash/WSL/Codespaces:
 ```bash
 cd samples/AgentFx/AgentFx01
 dotnet run
@@ -150,13 +176,6 @@ dotnet run
 
 #### 3. **Practical Applications**
 
-Windows (CMD/PowerShell):
-```bash
-cd samples\PracticalSamples\src
-dotnet run --project McpSample.AppHost
-```
-
-Linux/macOS/Git Bash/WSL/Codespaces:
 ```bash
 cd samples/PracticalSamples/src
 dotnet run --project McpSample.AppHost
@@ -164,13 +183,6 @@ dotnet run --project McpSample.AppHost
 
 #### 4. **Complete Applications**
 
-Windows (CMD/PowerShell):
-```bash
-cd samples\AppsWithGenAI\SpaceAINet\SpaceAINet.Console
-dotnet run
-```
-
-Linux/macOS/Git Bash/WSL/Codespaces:
 ```bash
 cd samples/AppsWithGenAI/SpaceAINet/SpaceAINet.Console
 dotnet run

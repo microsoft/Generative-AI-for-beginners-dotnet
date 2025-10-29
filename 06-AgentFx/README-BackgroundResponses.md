@@ -85,5 +85,20 @@ Notes
 - Secrets and API keys are not stored in code. Use environment variables or user-secrets as described in the main repository docs.
 - This sample focuses on clarity and learning, not production patterns. In production code, handle errors and retries, and avoid depending on Console for UX.
 
+## Persisting conversations (how this differs from background responses)
+
+Background responses and persisted conversations are complementary features of AgentFx and solve different needs:
+
+- Background responses (continuation tokens) let a running generation be interrupted and resumed within the same agent thread and runtime — useful for streaming scenarios where you capture a continuation token during streaming and later continue the same generation.
+- Persisted conversations (AgentThread serialization) let you store the entire conversation state to durable storage (file, blob, database) and reload it later, potentially in a new process or machine, preserving the conversation history and context across application restarts.
+
+Key differences:
+
+- Scope: continuation tokens resume a single in-flight generation; persisted threads restore full conversation history and metadata.
+- Lifetime: continuation tokens are short-lived by design (for the same running generation). Persisted thread JSON is intended for long-term storage and retrieval.
+- Usage patterns: use background responses when you need to pause/resume a long-running generation inside the same session; use persisted conversations when you need to save chat history and resume later (e.g., chat apps, long-running agents, user sessions).
+
+See the new lesson-level guide on persisting conversations for step-by-step serialization/deserialization examples and run instructions: [README-PersistingConversations.md](./README-PersistingConversations.md).
+
 License
 MIT
