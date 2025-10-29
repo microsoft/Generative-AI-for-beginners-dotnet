@@ -327,7 +327,7 @@ var nextResponse = await agent.RunAsync("What is my name?", resumedThread);
 > - [AgentFx-Persisting-01-Simple](../samples/AgentFx/AgentFx-Persisting-01-Simple/) - Basic thread serialization and resumption
 > - [AgentFx-Persisting-02-Menu](../samples/AgentFx/AgentFx-Persisting-02-Menu/) - Interactive menu-driven persist/load workflow
 >
-> 🧑‍🏫 **Learn more**: See the official [Persisted Conversations tutorial](https://learn.microsoft.com/en-us/agent-framework/tutorials/agents/persisted-conversation) and [Agent Memory guide](https://learn.microsoft.com/en-us/agent-framework/user-guide/agents/agent-memory) for detailed documentation.
+> 🧑‍🏫 **Learn more**: See the official [Persisted Conversations tutorial](https://learn.microsoft.com/agent-framework/tutorials/agents/persisted-conversation) and [Agent Memory guide](https://learn.microsoft.com/agent-framework/user-guide/agents/agent-memory) for detailed documentation.
 
 ## Integration with Model Context Protocol (MCP)
 
