@@ -4,6 +4,10 @@ using OpenAI;
 using System.Text.Json;
 using System.Threading.Tasks;
 
+// Persisting Conversation — Simple Sample
+//1) Demonstrates creating an AgentThread, running a prompt against it, and persisting the thread state.
+//2) Shows how to reload the persisted thread and continue the conversation with context preserved.
+//3) Uses the same agent/thread model to illustrate stateful interactions across runs.
 // More information: https://learn.microsoft.com/en-us/agent-framework/tutorials/agents/persisted-conversation?pivots=programming-language-csharp
 
 string SavedThreadFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "agent_thread.json");
@@ -15,12 +19,12 @@ var agent = client.CreateAIAgent(
     instructions: "You are a helpful assistant");
 
 // ------------------------------------------------------------
-// Step 1, create new thread, ask a question and persist the thread
+// Step1, create new thread, ask a question and persist the thread
 
 var thread = agent.GetNewThread();
 var question = "My name is Bruno";
 
-StreamConsoleHelper.PrintHeader("Step 1, create new thread, ask a question and persist the thread", false);
+StreamConsoleHelper.PrintHeader("Step1, create new thread, ask a question and persist the thread", false);
 StreamConsoleHelper.PrintSection("Start answering your question");
 StreamConsoleHelper.PrintLabeled("Question", question);
 var response = await agent.RunAsync(question, thread);
@@ -32,9 +36,9 @@ await File.WriteAllTextAsync(SavedThreadFilePath, threadRaw);
 StreamConsoleHelper.PrintLabeled("Saved thread to", SavedThreadFilePath);
 
 // ------------------------------------------------------------
-// Step 2, create new thread and ask the question "what is my name"
+// Step2, create new thread and ask the question "what is my name"
 
-StreamConsoleHelper.PrintHeader("Step 2, create new thread and ask the question \"what is my name\"", false);
+StreamConsoleHelper.PrintHeader("Step2, create new thread and ask the question \"what is my name\"", false);
 thread = agent.GetNewThread();
 question = "What is my name?";
 
@@ -45,9 +49,9 @@ StreamConsoleHelper.PrintAccumulatedLine(response.Text);
 
 
 // ------------------------------------------------------------
-// Step 3, load persisted thread and ask the question "what is my name"
+// Step3, load persisted thread and ask the question "what is my name"
 
-StreamConsoleHelper.PrintHeader("Step 3, load persisted thread and ask the question \"what is my name\"", false);
+StreamConsoleHelper.PrintHeader("Step3, load persisted thread and ask the question \"what is my name\"", false);
 var loadedJson = await File.ReadAllTextAsync(SavedThreadFilePath);
 JsonElement reloaded = JsonSerializer.Deserialize<JsonElement>(loadedJson, JsonSerializerOptions.Web);
 
@@ -62,7 +66,7 @@ StreamConsoleHelper.PrintAccumulatedLine(response.Text);
 
 
 // ------------------------------------------------------------
-// Step 4, end
+// Step4, end
 
 StreamConsoleHelper.PrintFooter("End of the example, press any key to exit");
 Console.ReadKey();

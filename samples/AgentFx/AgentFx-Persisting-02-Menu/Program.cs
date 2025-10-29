@@ -4,6 +4,10 @@ using Microsoft.Extensions.AI;
 using OpenAI;
 using System.Text.Json;
 
+// Persisting Conversation — Menu Sample
+//1) Provides an interactive menu to create, resume, and persist AgentThreads.
+//2) Demonstrates running questions on new threads or resumed threads and persisting state between runs.
+//3) Centralizes console I/O and printing helpers to make the sample easier to extend.
 // More information: https://learn.microsoft.com/en-us/agent-framework/tutorials/agents/persisted-conversation?pivots=programming-language-csharp
 
 await BackgroundResponsesDemo.RunAsync();
