@@ -27,15 +27,15 @@ builder.Services.AddSingleton<ILogger>(sp => sp.GetRequiredService<ILogger<Progr
 // add MCP client
 builder.Services.AddSingleton<IMcpClient>(sp =>
 {
-    var clientTransport = new SseClientTransport(
-        new()
+    var clientTransport = new HttpClientTransport(
+        new HttpClientTransportOptions
         {
             Name = "AspNetCore Server",
             Endpoint = new Uri("https://localhost:7133"), // MCP server endpoint
             TransportMode = HttpTransportMode.StreamableHttp
         });
 
-    var mcpClient = McpClientFactory.CreateAsync(clientTransport).GetAwaiter().GetResult();
+    var mcpClient = McpClient.CreateAsync(clientTransport).GetAwaiter().GetResult();
     return mcpClient;
 });
 
