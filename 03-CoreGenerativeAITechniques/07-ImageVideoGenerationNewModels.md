@@ -22,9 +22,17 @@ To run the sample code, you'll need to:
 2. Ensure you have configured your Azure OpenAI API key and settings as described in the [Azure OpenAI setup guide](../02-SetupDevEnvironment/getting-started-azure-openai.md)
 3. Open a terminal in your codespace (Ctrl+` or Cmd+`)
 4. Navigate to the sample code directory:
+   
+   If you're using Windows Command Prompt (CMD) or PowerShell:
+   ```bash
+   cd samples\CoreSamples\ImageGeneration-01
+   ```
+   If you're using Linux, macOS, Git Bash, WSL, or the VS Code terminal:
    ```bash
    cd samples/CoreSamples/ImageGeneration-01
    ```
+
+   > **Note**: GitHub Codespaces runs a Linux environment, so always use forward slashes (`/`) in paths.
 5. Run the application:
    ```bash
    dotnet run

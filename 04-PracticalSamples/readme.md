@@ -42,10 +42,20 @@ The Aspire MCP Sample includes:
 - **McpSample.ServiceDefaults**: Shared service configurations
 
 To run this sample locally:
+
+Windows (CMD/PowerShell):
+```bash
+cd samples\PracticalSamples\src
+dotnet run --project McpSample.AppHost\McpSample.AppHost.csproj
+```
+
+Linux/macOS/Git Bash/WSL/Codespaces:
 ```bash
 cd samples/PracticalSamples/src
 dotnet run --project McpSample.AppHost/McpSample.AppHost.csproj
 ```
+
+> **Note**: GitHub Codespaces runs a Linux environment, so always use forward slashes (`/`) in paths.
 
 This sample demonstrates how MCP can be used to connect AI models with external tools and services, enabling more powerful and contextual AI interactions.
 
