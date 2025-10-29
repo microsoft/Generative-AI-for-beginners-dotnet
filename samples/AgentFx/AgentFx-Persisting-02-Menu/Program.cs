@@ -59,7 +59,7 @@ internal static class BackgroundResponsesDemo
     {
         // create a brand new thread, pass it to the unified handler, persist after
         var thread = agent.GetNewThread();
-        thread = await RunQuestionWithThread(agent, thread, persistAfter: true);
+        await RunQuestionWithThread(agent, thread, persistAfter: true);
 
         PersistingUI.PrintMessage(string.Empty);
         PersistingUI.PrintMessage("[press a key to go back to main menu]");
