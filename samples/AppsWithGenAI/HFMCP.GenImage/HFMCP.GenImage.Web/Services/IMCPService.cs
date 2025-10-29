@@ -45,15 +45,15 @@ public class MCPService : IMCPService
                     { "Authorization", $"Bearer {config.HuggingFaceToken}" }
                 };
 
-                var clientTransport = new SseClientTransport(
-                    new()
+                var clientTransport = new HttpClientTransport(
+                    new HttpClientTransportOptions
                     {
                         Name = "HF Server",
                         Endpoint = new Uri(config.HuggingFaceMCPServer),
                         AdditionalHeaders = hfHeaders
                     });
 
-                _mcpClient = await McpClientFactory.CreateAsync(clientTransport);
+                _mcpClient = await McpClient.CreateAsync(clientTransport);
             }
 
             // Get the available tools
