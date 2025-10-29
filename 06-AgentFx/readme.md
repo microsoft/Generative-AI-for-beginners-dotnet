@@ -148,6 +148,11 @@ This lesson includes multiple code samples demonstrating different aspects of th
 
 Each sample includes configuration instructions in its source code comments. Generally:
 
+> **Note**: Replace `<sample-folder>` with the specific sample directory name (e.g., `AgentFx01`).
+> Use the appropriate path separator for your platform:
+> - **Windows (CMD/PowerShell)**: `cd samples\AgentFx\<sample-folder>`
+> - **Linux/macOS/Git Bash/WSL/Codespaces**: `cd samples/AgentFx/<sample-folder>`
+
 **GitHub Models** (requires GitHub token):
 
 Windows (CMD/PowerShell):

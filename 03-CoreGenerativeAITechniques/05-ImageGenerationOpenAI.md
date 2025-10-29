@@ -31,6 +31,10 @@ To run the sample code, you'll need to:
    ```bash
    cd samples\CoreSamples\ImageGeneration-01
    ```
+   If you're using Linux, macOS, Git Bash, WSL, or the VS Code terminal:
+   ```bash
+   cd samples\CoreSamples\ImageGeneration-01
+   ```
    
    If you're using Linux, macOS, Git Bash, WSL, or the VS Code terminal:
    ```bash

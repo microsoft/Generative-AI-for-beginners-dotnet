@@ -71,6 +71,14 @@ A comprehensive **.NET Aspire MCP Sample** showcasing the **Model Context Protoc
 - Shared service configurations and defaults
 
 **Run the sample:**
+
+Windows (CMD/PowerShell):
+```bash
+cd samples\PracticalSamples\src
+dotnet run --project McpSample.AppHost\McpSample.AppHost.csproj
+```
+
+Linux/macOS/Git Bash/WSL/Codespaces:
 ```bash
 cd samples/PracticalSamples/src
 dotnet run --project McpSample.AppHost/McpSample.AppHost.csproj
@@ -107,7 +115,10 @@ Each application is fully functional and can be run independently with proper AI
 
 ### Quick Start by Category
 
-> **Note**: If you're working on Windows, use backslashes (`\`) in paths. For Linux, macOS, Git Bash, WSL, or GitHub Codespaces, use forward slashes (`/`).
+> **Note**: Use the appropriate path separator for your platform:
+> - **Windows (CMD/PowerShell)**: Use backslashes `\` (e.g., `samples\CoreSamples\BasicChat-01MEAI`)
+> - **Linux/macOS/Git Bash/WSL**: Use forward slashes `/` (e.g., `samples/CoreSamples/BasicChat-01MEAI`)
+> - **GitHub Codespaces**: Always use forward slashes `/` (runs Linux environment)
 
 #### 1. **Learning Core Concepts** (Start here!)
 
