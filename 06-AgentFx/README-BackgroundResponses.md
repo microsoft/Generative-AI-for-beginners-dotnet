@@ -56,7 +56,9 @@ Run the complex sample
    cd samples/AgentFx/AgentFx-BackgroundResponses-03-Complex
    ```
 
-   > **Note**: If you're already in the repository root directory, use the paths above. If you're in the `06-AgentFx` directory, use `cd ../samples/AgentFx/AgentFx-BackgroundResponses-03-Complex` (or `cd ..\samples\AgentFx\AgentFx-BackgroundResponses-03-Complex` on Windows).
+   > **Note**: The paths above assume you're in the repository root directory. If you're currently in the `06-AgentFx` directory:
+   > - Windows: `cd ..\samples\AgentFx\AgentFx-BackgroundResponses-03-Complex`
+   > - Linux/macOS/Codespaces: `cd ../samples/AgentFx/AgentFx-BackgroundResponses-03-Complex`
 
 2. Build and run:
 
