@@ -46,9 +46,17 @@ Run the complex sample
 
 1. Change to the complex sample folder:
 
+   Windows (CMD/PowerShell):
    ```bash
-   cd ../samples/AgentFx/AgentFx-BackgroundResponses-03-Complex
+   cd samples\AgentFx\AgentFx-BackgroundResponses-03-Complex
    ```
+   
+   Linux/macOS/Git Bash/WSL/Codespaces:
+   ```bash
+   cd samples/AgentFx/AgentFx-BackgroundResponses-03-Complex
+   ```
+
+   > **Note**: If you're already in the repository root directory, use the paths above. If you're in the `06-AgentFx` directory, use `cd ../samples/AgentFx/AgentFx-BackgroundResponses-03-Complex` (or `cd ..\samples\AgentFx\AgentFx-BackgroundResponses-03-Complex` on Windows).
 
 2. Build and run:
 
