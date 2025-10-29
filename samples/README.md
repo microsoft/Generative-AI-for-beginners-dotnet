@@ -121,24 +121,56 @@ Each application is fully functional and can be run independently with proper AI
 > - **GitHub Codespaces**: Always use forward slashes `/` (runs Linux environment)
 
 #### 1. **Learning Core Concepts** (Start here!)
+
+Windows (CMD/PowerShell):
+```bash
+cd samples\CoreSamples\BasicChat-01MEAI
+dotnet run
+```
+
+Linux/macOS/Git Bash/WSL/Codespaces:
 ```bash
 cd samples/CoreSamples/BasicChat-01MEAI
 dotnet run
 ```
 
 #### 2. **Building Agents**
+
+Windows (CMD/PowerShell):
+```bash
+cd samples\AgentFx\AgentFx01
+dotnet run
+```
+
+Linux/macOS/Git Bash/WSL/Codespaces:
 ```bash
 cd samples/AgentFx/AgentFx01
 dotnet run
 ```
 
 #### 3. **Practical Applications**
+
+Windows (CMD/PowerShell):
+```bash
+cd samples\PracticalSamples\src
+dotnet run --project McpSample.AppHost
+```
+
+Linux/macOS/Git Bash/WSL/Codespaces:
 ```bash
 cd samples/PracticalSamples/src
 dotnet run --project McpSample.AppHost
 ```
 
 #### 4. **Complete Applications**
+
+Windows (CMD/PowerShell):
+```bash
+cd samples\AppsWithGenAI\SpaceAINet\SpaceAINet.Console
+dotnet run
+```
+
+Linux/macOS/Git Bash/WSL/Codespaces:
 ```bash
 cd samples/AppsWithGenAI/SpaceAINet/SpaceAINet.Console
 dotnet run

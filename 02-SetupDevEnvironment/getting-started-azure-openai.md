@@ -90,15 +90,16 @@ Now let’s update the code to use the newly deployed model. First we'll need to
 1. Open the terminal and switch to the project directory:
 
    If you're using Windows Command Prompt (CMD) or PowerShell:
-    ```bash
-    cd samples\CoreSamples\BasicChat-01MEAI
-    ```
-    If you're using Linux, macOS, Git Bash, WSL, or the VS Code terminal:
+   ```bash
+   cd samples\CoreSamples\BasicChat-01MEAI
+   ```
+   
+   If you're using Linux, macOS, Git Bash, WSL, or the VS Code terminal:
    ```bash
    cd samples/CoreSamples/BasicChat-01MEAI
    ```
-
-   > **Note**: GitHub Codespaces runs a Linux environment, so always use forward slashes (`/`) in paths, regardless of your local operating system.
+   
+   > **Note**: GitHub Codespaces runs a Linux environment, so always use forward slashes (`/`) in paths when working in Codespaces, regardless of your local operating system.
 
 1. Run the following commands to add the required package:
 

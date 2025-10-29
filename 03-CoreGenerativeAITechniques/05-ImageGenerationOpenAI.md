@@ -33,12 +33,16 @@ To run the sample code, you'll need to:
    ```
    If you're using Linux, macOS, Git Bash, WSL, or the VS Code terminal:
    ```bash
+   cd samples\CoreSamples\ImageGeneration-01
+   ```
+   
+   If you're using Linux, macOS, Git Bash, WSL, or the VS Code terminal:
+   ```bash
    cd samples/CoreSamples/ImageGeneration-01
    ```
-
-   > **Note**: GitHub Codespaces runs a Linux environment, so always use forward slashes (`/`) in paths.
    
-   ```
+   > **Note**: GitHub Codespaces runs a Linux environment, so always use forward slashes (`/`) in paths when working in Codespaces, regardless of your local operating system.
+
 5. Run the application:
    ```bash
    dotnet run
