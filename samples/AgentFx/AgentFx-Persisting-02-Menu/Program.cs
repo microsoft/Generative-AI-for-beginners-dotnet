@@ -14,7 +14,7 @@ await BackgroundResponsesDemo.RunAsync();
 
 internal static class BackgroundResponsesDemo
 {
-    private static readonly string SavedThreadFilePath = Path.Combine(Path.GetTempPath(), "agent_thread.json");
+    private static readonly string SavedThreadFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "agent_thread.json");
 
     public static async Task RunAsync()
     {
