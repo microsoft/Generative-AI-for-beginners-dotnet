@@ -42,7 +42,7 @@ Workflow workflow =
     AgentWorkflowBuilder
         .BuildSequential(writer, editor);
 
-AIAgent workflowAgent = await workflow.AsAgentAsync();
+AIAgent workflowAgent = workflow.AsAgent();
 
 AgentRunResponse workflowResponse =
     await workflowAgent.RunAsync("Write a short story about a haunted house.");
