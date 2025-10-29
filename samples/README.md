@@ -53,54 +53,6 @@ This folder contains samples demonstrating the **Microsoft Agent Framework** for
 
 This folder includes 11 samples ranging from simple single-agent scenarios to complex multi-agent systems with persistent state and web interfaces.
 
-### Highlighted AgentFx samples
-
-Below are a few highlighted samples and short run notes copied into this central README so there are no per-sample README files under `samples/AgentFx/`.
-
-- AgentFx-BackgroundResponses-01-Simple
-
-  This simple sample demonstrates background responses (continuation tokens) using a minimal console app. It shows how to start streaming a response, capture a continuation token, stop the stream, and later resume the generation using that token.
-
-  Run (from repository root):
-
-  ```powershell
-  cd .\samples\AgentFx\AgentFx-BackgroundResponses-01-Simple
-  dotnet build
-  dotnet run
-  ```
-
-  Files of interest: `Program.cs`, `StreamConsoleHelper.cs`, `ResponseClientProvider.cs`.
-
-- AgentFx-Persisting-01-Simple
-
-  Demonstrates creating an `AgentThread`, serializing it to JSON (saved as `agent_thread.json` in the app folder), and reloading it later to resume the conversation. Useful to learn how to persist conversation state across restarts.
-
-  Run (from repository root):
-
-  ```powershell
-  cd .\samples\AgentFx\AgentFx-Persisting-01-Simple
-  # configure user-secrets or env vars for your provider (endpoint, deploymentName, apikey)
-  dotnet build
-  dotnet run
-  ```
-
-- AgentFx-Persisting-02-Menu
-
-  Interactive console menu sample that lets you create, persist, and load `AgentThread` sessions. Saved thread files use the system temporary folder by default and the sample prints the saved filename when persisting.
-
-  Run (from repository root):
-
-  ```powershell
-  cd .\samples\AgentFx\AgentFx-Persisting-02-Menu
-  # configure provider credentials (user-secrets/env) if needed
-  dotnet build
-  dotnet run
-  ```
-
-  Files of interest: `PersistingUI.cs`, `Program.cs`, `StreamConsoleHelper.cs`.
-
----
-
 ## PracticalSamples
 
 **Location:** [`samples/PracticalSamples/`](./PracticalSamples/)  
@@ -156,6 +108,7 @@ Each application is fully functional and can be run independently with proper AI
 ### Quick Start by Category
 
 > **Note**: Use the appropriate path separator for your platform:
+>
 > - **Windows (CMD/PowerShell)**: Use backslashes `\` (e.g., `samples\CoreSamples\BasicChat-01MEAI`)
 > - **Linux/macOS/Git Bash/WSL**: Use forward slashes `/` (e.g., `samples/CoreSamples/BasicChat-01MEAI`)
 > - **GitHub Codespaces**: Always use forward slashes `/` (runs Linux environment)
