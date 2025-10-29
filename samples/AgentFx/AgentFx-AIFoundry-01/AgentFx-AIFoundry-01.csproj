@@ -9,13 +9,13 @@
     <UserSecretsId>a9a2e9c9-feee-4f3b-99b6-b926c6ad8718</UserSecretsId>
   </PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Azure.AI.OpenAI" Version="2.1.0" />
-		<PackageReference Include="Azure.Identity" Version="1.16.0" />
-		<PackageReference Include="Microsoft.Agents.AI" Version="1.0.0-preview.251002.1" />
-		<PackageReference Include="Microsoft.Agents.AI.OpenAI" Version="1.0.0-preview.251002.1" />
-		<PackageReference Include="Microsoft.Extensions.AI" Version="9.9.1" />
-		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.9.1-preview.1.25474.6" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
+		<PackageReference Include="Azure.AI.OpenAI" Version="2.5.0-beta.1" />
+		<PackageReference Include="Azure.Identity" Version="1.17.0" />
+		<PackageReference Include="Microsoft.Agents.AI" Version="1.0.0-preview.251028.1" />
+		<PackageReference Include="Microsoft.Agents.AI.OpenAI" Version="1.0.0-preview.251028.1" />
+		<PackageReference Include="Microsoft.Extensions.AI" Version="9.10.1" />
+		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.10.1-preview.1.25521.4" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.0-rc.2.25502.107" />
 		<PackageReference Include="OpenAI" Version="2.5.0" />
 	</ItemGroup>
 </Project>

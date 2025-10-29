@@ -85,7 +85,7 @@ Workflow workflow =
     AgentWorkflowBuilder
         .BuildSequential(researcher, writer, reviewer);
 
-AIAgent workflowAgent = await workflow.AsAgentAsync();
+AIAgent workflowAgent = workflow.AsAgent();
 
 // ===== Execute the Workflow =====
 var topic = "artificial intelligence in healthcare";

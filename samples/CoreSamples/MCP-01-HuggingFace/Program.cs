@@ -28,14 +28,14 @@ var hfHeaders = new Dictionary<string, string>
 {
     { "Authorization", $"Bearer {config["HF_API_KEY"]}" }
 };
-var clientTransport = new SseClientTransport(
-    new()
+var clientTransport = new HttpClientTransport(
+    new HttpClientTransportOptions  
     {
         Name = "HF Server",
         Endpoint = new Uri("https://huggingface.co/mcp"),
         AdditionalHeaders = hfHeaders
     });
-await using var mcpClient = await McpClientFactory.CreateAsync(clientTransport);
+await using var mcpClient = await McpClient.CreateAsync(clientTransport);
 
 // Display the available server tools
 var tools = await mcpClient.ListToolsAsync();
