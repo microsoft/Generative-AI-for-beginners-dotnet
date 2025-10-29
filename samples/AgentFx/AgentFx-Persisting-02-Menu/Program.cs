@@ -94,7 +94,7 @@ internal static class BackgroundResponsesDemo
         var resumedThread = agent.DeserializeThread(reloaded, JsonSerializerOptions.Web);
 
         // Use the unified handler and persist after execution
-        resumedThread = await RunQuestionWithThread(agent, resumedThread, persistAfter: true);
+        await RunQuestionWithThread(agent, resumedThread, persistAfter: true);
 
         PersistingUI.PrintMessage(string.Empty);
         PersistingUI.PrintMessage("[press a key to go back to main menu]");
