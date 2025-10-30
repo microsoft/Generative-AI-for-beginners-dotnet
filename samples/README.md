@@ -51,7 +51,7 @@ This folder contains samples demonstrating the **Microsoft Agent Framework** for
 - **Advanced Multi-Provider Samples** - Complex workflows combining multiple AI providers (Azure OpenAI, GitHub Models, Ollama) in sophisticated agent orchestrations
 - **Integration & Web Samples** - Web-based chat applications with Blazor UI, middleware patterns, and MCP integrations for tool usage (e.g., image generation)
 
-This folder includes 11 samples ranging from simple single-agent scenarios to complex multi-agent systems with persistent state and web interfaces.
+This folder includes 12 samples ranging from simple single-agent scenarios to complex multi-agent systems with persistent state and web interfaces.
 
 ## PracticalSamples
 
@@ -163,3 +163,5 @@ dotnet run
 - [Microsoft.Extensions.AI Documentation](https://learn.microsoft.com/dotnet/ai/ai-extensions)
 - [Semantic Kernel Documentation](https://learn.microsoft.com/semantic-kernel/)
 - [Microsoft Agent Framework](https://learn.microsoft.com/agent-framework/)
+
+- **Web chat with persisted conversations** - `AgentFx-AIWebChatApp-Persisting` demonstrates per-user `AgentThread` serialization, storage, and resume across restarts
