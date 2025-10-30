@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="AgentFx-AIWebChatApp-Persisting.AppHost/AgentFx-AIWebChatApp-Persisting.AppHost.csproj" />
+  <Project Path="AgentFx-AIWebChatApp-Persisting.ServiceDefaults/AgentFx-AIWebChatApp-Persisting.ServiceDefaults.csproj" />
+  <Project Path="AgentFx-AIWebChatApp-Persisting.Web/AgentFx-AIWebChatApp-Persisting.Web.csproj" />
+</Solution>

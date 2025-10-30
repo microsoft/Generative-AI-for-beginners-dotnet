@@ -40,6 +40,8 @@ How the persisting samples in this repo work
 - `samples/AgentFx/AgentFx-Persisting-01-Simple`: demonstrates creating a thread, running a prompt, saving the `agent_thread.json` file in the app folder, and reloading it to continue the conversation.
 - `samples/AgentFx/AgentFx-Persisting-02-Menu`: interactive console that lets you create new persisting sessions, save to a temp file, and load previously saved threads from disk for resumption.
 
+- `samples/AgentFx/AgentFx-AIWebChatApp-Persisting`: a Blazor web chat application that demonstrates per-user `AgentThread` persistence. Each user session maps to a durable thread which is serialized after each interaction and stored; returning users can resume their conversations with full context. This sample shows session mapping, storage abstraction, secure JSON handling, and thread rehydration in a web-hosted environment.
+
 Running the samples
 
 1. Configure provider secrets (example for Azure/OpenAI or GitHub models):

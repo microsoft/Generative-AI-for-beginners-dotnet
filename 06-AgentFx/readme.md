@@ -129,6 +129,7 @@ This lesson includes multiple code samples demonstrating different aspects of th
 | [AgentFx-AIWebChatApp-Simple](../samples/AgentFx/AgentFx-AIWebChatApp-Simple/) | Simple web-based chat application | Web integration, Blazor UI | Configurable |
 | [AgentFx-AIWebChatApp-Middleware](../samples/AgentFx/AgentFx-AIWebChatApp-Middleware/) | Web chat with middleware pattern | Custom middleware, request processing | Configurable |
 | [AgentFx-AIWebChatApp-MutliAgent](../samples/AgentFx/AgentFx-AIWebChatApp-MutliAgent/) | Web chat with multiple agents | Multi-agent web apps, agent selection | Configurable |
+| [AgentFx-AIWebChatApp-Persisting](../samples/AgentFx/AgentFx-AIWebChatApp-Persisting/) | Web chat with persisted conversation threads | Thread serialization, per-session resume | Configurable |
 
 ### Quick Start Guide
 
@@ -145,6 +146,7 @@ This lesson includes multiple code samples demonstrating different aspects of th
 2. **AgentFx-BackgroundResponses-03-Complex** - Advanced background response patterns
 3. **AgentFx-ImageGen-01** - Learn MCP integration
 4. **AgentFx-AIWebChatApp-MutliAgent** - Build web-based agent systems
+5. **AgentFx-AIWebChatApp-Persisting** - Full web chat with durable thread history (per-session persistence)
 
 ### Running the Samples
 
@@ -152,12 +154,14 @@ Each sample includes configuration instructions in its source code comments. Gen
 
 > **Note**: Replace `<sample-folder>` with the specific sample directory name (e.g., `AgentFx01`).
 > Use the appropriate path separator for your platform:
-> - **Windows (CMD/PowerShell)**: `cd samples\AgentFx\<sample-folder>`
-> - **Linux/macOS/Git Bash/WSL/Codespaces**: `cd samples/AgentFx/<sample-folder>`
+
+- **Windows (CMD/PowerShell)**: `cd samples\AgentFx\<sample-folder>`
+- **Linux/macOS/Git Bash/WSL/Codespaces**: `cd samples/AgentFx/<sample-folder>`
 
 **GitHub Models** (requires GitHub token):
 
 Windows (CMD/PowerShell):
+
 ```bash
 cd samples\AgentFx\<sample-folder>
 dotnet user-secrets set "GITHUB_TOKEN" "your-github-token"
@@ -165,6 +169,7 @@ dotnet run
 ```
 
 Linux/macOS/Git Bash/WSL/Codespaces:
+
 ```bash
 cd samples/AgentFx/<sample-folder>
 dotnet user-secrets set "GITHUB_TOKEN" "your-github-token"
@@ -174,6 +179,7 @@ dotnet run
 **Azure AI Foundry** (requires Azure CLI login):
 
 Windows (CMD/PowerShell):
+
 ```bash
 cd samples\AgentFx\<sample-folder>
 dotnet user-secrets set "endpoint" "https://<your-endpoint>.services.ai.azure.com/"
@@ -183,6 +189,7 @@ dotnet run
 ```
 
 Linux/macOS/Git Bash/WSL/Codespaces:
+
 ```bash
 cd samples/AgentFx/<sample-folder>
 dotnet user-secrets set "endpoint" "https://<your-endpoint>.services.ai.azure.com/"
@@ -194,6 +201,7 @@ dotnet run
 **Ollama** (requires local installation):
 
 Windows (CMD/PowerShell):
+
 ```bash
 # Install Ollama from https://ollama.com
 ollama pull llama3.2
@@ -202,6 +210,7 @@ dotnet run
 ```
 
 Linux/macOS/Git Bash/WSL/Codespaces:
+
 ```bash
 # Install Ollama from https://ollama.com
 ollama pull llama3.2
@@ -326,6 +335,7 @@ var nextResponse = await agent.RunAsync("What is my name?", resumedThread);
 >
 > - [AgentFx-Persisting-01-Simple](../samples/AgentFx/AgentFx-Persisting-01-Simple/) - Basic thread serialization and resumption
 > - [AgentFx-Persisting-02-Menu](../samples/AgentFx/AgentFx-Persisting-02-Menu/) - Interactive menu-driven persist/load workflow
+> - [AgentFx-AIWebChatApp-Persisting](../samples/AgentFx/AgentFx-AIWebChatApp-Persisting/) - Blazor web chat demonstrating per-user AgentThread persistence and resume across restarts
 >
 > 🧑‍🏫 **Learn more**: See the official [Persisted Conversations tutorial](https://learn.microsoft.com/agent-framework/tutorials/agents/persisted-conversation) and [Agent Memory guide](https://learn.microsoft.com/agent-framework/user-guide/agents/agent-memory) for detailed documentation.
 
