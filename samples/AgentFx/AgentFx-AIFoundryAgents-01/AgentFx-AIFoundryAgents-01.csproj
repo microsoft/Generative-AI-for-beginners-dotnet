@@ -3,10 +3,10 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net9.0</TargetFramework>
-    <RootNamespace>AgentFx_MultiAgents</RootNamespace>
+    <RootNamespace>AgentFx_AIFoundryAgents_01</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UserSecretsId>6aa0a957-e8bb-4bb9-bde3-b1de465309a7</UserSecretsId>
+    <UserSecretsId>4bd98dd6-8eb6-4622-8391-30ad281cc360</UserSecretsId>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -28,3 +28,4 @@
 		<PackageReference Include="Azure.Identity" />
 	</ItemGroup>
 </Project>
+

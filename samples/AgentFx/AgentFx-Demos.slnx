@@ -6,6 +6,7 @@
   <Folder Name="/2 AI Foundry/">
     <Project Path="AgentFx-AIFoundry-01/AgentFx-AIFoundry-01.csproj" />
     <Project Path="AgentFx-AIFoundry-02/AgentFx-AIFoundry-02.csproj" Id="02af80b1-1530-4a9a-8ba5-26a237f8b9fd" />
+    <Project Path="AgentFx-AIFoundryAgents-01/AgentFx-AIFoundryAgents-01.csproj" Id="80c62089-8115-4d80-a845-374b5931a140" />
   </Folder>
   <Folder Name="/3 Ollama/">
     <Project Path="AgentFx-Ollama-01/AgentFx-Ollama-01.csproj" />
