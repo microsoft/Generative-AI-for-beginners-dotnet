@@ -1,4 +1,5 @@
-﻿using Azure.AI.OpenAI;
+﻿using Azure;
+using Azure.AI.OpenAI;
 using Azure.Identity;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
@@ -12,9 +13,7 @@ var endpoint = config["endpoint"];
 var apiKey = new ApiKeyCredential(config["apikey"]);
 var deploymentName = !string.IsNullOrEmpty(config["deploymentName"]) ? config["deploymentName"] : "gpt-4o-mini";
 
-AIAgent agent = new AzureOpenAIClient(
-    new Uri(endpoint),
-    new AzureCliCredential())
+AIAgent agent = new AzureOpenAIClient(new Uri(endpoint), apiKey)
     .GetChatClient(deploymentName)
     .AsIChatClient()
     .CreateAIAgent(instructions: "You are a useful agent that replies in short and direct sentences.");
