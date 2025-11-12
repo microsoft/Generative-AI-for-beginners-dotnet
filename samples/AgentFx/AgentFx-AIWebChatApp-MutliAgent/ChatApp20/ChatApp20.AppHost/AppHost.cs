@@ -27,8 +27,7 @@ else
 }
 
 var webApp = builder.AddProject<Projects.ChatApp20_Web>("aichatweb-app");
-webApp
-    .WithReference(openai)
+webApp.WithReference(openai)
     .WaitFor(openai);
 
 builder.Build().Run();

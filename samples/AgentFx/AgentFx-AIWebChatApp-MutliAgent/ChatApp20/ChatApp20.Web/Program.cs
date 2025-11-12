@@ -2,9 +2,9 @@ using ChatApp20.Web.Components;
 using ChatApp20.Web.Services;
 using ChatApp20.Web.Services.Ingestion;
 using Microsoft.Agents.AI;
+using Microsoft.Agents.AI.DevUI;
 using Microsoft.Agents.AI.Hosting;
 using Microsoft.Extensions.AI;
-using System.ComponentModel;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
@@ -136,7 +136,11 @@ builder.Services.AddScoped<DataIngestor>();
 builder.Services.AddSingleton<SemanticSearch>();
 
 // Added DI registration for SearchFunctions to expose AI callable search tool via injected SemanticSearch
-builder.Services.AddSingleton<SearchFunctions>(); 
+builder.Services.AddSingleton<SearchFunctions>();
+
+// Register services for OpenAI responses and conversations (also required for DevUI)
+builder.Services.AddOpenAIResponses();
+builder.Services.AddOpenAIConversations();
 
 var app = builder.Build();
 
@@ -157,6 +161,10 @@ app.UseStaticFiles();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
+// Map endpoints for OpenAI responses and conversations (also required for DevUI)
+app.MapOpenAIResponses();
+app.MapOpenAIConversations();
+
 // By default, we ingest PDF files from the /wwwroot/Data directory. You can ingest from
 // other sources by implementing IIngestionSource.
 // Important: ensure that any content you ingest is trusted, as it may be reflected back
@@ -164,5 +172,11 @@ app.MapRazorComponents<App>()
 await DataIngestor.IngestDataAsync(
     app.Services,
     new PDFDirectorySource(Path.Combine(builder.Environment.WebRootPath, "Data")));
+
+if (builder.Environment.IsDevelopment())
+{
+    // Map DevUI endpoint to /devui
+    app.MapDevUI();
+}
 
 app.Run();
