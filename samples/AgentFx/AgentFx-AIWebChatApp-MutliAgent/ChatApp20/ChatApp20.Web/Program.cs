@@ -161,9 +161,6 @@ app.UseStaticFiles();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
-// Map endpoints for OpenAI responses and conversations (also required for DevUI)
-app.MapOpenAIResponses();
-app.MapOpenAIConversations();
 
 // By default, we ingest PDF files from the /wwwroot/Data directory. You can ingest from
 // other sources by implementing IIngestionSource.
@@ -172,6 +169,10 @@ app.MapOpenAIConversations();
 await DataIngestor.IngestDataAsync(
     app.Services,
     new PDFDirectorySource(Path.Combine(builder.Environment.WebRootPath, "Data")));
+
+// Map endpoints for OpenAI responses and conversations (also required for DevUI)
+app.MapOpenAIResponses();
+app.MapOpenAIConversations();
 
 if (builder.Environment.IsDevelopment())
 {
