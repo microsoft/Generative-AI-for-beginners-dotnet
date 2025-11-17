@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/1 Aspire/">
+    <Project Path="AgentFx-AIWebChatApp-AG-UI.AppHost/AgentFx-AIWebChatApp-AG-UI.AppHost.csproj" />
+    <Project Path="AgentFx-AIWebChatApp-AG-UI.ServiceDefaults/AgentFx-AIWebChatApp-AG-UI.ServiceDefaults.csproj" />
+  </Folder>
+  <Folder Name="/2 FrontEnd/">
+    <Project Path="AgentFx-AIWebChatApp-AG-UI.Web/AgentFx-AIWebChatApp-AG-UI.Web.csproj" />
+  </Folder>
+  <Folder Name="/3 Agents/">
+    <Project Path="AgentFx-AIWebChatApp-AG-UI-Agents/AgentFx-AIWebChatApp-AG-UI-Agents.csproj" Id="c4af771f-6d94-4159-bc89-a7e75055f858" />
+  </Folder>
+</Solution>
