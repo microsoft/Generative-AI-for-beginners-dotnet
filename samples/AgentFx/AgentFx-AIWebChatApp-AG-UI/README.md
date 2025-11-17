@@ -335,4 +335,3 @@ This sample is part of the [Generative AI for Beginners - .NET Edition](../../RE
 For more Agent Framework samples, see:
 
 - [AgentFx Lesson 06](../../../06-AgentFx/readme.md)
-- [Other AgentFx Samples](../README.md)
