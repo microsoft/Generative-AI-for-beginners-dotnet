@@ -12,7 +12,7 @@ Try out our new [Basic Chat application](../samples/CoreSamples/BasicChat-07Olla
 
 Explore new C# console app samples that show how to use the Hugging Face MCP Server to generate images directly from your code.
 
-- [Try the sample using GitHub Models or Azure AI Foundry](../samples/CoreSamples/MCP-01-HuggingFace/Program.cs)
+- [Try the sample using GitHub Models or Microsoft Foundry](../samples/CoreSamples/MCP-01-HuggingFace/Program.cs)
 - [Use Ollama for local model inference](../samples/CoreSamples/MCP-02-HuggingFace-Ollama/Program.cs)
 
 ### **🕹️ Apps Generated with AI - Console GPU Viewer**
@@ -29,7 +29,7 @@ We're excited to introduce a new section featuring full applications generated w
 
 - **First Sample: SpaceAINet**
   - [SpaceAINet Console App](../samples/AppsWithGenAI/SpaceAINet/README.md)
-  - **SpaceAINet** is an AI-powered Space Battle game for .NET 9, designed to showcase how modern AI models can play classic games. The solution allows you to run the game with either local AI models (via Ollama) or cloud-based models (via Azure AI Foundry), which analyze the game state and predict the next best action to win.
+  - **SpaceAINet** is an AI-powered Space Battle game for .NET 9, designed to showcase how modern AI models can play classic games. The solution allows you to run the game with either local AI models (via Ollama) or cloud-based models (via Microsoft Foundry), which analyze the game state and predict the next best action to win.
   - Try it out and see how AI can master classic arcade gameplay!
 
 ## June 2025

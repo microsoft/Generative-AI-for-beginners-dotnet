@@ -12,9 +12,8 @@
 [![GitHub forks](https://img.shields.io/github/forks/microsoft/Generative-AI-For-Beginners-Dotnet.svg?style=social&label=Fork)](https://github.com/microsoft/Generative-AI-For-Beginners-Dotnet/network/)
 [![GitHub stars](https://img.shields.io/github/stars/microsoft/Generative-AI-For-Beginners-Dotnet.svg?style=social&label=Star)](https://github.com/microsoft/Generative-AI-For-Beginners-Dotnet/stargazers/)
 
-
 [![Azure AI Community Discord](https://img.shields.io/discord/1113626258182504448?label=Azure%20AI%20Community%20Discord)](https://aka.ms/ai-discord/dotnet)
-[![Azure AI Foundry GitHub Diskussionen](https://img.shields.io/badge/Discussions-Azure%20AI%20Foundry-blueviolet?logo=github&style=for-the-badge)](https://aka.ms/ai-discussions/dotnet)
+[![Microsoft Foundry GitHub Diskussionen](https://img.shields.io/badge/Discussions-Microsoft%20Foundry-blueviolet?logo=github&style=for-the-badge)](https://aka.ms/ai-discussions/dotnet)
 
 ![Generative AI für Anfänger .NET Logo](../../translated_images/main-logo.5ac974278bc20b3520e631aaa6bf8799f2d219c5aec555da85555725546f25f8.de.jpg)
 
@@ -28,7 +27,7 @@ Vergessen Sie nicht, [dieses Repository zu favorisieren (🌟)](https://docs.git
 
 ➡️ Erstellen Sie Ihre eigene Kopie, indem Sie [dieses Repository forken](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/fork) und es anschließend in Ihren eigenen Repositories wiederfinden.
 
-## ✨ Was ist neu!
+## ✨ Was ist neu
 
 Wir verbessern diesen Kurs kontinuierlich mit den neuesten KI-Tools, Modellen und praktischen Beispielen:
 
@@ -76,7 +75,7 @@ Sie lernen, wie Sie Generative KI in .NET-Projekte implementieren, von grundlege
 | #   | **Lektionslink** | **Beschreibung** |
 | --- | --- | --- |
 | 01  | [**Einführung in die Grundlagen der Generativen KI für .NET-Entwickler**](./01-IntroToGenAI/readme.md) | <ul><li>Überblick über generative Modelle und ihre Anwendungen in .NET</li></ul> |
-| 02  | [**Einrichtung der Entwicklungsumgebung für Generative KI mit .NET**](./02-SetupDevEnvironment/readme.md) | <ul><li>Verwendung von Bibliotheken wie **Microsoft.Extensions.AI** und **Semantic Kernel**.</li><li>Einrichtung von Anbietern wie GitHub Models, Azure AI Foundry und lokaler Entwicklung mit Ollama.</li></ul> |
+| 02  | [**Einrichtung der Entwicklungsumgebung für Generative KI mit .NET**](./02-SetupDevEnvironment/readme.md) | <ul><li>Verwendung von Bibliotheken wie **Microsoft.Extensions.AI** und **Semantic Kernel**.</li><li>Einrichtung von Anbietern wie GitHub Models, Microsoft Foundry und lokaler Entwicklung mit Ollama.</li></ul> |
 | 03  | [**Kerntechniken der Generativen KI mit .NET**](./03-CoreGenerativeAITechniques/readme.md) | <ul><li>Textgenerierung und Konversationsflüsse.</li><li>Multimodale Fähigkeiten (Vision und Audio).</li><li>Agenten</li></ul> |
 | 04  | [**Praktische Beispiele für Generative KI mit .NET**](./04-PracticalSamples/readme.md) | <ul><li>Komplette Beispiele, die Generative KI in realen Szenarien demonstrieren</li><li>Anwendungen für semantische Suche.</li><li>Anwendungen mit mehreren Agenten</li></ul> |
 | 05  | [**Verantwortungsvoller Einsatz von Generativer KI in .NET-Anwendungen**](./05-ResponsibleGenAI/readme.md) | <ul><li>Ethische Überlegungen, Vermeidung von Verzerrungen und sichere Implementierungen.</li></ul> |
@@ -145,7 +144,7 @@ Wir haben viele weitere Inhalte, die Ihnen auf Ihrer Lernreise helfen können. S
 - [KI-Agenten für Anfänger – Ein Kurs](https://aka.ms/ai-agents-beginners)
 - [Datenwissenschaft für Anfänger](https://aka.ms/datascience-beginners)
 - [ML für Anfänger](https://aka.ms/ml-beginners)
-- [Cybersicherheit für Anfänger](https://github.com/microsoft/Security-101) 
+- [Cybersicherheit für Anfänger](https://github.com/microsoft/Security-101)
 - [Webentwicklung für Anfänger](https://aka.ms/webdev-beginners)
 - [IoT für Anfänger](https://aka.ms/iot-beginners)
 - [XR-Entwicklung für Anfänger](https://github.com/microsoft/xr-development-for-beginners)

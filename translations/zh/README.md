@@ -12,9 +12,8 @@
 [![GitHub forks](https://img.shields.io/github/forks/microsoft/Generative-AI-For-Beginners-Dotnet.svg?style=social&label=Fork)](https://github.com/microsoft/Generative-AI-For-Beginners-Dotnet/network/)
 [![GitHub stars](https://img.shields.io/github/stars/microsoft/Generative-AI-For-Beginners-Dotnet.svg?style=social&label=Star)](https://github.com/microsoft/Generative-AI-For-Beginners-Dotnet/stargazers/)
 
-
 [![Azure AI Community Discord](https://img.shields.io/discord/1113626258182504448?label=Azure%20AI%20Community%20Discord)](https://aka.ms/ai-discord/dotnet)
-[![Azure AI Foundry GitHub Discussions](https://img.shields.io/badge/Discussions-Azure%20AI%20Foundry-blueviolet?logo=github&style=for-the-badge)](https://aka.ms/ai-discussions/dotnet)
+[![Microsoft Foundry GitHub Discussions](https://img.shields.io/badge/Discussions-Microsoft%20Foundry-blueviolet?logo=github&style=for-the-badge)](https://aka.ms/ai-discussions/dotnet)
 
 ![生成式 AI 初学者 .NET 标志](../../translated_images/main-logo.5ac974278bc20b3520e631aaa6bf8799f2d219c5aec555da85555725546f25f8.zh.jpg)
 
@@ -28,7 +27,7 @@
 
 ➡️通过 [Fork 此项目](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/fork) 获取自己的副本，并在自己的仓库中轻松找到它。
 
-## ✨ 最新更新！
+## ✨ 最新更新
 
 我们不断改进本课程，加入最新的 AI 工具、模型和实践示例：
 
@@ -76,7 +75,7 @@
 | #   | **课程链接** | **课程描述** |
 | --- | --- | --- |
 | 01  | [**.NET 开发者的生成式 AI 基础入门**](./01-IntroToGenAI/readme.md) | <ul><li>概览生成模型及其在 .NET 中的应用</li></ul> |
-| 02  | [**为生成式 AI 设置 .NET 开发环境**](./02-SetupDevEnvironment/readme.md) | <ul><li>使用 **Microsoft.Extensions.AI** 和 **Semantic Kernel** 等库。</li><li>配置 GitHub Models、Azure AI Foundry，以及 Ollama 等本地开发工具。</li></ul> |
+| 02  | [**为生成式 AI 设置 .NET 开发环境**](./02-SetupDevEnvironment/readme.md) | <ul><li>使用 **Microsoft.Extensions.AI** 和 **Semantic Kernel** 等库。</li><li>配置 GitHub Models、Microsoft Foundry，以及 Ollama 等本地开发工具。</li></ul> |
 | 03  | [**.NET 中的核心生成式 AI 技术**](./03-CoreGenerativeAITechniques/readme.md) | <ul><li>文本生成与对话流程。</li><li>多模态功能（视觉和音频）。</li><li>智能代理。</li></ul> |
 | 04  | [**实用的 .NET 生成式 AI 示例**](./04-PracticalSamples/readme.md) | <ul><li>展示生成式 AI 在实际场景中的完整示例。</li><li>语义搜索应用。</li><li>多代理应用。</li></ul> |
 | 05  | [**在 .NET 应用中负责任地使用生成式 AI**](./05-ResponsibleGenAI/readme.md) | <ul><li>伦理考量、偏见缓解及安全实现。</li></ul> |
@@ -145,7 +144,7 @@
 - [AI 代理初学者课程](https://aka.ms/ai-agents-beginners)
 - [数据科学初学者教程](https://aka.ms/datascience-beginners)
 - [机器学习初学者教程](https://aka.ms/ml-beginners)
-- [网络安全初学者教程](https://github.com/microsoft/Security-101) 
+- [网络安全初学者教程](https://github.com/microsoft/Security-101)
 - [Web 开发初学者教程](https://aka.ms/webdev-beginners)
 - [物联网初学者教程](https://aka.ms/iot-beginners)
 - [XR 开发初学者教程](https://github.com/microsoft/xr-development-for-beginners)
