@@ -4,8 +4,6 @@ using Microsoft.Extensions.Configuration;
 using System.ClientModel;
 using System.Text;
 
-
-
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 var endpoint = config["endpoint"];
 var apiKey = new ApiKeyCredential(config["apikey"]);
