@@ -1,22 +1,22 @@
 # BasicChat-11FoundryClaude
 
-This sample demonstrates how to use Claude models deployed in Azure AI Foundry with the Microsoft.Extensions.AI framework.
+This sample demonstrates how to use Claude models deployed in Microsoft Foundry with the Microsoft.Extensions.AI framework.
 
 ## Overview
 
-This sample uses a custom `ClaudeToOpenAIMessageHandler` to transform Azure OpenAI API requests to the Claude Messages API format required by Azure AI Foundry Claude deployments.
+This sample uses a custom `ClaudeToOpenAIMessageHandler` to transform Azure OpenAI API requests to the Claude Messages API format required by Microsoft Foundry Claude deployments.
 
 ## Prerequisites
 
-1. An Azure AI Foundry resource with a deployed Claude model (e.g., Claude Haiku 4.5, Claude Sonnet 4.5, or Claude Opus 4.1)
+1. A Microsoft Foundry resource with a deployed Claude model (e.g., Claude Haiku 4.5, Claude Sonnet 4.5, or Claude Opus 4.1)
 2. .NET 10.0 SDK or later
-3. API key from your Azure AI Foundry Claude deployment
+3. API key from your Microsoft Foundry Claude deployment
 
 ## Setup
 
 ### 1. Set User Secrets
 
-Configure your Azure AI Foundry credentials using .NET user secrets:
+Configure your Microsoft Foundry credentials using .NET user secrets:
 
 ```bash
 cd samples/CoreSamples/BasicChat-11FoundryClaude
@@ -28,8 +28,8 @@ dotnet user-secrets set "deploymentName" "claude-haiku-4-5"
 
 Replace:
 
-- `<your-resource-name>` with your Azure AI Foundry resource name
-- `<your-api-key>` with your API key from the Azure AI Foundry portal
+- `<your-resource-name>` with your Microsoft Foundry resource name
+- `<your-api-key>` with your API key from the Microsoft Foundry portal
 - `claude-haiku-4-5` with your deployment name if different
 
 ### 2. Run the Sample
@@ -40,7 +40,7 @@ dotnet run
 
 ## Authentication
 
-Claude models in Azure AI Foundry use **API key authentication** with the `x-api-key` header (not `Authorization: Bearer`). The custom `ClaudeToOpenAIMessageHandler` handles this transformation automatically.
+Claude models in Microsoft Foundry use **API key authentication** with the `x-api-key` header (not `Authorization: Bearer`). The custom `ClaudeToOpenAIMessageHandler` handles this transformation automatically.
 
 According to the [Microsoft documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/how-to/use-foundry-models-claude?view=foundry-classic), Claude API endpoints use:
 
@@ -77,7 +77,7 @@ Key features:
 
 ## Supported Models
 
-This sample works with all Claude models available in Azure AI Foundry:
+This sample works with all Claude models available in Microsoft Foundry:
 
 - Claude Haiku 4.5
 - Claude Sonnet 4.5

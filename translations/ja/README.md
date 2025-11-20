@@ -12,9 +12,8 @@
 [![GitHub forks](https://img.shields.io/github/forks/microsoft/Generative-AI-For-Beginners-Dotnet.svg?style=social&label=Fork)](https://github.com/microsoft/Generative-AI-For-Beginners-Dotnet/network/)  
 [![GitHub stars](https://img.shields.io/github/stars/microsoft/Generative-AI-For-Beginners-Dotnet.svg?style=social&label=Star)](https://github.com/microsoft/Generative-AI-For-Beginners-Dotnet/stargazers/)  
 
-
 [![Azure AI Community Discord](https://img.shields.io/discord/1113626258182504448?label=Azure%20AI%20Community%20Discord)](https://aka.ms/ai-discord/dotnet)
-[![Azure AI Foundry GitHub Discussions（ディスカッション）](https://img.shields.io/badge/Discussions-Azure%20AI%20Foundry-blueviolet?logo=github&style=for-the-badge)](https://aka.ms/ai-discussions/dotnet)
+[![Microsoft Foundry GitHub Discussions（ディスカッション）](https://img.shields.io/badge/Discussions-Microsoft%20Foundry-blueviolet?logo=github&style=for-the-badge)](https://aka.ms/ai-discussions/dotnet)
 
 ![初心者向け 生成 AI .NET ロゴ](../../translated_images/main-logo.5ac974278bc20b3520e631aaa6bf8799f2d219c5aec555da85555725546f25f8.ja.jpg)
 
@@ -28,7 +27,7 @@
 
 ➡️ [リポジトリをフォークする](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/fork) ことで、自分のリポジトリにコピーを作成してください。
 
-## ✨ 最新情報！
+## ✨ 最新情報
 
 私たちは最新のAIツール、モデル、実践的なサンプルでこのコースを継続的に改良しています：
 
@@ -76,7 +75,7 @@
 | #   | **レッスンリンク** | **説明** |
 | --- | --- | --- |
 | 01  | [**.NET 開発者向け 生成 AI の基礎**](./01-IntroToGenAI/readme.md) | <ul><li>生成モデルの概要と .NET における応用</li></ul> |
-| 02  | [**生成 AI のための .NET 開発環境のセットアップ**](./02-SetupDevEnvironment/readme.md) | <ul><li>**Microsoft.Extensions.AI** や **セマンティック カーネル** などのライブラリの利用。</li><li>GitHub Models、Azure AI Foundry、Ollama などのプロバイダーのセットアップ。</li></ul> |
+| 02  | [**生成 AI のための .NET 開発環境のセットアップ**](./02-SetupDevEnvironment/readme.md) | <ul><li>**Microsoft.Extensions.AI** や **セマンティック カーネル** などのライブラリの利用。</li><li>GitHub Models、Microsoft Foundry、Ollama などのプロバイダーのセットアップ。</li></ul> |
 | 03  | [**.NET を使った 生成 AI のコア技術**](./03-CoreGenerativeAITechniques/readme.md) | <ul><li>テキスト生成と会話フロー。</li><li>マルチモーダル機能（ビジョンと音声）。</li><li>エージェント。</li></ul> |
 | 04  | [**実践的な .NET 生成 AI サンプル**](./04-PracticalSamples/readme.md) | <ul><li>実際のシナリオでの 生成 AI を示す完全なサンプル。</li><li>セマンティック検索アプリケーション。</li><li>複数エージェントアプリケーション。</li></ul> |
 | 05  | [**.NET アプリにおける 生成 AI の責任ある利用**](./05-ResponsibleGenAI/readme.md) | <ul><li>倫理的考慮、バイアスの軽減、安全な実装。</li></ul> |
@@ -146,7 +145,7 @@
 - [AI Agents for Beginners - A Course](https://aka.ms/ai-agents-beginners)
 - [Data Science for Beginners](https://aka.ms/datascience-beginners)
 - [ML for Beginners](https://aka.ms/ml-beginners)
-- [Cybersecurity for Beginners](https://github.com/microsoft/Security-101) 
+- [Cybersecurity for Beginners](https://github.com/microsoft/Security-101)
 - [Web Dev for Beginners](https://aka.ms/webdev-beginners)
 - [IoT for Beginners](https://aka.ms/iot-beginners)
 - [XR Development for Beginners](https://github.com/microsoft/xr-development-for-beginners)

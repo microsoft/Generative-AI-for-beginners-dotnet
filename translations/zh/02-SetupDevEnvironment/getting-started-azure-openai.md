@@ -1,19 +1,19 @@
 # 为 Azure OpenAI 设置开发环境
 
-如果你想在本课程中使用 Azure AI Foundry 模型开发 .NET AI 应用程序，请按照本指南中的步骤操作。
+如果你想在本课程中使用 Microsoft Foundry 模型开发 .NET AI 应用程序，请按照本指南中的步骤操作。
 
 不想使用 Azure OpenAI？
 
 👉 [如果你想使用 GitHub 模型，请查看这个指南](README.md)  
 👉 [如果你想使用 Ollama，请查看这个步骤](getting-started-ollama.md)
 
-## 创建 Azure AI Foundry 资源
+## 创建 Microsoft Foundry 资源
 
-要使用 Azure AI Foundry 模型，你需要在 Azure AI Foundry 门户中创建一个 Hub 和一个项目。然后，你需要部署一个模型。本节将向你展示如何完成这些步骤。
+要使用 Microsoft Foundry 模型，你需要在 Microsoft Foundry 门户中创建一个 Hub 和一个项目。然后，你需要部署一个模型。本节将向你展示如何完成这些步骤。
 
-### 在 Azure AI Foundry 中创建 Hub 和项目
+### 在 Microsoft Foundry 中创建 Hub 和项目
 
-1. 打开 [Azure AI Foundry 门户](https://ai.azure.com/)。
+1. 打开 [Microsoft Foundry 门户](https://ai.azure.com/)。
 2. 使用你的 Azure 帐户登录。
 3. 从左侧菜单中选择 **All hubs + projects**，然后点击下拉菜单中的 **+ New hub**。（注意：你可能需要先点击 **+ New project** 才能看到 **+ New hub** 选项）。  
     ![创建一个新的 Hub](../../../translated_images/ai-foundry-hub-selection.dc9bf6b90ab4b2b9f94ae6274422bcd318ee09091350750062740479f69a651c.zh.png)
@@ -43,7 +43,7 @@
 7. 点击 **Deploy** 并等待模型被配置完成。
 8. 部署完成后，从模型详情页面记录下 **Model Name**、**Target URI** 和 **API Key**。
 
-🎉 **完成！** 你已经在 Azure AI Foundry 中部署了你的第一个大型语言模型。
+🎉 **完成！** 你已经在 Microsoft Foundry 中部署了你的第一个大型语言模型。
 
 ![模型部署完成，复制模型名称、端点 URL 和 API 密钥](../../../translated_images/deploytoazure-20-copymodelinfo.9797a0bffd24459c9b977d98e18a089accaece2917d2abcde4ab96db957e0fcb.zh.png)
 
@@ -58,7 +58,7 @@
 
     ![添加新的 Codespace Secret](../../../translated_images/codespaces-secret.0e168026d0078356489f51ca61b195603283511c73bb805b056619f994652f7c.zh.jpeg)
 3. 将你的 Secret 命名为 **AZURE_AI_SECRET**。
-4. 将你从 Azure AI Foundry 门户复制的 API 密钥粘贴到 **Secret** 字段中。
+4. 将你从 Microsoft Foundry 门户复制的 API 密钥粘贴到 **Secret** 字段中。
 
 ## 创建一个 GitHub Codespace
 
@@ -150,7 +150,7 @@
 
 ## 总结
 
-在本课中，你学习了如何为本课程设置开发环境。你创建了一个 GitHub Codespace 并配置它以使用 Azure OpenAI。你还更新了示例代码以使用在 Azure AI Foundry 中新部署的模型。
+在本课中，你学习了如何为本课程设置开发环境。你创建了一个 GitHub Codespace 并配置它以使用 Azure OpenAI。你还更新了示例代码以使用在 Microsoft Foundry 中新部署的模型。
 
 ### 其他资源
 

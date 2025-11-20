@@ -16,11 +16,12 @@ One key thing to keep in mind when building agents is that they are focused on d
 
 ## Creating an AI Agent
 
-We'll be working with a couple of new concepts in order to build an AI agent in .NET. We'll be using a new SDK and will have to do some additional setup in Azure AI Foundry to get things started.
+We'll be working with a couple of new concepts in order to build an AI agent in .NET. We'll be using a new SDK and will have to do some additional setup in Microsoft Foundry to get things started.
 
 > 🧑‍💻**Sample code**: We'll be working from the [AgentLabs-01-Simple sample](../samples/CoreSamples/AgentLabs-01-Simple/) for this lesson.
 >
 > We also have more advanced agent examples:
+>
 > - [AgentLabs-02-Functions](../samples/CoreSamples/AgentLabs-02-Functions/) - Showing how to create custom functions for your agents
 > - [AgentLabs-03-OpenAPIs](../samples/CoreSamples/AgentLabs-03-OpenAPIs/) - Demonstrating how agents can use OpenAPI specifications
 > - [AgentLabs-03-PythonParksInformationServer](../samples/CoreSamples/AgentLabs-03-PythonParksInformationServer/) - A Python server that works with the OpenAPI example
@@ -29,7 +30,7 @@ We'll be working with a couple of new concepts in order to build an AI agent in 
 
 We're going to introduce a new Azure Service that will help us build agents, the appropriately named [Azure AI Agent Service](https://learn.microsoft.com/azure/ai-services/agents/overview).
 
-To run the code samples included in this lesson, you'll need to perform some additional setup in Azure AI Foundry. You can follow [these instructions to setup a **Basic Agent**](https://learn.microsoft.com/azure/ai-services/agents/quickstart?pivots=programming-language-csharp).
+To run the code samples included in this lesson, you'll need to perform some additional setup in Microsoft Foundry. You can follow [these instructions to setup a **Basic Agent**](https://learn.microsoft.com/azure/ai-services/agents/quickstart?pivots=programming-language-csharp).
 
 ### Azure AI Projects library
 
@@ -65,12 +66,12 @@ We'll be building a single purpose agent that acts as a tutor to math students. 
     AgentsClient client = new AgentsClient(connectionString, new DefaultAzureCredential(options));
     ```
 
-    You can find the project connection string in AI Foundry by opening up the Hub you created, then the project. It will be on the right-hand side.
+    You can find the project connection string in Microsoft Foundry by opening up the Hub you created, then the project. It will be on the right-hand side.
 
     ![Screenshot of the project homepage in AI Foundry with the project connection string highlighted in red](./images/project-connection-string.png)
 
 1. Next we want to create the tutor agent. Remember, it should be focused only on one thing.
-   
+
     ```csharp
     // create Agent
     Response<Agent> agentResponse = await client.CreateAgentAsync(
@@ -87,7 +88,7 @@ We'll be building a single purpose agent that acts as a tutor to math students. 
 
     > 🗒️**Note**: You can create your own tools too. See the [Functions](./src/AgentLabs-02-Functions/) to learn more.
 
-    Second note the `instructions` that are being sent along. It's a prompt and we're limiting it to answering math questions. Then last creating the agent is an async operation. That's because it's creating an object within Azure AI Foundry Agents service. So we both `await` the `CreateAgentAsync` function and then grab the `Value` of its return to get at the actual `Agent` object. You'll see this pattern occur over and over again when creating objects with the **Azure.AI.Projects** SDK.
+    Second note the `instructions` that are being sent along. It's a prompt and we're limiting it to answering math questions. Then last creating the agent is an async operation. That's because it's creating an object within Microsoft Foundry Agents service. So we both `await` the `CreateAgentAsync` function and then grab the `Value` of its return to get at the actual `Agent` object. You'll see this pattern occur over and over again when creating objects with the **Azure.AI.Projects** SDK.
 
 1. An `AgentThread` is an object that handles the communication between individual agents and the user and so on. We'll need to create that so we can add a `ThreadMessage` on to it. And in this case it's the user's first question.
 
@@ -120,6 +121,7 @@ We'll be building a single purpose agent that acts as a tutor to math students. 
         , additionalInstructions: "You are working in FREE TIER EXPERIENCE mode, every user has premium account for a short period of time. Explain detailed the steps to answer the user questions"
         );
     ThreadRun run = runResponse.Value;
+
     ```
 
 1. All that's left then is to check the status of the run

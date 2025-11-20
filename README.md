@@ -14,7 +14,7 @@
 
 [![Azure AI Community Discord](https://img.shields.io/discord/1113626258182504448?label=Azure%20AI%20Community%20Discord)](https://aka.ms/ai-discord/dotnet)
 
-[![Azure AI Foundry GitHub Discussions](https://img.shields.io/badge/Discussions-Azure%20AI%20Foundry-blueviolet?logo=github&style=for-the-badge)](https://aka.ms/ai-discussions/dotnet)
+[![Microsoft Foundry GitHub Discussions](https://img.shields.io/badge/Discussions-Microsoft%20Foundry-blueviolet?logo=github&style=for-the-badge)](https://aka.ms/ai-discussions/dotnet)
 
 ![Generative AI for Beginners .NET logo](./images/main-logo.jpg)
 
@@ -46,7 +46,7 @@ We're constantly improving this course with the latest AI tools, models, and pra
 
   We've added a comprehensive new lesson on the Microsoft Agent Framework - the next evolution in .NET AI development! Learn how to:
   - Build orchestrated AI agent systems with specialized roles
-  - Create multi-model workflows combining GitHub Models, Azure AI Foundry, and Ollama
+  - Create multi-model workflows combining GitHub Models, Microsoft Foundry, and Ollama
   - Integrate with Model Context Protocol (MCP) for enhanced capabilities
   - Design sequential and concurrent agent workflows for complex tasks
   
@@ -76,7 +76,7 @@ You'll learn how to implement Generative AI into .NET projects, from basic text 
 | #   | **Lesson Link** | **Description** |
 | --- | --- | --- |
 | 01  | [**Intro to Generative AI Basics for .NET Developers**](./01-IntroToGenAI/readme.md) | <ul><li>Overview of generative models and their applications in .NET</li></ul> |
-| 02  | [**Setting Up for .NET Development with Generative AI**](./02-SetupDevEnvironment/readme.md) | <ul><li>Using libraries like **Microsoft.Extensions.AI** and **Semantic Kernel**.</li><li>Setup providers like GitHub Models, Azure AI Foundry, and local development like Ollama.</li></ul> |
+| 02  | [**Setting Up for .NET Development with Generative AI**](./02-SetupDevEnvironment/readme.md) | <ul><li>Using libraries like **Microsoft.Extensions.AI** and **Semantic Kernel**.</li><li>Setup providers like GitHub Models, Microsoft Foundry, and local development like Ollama.</li></ul> |
 | 03  | [**Core Generative AI Techniques with .NET**](./03-CoreGenerativeAITechniques/readme.md) | <ul><li>Text generation and conversational flows.</li><li> Multimodal capabilities (vision and audio).</li><li>Agents</li></ul> |
 | 04  | [**Practical .NET Generative AI Samples**](./04-PracticalSamples/readme.md) | <ul><li>Complete samples demonstrating GenAI in real-life scenarios</li><li>Semantic search applications.</li><li>Multiple agent applications</li></ul> |
 | 05  | [**.NET Apps created using GenAI tools (aka: Vibe Coding Prompts)**](./05-AppCreatedWithGenAI/readme.md) | <ul><li>Sample .NET apps generated using Generative AI tools like GitHub Copilot Agent.</li><li>First sample: **Retro Invaders retro console game 👾**</li></ul> |
@@ -186,8 +186,8 @@ We have a lot of other content to help your learning journey. Check out:
 
 If you get stuck or have any questions about building AI apps, join:
 
-[![Azure AI Foundry Discord](https://img.shields.io/badge/Discord-Azure_AI_Foundry_Community_Discord-blue?style=for-the-badge&logo=discord&color=5865f2&logoColor=fff)](https://aka.ms/foundry/discord)
+[![Microsoft Foundry Discord](https://img.shields.io/badge/Discord-Microsoft_Foundry_Community_Discord-blue?style=for-the-badge&logo=discord&color=5865f2&logoColor=fff)](https://aka.ms/foundry/discord)
 
 If you have product feedback or errors while building visit:
 
-[![Azure AI Foundry Developer Forum](https://img.shields.io/badge/GitHub-Azure_AI_Foundry_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://aka.ms/foundry/forum)
+[![Microsoft Foundry Developer Forum](https://img.shields.io/badge/GitHub-Microsoft_Foundry_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://aka.ms/foundry/forum)

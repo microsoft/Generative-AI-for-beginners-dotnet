@@ -8,7 +8,7 @@ Build powerful, orchestrated AI agents with Microsoft Agent Framework - the next
 
 - 🤖 Understanding the Microsoft Agent Framework and its architecture
 - 🔗 Creating and orchestrating multiple AI agents
-- 🌐 Working with different AI providers (GitHub Models, Azure AI Foundry, Ollama)
+- 🌐 Working with different AI providers (GitHub Models, Microsoft Foundry, Ollama)
 - 🔄 Building sequential and concurrent agent workflows
 - 🛠️ Integrating with Model Context Protocol (MCP) for enhanced capabilities
 
@@ -79,7 +79,7 @@ Before starting with AgentFx, ensure you have:
 - **.NET 9 SDK** or later
 - **AI Provider Access**: At least one of the following:
   - GitHub Token for GitHub Models
-  - Azure AI Foundry endpoint using managed identities o using an API key
+  - Microsoft Foundry endpoint using managed identities o using an API key
   - Ollama installed locally
 
 ### Installation
@@ -106,7 +106,7 @@ This lesson includes multiple code samples demonstrating different aspects of th
 |--------|-------------|-------------|----------|
 | [AgentFx01](../samples/AgentFx/AgentFx01/) | Single agent that writes creative stories | Basic agent setup, ChatClientAgent | GitHub Models |
 | [AgentFx02](../samples/AgentFx/AgentFx02/) | Two-agent workflow: Writer + Editor | Sequential workflows, agent chaining | GitHub Models |
-| [AgentFx-AIFoundry-01](../samples/AgentFx/AgentFx-AIFoundry-01/) | Single agent using Azure AI Foundry | Azure CLI authentication, managed identity | Azure AI Foundry |
+| [AgentFx-AIFoundry-01](../samples/AgentFx/AgentFx-AIFoundry-01/) | Single agent using Microsoft Foundry | Azure CLI authentication, managed identity | Microsoft Foundry |
 | [AgentFx-Ollama-01](../samples/AgentFx/AgentFx-Ollama-01/) | Single agent using local Ollama models | Local AI inference, privacy-focused | Ollama (local) |
 | [AgentFx-BackgroundResponses-01-Simple](../samples/AgentFx/AgentFx-BackgroundResponses-01-Simple/) | Background responses with continuation tokens | Streaming interruption, response continuation | Configurable |
 | [AgentFx-BackgroundResponses-02-Tools](../samples/AgentFx/AgentFx-BackgroundResponses-02-Tools/) | Background responses with tool integration | Tool usage during background processing | Configurable |
@@ -119,7 +119,7 @@ This lesson includes multiple code samples demonstrating different aspects of th
 | Sample | Description | Key Concepts | Providers |
 |--------|-------------|-------------|-----------|
 | [AgentFx-MultiModel](../samples/AgentFx/AgentFx-MultiModel/) | Three-agent workflow across multiple providers | Multi-provider orchestration, OpenTelemetry tracing | GitHub Models or Azure OpenAI + Ollama |
-| [AgentFx-MultiAgents](../samples/AgentFx/AgentFx-MultiAgents/) | Researcher-Writer-Reviewer workflow with persistent agents | Azure AI Foundry persistent agents, flexible configuration | Azure AI Foundry + Azure OpenAI/GitHub Models + Ollama |
+| [AgentFx-MultiAgents](../samples/AgentFx/AgentFx-MultiAgents/) | Researcher-Writer-Reviewer workflow with persistent agents | Microsoft Foundry persistent agents, flexible configuration | Microsoft Foundry + Azure OpenAI/GitHub Models + Ollama |
 
 ### Integration & Web Samples
 
@@ -176,7 +176,7 @@ dotnet user-secrets set "GITHUB_TOKEN" "your-github-token"
 dotnet run
 ```
 
-**Azure AI Foundry** (requires Azure CLI login):
+**Microsoft Foundry** (requires Azure CLI login):
 
 Windows (CMD/PowerShell):
 
@@ -328,7 +328,7 @@ var nextResponse = await agent.RunAsync("What is my name?", resumedThread);
 ### Key Considerations
 
 - **Agent consistency**: You must use the same agent type to deserialize threads, as different agents may have unique internal implementations
-- **Storage flexibility**: The framework abstracts storage details - some agents (like Azure AI Foundry) persist history in the service, while others (like OpenAI chat completion) manage state in-memory
+- **Storage flexibility**: The framework abstracts storage details - some agents (like Microsoft Foundry) persist history in the service, while others (like OpenAI chat completion) manage state in-memory
 - **Production storage**: For production scenarios, use reliable storage like cloud databases or blob storage instead of local files
 
 > 🧑‍💻 **Sample code**: Explore the persisted conversation samples:
@@ -380,7 +380,7 @@ Name = "Agent1"           // Avoid, please no!
 Choose AI providers based on your needs:
 
 - **GitHub Models**: Quick prototyping and development
-- **Azure AI Foundry**: Production workloads with enterprise features
+- **Microsoft Foundry**: Production workloads with enterprise features
 - **Ollama**: Local development, privacy-sensitive data
 
 ### 4. Error Handling
@@ -477,7 +477,7 @@ The Microsoft Agent Framework represents the next evolution in .NET AI developme
 - [Microsoft Agent Framework Overview](https://learn.microsoft.com/agent-framework/overview/agent-framework-overview)
 - [Model Context Protocol C# SDK](https://github.com/modelcontextprotocol/csharp-sdk)
 - [Microsoft.Extensions.AI Documentation](https://learn.microsoft.com/dotnet/ai/ai-extensions)
-- [Azure AI Foundry](https://ai.azure.com/)
+- [Microsoft Foundry](https://ai.azure.com/)
 - [GitHub Models](https://github.com/marketplace/models)
 - [Ollama Documentation](https://ollama.ai/docs)
 

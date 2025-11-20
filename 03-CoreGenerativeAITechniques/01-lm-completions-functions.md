@@ -16,7 +16,7 @@ A text completion itself is not a chat application, it is a one and done interac
 
 ### Text completions
 
-Let's see how you would use text completions using the **Microsoft.Extensions.AI** library in .NET. 
+Let's see how you would use text completions using the **Microsoft.Extensions.AI** library in .NET.
 
 > 🧑‍💻**Sample code**: [Here is a working example of this application](../samples/CoreSamples/BasicChat-01MEAI/) you can follow along with.
 
@@ -26,22 +26,25 @@ To run the sample code, you'll need to:
 
 1. Make sure you have set up a GitHub Codespace with the appropriate environment as described in the [Setup guide](../02-SetupDevEnvironment/readme.md)
 2. Ensure you have configured your GitHub Token as described in the [Pre-flight check section](../02-SetupDevEnvironment/readme.md#pre-flight-check-setting-up-github-access-tokens)
-3. Open a terminal in your codespace (Ctrl+` or Cmd+`)
+3. Open a terminal in your codespace (Ctrl+`or Cmd+`)
 4. Navigate to the sample code directory:
-   
+
    If you're using Windows Command Prompt (CMD) or PowerShell:
+
    ```bash
    cd samples\CoreSamples\BasicChat-01MEAI
    ```
-   
+
    If you're using Linux, macOS, Git Bash, WSL, or the VS Code terminal:
+
    ```bash
    cd samples/CoreSamples/BasicChat-01MEAI
    ```
-   
+
    > **Note**: GitHub Codespaces runs a Linux environment, so always use forward slashes (`/`) in paths when working in Codespaces, regardless of your local operating system.
 
 5. Run the application:
+
    ```bash
    dotnet run
    ```
@@ -69,13 +72,14 @@ Console.WriteLine(response.Text);
 ```
 
 > 🗒️**Note:** This example showed GitHub Models as the hosting service. If you want to use Ollama, [check out this example](../samples/CoreSamples/BasicChat-03Ollama/) (it instantiates a different `IChatClient`).
-> 
+> If you want to use Microsoft Foundry you can use the same code, but you will need to change the endpoint and the credentials.
+>
 > If you want to use Azure AI Foundry you can use the same code, but you will need to change the endpoint and the credentials.
 >
 > **GitHub Models Endpoint:** The endpoint `https://models.github.ai/inference` is the new dedicated GitHub Models endpoint as announced in the [GitHub Models deprecation notice](https://github.blog/changelog/2025-07-17-deprecation-of-azure-endpoint-for-github-models/), replacing the previous Azure-based endpoint.
 >
 > If you want to use both Ollama and Semantic Kernel together, [check out the BasicChat-04OllamaSK example](../samples/CoreSamples/BasicChat-04OllamaSK/).
-> 
+>
 > For instructions on how to set up Ollama, refer to [Getting Started with Ollama](../02-SetupDevEnvironment/getting-started-ollama.md).
 
 > 🙋 **Need help?**: If you encounter any issues running this example, [open an issue in the repository](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new?template=Blank+issue) and we'll help you troubleshoot.
@@ -210,9 +214,9 @@ In the next lesson you'll see how to start chatting with data and build what's k
 
 ## Additional resources
 
-- [Build an AI chat app with .NET](https://learn.microsoft.com/dotnet/ai/quickstarts/get-started-openai?tabs=azd&pivots=openai)
-- [Execute a local .NET function](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-azure-openai-tool?tabs=azd&pivots=openai)
-- [Chat with a local AI model](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-local-ai)
+* [Build an AI chat app with .NET](https://learn.microsoft.com/dotnet/ai/quickstarts/get-started-openai?tabs=azd&pivots=openai)
+* [Execute a local .NET function](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-azure-openai-tool?tabs=azd&pivots=openai)
+* [Chat with a local AI model](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-local-ai)
 
 ## Up next
 

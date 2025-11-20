@@ -1,19 +1,19 @@
 # Setting Up the Development Environment for Azure OpenAI
 
-If you want to use Azure AI Foundry models for your .NET AI apps in this course, follow the steps in this guide.
+If you want to use Microsoft Foundry models for your .NET AI apps in this course, follow the steps in this guide.
 
 Don't want to use Azure OpenAI?
 
 👉 [To use GitHub Models this is the guide for you](README.md)
 👉 [Here are the steps for Ollama](getting-started-ollama.md)
 
-## Create the Azure AI Foundry resources
+## Create the Microsoft Foundry resources
 
-To use Azure AI Foundry models, you need to create a hub and project in the Azure AI Foundry portal. Then you'll need to deploy a model. This section will show you how to do that.
+To use Microsoft Foundry models, you need to create a hub and project in the Microsoft Foundry portal. Then you'll need to deploy a model. This section will show you how to do that.
 
-### Create a Hub and Project in Azure AI Foundry
+### Create a Hub and Project in Microsoft Foundry
 
-1. Go to the [Azure AI Foundry Portal](https://ai.azure.com/).
+1. Go to the [Microsoft Foundry Portal](https://ai.azure.com/).
 1. Sign in with your Azure account.
 1. Select **All hubs + projects** from the left-hand menu and then click the **+ New hub** from the dropdown. (Note: You may have to click on **+ New project** first to see the **+ New hub** option).
     ![Create a new hub](./images/ai-foundry-hub-selection.png)
@@ -28,13 +28,13 @@ To use Azure AI Foundry models, you need to create a hub and project in the Azur
     - Give your project a name (e.g., "GenAINET") or accept the default.
     - Click **Create**.
 
-🎉 **Done!** You’ve just created your first project in Azure AI Foundry.
+🎉 **Done!** You've just created your first project in Microsoft Foundry.
 
-### Deploy a Language Model in Azure AI Foundry
+### Deploy a Language Model in Microsoft Foundry
 
 Now, let’s deploy a **gpt-4o-mini** model to your project:
 
-1. In the Azure AI Foundry portal, navigate to your project (it should automatically open after creating it).
+1. In the Microsoft Foundry portal, navigate to your project (it should automatically open after creating it).
 1. Click on **Models and Endpoints** from the left-hand menu and then the **Deploy Model** button.
 1. Select **Deploy base model** from the dropdown.
 1. Search for **gpt-4o-mini** in the model catalog.
@@ -43,7 +43,7 @@ Now, let’s deploy a **gpt-4o-mini** model to your project:
 1. Click **Deploy** and wait for the model to be provisioned.
 1. Once deployed, note the **Model Name**, **Target URI**, and **API Key** from the model details page.
 
-🎉 **Done!** You’ve deployed your first Large Language Model in Azure AI Foundry.
+🎉 **Done!** You've deployed your first Large Language Model in Microsoft Foundry.
 
 ![Model deployed, copy model name, endpoint url and apikey](./images/deploytoazure-20-copymodelinfo.png)
 
@@ -58,7 +58,7 @@ To be secure, let's add the API key you just created to your Codespace's secrets
 
     ![Adding a new Codespace secret](./images/codespaces-secret.jpeg)
 1. Name your secret **AZURE_AI_SECRET**.
-1. Paste the API key you copied from the Azure AI Foundry portal into the **Secret** field.
+1. Paste the API key you copied from the Microsoft Foundry portal into the **Secret** field.
 
 ## Creating a GitHub Codespace
 
@@ -90,15 +90,17 @@ Now let’s update the code to use the newly deployed model. First we'll need to
 1. Open the terminal and switch to the project directory:
 
    If you're using Windows Command Prompt (CMD) or PowerShell:
+
    ```bash
    cd samples\CoreSamples\BasicChat-01MEAI
    ```
-   
+
    If you're using Linux, macOS, Git Bash, WSL, or the VS Code terminal:
+
    ```bash
    cd samples/CoreSamples/BasicChat-01MEAI
    ```
-   
+
    > **Note**: GitHub Codespaces runs a Linux environment, so always use forward slashes (`/`) in paths when working in Codespaces, regardless of your local operating system.
 
 1. Run the following commands to add the required package:
@@ -113,7 +115,6 @@ Now let’s update the code to use the newly deployed model. First we'll need to
 1. Open `/workspaces/Generative-AI-for-beginners-dotnet/samples/CoreSamples/BasicChat-01MEAI/Program.cs`.
 
     Add the following using statements at the top of the file:
-
 
     ```csharp
     using System.ClientModel;
@@ -160,13 +161,13 @@ Now let’s update the code to use the newly deployed model. First we'll need to
 
 ## Summary
 
-In this lesson, you learned how to set up your development environment for the rest of the course. You created a GitHub Codespace and configured it to use Azure OpenAI. You also updated the sample code to use the newly deployed model in Azure AI Foundry.
+In this lesson, you learned how to set up your development environment for the rest of the course. You created a GitHub Codespace and configured it to use Azure OpenAI. You also updated the sample code to use the newly deployed model in Microsoft Foundry.
 
 ### Additional Resources
 
-- [Azure AI Foundry Documentation](https://learn.microsoft.com/azure/ai-services/)
+- [Microsoft Foundry Documentation](https://learn.microsoft.com/azure/ai-services/)
 - [Working with GitHub Codespaces](https://docs.github.com/en/codespaces/getting-started)
-- [How to Deploy Models in Azure AI Foundry](https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-openai)
+- [How to Deploy Models in Microsoft Foundry](https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-openai)
 - [Azure.AI.OpenAI NuGet Package](https://www.nuget.org/packages/Azure.AI.OpenAI)
 
 ## Next Steps

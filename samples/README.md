@@ -32,7 +32,7 @@ This folder contains fundamental samples demonstrating core Generative AI techni
 - **Agents** - Basic agent implementations with custom functions and OpenAPI integrations
 - **Image & Video Generation** - Creating visual content with DALL-E and Sora models
 - **Model Context Protocol (MCP)** - Integrating with external services using MCP
-- **Local Model Runners** - Running AI models locally using AI Toolkit, Docker, and Azure AI Foundry Local
+- **Local Model Runners** - Running AI models locally using AI Toolkit, Docker, and Microsoft Foundry Local
 
 This folder includes over 40 samples demonstrating different techniques, providers, and integration patterns.
 
@@ -102,7 +102,7 @@ Each application is fully functional and can be run independently with proper AI
 - **.NET 9 SDK** or later
 - **AI Provider Access** (at least one):
   - GitHub Personal Access Token for GitHub Models
-  - Azure AI Foundry endpoint (with managed identity or API key)
+  - Microsoft Foundry endpoint (with managed identity or API key)
   - Ollama installed locally
 
 ### Quick Start by Category
