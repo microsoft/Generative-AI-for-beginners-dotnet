@@ -4,7 +4,7 @@ This sample demonstrates how to use Claude models deployed in Azure AI Foundry w
 
 ## Overview
 
-This sample uses a custom `HttpMessageHandler` to transform Azure OpenAI API requests to the Claude Messages API format required by Azure AI Foundry Claude deployments.
+This sample uses a custom `ClaudeToOpenAIMessageHandler` to transform Azure OpenAI API requests to the Claude Messages API format required by Azure AI Foundry Claude deployments.
 
 ## Prerequisites
 
@@ -40,7 +40,7 @@ dotnet run
 
 ## Authentication
 
-Claude models in Azure AI Foundry use **API key authentication** with the `x-api-key` header (not `Authorization: Bearer`). The custom `CustomHttpMessageHandler` handles this transformation automatically.
+Claude models in Azure AI Foundry use **API key authentication** with the `x-api-key` header (not `Authorization: Bearer`). The custom `ClaudeToOpenAIMessageHandler` handles this transformation automatically.
 
 According to the [Microsoft documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/how-to/use-foundry-models-claude?view=foundry-classic), Claude API endpoints use:
 
@@ -51,13 +51,29 @@ According to the [Microsoft documentation](https://learn.microsoft.com/en-us/azu
 ## How It Works
 
 1. The application creates an `AzureOpenAIClient` with a custom HTTP transport
-2. The `CustomHttpMessageHandler` intercepts requests to Claude deployments
+2. The `ClaudeToOpenAIMessageHandler` intercepts requests to Claude deployments
 3. It transforms OpenAI-style requests to Claude Messages API format:
-   - Converts message format
-   - Extracts system messages as a separate parameter
+   - Converts message format and extracts system messages
+   - Skips empty messages (Claude requires non-empty content)
    - Adds required Claude headers (`x-api-key`, `anthropic-version`)
    - Transforms endpoint URL to Claude's format
-4. Responses are transformed back to OpenAI format for compatibility
+4. Streaming responses are transformed back to OpenAI format using SSE (Server-Sent Events)
+5. All responses maintain OpenAI API compatibility
+
+## Code Architecture
+
+The handler is organized into clear regions:
+
+- **Request Transformation**: Converts OpenAI format to Claude format
+- **Response Transformation**: Converts Claude responses back to OpenAI format  
+- **Streaming Response Transformation**: Handles Server-Sent Events (SSE) streaming
+
+Key features:
+
+- Constants for maintainable configuration
+- Small, focused methods with single responsibilities
+- Clear separation of concerns
+- XML documentation for IntelliSense support
 
 ## Supported Models
 

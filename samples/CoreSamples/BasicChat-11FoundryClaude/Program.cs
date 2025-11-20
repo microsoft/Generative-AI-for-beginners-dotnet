@@ -12,7 +12,7 @@ var apiKey = config["apikey"];
 var deploymentName = config["deploymentName"];
 
 // 1. create custom http client that will handle Claude endpoint in Azure
-var customHttpMessageHandler = new CustomHttpMessageHandler
+var customHttpMessageHandler = new ClaudeToOpenAIMessageHandler
 {
     AzureClaudeDeploymentUrl = endpointClaude,
     ApiKey = apiKey, // Pass the API key to the handler
