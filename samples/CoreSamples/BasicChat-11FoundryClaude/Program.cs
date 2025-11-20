@@ -2,16 +2,41 @@
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 using System.ClientModel;
+using System.ClientModel.Primitives;
 using System.Text;
-
-
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 var endpoint = config["endpoint"];
-var apiKey = new ApiKeyCredential(config["apikey"]);
+var endpointClaude = config["endpointClaude"];
+var apiKey = config["apikey"];
 var deploymentName = config["deploymentName"];
 
-IChatClient client = new AzureOpenAIClient(new Uri(endpoint), apiKey)
+// 1. create custom http client that will handle Claude endpoint in Azure
+var customHttpMessageHandler = new CustomHttpMessageHandler
+{
+    AzureClaudeDeploymentUrl = endpointClaude,
+    ApiKey = apiKey, // Pass the API key to the handler
+    Model = deploymentName // Pass the model name to the handler
+};
+HttpClient customHttpClient = new(customHttpMessageHandler);
+
+// 2. Wrap HttpClient in the NEW pipeline transport
+var transport = new HttpClientPipelineTransport(customHttpClient);
+
+// 3. Client options (generational)
+var clientOptions = new AzureOpenAIClientOptions
+{
+    Transport = transport
+};
+
+// 4. Credential type for generational client
+var apiKeyCredential = new ApiKeyCredential(apiKey);
+
+// 5. Create the client with the custom transport and credential
+IChatClient client = new AzureOpenAIClient(
+    endpoint: new Uri(endpoint),
+    credential: apiKeyCredential,
+    options: clientOptions)
     .GetChatClient(deploymentName)
     .AsIChatClient()
     .AsBuilder()
@@ -19,7 +44,7 @@ IChatClient client = new AzureOpenAIClient(new Uri(endpoint), apiKey)
 
 var history = new List<ChatMessage>
 {
-    new(ChatRole.Assistant, "You are a useful chatbot.")
+    new(ChatRole.System, "You are a useful chatbot.")
 };
 
 while (true)
