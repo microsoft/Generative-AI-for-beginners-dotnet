@@ -18,7 +18,7 @@ TornadoApi tornadoApi = new(
 
 Conversation chat = tornadoApi.Chat.CreateConversation(new ChatRequest
 {
-    Model = ChatModel.OpenAi.
+    Model = ChatModel.OpenAi.Gpt41.V41Mini
 });
 
 // here we're building the prompt

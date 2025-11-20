@@ -2,12 +2,11 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFramework>net9.0</TargetFramework>
-		<RootNamespace>BasicChat_05AIFoundryModels</RootNamespace>
+		<TargetFramework>net10.0</TargetFramework>
+		<RootNamespace>BasicChat_11FoundryClaude</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<UserSecretsId>2a714645-d488-4c22-be11-b6f155b55d20</UserSecretsId>
-		<IncludePrerelease>true</IncludePrerelease>
+		<UserSecretsId>e977662d-d116-4bc2-aed3-99125298cff4</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>
