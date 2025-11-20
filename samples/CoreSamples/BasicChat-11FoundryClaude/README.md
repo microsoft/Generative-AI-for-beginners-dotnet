@@ -42,7 +42,7 @@ dotnet run
 
 Claude models in Microsoft Foundry use **API key authentication** with the `x-api-key` header (not `Authorization: Bearer`). The custom `ClaudeToOpenAIMessageHandler` handles this transformation automatically.
 
-According to the [Microsoft documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/how-to/use-foundry-models-claude?view=foundry-classic), Claude API endpoints use:
+According to the [Microsoft documentation](https://learn.microsoft.com/azure/ai-foundry/foundry-models/how-to/use-foundry-models-claude?view=foundry-classic), Claude API endpoints use:
 
 - **Header**: `x-api-key: <your-api-key>`
 - **Endpoint**: `https://<resource-name>.services.ai.azure.com/anthropic/v1/messages`
@@ -85,6 +85,6 @@ This sample works with all Claude models available in Microsoft Foundry:
 
 ## References
 
-- [Deploy and use Claude models in Microsoft Foundry](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/how-to/use-foundry-models-claude?view=foundry-classic)
+- [Deploy and use Claude models in Microsoft Foundry](https://learn.microsoft.com/azure/ai-foundry/foundry-models/how-to/use-foundry-models-claude?view=foundry-classic)
 - [Claude API Documentation](https://docs.claude.com/en/api/messages)
-- [Microsoft.Extensions.AI](https://learn.microsoft.com/en-us/dotnet/ai/ai-extensions)
+- [Microsoft.Extensions.AI](https://learn.microsoft.com/dotnet/ai/ai-extensions)
