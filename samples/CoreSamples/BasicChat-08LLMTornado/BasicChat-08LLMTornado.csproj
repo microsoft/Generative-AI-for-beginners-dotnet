@@ -9,9 +9,9 @@
     <UserSecretsId>0018a33d-0cb0-4ba1-977f-5c7de26ecf4d</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="LlmTornado" Version="3.8.11" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.0-rc.2.25502.107" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="LlmTornado" Version="3.8.11" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.0-rc.2.25502.107" />
+	</ItemGroup>
 
 </Project>
