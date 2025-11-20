@@ -74,7 +74,6 @@ Console.WriteLine(response.Text);
 > 🗒️**Note:** This example showed GitHub Models as the hosting service. If you want to use Ollama, [check out this example](../samples/CoreSamples/BasicChat-03Ollama/) (it instantiates a different `IChatClient`).
 > If you want to use Microsoft Foundry you can use the same code, but you will need to change the endpoint and the credentials.
 >
-> If you want to use Azure AI Foundry you can use the same code, but you will need to change the endpoint and the credentials.
 >
 > **GitHub Models Endpoint:** The endpoint `https://models.github.ai/inference` is the new dedicated GitHub Models endpoint as announced in the [GitHub Models deprecation notice](https://github.blog/changelog/2025-07-17-deprecation-of-azure-endpoint-for-github-models/), replacing the previous Azure-based endpoint.
 >
