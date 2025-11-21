@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFramework>net9.0</TargetFramework>
+		<TargetFramework>net10.0</TargetFramework>
 		<RootNamespace>AgentFx_FoundryClaude_01</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
@@ -10,10 +10,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="elbruno.Extensions.AI.Claude" Version="0.1.0-preview.2" />
-		<PackageReference Include="Microsoft.Agents.AI" Version="1.0.0-preview.251028.1" />
-		<PackageReference Include="Microsoft.Extensions.AI" Version="9.10.1" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.0-rc.2.25502.107" />
+		<PackageReference Include="elbruno.Extensions.AI.Claude" Version="0.1.0-preview.4" />
+		<PackageReference Include="Microsoft.Agents.AI" Version="1.0.0-preview.251114.1" />
+		<PackageReference Include="Microsoft.Extensions.AI" Version="10.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.0" />
 	</ItemGroup>
 
 </Project>
