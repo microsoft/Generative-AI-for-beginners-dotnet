@@ -10,6 +10,7 @@
 - 복잡한 시나리오에서 에이전트가 어떻게 작동하는지 이해합니다.
 
 ## 포함된 샘플
+
 - [Canonical Generative AI Samples](../../../04-PracticalSamples)
   - [목표](../../../04-PracticalSamples)
   - [포함된 샘플](../../../04-PracticalSamples)
@@ -30,7 +31,7 @@ _⬆️ 이미지를 클릭하면 영상을 볼 수 있습니다 ⬆️_
 
 첫 번째 데모에서는 **eShopLite** 프로젝트를 탐색합니다. **eShopLite**는 아웃도어 장비와 캠핑 용품을 위한 간단한 전자상거래 애플리케이션으로, 시맨틱 검색 기능 최적화, 고객 지원, 실시간 오디오 분석 등 생성형 AI 기능이 추가된 애플리케이션입니다.
 
-이 데모는 [Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service)와 [Azure AI Foundry Models](https://ai.azure.com/)을 사용하여 애플리케이션에서 생성형 AI 작업(추론)을 수행합니다.
+이 데모는 [Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service)와 [Microsoft Foundry Models](https://ai.azure.com/)을 사용하여 애플리케이션에서 생성형 AI 작업(추론)을 수행합니다.
 
 첫 번째 데모에서는 Semantic Kernel을 활용하여 사용자의 쿼리 맥락을 이해하고 정확한 결과를 제공하는 검색 기능을 개선하는 방법을 보여줍니다.
 
@@ -233,7 +234,7 @@ Application Insights는 포괄적인 텔레메트리 데이터를 제공하여 �
 
 이미지에서는 Application Insights 대시보드를 볼 수 있으며, 데이터베이스 호출, 요청 수, 응답 시간 등 서비스 성능에 대한 정보를 제공합니다.
 
-> 💡 **전문가 팁**: eShopLite의 시맨틱 검색에 대한 자세한 정보는 레포지토리를 참조하세요: https://aka.ms/netaieshoplitesemanticsearch
+> 💡 **전문가 팁**: eShopLite의 시맨틱 검색에 대한 자세한 정보는 레포지토리를 참조하세요: <https://aka.ms/netaieshoplitesemanticsearch>
 
 ### eShopLite와 시맨틱 검색 - Azure AI Search 활용
 

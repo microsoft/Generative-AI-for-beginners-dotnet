@@ -1,19 +1,19 @@
 # Einrichten der Entwicklungsumgebung für Azure OpenAI
 
-Wenn du die Azure AI Foundry-Modelle für deine .NET-KI-Anwendungen in diesem Kurs nutzen möchtest, befolge die Schritte in dieser Anleitung.
+Wenn du die Microsoft Foundry-Modelle für deine .NET-KI-Anwendungen in diesem Kurs nutzen möchtest, befolge die Schritte in dieser Anleitung.
 
 Möchtest du Azure OpenAI nicht verwenden?
 
 👉 [Hier ist die Anleitung für GitHub-Modelle](README.md)  
 👉 [Hier sind die Schritte für Ollama](getting-started-ollama.md)
 
-## Erstellen der Azure AI Foundry-Ressourcen
+## Erstellen der Microsoft Foundry-Ressourcen
 
-Um Azure AI Foundry-Modelle zu verwenden, musst du ein Hub und ein Projekt im Azure AI Foundry-Portal erstellen. Danach musst du ein Modell bereitstellen. In diesem Abschnitt erfährst du, wie das geht.
+Um Microsoft Foundry-Modelle zu verwenden, musst du ein Hub und ein Projekt im Microsoft Foundry-Portal erstellen. Danach musst du ein Modell bereitstellen. In diesem Abschnitt erfährst du, wie das geht.
 
-### Erstellen eines Hubs und Projekts in Azure AI Foundry
+### Erstellen eines Hubs und Projekts in Microsoft Foundry
 
-1. Gehe zum [Azure AI Foundry-Portal](https://ai.azure.com/).
+1. Gehe zum [Microsoft Foundry-Portal](https://ai.azure.com/).
 1. Melde dich mit deinem Azure-Konto an.
 1. Wähle **Alle Hubs + Projekte** aus dem Menü auf der linken Seite und klicke dann im Dropdown-Menü auf **+ Neuer Hub**. (Hinweis: Möglicherweise musst du zuerst auf **+ Neues Projekt** klicken, um die Option **+ Neuer Hub** zu sehen).  
     ![Einen neuen Hub erstellen](../../../translated_images/ai-foundry-hub-selection.dc9bf6b90ab4b2b9f94ae6274422bcd318ee09091350750062740479f69a651c.de.png)
@@ -28,13 +28,13 @@ Um Azure AI Foundry-Modelle zu verwenden, musst du ein Hub und ein Projekt im Az
     - Gib deinem Projekt einen Namen (z. B. "GenAINET") oder akzeptiere den Standardnamen.
     - Klicke auf **Erstellen**.
 
-🎉 **Geschafft!** Du hast gerade dein erstes Projekt in Azure AI Foundry erstellt.
+🎉 **Geschafft!** Du hast gerade dein erstes Projekt in Microsoft Foundry erstellt.
 
-### Bereitstellen eines Sprachmodells in Azure AI Foundry
+### Bereitstellen eines Sprachmodells in Microsoft Foundry
 
 Jetzt stellen wir ein **gpt-4o-mini**-Modell in deinem Projekt bereit:
 
-1. Navigiere im Azure AI Foundry-Portal zu deinem Projekt (es sollte sich nach der Erstellung automatisch öffnen).
+1. Navigiere im Microsoft Foundry-Portal zu deinem Projekt (es sollte sich nach der Erstellung automatisch öffnen).
 1. Klicke im Menü auf der linken Seite auf **Modelle und Endpunkte** und dann auf die Schaltfläche **Modell bereitstellen**.
 1. Wähle **Basis-Modell bereitstellen** aus dem Dropdown-Menü.
 1. Suche im Modellkatalog nach **gpt-4o-mini**.
@@ -43,7 +43,7 @@ Jetzt stellen wir ein **gpt-4o-mini**-Modell in deinem Projekt bereit:
 1. Klicke auf **Bereitstellen** und warte, bis das Modell bereitgestellt ist.
 1. Sobald das Modell bereitgestellt wurde, notiere dir den **Modellnamen**, die **Ziel-URI** und den **API-Schlüssel** auf der Detailseite des Modells.
 
-🎉 **Geschafft!** Du hast dein erstes Large Language Model in Azure AI Foundry bereitgestellt.
+🎉 **Geschafft!** Du hast dein erstes Large Language Model in Microsoft Foundry bereitgestellt.
 
 ![Modell bereitgestellt, Modellname, Endpunkt-URL und API-Schlüssel kopieren](../../../translated_images/deploytoazure-20-copymodelinfo.9797a0bffd24459c9b977d98e18a089accaece2917d2abcde4ab96db957e0fcb.de.png)
 
@@ -58,7 +58,7 @@ Um sicher zu sein, fügen wir den gerade erstellten API-Schlüssel zu den Secret
 
     ![Ein neues Codespace-Secret hinzufügen](../../../translated_images/codespaces-secret.0e168026d0078356489f51ca61b195603283511c73bb805b056619f994652f7c.de.jpeg)
 1. Benenne dein Secret **AZURE_AI_SECRET**.
-1. Füge den API-Schlüssel, den du aus dem Azure AI Foundry-Portal kopiert hast, in das Feld **Secret** ein.
+1. Füge den API-Schlüssel, den du aus dem Microsoft Foundry-Portal kopiert hast, in das Feld **Secret** ein.
 
 ## Erstellen eines GitHub Codespace
 
@@ -150,13 +150,13 @@ Aktualisieren wir nun den Code, um das neu bereitgestellte Modell zu verwenden. 
 
 ## Zusammenfassung
 
-In dieser Lektion hast du gelernt, wie du deine Entwicklungsumgebung für den Rest des Kurses einrichtest. Du hast einen GitHub Codespace erstellt und ihn so konfiguriert, dass er Azure OpenAI verwendet. Außerdem hast du den Beispielcode aktualisiert, um das neu bereitgestellte Modell in Azure AI Foundry zu verwenden.
+In dieser Lektion hast du gelernt, wie du deine Entwicklungsumgebung für den Rest des Kurses einrichtest. Du hast einen GitHub Codespace erstellt und ihn so konfiguriert, dass er Azure OpenAI verwendet. Außerdem hast du den Beispielcode aktualisiert, um das neu bereitgestellte Modell in Microsoft Foundry zu verwenden.
 
 ### Zusätzliche Ressourcen
 
-- [Azure AI Foundry-Dokumentation](https://learn.microsoft.com/azure/ai-services/)  
+- [Microsoft Foundry-Dokumentation](https://learn.microsoft.com/azure/ai-services/)  
 - [Arbeiten mit GitHub Codespaces](https://docs.github.com/en/codespaces/getting-started)  
-- [Wie man Modelle in Azure AI Foundry bereitstellt](https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-openai)  
+- [Wie man Modelle in Microsoft Foundry bereitstellt](https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-openai)  
 - [Azure.AI.OpenAI NuGet-Paket](https://www.nuget.org/packages/Azure.AI.OpenAI)
 
 ## Nächste Schritte

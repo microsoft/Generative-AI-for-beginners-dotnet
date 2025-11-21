@@ -1,11 +1,11 @@
 # AgentFx-FoundryClaude-Persisting-01: Persisting Conversations with Claude
 
-This sample demonstrates **conversation persistence** using Microsoft Agent Framework (AgentFx) with **Claude models** deployed in **Azure AI Foundry**. It shows how to serialize and deserialize agent threads to maintain conversation context across sessions.
+This sample demonstrates **conversation persistence** using Microsoft Agent Framework (AgentFx) with **Claude models** deployed in **Microsoft Foundry**. It shows how to serialize and deserialize agent threads to maintain conversation context across sessions.
 
 ## Overview
 
 - **Framework**: Microsoft Agent Framework (AgentFx)
-- **AI Model**: Claude (Haiku, Sonnet, or Opus) via Azure AI Foundry
+- **AI Model**: Claude (Haiku, Sonnet, or Opus) via Microsoft Foundry
 - **Pattern**: Thread serialization and persistence
 - **Key Concepts**: `GetNewThread()`, `Serialize()`, `DeserializeThread()`, stateful conversations
 
@@ -20,9 +20,9 @@ This sample walks through four key steps:
 
 ## Prerequisites
 
-### 1. Azure AI Foundry Setup
+### 1. Microsoft Foundry Setup
 
-1. Create an Azure AI Foundry project
+1. Create an Microsoft Foundry project
 2. Deploy a Claude model (e.g., `claude-haiku-4-5`, `claude-sonnet-4-5`)
 3. Note your:
    - **Endpoint**: `https://<resource-name>.cognitiveservices.azure.com`
@@ -181,7 +181,7 @@ Threads are saved to `agent_thread_claude.json` in the application directory. In
 
 - [Microsoft Agent Framework Documentation](https://learn.microsoft.com/agent-framework/)
 - [AgentFx Persisting Conversations Tutorial](https://learn.microsoft.com/agent-framework/tutorials/agents/persisted-conversation)
-- [Azure AI Foundry - Claude Models](https://learn.microsoft.com/azure/ai-foundry/foundry-models/how-to/use-foundry-models-claude)
+- [Microsoft Foundry - Claude Models](https://learn.microsoft.com/azure/ai-foundry/foundry-models/how-to/use-foundry-models-claude)
 - [Claude API Documentation](https://docs.anthropic.com/claude/reference/messages_post)
 
 ## Troubleshooting
@@ -202,7 +202,7 @@ Threads are saved to `agent_thread_claude.json` in the application directory. In
 
 - Verify API key and endpoints are correct
 - Ensure Claude model is deployed and accessible
-- Check Azure AI Foundry service health
+- Check Microsoft Foundry service health
 
 ## License
 

@@ -45,8 +45,8 @@ Console.WriteLine(response.Message);
 ```
 
 > 🗒️**注意：** 這個範例使用了 GitHub Models 作為託管服務。如果您想使用 Ollama，[請參考這個範例](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama)（它實例化了一個不同的 `IChatClient`）。
-> 
-> 如果您想使用 Azure AI Foundry，可以使用相同的程式碼，但需要更改端點和憑證。
+>
+> 如果您想使用 Microsoft Foundry，可以使用相同的程式碼，但需要更改端點和憑證。
 
 > 🙋 **需要幫助？**：如果遇到問題，[在倉庫中提交一個 issue](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new)。
 
@@ -175,9 +175,9 @@ _⬆️點擊圖片觀看影片⬆️_
 
 ## 更多資源
 
-- [使用 .NET 構建 AI 聊天應用](https://learn.microsoft.com/dotnet/ai/quickstarts/get-started-openai?tabs=azd&pivots=openai)
-- [執行本地 .NET 函數](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-azure-openai-tool?tabs=azd&pivots=openai)
-- [與本地 AI 模型進行聊天](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-local-ai)
+* [使用 .NET 構建 AI 聊天應用](https://learn.microsoft.com/dotnet/ai/quickstarts/get-started-openai?tabs=azd&pivots=openai)
+* [執行本地 .NET 函數](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-azure-openai-tool?tabs=azd&pivots=openai)
+* [與本地 AI 模型進行聊天](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-local-ai)
 
 ## 下一步
 

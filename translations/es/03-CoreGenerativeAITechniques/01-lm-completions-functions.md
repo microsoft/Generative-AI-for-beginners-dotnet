@@ -45,8 +45,8 @@ Console.WriteLine(response.Message);
 ```
 
 > 🗒️**Nota:** Este ejemplo muestra modelos de GitHub como el servicio de alojamiento. Si deseas usar Ollama, [revisa este ejemplo](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama) (se instancia un `IChatClient` diferente).
-> 
-> Si deseas usar Azure AI Foundry, puedes usar el mismo código, pero necesitarás cambiar el endpoint y las credenciales.
+>
+> Si deseas usar Microsoft Foundry, puedes usar el mismo código, pero necesitarás cambiar el endpoint y las credenciales.
 
 > 🙋 **¿Necesitas ayuda?**: Si encuentras algún problema, [abre un issue en el repositorio](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new).
 
@@ -175,9 +175,9 @@ En la próxima lección, verás cómo comenzar a interactuar con datos y constru
 
 ## Recursos adicionales
 
-- [Construye una app de chat con IA en .NET](https://learn.microsoft.com/dotnet/ai/quickstarts/get-started-openai?tabs=azd&pivots=openai)
-- [Ejecuta una función local en .NET](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-azure-openai-tool?tabs=azd&pivots=openai)
-- [Chatea con un modelo de IA local](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-local-ai)
+* [Construye una app de chat con IA en .NET](https://learn.microsoft.com/dotnet/ai/quickstarts/get-started-openai?tabs=azd&pivots=openai)
+* [Ejecuta una función local en .NET](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-azure-openai-tool?tabs=azd&pivots=openai)
+* [Chatea con un modelo de IA local](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-local-ai)
 
 ## Próximos pasos
 

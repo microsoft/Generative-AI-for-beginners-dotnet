@@ -16,7 +16,7 @@ Ein wichtiger Punkt, den Sie beim Erstellen von Agenten beachten sollten, ist, d
 
 ## Erstellen eines KI-Agenten
 
-Um einen KI-Agenten in .NET zu erstellen, arbeiten wir mit einigen neuen Konzepten. Wir verwenden ein neues SDK und müssen in Azure AI Foundry einige zusätzliche Konfigurationen vornehmen, um loszulegen.
+Um einen KI-Agenten in .NET zu erstellen, arbeiten wir mit einigen neuen Konzepten. Wir verwenden ein neues SDK und müssen in Microsoft Foundry einige zusätzliche Konfigurationen vornehmen, um loszulegen.
 
 > 🧑‍💻**Beispielcode**: Für diese Lektion arbeiten wir mit dem [AgentLabs-01-Simple Beispiel](../../../03-CoreGenerativeAITechniques/src/AgentLabs-01-Simple).
 >
@@ -26,7 +26,7 @@ Um einen KI-Agenten in .NET zu erstellen, arbeiten wir mit einigen neuen Konzept
 
 Wir stellen einen neuen Azure-Dienst vor, der uns beim Erstellen von Agenten unterstützt, den passend benannten [Azure AI Agent Service](https://learn.microsoft.com/azure/ai-services/agents/overview).
 
-Um die in dieser Lektion enthaltenen Codebeispiele auszuführen, müssen Sie in Azure AI Foundry einige zusätzliche Konfigurationen vornehmen. Sie können [diese Anleitung zum Einrichten eines **Basic Agent**](https://learn.microsoft.com/azure/ai-services/agents/quickstart?pivots=programming-language-csharp) befolgen.
+Um die in dieser Lektion enthaltenen Codebeispiele auszuführen, müssen Sie in Microsoft Foundry einige zusätzliche Konfigurationen vornehmen. Sie können [diese Anleitung zum Einrichten eines **Basic Agent**](https://learn.microsoft.com/azure/ai-services/agents/quickstart?pivots=programming-language-csharp) befolgen.
 
 ### Azure AI Projects-Bibliothek
 
@@ -59,7 +59,7 @@ Wir erstellen einen Agenten mit einer einzigen Aufgabe, der als Tutor für Mathe
     ![Screenshot der Projektstartseite in AI Foundry mit hervorgehobener Projektverbindungszeichenfolge in Rot](../../../translated_images/project-connection-string.e9005630f6251f18a89cb8c08f54b33bc83e0765f4c4e4d694af2ff447c4dfef.de.png)
 
 1. Als Nächstes möchten wir den Tutor-Agenten erstellen. Denken Sie daran, er sollte sich nur auf eine einzige Aufgabe konzentrieren.
-   
+
     ```csharp
     Agent tutorAgent = (await client.CreateAgentAsync(
     model: "gpt-4o",
@@ -72,7 +72,7 @@ Wir erstellen einen Agenten mit einer einzigen Aufgabe, der als Tutor für Mathe
 
     > 🗒️**Note**: You can create your own tools too. See the [Functions](../../../03-CoreGenerativeAITechniques/src/AgentLabs-02-Functions) to learn more.
 
-    Second note the `instructions` that are being sent along. It's a prompt and we're limiting it to answer math questions. Then last creating the agent is an async operation. That's because it's creating an object within Azure AI Foundry Agents service. So we both `await` the `CreateAgentAsync` function and then grab the `Value`, um auf das tatsächliche `Agent`-Objekt zuzugreifen. Dieses Muster wird immer wieder auftreten, wenn Sie Objekte mit dem **Azure.AI.Projects**-SDK erstellen.
+    Second note the `instructions` that are being sent along. It's a prompt and we're limiting it to answer math questions. Then last creating the agent is an async operation. That's because it's creating an object within Microsoft Foundry Agents service. So we both `await` the `CreateAgentAsync` function and then grab the `Value`, um auf das tatsächliche `Agent`-Objekt zuzugreifen. Dieses Muster wird immer wieder auftreten, wenn Sie Objekte mit dem **Azure.AI.Projects**-SDK erstellen.
 
 1. Ein `AgentThread` ist ein Objekt, das die Kommunikation zwischen einzelnen Agenten, dem Benutzer usw. verwaltet. Wir müssen diesen erstellen, damit wir eine `ThreadMessage` hinzufügen können. In diesem Fall ist es die erste Frage des Benutzers.
 

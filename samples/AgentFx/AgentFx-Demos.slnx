@@ -28,7 +28,7 @@
     <Project Path="AgentFx-Persisting-01-Simple/AgentFx-Persisting-01-Simple.csproj" Id="cbce1a16-7258-4d75-af26-725d6c0c5ab4" />
     <Project Path="AgentFx-Persisting-02-Menu/AgentFx-Persisting-02-Menu.csproj" Id="b7e2e2c1-4e2a-4e2b-9e2c-2e2d2e2e2e2f" />
   </Folder>
-  <Folder Name="/8 Claude via Azure AI Foundry/">
+  <Folder Name="/8 Claude via Microsoft Foundry/">
     <Project Path="AgentFx-FoundryClaude-01/AgentFx-FoundryClaude-01.csproj" Id="b8f3c2a1-7d4e-4f9a-8b2c-1e5d6f7a8b9c" />
     <Project Path="AgentFx-FoundryClaude-Persisting-01/AgentFx-FoundryClaude-Persisting-01.csproj" Id="c9a4d3b2-8e5f-4a0b-9c3d-2f6e7g8h9i0j" />
     <Project Path="AgentFx-AIWebChatApp-FoundryClaude/AgentFx-AIWebChatApp-FoundryClaude.csproj" Id="d5e4f3c2-9a6b-4c7d-8e5f-3a4b5c6d7e8f" />

@@ -10,6 +10,7 @@
 - 學習在複雜場景中代理 (Agents) 的運作方式。
 
 ## 包含的範例
+
 - [標準生成式 AI 範例](../../../04-PracticalSamples)
   - [您將達成的目標](../../../04-PracticalSamples)
   - [包含的範例](../../../04-PracticalSamples)
@@ -22,7 +23,6 @@
     - [其他資源](../../../04-PracticalSamples)
     - [下一步](../../../04-PracticalSamples)
 
-
 [![總覽影片](https://img.youtube.com/vi/Ky4CACXJqR8/0.jpg)](https://youtu.be/Ky4CACXJqR8?feature=shared)
 
 _⬆️點擊圖片觀看影片⬆️_
@@ -31,7 +31,7 @@ _⬆️點擊圖片觀看影片⬆️_
 
 在我們的第一組示範中，我們將探索 **eShopLite** 專案。**eShopLite** 是一個專為戶外裝備與露營愛好者設計的簡單電商應用程式，並透過生成式 AI 功能進行增強，例如搜尋功能優化、客戶支持和即時語音分析。
 
-這些示範使用 [Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service) 和 [Azure AI Foundry Models](https://ai.azure.com/) 進行推論（即應用程式中的生成式 AI 部分）。
+這些示範使用 [Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service) 和 [Microsoft Foundry Models](https://ai.azure.com/) 進行推論（即應用程式中的生成式 AI 部分）。
 
 在第一個示範中，我們展示如何使用 Semantic Kernel 增強搜尋功能，使其能理解使用者查詢的上下文並提供準確的結果。
 
@@ -234,7 +234,7 @@ Application Insights 提供了一套完整的遙測數據，幫助我們瞭解�
 
 在圖片中，我們可以看到 Application Insights 儀表板，提供有關服務性能的資訊，例如資料庫調用次數、請求數量和回應時間。
 
-> 💡 **專業提示**: 想了解更多關於 eShopLite 與語意搜尋的資訊，請查看此存儲庫：https://aka.ms/netaieshoplitesemanticsearch
+> 💡 **專業提示**: 想了解更多關於 eShopLite 與語意搜尋的資訊，請查看此存儲庫：<https://aka.ms/netaieshoplitesemanticsearch>
 
 ### eShopLite 與語意搜尋使用 Azure AI Search
 

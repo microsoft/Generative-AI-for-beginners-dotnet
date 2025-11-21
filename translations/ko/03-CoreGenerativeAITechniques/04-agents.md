@@ -16,7 +16,7 @@ AI 에이전트는 LLM(대규모 언어 모델)을 단순한 어시스턴트에�
 
 ## AI 에이전트 생성하기
 
-.NET에서 AI 에이전트를 구축하기 위해 몇 가지 새로운 개념을 다룰 것입니다. 새로운 SDK를 사용하고, 시작을 위해 Azure AI Foundry에서 추가적인 설정도 필요합니다.
+.NET에서 AI 에이전트를 구축하기 위해 몇 가지 새로운 개념을 다룰 것입니다. 새로운 SDK를 사용하고, 시작을 위해 Microsoft Foundry에서 추가적인 설정도 필요합니다.
 
 > 🧑‍💻**샘플 코드**: 이번 레슨에서는 [AgentLabs-01-Simple 샘플](../../../03-CoreGenerativeAITechniques/src/AgentLabs-01-Simple)을 기반으로 작업할 예정입니다.
 >
@@ -26,7 +26,7 @@ AI 에이전트는 LLM(대규모 언어 모델)을 단순한 어시스턴트에�
 
 에이전트 구축을 도와줄 새로운 Azure 서비스인 [Azure AI 에이전트 서비스](https://learn.microsoft.com/azure/ai-services/agents/overview)를 소개합니다.
 
-이번 레슨에 포함된 코드 샘플을 실행하려면 Azure AI Foundry에서 추가 설정을 수행해야 합니다. [**기본 에이전트**를 설정하는 방법](https://learn.microsoft.com/azure/ai-services/agents/quickstart?pivots=programming-language-csharp)을 따라 진행하세요.
+이번 레슨에 포함된 코드 샘플을 실행하려면 Microsoft Foundry에서 추가 설정을 수행해야 합니다. [**기본 에이전트**를 설정하는 방법](https://learn.microsoft.com/azure/ai-services/agents/quickstart?pivots=programming-language-csharp)을 따라 진행하세요.
 
 ### Azure AI Projects 라이브러리
 
@@ -72,7 +72,7 @@ Azure AI Projects 라이브러리를 사용할 때 이해해야 할 몇 가지 �
 
     > 🗒️**Note**: You can create your own tools too. See the [Functions](../../../03-CoreGenerativeAITechniques/src/AgentLabs-02-Functions) to learn more.
 
-    Second note the `instructions` that are being sent along. It's a prompt and we're limiting it to answer math questions. Then last creating the agent is an async operation. That's because it's creating an object within Azure AI Foundry Agents service. So we both `await` the `CreateAgentAsync` function and then grab the `Value` 패턴입니다. **Azure.AI.Projects** SDK로 객체를 생성할 때 이 패턴을 자주 보게 될 것입니다.
+    Second note the `instructions` that are being sent along. It's a prompt and we're limiting it to answer math questions. Then last creating the agent is an async operation. That's because it's creating an object within Microsoft Foundry Agents service. So we both `await` the `CreateAgentAsync` function and then grab the `Value` 패턴입니다. **Azure.AI.Projects** SDK로 객체를 생성할 때 이 패턴을 자주 보게 될 것입니다.
 
 1. `AgentThread`는 개별 에이전트와 사용자 간의 통신을 처리하는 객체입니다. 이를 생성하여 `ThreadMessage`를 추가할 것입니다. 여기에서는 사용자의 첫 번째 질문이 해당됩니다.
 

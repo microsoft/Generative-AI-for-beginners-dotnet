@@ -10,6 +10,7 @@ Découvrez tous les concepts que vous avez appris en action dans ces exemples pr
 - Découvrir le fonctionnement des Agents dans des scénarios complexes.
 
 ## Exemples inclus
+
 - [Exemples Canoniques d'IA Générative](../../../04-PracticalSamples)
   - [Ce que vous allez accomplir](../../../04-PracticalSamples)
   - [Exemples inclus](../../../04-PracticalSamples)
@@ -22,7 +23,6 @@ Découvrez tous les concepts que vous avez appris en action dans ces exemples pr
     - [Ressources supplémentaires](../../../04-PracticalSamples)
     - [Étapes suivantes](../../../04-PracticalSamples)
 
-
 [![vidéo explicative générale](https://img.youtube.com/vi/Ky4CACXJqR8/0.jpg)](https://youtu.be/Ky4CACXJqR8?feature=shared)
 
 _⬆️Cliquez sur l'image pour regarder la vidéo⬆️_
@@ -31,7 +31,7 @@ _⬆️Cliquez sur l'image pour regarder la vidéo⬆️_
 
 Pour nos premières démos, nous explorerons les projets **eShopLite**. **eShopLite** est une application e-commerce simple dédiée aux amateurs d'activités de plein air et de camping, enrichie par des fonctionnalités d'IA générative, comme l'optimisation des recherches, l'assistance client, et l'analyse audio en temps réel.
 
-Ces démos utilisent [Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service) et [Azure AI Foundry Models](https://ai.azure.com/) pour effectuer les inférences (ou la partie IA générative) nécessaires à ces applications.
+Ces démos utilisent [Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service) et [Microsoft Foundry Models](https://ai.azure.com/) pour effectuer les inférences (ou la partie IA générative) nécessaires à ces applications.
 
 Dans la première démo, nous montrons comment utiliser le Semantic Kernel pour améliorer les capacités de recherche, en permettant une compréhension contextuelle des requêtes des utilisateurs et en fournissant des résultats précis.
 
@@ -234,7 +234,7 @@ Application Insights fournit un ensemble complet de données de télémétrie, n
 
 Dans l'image, nous pouvons voir le tableau de bord Application Insights, montrant comment les services fonctionnent, par exemple, les appels à notre base de données, le nombre de requêtes, et le temps de réponse.
 
-> 💡 **Astuce Pro** : Pour plus d'informations sur eShopLite avec Recherche Sémantique, consultez le dépôt pour en savoir plus : https://aka.ms/netaieshoplitesemanticsearch
+> 💡 **Astuce Pro** : Pour plus d'informations sur eShopLite avec Recherche Sémantique, consultez le dépôt pour en savoir plus : <https://aka.ms/netaieshoplitesemanticsearch>
 
 ### eShopLite avec recherche sémantique en utilisant Azure AI Search
 

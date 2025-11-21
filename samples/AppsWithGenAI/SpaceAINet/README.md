@@ -2,14 +2,14 @@
 
 > **Note:** The core functionality of this game was created using [this prompt](https://aka.ms/spaceainet/prompt) and GitHub Copilot Agent Mode with GPT-4.1. For an overview and walkthrough on how to create and use the game, check out our [YouTube video](https://www.youtube.com/watch?v=XLg9Qt61RVs).
 
-**SpaceAINet** is an AI-powered Space Battle game for .NET 9, designed to showcase how modern AI models can play classic games. The solution allows you to run the game with either local AI models (via Ollama) or cloud-based models (via Azure AI Foundry), which analyze the game state and predict the next best action to win.
+**SpaceAINet** is an AI-powered Space Battle game for .NET 9, designed to showcase how modern AI models can play classic games. The solution allows you to run the game with either local AI models (via Ollama) or cloud-based models (via Microsoft Foundry), which analyze the game state and predict the next best action to win.
 
 ![Demo of the game running with Azure OpenAI models](./images/01-demo.gif)
 
 ## Solution Structure
 
 - **SpaceAINet.Console**: Main console game project. Handles game logic, rendering, user/AI input, and the main game loop.
-- **SpaceAINet.GameActionProcessor**: Library for integrating AI models (Ollama or Azure AI Foundry) to analyze game frames and suggest actions.
+- **SpaceAINet.GameActionProcessor**: Library for integrating AI models (Ollama or Microsoft Foundry) to analyze game frames and suggest actions.
 - **SpaceAINet.Screenshot**: Provides screenshot capture functionality for the game screen.
 - **SpaceAINet.ServiceDefaults**: Contains shared configuration and service defaults for the solution.
 
@@ -19,7 +19,7 @@
 - **For local AI (Ollama):**
   - [Ollama](https://ollama.com/) running locally (default: `http://localhost:11434`)
   - At least one supported model pulled (e.g., `ollama run phi4-mini`)
-- **For cloud [Azure AI Foundry](https://ai.azure.com/) (using OpenAI models):**
+- **For cloud [Microsoft Foundry](https://ai.azure.com/) (using OpenAI models):**
   - Access to Azure OpenAI with a deployed chat model
   - Azure AI endpoint, model name, and API key
 

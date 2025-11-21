@@ -1,19 +1,19 @@
 # 設置 Azure OpenAI 開發環境
 
-如果你想在本課程中使用 Azure AI Foundry 模型來開發 .NET AI 應用，請按照本指南的步驟進行。
+如果你想在本課程中使用 Microsoft Foundry 模型來開發 .NET AI 應用，請按照本指南的步驟進行。
 
 不想使用 Azure OpenAI？
 
 👉 [如果你想使用 GitHub 模型，請參考這份指南](README.md)  
 👉 [這是 Ollama 的步驟指南](getting-started-ollama.md)
 
-## 建立 Azure AI Foundry 資源
+## 建立 Microsoft Foundry 資源
 
-要使用 Azure AI Foundry 模型，你需要在 Azure AI Foundry 入口網站中建立一個 Hub 和 Project，然後部署模型。本節將指導你如何完成這些步驟。
+要使用 Microsoft Foundry 模型，你需要在 Microsoft Foundry 入口網站中建立一個 Hub 和 Project，然後部署模型。本節將指導你如何完成這些步驟。
 
-### 在 Azure AI Foundry 中建立 Hub 和 Project
+### 在 Microsoft Foundry 中建立 Hub 和 Project
 
-1. 前往 [Azure AI Foundry Portal](https://ai.azure.com/)。  
+1. 前往 [Microsoft Foundry Portal](https://ai.azure.com/)。  
 1. 使用你的 Azure 帳戶登入。  
 1. 從左側選單中選擇 **All hubs + projects**，然後點擊下拉選單中的 **+ New hub**。（注意：你可能需要先點擊 **+ New project** 才能看到 **+ New hub** 選項）。  
     ![建立新的 Hub](../../../translated_images/ai-foundry-hub-selection.dc9bf6b90ab4b2b9f94ae6274422bcd318ee09091350750062740479f69a651c.tw.png)  
@@ -28,13 +28,13 @@
     - 為你的 Project 命名（例如 "GenAINET"），或者接受默認名稱。  
     - 點擊 **Create**。  
 
-🎉 **完成！** 你已經在 Azure AI Foundry 中創建了第一個 Project。
+🎉 **完成！** 你已經在 Microsoft Foundry 中創建了第一個 Project。
 
-### 在 Azure AI Foundry 中部署語言模型
+### 在 Microsoft Foundry 中部署語言模型
 
 現在，讓我們將 **gpt-4o-mini** 模型部署到你的 Project 中：
 
-1. 在 Azure AI Foundry 入口網站中，導航到你的 Project（創建完成後應該會自動打開）。  
+1. 在 Microsoft Foundry 入口網站中，導航到你的 Project（創建完成後應該會自動打開）。  
 1. 從左側選單中點擊 **Models and Endpoints**，然後點擊 **Deploy Model** 按鈕。  
 1. 從下拉選單中選擇 **Deploy base model**。  
 1. 在模型目錄中搜尋 **gpt-4o-mini**。  
@@ -43,7 +43,7 @@
 1. 點擊 **Deploy**，等待模型部署完成。  
 1. 部署完成後，從模型詳細資訊頁面記下 **Model Name**、**Target URI** 和 **API Key**。  
 
-🎉 **完成！** 你已經在 Azure AI Foundry 中部署了第一個大型語言模型。
+🎉 **完成！** 你已經在 Microsoft Foundry 中部署了第一個大型語言模型。
 
 ![模型已部署，複製模型名稱、端點 URL 和 API Key](../../../translated_images/deploytoazure-20-copymodelinfo.9797a0bffd24459c9b977d98e18a089accaece2917d2abcde4ab96db957e0fcb.tw.png)
 
@@ -58,7 +58,7 @@
 
     ![添加新的 Codespace Secret](../../../translated_images/codespaces-secret.0e168026d0078356489f51ca61b195603283511c73bb805b056619f994652f7c.tw.jpeg)  
 1. 將 Secret 命名為 **AZURE_AI_SECRET**。  
-1. 將你從 Azure AI Foundry 入口網站複製的 API Key 粘貼到 **Secret** 欄位中。
+1. 將你從 Microsoft Foundry 入口網站複製的 API Key 粘貼到 **Secret** 欄位中。
 
 ## 創建 GitHub Codespace
 
@@ -150,13 +150,13 @@
 
 ## 總結
 
-在本課程中，你學會了如何為接下來的課程設置開發環境。你創建了一個 GitHub Codespace 並配置它以使用 Azure OpenAI。你還更新了範例代碼以使用在 Azure AI Foundry 中部署的新模型。
+在本課程中，你學會了如何為接下來的課程設置開發環境。你創建了一個 GitHub Codespace 並配置它以使用 Azure OpenAI。你還更新了範例代碼以使用在 Microsoft Foundry 中部署的新模型。
 
 ### 更多資源
 
-- [Azure AI Foundry 文件](https://learn.microsoft.com/azure/ai-services/)  
+- [Microsoft Foundry 文件](https://learn.microsoft.com/azure/ai-services/)  
 - [使用 GitHub Codespaces](https://docs.github.com/en/codespaces/getting-started)  
-- [如何在 Azure AI Foundry 中部署模型](https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-openai)  
+- [如何在 Microsoft Foundry 中部署模型](https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-openai)  
 - [Azure.AI.OpenAI NuGet 套件](https://www.nuget.org/packages/Azure.AI.OpenAI)
 
 ## 下一步

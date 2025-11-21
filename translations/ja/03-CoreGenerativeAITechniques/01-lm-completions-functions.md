@@ -45,8 +45,8 @@ Console.WriteLine(response.Message);
 ```
 
 > 🗒️**Note:** この例ではGitHub Modelsをホスティングサービスとして使用しています。Ollamaを使用したい場合は、[こちらの例](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama) をご覧ください（異なる `IChatClient` をインスタンス化しています）。
-> 
-> Azure AI Foundryを使用したい場合は、同じコードを使用できますが、エンドポイントと認証情報を変更する必要があります。
+>
+> Microsoft Foundryを使用したい場合は、同じコードを使用できますが、エンドポイントと認証情報を変更する必要があります。
 
 > 🙋 **Need help?**: 問題が発生した場合は、[リポジトリでIssueを開いてください](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new)。
 
@@ -175,9 +175,9 @@ MEAIを使用して関数を呼び出すには、いくつかの設定手順が�
 
 ## 追加リソース
 
-- [.NETでAIチャットアプリを構築する](https://learn.microsoft.com/dotnet/ai/quickstarts/get-started-openai?tabs=azd&pivots=openai)
-- [ローカル.NET関数を実行する](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-azure-openai-tool?tabs=azd&pivots=openai)
-- [ローカルAIモデルとチャットする](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-local-ai)
+* [.NETでAIチャットアプリを構築する](https://learn.microsoft.com/dotnet/ai/quickstarts/get-started-openai?tabs=azd&pivots=openai)
+* [ローカル.NET関数を実行する](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-azure-openai-tool?tabs=azd&pivots=openai)
+* [ローカルAIモデルとチャットする](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-local-ai)
 
 ## 次に進む
 

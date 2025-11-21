@@ -5,7 +5,7 @@ using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.Text.Json;
 
-// AgentFx Persisting Conversations with Claude via Azure AI Foundry
+// AgentFx Persisting Conversations with Claude via Microsoft Foundry
 // Demonstrates:
 // 1) Creating an AgentThread, running prompts, and persisting thread state
 // 2) Reloading persisted threads and continuing conversations with context preserved

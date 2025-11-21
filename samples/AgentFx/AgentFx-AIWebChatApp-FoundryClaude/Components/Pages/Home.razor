@@ -8,7 +8,7 @@
 <div class="chat-container">
     <div class="chat-header">
         <h1>💬 Claude Chat</h1>
-        <p class="subtitle">Powered by Microsoft Agent Framework & Azure AI Foundry</p>
+        <p class="subtitle">Powered by Microsoft Agent Framework & Microsoft Foundry</p>
     </div>
 
     <div class="chat-messages" @ref="messagesContainer">
@@ -31,17 +31,9 @@
     </div>
 
     <div class="chat-input-container">
-        <textarea 
-            @bind="_userInput" 
-            @bind:event="oninput"
-            @onkeydown="HandleKeyDown"
-            placeholder="Type your message here..."
-            rows="3"
-            disabled="@_isLoading"
-            class="chat-input"></textarea>
-        <button 
-            @onclick="SendMessage" 
-            disabled="@(_isLoading || string.IsNullOrWhiteSpace(_userInput))"
+        <textarea @bind="_userInput" @bind:event="oninput" @onkeydown="HandleKeyDown"
+            placeholder="Type your message here..." rows="3" disabled="@_isLoading" class="chat-input"></textarea>
+        <button @onclick="SendMessage" disabled="@(_isLoading || string.IsNullOrWhiteSpace(_userInput))"
             class="btn btn-primary send-button">
             Send
         </button>
@@ -102,6 +94,6 @@
     private async Task ScrollToBottom()
     {
         await Task.Delay(100); // Give UI time to render
-        // Note: In production, use JSInterop to scroll
+                               // Note: In production, use JSInterop to scroll
     }
 }

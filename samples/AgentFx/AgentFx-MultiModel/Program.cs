@@ -17,8 +17,8 @@ using OpenTelemetry.Trace;
 
 Console.WriteLine("=== Microsoft Agent Framework - Multi-Model Orchestration Demo ===");
 Console.WriteLine("This demo showcases 3 agents working together:");
-Console.WriteLine("  1. Researcher (Azure AI Foundry or GitHub Models) - Researches topics");
-Console.WriteLine("  2. Writer (Azure AI Foundry or GitHub Models) - Writes content based on research");
+Console.WriteLine("  1. Researcher (Microsoft Foundry or GitHub Models) - Researches topics");
+Console.WriteLine("  2. Writer (Microsoft Foundry or GitHub Models) - Writes content based on research");
 Console.WriteLine("  3. Reviewer (Ollama - llama 3.2) - Reviews and provides feedback");
 Console.WriteLine();
 
@@ -29,7 +29,7 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .Build();
 
 // ===== Agent 1: Researcher using GitHub Models =====
-Console.WriteLine("Setting up Agent 1: Researcher (Azure AI Foundry or GitHub Models)...");
+Console.WriteLine("Setting up Agent 1: Researcher (Microsoft Foundry or GitHub Models)...");
 
 IChatClient githubChatClient = ChatClientProvider.GetChatClient();
 
@@ -42,10 +42,10 @@ AIAgent researcher = new ChatClientAgent(
     })
     .AsBuilder()
     .UseOpenTelemetry(sourceName: "agent-telemetry-source")
-    .Build(); 
+    .Build();
 
 // ===== Agent 2: Writer using Azure Foundry/OpenAI =====
-Console.WriteLine("Setting up Agent 2: Writer (Azure AI Foundry or GitHub Models)...");
+Console.WriteLine("Setting up Agent 2: Writer (Microsoft Foundry or GitHub Models)...");
 
 IChatClient azureChatClient = ChatClientProvider.GetChatClient();
 

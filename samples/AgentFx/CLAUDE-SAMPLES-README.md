@@ -1,6 +1,6 @@
-# AgentFx Claude Samples - Azure AI Foundry Integration
+# AgentFx Claude Samples - Microsoft Foundry Integration
 
-This collection demonstrates how to use **Microsoft Agent Framework (AgentFx)** with **Claude models** deployed in **Azure AI Foundry**. These samples showcase the integration of Claude's advanced language capabilities with AgentFx's powerful agent orchestration features.
+This collection demonstrates how to use **Microsoft Agent Framework (AgentFx)** with **Claude models** deployed in **Microsoft Foundry**. These samples showcase the integration of Claude's advanced language capabilities with AgentFx's powerful agent orchestration features.
 
 ## Overview
 
@@ -19,7 +19,7 @@ A console application demonstrating basic agent chat with Claude.
 - Single prompt/response interaction
 - `ChatClientAgent` pattern
 - Custom HTTP message handler for Claude API translation
-- Azure AI Foundry deployment integration
+- Microsoft Foundry deployment integration
 
 **Use Cases**: Quick prototyping, testing Claude integration, simple Q&A applications
 
@@ -70,10 +70,10 @@ A Blazor Server web application with a modern chat interface powered by Claude.
 
 All samples require:
 
-### 1. Azure AI Foundry Setup
+### 1. Microsoft Foundry Setup
 
 1. **Azure Subscription**: Active Azure subscription
-2. **Azure AI Foundry Project**: Create a project in [Azure AI Foundry](https://ai.azure.com)
+2. **Microsoft Foundry Project**: Create a project in [Microsoft Foundry](https://ai.azure.com)
 3. **Claude Model Deployment**: Deploy a Claude model (options below)
 4. **API Credentials**: Obtain endpoint URLs and API key
 
@@ -84,7 +84,7 @@ All samples require:
 
 ### 3. Claude Model Options
 
-Available Claude models in Azure AI Foundry:
+Available Claude models in Microsoft Foundry:
 
 | Model | Description | Best For |
 |-------|-------------|----------|
@@ -112,13 +112,13 @@ dotnet user-secrets set "deploymentName" "claude-haiku-4-5"
 
 2. **endpointClaude**: Claude-specific endpoint
    - Format: `https://<resource-name>.services.ai.azure.com/anthropic/v1/messages`
-   - Replace `<resource-name>` with your Azure AI Foundry resource name
+   - Replace `<resource-name>` with your Microsoft Foundry resource name
 
 3. **apikey**: API key for authentication
    - Azure Portal → Your AI resource → Keys and Endpoint → Key 1 or Key 2
 
 4. **deploymentName**: Your Claude model deployment name
-   - Azure AI Foundry → Deployments → Your Claude deployment name
+   - Microsoft Foundry → Deployments → Your Claude deployment name
 
 ## Quick Start
 
@@ -173,7 +173,7 @@ AzureOpenAIClient with custom HttpMessageHandler
       ↓
 ClaudeToOpenAIMessageHandler
       ↓
-Claude API (Azure AI Foundry)
+Claude API (Microsoft Foundry)
 ```
 
 ## Common Patterns
@@ -235,7 +235,7 @@ response = await agent.RunAsync(nextQuestion, thread);
 
 ## Comparison: Claude Models vs OpenAI Models
 
-| Feature | Claude (via Azure AI Foundry) | OpenAI (via Azure OpenAI) |
+| Feature | Claude (via Microsoft Foundry) | OpenAI (via Azure OpenAI) |
 |---------|-------------------------------|---------------------------|
 | **Authentication** | x-api-key header | api-key header or Bearer token |
 | **Message Format** | Anthropic Messages API | OpenAI Chat Completions API |
@@ -291,8 +291,8 @@ The `ClaudeToOpenAIMessageHandler` abstracts these differences, allowing you to 
 #### Model Not Found (404)
 
 - **Cause**: Deployment name doesn't match actual deployment
-- **Solution**: Verify `deploymentName` matches Azure AI Foundry deployment
-- **Check**: Go to Azure AI Foundry → Deployments → Verify name
+- **Solution**: Verify `deploymentName` matches Microsoft Foundry deployment
+- **Check**: Go to Microsoft Foundry → Deployments → Verify name
 
 #### Streaming Not Working
 
@@ -318,14 +318,14 @@ The `ClaudeToOpenAIMessageHandler` abstracts these differences, allowing you to 
 ### Documentation
 
 - [Microsoft Agent Framework](https://learn.microsoft.com/agent-framework/)
-- [Azure AI Foundry Documentation](https://learn.microsoft.com/azure/ai-foundry/)
-- [Claude in Azure AI Foundry](https://learn.microsoft.com/azure/ai-foundry/foundry-models/how-to/use-foundry-models-claude)
+- [Microsoft Foundry Documentation](https://learn.microsoft.com/azure/ai-foundry/)
+- [Claude in Microsoft Foundry](https://learn.microsoft.com/azure/ai-foundry/foundry-models/how-to/use-foundry-models-claude)
 - [Claude API Documentation](https://docs.anthropic.com/claude/reference/messages_post)
 - [Microsoft.Extensions.AI](https://learn.microsoft.com/dotnet/ai/ai-extensions)
 
 ### Related Samples
 
-- **AgentFx-AIFoundry-01**: Azure AI Foundry with OpenAI models
+- **AgentFx-AIFoundry-01**: Microsoft Foundry with OpenAI models
 - **AgentFx-Ollama-01**: Local AI models with Ollama
 - **AgentFx-MultiAgents**: Multi-agent orchestration patterns
 
@@ -333,7 +333,7 @@ The `ClaudeToOpenAIMessageHandler` abstracts these differences, allowing you to 
 
 - [Generative AI for Beginners .NET Course](https://github.com/microsoft/Generative-AI-for-beginners-dotnet)
 - [Agent Framework Tutorials](https://learn.microsoft.com/agent-framework/tutorials/)
-- [Azure AI Foundry Quickstarts](https://learn.microsoft.com/azure/ai-foundry/quickstarts/)
+- [Microsoft Foundry Quickstarts](https://learn.microsoft.com/azure/ai-foundry/quickstarts/)
 
 ## Contributing
 

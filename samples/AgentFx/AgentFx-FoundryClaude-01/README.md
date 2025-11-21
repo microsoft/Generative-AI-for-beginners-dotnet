@@ -1,19 +1,19 @@
 # AgentFx-FoundryClaude-01: Basic Chat with Claude Agent
 
-This sample demonstrates how to use **Microsoft Agent Framework (AgentFx)** with **Claude models** deployed in **Azure AI Foundry**. It shows the integration of `ChatClientAgent` with Claude via a custom HTTP message handler that bridges OpenAI and Claude API formats.
+This sample demonstrates how to use **Microsoft Agent Framework (AgentFx)** with **Claude models** deployed in **Microsoft Foundry**. It shows the integration of `ChatClientAgent` with Claude via a custom HTTP message handler that bridges OpenAI and Claude API formats.
 
 ## Overview
 
 - **Framework**: Microsoft Agent Framework (AgentFx)
-- **AI Model**: Claude (Haiku, Sonnet, or Opus) via Azure AI Foundry
+- **AI Model**: Claude (Haiku, Sonnet, or Opus) via Microsoft Foundry
 - **Pattern**: Basic agent chat with single prompt/response
 - **Key Concept**: Using `ClaudeToOpenAIMessageHandler` to enable Claude models with AgentFx
 
 ## Prerequisites
 
-### 1. Azure AI Foundry Setup
+### 1. Microsoft Foundry Setup
 
-1. Create an Azure AI Foundry project
+1. Create an Microsoft Foundry project
 2. Deploy a Claude model (e.g., `claude-haiku-4-5`, `claude-sonnet-4-5`)
 3. Note your:
    - **Endpoint**: `https://<resource-name>.cognitiveservices.azure.com`
@@ -123,7 +123,7 @@ Console.WriteLine(response.Text);
 
 ```
 ============================================================
-AgentFx with Claude via Azure AI Foundry
+AgentFx with Claude via Microsoft Foundry
 ============================================================
 Model: claude-haiku-4-5
 Endpoint: https://<resource-name>.cognitiveservices.azure.com
@@ -145,7 +145,7 @@ Response:
 ## Additional Resources
 
 - [Microsoft Agent Framework Documentation](https://learn.microsoft.com/agent-framework/)
-- [Azure AI Foundry - Claude Models](https://learn.microsoft.com/azure/ai-foundry/foundry-models/how-to/use-foundry-models-claude)
+- [Microsoft Foundry - Claude Models](https://learn.microsoft.com/azure/ai-foundry/foundry-models/how-to/use-foundry-models-claude)
 - [Claude API Documentation](https://docs.anthropic.com/claude/reference/messages_post)
 - [Microsoft.Extensions.AI](https://learn.microsoft.com/dotnet/ai/ai-extensions)
 
@@ -159,7 +159,7 @@ Response:
 
 ### Model Not Found
 
-- Confirm Claude model is deployed in your Azure AI Foundry project
+- Confirm Claude model is deployed in your Microsoft Foundry project
 - Verify deployment name in configuration matches actual deployment
 
 ### Build Errors

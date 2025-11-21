@@ -34,7 +34,7 @@ We're constantly improving this course with the latest AI tools, models, and pra
 
 - **🤖 NEW! Claude Models with Agent Framework**
 
-  Integrate **Claude models** from Azure AI Foundry with Microsoft Agent Framework! Three comprehensive samples demonstrate:
+  Integrate **Claude models** from Microsoft Foundry with Microsoft Agent Framework! Three comprehensive samples demonstrate:
   - Basic console chat with Claude using `ChatClientAgent`
   - Conversation persistence with thread serialization/deserialization
   - Interactive Blazor web chat application with modern UI
@@ -45,7 +45,7 @@ We're constantly improving this course with the latest AI tools, models, and pra
   
   Plus a foundational Claude integration sample:
   
-  👉 [BasicChat with Claude via Azure AI Foundry](./samples/CoreSamples/BasicChat-11FoundryClaude/)
+  👉 [BasicChat with Claude via Microsoft Foundry](./samples/CoreSamples/BasicChat-11FoundryClaude/)
 
 - **🌐 AG-UI Integration Sample**
 

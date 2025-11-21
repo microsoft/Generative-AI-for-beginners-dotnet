@@ -4,7 +4,7 @@ using System.Text.Json.Nodes;
 
 /// <summary>
 /// HTTP message handler that transforms requests/responses between OpenAI format and Claude (Anthropic) format
-/// for Azure AI Foundry deployments.
+/// for Microsoft Foundry deployments.
 /// </summary>
 public class ClaudeToOpenAIMessageHandler : DelegatingHandler
 {
@@ -30,7 +30,7 @@ public class ClaudeToOpenAIMessageHandler : DelegatingHandler
     public required string AzureClaudeDeploymentUrl { get; set; }
 
     /// <summary>
-    /// Gets or sets the API key for authenticating with Claude in Azure AI Foundry.
+    /// Gets or sets the API key for authenticating with Claude in Microsoft Foundry.
     /// </summary>
     public required string ApiKey { get; set; }
 
@@ -208,7 +208,7 @@ public class ClaudeToOpenAIMessageHandler : DelegatingHandler
 
     private void AddClaudeAuthHeaders(HttpRequestMessage request)
     {
-        // Claude in Azure AI Foundry uses x-api-key header (not Authorization: Bearer)
+        // Claude in Microsoft Foundry uses x-api-key header (not Authorization: Bearer)
         // See: https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/how-to/use-foundry-models-claude
         if (!string.IsNullOrEmpty(ApiKey))
         {

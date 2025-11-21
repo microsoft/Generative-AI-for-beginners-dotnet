@@ -5,8 +5,8 @@ using Microsoft.Extensions.Configuration;
 using System.ClientModel;
 using System.ClientModel.Primitives;
 
-// AgentFx Basic Chat with Claude via Azure AI Foundry
-// Demonstrates using ChatClientAgent with Claude models deployed in Azure AI Foundry
+// AgentFx Basic Chat with Claude via Microsoft Foundry
+// Demonstrates using ChatClientAgent with Claude models deployed in Microsoft Foundry
 // Uses ClaudeToOpenAIMessageHandler to bridge OpenAI and Claude API formats
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
@@ -16,7 +16,7 @@ var apiKey = config["apikey"] ?? throw new InvalidOperationException("Missing 'a
 var deploymentName = config["deploymentName"] ?? "claude-haiku-4-5";
 
 Console.WriteLine("=".PadRight(60, '='));
-Console.WriteLine("AgentFx with Claude via Azure AI Foundry");
+Console.WriteLine("AgentFx with Claude via Microsoft Foundry");
 Console.WriteLine("=".PadRight(60, '='));
 Console.WriteLine($"Model: {deploymentName}");
 Console.WriteLine($"Endpoint: {endpoint}");

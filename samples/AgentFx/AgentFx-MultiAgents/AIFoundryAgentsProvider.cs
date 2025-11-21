@@ -12,7 +12,7 @@ class AIFoundryAgentsProvider
     private static readonly AppConfigurationService _config = AppConfigurationService.Instance;
 
     /// <summary>
-    /// Creates a persistent AI agent in Azure AI Foundry.
+    /// Creates a persistent AI agent in Microsoft Foundry.
     /// </summary>
     /// <param name="name">The name of the agent.</param>
     /// <param name="instructions">The instructions that define the agent's behavior.</param>
@@ -30,7 +30,7 @@ class AIFoundryAgentsProvider
     }
 
     /// <summary>
-    /// Deletes an existing AI agent from Azure AI Foundry.
+    /// Deletes an existing AI agent from Microsoft Foundry.
     /// </summary>
     /// <param name="agent">The agent to delete.</param>
     public static void DeleteAIAgentInAIFoundry(AIAgent agent)
@@ -45,7 +45,7 @@ class AIFoundryAgentsProvider
     private static PersistentAgentsClient CreatePersistentAgentsClient()
     {
         return new PersistentAgentsClient(
-            _config.AzureFoundryProjectEndpoint!, 
+            _config.AzureFoundryProjectEndpoint!,
             new AzureCliCredential());
     }
 }

@@ -1,19 +1,19 @@
 # Azure OpenAI 開発環境のセットアップ
 
-このコースで .NET AI アプリケーションに Azure AI Foundry モデルを使用する場合、このガイドの手順に従ってください。
+このコースで .NET AI アプリケーションに Microsoft Foundry モデルを使用する場合、このガイドの手順に従ってください。
 
 Azure OpenAI を使いたくない場合は？
 
 👉 [GitHub Models を使用する場合はこちらのガイドをご覧ください](README.md)  
 👉 [Ollama の手順はこちら](getting-started-ollama.md)
 
-## Azure AI Foundry リソースを作成する
+## Microsoft Foundry リソースを作成する
 
-Azure AI Foundry モデルを使用するには、Azure AI Foundry ポータルでハブとプロジェクトを作成し、モデルをデプロイする必要があります。このセクションでは、その手順を説明します。
+Microsoft Foundry モデルを使用するには、Microsoft Foundry ポータルでハブとプロジェクトを作成し、モデルをデプロイする必要があります。このセクションでは、その手順を説明します。
 
-### Azure AI Foundry でハブとプロジェクトを作成する
+### Microsoft Foundry でハブとプロジェクトを作成する
 
-1. [Azure AI Foundry ポータル](https://ai.azure.com/) にアクセスします。
+1. [Microsoft Foundry ポータル](https://ai.azure.com/) にアクセスします。
 1. Azure アカウントでサインインします。
 1. 左側のメニューから **All hubs + projects** を選択し、ドロップダウンから **+ New hub** をクリックします。（注: **+ New project** を先にクリックする必要がある場合があります）。
     ![新しいハブを作成](../../../translated_images/ai-foundry-hub-selection.dc9bf6b90ab4b2b9f94ae6274422bcd318ee09091350750062740479f69a651c.ja.png)
@@ -28,13 +28,13 @@ Azure AI Foundry モデルを使用するには、Azure AI Foundry ポータル�
     - プロジェクト名を入力（例: "GenAINET"）またはデフォルトを使用。
     - **Create** をクリック。
 
-🎉 **完了！** Azure AI Foundry で最初のプロジェクトを作成しました。
+🎉 **完了！** Microsoft Foundry で最初のプロジェクトを作成しました。
 
-### Azure AI Foundry で言語モデルをデプロイする
+### Microsoft Foundry で言語モデルをデプロイする
 
 次に、**gpt-4o-mini** モデルをプロジェクトにデプロイします：
 
-1. Azure AI Foundry ポータルでプロジェクトに移動します（作成後に自動的に開かれるはずです）。
+1. Microsoft Foundry ポータルでプロジェクトに移動します（作成後に自動的に開かれるはずです）。
 1. 左側のメニューから **Models and Endpoints** を選択し、**Deploy Model** ボタンをクリックします。
 1. ドロップダウンから **Deploy base model** を選択。
 1. モデルカタログで **gpt-4o-mini** を検索。
@@ -43,7 +43,7 @@ Azure AI Foundry モデルを使用するには、Azure AI Foundry ポータル�
 1. **Deploy** をクリックしてモデルのプロビジョニングを待ちます。
 1. デプロイ完了後、モデル詳細ページから **Model Name**、**Target URI**、**API Key** をメモしてください。
 
-🎉 **完了！** Azure AI Foundry で最初の大規模言語モデルをデプロイしました。
+🎉 **完了！** Microsoft Foundry で最初の大規模言語モデルをデプロイしました。
 
 ![モデルのデプロイ後、モデル名、エンドポイント URL、および API キーをコピー](../../../translated_images/deploytoazure-20-copymodelinfo.9797a0bffd24459c9b977d98e18a089accaece2917d2abcde4ab96db957e0fcb.ja.png)
 
@@ -58,7 +58,7 @@ Azure AI Foundry モデルを使用するには、Azure AI Foundry ポータル�
 
     ![新しい Codespace シークレットを追加](../../../translated_images/codespaces-secret.0e168026d0078356489f51ca61b195603283511c73bb805b056619f994652f7c.ja.jpeg)
 1. シークレット名を **AZURE_AI_SECRET** とします。
-1. Azure AI Foundry ポータルからコピーした API キーを **Secret** フィールドに貼り付けます。
+1. Microsoft Foundry ポータルからコピーした API キーを **Secret** フィールドに貼り付けます。
 
 ## GitHub Codespace の作成
 
@@ -155,9 +155,9 @@ Azure AI Foundry モデルを使用するには、Azure AI Foundry ポータル�
 
 ### 追加リソース
 
-- [Azure AI Foundry ドキュメント](https://learn.microsoft.com/azure/ai-services/)  
+- [Microsoft Foundry ドキュメント](https://learn.microsoft.com/azure/ai-services/)  
 - [GitHub Codespaces の使用方法](https://docs.github.com/en/codespaces/getting-started)  
-- [Azure AI Foundry でモデルをデプロイする方法](https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-openai)  
+- [Microsoft Foundry でモデルをデプロイする方法](https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-openai)  
 - [Azure.AI.OpenAI NuGet パッケージ](https://www.nuget.org/packages/Azure.AI.OpenAI)
 
 ## 次のステップ

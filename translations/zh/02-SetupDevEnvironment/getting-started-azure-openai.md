@@ -28,13 +28,13 @@
     - 给你的项目取一个名称（例如："GenAINET"）或者接受默认名称。
     - 点击 **Create**。
 
-🎉 **完成！** 你已经在 Azure AI Foundry 中创建了你的第一个项目。
+🎉 **完成！** 你已经在 Microsoft Foundry 中创建了你的第一个项目。
 
-### 在 Azure AI Foundry 中部署语言模型
+### 在 Microsoft Foundry 中部署语言模型
 
 接下来，我们将向项目中部署一个 **gpt-4o-mini** 模型：
 
-1. 在 Azure AI Foundry 门户中，导航到你的项目（创建完成后会自动打开）。
+1. 在 Microsoft Foundry 门户中，导航到你的项目（创建完成后会自动打开）。
 2. 从左侧菜单中点击 **Models and Endpoints**，然后点击 **Deploy Model** 按钮。
 3. 从下拉菜单中选择 **Deploy base model**。
 4. 在模型目录中搜索 **gpt-4o-mini**。
@@ -154,9 +154,9 @@
 
 ### 其他资源
 
-- [Azure AI Foundry 文档](https://learn.microsoft.com/azure/ai-services/)
+- [Microsoft Foundry 文档](https://learn.microsoft.com/azure/ai-services/)
 - [使用 GitHub Codespaces](https://docs.github.com/en/codespaces/getting-started)
-- [如何在 Azure AI Foundry 中部署模型](https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-openai)
+- [如何在 Microsoft Foundry 中部署模型](https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-openai)
 - [Azure.AI.OpenAI NuGet 包](https://www.nuget.org/packages/Azure.AI.OpenAI)
 
 ## 下一步
