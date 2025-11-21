@@ -21,7 +21,8 @@
         <div class="chat-title">MCP Server using <b>@deploymentName</b></div>
         <div class="chat-content">
             <p>Hi, I'm a client to test MCP using <b>@deploymentName</b>, let's chat!</p>
-            <p>Check the Settings page to test the model using GitHub Models, Ollama or Azure AI Foundry or to use custom settings.</p>
+            <p>Check the Settings page to test the model using GitHub Models, Ollama or Microsoft Foundry or to use
+                custom settings.</p>
         </div>
         <div class="chat-title">Current MCP Tools in the Server:</div>
         <div class="chat-content">
@@ -211,11 +212,11 @@
                 Logger.LogInformation("Using localhost endpoint - Ollama");
                 var ollamaEndpoint = new Uri(endpoint);
                 client = new OllamaChatClient(
-                    endpoint: ollamaEndpoint,
-                    modelId: deploymentName)
-                    .AsBuilder()
-                    .UseFunctionInvocation()
-                    .Build();
+                endpoint: ollamaEndpoint,
+                modelId: deploymentName)
+                .AsBuilder()
+                .UseFunctionInvocation()
+                .Build();
             }
             else
             {
@@ -223,23 +224,23 @@
                 {
                     Logger.LogInformation("Using DefaultAzureCredential");
                     client = new Azure.AI.Inference.ChatCompletionsClient(
-                        endpoint: new Uri(endpoint),
-                        credential: new DefaultAzureCredential())
-                        .AsIChatClient(deploymentName)
-                        .AsBuilder()
-                        .UseFunctionInvocation()
-                        .Build();
+                    endpoint: new Uri(endpoint),
+                    credential: new DefaultAzureCredential())
+                    .AsIChatClient(deploymentName)
+                    .AsBuilder()
+                    .UseFunctionInvocation()
+                    .Build();
                 }
                 else
                 {
                     Logger.LogInformation("Using ApiKey");
                     client = new Azure.AI.Inference.ChatCompletionsClient(
-                        endpoint: new Uri(endpoint),
-                        credential: new AzureKeyCredential(apiKey))
-                        .AsIChatClient(deploymentName)
-                        .AsBuilder()
-                        .UseFunctionInvocation()
-                        .Build();
+                    endpoint: new Uri(endpoint),
+                    credential: new AzureKeyCredential(apiKey))
+                    .AsIChatClient(deploymentName)
+                    .AsBuilder()
+                    .UseFunctionInvocation()
+                    .Build();
                 }
             }
             Logger.LogInformation($"===================================================");

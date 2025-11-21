@@ -19,7 +19,7 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
 var imageGenerator = chatClient.CreateAIAgent(
     name: "Image Generator",
     instructions: "You are an agent that is specialized on image generation. If the user ask to create an image, the image should always be pixelated.",
-    description: "An AI agent that generate images using Azure AI Foundry models.",
+    description: "An AI agent that generate images using Microsoft Foundry models.",
     tools: [.. tools])
     .AsBuilder()
     .UseOpenTelemetry(sourceName: "agent-telemetry-source")

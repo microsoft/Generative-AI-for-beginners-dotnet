@@ -16,7 +16,7 @@ Algo importante a tener en cuenta al construir agentes es que deben estar enfoca
 
 ## Creando un agente de IA
 
-Trabajaremos con algunos conceptos nuevos para construir un agente de IA en .NET. Usaremos un nuevo SDK y realizaremos una configuración adicional en Azure AI Foundry para comenzar.
+Trabajaremos con algunos conceptos nuevos para construir un agente de IA en .NET. Usaremos un nuevo SDK y realizaremos una configuración adicional en Microsoft Foundry para comenzar.
 
 > 🧑‍💻**Código de ejemplo**: Usaremos el [ejemplo AgentLabs-01-Simple](../../../03-CoreGenerativeAITechniques/src/AgentLabs-01-Simple) para esta lección.
 >
@@ -26,7 +26,7 @@ Trabajaremos con algunos conceptos nuevos para construir un agente de IA en .NET
 
 Vamos a presentar un nuevo servicio de Azure que nos ayudará a construir agentes, el convenientemente llamado [Azure AI Agent Service](https://learn.microsoft.com/azure/ai-services/agents/overview).
 
-Para ejecutar los ejemplos de código incluidos en esta lección, necesitarás realizar una configuración adicional en Azure AI Foundry. Puedes seguir [estas instrucciones para configurar un **agente básico**](https://learn.microsoft.com/azure/ai-services/agents/quickstart?pivots=programming-language-csharp).
+Para ejecutar los ejemplos de código incluidos en esta lección, necesitarás realizar una configuración adicional en Microsoft Foundry. Puedes seguir [estas instrucciones para configurar un **agente básico**](https://learn.microsoft.com/azure/ai-services/agents/quickstart?pivots=programming-language-csharp).
 
 ### Biblioteca Azure AI Projects
 
@@ -59,7 +59,7 @@ Crearemos un agente con un único propósito: actuar como tutor para estudiantes
     ![Captura de pantalla de la página principal del proyecto en AI Foundry con la cadena de conexión resaltada en rojo](../../../translated_images/project-connection-string.e9005630f6251f18a89cb8c08f54b33bc83e0765f4c4e4d694af2ff447c4dfef.es.png)
 
 1. A continuación, queremos crear el agente tutor. Recuerda, debe estar enfocado en un solo objetivo.
-   
+
     ```csharp
     Agent tutorAgent = (await client.CreateAgentAsync(
     model: "gpt-4o",
@@ -72,7 +72,7 @@ Crearemos un agente con un único propósito: actuar como tutor para estudiantes
 
     > 🗒️**Note**: You can create your own tools too. See the [Functions](../../../03-CoreGenerativeAITechniques/src/AgentLabs-02-Functions) to learn more.
 
-    Second note the `instructions` that are being sent along. It's a prompt and we're limiting it to answer math questions. Then last creating the agent is an async operation. That's because it's creating an object within Azure AI Foundry Agents service. So we both `await` the `CreateAgentAsync` function and then grab the `Value` para obtener el objeto `Agent` real. Verás este patrón repetirse una y otra vez al crear objetos con el SDK **Azure.AI.Projects**.
+    Second note the `instructions` that are being sent along. It's a prompt and we're limiting it to answer math questions. Then last creating the agent is an async operation. That's because it's creating an object within Microsoft Foundry Agents service. So we both `await` the `CreateAgentAsync` function and then grab the `Value` para obtener el objeto `Agent` real. Verás este patrón repetirse una y otra vez al crear objetos con el SDK **Azure.AI.Projects**.
 
 1. Un `AgentThread` es un objeto que maneja la comunicación entre agentes individuales, el usuario, y otros elementos. Necesitaremos crearlo para poder agregar un `ThreadMessage`. En este caso, será la primera pregunta del usuario.
 

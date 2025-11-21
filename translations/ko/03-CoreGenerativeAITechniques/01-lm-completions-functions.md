@@ -46,7 +46,7 @@ Console.WriteLine(response.Message);
 
 > 🗒️**참고:** 이 예제는 GitHub Models를 호스팅 서비스로 사용하는 방법을 보여줍니다. Ollama를 사용하려면 [이 예제를 확인하세요](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama) (다른 `IChatClient`를 인스턴스화합니다).
 >
-> Azure AI Foundry를 사용하려면 동일한 코드를 사용할 수 있지만, 엔드포인트와 자격 증명을 변경해야 합니다.
+> Microsoft Foundry를 사용하려면 동일한 코드를 사용할 수 있지만, 엔드포인트와 자격 증명을 변경해야 합니다.
 
 > 🙋 **도움이 필요하신가요?**: 문제가 발생하면 [저장소에 이슈를 열어주세요](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new).
 
@@ -175,9 +175,9 @@ MEAI로 함수를 호출하려면 몇 가지 설정 단계가 필요합니다.
 
 ## 추가 자료
 
-- [.NET으로 AI 채팅 앱 빌드하기](https://learn.microsoft.com/dotnet/ai/quickstarts/get-started-openai?tabs=azd&pivots=openai)
-- [로컬 .NET 함수 실행하기](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-azure-openai-tool?tabs=azd&pivots=openai)
-- [로컬 AI 모델과 채팅하기](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-local-ai)
+* [.NET으로 AI 채팅 앱 빌드하기](https://learn.microsoft.com/dotnet/ai/quickstarts/get-started-openai?tabs=azd&pivots=openai)
+* [로컬 .NET 함수 실행하기](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-azure-openai-tool?tabs=azd&pivots=openai)
+* [로컬 AI 모델과 채팅하기](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-local-ai)
 
 ## 다음 강의
 

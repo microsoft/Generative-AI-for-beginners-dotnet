@@ -1,19 +1,19 @@
 # Azure OpenAI 개발 환경 설정
 
-이 강의에서 .NET AI 애플리케이션에 Azure AI Foundry 모델을 사용하려면, 이 가이드를 따라 설정하세요.
+이 강의에서 .NET AI 애플리케이션에 Microsoft Foundry 모델을 사용하려면, 이 가이드를 따라 설정하세요.
 
 Azure OpenAI를 사용하지 않으시겠습니까?
 
 👉 [GitHub Models를 사용하는 방법은 여기 있습니다](README.md)  
 👉 [Ollama 설정 방법은 여기에서 확인하세요](getting-started-ollama.md)
 
-## Azure AI Foundry 리소스 생성하기
+## Microsoft Foundry 리소스 생성하기
 
-Azure AI Foundry 모델을 사용하려면, Azure AI Foundry 포털에서 허브와 프로젝트를 생성해야 합니다. 이후 모델을 배포해야 합니다. 이 섹션에서는 이를 수행하는 방법을 안내합니다.
+Microsoft Foundry 모델을 사용하려면, Microsoft Foundry 포털에서 허브와 프로젝트를 생성해야 합니다. 이후 모델을 배포해야 합니다. 이 섹션에서는 이를 수행하는 방법을 안내합니다.
 
-### Azure AI Foundry에서 허브와 프로젝트 생성하기
+### Microsoft Foundry에서 허브와 프로젝트 생성하기
 
-1. [Azure AI Foundry 포털](https://ai.azure.com/)로 이동합니다.  
+1. [Microsoft Foundry 포털](https://ai.azure.com/)로 이동합니다.  
 1. Azure 계정으로 로그인합니다.  
 1. 왼쪽 메뉴에서 **All hubs + projects**를 선택한 다음, 드롭다운에서 **+ New hub**를 클릭합니다. (참고: **+ New project**를 먼저 클릭해야 **+ New hub** 옵션이 나타날 수 있습니다).  
    ![새 허브 생성](../../../translated_images/ai-foundry-hub-selection.dc9bf6b90ab4b2b9f94ae6274422bcd318ee09091350750062740479f69a651c.ko.png)  
@@ -28,13 +28,13 @@ Azure AI Foundry 모델을 사용하려면, Azure AI Foundry 포털에서 허브
     - 프로젝트 이름을 입력하세요(예: "GenAINET") 또는 기본값을 그대로 사용합니다.  
     - **Create**를 클릭합니다.  
 
-🎉 **완료!** 이제 Azure AI Foundry에서 첫 번째 프로젝트를 생성했습니다.
+🎉 **완료!** 이제 Microsoft Foundry에서 첫 번째 프로젝트를 생성했습니다.
 
-### Azure AI Foundry에서 언어 모델 배포하기
+### Microsoft Foundry에서 언어 모델 배포하기
 
 이제 **gpt-4o-mini** 모델을 프로젝트에 배포해 보겠습니다:
 
-1. Azure AI Foundry 포털에서 프로젝트로 이동합니다(생성 직후 자동으로 열릴 것입니다).  
+1. Microsoft Foundry 포털에서 프로젝트로 이동합니다(생성 직후 자동으로 열릴 것입니다).  
 1. 왼쪽 메뉴에서 **Models and Endpoints**를 클릭한 다음 **Deploy Model** 버튼을 클릭합니다.  
 1. 드롭다운에서 **Deploy base model**을 선택합니다.  
 1. 모델 카탈로그에서 **gpt-4o-mini**를 검색합니다.  
@@ -43,7 +43,7 @@ Azure AI Foundry 모델을 사용하려면, Azure AI Foundry 포털에서 허브
 1. **Deploy**를 클릭하고 모델이 프로비저닝될 때까지 기다립니다.  
 1. 배포가 완료되면 모델 세부 정보 페이지에서 **Model Name**, **Target URI**, **API Key**를 기록해 두세요.  
 
-🎉 **완료!** Azure AI Foundry에서 첫 번째 대형 언어 모델을 배포했습니다.
+🎉 **완료!** Microsoft Foundry에서 첫 번째 대형 언어 모델을 배포했습니다.
 
 ![모델 배포 완료 후 정보 복사](../../../translated_images/deploytoazure-20-copymodelinfo.9797a0bffd24459c9b977d98e18a089accaece2917d2abcde4ab96db957e0fcb.ko.png)
 
@@ -58,7 +58,7 @@ Azure AI Foundry 모델을 사용하려면, Azure AI Foundry 포털에서 허브
 
     ![새 Codespace secret 추가](../../../translated_images/codespaces-secret.0e168026d0078356489f51ca61b195603283511c73bb805b056619f994652f7c.ko.jpeg)  
 1. Secret 이름을 **AZURE_AI_SECRET**로 지정합니다.  
-1. Azure AI Foundry 포털에서 복사한 API 키를 **Secret** 필드에 붙여넣습니다.  
+1. Microsoft Foundry 포털에서 복사한 API 키를 **Secret** 필드에 붙여넣습니다.  
 
 ## GitHub Codespace 생성하기
 
@@ -150,13 +150,13 @@ Azure AI Foundry 모델을 사용하려면, Azure AI Foundry 포털에서 허브
 
 ## 요약
 
-이번 강의에서는 나머지 강의를 진행하기 위한 개발 환경을 설정하는 방법을 배웠습니다. GitHub Codespace를 생성하고 Azure OpenAI를 사용하도록 구성했습니다. 또한 Azure AI Foundry에 배포된 새 모델을 사용하도록 샘플 코드를 업데이트했습니다.
+이번 강의에서는 나머지 강의를 진행하기 위한 개발 환경을 설정하는 방법을 배웠습니다. GitHub Codespace를 생성하고 Azure OpenAI를 사용하도록 구성했습니다. 또한 Microsoft Foundry에 배포된 새 모델을 사용하도록 샘플 코드를 업데이트했습니다.
 
 ### 추가 자료
 
-- [Azure AI Foundry 문서](https://learn.microsoft.com/azure/ai-services/)  
+- [Microsoft Foundry 문서](https://learn.microsoft.com/azure/ai-services/)  
 - [GitHub Codespaces 사용법](https://docs.github.com/en/codespaces/getting-started)  
-- [Azure AI Foundry에서 모델 배포하기](https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-openai)  
+- [Microsoft Foundry에서 모델 배포하기](https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-openai)  
 - [Azure.AI.OpenAI NuGet 패키지](https://www.nuget.org/packages/Azure.AI.OpenAI)
 
 ## 다음 단계

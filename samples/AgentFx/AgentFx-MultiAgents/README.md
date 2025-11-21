@@ -6,15 +6,15 @@ This sample demonstrates how to orchestrate multiple AI agents using different A
 
 This demo showcases a real-world scenario where three specialized agents collaborate to research, write, and review an article:
 
-1. **Researcher Agent** (Azure AI Foundry Persistent Agent) - Researches topics and gathers key information
+1. **Researcher Agent** (Microsoft Foundry Persistent Agent) - Researches topics and gathers key information
 2. **Writer Agent** (Azure OpenAI or GitHub Models) - Creates engaging content based on research
 3. **Reviewer Agent** (Ollama local model) - Reviews the article and provides constructive feedback
 
 The workflow demonstrates:
 
-- **Multi-provider orchestration**: Using different AI services (Azure AI Foundry, Azure OpenAI/GitHub Models, and Ollama) in a single workflow
+- **Multi-provider orchestration**: Using different AI services (Microsoft Foundry, Azure OpenAI/GitHub Models, and Ollama) in a single workflow
 - **Sequential agent workflows**: Agents execute in order, with each building on the previous agent's output
-- **Persistent agents**: Creating and managing agents in Azure AI Foundry
+- **Persistent agents**: Creating and managing agents in Microsoft Foundry
 - **OpenTelemetry tracing**: Monitoring agent execution with distributed tracing
 - **Flexible configuration**: Supporting multiple authentication methods and providers
 
@@ -23,7 +23,7 @@ The workflow demonstrates:
 ```
 User Input
     ↓
-Researcher (Azure AI Foundry Agent)
+Researcher (Microsoft Foundry Agent)
     ↓ (research findings)
 Writer (Azure OpenAI/GitHub Models)
     ↓ (article draft)
@@ -39,7 +39,7 @@ Before running this sample, ensure you have:
 1. **.NET 9 SDK** or later installed
 2. **Azure CLI** installed and authenticated (`az login`)
 3. **Ollama** installed and running locally with the `llama3.2` model
-4. **Azure AI Foundry Project** with access to deploy models
+4. **Microsoft Foundry Project** with access to deploy models
 5. One of the following for Agent 2 (Writer):
    - GitHub Personal Access Token (for GitHub Models)
    - Azure OpenAI endpoint and API key
@@ -69,10 +69,10 @@ This application uses .NET user secrets to store sensitive configuration. Naviga
 cd 06-AgentFx/src/AgentFx-MultiAgents
 ```
 
-#### Required: Azure AI Foundry Configuration (Agent 1 - Researcher)
+#### Required: Microsoft Foundry Configuration (Agent 1 - Researcher)
 
 ```bash
-# Set your Azure AI Foundry project endpoint
+# Set your Microsoft Foundry project endpoint
 dotnet user-secrets set "AZURE_FOUNDRY_PROJECT_ENDPOINT" "https://<your-project>.services.ai.azure.com/"
 
 # Set your model deployment name (default: gpt-5-mini)
@@ -116,7 +116,7 @@ Note: This option requires Azure CLI login (`az login`) or a configured managed 
 
 ### Step 3: Verify Azure CLI Authentication
 
-The Researcher agent uses Azure CLI credentials to authenticate with Azure AI Foundry:
+The Researcher agent uses Azure CLI credentials to authenticate with Microsoft Foundry:
 
 ```bash
 # Login to Azure CLI
@@ -151,18 +151,18 @@ The console will display:
 2. Workflow creation confirmation
 3. OpenTelemetry tracing output showing agent execution
 4. The final article with research, writing, and review feedback
-5. A prompt asking if you want to delete the persistent agent from Azure AI Foundry
+5. A prompt asking if you want to delete the persistent agent from Microsoft Foundry
 
 ### Sample Execution Flow
 
 ```
 === Microsoft Agent Framework - Multi-Model Orchestration Demo ===
 This demo showcases 3 agents working together:
-  1. Researcher (Azure AI Foundry Agent) - Researches topics
+  1. Researcher (Microsoft Foundry Agent) - Researches topics
   2. Writer (Azure OpenAI or GitHub Models) - Writes content based on research
   3. Reviewer (Ollama - llama3.2) - Reviews and provides feedback
 
-Setting up Agent 1: Researcher (Azure AI Foundry Agent)...
+Setting up Agent 1: Researcher (Microsoft Foundry Agent)...
 Setting up Agent 2: Writer (Azure OpenAI or GitHub Models)...
 Setting up Agent 3: Reviewer (Ollama)...
 Creating workflow: Researcher -> Writer -> Reviewer
@@ -179,7 +179,7 @@ Starting workflow with topic: 'artificial intelligence in healthcare'
 Workflow completed successfully!
 
 === Clean Up ===
-Do you want to delete the Researcher agent in Azure AI Foundry? (yes/no)
+Do you want to delete the Researcher agent in Microsoft Foundry? (yes/no)
 ```
 
 ## Project Structure
@@ -187,7 +187,7 @@ Do you want to delete the Researcher agent in Azure AI Foundry? (yes/no)
 ```
 AgentFx-MultiAgents/
 ├── Program.cs                      # Main workflow orchestration
-├── AIFoundryAgentsProvider.cs      # Azure AI Foundry agent factory
+├── AIFoundryAgentsProvider.cs      # Microsoft Foundry agent factory
 ├── ChatClientProvider.cs           # Multi-provider chat client factory
 ├── AppConfigurationService.cs      # Configuration management
 ├── AgentFx-MultiAgents.csproj      # Project dependencies
@@ -198,10 +198,10 @@ AgentFx-MultiAgents/
 
 ### AIFoundryAgentsProvider
 
-Creates and manages persistent agents in Azure AI Foundry:
+Creates and manages persistent agents in Microsoft Foundry:
 
 - `CreateAIAgent()` - Creates a new persistent agent
-- `DeleteAIAgentInAIFoundry()` - Removes agents from Azure AI Foundry
+- `DeleteAIAgentInAIFoundry()` - Removes agents from Microsoft Foundry
 
 ### ChatClientProvider
 
@@ -286,7 +286,7 @@ Workflow workflow = AgentWorkflowBuilder
 
 - **Solution**: Verify your GitHub token is valid and has the required permissions
 
-**Issue**: "Azure AI Foundry endpoint not found"
+**Issue**: "Microsoft Foundry endpoint not found"
 
 - **Solution**: Check that your `AZURE_FOUNDRY_PROJECT_ENDPOINT` is correct and accessible
 
@@ -294,7 +294,7 @@ Workflow workflow = AgentWorkflowBuilder
 
 - [Microsoft Agent Framework Documentation](https://learn.microsoft.com/agent-framework/overview/agent-framework-overview)
 - [Microsoft.Extensions.AI Documentation](https://learn.microsoft.com/dotnet/ai/ai-extensions)
-- [Azure AI Foundry](https://ai.azure.com/)
+- [Microsoft Foundry](https://ai.azure.com/)
 - [GitHub Models](https://github.com/marketplace/models)
 - [Ollama Documentation](https://ollama.ai/docs)
 - [OpenTelemetry for .NET](https://opentelemetry.io/docs/instrumentation/net/)

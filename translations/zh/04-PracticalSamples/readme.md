@@ -10,6 +10,7 @@
 - 理解代理在复杂场景中的工作原理。
 
 ## 包含的示例
+
 - [规范生成式 AI 示例](../../../04-PracticalSamples)
   - [你将实现的目标](../../../04-PracticalSamples)
   - [包含的示例](../../../04-PracticalSamples)
@@ -30,7 +31,7 @@ _⬆️点击图片观看视频⬆️_
 
 在我们的第一个演示中，我们将探索 **eShopLite** 项目。**eShopLite** 是一个面向户外装备和露营爱好者的简单电商应用程序，并通过生成式 AI 功能进行了增强，比如搜索功能优化、客户支持和实时音频分析。
 
-这些演示使用 [Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service) 和 [Azure AI Foundry Models](https://ai.azure.com/) 来完成推理任务（即应用程序中的生成式 AI 部分）。
+这些演示使用 [Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service) 和 [Microsoft Foundry Models](https://ai.azure.com/) 来完成推理任务（即应用程序中的生成式 AI 部分）。
 
 在第一个演示中，我们展示了如何使用 Semantic Kernel 增强搜索功能，使其能够理解用户查询的上下文并提供准确的结果。
 
@@ -233,7 +234,7 @@ try
 
 在图片中，我们可以看到应用程序洞察仪表板，显示服务的运行情况，例如对数据库的调用次数、请求数量以及响应时间。
 
-> 💡 **提示**：有关 eShopLite 语义搜索的更多信息，请查看此存储库以了解更多内容：https://aka.ms/netaieshoplitesemanticsearch
+> 💡 **提示**：有关 eShopLite 语义搜索的更多信息，请查看此存储库以了解更多内容：<https://aka.ms/netaieshoplitesemanticsearch>
 
 ### eShopLite 的语义搜索使用 Azure AI Search
 

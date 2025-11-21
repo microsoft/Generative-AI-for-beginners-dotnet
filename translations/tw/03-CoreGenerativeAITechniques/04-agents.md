@@ -16,7 +16,7 @@ AI Agents 讓 LLMs 從助理進化為能夠代表使用者採取行動的實體�
 
 ## 建立一個 AI Agent
 
-我們將引入一些新概念來在 .NET 中構建 AI Agent。我們會使用一個新的 SDK，並需要在 Azure AI Foundry 中進行一些額外的設定來啟動項目。
+我們將引入一些新概念來在 .NET 中構建 AI Agent。我們會使用一個新的 SDK，並需要在 Microsoft Foundry 中進行一些額外的設定來啟動項目。
 
 > 🧑‍💻**範例程式碼**: 本課程將使用 [AgentLabs-01-Simple sample](../../../03-CoreGenerativeAITechniques/src/AgentLabs-01-Simple) 作為範例。
 >
@@ -26,7 +26,7 @@ AI Agents 讓 LLMs 從助理進化為能夠代表使用者採取行動的實體�
 
 我們將介紹一個新的 Azure 服務來幫助我們構建代理，也就是命名恰當的 [Azure AI Agent Service](https://learn.microsoft.com/azure/ai-services/agents/overview)。
 
-要運行本課程中的範例程式碼，你需要在 Azure AI Foundry 中進行一些額外的設定。你可以參考 [這些指引來設定一個 **基本代理**](https://learn.microsoft.com/azure/ai-services/agents/quickstart?pivots=programming-language-csharp)。
+要運行本課程中的範例程式碼，你需要在 Microsoft Foundry 中進行一些額外的設定。你可以參考 [這些指引來設定一個 **基本代理**](https://learn.microsoft.com/azure/ai-services/agents/quickstart?pivots=programming-language-csharp)。
 
 ### Azure AI Projects library
 
@@ -59,7 +59,7 @@ AI Agents 讓 LLMs 從助理進化為能夠代表使用者採取行動的實體�
     ![AI Foundry 專案首頁的截圖，專案連接字串以紅色標出](../../../translated_images/project-connection-string.e9005630f6251f18a89cb8c08f54b33bc83e0765f4c4e4d694af2ff447c4dfef.tw.png)
 
 2. 接下來，我們需要創建這個輔導代理。記住，它應該只專注於一件事。
-   
+
     ```csharp
     Agent tutorAgent = (await client.CreateAgentAsync(
     model: "gpt-4o",
@@ -72,7 +72,7 @@ AI Agents 讓 LLMs 從助理進化為能夠代表使用者採取行動的實體�
 
     > 🗒️**Note**: You can create your own tools too. See the [Functions](../../../03-CoreGenerativeAITechniques/src/AgentLabs-02-Functions) to learn more.
 
-    Second note the `instructions` that are being sent along. It's a prompt and we're limiting it to answer math questions. Then last creating the agent is an async operation. That's because it's creating an object within Azure AI Foundry Agents service. So we both `await` the `CreateAgentAsync` function and then grab the `Value` 的返回值來獲取實際的 `Agent` 對象。在使用 **Azure.AI.Projects** SDK 創建對象時，你會多次看到這樣的模式。
+    Second note the `instructions` that are being sent along. It's a prompt and we're limiting it to answer math questions. Then last creating the agent is an async operation. That's because it's creating an object within Microsoft Foundry Agents service. So we both `await` the `CreateAgentAsync` function and then grab the `Value` 的返回值來獲取實際的 `Agent` 對象。在使用 **Azure.AI.Projects** SDK 創建對象時，你會多次看到這樣的模式。
 
 3. `AgentThread` 是處理個別代理與使用者之間通信的對象。我們需要創建它，然後在上面添加一個 `ThreadMessage`。在這種情況下，這是使用者的第一個問題。
 

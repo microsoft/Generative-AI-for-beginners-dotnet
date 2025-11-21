@@ -10,6 +10,7 @@
 - エージェントが複雑なシナリオでどのように機能するかを理解する。
 
 ## 含まれるサンプル
+
 - [標準的な生成AIサンプル](../../../04-PracticalSamples)
   - [達成できること](../../../04-PracticalSamples)
   - [含まれるサンプル](../../../04-PracticalSamples)
@@ -30,7 +31,7 @@ _⬆️画像をクリックして動画を見る⬆️_
 
 最初のデモとして、**eShopLite** プロジェクトを見ていきます。**eShopLite** は、アウトドア用品やキャンプ愛好家向けのシンプルなeコマースアプリケーションで、検索機能の最適化、カスタマーサポート、リアルタイム音声分析など、生成AIの機能を活用しています。
 
-これらのデモでは、[Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service) および [Azure AI Foundry Models](https://ai.azure.com/) を使用して、アプリケーションにおける推論（生成AI部分）を行います。
+これらのデモでは、[Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service) および [Microsoft Foundry Models](https://ai.azure.com/) を使用して、アプリケーションにおける推論（生成AI部分）を行います。
 
 最初のデモでは、セマンティック カーネルを使用して検索機能を強化する方法を示します。この機能は、ユーザーのクエリの文脈を理解し、正確な結果を提供します。
 
@@ -233,7 +234,7 @@ Application Insights は包括的なテレメトリーデータを提供し、�
 
 画像では、Application Insights ダッシュボードが表示され、データベースへの呼び出し、リクエスト数、応答時間など、サービスのパフォーマンスが確認できます。
 
-> 💡 **プロのヒント**: eShopLite のセマンティック検索について詳しくは、リポジトリをご覧ください: https://aka.ms/netaieshoplitesemanticsearch
+> 💡 **プロのヒント**: eShopLite のセマンティック検索について詳しくは、リポジトリをご覧ください: <https://aka.ms/netaieshoplitesemanticsearch>
 
 ### eShopLite のセマンティック検索 - Azure AI Search を使用
 

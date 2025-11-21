@@ -16,7 +16,7 @@ AIエージェントは、LLMをアシスタントから、ユーザーの代わ
 
 ## AIエージェントの作成
 
-.NETでAIエージェントを構築するために、いくつかの新しいコンセプトを学びます。このレッスンでは新しいSDKを使用し、Azure AI Foundryで追加のセットアップを行う必要があります。
+.NETでAIエージェントを構築するために、いくつかの新しいコンセプトを学びます。このレッスンでは新しいSDKを使用し、Microsoft Foundryで追加のセットアップを行う必要があります。
 
 > 🧑‍💻**サンプルコード**: このレッスンでは、[AgentLabs-01-Simple サンプル](../../../03-CoreGenerativeAITechniques/src/AgentLabs-01-Simple)を使用します。
 >
@@ -26,7 +26,7 @@ AIエージェントは、LLMをアシスタントから、ユーザーの代わ
 
 エージェントの構築を支援する新しいAzureサービスを紹介します。その名も[Aazure AIエージェントサービス](https://learn.microsoft.com/azure/ai-services/agents/overview)です。
 
-このレッスンに含まれるコードサンプルを実行するには、Azure AI Foundryで追加のセットアップを行う必要があります。[**Basic Agent**をセットアップするための手順](https://learn.microsoft.com/azure/ai-services/agents/quickstart?pivots=programming-language-csharp)をご参照ください。
+このレッスンに含まれるコードサンプルを実行するには、Microsoft Foundryで追加のセットアップを行う必要があります。[**Basic Agent**をセットアップするための手順](https://learn.microsoft.com/azure/ai-services/agents/quickstart?pivots=programming-language-csharp)をご参照ください。
 
 ### Azure AI Projectsライブラリ
 
@@ -59,7 +59,7 @@ Azure AI Projectsライブラリを使用する際には、いくつかの重要
     ![AI Foundryのプロジェクトホームページのスクリーンショット。プロジェクト接続文字列が赤でハイライトされています](../../../translated_images/project-connection-string.e9005630f6251f18a89cb8c08f54b33bc83e0765f4c4e4d694af2ff447c4dfef.ja.png)
 
 1. 次に、チューターエージェントを作成します。覚えておいてください、1つのことに集中するべきです。
-   
+
     ```csharp
     Agent tutorAgent = (await client.CreateAgentAsync(
     model: "gpt-4o",
@@ -72,7 +72,7 @@ Azure AI Projectsライブラリを使用する際には、いくつかの重要
 
     > 🗒️**Note**: You can create your own tools too. See the [Functions](../../../03-CoreGenerativeAITechniques/src/AgentLabs-02-Functions) to learn more.
 
-    Second note the `instructions` that are being sent along. It's a prompt and we're limiting it to answer math questions. Then last creating the agent is an async operation. That's because it's creating an object within Azure AI Foundry Agents service. So we both `await` the `CreateAgentAsync` function and then grab the `Value`の戻り値を使用して実際の`Agent`オブジェクトを取得します。このパターンは、**Azure.AI.Projects** SDKでオブジェクトを作成する際に何度も登場します。
+    Second note the `instructions` that are being sent along. It's a prompt and we're limiting it to answer math questions. Then last creating the agent is an async operation. That's because it's creating an object within Microsoft Foundry Agents service. So we both `await` the `CreateAgentAsync` function and then grab the `Value`の戻り値を使用して実際の`Agent`オブジェクトを取得します。このパターンは、**Azure.AI.Projects** SDKでオブジェクトを作成する際に何度も登場します。
 
 1. `AgentThread`は、個々のエージェントとユーザー間の通信を処理するオブジェクトです。これを作成し、そこに`ThreadMessage`を追加します。この場合、ユーザーの最初の質問となります。
 

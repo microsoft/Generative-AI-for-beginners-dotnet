@@ -10,6 +10,7 @@ Descubre todos los conceptos que has aprendido en acción con estos ejemplos pr�
 - Comprender cómo funcionan los Agentes en escenarios complejos.
 
 ## Ejemplos incluidos
+
 - [Muestras Canónicas de IA Generativa](../../../04-PracticalSamples)
   - [Lo que lograrás](../../../04-PracticalSamples)
   - [Ejemplos incluidos](../../../04-PracticalSamples)
@@ -30,7 +31,7 @@ _⬆️Haz clic en la imagen para ver el video⬆️_
 
 En nuestras primeras demos, exploraremos los proyectos de **eShopLite**. **eShopLite** es una aplicación sencilla de comercio electrónico diseñada para entusiastas del camping y el equipo de exteriores, mejorada con capacidades de IA Generativa como optimización de búsqueda, soporte al cliente y análisis de audio en tiempo real.
 
-Estas demos utilizan [Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service) y [Azure AI Foundry Models](https://ai.azure.com/) para realizar las inferencias (o la parte de IA generativa) en las aplicaciones.
+Estas demos utilizan [Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service) y [Microsoft Foundry Models](https://ai.azure.com/) para realizar las inferencias (o la parte de IA generativa) en las aplicaciones.
 
 En la primera demo, mostramos cómo usar Semantic Kernel para mejorar las capacidades de búsqueda, logrando entender el contexto de las consultas de los usuarios y proporcionando resultados más precisos.
 
@@ -233,7 +234,7 @@ Application Insights proporciona un conjunto completo de datos de telemetría, a
 
 En la imagen, podemos ver el panel de Application Insights, mostrando cómo están funcionando los servicios, por ejemplo, las llamadas a nuestra base de datos, el número de solicitudes y el tiempo de respuesta.
 
-> 💡 **Consejo Pro**: Para más información sobre eShopLite con búsqueda semántica, consulta el repositorio para aprender más: https://aka.ms/netaieshoplitesemanticsearch
+> 💡 **Consejo Pro**: Para más información sobre eShopLite con búsqueda semántica, consulta el repositorio para aprender más: <https://aka.ms/netaieshoplitesemanticsearch>
 
 ### eShopLite con búsqueda semántica usando Azure AI Search
 

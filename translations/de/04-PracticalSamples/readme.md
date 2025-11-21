@@ -10,6 +10,7 @@ Sehen Sie alle Konzepte, die Sie gelernt haben, in Aktion in diesen praxisnahen 
 - Verstehen Sie, wie Agenten in komplexen Szenarien arbeiten.
 
 ## Enthaltene Beispiele
+
 - [Kanonische Generative KI-Beispiele](../../../04-PracticalSamples)
   - [Was Sie erreichen werden](../../../04-PracticalSamples)
   - [Enthaltene Beispiele](../../../04-PracticalSamples)
@@ -22,7 +23,6 @@ Sehen Sie alle Konzepte, die Sie gelernt haben, in Aktion in diesen praxisnahen 
     - [Zusätzliche Ressourcen](../../../04-PracticalSamples)
     - [Nächste Schritte](../../../04-PracticalSamples)
 
-
 [![Video zur allgemeinen Erklärung](https://img.youtube.com/vi/Ky4CACXJqR8/0.jpg)](https://youtu.be/Ky4CACXJqR8?feature=shared)
 
 _⬆️Klicken Sie auf das Bild, um das Video anzusehen⬆️_
@@ -31,7 +31,7 @@ _⬆️Klicken Sie auf das Bild, um das Video anzusehen⬆️_
 
 In unseren ersten Demos erkunden wir die **eShopLite**-Projekte. **eShopLite** ist eine einfache E-Commerce-Anwendung für Outdoor- und Camping-Enthusiasten, die mit generativen KI-Funktionen erweitert wurde, wie z. B. Optimierung der Suchfunktionen, Kundenbetreuung und Echtzeit-Audioanalyse.
 
-Diese Demos nutzen [Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service) und [Azure AI Foundry Models](https://ai.azure.com/), um die Inferenzprozesse (den generativen KI-Teil) für die Anwendungen durchzuführen.
+Diese Demos nutzen [Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service) und [Microsoft Foundry Models](https://ai.azure.com/), um die Inferenzprozesse (den generativen KI-Teil) für die Anwendungen durchzuführen.
 
 Im ersten Demo zeigen wir, wie der Semantic Kernel verwendet wird, um die Suchfunktionen zu verbessern. Dieser versteht den Kontext der Benutzeranfragen und liefert präzise Ergebnisse.
 
@@ -234,7 +234,7 @@ Application Insights bietet eine umfassende Palette an Telemetriedaten, die uns 
 
 Im Bild sehen wir das Application Insights-Dashboard, das zeigt, wie die Dienste funktionieren, z. B. die Datenbankaufrufe, die Anzahl der Anfragen und die Antwortzeit.
 
-> 💡 **Tipp**: Weitere Informationen zu eShopLite mit semantischer Suche finden Sie im Repository: https://aka.ms/netaieshoplitesemanticsearch
+> 💡 **Tipp**: Weitere Informationen zu eShopLite mit semantischer Suche finden Sie im Repository: <https://aka.ms/netaieshoplitesemanticsearch>
 
 ### eShopLite mit semantischer Suche mit Azure AI Search
 

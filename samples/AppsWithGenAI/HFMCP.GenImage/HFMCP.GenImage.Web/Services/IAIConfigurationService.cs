@@ -21,7 +21,7 @@ public class AIConfiguration
     // Optional GitHub Models settings - not required since user can choose GitHub Models OR Azure OpenAI
     public string? GitHubToken { get; set; } = string.Empty;
 
-    // Optional Azure AI Foundry settings
+    // Optional Microsoft Foundry settings
     public string? AzureOpenAIEndpoint { get; set; }
     public string? AzureOpenAIApiKey { get; set; }
 }
