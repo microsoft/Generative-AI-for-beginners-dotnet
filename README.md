@@ -32,7 +32,22 @@ Don't forget to [star (🌟) this repo](https://docs.github.com/en/get-started/e
 
 We're constantly improving this course with the latest AI tools, models, and practical samples:
 
-- **🌐 NEW! AG-UI Integration Sample**
+- **🤖 NEW! Claude Models with Agent Framework**
+
+  Integrate **Claude models** from Azure AI Foundry with Microsoft Agent Framework! Three comprehensive samples demonstrate:
+  - Basic console chat with Claude using `ChatClientAgent`
+  - Conversation persistence with thread serialization/deserialization
+  - Interactive Blazor web chat application with modern UI
+  - Custom `ClaudeToOpenAIMessageHandler` for seamless API bridging
+  - Support for Claude Haiku, Sonnet, and Opus models
+  
+  👉 [Explore the Claude AgentFx Samples](./samples/AgentFx/CLAUDE-SAMPLES-README.md)
+  
+  Plus a foundational Claude integration sample:
+  
+  👉 [BasicChat with Claude via Azure AI Foundry](./samples/CoreSamples/BasicChat-11FoundryClaude/)
+
+- **🌐 AG-UI Integration Sample**
 
   Check out our new Agent Framework sample demonstrating **AG-UI** (Agent Gateway User Interface) - the distributed agent architecture pattern! This sample shows how to:
   - Separate AI agent backend from Blazor frontend for better scalability
