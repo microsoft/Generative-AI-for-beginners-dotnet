@@ -1,9 +1,7 @@
-using Azure.AI.OpenAI;
+using elbruno.Extensions.AI.Claude;
 using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.Hosting;
 using Microsoft.Extensions.AI;
-using System.ClientModel;
-using System.ClientModel.Primitives;
 using AgentFx_AIWebChatApp_FoundryClaude.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,32 +12,17 @@ builder.Services.AddRazorComponents()
 
 // Load configuration
 var config = builder.Configuration;
-var endpoint = config["endpoint"] ?? throw new InvalidOperationException("Missing 'endpoint' configuration");
 var endpointClaude = config["endpointClaude"] ?? throw new InvalidOperationException("Missing 'endpointClaude' configuration");
 var apiKey = config["apikey"] ?? throw new InvalidOperationException("Missing 'apikey' configuration");
 var deploymentName = config["deploymentName"] ?? "claude-haiku-4-5";
 
-// Create custom HTTP message handler for Claude endpoint
-var customHttpMessageHandler = new ClaudeToOpenAIMessageHandler
-{
-    AzureClaudeDeploymentUrl = endpointClaude,
-    ApiKey = apiKey,
-    Model = deploymentName
-};
-HttpClient customHttpClient = new(customHttpMessageHandler);
-var transport = new HttpClientPipelineTransport(customHttpClient);
-
-// Register IChatClient with Claude integration
+// Register IChatClient with Claude integration using elbruno.Extensions.AI.Claude
 builder.Services.AddSingleton<IChatClient>(_ =>
 {
-    return new AzureOpenAIClient(
-        endpoint: new Uri(endpoint),
-        credential: new ApiKeyCredential(apiKey),
-        options: new AzureOpenAIClientOptions { Transport = transport })
-    .GetChatClient(deploymentName)
-    .AsIChatClient()
-    .AsBuilder()
-    .Build();
+    return new AzureClaudeClient(
+        endpoint: new Uri(endpointClaude),
+        modelId: deploymentName,
+        apiKey: apiKey);
 });
 
 // Register AI Agent with dependency injection

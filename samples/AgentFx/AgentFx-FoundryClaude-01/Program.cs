@@ -1,16 +1,13 @@
-using Azure.AI.OpenAI;
+using elbruno.Extensions.AI.Claude;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
-using System.ClientModel;
-using System.ClientModel.Primitives;
 
 // AgentFx Basic Chat with Claude via Microsoft Foundry
 // Demonstrates using ChatClientAgent with Claude models deployed in Microsoft Foundry
-// Uses ClaudeToOpenAIMessageHandler to bridge OpenAI and Claude API formats
+// Uses elbruno.Extensions.AI.Claude package for seamless Claude integration
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-var endpoint = config["endpoint"] ?? throw new InvalidOperationException("Missing 'endpoint' configuration");
 var endpointClaude = config["endpointClaude"] ?? throw new InvalidOperationException("Missing 'endpointClaude' configuration");
 var apiKey = config["apikey"] ?? throw new InvalidOperationException("Missing 'apikey' configuration");
 var deploymentName = config["deploymentName"] ?? "claude-haiku-4-5";
@@ -19,37 +16,15 @@ Console.WriteLine("=".PadRight(60, '='));
 Console.WriteLine("AgentFx with Claude via Microsoft Foundry");
 Console.WriteLine("=".PadRight(60, '='));
 Console.WriteLine($"Model: {deploymentName}");
-Console.WriteLine($"Endpoint: {endpoint}");
+Console.WriteLine($"Endpoint: {endpointClaude}");
 Console.WriteLine("=".PadRight(60, '='));
 Console.WriteLine();
 
-// Create custom HTTP message handler for Claude endpoint in Azure
-var customHttpMessageHandler = new ClaudeToOpenAIMessageHandler
-{
-    AzureClaudeDeploymentUrl = endpointClaude,
-    ApiKey = apiKey,
-    Model = deploymentName
-};
-HttpClient customHttpClient = new(customHttpMessageHandler);
-
-// Wrap HttpClient in the pipeline transport
-var transport = new HttpClientPipelineTransport(customHttpClient);
-
-// Client options with custom transport
-var clientOptions = new AzureOpenAIClientOptions
-{
-    Transport = transport
-};
-
-// Create IChatClient with the custom transport
-IChatClient chatClient = new AzureOpenAIClient(
-    endpoint: new Uri(endpoint),
-    credential: new ApiKeyCredential(apiKey),
-    options: clientOptions)
-    .GetChatClient(deploymentName)
-    .AsIChatClient()
-    .AsBuilder()
-    .Build();
+// Create IChatClient using elbruno.Extensions.AI.Claude package
+IChatClient chatClient = new AzureClaudeClient(
+    endpoint: new Uri(endpointClaude),
+    modelId: deploymentName,
+    apiKey: apiKey);
 
 // Create AI Agent with ChatClientAgent
 AIAgent writer = new ChatClientAgent(

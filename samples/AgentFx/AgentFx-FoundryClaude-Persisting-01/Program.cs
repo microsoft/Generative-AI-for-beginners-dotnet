@@ -1,8 +1,6 @@
-using Azure.AI.OpenAI;
+using elbruno.Extensions.AI.Claude;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
-using System.ClientModel;
-using System.ClientModel.Primitives;
 using System.Text.Json;
 
 // AgentFx Persisting Conversations with Claude via Microsoft Foundry
@@ -14,30 +12,15 @@ using System.Text.Json;
 string SavedThreadFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "agent_thread_claude.json");
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-var endpoint = config["endpoint"] ?? throw new InvalidOperationException("Missing 'endpoint' configuration");
 var endpointClaude = config["endpointClaude"] ?? throw new InvalidOperationException("Missing 'endpointClaude' configuration");
 var apiKey = config["apikey"] ?? throw new InvalidOperationException("Missing 'apikey' configuration");
 var deploymentName = config["deploymentName"] ?? "claude-haiku-4-5";
 
-// Create custom HTTP message handler for Claude endpoint in Azure
-var customHttpMessageHandler = new ClaudeToOpenAIMessageHandler
-{
-    AzureClaudeDeploymentUrl = endpointClaude,
-    ApiKey = apiKey,
-    Model = deploymentName
-};
-HttpClient customHttpClient = new(customHttpMessageHandler);
-var transport = new HttpClientPipelineTransport(customHttpClient);
-
-// Create IChatClient with custom transport
-IChatClient client = new AzureOpenAIClient(
-    endpoint: new Uri(endpoint),
-    credential: new ApiKeyCredential(apiKey),
-    options: new AzureOpenAIClientOptions { Transport = transport })
-    .GetChatClient(deploymentName)
-    .AsIChatClient()
-    .AsBuilder()
-    .Build();
+// Create IChatClient using elbruno.Extensions.AI.Claude package
+IChatClient client = new AzureClaudeClient(
+    endpoint: new Uri(endpointClaude),
+    modelId: deploymentName,
+    apiKey: apiKey);
 
 // Create a simple agent
 var agent = client.CreateAIAgent(

@@ -1,12 +1,13 @@
 # AgentFx-FoundryClaude-Persisting-01: Persisting Conversations with Claude
 
-This sample demonstrates **conversation persistence** using Microsoft Agent Framework (AgentFx) with **Claude models** deployed in **Microsoft Foundry**. It shows how to serialize and deserialize agent threads to maintain conversation context across sessions.
+This sample demonstrates **conversation persistence** using Microsoft Agent Framework (AgentFx) with **Claude models** deployed in **Microsoft Foundry**. It shows how to serialize and deserialize agent threads to maintain conversation context across sessions using the **elbruno.Extensions.AI.Claude** NuGet package.
 
 ## Overview
 
 - **Framework**: Microsoft Agent Framework (AgentFx)
 - **AI Model**: Claude (Haiku, Sonnet, or Opus) via Microsoft Foundry
 - **Pattern**: Thread serialization and persistence
+- **Key Package**: [elbruno.Extensions.AI.Claude](https://www.nuget.org/packages/elbruno.Extensions.AI.Claude/) - provides seamless Claude integration
 - **Key Concepts**: `GetNewThread()`, `Serialize()`, `DeserializeThread()`, stateful conversations
 
 ## What This Sample Demonstrates
@@ -22,10 +23,9 @@ This sample walks through four key steps:
 
 ### 1. Microsoft Foundry Setup
 
-1. Create an Microsoft Foundry project
+1. Create a Microsoft Foundry project
 2. Deploy a Claude model (e.g., `claude-haiku-4-5`, `claude-sonnet-4-5`)
 3. Note your:
-   - **Endpoint**: `https://<resource-name>.cognitiveservices.azure.com`
    - **Claude Endpoint**: `https://<resource-name>.services.ai.azure.com/anthropic/v1/messages`
    - **API Key**: From Azure portal
    - **Deployment Name**: Your Claude model deployment name
@@ -41,7 +41,6 @@ Set user secrets for the project:
 ```bash
 cd samples/AgentFx/AgentFx-FoundryClaude-Persisting-01
 
-dotnet user-secrets set "endpoint" "https://<resource-name>.cognitiveservices.azure.com"
 dotnet user-secrets set "endpointClaude" "https://<resource-name>.services.ai.azure.com/anthropic/v1/messages"
 dotnet user-secrets set "apikey" "<your-api-key>"
 dotnet user-secrets set "deploymentName" "claude-haiku-4-5"

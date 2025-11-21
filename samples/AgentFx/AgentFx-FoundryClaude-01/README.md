@@ -1,22 +1,21 @@
 # AgentFx-FoundryClaude-01: Basic Chat with Claude Agent
 
-This sample demonstrates how to use **Microsoft Agent Framework (AgentFx)** with **Claude models** deployed in **Microsoft Foundry**. It shows the integration of `ChatClientAgent` with Claude via a custom HTTP message handler that bridges OpenAI and Claude API formats.
+This sample demonstrates how to use **Microsoft Agent Framework (AgentFx)** with **Claude models** deployed in **Microsoft Foundry**. It shows the integration of `ChatClientAgent` with Claude using the **elbruno.Extensions.AI.Claude** NuGet package.
 
 ## Overview
 
 - **Framework**: Microsoft Agent Framework (AgentFx)
 - **AI Model**: Claude (Haiku, Sonnet, or Opus) via Microsoft Foundry
 - **Pattern**: Basic agent chat with single prompt/response
-- **Key Concept**: Using `ClaudeToOpenAIMessageHandler` to enable Claude models with AgentFx
+- **Key Package**: [elbruno.Extensions.AI.Claude](https://www.nuget.org/packages/elbruno.Extensions.AI.Claude/) - provides seamless Claude integration
 
 ## Prerequisites
 
 ### 1. Microsoft Foundry Setup
 
-1. Create an Microsoft Foundry project
+1. Create a Microsoft Foundry project
 2. Deploy a Claude model (e.g., `claude-haiku-4-5`, `claude-sonnet-4-5`)
 3. Note your:
-   - **Endpoint**: `https://<resource-name>.cognitiveservices.azure.com`
    - **Claude Endpoint**: `https://<resource-name>.services.ai.azure.com/anthropic/v1/messages`
    - **API Key**: From Azure portal
    - **Deployment Name**: Your Claude model deployment name
@@ -32,7 +31,6 @@ Set user secrets for the project:
 ```bash
 cd samples/AgentFx/AgentFx-FoundryClaude-01
 
-dotnet user-secrets set "endpoint" "https://<resource-name>.cognitiveservices.azure.com"
 dotnet user-secrets set "endpointClaude" "https://<resource-name>.services.ai.azure.com/anthropic/v1/messages"
 dotnet user-secrets set "apikey" "<your-api-key>"
 dotnet user-secrets set "deploymentName" "claude-haiku-4-5"
@@ -55,8 +53,9 @@ dotnet run
 
 ### 1. **Claude Integration with AgentFx**
 
-- Uses `ClaudeToOpenAIMessageHandler` to transform API calls between OpenAI and Claude formats
-- Enables seamless Claude model usage with Microsoft Agent Framework
+- Uses **elbruno.Extensions.AI.Claude** NuGet package for seamless Claude integration
+- Implements `IChatClient` interface from Microsoft.Extensions.AI
+- Enables native Claude model usage with Microsoft Agent Framework
 
 ### 2. **ChatClientAgent Pattern**
 
@@ -64,44 +63,40 @@ dotnet run
 - Configures agent with name and instructions
 - Executes single prompt with `RunAsync()`
 
-### 3. **Custom HTTP Transport**
+### 3. **Simple Configuration**
 
-- Wraps custom `HttpMessageHandler` in `HttpClientPipelineTransport`
-- Configures `AzureOpenAIClient` with custom transport
-- Maintains compatibility with AgentFx APIs
+- Direct instantiation of `AzureClaudeClient` with endpoint, model ID, and API key
+- No custom HTTP handlers or transformations needed
+- Clean, maintainable code following Microsoft.Extensions.AI patterns
 
 ## Code Structure
 
 ```
 AgentFx-FoundryClaude-01/
 ├── Program.cs                          # Main application with agent setup
-├── ClaudeToOpenAIMessageHandler.cs     # HTTP handler for Claude API translation
 ├── AgentFx-FoundryClaude-01.csproj     # Project file with dependencies
 └── README.md                           # This file
 ```
 
 ## Key Code Snippets
 
+### Installing the Package
+
+```bash
+dotnet add package elbruno.Extensions.AI.Claude --version 0.1.0-preview.2
+```
+
 ### Creating the IChatClient with Claude
 
 ```csharp
-var customHttpMessageHandler = new ClaudeToOpenAIMessageHandler
-{
-    AzureClaudeDeploymentUrl = endpointClaude,
-    ApiKey = apiKey,
-    Model = deploymentName
-};
-HttpClient customHttpClient = new(customHttpMessageHandler);
-var transport = new HttpClientPipelineTransport(customHttpClient);
+using elbruno.Extensions.AI.Claude;
+using Microsoft.Extensions.AI;
 
-IChatClient chatClient = new AzureOpenAIClient(
-    endpoint: new Uri(endpoint),
-    credential: new ApiKeyCredential(apiKey),
-    options: new AzureOpenAIClientOptions { Transport = transport })
-    .GetChatClient(deploymentName)
-    .AsIChatClient()
-    .AsBuilder()
-    .Build();
+// Create IChatClient using AzureClaudeClient from the NuGet package
+IChatClient chatClient = new AzureClaudeClient(
+    endpoint: new Uri(endpointClaude),
+    modelId: deploymentName,
+    apiKey: apiKey);
 ```
 
 ### Creating and Running the Agent
@@ -126,7 +121,7 @@ Console.WriteLine(response.Text);
 AgentFx with Claude via Microsoft Foundry
 ============================================================
 Model: claude-haiku-4-5
-Endpoint: https://<resource-name>.cognitiveservices.azure.com
+Endpoint: https://<resource-name>.services.ai.azure.com/anthropic/v1/messages
 ============================================================
 
 Prompt: Write a short story about a haunted house with a character named Lucia.
@@ -144,6 +139,7 @@ Response:
 
 ## Additional Resources
 
+- [elbruno.Extensions.AI.Claude NuGet Package](https://www.nuget.org/packages/elbruno.Extensions.AI.Claude/)
 - [Microsoft Agent Framework Documentation](https://learn.microsoft.com/agent-framework/)
 - [Microsoft Foundry - Claude Models](https://learn.microsoft.com/azure/ai-foundry/foundry-models/how-to/use-foundry-models-claude)
 - [Claude API Documentation](https://docs.anthropic.com/claude/reference/messages_post)

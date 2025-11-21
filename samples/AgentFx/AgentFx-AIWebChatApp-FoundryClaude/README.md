@@ -1,22 +1,22 @@
 # AgentFx-AIWebChatApp-FoundryClaude: Blazor Web Chat with Claude
 
-This sample demonstrates a **Blazor Server web application** using **Microsoft Agent Framework (AgentFx)** with **Claude models** deployed in **Microsoft Foundry**. It provides a modern, interactive chat interface for real-time conversations with Claude.
+This sample demonstrates a **Blazor Server web application** using **Microsoft Agent Framework (AgentFx)** with **Claude models** deployed in **Microsoft Foundry**. It provides a modern, interactive chat interface for real-time conversations with Claude using the **elbruno.Extensions.AI.Claude** NuGet package.
 
 ## Overview
 
 - **Framework**: Blazor Server (.NET 9) + Microsoft Agent Framework
 - **AI Model**: Claude (Haiku, Sonnet, or Opus) via Microsoft Foundry
 - **Pattern**: Interactive web chat with dependency injection
+- **Key Package**: [elbruno.Extensions.AI.Claude](https://www.nuget.org/packages/elbruno.Extensions.AI.Claude/) - provides seamless Claude integration
 - **Key Features**: Real-time chat, streaming responses, modern UI
 
 ## Prerequisites
 
 ### 1. Microsoft Foundry Setup
 
-1. Create an Microsoft Foundry project
+1. Create a Microsoft Foundry project
 2. Deploy a Claude model (e.g., `claude-haiku-4-5`, `claude-sonnet-4-5`)
 3. Note your:
-   - **Endpoint**: `https://<resource-name>.cognitiveservices.azure.com`
    - **Claude Endpoint**: `https://<resource-name>.services.ai.azure.com/anthropic/v1/messages`
    - **API Key**: From Azure portal
    - **Deployment Name**: Your Claude model deployment name
@@ -32,7 +32,6 @@ Set user secrets for the project:
 ```bash
 cd samples/AgentFx/AgentFx-AIWebChatApp-FoundryClaude
 
-dotnet user-secrets set "endpoint" "https://<resource-name>.cognitiveservices.azure.com"
 dotnet user-secrets set "endpointClaude" "https://<resource-name>.services.ai.azure.com/anthropic/v1/messages"
 dotnet user-secrets set "apikey" "<your-api-key>"
 dotnet user-secrets set "deploymentName" "claude-haiku-4-5"

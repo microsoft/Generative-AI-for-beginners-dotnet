@@ -1,10 +1,10 @@
 # AgentFx Claude Samples - Microsoft Foundry Integration
 
-This collection demonstrates how to use **Microsoft Agent Framework (AgentFx)** with **Claude models** deployed in **Microsoft Foundry**. These samples showcase the integration of Claude's advanced language capabilities with AgentFx's powerful agent orchestration features.
+This collection demonstrates how to use **Microsoft Agent Framework (AgentFx)** with **Claude models** deployed in **Microsoft Foundry**. These samples showcase the integration of Claude's advanced language capabilities with AgentFx's powerful agent orchestration features using the **[elbruno.Extensions.AI.Claude](https://www.nuget.org/packages/elbruno.Extensions.AI.Claude/)** NuGet package.
 
 ## Overview
 
-All samples in this collection use a custom `ClaudeToOpenAIMessageHandler` to bridge the Claude API format with the OpenAI-compatible APIs used by Microsoft.Extensions.AI and Agent Framework. This allows seamless integration of Claude models while maintaining compatibility with the AgentFx ecosystem.
+All samples in this collection use the **elbruno.Extensions.AI.Claude** NuGet package, which provides a clean, native implementation of `IChatClient` for Claude models deployed in Microsoft Foundry. This package simplifies Claude integration by eliminating the need for custom HTTP handlers or API transformations, while maintaining full compatibility with Microsoft.Extensions.AI and the Agent Framework ecosystem.
 
 ## Samples Included
 
@@ -18,7 +18,7 @@ A console application demonstrating basic agent chat with Claude.
 
 - Single prompt/response interaction
 - `ChatClientAgent` pattern
-- Custom HTTP message handler for Claude API translation
+- Direct `AzureClaudeClient` instantiation from NuGet package
 - Microsoft Foundry deployment integration
 
 **Use Cases**: Quick prototyping, testing Claude integration, simple Q&A applications
@@ -99,7 +99,6 @@ Each sample requires the following user secrets:
 ```bash
 cd samples/AgentFx/<sample-name>
 
-dotnet user-secrets set "endpoint" "https://<resource-name>.cognitiveservices.azure.com"
 dotnet user-secrets set "endpointClaude" "https://<resource-name>.services.ai.azure.com/anthropic/v1/messages"
 dotnet user-secrets set "apikey" "<your-api-key>"
 dotnet user-secrets set "deploymentName" "claude-haiku-4-5"
@@ -107,20 +106,25 @@ dotnet user-secrets set "deploymentName" "claude-haiku-4-5"
 
 ### Finding Your Configuration Values
 
-1. **endpoint**: Azure Cognitive Services endpoint
-   - Azure Portal → Your AI resource → Keys and Endpoint → Endpoint
-
-2. **endpointClaude**: Claude-specific endpoint
+1. **endpointClaude**: Claude-specific endpoint
    - Format: `https://<resource-name>.services.ai.azure.com/anthropic/v1/messages`
    - Replace `<resource-name>` with your Microsoft Foundry resource name
 
-3. **apikey**: API key for authentication
+2. **apikey**: API key for authentication
    - Azure Portal → Your AI resource → Keys and Endpoint → Key 1 or Key 2
 
-4. **deploymentName**: Your Claude model deployment name
+3. **deploymentName**: Your Claude model deployment name
    - Microsoft Foundry → Deployments → Your Claude deployment name
 
 ## Quick Start
+
+### Installing the Package
+
+All samples use the elbruno.Extensions.AI.Claude NuGet package:
+
+```bash
+dotnet add package elbruno.Extensions.AI.Claude --version 0.1.0-preview.2
+```
 
 ### Running Console Samples
 
@@ -145,19 +149,22 @@ dotnet run
 
 ## Architecture
 
-### ClaudeToOpenAIMessageHandler
+### AzureClaudeClient from elbruno.Extensions.AI.Claude
 
-All samples use a custom `ClaudeToOpenAIMessageHandler` that:
+All samples use `AzureClaudeClient` from the **elbruno.Extensions.AI.Claude** NuGet package:
 
-1. **Intercepts HTTP requests** to Claude deployments
-2. **Transforms OpenAI format** requests to Claude Messages API format
-3. **Converts Claude responses** back to OpenAI-compatible format
-4. **Handles streaming** for real-time responses (SSE to OpenAI format)
-5. **Manages authentication** using x-api-key header (Claude-specific)
+**Key Features**:
 
-This approach allows:
+1. **Native IChatClient implementation** - Direct implementation of Microsoft.Extensions.AI abstractions
+2. **Simple configuration** - Just endpoint, model ID, and API key
+3. **No custom handlers needed** - All API transformation handled internally
+4. **Full streaming support** - Real-time responses with Server-Sent Events
+5. **Automatic header management** - Includes required `anthropic-version` header
 
-- ✅ Seamless Claude integration with Microsoft.Extensions.AI
+This approach provides:
+
+- ✅ Clean, maintainable code without custom HTTP handlers
+- ✅ Native Claude integration with Microsoft.Extensions.AI
 - ✅ Full compatibility with Agent Framework APIs
 - ✅ Easy switching between AI providers
 - ✅ Support for both streaming and non-streaming responses
@@ -169,9 +176,7 @@ AgentFx Application
       ↓
 IChatClient (Microsoft.Extensions.AI)
       ↓
-AzureOpenAIClient with custom HttpMessageHandler
-      ↓
-ClaudeToOpenAIMessageHandler
+AzureClaudeClient (elbruno.Extensions.AI.Claude)
       ↓
 Claude API (Microsoft Foundry)
 ```
@@ -181,23 +186,14 @@ Claude API (Microsoft Foundry)
 ### Creating an IChatClient with Claude
 
 ```csharp
-var customHttpMessageHandler = new ClaudeToOpenAIMessageHandler
-{
-    AzureClaudeDeploymentUrl = endpointClaude,
-    ApiKey = apiKey,
-    Model = deploymentName
-};
-HttpClient customHttpClient = new(customHttpMessageHandler);
-var transport = new HttpClientPipelineTransport(customHttpClient);
+using elbruno.Extensions.AI.Claude;
+using Microsoft.Extensions.AI;
 
-IChatClient chatClient = new AzureOpenAIClient(
-    endpoint: new Uri(endpoint),
-    credential: new ApiKeyCredential(apiKey),
-    options: new AzureOpenAIClientOptions { Transport = transport })
-    .GetChatClient(deploymentName)
-    .AsIChatClient()
-    .AsBuilder()
-    .Build();
+// Create IChatClient using AzureClaudeClient
+IChatClient chatClient = new AzureClaudeClient(
+    endpoint: new Uri(endpointClaude),
+    modelId: deploymentName,
+    apiKey: apiKey);
 ```
 
 ### Creating an Agent
