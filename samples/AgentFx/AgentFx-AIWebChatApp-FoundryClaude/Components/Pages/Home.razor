@@ -2,6 +2,7 @@
 @using Microsoft.Agents.AI
 @inject AIAgent Agent
 @inject ILogger<Home> Logger
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
 
 <PageTitle>Claude Chat - AgentFx</PageTitle>
 

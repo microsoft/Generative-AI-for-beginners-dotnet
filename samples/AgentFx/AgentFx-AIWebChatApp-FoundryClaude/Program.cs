@@ -34,8 +34,7 @@ builder.Services.AddSingleton<AIAgent>(sp =>
     var chatClient = sp.GetRequiredService<IChatClient>();
     return chatClient.CreateAIAgent(
         name: "ClaudeChat",
-        instructions: "You are a helpful and friendly AI assistant powered by Claude. " +
-                     "Provide clear, concise, and accurate responses to user questions."
+        instructions: "You are a helpful and friendly AI assistant."
     );
 });
 
