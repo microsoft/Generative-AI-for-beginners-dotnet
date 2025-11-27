@@ -119,6 +119,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicChat-11FoundryClaude",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "15 Foundry Claude", "15 Foundry Claude", "{FCBCA4B3-0E0B-46BF-A0BF-74CB65BD6BB5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "16 Microsoft Foundry", "16 Microsoft Foundry", "{57EB75AD-5176-432F-AE1F-4067CF7320E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

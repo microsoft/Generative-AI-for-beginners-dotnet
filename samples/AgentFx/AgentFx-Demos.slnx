@@ -33,4 +33,7 @@
     <Project Path="AgentFx-FoundryClaude-Persisting-01/AgentFx-FoundryClaude-Persisting-01.csproj" Id="c9a4d3b2-8e5f-4a0b-9c3d-2f6e7g8h9i0j" />
     <Project Path="AgentFx-AIWebChatApp-FoundryClaude/AgentFx-AIWebChatApp-FoundryClaude.csproj" Id="d5e4f3c2-9a6b-4c7d-8e5f-3a4b5c6d7e8f" />
   </Folder>
+  <Folder Name="/9 Microsoft Foundry/">
+    <Project Path="AgentFx-MicrosoftFoundryAgents-01/AgentFx-MicrosoftFoundryAgents-01.csproj" Id="28071859-0089-4443-82f9-b60ca0ee8f9a" />
+  </Folder>
 </Solution>
