@@ -22,8 +22,6 @@ AIProjectClient projectClient = new(
 // get existing agent
 AIAgent aiAgent = await projectClient.GetAIAgentAsync(agentName);
 
-var thread = aiAgent.GetNewThread();
-
 while (true)
 {
     Console.Write("User: ");
@@ -32,6 +30,6 @@ while (true)
     {
         break;
     }
-    var response = await aiAgent.RunAsync(userInput, thread);
+    var response = await aiAgent.RunAsync(userInput);
     Console.WriteLine($"Agent [{agentName}]: {response.Text}");
 }
