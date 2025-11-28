@@ -3,10 +3,10 @@
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<TargetFramework>net10.0</TargetFramework>
-		<RootNamespace>AgentFx_MicrosoftFoundryAgents_01</RootNamespace>
+		<RootNamespace>AgentFx_MicrosoftFoundryAgents_02</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<UserSecretsId>00510e5d-1e9d-420d-abe7-339590f37a3d</UserSecretsId>
+		<UserSecretsId>f3a85331-e560-4996-9f41-68cf75395df1</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -25,5 +25,6 @@
 		<PackageReference Include="Azure.Identity" Version="1.18.0-beta.2" />
 	</ItemGroup>
 </Project>
+
 
 

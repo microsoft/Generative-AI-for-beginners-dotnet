@@ -11,7 +11,7 @@ var deploymentName = config["deploymentName"];
 var agentName = config["agentName"];
 
 AIProjectClient projectClient = new(
-    endpoint: new Uri(azureFoundryProjectEndpoint), 
+    endpoint: new Uri(azureFoundryProjectEndpoint),
     tokenProvider: new AzureCliCredential());
 
 // create agent
