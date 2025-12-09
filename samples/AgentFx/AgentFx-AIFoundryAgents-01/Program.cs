@@ -21,8 +21,6 @@ var persistentAgentClient = new PersistentAgentsClient(
 // get existing agent
 AIAgent aiAgent = await persistentAgentClient.GetAIAgentAsync(assistantId);
 
-var thread = aiAgent.GetNewThread();
-
 while (true)
 {
     Console.Write("User: ");
@@ -31,6 +29,6 @@ while (true)
     {
         break;
     }
-    var response = await aiAgent.RunAsync(userInput, thread);
+    var response = await aiAgent.RunAsync(userInput);
     Console.WriteLine($"Agent: {response.Text}");
 }
