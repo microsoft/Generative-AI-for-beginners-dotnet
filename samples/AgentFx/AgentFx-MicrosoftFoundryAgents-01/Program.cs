@@ -1,4 +1,5 @@
 ﻿using Azure.AI.Agents.Persistent;
+using Azure.AI.OpenAI;
 using Azure.AI.Projects;
 using Azure.Identity;
 using Microsoft.Agents.AI;
@@ -10,7 +11,7 @@ var deploymentName = config["deploymentName"];
 var agentName = config["agentName"];
 
 AIProjectClient projectClient = new(
-    endpoint: new Uri(azureFoundryProjectEndpoint), 
+    endpoint: new Uri(azureFoundryProjectEndpoint),
     tokenProvider: new AzureCliCredential());
 
 // create agent
