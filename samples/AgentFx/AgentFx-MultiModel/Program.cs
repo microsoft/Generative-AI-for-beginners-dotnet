@@ -33,13 +33,9 @@ Console.WriteLine("Setting up Agent 1: Researcher (Microsoft Foundry or GitHub M
 
 IChatClient githubChatClient = ChatClientProvider.GetChatClient();
 
-AIAgent researcher = new ChatClientAgent(
-    githubChatClient,
-    new ChatClientAgentOptions
-    {
-        Name = "Researcher",
-        Instructions = "You are a research expert. Your job is to gather key facts and interesting points about the given topic. Be concise and focus on the most important information."
-    })
+AIAgent researcher = githubChatClient.CreateAIAgent(
+    name: "Researcher",
+    instructions: "You are a research expert. Your job is to gather key facts and interesting points about the given topic. Be concise and focus on the most important information.")
     .AsBuilder()
     .UseOpenTelemetry(sourceName: "agent-telemetry-source")
     .Build();
@@ -49,13 +45,9 @@ Console.WriteLine("Setting up Agent 2: Writer (Microsoft Foundry or GitHub Model
 
 IChatClient azureChatClient = ChatClientProvider.GetChatClient();
 
-AIAgent writer = new ChatClientAgent(
-    azureChatClient,
-    new ChatClientAgentOptions
-    {
-        Name = "Writer",
-        Instructions = "You are a creative writer. Take the research provided and write an engaging, well-structured article. Make it informative yet entertaining."
-    })
+AIAgent writer = azureChatClient.CreateAIAgent(
+    name: "Writer",
+    instructions: "You are a creative writer. Take the research provided and write an engaging, well-structured article. Make it informative yet entertaining.")
     .AsBuilder()
     .UseOpenTelemetry(sourceName: "agent-telemetry-source")
     .Build();
@@ -65,13 +57,9 @@ AIAgent writer = new ChatClientAgent(
 Console.WriteLine("Setting up Agent 3: Reviewer (Ollama)...");
 IChatClient ollamaChatClient = ChatClientProvider.GetChatClientOllama();
 
-AIAgent reviewer = new ChatClientAgent(
-    ollamaChatClient,
-    new ChatClientAgentOptions
-    {
-        Name = "Reviewer",
-        Instructions = "You are an editor and reviewer. Analyze the article provided, give constructive feedback, and suggest improvements for clarity, grammar, and engagement."
-    })
+AIAgent reviewer = ollamaChatClient.CreateAIAgent(
+    name: "Reviewer",
+    instructions: "You are an editor and reviewer. Analyze the article provided, give constructive feedback, and suggest improvements for clarity, grammar, and engagement.")
     .AsBuilder()
     .UseOpenTelemetry(sourceName: "agent-telemetry-source")
     .Build();

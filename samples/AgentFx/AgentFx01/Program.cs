@@ -19,13 +19,9 @@ IChatClient chatClient =
             new OpenAIClientOptions { Endpoint = new Uri("https://models.github.ai/inference") })
         .AsIChatClient();
 
-AIAgent writer = new ChatClientAgent(
-    chatClient,
-    new ChatClientAgentOptions
-    {
-        Name = "Writer",
-        Instructions = "Write stories that are engaging and creative."
-    });
+AIAgent writer = chatClient.CreateAIAgent(
+    name: "Writer",
+    instructions: "Write stories that are engaging and creative.");
 
 AgentRunResponse response = await writer.RunAsync("Write a short story about a haunted house with a character named Lucia.");
 

@@ -5,10 +5,12 @@ using Azure.Identity;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.Configuration;
 
+#pragma warning disable CA2252 // Opt-in for preview features used by AIProjectClient in samples
+
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-var azureFoundryProjectEndpoint = config["azureFoundryProjectEndpoint"];
-var deploymentName = config["deploymentName"];
-var agentName = config["agentName"];
+var azureFoundryProjectEndpoint = config["azureFoundryProjectEndpoint"] ?? throw new InvalidOperationException("Missing 'azureFoundryProjectEndpoint' configuration");
+var deploymentName = config["deploymentName"] ?? throw new InvalidOperationException("Missing 'deploymentName' configuration");
+var agentName = config["agentName"] ?? throw new InvalidOperationException("Missing 'agentName' configuration");
 
 AIProjectClient projectClient = new(
     endpoint: new Uri(azureFoundryProjectEndpoint),

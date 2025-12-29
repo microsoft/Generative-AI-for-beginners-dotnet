@@ -4,12 +4,14 @@ using Azure.AI.Projects;
 using Azure.Identity;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.Configuration;
+
+#pragma warning disable CA2252 // Opt-in for preview features used by AIProjectClient in samples
 using System.Diagnostics;
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-var azureFoundryProjectEndpoint = config["azureFoundryProjectEndpoint"];
-var deploymentName = config["deploymentName"];
-var agentName = config["agentName"];
+var azureFoundryProjectEndpoint = config["azureFoundryProjectEndpoint"] ?? throw new InvalidOperationException("Missing 'azureFoundryProjectEndpoint' configuration");
+var deploymentName = config["deploymentName"] ?? throw new InvalidOperationException("Missing 'deploymentName' configuration");
+var agentName = config["agentName"] ?? throw new InvalidOperationException("Missing 'agentName' configuration");
 
 AIProjectClient projectClient = new(
     endpoint: new Uri(azureFoundryProjectEndpoint),
@@ -43,29 +45,33 @@ while (true)
     }
 
     var stopwatch = Stopwatch.StartNew();
-    
+
     try
     {
         Console.WriteLine($"\n[Running agent...]");
-        
+
         // Run the agent with the user input
         var response = await aiAgent.RunAsync(userInput);
         Console.WriteLine(response.Text);
-        
+
         stopwatch.Stop();
-        
+
         // Display run details
         Console.WriteLine($"\n--- Run Details ---");
         Console.WriteLine($"Duration: {stopwatch.ElapsedMilliseconds}ms");
-        
+
         // Display the response
         Console.WriteLine($"\n--- Response ---");
-        Console.WriteLine($"Agent [{agentName}]: {response.Text}");
+        var responseText = response.Text ?? string.Empty;
+        Console.WriteLine($"Agent [{agentName}]: {responseText}");
 
         Console.WriteLine($"\n--- Usage ---");
-        Console.WriteLine($"Total Token Count: {response.Usage.TotalTokenCount}");
-        Console.WriteLine($"Input Token Count: {response.Usage.InputTokenCount}");
-        Console.WriteLine($"Output Token Count: {response.Usage.OutputTokenCount}");
+        var totalTokens = response.Usage?.TotalTokenCount ?? 0;
+        var inputTokens = response.Usage?.InputTokenCount ?? 0;
+        var outputTokens = response.Usage?.OutputTokenCount ?? 0;
+        Console.WriteLine($"Total Token Count: {totalTokens}");
+        Console.WriteLine($"Input Token Count: {inputTokens}");
+        Console.WriteLine($"Output Token Count: {outputTokens}");
 
 
         Console.WriteLine($"\n{'='.ToString().PadRight(50, '=')}");
@@ -81,7 +87,7 @@ while (true)
             Console.WriteLine($"Inner: {ex.InnerException.Message}");
         }
     }
-    
+
     Console.WriteLine();
 }
 

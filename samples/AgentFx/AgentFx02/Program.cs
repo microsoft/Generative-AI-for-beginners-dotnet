@@ -20,22 +20,14 @@ IChatClient chatClient =
             new OpenAIClientOptions { Endpoint = new Uri("https://models.github.ai/inference") })
         .AsIChatClient();
 
-AIAgent writer = new ChatClientAgent(
-    chatClient,
-    new ChatClientAgentOptions
-    {
-        Name = "Writer",
-        Instructions = "Write stories that are engaging and creative."
-    });
+AIAgent writer = chatClient.CreateAIAgent(
+    name: "Writer",
+    instructions: "Write stories that are engaging and creative.");
 
 // Create a specialized editor agent
-AIAgent editor = new ChatClientAgent(
-    chatClient,
-    new ChatClientAgentOptions
-    {
-        Name = "Editor",
-        Instructions = "Make the story more engaging, fix grammar, and enhance the plot."
-    });
+AIAgent editor = chatClient.CreateAIAgent(
+    name: "Editor",
+    instructions: "Make the story more engaging, fix grammar, and enhance the plot.");
 
 // Create a workflow that connects writer to editor
 Workflow workflow =
