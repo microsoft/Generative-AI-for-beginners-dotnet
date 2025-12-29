@@ -11,7 +11,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Azure.AI.OpenAI" Version="2.8.0-beta.1" />
-		<PackageReference Include="Azure.Identity" Version="1.17.0" />
+		<PackageReference Include="Azure.Identity" Version="1.17.1" />
 		<PackageReference Include="Microsoft.Agents.AI" Version="1.0.0-preview.251219.1" />
 		<PackageReference Include="Microsoft.Agents.AI.AzureAI" Version="1.0.0-preview.251219.1" />
 		<PackageReference Include="Microsoft.Agents.AI.Workflows" Version="1.0.0-preview.251219.1" />
@@ -22,7 +22,6 @@
 		<PackageReference Include="OpenTelemetry" Version="1.14.0" />
 		<PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.14.0" />
 		<PackageReference Include="Azure.AI.Agents.Persistent" Version="1.2.0-beta.8" />
-		<PackageReference Include="Azure.Identity" Version="1.18.0-beta.2" />
 	</ItemGroup>
 </Project>
 

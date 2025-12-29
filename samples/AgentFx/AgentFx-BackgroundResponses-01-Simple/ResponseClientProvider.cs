@@ -4,6 +4,7 @@ using Azure.AI.OpenAI;
 using Azure.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.AI;
 using OpenAI.Responses;
 using System.ClientModel;
 
@@ -11,7 +12,8 @@ namespace AgentFx_BackgroundResponses_01_Simple;
 
 class ResponseClientProvider
 {
-    public static OpenAIResponseClient GetResponseClient()
+    // Return an IChatClient constructed from the AzureOpenAIClient so samples can create agents
+    public static IChatClient GetResponseClient()
     {
         var builder = Host.CreateApplicationBuilder();
         var config = builder.Configuration
@@ -23,15 +25,16 @@ class ResponseClientProvider
         var apiKey = config["apikey"];
 
         var azureClient = new AzureOpenAIClient(
-            new Uri(endpoint), 
+            new Uri(endpoint),
             new AzureCliCredential());
         if (!string.IsNullOrEmpty(apiKey))
         {
             azureClient = new AzureOpenAIClient(
-                new Uri(endpoint), 
+                new Uri(endpoint),
                 new ApiKeyCredential(apiKey));
         }
 
-        return azureClient.GetOpenAIResponseClient(deploymentName);
+        // Create a Chat client for the target deployment and return the IChatClient wrapper
+        return azureClient.GetChatClient(deploymentName).AsIChatClient();
     }
 }

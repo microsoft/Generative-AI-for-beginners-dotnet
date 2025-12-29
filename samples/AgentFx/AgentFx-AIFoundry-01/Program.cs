@@ -12,20 +12,17 @@ var endpoint = config["endpoint"];
 var apiKey = new ApiKeyCredential(config["apikey"]);
 var deploymentName = !string.IsNullOrEmpty(config["deploymentName"]) ? config["deploymentName"] : "gpt-4o-mini";
 
-IChatClient chatClient = 
+IChatClient chatClient =
     new AzureOpenAIClient(
         new Uri(endpoint),
         new AzureCliCredential())
     .GetChatClient(deploymentName)
     .AsIChatClient();
 
-AIAgent writer = new ChatClientAgent(
-    chatClient,
-    new ChatClientAgentOptions
-    {
-        Name = "Writer",
-        Instructions = "Write stories that are engaging and creative."
-    });
+
+AIAgent writer = chatClient.CreateAIAgent(
+    name: "Writer",
+    instructions: "Write stories that are engaging and creative.");
 
 AgentRunResponse response = await writer.RunAsync("Write a short story about a haunted house.");
 
