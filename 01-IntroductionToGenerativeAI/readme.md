@@ -6,18 +6,18 @@
 
 _⬆️ Click the image to watch the video ⬆️_
 
-## The Narrative: AI is Not Magic, It's Software
+## AI is Not Magic, It's Software
 
 There is a misconception that Generative AI is a magical box, or something reserved only for Python developers and data scientists.
 
 **This is false.**
 
-As a .NET developer, you already have every skill needed to build powerful AI applications. Generative AI is simply a new type of API call, one that is **probabilistic** rather than **deterministic**.
+As a .NET developer, you already have every skill needed to build powerful AI applications. Generative AI can simply be used as a type of API call, one that is **probabilistic** rather than **deterministic**.
 
 *   **Deterministic Programming (Old 1.0):** You write `if (x == 10) return "High";`. The output is always exactly what you coded.
 *   **Probabilistic AI (New 2.0):** You send a prompt: *"Analyze this data and give me a risk assessment."* The model returns a generated response based on patterns it has learned.
 
-Your job isn't to train models (that's for research labs). Your job is to **orchestrate** them, integrate them into your apps, and ensure they solve real business problems. You know how to manage dependencies, handle HTTP requests, and architect systems. **You are ready.**
+Do not worry about training models (that's for research labs). Your job is to **orchestrate** them, integrate them into your apps, and ensure they solve real business problems. You know how to manage dependencies, handle HTTP requests, and architect systems. **You are ready.**
 
 ---
 
@@ -60,17 +60,17 @@ We have removed the setup barriers. Choose the path that fits your workflow:
 **Best for:** Beginners, or if you don't want to install anything.
 *   **What you get:** A full cloud IDE with .NET 9 and tools pre-installed.
 *   **Models:** Use **GitHub Models** (Free) or **Azure OpenAI**.
-*   [**👉 Access the Codespaces Setup Guide**](./setup-github-codespaces.md)
+*   [**Access the Codespaces Setup Guide**](./setup-github-codespaces.md)
 
 ### Path B: Local Development (Ollama) 🏠
 **Best for:** Privacy, offline work, and free local capability.
 *   **What you get:** You run the "brain" on your own laptop.
 *   **Models:** **Phi-4**, **Llama 3**, etc.
-*   [**👉 Access the Local Ollama Setup Guide**](./setup-local-ollama.md)
+*   [**Access the Local Ollama Setup Guide**](./setup-local-ollama.md)
 
 ### Path C: Azure OpenAI (Enterprise) 🏢
 **Best for:** Production scenarios and existing Azure users.
-*   [**👉 Access the Azure OpenAI Setup Guide**](./setup-azure-openai.md)
+*   [**Access the Azure OpenAI Setup Guide**](./setup-azure-openai.md)
 
 ---
 
@@ -80,6 +80,6 @@ In this workshop, you will not just learn theory. You will build:
 *   Multi-agent systems where specialized AI workers collaborate.
 *   Real-world applications integrating images, audio, and tools.
 
-**You are not starting from zero. Your .NET skills transfer directly.**
+Remember: You are not starting from zero. Your .NET skills transfer directly.
 
 [**➡️ Start Coding: Core Generative AI Techniques**](../03-CoreGenerativeAITechniques/readme.md)
