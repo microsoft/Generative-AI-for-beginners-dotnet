@@ -17,13 +17,13 @@ All volunteers who contribute to this project have important responsibilities to
 
 ### Translation and Content Updates
 
-- **Volunteers are responsible for reviewing and updating translations** for any major changes to the guide in their respective language(s). Major changes include:
-  - New lessons or sections added
-  - Significant updates to existing content (more than minor typo fixes)
-  - Changes to code samples or instructions
-  - Updates to documentation structure or navigation
-- Volunteers must keep their contributed content and translations up to date with the main repository.
-- When major updates are announced, volunteers will be pinged and are expected to take action within 14 days to review and update their translations.
+**Volunteers are responsible for reviewing and updating translations** for any major changes to the guide in their respective language(s). Major changes include:
+- New lessons or sections added
+- Significant updates to existing content (more than minor typo fixes)
+- Changes to code samples or instructions
+- Updates to documentation structure or navigation
+
+When major updates are announced, volunteers will be pinged and are expected to take action within 14 days to review and update their translations.
 
 ### Issue-First Approach
 
@@ -48,7 +48,7 @@ When significant changes are required to the repository:
 1. **Maintainers will ping relevant volunteers** via GitHub mentions in the related issue
 2. **Volunteers are expected to respond within 3-5 business days** to acknowledge the notification
 3. **Volunteers should provide an estimated timeline** for completing the required updates
-4. If a volunteer is unable to complete the work, they should communicate this promptly so others can assist
+4. **If a volunteer is unable to complete the work**, they should communicate this promptly so others can assist
 
 By volunteering to contribute to this project, you agree to these responsibilities and commit to being responsive to critical update requests.
 
