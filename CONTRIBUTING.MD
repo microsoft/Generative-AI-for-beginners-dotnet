@@ -11,6 +11,43 @@ When you submit a pull request, a CLA-bot will automatically determine whether y
 to provide a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the
 instructions provided by the bot. You will only need to do this once across all repositories using our CLA.
 
+## Volunteer Responsibilities
+
+All volunteers who contribute to this project have important responsibilities to maintain the quality and consistency of the repository:
+
+### Translation and Content Updates
+
+- **Volunteers are responsible for reviewing and updating translations** for any major changes to the guide in their respective language(s).
+- Volunteers must keep their contributed content and translations up to date with the main repository.
+- When major updates are announced, volunteers will be pinged and are expected to take prompt action to review and update their translations.
+
+### Issue-First Approach
+
+**⚠️ Important: No change or update can be made without first opening an issue.**
+
+Before making any contribution, whether it's a bug fix, feature addition, documentation update, or translation change, you must:
+
+1. **Open an issue** describing the intended update, change, or fix
+2. Wait for discussion and approval from the maintainers
+3. Reference the issue number in your pull request
+
+This process ensures that:
+- Changes are coordinated and aligned with project goals
+- Duplicate work is avoided
+- The community can provide input before work begins
+- Major changes can be properly planned and communicated
+
+### Critical Updates Process
+
+When significant changes are required to the repository:
+
+1. **Maintainers will ping relevant volunteers** via GitHub mentions in the related issue
+2. **Volunteers are expected to respond within a reasonable timeframe** to acknowledge the notification
+3. **Volunteers should provide an estimated timeline** for completing the required updates
+4. If a volunteer is unable to complete the work, they should communicate this promptly so others can assist
+
+By volunteering to contribute to this project, you agree to these responsibilities and commit to being responsive to critical update requests.
+
 ## Code of Conduct
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/?WT.mc_id=academic-105485-koreyst).
@@ -24,11 +61,13 @@ Please do not open GitHub issues for general support questions as the GitHub lis
 
 Whenever you are submitting any changes to the Generative AI for Beginners repository, please follow these recommendations.
 
+* **Always open an issue first** before making any changes (see "Volunteer Responsibilities" section above)
 * Always fork the repository to your own account before making your modifications
 * Do not combine multiple changes to one pull request. For example, submit any bug fix and documentation updates using separate PRs
 * If your pull request shows merge conflicts, make sure to update your local main to be a mirror of what's in the main repository before making your modifications
 * If you are submitting a translation, please create one PR for all the translated files as we don't accept partial translations for the content
 * If you are submitting a typo or documentation fix, you can combine modifications to a single PR where suitable
+* **All pull requests must reference the issue number** that describes the change being made
 
 ## General Guidance for writing
 
