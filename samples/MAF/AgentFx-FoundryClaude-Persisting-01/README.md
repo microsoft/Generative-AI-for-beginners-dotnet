@@ -39,7 +39,7 @@ This sample walks through four key steps:
 Set user secrets for the project:
 
 ```bash
-cd samples/AgentFx/AgentFx-FoundryClaude-Persisting-01
+cd samples/MAF/AgentFx-FoundryClaude-Persisting-01
 
 dotnet user-secrets set "endpointClaude" "https://<resource-name>.services.ai.azure.com/anthropic/v1/messages"
 dotnet user-secrets set "apikey" "<your-api-key>"
@@ -50,7 +50,7 @@ dotnet user-secrets set "deploymentName" "claude-haiku-4-5"
 
 ```bash
 # Navigate to the project directory
-cd samples/AgentFx/AgentFx-FoundryClaude-Persisting-01
+cd samples/MAF/AgentFx-FoundryClaude-Persisting-01
 
 # Restore dependencies
 dotnet restore

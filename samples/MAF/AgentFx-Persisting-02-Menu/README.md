@@ -15,7 +15,7 @@ Setup and run
 
  ```bash
 
-cd samples/AgentFx/AgentFx-Persisting-02-Menu
+cd samples/MAF/AgentFx-Persisting-02-Menu
 dotnet user-secrets set "endpoint" "https://<your-endpoint>.services.ai.azure.com/"
 dotnet user-secrets set "deploymentName" "gpt-5-mini"
 dotnet user-secrets set "apikey" "<your-api-key>"

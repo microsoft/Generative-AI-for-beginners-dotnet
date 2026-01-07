@@ -104,32 +104,32 @@ This lesson includes multiple code samples demonstrating different aspects of th
 
 | Sample | Description | Key Concepts | Provider |
 |--------|-------------|-------------|----------|
-| [AgentFx01](../samples/AgentFx/AgentFx01/) | Single agent that writes creative stories | Basic agent setup, ChatClientAgent | GitHub Models |
-| [AgentFx02](../samples/AgentFx/AgentFx02/) | Two-agent workflow: Writer + Editor | Sequential workflows, agent chaining | GitHub Models |
-| [AgentFx-AIFoundry-01](../samples/AgentFx/AgentFx-AIFoundry-01/) | Single agent using Microsoft Foundry | Azure CLI authentication, managed identity | Microsoft Foundry |
-| [AgentFx-Ollama-01](../samples/AgentFx/AgentFx-Ollama-01/) | Single agent using local Ollama models | Local AI inference, privacy-focused | Ollama (local) |
-| [AgentFx-BackgroundResponses-01-Simple](../samples/AgentFx/AgentFx-BackgroundResponses-01-Simple/) | Background responses with continuation tokens | Streaming interruption, response continuation | Configurable |
-| [AgentFx-BackgroundResponses-02-Tools](../samples/AgentFx/AgentFx-BackgroundResponses-02-Tools/) | Background responses with tool integration | Tool usage during background processing | Configurable |
-| [AgentFx-BackgroundResponses-03-Complex](../samples/AgentFx/AgentFx-BackgroundResponses-03-Complex/) | Complex background responses with multiple queries | Interleaved queries, continuation management | Configurable |
-| [AgentFx-Persisting-01-Simple](../samples/AgentFx/AgentFx-Persisting-01-Simple/) | Persisting conversations: serialize and resume AgentThread | Thread serialization, resume across restarts | Configurable |
-| [AgentFx-Persisting-02-Menu](../samples/AgentFx/AgentFx-Persisting-02-Menu/) | Interactive console for persisting and resuming AgentThreads | Menu-driven persist/load flow, Temp storage demo | Configurable |
+| [AgentFx01](../samples/MAF/AgentFx01/) | Single agent that writes creative stories | Basic agent setup, ChatClientAgent | GitHub Models |
+| [AgentFx02](../samples/MAF/AgentFx02/) | Two-agent workflow: Writer + Editor | Sequential workflows, agent chaining | GitHub Models |
+| [AgentFx-AIFoundry-01](../samples/MAF/AgentFx-AIFoundry-01/) | Single agent using Microsoft Foundry | Azure CLI authentication, managed identity | Microsoft Foundry |
+| [AgentFx-Ollama-01](../samples/MAF/AgentFx-Ollama-01/) | Single agent using local Ollama models | Local AI inference, privacy-focused | Ollama (local) |
+| [AgentFx-BackgroundResponses-01-Simple](../samples/MAF/AgentFx-BackgroundResponses-01-Simple/) | Background responses with continuation tokens | Streaming interruption, response continuation | Configurable |
+| [AgentFx-BackgroundResponses-02-Tools](../samples/MAF/AgentFx-BackgroundResponses-02-Tools/) | Background responses with tool integration | Tool usage during background processing | Configurable |
+| [AgentFx-BackgroundResponses-03-Complex](../samples/MAF/AgentFx-BackgroundResponses-03-Complex/) | Complex background responses with multiple queries | Interleaved queries, continuation management | Configurable |
+| [AgentFx-Persisting-01-Simple](../samples/MAF/AgentFx-Persisting-01-Simple/) | Persisting conversations: serialize and resume AgentThread | Thread serialization, resume across restarts | Configurable |
+| [AgentFx-Persisting-02-Menu](../samples/MAF/AgentFx-Persisting-02-Menu/) | Interactive console for persisting and resuming AgentThreads | Menu-driven persist/load flow, Temp storage demo | Configurable |
 
 ### Advanced Multi-Provider Samples
 
 | Sample | Description | Key Concepts | Providers |
 |--------|-------------|-------------|-----------|
-| [AgentFx-MultiModel](../samples/AgentFx/AgentFx-MultiModel/) | Three-agent workflow across multiple providers | Multi-provider orchestration, OpenTelemetry tracing | GitHub Models or Azure OpenAI + Ollama |
-| [AgentFx-MultiAgents](../samples/AgentFx/AgentFx-MultiAgents/) | Researcher-Writer-Reviewer workflow with persistent agents | Microsoft Foundry persistent agents, flexible configuration | Microsoft Foundry + Azure OpenAI/GitHub Models + Ollama |
+| [AgentFx-MultiModel](../samples/MAF/AgentFx-MultiModel/) | Three-agent workflow across multiple providers | Multi-provider orchestration, OpenTelemetry tracing | GitHub Models or Azure OpenAI + Ollama |
+| [AgentFx-MultiAgents](../samples/MAF/AgentFx-MultiAgents/) | Researcher-Writer-Reviewer workflow with persistent agents | Microsoft Foundry persistent agents, flexible configuration | Microsoft Foundry + Azure OpenAI/GitHub Models + Ollama |
 
 ### Integration & Web Samples
 
 | Sample | Description | Key Concepts | Provider |
 |--------|-------------|-------------|----------|
-| [AgentFx-ImageGen-01](../samples/AgentFx/AgentFx-ImageGen-01/) | Agent that generates images using Hugging Face MCP | MCP integration, tool usage, multi-modal | GitHub Models or Azure OpenAI |
-| [AgentFx-AIWebChatApp-Simple](../samples/AgentFx/AgentFx-AIWebChatApp-Simple/) | Simple web-based chat application | Web integration, Blazor UI | Configurable |
-| [AgentFx-AIWebChatApp-Middleware](../samples/AgentFx/AgentFx-AIWebChatApp-Middleware/) | Web chat with middleware pattern | Custom middleware, request processing | Configurable |
-| [AgentFx-AIWebChatApp-MutliAgent](../samples/AgentFx/AgentFx-AIWebChatApp-MutliAgent/) | Web chat with multiple agents | Multi-agent web apps, agent selection | Configurable |
-| [AgentFx-AIWebChatApp-Persisting](../samples/AgentFx/AgentFx-AIWebChatApp-Persisting/) | Web chat with persisted conversation threads | Thread serialization, per-session resume | Configurable |
+| [AgentFx-ImageGen-01](../samples/MAF/AgentFx-ImageGen-01/) | Agent that generates images using Hugging Face MCP | MCP integration, tool usage, multi-modal | GitHub Models or Azure OpenAI |
+| [AgentFx-AIWebChatApp-Simple](../samples/MAF/AgentFx-AIWebChatApp-Simple/) | Simple web-based chat application | Web integration, Blazor UI | Configurable |
+| [AgentFx-AIWebChatApp-Middleware](../samples/MAF/AgentFx-AIWebChatApp-Middleware/) | Web chat with middleware pattern | Custom middleware, request processing | Configurable |
+| [AgentFx-AIWebChatApp-MutliAgent](../samples/MAF/AgentFx-AIWebChatApp-MutliAgent/) | Web chat with multiple agents | Multi-agent web apps, agent selection | Configurable |
+| [AgentFx-AIWebChatApp-Persisting](../samples/MAF/AgentFx-AIWebChatApp-Persisting/) | Web chat with persisted conversation threads | Thread serialization, per-session resume | Configurable |
 
 ### Quick Start Guide
 
@@ -142,7 +142,7 @@ This lesson includes multiple code samples demonstrating different aspects of th
 
 **For advanced scenarios**, explore:
 
-1. **AgentFx-MultiAgents** - See [detailed README](../samples/AgentFx/AgentFx-MultiAgents/README.md) for multi-provider orchestration
+1. **AgentFx-MultiAgents** - See [detailed README](../samples/MAF/AgentFx-MultiAgents/README.md) for multi-provider orchestration
 2. **AgentFx-BackgroundResponses-03-Complex** - Advanced background response patterns
 3. **AgentFx-ImageGen-01** - Learn MCP integration
 4. **AgentFx-AIWebChatApp-MutliAgent** - Build web-based agent systems
@@ -155,15 +155,15 @@ Each sample includes configuration instructions in its source code comments. Gen
 > **Note**: Replace `<sample-folder>` with the specific sample directory name (e.g., `AgentFx01`).
 > Use the appropriate path separator for your platform:
 
-- **Windows (CMD/PowerShell)**: `cd samples\AgentFx\<sample-folder>`
-- **Linux/macOS/Git Bash/WSL/Codespaces**: `cd samples/AgentFx/<sample-folder>`
+- **Windows (CMD/PowerShell)**: `cd samples\MAF\<sample-folder>`
+- **Linux/macOS/Git Bash/WSL/Codespaces**: `cd samples/MAF/<sample-folder>`
 
 **GitHub Models** (requires GitHub token):
 
 Windows (CMD/PowerShell):
 
 ```bash
-cd samples\AgentFx\<sample-folder>
+cd samples\MAF\<sample-folder>
 dotnet user-secrets set "GITHUB_TOKEN" "your-github-token"
 dotnet run
 ```
@@ -171,7 +171,7 @@ dotnet run
 Linux/macOS/Git Bash/WSL/Codespaces:
 
 ```bash
-cd samples/AgentFx/<sample-folder>
+cd samples/MAF/<sample-folder>
 dotnet user-secrets set "GITHUB_TOKEN" "your-github-token"
 dotnet run
 ```
@@ -181,7 +181,7 @@ dotnet run
 Windows (CMD/PowerShell):
 
 ```bash
-cd samples\AgentFx\<sample-folder>
+cd samples\MAF\<sample-folder>
 dotnet user-secrets set "endpoint" "https://<your-endpoint>.services.ai.azure.com/"
 dotnet user-secrets set "deploymentName" "gpt-4o-mini"
 az login
@@ -191,7 +191,7 @@ dotnet run
 Linux/macOS/Git Bash/WSL/Codespaces:
 
 ```bash
-cd samples/AgentFx/<sample-folder>
+cd samples/MAF/<sample-folder>
 dotnet user-secrets set "endpoint" "https://<your-endpoint>.services.ai.azure.com/"
 dotnet user-secrets set "deploymentName" "gpt-4o-mini"
 az login
@@ -205,7 +205,7 @@ Windows (CMD/PowerShell):
 ```bash
 # Install Ollama from https://ollama.com
 ollama pull llama3.2
-cd samples\AgentFx\<sample-folder>
+cd samples\MAF\<sample-folder>
 dotnet run
 ```
 
@@ -214,7 +214,7 @@ Linux/macOS/Git Bash/WSL/Codespaces:
 ```bash
 # Install Ollama from https://ollama.com
 ollama pull llama3.2
-cd samples/AgentFx/<sample-folder>
+cd samples/MAF/<sample-folder>
 dotnet run
 ```
 
@@ -274,8 +274,8 @@ Background responses enable more sophisticated agent interactions by letting you
 
 > 🧑‍💻 **Sample code**: Explore the background responses samples:
 >
-> - [AgentFx-BackgroundResponses-01-Simple](../samples/AgentFx/AgentFx-BackgroundResponses-01-Simple/) - Basic background response pattern
-> - [AgentFx-BackgroundResponses-03-Complex](../samples/AgentFx/AgentFx-BackgroundResponses-03-Complex/) - Advanced workflows with interleaved queries
+> - [AgentFx-BackgroundResponses-01-Simple](../samples/MAF/AgentFx-BackgroundResponses-01-Simple/) - Basic background response pattern
+> - [AgentFx-BackgroundResponses-03-Complex](../samples/MAF/AgentFx-BackgroundResponses-03-Complex/) - Advanced workflows with interleaved queries
 >
 > 🧑‍🏫 **Learn more**: See the [Background Responses detailed guide](./README-BackgroundResponses.md) for comprehensive documentation and examples.
 
@@ -333,9 +333,9 @@ var nextResponse = await agent.RunAsync("What is my name?", resumedThread);
 
 > 🧑‍💻 **Sample code**: Explore the persisted conversation samples:
 >
-> - [AgentFx-Persisting-01-Simple](../samples/AgentFx/AgentFx-Persisting-01-Simple/) - Basic thread serialization and resumption
-> - [AgentFx-Persisting-02-Menu](../samples/AgentFx/AgentFx-Persisting-02-Menu/) - Interactive menu-driven persist/load workflow
-> - [AgentFx-AIWebChatApp-Persisting](../samples/AgentFx/AgentFx-AIWebChatApp-Persisting/) - Blazor web chat demonstrating per-user AgentThread persistence and resume across restarts
+> - [AgentFx-Persisting-01-Simple](../samples/MAF/AgentFx-Persisting-01-Simple/) - Basic thread serialization and resumption
+> - [AgentFx-Persisting-02-Menu](../samples/MAF/AgentFx-Persisting-02-Menu/) - Interactive menu-driven persist/load workflow
+> - [AgentFx-AIWebChatApp-Persisting](../samples/MAF/AgentFx-AIWebChatApp-Persisting/) - Blazor web chat demonstrating per-user AgentThread persistence and resume across restarts
 >
 > 🧑‍🏫 **Learn more**: See the official [Persisted Conversations tutorial](https://learn.microsoft.com/agent-framework/tutorials/agents/persisted-conversation) and [Agent Memory guide](https://learn.microsoft.com/agent-framework/user-guide/agents/agent-memory) for detailed documentation.
 
@@ -349,7 +349,7 @@ The Model Context Protocol (MCP) provides a standardized way for agents to inter
 - Interact with file systems
 - And more
 
-> 🧑‍💻 **Sample code**: Check out the [AgentFx-ImageGen-01 sample](../samples/AgentFx/AgentFx-ImageGen-01/) for a practical MCP integration example.
+> 🧑‍💻 **Sample code**: Check out the [AgentFx-ImageGen-01 sample](../samples/MAF/AgentFx-ImageGen-01/) for a practical MCP integration example.
 
 > 🧑‍🏫 **Learn more**: Explore the [Model Context Protocol C# SDK](https://github.com/modelcontextprotocol/csharp-sdk) for detailed information.
 

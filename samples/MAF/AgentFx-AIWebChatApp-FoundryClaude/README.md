@@ -30,7 +30,7 @@ This sample demonstrates a **Blazor Server web application** using **Microsoft A
 Set user secrets for the project:
 
 ```bash
-cd samples/AgentFx/AgentFx-AIWebChatApp-FoundryClaude
+cd samples/MAF/AgentFx-AIWebChatApp-FoundryClaude
 
 dotnet user-secrets set "endpointClaude" "https://<resource-name>.services.ai.azure.com/anthropic/v1/messages"
 dotnet user-secrets set "apikey" "<your-api-key>"
@@ -41,7 +41,7 @@ dotnet user-secrets set "deploymentName" "claude-haiku-4-5"
 
 ```bash
 # Navigate to the project directory
-cd samples/AgentFx/AgentFx-AIWebChatApp-FoundryClaude
+cd samples/MAF/AgentFx-AIWebChatApp-FoundryClaude
 
 # Restore dependencies
 dotnet restore

@@ -10,7 +10,7 @@ All samples in this collection use the **elbruno.Extensions.AI.Claude** NuGet pa
 
 ### 1. AgentFx-FoundryClaude-01 - Basic Chat
 
-**Path**: `samples/AgentFx/AgentFx-FoundryClaude-01/`
+**Path**: `samples/MAF/AgentFx-FoundryClaude-01/`
 
 A console application demonstrating basic agent chat with Claude.
 
@@ -29,7 +29,7 @@ A console application demonstrating basic agent chat with Claude.
 
 ### 2. AgentFx-FoundryClaude-Persisting-01 - Conversation Persistence
 
-**Path**: `samples/AgentFx/AgentFx-FoundryClaude-Persisting-01/`
+**Path**: `samples/MAF/AgentFx-FoundryClaude-Persisting-01/`
 
 A console application showing how to persist and resume agent conversations with Claude.
 
@@ -48,7 +48,7 @@ A console application showing how to persist and resume agent conversations with
 
 ### 3. AgentFx-AIWebChatApp-FoundryClaude - Blazor Web Chat
 
-**Path**: `samples/AgentFx/AgentFx-AIWebChatApp-FoundryClaude/`
+**Path**: `samples/MAF/AgentFx-AIWebChatApp-FoundryClaude/`
 
 A Blazor Server web application with a modern chat interface powered by Claude.
 
@@ -97,7 +97,7 @@ Available Claude models in Microsoft Foundry:
 Each sample requires the following user secrets:
 
 ```bash
-cd samples/AgentFx/<sample-name>
+cd samples/MAF/<sample-name>
 
 dotnet user-secrets set "endpointClaude" "https://<resource-name>.services.ai.azure.com/anthropic/v1/messages"
 dotnet user-secrets set "apikey" "<your-api-key>"
@@ -130,18 +130,18 @@ dotnet add package elbruno.Extensions.AI.Claude --version 0.1.0-preview.2
 
 ```bash
 # Basic chat example
-cd samples/AgentFx/AgentFx-FoundryClaude-01
+cd samples/MAF/AgentFx-FoundryClaude-01
 dotnet run
 
 # Persisting conversations example
-cd samples/AgentFx/AgentFx-FoundryClaude-Persisting-01
+cd samples/MAF/AgentFx-FoundryClaude-Persisting-01
 dotnet run
 ```
 
 ### Running Web Sample
 
 ```bash
-cd samples/AgentFx/AgentFx-AIWebChatApp-FoundryClaude
+cd samples/MAF/AgentFx-AIWebChatApp-FoundryClaude
 dotnet run
 
 # Open browser to: https://localhost:5001

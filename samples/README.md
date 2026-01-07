@@ -9,7 +9,7 @@ This directory contains all the code samples for the **Generative AI for Beginne
 ```text
 samples/
 ├── CoreSamples/          # Core AI techniques and fundamental concepts
-├── AgentFx/              # Microsoft Agent Framework samples
+├── MAF/                  # Microsoft Agent Framework samples
 ├── PracticalSamples/     # Real-world practical applications
 └── AppsWithGenAI/        # Applications created with GenAI assistance
 ```
@@ -38,14 +38,14 @@ This folder includes over 40 samples demonstrating different techniques, provide
 
 ---
 
-## AgentFx
+## MAF (Microsoft Agent Framework)
 
-**Location:** [`samples/AgentFx/`](./AgentFx/)  
+**Location:** [`samples/MAF/`](./MAF/)  
 **Associated Lesson:** [Lesson 06](../06-AgentFx/)
 
 This folder contains samples demonstrating the **Microsoft Agent Framework** for building sophisticated multi-agent AI systems.
 
-### What you'll find in AgentFx
+### What you'll find in MAF
 
 - **Basic Samples** - Single and dual-agent workflows demonstrating fundamental agent creation and orchestration patterns
 - **Advanced Multi-Provider Samples** - Complex workflows combining multiple AI providers (Azure OpenAI, GitHub Models, Ollama) in sophisticated agent orchestrations
@@ -123,7 +123,7 @@ dotnet run
 #### 2. **Building Agents**
 
 ```bash
-cd samples/AgentFx/AgentFx01
+cd samples/MAF/AgentFx01
 dotnet run
 ```
 
@@ -151,7 +151,7 @@ dotnet run
 | [Lesson 03](../03-CoreGenerativeAITechniques/) | CoreSamples/* | Chat, RAG, Vision, Audio, Agents, Image/Video Gen |
 | [Lesson 04](../04-PracticalSamples/) | PracticalSamples/* | Real-world integration patterns, MCP |
 | [Lesson 05](../05-AppCreatedWithGenAI/) | AppsWithGenAI/* | Full applications built with AI assistance |
-| [Lesson 06](../06-AgentFx/) | AgentFx/* | Microsoft Agent Framework |
+| [Lesson 06](../06-AgentFx/) | MAF/* | Microsoft Agent Framework |
 
 ---
 
