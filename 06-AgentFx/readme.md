@@ -107,6 +107,7 @@ This lesson includes multiple code samples demonstrating different aspects of th
 | [AgentFx01](../samples/MAF/AgentFx01/) | Single agent that writes creative stories | Basic agent setup, ChatClientAgent | GitHub Models |
 | [AgentFx02](../samples/MAF/AgentFx02/) | Two-agent workflow: Writer + Editor | Sequential workflows, agent chaining | GitHub Models |
 | [AgentFx-AIFoundry-01](../samples/MAF/AgentFx-AIFoundry-01/) | Single agent using Microsoft Foundry | Azure CLI authentication, managed identity | Microsoft Foundry |
+| [AgentFx-AIFoundry-02](../samples/MAF/AgentFx-AIFoundry-02/) | Single agent using Microsoft Foundry with API key | API key authentication | Microsoft Foundry |
 | [AgentFx-Ollama-01](../samples/MAF/AgentFx-Ollama-01/) | Single agent using local Ollama models | Local AI inference, privacy-focused | Ollama (local) |
 | [AgentFx-BackgroundResponses-01-Simple](../samples/MAF/AgentFx-BackgroundResponses-01-Simple/) | Background responses with continuation tokens | Streaming interruption, response continuation | Configurable |
 | [AgentFx-BackgroundResponses-02-Tools](../samples/MAF/AgentFx-BackgroundResponses-02-Tools/) | Background responses with tool integration | Tool usage during background processing | Configurable |
@@ -114,22 +115,40 @@ This lesson includes multiple code samples demonstrating different aspects of th
 | [AgentFx-Persisting-01-Simple](../samples/MAF/AgentFx-Persisting-01-Simple/) | Persisting conversations: serialize and resume AgentThread | Thread serialization, resume across restarts | Configurable |
 | [AgentFx-Persisting-02-Menu](../samples/MAF/AgentFx-Persisting-02-Menu/) | Interactive console for persisting and resuming AgentThreads | Menu-driven persist/load flow, Temp storage demo | Configurable |
 
+### Claude Model Integration Samples
+
+| Sample | Description | Key Concepts | Provider |
+|--------|-------------|-------------|----------|
+| [AgentFx-FoundryClaude-01](../samples/MAF/AgentFx-FoundryClaude-01/) | Basic chat with Claude using ChatClientAgent | Claude integration, elbruno.Extensions.AI.Claude | Microsoft Foundry (Claude) |
+| [AgentFx-FoundryClaude-Persisting-01](../samples/MAF/AgentFx-FoundryClaude-Persisting-01/) | Claude chat with conversation persistence | Thread serialization with Claude | Microsoft Foundry (Claude) |
+| [AgentFx-AIWebChatApp-FoundryClaude](../samples/MAF/AgentFx-AIWebChatApp-FoundryClaude/) | Blazor web chat application with Claude | Web integration, Blazor UI, Claude models | Microsoft Foundry (Claude) |
+
+> 📖 **Learn more**: See the [Claude Samples README](../samples/MAF/CLAUDE-SAMPLES-README.md) for detailed information about Claude model integration.
+
 ### Advanced Multi-Provider Samples
 
 | Sample | Description | Key Concepts | Providers |
 |--------|-------------|-------------|-----------|
 | [AgentFx-MultiModel](../samples/MAF/AgentFx-MultiModel/) | Three-agent workflow across multiple providers | Multi-provider orchestration, OpenTelemetry tracing | GitHub Models or Azure OpenAI + Ollama |
 | [AgentFx-MultiAgents](../samples/MAF/AgentFx-MultiAgents/) | Researcher-Writer-Reviewer workflow with persistent agents | Microsoft Foundry persistent agents, flexible configuration | Microsoft Foundry + Azure OpenAI/GitHub Models + Ollama |
+| [AgentFx-MultiAgents-Factory-01](../samples/MAF/AgentFx-MultiAgents-Factory-01/) | Multi-agent workflow with factory pattern | Agent factory, dynamic agent creation | Configurable |
+| [AgentFx-AIFoundryAgents-01](../samples/MAF/AgentFx-AIFoundryAgents-01/) | Using Microsoft Foundry persistent agents | Foundry agent management, server-side persistence | Microsoft Foundry |
+| [AgentFx-MicrosoftFoundryAgents-01](../samples/MAF/AgentFx-MicrosoftFoundryAgents-01/) | Microsoft Foundry agents with specialized roles | Role-based agents, Foundry integration | Microsoft Foundry |
+| [AgentFx-MicrosoftFoundryAgents-02](../samples/MAF/AgentFx-MicrosoftFoundryAgents-02/) | Advanced Foundry agents orchestration | Complex workflows, Foundry agents | Microsoft Foundry |
 
 ### Integration & Web Samples
 
 | Sample | Description | Key Concepts | Provider |
 |--------|-------------|-------------|----------|
 | [AgentFx-ImageGen-01](../samples/MAF/AgentFx-ImageGen-01/) | Agent that generates images using Hugging Face MCP | MCP integration, tool usage, multi-modal | GitHub Models or Azure OpenAI |
+| [AgentFx-ImageGen-02](../samples/MAF/AgentFx-ImageGen-02/) | Advanced image generation with custom handlers | Custom message handlers, advanced MCP | GitHub Models or Azure OpenAI |
 | [AgentFx-AIWebChatApp-Simple](../samples/MAF/AgentFx-AIWebChatApp-Simple/) | Simple web-based chat application | Web integration, Blazor UI | Configurable |
 | [AgentFx-AIWebChatApp-Middleware](../samples/MAF/AgentFx-AIWebChatApp-Middleware/) | Web chat with middleware pattern | Custom middleware, request processing | Configurable |
 | [AgentFx-AIWebChatApp-MutliAgent](../samples/MAF/AgentFx-AIWebChatApp-MutliAgent/) | Web chat with multiple agents | Multi-agent web apps, agent selection | Configurable |
 | [AgentFx-AIWebChatApp-Persisting](../samples/MAF/AgentFx-AIWebChatApp-Persisting/) | Web chat with persisted conversation threads | Thread serialization, per-session resume | Configurable |
+| [AgentFx-AIWebChatApp-AG-UI](../samples/MAF/AgentFx-AIWebChatApp-AG-UI/) | Distributed agent architecture with AG-UI | AG-UI protocol, remote agents, RAG with semantic search | Configurable |
+
+> 🌐 **Learn more**: The [AG-UI sample](../samples/MAF/AgentFx-AIWebChatApp-AG-UI/README.md) demonstrates a distributed agent architecture where the AI agent backend runs separately from the frontend, enabling better scalability.
 
 ### Quick Start Guide
 
@@ -139,14 +158,16 @@ This lesson includes multiple code samples demonstrating different aspects of th
 2. **AgentFx02** - Understand agent workflows
 3. **AgentFx-Ollama-01** - Try local models
 4. **AgentFx-BackgroundResponses-01-Simple** - Basic background responses
+5. **AgentFx-FoundryClaude-01** - Try Claude models with Microsoft Foundry
 
 **For advanced scenarios**, explore:
 
 1. **AgentFx-MultiAgents** - See [detailed README](../samples/MAF/AgentFx-MultiAgents/README.md) for multi-provider orchestration
 2. **AgentFx-BackgroundResponses-03-Complex** - Advanced background response patterns
 3. **AgentFx-ImageGen-01** - Learn MCP integration
-4. **AgentFx-AIWebChatApp-MutliAgent** - Build web-based agent systems
+4. **AgentFx-AIWebChatApp-AG-UI** - Distributed agent architecture with [AG-UI](../samples/MAF/AgentFx-AIWebChatApp-AG-UI/README.md)
 5. **AgentFx-AIWebChatApp-Persisting** - Full web chat with durable thread history (per-session persistence)
+6. **AgentFx-AIWebChatApp-FoundryClaude** - Blazor web chat with Claude models
 
 ### Running the Samples
 

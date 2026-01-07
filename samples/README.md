@@ -47,11 +47,13 @@ This folder contains samples demonstrating the **Microsoft Agent Framework** for
 
 ### What you'll find in MAF
 
-- **Basic Samples** - Single and dual-agent workflows demonstrating fundamental agent creation and orchestration patterns
-- **Advanced Multi-Provider Samples** - Complex workflows combining multiple AI providers (Azure OpenAI, GitHub Models, Ollama) in sophisticated agent orchestrations
-- **Integration & Web Samples** - Web-based chat applications with Blazor UI, middleware patterns, and MCP integrations for tool usage (e.g., image generation)
+- **Basic Samples** - Single and dual-agent workflows demonstrating fundamental agent creation and orchestration patterns, including background responses and conversation persistence
+- **Claude Model Integration** - Three dedicated samples showing how to integrate Claude models (Haiku, Sonnet, Opus) from Microsoft Foundry with Agent Framework
+- **Advanced Multi-Provider Samples** - Complex workflows combining multiple AI providers (Azure OpenAI, GitHub Models, Ollama, Microsoft Foundry) in sophisticated agent orchestrations
+- **Integration & Web Samples** - Web-based chat applications with Blazor UI, middleware patterns, MCP integrations for tool usage (e.g., image generation), and AG-UI distributed architecture
+- **Microsoft Foundry Agents** - Samples demonstrating persistent agents managed by Microsoft Foundry with server-side state
 
-This folder includes 12 samples ranging from simple single-agent scenarios to complex multi-agent systems with persistent state and web interfaces.
+This folder includes 27+ samples ranging from simple single-agent scenarios to complex multi-agent systems with persistent state, distributed architectures (AG-UI), and web interfaces.
 
 ## PracticalSamples
 
