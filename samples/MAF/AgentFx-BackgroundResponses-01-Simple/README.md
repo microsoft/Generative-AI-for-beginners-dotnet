@@ -22,7 +22,7 @@ Run
 2. Build and run:
 
 ```bash
-cd samples/AgentFx/AgentFx-BackgroundResponses-01-Simple
+cd samples/MAF/AgentFx-BackgroundResponses-01-Simple
 dotnet build
 dotnet run
 ```

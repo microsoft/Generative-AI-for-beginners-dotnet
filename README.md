@@ -41,7 +41,7 @@ We're constantly improving this course with the latest AI tools, models, and pra
   - Custom `ClaudeToOpenAIMessageHandler` for seamless API bridging
   - Support for Claude Haiku, Sonnet, and Opus models
   
-  👉 [Explore the Claude AgentFx Samples](./samples/AgentFx/CLAUDE-SAMPLES-README.md)
+  👉 [Explore the Claude AgentFx Samples](./samples/MAF/CLAUDE-SAMPLES-README.md)
   
   Plus a foundational Claude integration sample:
   
@@ -55,7 +55,7 @@ We're constantly improving this course with the latest AI tools, models, and pra
   - Implement RAG with semantic search and PDF document ingestion
   - Orchestrate distributed applications with .NET Aspire
   
-  👉 [Explore the AG-UI Sample](./samples/AgentFx/AgentFx-AIWebChatApp-AG-UI/README.md)
+  👉 [Explore the AG-UI Sample](./samples/MAF/AgentFx-AIWebChatApp-AG-UI/README.md)
 
 - **🤖 Microsoft Agent Framework (AgentFx) Lesson**
 

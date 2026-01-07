@@ -29,7 +29,7 @@ Recent changes / notes
 
 A companion sample demonstrates a slightly more complex flow that combines short interactive queries with a long-running generation that you interrupt and later resume. See:
 
-`../samples/AgentFx/AgentFx-BackgroundResponses-03-Complex/Program.cs`
+`../samples/MAF/AgentFx-BackgroundResponses-03-Complex/Program.cs`
 
 What the complex sample demonstrates
 
@@ -48,17 +48,17 @@ Run the complex sample
 
    Windows (CMD/PowerShell):
    ```bash
-   cd samples\AgentFx\AgentFx-BackgroundResponses-03-Complex
+   cd samples\MAF\AgentFx-BackgroundResponses-03-Complex
    ```
    
    Linux/macOS/Git Bash/WSL/Codespaces:
    ```bash
-   cd samples/AgentFx/AgentFx-BackgroundResponses-03-Complex
+   cd samples/MAF/AgentFx-BackgroundResponses-03-Complex
    ```
 
    > **Note**: The paths above assume you're in the repository root directory. If you're currently in the `06-AgentFx` directory:
-   > - Windows (CMD/PowerShell): `cd ..\samples\AgentFx\AgentFx-BackgroundResponses-03-Complex`
-   > - Linux/macOS/Git Bash/WSL/Codespaces: `cd ../samples/AgentFx/AgentFx-BackgroundResponses-03-Complex`
+   > - Windows (CMD/PowerShell): `cd ..\samples\MAF\AgentFx-BackgroundResponses-03-Complex`
+   > - Linux/macOS/Git Bash/WSL/Codespaces: `cd ../samples/MAF/AgentFx-BackgroundResponses-03-Complex`
 
 2. Build and run:
 
