@@ -263,7 +263,7 @@ You have two things to do:
 1. **Set up your environment** using one of the paths above (we recommend GitHub Codespaces to start)
 2. **Move to the next lesson** where you'll write your first real AI application
 
-[**Start Coding: Core Generative AI Techniques**](../03-CoreGenerativeAITechniques/readme.md)
+[**Continue to Lesson 2: Generative AI Techniques**](../02-GenerativeAITechniques/readme.md)
 
 ---
 
