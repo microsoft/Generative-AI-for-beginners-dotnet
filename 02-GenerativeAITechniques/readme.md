@@ -4,16 +4,6 @@ In this lesson you'll learn practical skills for building AI-enabled .NET applic
 
 ---
 
-> **DRAFT NOTE:** Video thumbnail needed. Follow naming pattern: `LIM_GAN_02_thumb_w480.png`
-
-<!-- Uncomment when video thumbnail is available:
-[![Generative AI Techniques](./images/LIM_GAN_02_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson2-techniques)
-
-_Click the image to watch the video_
--->
-
----
-
 ## What You Will Learn in This Lesson
 
 - Text completions and chat conversations
