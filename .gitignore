@@ -399,3 +399,5 @@ FodyWeavers.xsd
 
 .venv/
 .env
+/pdf
+/docs

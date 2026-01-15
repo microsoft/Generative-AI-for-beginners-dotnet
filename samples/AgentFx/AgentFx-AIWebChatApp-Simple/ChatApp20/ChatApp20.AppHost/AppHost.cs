@@ -10,9 +10,9 @@ if (builder.ExecutionContext.IsPublishMode)
     var aoai = builder.AddAzureOpenAI("openai");
 
     aoai.AddDeployment(
-        name: "gpt-4o-mini",
-        modelName: "gpt-4o-mini",
-        modelVersion: "2024-07-18");
+        name: "gpt-5-mini",
+        modelName: "gpt-5-mini",
+        modelVersion: "2025-08-07");
 
     aoai.AddDeployment(
         name: "text-embedding-3-small",
