@@ -35,6 +35,8 @@ An **embedding** is a way to represent text (or images, or other data) as a list
 
 These numbers capture the *meaning* of the text. Similar meanings produce similar numbers.
 
+> **Learn more:** [Understand embeddings in .NET](https://learn.microsoft.com/dotnet/ai/conceptual/embeddings) explains how embedding models work and when to use them.
+
 ### Why Vectors?
 
 Vectors let us do math with meaning:
@@ -97,6 +99,8 @@ foreach (var (doc, emb) in documents.Zip(embeddings))
     Console.WriteLine($"'{doc.Substring(0, 20)}...' → {emb.Vector.Length} dimensions");
 }
 ```
+
+**Learn more:** [IEmbeddingGenerator interface](https://learn.microsoft.com/dotnet/ai/iembeddinggenerator) provides the full API reference for embedding generation in .NET.
 
 ---
 
@@ -267,6 +271,8 @@ await foreach (var result in searchResults)
 }
 ```
 
+**Learn more:** [Work with Vector Databases](https://learn.microsoft.com/dotnet/ai/conceptual/vector-databases) explains how to choose and configure vector stores for your application.
+
 ---
 
 ## Part 5: Production Vector Stores
@@ -339,14 +345,15 @@ The code stays the same - just swap the vector store implementation!
 
 ## Additional Resources
 
-- [Understand Embeddings](https://learn.microsoft.com/dotnet/ai/conceptual/embeddings)
-- [Work with Vector Databases](https://learn.microsoft.com/dotnet/ai/conceptual/vector-databases)
-- [Build a Vector Search App](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-ai-chat-with-data)
+- [Understand Embeddings](https://learn.microsoft.com/dotnet/ai/conceptual/embeddings): Conceptual guide to how embeddings represent meaning
+- [Work with Vector Databases](https://learn.microsoft.com/dotnet/ai/conceptual/vector-databases): Choosing and using vector stores in .NET
+- [Build a Vector Search App](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-ai-chat-with-data): Complete quickstart tutorial
+- [IEmbeddingGenerator interface](https://learn.microsoft.com/dotnet/ai/iembeddinggenerator): API reference for embedding generation
 
 ---
 
 ## Up Next
 
-Now that you understand embeddings and semantic search, let's use them to build RAG - grounding AI responses in your own data:
+Now that you understand embeddings and semantic search, let's use them to build RAG, grounding AI responses in your own data:
 
-[Continue to Part 2: Retrieval-Augmented Generation (RAG)](./02-retrieval-augmented-generation.md)
+[Continue to Part 2: Retrieval-Augmented Generation (RAG) →](./02-retrieval-augmented-generation.md)

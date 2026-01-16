@@ -1,6 +1,6 @@
 # Function Calling
 
-In this lesson, you will learn how to extend AI capabilities by letting the model call your .NET functions. This is one of the most powerful patterns in AI development, enabling your AI to access real-time data, perform calculations, and interact with external systems.
+In this lesson, you'll learn how to extend AI capabilities by letting the model call your .NET functions. This is one of the most powerful patterns in AI development, enabling your AI to access real-time data, perform calculations, and interact with external systems.
 
 ---
 
@@ -88,6 +88,8 @@ IChatClient client = new ChatCompletionsClient(
 - `ChatOptions.Tools` defines available functions
 - `AIFunctionFactory.Create` wraps your method as an AI-callable function
 - `UseFunctionInvocation()` enables automatic function execution
+
+> **Learn more:** [Tool calling with IChatClient](https://learn.microsoft.com/dotnet/ai/ichatclient#tool-calling) explains how function invocation works under the hood.
 
 ### Step 3: Use It Naturally
 
@@ -427,8 +429,9 @@ Console.WriteLine(await client.GetResponseAsync(
 
 ## Additional Resources
 
-- [IChatClient Tool Calling](https://learn.microsoft.com/dotnet/ai/ichatclient#tool-calling)
-- [Access Data in AI Functions](https://learn.microsoft.com/dotnet/ai/how-to/access-data-in-functions)
+- [IChatClient Tool Calling](https://learn.microsoft.com/dotnet/ai/ichatclient#tool-calling): Complete guide to function calling with IChatClient
+- [Access Data in AI Functions](https://learn.microsoft.com/dotnet/ai/how-to/access-data-in-functions): Best practices for database and API access in tools
+- [Function calling concepts](https://learn.microsoft.com/dotnet/ai/conceptual/function-calling): How AI models decide when to call functions
 
 ---
 
@@ -436,4 +439,4 @@ Console.WriteLine(await client.GetResponseAsync(
 
 Now that you can extend AI with your code, let's learn how to build production-ready AI applications with middleware pipelines:
 
-[Continue to Part 4: Middleware Pipelines](./04-middleware-pipeline.md)
+[Continue to Part 4: Middleware Pipelines →](./04-middleware-pipeline.md)

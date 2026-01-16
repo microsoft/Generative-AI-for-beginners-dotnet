@@ -1,6 +1,6 @@
 # Text Completions and Chat Conversations
 
-In this lesson, you will learn the fundamentals of interacting with AI models in .NET. We'll start with the simplest interaction - text completions - and build up to full conversational applications.
+In this lesson, you'll learn the fundamentals of interacting with AI models in .NET. We'll start with the simplest interaction—text completions—and build up to full conversational applications.
 
 ---
 
@@ -86,6 +86,8 @@ Console.WriteLine(response.Text);
 | `.AsIChatClient("gpt-4o-mini")` | Wraps it in the standard `IChatClient` interface |
 | `GetResponseAsync(prompt)` | Sends your prompt, waits for the response |
 | `response.Text` | The AI's generated text |
+
+> **Learn more:** [IChatClient interface](https://learn.microsoft.com/dotnet/ai/ichatclient) provides a unified abstraction for any AI provider.
 
 > **Try it yourself:** [BasicChat-01MEAI sample](../samples/CoreSamples/BasicChat-01MEAI/)
 
@@ -386,8 +388,9 @@ Can you answer these questions?
 
 ## Additional Resources
 
-- [IChatClient Interface Guide](https://learn.microsoft.com/dotnet/ai/ichatclient)
-- [Build an AI Chat App with .NET](https://learn.microsoft.com/dotnet/ai/quickstarts/build-chat-app)
+- [IChatClient Interface Guide](https://learn.microsoft.com/dotnet/ai/ichatclient): Complete reference for the unified chat abstraction
+- [Build an AI Chat App with .NET](https://learn.microsoft.com/dotnet/ai/quickstarts/build-chat-app): Step-by-step quickstart tutorial
+- [Chat message roles](https://learn.microsoft.com/dotnet/ai/conceptual/chat-message-roles): Understanding System, User, and Assistant roles
 
 ---
 
@@ -395,4 +398,4 @@ Can you answer these questions?
 
 Now that you understand the basics of text completions and conversations, let's explore more advanced capabilities:
 
-[Continue to Part 2: Streaming and Structured Output](./02-streaming-structured-output.md)
+[Continue to Part 2: Streaming and Structured Output →](./02-streaming-structured-output.md)

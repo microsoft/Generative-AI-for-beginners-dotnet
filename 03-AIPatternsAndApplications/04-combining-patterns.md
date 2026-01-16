@@ -55,6 +55,8 @@ This lesson shows you how to combine patterns effectively.
 └─────────────────────────────────────────────────────────────────┘
 ```
 
+**Learn more:** [AI Application Patterns](https://learn.microsoft.com/azure/architecture/ai-ml/) on Azure Architecture Center provides guidance on choosing and combining patterns.
+
 ---
 
 ## Part 2: Visual Document Search
@@ -198,6 +200,8 @@ public class VisualDocumentSearch
     }
 }
 ```
+
+**Learn more:** [Build a Vector Search App](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-ai-chat-with-data) provides a quickstart for combining vision with vector search.
 
 ---
 
@@ -585,31 +589,32 @@ The patterns in this lesson build on samples from throughout the workshop:
 
 ## Additional Resources
 
-- [Build AI Apps with .NET](https://learn.microsoft.com/dotnet/ai/)
-- [AI Application Patterns](https://learn.microsoft.com/azure/architecture/ai-ml/)
-- [Reference Architectures for AI](https://learn.microsoft.com/azure/architecture/ai-ml/architecture/)
+- [Build AI Apps with .NET](https://learn.microsoft.com/dotnet/ai/): The official .NET AI developer hub
+- [AI Application Patterns](https://learn.microsoft.com/azure/architecture/ai-ml/): Azure architecture guidance for AI solutions
+- [Reference Architectures for AI](https://learn.microsoft.com/azure/architecture/ai-ml/architecture/): Production-ready patterns and blueprints
+- [End-to-end AI solutions](https://learn.microsoft.com/dotnet/ai/tutorials/tutorials-overview): Complete tutorials for real-world scenarios
 
 ---
 
-## Lesson Complete! 🎉
+## Lesson Complete
 
 You now understand the core AI patterns for .NET development:
 
-- ✅ **Embeddings & Semantic Search** - Understanding meaning as vectors
-- ✅ **RAG** - Grounding AI in your data
-- ✅ **Vision** - Understanding images and documents
-- ✅ **Combining Patterns** - Building real applications
+- **Embeddings & Semantic Search**: Understanding meaning as vectors
+- **RAG**: Grounding AI in your data
+- **Vision**: Understanding images and documents
+- **Combining Patterns**: Building real applications
 
-These patterns are the building blocks for AI agents - systems that can reason, plan, and take complex actions autonomously.
+These patterns are the building blocks for AI agents, systems that can reason, plan, and take complex actions autonomously.
 
 ---
 
 ## What's Next?
 
-You're ready to move beyond patterns into building **AI Agents** - systems that can:
+You're ready to move beyond patterns into building **AI Agents**, systems that can:
 - Plan multi-step solutions
 - Use tools and APIs autonomously
 - Maintain state across interactions
 - Collaborate with other agents
 
-[Continue to Lesson 4: Building AI Agents →](../04-BuildingAIAgents/readme.md)
+[Continue to Lesson 4: AI Agents with Microsoft Agent Framework →](../04-AgentsWithMAF/readme.md)
