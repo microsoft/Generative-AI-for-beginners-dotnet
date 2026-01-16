@@ -1,4 +1,4 @@
-# Introduction to Generative AI for .NET Developers
+# Lesson 1: Introduction to Generative AI for .NET Developers
 
 [![Introduction to Generative AI](./images/LIM_GAN_01_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson1-genaireview)
 
@@ -61,6 +61,8 @@ Key concepts:
 
 - **Context Window**: The amount of text an LLM can "see" at one time. Larger context windows let you include more information in your prompts.
 - **Temperature**: A setting that controls randomness. Lower temperature (0.0-0.3) gives more predictable, focused responses. Higher temperature (0.7-1.0) gives more creative, varied responses.
+
+> **Learn more:** [Understanding tokens in Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/concepts/tokens) explains token limits, pricing, and how to count tokens.
 
 ### How It's Different from Traditional Programming
 
@@ -263,7 +265,7 @@ You have two things to do:
 1. **Set up your environment** using one of the paths above (we recommend GitHub Codespaces to start)
 2. **Move to the next lesson** where you'll write your first real AI application
 
-[**Continue to Lesson 2: Generative AI Techniques**](../02-GenerativeAITechniques/readme.md)
+[Continue to Lesson 2: Generative AI Techniques →](../02-GenerativeAITechniques/readme.md)
 
 ---
 
@@ -271,16 +273,20 @@ You have two things to do:
 
 Want to go deeper? Here are some excellent resources:
 
-**.NET and AI:**
-- [Microsoft.Extensions.AI Documentation](https://learn.microsoft.com/dotnet/ai/ai-extensions)
-- [Azure OpenAI Service Documentation](https://learn.microsoft.com/azure/ai-services/openai/)
-- [Microsoft Agent Framework](https://learn.microsoft.com/agent-framework/)
+**Core .NET AI Documentation:**
+- [Microsoft.Extensions.AI Documentation](https://learn.microsoft.com/dotnet/ai/ai-extensions): The unified AI abstraction layer for .NET
+- [Get started with AI in .NET](https://learn.microsoft.com/dotnet/ai/get-started/dotnet-ai-overview): Official quickstart guide for .NET developers
+- [Azure OpenAI Service Documentation](https://learn.microsoft.com/azure/ai-services/openai/): Enterprise-grade OpenAI models on Azure
+
+**Building Agents:**
+- [Microsoft Agent Framework](https://learn.microsoft.com/agent-framework/): Build intelligent agents that reason and act
+- [What are agents?](https://learn.microsoft.com/dotnet/ai/conceptual/agents): Conceptual overview of AI agents in .NET
 
 **Running Models Locally:**
-- [Ollama](https://ollama.com/)
+- [Ollama](https://ollama.com/): Run open-source LLMs on your own machine
 
 **Want the Full Picture?**
-- [Generative AI for Beginners](https://github.com/microsoft/generative-ai-for-beginners) - Our 21-lesson course covering GenAI concepts in depth (Python/TypeScript focus)
+- [Generative AI for Beginners](https://github.com/microsoft/generative-ai-for-beginners): Our 21-lesson course covering GenAI concepts in depth (Python/TypeScript focus)
 
 ---
 

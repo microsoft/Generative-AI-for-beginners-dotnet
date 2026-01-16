@@ -65,6 +65,8 @@ Answer: "Our software refund policy allows returns
 within 30 days of purchase with proof of receipt..."
 ```
 
+> **Learn more:** [Retrieval-Augmented Generation (RAG)](https://learn.microsoft.com/dotnet/ai/conceptual/rag) on Microsoft Learn explains when and why to use this pattern.
+
 ---
 
 ## Part 2: Building a RAG System
@@ -242,6 +244,8 @@ foreach (var question in questions)
 }
 ```
 
+**Learn more:** [Build a RAG Solution](https://learn.microsoft.com/dotnet/ai/tutorials/tutorial-ai-vector-search) walks through building a complete RAG application step by step.
+
 ---
 
 ## Part 3: RAG Best Practices
@@ -249,6 +253,8 @@ foreach (var question in questions)
 ### Chunking Strategies
 
 Large documents need to be split into smaller chunks for effective retrieval.
+
+**Learn more:** [Chunking strategies](https://learn.microsoft.com/azure/search/vector-search-how-to-chunk-documents) covers best practices for splitting documents effectively.
 
 ```csharp
 IEnumerable<string> ChunkText(string text, int chunkSize = 500, int overlap = 50)
@@ -367,9 +373,10 @@ IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator =
 
 ## Additional Resources
 
-- [Build a RAG Solution](https://learn.microsoft.com/dotnet/ai/tutorials/tutorial-ai-vector-search)
-- [RAG Pattern Deep Dive](https://learn.microsoft.com/dotnet/ai/conceptual/rag)
-- [Azure AI Search Vectors](https://learn.microsoft.com/azure/search/vector-search-overview)
+- [Build a RAG Solution](https://learn.microsoft.com/dotnet/ai/tutorials/tutorial-ai-vector-search): Complete tutorial for building RAG in .NET
+- [RAG Pattern Deep Dive](https://learn.microsoft.com/dotnet/ai/conceptual/rag): Conceptual overview of retrieval-augmented generation
+- [Azure AI Search Vectors](https://learn.microsoft.com/azure/search/vector-search-overview): Enterprise vector search with Azure
+- [Chunking strategies](https://learn.microsoft.com/azure/search/vector-search-how-to-chunk-documents): Best practices for splitting documents
 
 ---
 
@@ -377,4 +384,4 @@ IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator =
 
 RAG helps AI understand your documents, but what about understanding images and visual content?
 
-[Continue to Part 3: Vision and Document Understanding](./03-vision-document-understanding.md)
+[Continue to Part 3: Vision and Document Understanding →](./03-vision-document-understanding.md)

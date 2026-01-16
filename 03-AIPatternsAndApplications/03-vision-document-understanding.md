@@ -12,7 +12,7 @@ _Click the image to watch the video_
 
 ## Beyond Text
 
-Everything we've done so far has been text-based. But the real world isn't just text—it's receipts, invoices, diagrams, photos, and documents that combine words with visual elements.
+Everything we've done so far has been text-based. But the real world isn't just text. It's receipts, invoices, diagrams, photos, and documents that combine words with visual elements.
 
 Modern AI models have evolved to understand:
 
@@ -20,11 +20,11 @@ Modern AI models have evolved to understand:
 - **Documents** - PDFs, scanned papers, handwritten forms, contracts
 - **Mixed content** - Pages combining text, tables, images, and graphics
 
-This capability is called **multimodal AI**—models that process multiple types of content simultaneously. Instead of describing an image in text, you can simply show it to the AI and ask questions about it.
+This capability is called **multimodal AI**, models that process multiple types of content simultaneously. Instead of describing an image in text, you can simply show it to the AI and ask questions about it.
 
-> 💡 **Why this matters:** Many business processes still rely on visual documents. Expense reports need receipt scanning. Customer service needs to understand uploaded screenshots. Legal teams need to analyze scanned contracts. Vision AI automates these workflows.
+> **Why this matters:** Many business processes still rely on visual documents. Expense reports need receipt scanning. Customer service needs to understand uploaded screenshots. Legal teams need to analyze scanned contracts. Vision AI automates these workflows.
 
-📖 **Learn more:** [Use vision-enabled chat models](https://learn.microsoft.com/azure/ai-services/openai/how-to/gpt-with-vision) on Microsoft Learn.
+**Learn more:** [Use vision-enabled chat models](https://learn.microsoft.com/azure/ai-services/openai/how-to/gpt-with-vision) on Microsoft Learn.
 
 ---
 
@@ -34,11 +34,11 @@ Microsoft.Extensions.AI handles images through the `DataContent` class. This cla
 
 The pattern is simple: instead of sending just text in your chat message, you include both `TextContent` (your question) and `DataContent` (the image). The model sees both and can reason about the image while responding to your question.
 
-> 📖 **Note:** Images consume tokens just like text. Higher resolution images use more tokens. See [Understanding tokens](https://learn.microsoft.com/dotnet/ai/conceptual/understanding-tokens) to learn how this affects pricing and limits.
+> **Note:** Images consume tokens just like text. Higher resolution images use more tokens. See [Understanding tokens](https://learn.microsoft.com/dotnet/ai/conceptual/understanding-tokens) to learn how this affects pricing and limits.
 
 ### Basic Image Analysis
 
-Here's the fundamental pattern—load an image, wrap it in `DataContent`, and ask a question:
+Here's the fundamental pattern. Load an image, wrap it in `DataContent`, and ask a question:
 
 ```csharp
 using Microsoft.Extensions.AI;
@@ -129,11 +129,13 @@ var messages = new List<ChatMessage>
 };
 ```
 
+**Learn more:** [Microsoft.Extensions.AI libraries](https://learn.microsoft.com/dotnet/ai/microsoft-extensions-ai) covers the DataContent class and other MEAI abstractions.
+
 ---
 
 ## Part 2: Practical Vision Applications
 
-Now let's see vision AI solving real business problems. These examples show how to extract structured data from visual documents—turning images into actionable information.
+Now let's see vision AI solving real business problems. These examples show how to extract structured data from visual documents, turning images into actionable information.
 
 ### Receipt/Invoice Processing
 
@@ -174,7 +176,7 @@ var receiptData = JsonSerializer.Deserialize<ReceiptData>(response.Text);
 
 ### Form Analysis
 
-Paper forms—whether scanned or photographed—can be processed automatically. The AI identifies form fields, reads handwritten or typed values, and even understands checkbox states:
+Paper forms, whether scanned or photographed, can be processed automatically. The AI identifies form fields, reads handwritten or typed values, and even understands checkbox states:
 
 ```csharp
 var formImage = new DataContent(
@@ -293,11 +295,13 @@ async Task<string> SummarizeDocumentAsync(string pdfPath)
 }
 ```
 
+**Learn more:** [Azure AI Document Intelligence](https://learn.microsoft.com/azure/ai-services/document-intelligence/) provides production-grade document processing for complex enterprise workflows.
+
 ---
 
 ## Part 4: Vision with Local Models
 
-Cloud vision APIs are convenient, but sometimes you need to process images locally—for privacy, offline operation, or cost control. Ollama supports vision-capable models that run entirely on your machine.
+Cloud vision APIs are convenient, but sometimes you need to process images locally for privacy, offline operation, or cost control. Ollama supports vision-capable models that run entirely on your machine.
 
 The best part? The MEAI abstraction means your code stays the same. Just swap the chat client:
 
@@ -410,7 +414,7 @@ Console.WriteLine(await docQA.AskAsync("What are the termination conditions?"));
 
 ## Part 6: Vision Best Practices
 
-Vision AI quality depends heavily on input quality. Poor images lead to poor results—or hallucinated content. Follow these guidelines for reliable document processing.
+Vision AI quality depends heavily on input quality. Poor images lead to poor results or hallucinated content. Follow these guidelines for reliable document processing.
 
 ### Image Quality Tips
 
@@ -504,4 +508,4 @@ var messages = new List<ChatMessage>
 
 Now you know embeddings, RAG, and vision. Let's put them together to build powerful combined solutions:
 
-[Continue to Part 4: Combining Patterns](./04-combining-patterns.md)
+[Continue to Part 4: Combining Patterns →](./04-combining-patterns.md)

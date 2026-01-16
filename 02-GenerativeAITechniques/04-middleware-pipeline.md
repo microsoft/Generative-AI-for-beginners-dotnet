@@ -1,6 +1,6 @@
 # Middleware Pipelines
 
-In this lesson, you will learn how to build production-ready AI applications using middleware pipelines. This is a powerful pattern from Microsoft.Extensions.AI that lets you add caching, telemetry, rate limiting, and custom behaviors to your AI client.
+In this lesson, you'll learn how to build production-ready AI applications using middleware pipelines. This is a powerful pattern from Microsoft.Extensions.AI that lets you add caching, telemetry, rate limiting, and custom behaviors to your AI client.
 
 ---
 
@@ -41,6 +41,8 @@ IChatClient client = new ChatCompletionsClient(
 ```
 
 Each `Use*` method adds a layer to the pipeline. Order matters - middleware executes in the order you add it.
+
+**Learn more:** [IChatClient Functionality Pipelines](https://learn.microsoft.com/dotnet/ai/ichatclient#functionality-pipelines) explains how middleware chains work in Microsoft.Extensions.AI.
 
 ---
 
@@ -100,6 +102,8 @@ IChatClient client = baseClient
     .Build();
 ```
 
+**Learn more:** [Caching in .NET](https://learn.microsoft.com/dotnet/core/extensions/caching) covers distributed caching patterns for production applications.
+
 ---
 
 ## Part 3: Adding Telemetry
@@ -157,6 +161,8 @@ IChatClient client = baseClient
     .UseLogging(loggerFactory)
     .Build();
 ```
+
+**Learn more:** [OpenTelemetry in .NET](https://learn.microsoft.com/dotnet/core/diagnostics/observability-with-otel) provides comprehensive guidance on observability and tracing.
 
 ---
 
@@ -330,6 +336,8 @@ IChatClient client = baseClient
     .Build();
 ```
 
+**Learn more:** [IChatClient Custom Middleware](https://learn.microsoft.com/dotnet/ai/ichatclient#custom-ichatclient-middleware) shows how to build your own middleware components.
+
 ---
 
 ## Part 7: Dependency Injection
@@ -368,6 +376,8 @@ var host = builder.Build();
 var chatClient = host.Services.GetRequiredService<IChatClient>();
 var response = await chatClient.GetResponseAsync("Hello!");
 ```
+
+**Learn more:** [Dependency Injection in .NET](https://learn.microsoft.com/dotnet/core/extensions/dependency-injection) covers the DI patterns used in ASP.NET Core and hosted services.
 
 ---
 
@@ -444,11 +454,23 @@ Console.WriteLine(response.Text);
 
 ---
 
+## Sample Code Reference
+
+| Sample | Description |
+|--------|-------------|
+| [MEAIFunctions](../samples/CoreSamples/MEAIFunctions/) | Function calling with ChatClientBuilder pipeline |
+| [MEAIFunctionsOllama](../samples/CoreSamples/MEAIFunctionsOllama/) | Middleware pipeline with local Ollama models |
+| [AgentFx-AIWebChatApp-Middleware](../samples/AgentFx/AgentFx-AIWebChatApp-Middleware/) | Custom middleware in a web application |
+| [AgentFx-BackgroundResponses-02-Tools](../samples/AgentFx/AgentFx-BackgroundResponses-02-Tools/) | OpenTelemetry integration example |
+
+---
+
 ## Additional Resources
 
-- [IChatClient Functionality Pipelines](https://learn.microsoft.com/dotnet/ai/ichatclient#functionality-pipelines)
-- [IChatClient Custom Middleware](https://learn.microsoft.com/dotnet/ai/ichatclient#custom-ichatclient-middleware)
-- [Caching in .NET](https://learn.microsoft.com/dotnet/core/extensions/caching)
+- [IChatClient Functionality Pipelines](https://learn.microsoft.com/dotnet/ai/ichatclient#functionality-pipelines): How middleware chains work in MEAI
+- [IChatClient Custom Middleware](https://learn.microsoft.com/dotnet/ai/ichatclient#custom-ichatclient-middleware): Building your own middleware components
+- [Caching in .NET](https://learn.microsoft.com/dotnet/core/extensions/caching): Deep dive into distributed caching patterns
+- [OpenTelemetry in .NET](https://learn.microsoft.com/dotnet/core/diagnostics/observability-with-otel): Observability and tracing for production apps
 
 ---
 
@@ -475,4 +497,4 @@ In Lesson 3, we'll build on these foundations with advanced patterns:
 - **Semantic Search**: Search by meaning, not just keywords
 - **Vision and Audio**: Work with images and sound
 
-[**Continue to Lesson 3: AI Patterns and Applications**](../03-CoreGenerativeAITechniques/readme.md)
+[Continue to Lesson 3: AI Patterns and Applications →](../03-AIPatternsAndApplications/readme.md)

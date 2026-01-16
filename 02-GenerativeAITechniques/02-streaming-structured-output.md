@@ -1,6 +1,6 @@
 # Streaming and Structured Output
 
-In this lesson, you will learn how to stream AI responses in real-time and how to get strongly-typed structured output from AI models. These are essential techniques for building responsive, production-ready AI applications.
+In this lesson, you'll learn how to stream AI responses in real-time and how to get strongly-typed structured output from AI models. These are essential techniques for building responsive, production-ready AI applications.
 
 ---
 
@@ -40,6 +40,8 @@ Notice the difference:
 | Returns `ChatResponse` | Returns `IAsyncEnumerable<ChatResponseUpdate>` |
 | Wait for full response | Process each token as it arrives |
 | Simpler code | Better user experience |
+
+> **Learn more:** [Streaming responses with IChatClient](https://learn.microsoft.com/dotnet/ai/ichatclient#request-a-streaming-chat-response) covers advanced streaming patterns.
 
 ### Complete Streaming Example
 
@@ -342,8 +344,9 @@ Can you answer these questions?
 
 ## Additional Resources
 
-- [Request Structured Output](https://learn.microsoft.com/dotnet/ai/quickstarts/structured-output)
-- [IChatClient Streaming Documentation](https://learn.microsoft.com/dotnet/ai/ichatclient#request-a-streaming-chat-response)
+- [Request Structured Output](https://learn.microsoft.com/dotnet/ai/quickstarts/structured-output): Quickstart for getting typed responses from AI
+- [IChatClient Streaming Documentation](https://learn.microsoft.com/dotnet/ai/ichatclient#request-a-streaming-chat-response): How streaming works with IChatClient
+- [JSON Schema in .NET](https://learn.microsoft.com/dotnet/standard/serialization/system-text-json/overview): Understanding how .NET serializes structured output
 
 ---
 
@@ -351,4 +354,4 @@ Can you answer these questions?
 
 Now that you can stream responses and get structured data, let's extend AI capabilities with your own code:
 
-[Continue to Part 3: Function Calling](./03-function-calling.md)
+[Continue to Part 3: Function Calling →](./03-function-calling.md)
