@@ -128,16 +128,6 @@ Before starting this lesson, ensure you have:
 
 ---
 
-## Key Message
-
-> **You are not just calling AI anymore. You are building systems that reason and act.**
-
-Agents represent a fundamental shift in how we build AI applications. Instead of writing code that uses AI as a tool, you're creating AI systems that use your code as tools.
-
-This is where everything clicks together.
-
----
-
 ## Let's Begin
 
 Start with the fundamentals:

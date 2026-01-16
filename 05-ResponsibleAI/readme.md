@@ -6,8 +6,6 @@ Throughout this course, you've learned powerful techniques for building generati
 
 This lesson covers the ethical and practical considerations every AI developer must understand. These aren't optional extras or nice-to-haves. They're fundamental requirements for professional AI development.
 
-> **Key Message:** Responsible AI is not optional. It is part of being a professional.
-
 ---
 
 ## What You'll Learn
