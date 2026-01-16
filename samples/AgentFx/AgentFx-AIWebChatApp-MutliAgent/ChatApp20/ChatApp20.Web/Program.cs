@@ -4,6 +4,7 @@ using ChatApp20.Web.Services.Ingestion;
 using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.DevUI;
 using Microsoft.Agents.AI.Hosting;
+using Microsoft.Agents.AI.Workflows;
 using Microsoft.Extensions.AI;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -126,6 +127,28 @@ builder.AddAIAgent("CoordinatorAgent", (sp, key) =>
     .Build();
 });
 
+// Register the workflow as a keyed singleton
+builder.AddWorkflow("ResearchWorkFlowSequential", (sp, key) =>
+{
+    var researchAgent = sp.GetRequiredKeyedService<AIAgent>("ResearchAgent");
+    var writingAgent = sp.GetRequiredKeyedService<AIAgent>("WritingAgent");
+
+    return AgentWorkflowBuilder.BuildSequential(
+        "ResearchWorkFlowSequential",
+        [researchAgent, writingAgent]);
+});
+
+// Register the workflow as a keyed singleton
+builder.AddWorkflow("ResearchWorkFlowConcurrent", (sp, key) =>
+{
+    var researchAgent = sp.GetRequiredKeyedService<AIAgent>("ResearchAgent");
+    var writingAgent = sp.GetRequiredKeyedService<AIAgent>("WritingAgent");
+
+    return AgentWorkflowBuilder.BuildConcurrent(
+        "ResearchWorkFlowConcurrent",
+        [researchAgent, writingAgent]);
+});
+
 openai.AddEmbeddingGenerator("text-embedding-3-small");
 
 var vectorStorePath = Path.Combine(AppContext.BaseDirectory, "vector-store.db");
@@ -139,6 +162,7 @@ builder.Services.AddSingleton<SemanticSearch>();
 builder.Services.AddSingleton<SearchFunctions>();
 
 // Register services for OpenAI responses and conversations (also required for DevUI)
+builder.Services.AddDevUI();
 builder.Services.AddOpenAIResponses();
 builder.Services.AddOpenAIConversations();
 

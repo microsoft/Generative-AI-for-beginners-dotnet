@@ -8,19 +8,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Azure.AI.OpenAI" Version="13.0.0-preview.1.25560.3" />
-    <PackageReference Include="Microsoft.Agents.AI" Version="1.0.0-preview.251112.1" />
-    <PackageReference Include="Microsoft.Agents.AI.Abstractions" Version="1.0.0-preview.251112.1" />
-    <PackageReference Include="Microsoft.Agents.AI.DevUI" Version="1.0.0-preview.251112.1" />
-    <PackageReference Include="Microsoft.Agents.AI.Hosting" Version="1.0.0-preview.251112.1" />
-    <PackageReference Include="Microsoft.Agents.AI.Hosting.OpenAI" Version="1.0.0-alpha.251112.1" />
-    <PackageReference Include="Microsoft.Agents.AI.OpenAI" Version="1.0.0-preview.251112.1" />
-    <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.0.0-preview.1.25560.10" />
-    <PackageReference Include="Microsoft.Extensions.AI" Version="10.0.0" />
-    <PackageReference Include="Microsoft.SemanticKernel.Core" Version="1.67.1" />
-    <PackageReference Include="PdfPig" Version="0.1.12" />
-    <PackageReference Include="System.Linq.Async" Version="7.0.0-preview.10" />
-    <PackageReference Include="Microsoft.SemanticKernel.Connectors.SqliteVec" Version="1.67.1-preview" />
+    <PackageReference Include="Aspire.Azure.AI.OpenAI" Version="13.1.0-preview.1.25616.3" />
+    <PackageReference Include="Microsoft.Agents.AI" Version="1.0.0-preview.260108.1" />
+    <PackageReference Include="Microsoft.Agents.AI.Abstractions" Version="1.0.0-preview.260108.1" />
+    <PackageReference Include="Microsoft.Agents.AI.DevUI" Version="1.0.0-preview.260108.1" />
+    <PackageReference Include="Microsoft.Agents.AI.Hosting" Version="1.0.0-preview.260108.1" />
+    <PackageReference Include="Microsoft.Agents.AI.Hosting.OpenAI" Version="1.0.0-alpha.260108.1" />
+    <PackageReference Include="Microsoft.Agents.AI.OpenAI" Version="1.0.0-preview.260108.1" />
+    <PackageReference Include="Microsoft.Agents.AI.Workflows" Version="1.0.0-preview.260108.1" />
+    <PackageReference Include="Microsoft.Agents.AI.Workflows.Declarative" Version="1.0.0-preview.260108.1" />
+    <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.2.0-preview.1.26063.2" />
+    <PackageReference Include="Microsoft.Extensions.AI" Version="10.2.0" />
+    <PackageReference Include="Microsoft.SemanticKernel.Core" Version="1.68.0" />
+    <PackageReference Include="PdfPig" Version="0.1.14-alpha-20251224-7c4f5" />
+    <PackageReference Include="System.Linq.Async" Version="7.0.0" />
+    <PackageReference Include="Microsoft.SemanticKernel.Connectors.SqliteVec" Version="1.68.0-preview" />
   </ItemGroup>
 
   <ItemGroup>
