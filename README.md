@@ -48,13 +48,15 @@ You'll learn how to implement Generative AI into .NET projects, from basic text 
 
 ## 🗃️ Lessons
 
-| #   | **Lesson Link** | **Description** |
-| --- | --- | --- |
-| 01  | [**Introduction to Generative AI**](./01-IntroductionToGenerativeAI/readme.md) | <ul><li>What generative AI is and how it differs from traditional programming</li><li>Why .NET is a first-class citizen for AI development</li><li>The Microsoft AI stack and where each piece fits</li><li>How to run samples in GitHub Codespaces or configure local development</li></ul> |
-| 02  | [**Generative AI Techniques**](./02-GenerativeAITechniques/readme.md) | <ul><li>How to create chat conversations with context and memory</li><li>How text embeddings work and why they matter</li><li>How to process different content types including images and documents</li><li>How to call AI models using Microsoft.Extensions.AI abstractions</li></ul> |
-| 03  | [**AI Patterns and Applications**](./03-AIPatternsAndApplications/readme.md) | <ul><li>How to build semantic search that understands meaning</li><li>How to implement retrieval augmented generation (RAG)</li><li>How to create applications that process and understand documents</li><li>When to use each pattern and how to combine them</li></ul> |
-| 04  | [**AI Agents with Microsoft Agent Framework**](./04-AgentsWithMAF/readme.md) | <ul><li>What makes an agent different from a chatbot</li><li>How to build agents that use tools and take actions</li><li>How to orchestrate multiple agents working together</li><li>How to integrate with Model Context Protocol (MCP)</li></ul> |
-| 05  | [**Responsible AI**](./05-ResponsibleAI/readme.md) | <ul><li>How to identify and mitigate bias in AI applications</li><li>How to implement content safety and guardrails</li><li>How to build transparency and explainability into your systems</li><li>Ethical considerations specific to agentic systems</li></ul> |
+| #   | **Lesson Link** | **Time** | **Description** |
+| --- | --- | --- | --- |
+| 01  | [**Introduction to Generative AI**](./01-IntroductionToGenerativeAI/readme.md) | ~30 min | <ul><li>What generative AI is and how it differs from traditional programming</li><li>Why .NET is a first-class citizen for AI development</li><li>The Microsoft AI stack and where each piece fits</li><li>How to run samples in GitHub Codespaces or configure local development</li></ul> |
+| 02  | [**Generative AI Techniques**](./02-GenerativeAITechniques/readme.md) | ~60 min | <ul><li>How to create chat conversations with context and memory</li><li>Streaming responses and structured output</li><li>Function calling to extend AI with your code</li><li>How to call AI models using Microsoft.Extensions.AI abstractions</li></ul> |
+| 03  | [**AI Patterns and Applications**](./03-AIPatternsAndApplications/readme.md) | ~45 min | <ul><li>How to build semantic search that understands meaning</li><li>How to implement retrieval augmented generation (RAG)</li><li>How to create applications that process and understand documents</li><li>When to use each pattern and how to combine them</li></ul> |
+| 04  | [**AI Agents with Microsoft Agent Framework**](./04-AgentsWithMAF/readme.md) | ~60 min | <ul><li>What makes an agent different from a chatbot</li><li>How to build agents that use tools and take actions</li><li>How to orchestrate multiple agents working together</li><li>How to integrate with Model Context Protocol (MCP)</li></ul> |
+| 05  | [**Responsible AI**](./05-ResponsibleAI/readme.md) | ~30 min | <ul><li>How to identify and mitigate bias in AI applications</li><li>How to implement content safety and guardrails</li><li>How to build transparency and explainability into your systems</li><li>Ethical considerations specific to agentic systems</li></ul> |
+
+> 📖 **New to AI terminology?** Check out the [**Glossary**](./GLOSSARY.md) for definitions of technical terms used in this course.
 
 ## 🌐 Multi-Language Support
 
