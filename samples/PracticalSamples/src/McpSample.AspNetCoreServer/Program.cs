@@ -1,5 +1,3 @@
-using ModelContextProtocol;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add default services
