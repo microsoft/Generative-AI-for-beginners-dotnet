@@ -102,6 +102,11 @@ Providing an AI model with specific context or data to base its responses on. Re
 ### Hallucination
 When an AI model generates plausible-sounding but incorrect or fabricated information. Mitigated by grounding with RAG or verified data.
 
+### HITL (Human-in-the-Loop)
+*Abbreviation for Human-in-the-Loop*
+
+A safeguard pattern where AI systems pause and request human approval before taking significant actions. Essential for responsible agentic systems. See [Responsible AI Lesson](./05-ResponsibleAI/readme.md).
+
 ---
 
 ## I

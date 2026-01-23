@@ -159,6 +159,7 @@ dotnet run
 
 - [Main Course README](../README.md)
 - [Glossary](../GLOSSARY.md)
+- [Troubleshooting Common Errors](../FIX-YOUR-ERROR.md)
 - [Microsoft.Extensions.AI Documentation](https://learn.microsoft.com/dotnet/ai/ai-extensions)
 - [Semantic Kernel Documentation](https://learn.microsoft.com/semantic-kernel/)
 - [Microsoft Agent Framework](https://learn.microsoft.com/agent-framework/)
