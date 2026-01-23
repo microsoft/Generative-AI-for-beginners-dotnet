@@ -18,6 +18,16 @@ _Click the image to watch the video_
 - Create applications that process and understand documents and images
 - Know when to use each pattern and how to combine them
 
+## Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+1. **Explain** how embeddings represent semantic meaning as numerical vectors
+2. **Implement** semantic search using `IEmbeddingGenerator` and vector similarity
+3. **Build** a complete RAG pipeline that retrieves and grounds AI responses
+4. **Process** images and documents using multimodal AI capabilities
+5. **Evaluate** when to use semantic search, RAG, or vision patterns
+
 ---
 
 ## Lesson Structure

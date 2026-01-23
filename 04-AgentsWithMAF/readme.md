@@ -14,6 +14,16 @@ Everything you've learned (chat, function calling, RAG, vision) comes together h
 | **Multi-Agent Workflows** | Orchestrating multiple specialized agents together |
 | **Model Context Protocol (MCP)** | Extending agent capabilities with standardized tool servers |
 
+## Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+1. **Explain** the fundamental differences between chatbots and AI agents
+2. **Create** agents using Microsoft Agent Framework and `AIAgent` abstraction
+3. **Implement** tool-using agents that can call functions and take actions
+4. **Orchestrate** multi-agent workflows with handoffs and collaboration
+5. **Integrate** Model Context Protocol (MCP) for extended agent capabilities
+
 ---
 
 ## From Chatbot to Agent

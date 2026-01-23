@@ -147,19 +147,18 @@ dotnet run
 
 | Lesson | Sample Folders | Key Topics |
 |--------|---------------|------------|
-| [Lesson 02](../02-SetupDevEnvironment/) | CoreSamples/BasicChat-* | Environment setup, first AI interactions |
-| [Lesson 03](../03-CoreGenerativeAITechniques/) | CoreSamples/* | Chat, RAG, Vision, Audio, Agents, Image/Video Gen |
-| [Lesson 04](../04-PracticalSamples/) | PracticalSamples/* | Real-world integration patterns, MCP |
-| [Lesson 05](../05-AppCreatedWithGenAI/) | AppsWithGenAI/* | Full applications built with AI assistance |
-| [Lesson 06](../06-AgentFx/) | AgentFx/* | Microsoft Agent Framework |
+| [Lesson 01: Introduction](../01-IntroductionToGenerativeAI/) | (Setup guides) | Environment setup, concepts |
+| [Lesson 02: Techniques](../02-GenerativeAITechniques/) | CoreSamples/BasicChat-*, MEAIFunctions | Chat, streaming, function calling |
+| [Lesson 03: Patterns](../03-AIPatternsAndApplications/) | CoreSamples/RAG*, Vision-*, Audio-* | RAG, embeddings, vision, audio |
+| [Lesson 04: Agents](../04-AgentsWithMAF/) | AgentFx/* | Microsoft Agent Framework, MCP |
+| [Lesson 05: Responsible AI](../05-ResponsibleAI/) | (Conceptual) | Ethics, safety, transparency |
 
 ---
 
 ## Additional Resources
 
 - [Main Course README](../README.md)
-- [Setup Environment](../02-SetupDevEnvironment/)
-- [Troubleshooting Guide](../03-CoreGenerativeAITechniques/docs/troubleshooting-chat-api.md)
+- [Glossary](../GLOSSARY.md)
 - [Microsoft.Extensions.AI Documentation](https://learn.microsoft.com/dotnet/ai/ai-extensions)
 - [Semantic Kernel Documentation](https://learn.microsoft.com/semantic-kernel/)
 - [Microsoft Agent Framework](https://learn.microsoft.com/agent-framework/)

@@ -124,9 +124,9 @@ To add it back to the list, create a new `ChatMessage` with:
 
 ## Need More Help?
 
-- 📁 **Working Example:** `/03-CoreGenerativeAITechniques/src/BasicChat-10ConversationHistory/`
-- 📖 **Detailed Guide:** `/03-CoreGenerativeAITechniques/docs/troubleshooting-chat-api.md`
-- ⚡ **Quick Reference:** `/03-CoreGenerativeAITechniques/docs/QUICK-FIX-ChatMessageList.md`
+- 📁 **Working Example:** [BasicChat-10ConversationHistory](./samples/CoreSamples/BasicChat-10ConversationHistory/)
+- 📖 **Lesson Guide:** [Text Completions and Chat](./02-GenerativeAITechniques/01-text-completions-chat.md)
+- 📚 **Glossary:** [Technical Terms Reference](./GLOSSARY.md)
 
 ---
 
