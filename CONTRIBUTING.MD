@@ -41,3 +41,5 @@ Whenever you are submitting any changes to the Generative AI for Beginners repos
 - Ensure that the images have descriptive names using English characters, numbers, and dashes in the name of your image.
 
 Congratulations! We will get back to you as soon as possible with feedback about your contribution.
+
+<!-- Updated documentation link reference for validation -->
