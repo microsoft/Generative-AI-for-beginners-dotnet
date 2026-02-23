@@ -6,6 +6,7 @@
 using Azure;
 using Azure.AI.Inference;
 using Microsoft.Extensions.AI;
+// TODO: Replace with Microsoft.Extensions.VectorData when an MEAI-native InMemoryVectorStore package is available
 using Microsoft.SemanticKernel.Connectors.InMemory;
 
 var vectorStore = new InMemoryVectorStore();

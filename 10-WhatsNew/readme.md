@@ -2,6 +2,26 @@
 
 This page tracks the history of new features, tools, and models added to the course. Check back for updates!
 
+## February 2026
+
+### **🔄 Architecture Update: Migration from Semantic Kernel to Microsoft.Extensions.AI (MEAI)**
+
+We've completed a major architectural upgrade to standardize on **Microsoft.Extensions.AI (MEAI)** as our primary AI abstraction layer. This migration ensures better alignment with .NET's modern AI ecosystem and improves long-term maintainability.
+
+**What Changed:**
+- **11 pure Semantic Kernel samples** have been moved to `samples/deprecated/` for historical reference
+- **MEAI is now the standard** for all new samples and lessons
+- **Lesson documentation updated** to guide learners toward MEAI-based samples
+- **Mixed projects (BasicChat-05, BasicChat-11)** have had SK dependencies removed while maintaining MEAI
+- **NuGet packages aligned** across 74 projects with rc→GA upgrades
+
+**For Learners:**
+- All active samples now use MEAI for AI operations
+- Deprecated SK samples are still available if you need them
+- Lesson 02 (Setup) and Lesson 03 (Core Techniques) have been updated with current best practices
+
+[View detailed changelog →](../docs/changelog/2025-sk-deprecation-nuget-upgrades.md)
+
 ## January 2026
 
 ### **🆕 New! Basic Chat App for OpenAI gpt-oss Model**

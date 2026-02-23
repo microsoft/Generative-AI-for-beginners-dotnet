@@ -1,4 +1,5 @@
-﻿using Microsoft.SemanticKernel.Text;
+﻿// SK dependency: TextChunker has no MEAI-native replacement yet
+using Microsoft.SemanticKernel.Text;
 using UglyToad.PdfPig;
 using UglyToad.PdfPig.Content;
 using UglyToad.PdfPig.DocumentLayoutAnalysis.PageSegmenter;

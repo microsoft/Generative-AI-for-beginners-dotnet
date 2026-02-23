@@ -6,6 +6,7 @@ using Microsoft.Extensions.AI;
 using Azure;
 using Azure.AI.Inference;
 using Azure.Search.Documents.Indexes;
+// TODO: Replace with MEAI-native Azure AI Search vector store package when available
 using Microsoft.SemanticKernel.Connectors.AzureAISearch;
 using Microsoft.Extensions.Configuration;
 using Azure.Identity;

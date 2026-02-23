@@ -5,6 +5,7 @@
 using Microsoft.Extensions.AI;
 using Azure;
 using Azure.AI.Inference;
+// TODO: Replace with MEAI-native Qdrant vector store package when available
 using Microsoft.SemanticKernel.Connectors.Qdrant;
 using Qdrant.Client;
 

@@ -12,9 +12,11 @@
 		<PackageReference Include="Aspire.Azure.AI.OpenAI" Version="9.5.2-preview.1.25522.3" />
 		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.2.0-preview.1.26063.2" />
 		<PackageReference Include="Microsoft.Extensions.AI" Version="10.2.0" />
+		<!-- SK dependency: TextChunker (from SK Core) has no MEAI replacement yet -->
 		<PackageReference Include="Microsoft.SemanticKernel.Core" Version="1.71.0" />
 		<PackageReference Include="PdfPig" Version="0.1.12-alpha-20251030-6ce69" />
 		<PackageReference Include="System.Linq.Async" Version="7.0.0" />
+		<!-- SK dependency: AddSqliteCollection extension has no MEAI replacement yet (no Microsoft.Extensions.VectorData.SqliteVec package) -->
 		<PackageReference Include="Microsoft.SemanticKernel.Connectors.SqliteVec" Version="1.68.0-preview" />
 
 		<!-- Microsoft Agent Framework packages -->

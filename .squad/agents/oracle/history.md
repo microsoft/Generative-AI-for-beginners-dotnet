@@ -7,3 +7,11 @@
 - **Owned files:** Root README.md (What's New section), 10-WhatsNew/readme.md
 
 ## Learnings
+
+### SK Deprecation Cycle (Feb 2026)
+- **Big migrations are _multi-phase_**: SK deprecation required 5 phases (move samples → update docs → remove from mixed projects → align NuGet → create changelog archive)
+- **Changelog structure matters**: Created `docs/changelog/` to track all major repo changes persistently. Each changelog doc now includes phases, impacts, commits, and follow-up items.
+- **Version alignment is tedious but essential**: 74 .csproj files × multiple package upgrades = 288 total changes. Pre-planning file lists by project structure helps.
+- **Mixed projects (MEAI + SK) complicate deprecation**: BasicChat-05 and BasicChat-11 needed surgical SK removal while keeping MEAI — plan for these early.
+- **Translation lag is normal**: 8 localized docs still reference old paths; this is a follow-up that can be batched later.
+- **Key insight for changelog entries**: Include commit SHAs, agent names, and explicit counts (11 samples, 74 files, 288 updates) so future readers understand scope without digging into git.
