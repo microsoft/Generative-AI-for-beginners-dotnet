@@ -89,7 +89,7 @@ Created `docs/changelog/` for tracking all repo changes. Oracle (Changelog Agent
 - [x] Align NuGet packages across 74 files — *COMPLETED (Phase 4, 288 version updates)*
 - [x] Create docs/changelog/ structure and archive — *COMPLETED (Phase 5)*
 - [x] Update Oracle charter — *COMPLETED (Phase 5)*
-- [ ] Replace SK connectors in RAGSimple-02/03/04 with MEAI VectorData — *DEFERRED: No MEAI-native replacements exist yet (Feb 2026). TODO comments added to all projects. Will revisit when Microsoft.Extensions.VectorData packages ship.*
-- [ ] Replace SK SqliteVec in AgentFx projects with MEAI VectorData — *DEFERRED: Same as above. SK packages retained with TODO comments.*
+- [x] Replace SK connectors in RAGSimple-02/03/04 with native clients — *DONE: SK connectors replaced with native clients (InMemory→cosine similarity, AzureAISearch→Azure.Search.Documents, Qdrant→Qdrant.Client)*
+- [ ] Replace SK SqliteVec in AgentFx projects with MEAI VectorData — *DEFERRED: SK retained with improved TODO comments. No MEAI-native sqlite-vec or text chunker packages exist yet. Will revisit when these ship.*
 - [x] Update translation files (zh, fr, pt, es, de, ja, ko, tw) — *COMPLETED: 15 files across 8 languages updated by Trinity*
 - [x] Upgrade remaining NuGet packages to latest versions — *COMPLETED by Dozer: Microsoft.Extensions.AI 10.2.0→10.3.0, AI.OpenAI preview→10.3.0 GA, Configuration packages 10.0.1→10.0.3 across 79 files*

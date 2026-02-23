@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,13 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-	  <PackageReference Include="Azure.AI.OpenAI" Version="2.8.0-beta.1" />
-	  <PackageReference Include="Microsoft.Extensions.AI" Version="10.3.0" />
-	  <PackageReference Include="Microsoft.Extensions.AI.AzureAIInference" Version="10.0.0-preview.1.25559.3" />
-	  <PackageReference Include="Microsoft.Extensions.VectorData.Abstractions" Version="9.7.0" />
-    <!-- TODO: Replace with MEAI-native Qdrant vector store when available.
-         No Microsoft.Extensions.VectorData.Qdrant package exists yet; QdrantVectorStore is only in this SK connector. -->
-    <PackageReference Include="Microsoft.SemanticKernel.Connectors.Qdrant" Version="1.66.0-preview" />
+  <PackageReference Include="Azure.AI.OpenAI" Version="2.8.0-beta.1" />
+  <PackageReference Include="Microsoft.Extensions.AI" Version="10.3.0" />
+  <PackageReference Include="Microsoft.Extensions.AI.AzureAIInference" Version="10.0.0-preview.1.25559.3" />
+  <PackageReference Include="Qdrant.Client" Version="1.14.0" />
   </ItemGroup>
 
   <ItemGroup>

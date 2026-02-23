@@ -1,27 +1,34 @@
 ﻿// This sample demonstrates RAG using GitHub Models for embeddings and Azure AI Search for vector storage.
+// Uses the native Azure.Search.Documents SDK directly for vector search operations.
 // To use Ollama for embeddings instead, replace the GitHub Models code with:
 // new OllamaEmbeddingGenerator(new Uri("http://localhost:11434/"), "all-minilm")
 
 using Microsoft.Extensions.AI;
 using Azure;
 using Azure.AI.Inference;
+using Azure.Search.Documents;
 using Azure.Search.Documents.Indexes;
-// TODO: Replace with MEAI-native Azure AI Search vector store package when available
-using Microsoft.SemanticKernel.Connectors.AzureAISearch;
+using Azure.Search.Documents.Indexes.Models;
+using Azure.Search.Documents.Models;
 using Microsoft.Extensions.Configuration;
 using Azure.Identity;
 
-// get the search index client using Azure Default Credentials or Azure Key Credential with the service secret
-var client = GetSearchIndexClient();
-var vectorStore = new AzureAISearchVectorStore(searchIndexClient: client);
+const string indexName = "movies";
+const int vectorDimensions = 384;
+
+// get the search index client using Azure Default Credentials or Azure Key Credential
+var indexClient = GetSearchIndexClient();
+
+// create or update the search index with vector field
+await CreateOrUpdateIndexAsync(indexClient);
+
+var searchClient = indexClient.GetSearchClient(indexName);
 
 // get movie list
-var movies = vectorStore.GetCollection<string, MovieVector<string>>("movies");
-await movies.EnsureCollectionExistsAsync();
 var movieData = MovieFactory<string>.GetMovieVectorList();
 
 // get embeddings generator and generate embeddings for movies
-var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN") 
+var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN")
     ?? throw new InvalidOperationException("Missing GITHUB_TOKEN environment variable. Set it to use GitHub Models.");
 
 IEmbeddingGenerator<string, Embedding<float>> generator =
@@ -29,11 +36,27 @@ IEmbeddingGenerator<string, Embedding<float>> generator =
         endpoint: new Uri("https://models.github.ai/inference"),
         new AzureKeyCredential(githubToken))
     .AsIEmbeddingGenerator("text-embedding-3-small");
+
+// generate embeddings and upload documents to Azure AI Search
+var documents = new List<SearchDocument>();
 foreach (var movie in movieData)
 {
     movie.Vector = await generator.GenerateVectorAsync(movie.Description);
-    await movies.UpsertAsync(movie);
+    var doc = new SearchDocument
+    {
+        ["Key"] = movie.Key,
+        ["Title"] = movie.Title,
+        ["Year"] = movie.Year,
+        ["Category"] = movie.Category,
+        ["Description"] = movie.Description,
+        ["Vector"] = movie.Vector.ToArray()
+    };
+    documents.Add(doc);
 }
+await searchClient.IndexDocumentsAsync(IndexDocumentsBatch.Upload(documents));
+
+// wait briefly for indexing to complete
+await Task.Delay(2000);
 
 // creates a list of questions
 var questions = new List<(string Question, int ResultCount)>
@@ -47,27 +70,74 @@ foreach (var question in questions)
 {
     await SearchMovieAsync(question.Question, question.ResultCount);
 }
-async Task SearchMovieAsync(string question, int resultCount) 
+
+async Task SearchMovieAsync(string question, int resultCount)
 {
     Console.WriteLine($"====================================================");
     Console.WriteLine($"Searching for: {question}");
     Console.WriteLine();
 
-    // perform the search
+    // generate query embedding and perform vector search
     var queryEmbedding = await generator.GenerateVectorAsync(question);
 
-
-    await foreach (var resultItem in movies.SearchAsync(queryEmbedding, top: 2))
+    var searchOptions = new SearchOptions
     {
-        Console.WriteLine($">> Title: {resultItem.Record.Title}");
-        Console.WriteLine($">> Year: {resultItem.Record.Year}");
-        Console.WriteLine($">> Description: {resultItem.Record.Description}");
-        Console.WriteLine($">> Score: {resultItem.Score}");
+        VectorSearch = new VectorSearchOptions
+        {
+            Queries =
+            {
+                new VectorizedQuery(queryEmbedding.ToArray())
+                {
+                    KNearestNeighborsCount = resultCount,
+                    Fields = { "Vector" }
+                }
+            }
+        },
+        Size = resultCount
+    };
+
+    var response = await searchClient.SearchAsync<SearchDocument>(null, searchOptions);
+
+    await foreach (var result in response.Value.GetResultsAsync())
+    {
+        Console.WriteLine($">> Title: {result.Document["Title"]}");
+        Console.WriteLine($">> Year: {result.Document["Year"]}");
+        Console.WriteLine($">> Description: {result.Document["Description"]}");
+        Console.WriteLine($">> Score: {result.Score}");
         Console.WriteLine();
     }
     Console.WriteLine($"====================================================");
     Console.WriteLine();
 }
+
+async Task CreateOrUpdateIndexAsync(SearchIndexClient client)
+{
+    var vectorSearch = new VectorSearch();
+    vectorSearch.Algorithms.Add(new HnswAlgorithmConfiguration("hnsw-config"));
+    vectorSearch.Profiles.Add(new VectorSearchProfile("vector-profile", "hnsw-config"));
+
+    var index = new SearchIndex(indexName)
+    {
+        VectorSearch = vectorSearch,
+        Fields =
+        {
+            new SimpleField("Key", SearchFieldDataType.String) { IsKey = true, IsFilterable = true },
+            new SearchableField("Title") { IsFilterable = true },
+            new SimpleField("Year", SearchFieldDataType.Int32) { IsFilterable = true, IsSortable = true },
+            new SearchableField("Category") { IsFilterable = true },
+            new SearchableField("Description"),
+            new SearchField("Vector", SearchFieldDataType.Collection(SearchFieldDataType.Single))
+            {
+                IsSearchable = true,
+                VectorSearchDimensions = vectorDimensions,
+                VectorSearchProfileName = "vector-profile"
+            }
+        }
+    };
+
+    await client.CreateOrUpdateIndexAsync(index);
+}
+
 SearchIndexClient GetSearchIndexClient()
 {
     var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
@@ -81,6 +151,6 @@ SearchIndexClient GetSearchIndexClient()
     {
         client = new SearchIndexClient(new Uri(azureAISearchUri), new AzureKeyCredential(secret));
     }
-    
+
     return client;
 }
