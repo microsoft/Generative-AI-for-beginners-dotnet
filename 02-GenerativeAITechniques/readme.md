@@ -19,6 +19,17 @@ _Click the image to watch the video_
 - Function calling to extend AI with your code
 - Building middleware pipelines with caching and telemetry
 
+## Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+1. **Implement** text completions and multi-turn chat conversations using `IChatClient`
+2. **Manage** conversation history by maintaining and updating `ChatMessage` lists
+3. **Apply** streaming responses to create responsive user experiences
+4. **Create** strongly-typed structured output using C# records and enums
+5. **Extend** AI capabilities by implementing function calling with `AIFunctionFactory`
+6. **Build** production-ready middleware pipelines with caching and telemetry
+
 ---
 
 ## Lesson Structure

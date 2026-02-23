@@ -17,6 +17,16 @@ This lesson covers the ethical and practical considerations every AI developer m
 | **Transparency** | Making AI decisions explainable and understandable |
 | **Responsible Agents** | Special ethical considerations for autonomous AI systems |
 
+## Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+1. **Identify** different types of bias in AI systems and their potential impacts
+2. **Implement** content safety guardrails using Azure AI Content Safety
+3. **Design** transparent AI experiences with appropriate disclosures and explainability
+4. **Apply** safeguards for agentic systems including human-in-the-loop controls
+5. **Evaluate** AI applications using the Responsible AI checklist
+
 ---
 
 ## Why Responsible AI Matters
