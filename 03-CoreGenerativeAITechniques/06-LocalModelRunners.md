@@ -111,20 +111,9 @@ docker run -d -p 12434:8080 \
 
 The AI Toolkit for Visual Studio Code provides a way to run AI models locally on your machine. We have two examples that demonstrate how to interact with AI Toolkit models using .NET:
 
-### 1. Semantic Kernel with AI Toolkit
+### 1. ~~Semantic Kernel with AI Toolkit~~ (Deprecated)
 
-The [AIToolkit-01-SK-Chat](../samples/CoreSamples/AIToolkit-01-SK-Chat/) project shows how to use Semantic Kernel to chat with a model running via AI Toolkit for Visual Studio Code.
-
-```csharp
-// Example code demonstrating AI Toolkit for Visual Studio Code with Semantic Kernel integration
-// Configure to use a locally installed model through AI Toolkit for Visual Studio Code
-var builder = Kernel.CreateBuilder();
-builder.AddAzureOpenAIChatCompletion(
-    modelId: modelId,
-    endpoint: new Uri(endpoint),
-    apiKey: apiKey);
-var kernel = builder.Build();
-```
+> ⚠️ This sample has been moved to [`samples/deprecated/AIToolkit-01-SK-Chat`](../samples/deprecated/AIToolkit-01-SK-Chat/). See the MEAI example below instead.
 
 ### 2. Microsoft Extensions for AI with AI Toolkit
 
@@ -143,26 +132,9 @@ ChatClient client = new OpenAIClient(credential, options).GetChatClient(modelId)
 
 In this repository, we have two examples that demonstrate how to interact with Docker-based models using .NET:
 
-### 1. Semantic Kernel with Docker Models
+### 1. ~~Semantic Kernel with Docker Models~~ (Deprecated)
 
-The [DockerModels-01-SK-Chat](../samples/CoreSamples/DockerModels-01-SK-Chat/) project shows how to use Semantic Kernel to chat with a model running in Docker.
-
-```csharp
-var model = "ai/deepseek-r1-distill-llama";
-var base_url = "http://localhost:12434/engines/llama.cpp/v1";
-var api_key = "unused";
-
-// Create a chat completion service
-var builder = Kernel.CreateBuilder();
-builder.AddOpenAIChatCompletion(modelId: model, apiKey: api_key, endpoint: new Uri(base_url));
-var kernel = builder.Build();
-
-var chat = kernel.GetRequiredService<IChatCompletionService>();
-var history = new ChatHistory();
-history.AddSystemMessage("You are a useful chatbot. Always reply in a funny way with short answers.");
-
-// ... continue with chat functionality
-```
+> ⚠️ This sample has been moved to [`samples/deprecated/DockerModels-01-SK-Chat`](../samples/deprecated/DockerModels-01-SK-Chat/). See the MEAI example below instead.
 
 ### 2. Microsoft Extensions for AI with Docker Models
 
@@ -192,58 +164,9 @@ Console.WriteLine(response.Value.Content[0].Text);
 
 This repository includes two demos for Foundry Local:
 
-### 1. Semantic Kernel with Foundry Local
+### 1. ~~Semantic Kernel with Foundry Local~~ (Deprecated)
 
-The [AIFoundryLocal-01-SK-Chat](../samples/CoreSamples/AIFoundryLocal-01-SK-Chat/Program.cs) project shows how to use Semantic Kernel to chat with a model running via Foundry Local.
-
-```csharp
-#pragma warning disable SKEXP0001, SKEXP0003, SKEXP0010, SKEXP0011, SKEXP0050, SKEXP0052
-using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.ChatCompletion;
-using Microsoft.SemanticKernel.Connectors.OpenAI;
-using System.Text;
-
-var model = "Phi-3.5-mini-instruct-cuda-gpu";
-var baseUrl = "http://localhost:5273/v1";
-var apiKey = "unused";
-
-// Create a chat completion service
-var kernel = Kernel.CreateBuilder()
-    .AddOpenAIChatCompletion(modelId: model, apiKey: apiKey, endpoint: new Uri(baseUrl))
-    .Build();
-
-var chat = kernel.GetRequiredService<IChatCompletionService>();
-var history = new ChatHistory();
-history.AddSystemMessage("You are a useful chatbot. Always reply in a funny way with short answers.");
-
-var settings = new OpenAIPromptExecutionSettings
-{
-    MaxTokens = 50000,
-    Temperature = 1
-};
-
-while (true)
-{
-    Console.Write("Q: ");
-    var userQuestion = Console.ReadLine();
-    if (string.IsNullOrWhiteSpace(userQuestion))
-    {
-        break;
-    }
-    history.AddUserMessage(userQuestion);
-
-    var responseBuilder = new StringBuilder();
-    Console.Write("AI: ");
-    await foreach (var message in chat.GetStreamingChatMessageContentsAsync(history, settings, kernel))
-    {
-        responseBuilder.Append(message.Content);
-        Console.Write(message.Content);
-    }
-    Console.WriteLine();
-
-    history.AddAssistantMessage(responseBuilder.ToString());
-}
-```
+> ⚠️ This sample has been moved to [`samples/deprecated/AIFoundryLocal-01-SK-Chat`](../samples/deprecated/AIFoundryLocal-01-SK-Chat/). See the MEAI example below instead.
 
 ### 2. Microsoft Extensions for AI with Foundry Local
 

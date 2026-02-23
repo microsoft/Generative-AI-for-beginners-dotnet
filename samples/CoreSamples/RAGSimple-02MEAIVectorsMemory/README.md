@@ -49,6 +49,4 @@ The sample uses:
 
 ## Alternative Providers
 
-To use Ollama instead of GitHub Models, see:
-- [RAGSimple-01SK](../RAGSimple-01SK/) - Using Semantic Kernel with Ollama
-- [RAGSimple-10SKOllama](../RAGSimple-10SKOllama/) - Using Semantic Kernel with Ollama and enhanced console output
+To use Ollama, see the [deprecated samples](../../deprecated/) for archived Semantic Kernel RAG examples.
