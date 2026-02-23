@@ -31,6 +31,7 @@ Migration from Semantic Kernel to Microsoft.Extensions.AI (MEAI) as the standard
 ### Phase 2: Documentation Updates
 
 Updated lesson docs to reference deprecated folder:
+
 - `03-CoreGenerativeAITechniques/01-lm-completions-functions.md`
 - `03-CoreGenerativeAITechniques/02-retrieval-augmented-generation.md`
 - `03-CoreGenerativeAITechniques/readme.md`
@@ -41,6 +42,7 @@ Updated lesson docs to reference deprecated folder:
 ### Phase 3: Mixed Project SK Removal
 
 Projects that had both MEAI and SK — removed SK dependency:
+
 - BasicChat-05AIFoundryModels
 - BasicChat-11FoundryClaude
 
@@ -49,6 +51,7 @@ Projects that had both MEAI and SK — removed SK dependency:
 Aligned fragmented package versions across **74 .csproj files** with **288 version updates**:
 
 **Key Package Upgrades (rc → GA):**
+
 - `Microsoft.Extensions.AI` → 10.2.0 (from 10.0.0-rc.2)
 - `Microsoft.Extensions.AI.OpenAI` → 10.2.0-preview.1.26063.2
 - `System.Drawing.Common` → 10.0.0 GA (from rc.2)
@@ -80,7 +83,6 @@ Created `docs/changelog/` for tracking all repo changes. Oracle (Changelog Agent
 
 ## Follow-up Items
 
-- [ ] Update translation files (zh, fr, pt, es, de, ja, ko, tw) — *assigned to translation agent*
 - [x] Move 11 pure SK samples to deprecated/ — *COMPLETED (Phase 1)*
 - [x] Update lesson docs to reference deprecated SK samples — *COMPLETED (Phase 2, 6 docs)*
 - [x] Remove SK from mixed MEAI projects (BasicChat-05, BasicChat-11) — *COMPLETED (Phase 3)*
