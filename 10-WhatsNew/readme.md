@@ -54,7 +54,7 @@ We're excited to introduce a new section featuring full applications generated w
 
 ## June 2025
 
-### New: Azure OpenAI Sora Video Generation Demo
+### New Samples and Demos
 
 - **New: Foundry Local demos!**
   - Lesson 3 now features hands-on demos for [Foundry Local models](https://github.com/microsoft/Foundry-Local/tree/main).
@@ -75,13 +75,6 @@ We're excited to introduce a new section featuring full applications generated w
   - Find the sample in [Lesson 3: Core Generative AI Techniques .. /src/ImageGeneration-01.csproj](../samples/CoreSamples/ImageGeneration-01/ImageGeneration-01.csproj).
 
 - **New Scenario: Concurrent Agent Orchestration in eShopLite**: The [eShopLite repository](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent) now features a scenario demonstrating concurrent agent orchestration using Semantic Kernel. This scenario showcases how multiple agents can work in parallel to analyze user queries and provide valuable insights for future analysis.
-
-[View all previous updates in our What's New section](./10-WhatsNew/readme.md)
-[View all previous updates in our What's New section](./10-WhatsNew/readme.md)
-
-- **New Scenario: Concurrent Agent Orchestration**
-- The [eShopLite repository](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent) now features a scenario demonstrating concurrent agent orchestration using Semantic Kernel.
-- This scenario showcases how multiple agents can work in parallel to analyze user queries and provide valuable insights for future analysis.
 
 ## May 2025
 
