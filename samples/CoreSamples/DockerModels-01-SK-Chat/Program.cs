@@ -6,7 +6,7 @@ using Microsoft.SemanticKernel.Connectors.OpenAI;
 using System.Text;
 
 var model = "ai/deepseek-r1-distill-llama";
-var base_url = "http://localhost:12434/engines/llama.cpp/v1";
+var base_url = "http://localhost:12434/engines/v1";
 var api_key = "unused";
 
 // Create a chat completion service
