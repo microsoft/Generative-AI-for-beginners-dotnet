@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.VectorData;
+using Microsoft.Extensions.VectorData;
 
 namespace ChatApp20.Web.Services;
 
@@ -8,16 +8,16 @@ public class IngestedChunk
     private const string VectorDistanceFunction = DistanceFunction.CosineDistance;
 
     [VectorStoreKey]
-    public required string Key { get; set; }
+    public string Key { get; set; } = string.Empty;
 
     [VectorStoreData(IsIndexed = true)]
-    public required string DocumentId { get; set; }
+    public string DocumentId { get; set; } = string.Empty;
 
     [VectorStoreData]
     public int PageNumber { get; set; }
 
     [VectorStoreData]
-    public required string Text { get; set; }
+    public string Text { get; set; } = string.Empty;
 
     [VectorStoreVector(VectorDimensions, DistanceFunction = VectorDistanceFunction)]
     public string? Vector => Text;

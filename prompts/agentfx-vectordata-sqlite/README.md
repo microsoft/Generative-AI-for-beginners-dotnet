@@ -2,7 +2,7 @@
 
 ## Status
 
-🔴 **NOT STARTED** — The 5 AgentFx projects still use `Microsoft.SemanticKernel.Connectors.SqliteVec` and `Microsoft.SemanticKernel.Core`. These are the **last SK dependencies** in the repo.
+🟢 **DONE** — All 5 AgentFx projects now use `ElBruno.Connectors.SqliteVec` instead of `Microsoft.SemanticKernel.Connectors.SqliteVec` and `Microsoft.SemanticKernel.Core`.
 
 ## Goal
 

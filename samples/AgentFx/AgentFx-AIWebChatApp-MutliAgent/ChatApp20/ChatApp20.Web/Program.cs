@@ -1,6 +1,7 @@
 using ChatApp20.Web.Components;
 using ChatApp20.Web.Services;
 using ChatApp20.Web.Services.Ingestion;
+using ElBruno.Connectors.SqliteVec;
 using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.DevUI;
 using Microsoft.Agents.AI.Hosting;
@@ -46,7 +47,7 @@ builder.AddAIAgent("ResearchAgent", (sp, key) =>
 {
     var chatClient = sp.GetRequiredService<IChatClient>();
     var searchFunctions = sp.GetRequiredService<SearchFunctions>();
-    
+
     return chatClient.CreateAIAgent(
         name: "ResearchAgent",
         instructions: @"You are a research specialist. Find and summarize information from documents.
@@ -70,7 +71,7 @@ builder.AddAIAgent("ResearchAgent", (sp, key) =>
 builder.AddAIAgent("WritingAgent", (sp, key) =>
 {
     var chatClient = sp.GetRequiredService<IChatClient>();
-    
+
     return chatClient.CreateAIAgent(
         name: "WritingAgent",
         instructions: @"You are a writing specialist. Take information and create well-structured, engaging content.
@@ -91,7 +92,7 @@ builder.AddAIAgent("CoordinatorAgent", (sp, key) =>
     var chatClient = sp.GetRequiredService<IChatClient>();
     var researchAgent = sp.GetRequiredKeyedService<AIAgent>("ResearchAgent");
     var writingAgent = sp.GetRequiredKeyedService<AIAgent>("WritingAgent");
-    
+
     // Create functions that delegate to other agents
     async Task<string> ResearchAsync(string topic)
     {
@@ -99,14 +100,14 @@ builder.AddAIAgent("CoordinatorAgent", (sp, key) =>
         var result = await researchAgent.RunAsync(messages);
         return result.Text ?? "";
     }
-    
+
     async Task<string> WriteAsync(string content)
     {
         var messages = new[] { new ChatMessage(ChatRole.User, $"Write an article based on: {content}") };
         var result = await writingAgent.RunAsync(messages);
         return result.Text ?? "";
     }
-    
+
     return chatClient.CreateAIAgent(
         name: "CoordinatorAgent",
         instructions: @"You coordinate research and writing to create comprehensive articles.
@@ -153,8 +154,8 @@ openai.AddEmbeddingGenerator("text-embedding-3-small");
 
 var vectorStorePath = Path.Combine(AppContext.BaseDirectory, "vector-store.db");
 var vectorStoreConnectionString = $"Data Source={vectorStorePath}";
-builder.Services.AddSqliteCollection<string, IngestedChunk>("data-chatapp20-chunks", vectorStoreConnectionString);
-builder.Services.AddSqliteCollection<string, IngestedDocument>("data-chatapp20-documents", vectorStoreConnectionString);
+builder.Services.AddSqliteVecCollection<string, IngestedChunk>("data-chatapp20-chunks", vectorStoreConnectionString);
+builder.Services.AddSqliteVecCollection<string, IngestedDocument>("data-chatapp20-documents", vectorStoreConnectionString);
 builder.Services.AddScoped<DataIngestor>();
 builder.Services.AddSingleton<SemanticSearch>();
 

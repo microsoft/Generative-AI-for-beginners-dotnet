@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.VectorData;
+using Microsoft.Extensions.VectorData;
 
 namespace AgentFx_AIWebChatApp_AG_UI.Web.Services;
 
@@ -8,16 +8,16 @@ public class IngestedDocument
     private const string VectorDistanceFunction = DistanceFunction.CosineDistance;
 
     [VectorStoreKey]
-    public required string Key { get; set; }
+    public string Key { get; set; } = string.Empty;
 
     [VectorStoreData(IsIndexed = true)]
-    public required string SourceId { get; set; }
+    public string SourceId { get; set; } = string.Empty;
 
     [VectorStoreData]
-    public required string DocumentId { get; set; }
+    public string DocumentId { get; set; } = string.Empty;
 
     [VectorStoreData]
-    public required string DocumentVersion { get; set; }
+    public string DocumentVersion { get; set; } = string.Empty;
 
     // The vector is not used but required for some vector databases
     [VectorStoreVector(VectorDimensions, DistanceFunction = VectorDistanceFunction)]
