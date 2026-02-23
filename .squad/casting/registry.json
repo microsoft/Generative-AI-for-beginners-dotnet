@@ -1,0 +1,61 @@
+{
+  "universe": "the-matrix",
+  "agents": [
+    {
+      "persistent_name": "Morpheus",
+      "role": "Lead",
+      "universe": "the-matrix",
+      "created_at": "2026-02-23T17:37:00Z",
+      "legacy_named": false,
+      "status": "active"
+    },
+    {
+      "persistent_name": "Neo",
+      "role": ".NET Dev",
+      "universe": "the-matrix",
+      "created_at": "2026-02-23T17:37:00Z",
+      "legacy_named": false,
+      "status": "active"
+    },
+    {
+      "persistent_name": "Trinity",
+      "role": "Content Dev",
+      "universe": "the-matrix",
+      "created_at": "2026-02-23T17:37:00Z",
+      "legacy_named": false,
+      "status": "active"
+    },
+    {
+      "persistent_name": "Tank",
+      "role": "Tester",
+      "universe": "the-matrix",
+      "created_at": "2026-02-23T17:37:00Z",
+      "legacy_named": false,
+      "status": "active"
+    },
+    {
+      "persistent_name": "Oracle",
+      "role": "Changelog Analyst",
+      "universe": "the-matrix",
+      "created_at": "2026-02-23T17:37:00Z",
+      "legacy_named": false,
+      "status": "active"
+    },
+    {
+      "persistent_name": "Dozer",
+      "role": "Upgrade Engineer",
+      "universe": "the-matrix",
+      "created_at": "2026-02-23T17:41:00Z",
+      "legacy_named": false,
+      "status": "active"
+    },
+    {
+      "persistent_name": "Niobe",
+      "role": "Education Strategist",
+      "universe": "the-matrix",
+      "created_at": "2026-02-23T17:44:00Z",
+      "legacy_named": false,
+      "status": "active"
+    }
+  ]
+}
