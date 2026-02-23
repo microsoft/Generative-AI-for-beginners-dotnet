@@ -1,0 +1,3 @@
+# Squad Decisions
+
+## Active Decisions

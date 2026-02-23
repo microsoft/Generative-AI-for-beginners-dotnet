@@ -1,0 +1,10 @@
+{
+  "assignments": [
+    {
+      "assignment_id": "init-2026-02-23",
+      "universe": "the-matrix",
+      "created_at": "2026-02-23T17:37:00Z",
+      "agents": ["Morpheus", "Neo", "Trinity", "Tank", "Oracle"]
+    }
+  ]
+}
