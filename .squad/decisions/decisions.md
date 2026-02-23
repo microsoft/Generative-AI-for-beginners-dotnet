@@ -28,6 +28,40 @@ Investigated replacing all Semantic Kernel connector NuGet packages with MEAI (M
 
 ---
 
+## Decision: NuGet Package Upgrades (Round 2)
+
+**Author:** Dozer  
+**Date:** 2025-07-18
+
+### Packages Upgraded
+
+| Package | Old Version | New Version | Files Updated |
+|---------|------------|-------------|---------------|
+| Microsoft.Extensions.AI | 10.2.0 | 10.3.0 | 41 |
+| Microsoft.Extensions.AI.OpenAI | 10.2.0-preview.1.26063.2 | 10.3.0 | 29 |
+| Microsoft.Extensions.Configuration | 10.0.1 | 10.0.3 | 9 |
+| Microsoft.Extensions.Configuration.Json | 10.0.1 | 10.0.3 | 7 |
+| Microsoft.Extensions.Configuration.UserSecrets | 10.0.1 | 10.0.3 | 49 |
+
+**Total:** 79 files changed across 5 packages.
+
+### Packages Left Unchanged (by design)
+
+- **Microsoft.Extensions.AI.AzureAIInference** (10.0.0-preview.1.25559.3) — no GA version available
+- **Microsoft.SemanticKernel.Connectors.InMemory** (1.66.0-preview) — SK package in RAGSimple, left as-is per constraints
+- **Microsoft.Extensions.VectorData.Abstractions** (9.7.0 → 10.0.0 available) — major version bump in RAGSimple project, left as-is per constraints
+- **Microsoft.Agents.AI / Microsoft.Agents.AI.OpenAI** (preview) — no GA available
+
+### Notable
+
+- Microsoft.Extensions.AI.OpenAI moved from preview to GA (10.3.0) — a significant improvement.
+
+### Build Verification
+
+All 5 representative projects built successfully with 0 errors.
+
+---
+
 ## PR #491 Review Cycle: SK Deprecation & NuGet Upgrades
 
 **Status:** ✅ FIXES APPLIED (All blockers resolved)
