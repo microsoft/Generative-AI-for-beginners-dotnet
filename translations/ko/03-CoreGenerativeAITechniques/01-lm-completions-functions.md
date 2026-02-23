@@ -100,7 +100,7 @@ while (true)
 
 ```
 
-> 🗒️**참고:** 이는 Semantic Kernel로도 가능합니다. [코드를 여기서 확인하세요](../../../03-CoreGenerativeAITechniques/src/BasicChat-02SK).
+> 🗒️**참고:** 레거시 Semantic Kernel 샘플의 경우 [더 이상 사용되지 않는 샘플](../../../samples/deprecated/) 폴더를 참조하세요.
 
 > 🙋 **도움이 필요하신가요?**: 문제가 발생하면 [저장소에 이슈를 열어주세요](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new).
 

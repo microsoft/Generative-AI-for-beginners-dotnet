@@ -37,7 +37,7 @@ RAG アーキテクチャには主に2つのフェーズがあります: **検�
 
 > 🧑‍💻**サンプルコード:** [こちらのサンプルコード](../../../03-CoreGenerativeAITechniques/src/RAGSimple-02MEAIVectorsMemory) を参考にしてください。
 > 
-> また、[Semantic Kernel を使用した RAG アプリの実装例はこちら](../../../03-CoreGenerativeAITechniques/src/RAGSimple-01SK) にあります。
+> アーカイブされた Semantic Kernel RAG サンプルについては、[廃止予定のサンプル](../../../samples/deprecated/)フォルダーを参照してください。
 
 ### 知識ストアの準備
 

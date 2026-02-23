@@ -89,6 +89,7 @@ Created `docs/changelog/` for tracking all repo changes. Oracle (Changelog Agent
 - [x] Align NuGet packages across 74 files — *COMPLETED (Phase 4, 288 version updates)*
 - [x] Create docs/changelog/ structure and archive — *COMPLETED (Phase 5)*
 - [x] Update Oracle charter — *COMPLETED (Phase 5)*
-- [ ] Replace SK connectors in RAGSimple-02/03/04 with MEAI VectorData — *in progress by Neo*
-- [ ] Replace SK SqliteVec in AgentFx projects with MEAI VectorData — *in progress by Neo*
-- [ ] Upgrade remaining NuGet packages to latest versions — *identified during alignment, to be scheduled*
+- [ ] Replace SK connectors in RAGSimple-02/03/04 with MEAI VectorData — *DEFERRED: No MEAI-native replacements exist yet (Feb 2026). TODO comments added to all projects. Will revisit when Microsoft.Extensions.VectorData packages ship.*
+- [ ] Replace SK SqliteVec in AgentFx projects with MEAI VectorData — *DEFERRED: Same as above. SK packages retained with TODO comments.*
+- [ ] Update translation files (zh, fr, pt, es, de, ja, ko, tw) — *in progress by Trinity*
+- [ ] Upgrade remaining NuGet packages to latest versions — *in progress by Dozer*
