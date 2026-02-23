@@ -1,6 +1,6 @@
 # Semantic Kernel Deprecation & NuGet Package Upgrades
 
-**Date:** 2025  
+**Date:** 2029-02-23
 **Branch:** `dozer/sk-deprecation-nuget-upgrades`  
 **Agent:** Dozer (Upgrade Engineer)
 
