@@ -37,7 +37,7 @@ Usaremos o Microsoft.Extension.AI junto com as bibliotecas [Microsoft.Extensions
 
 > 🧑‍💻**Código de exemplo:** Você pode acompanhar com o [código de exemplo aqui](../../../03-CoreGenerativeAITechniques/src/RAGSimple-02MEAIVectorsMemory).
 > 
-> Também é possível ver como implementar um app RAG [usando apenas o Semantic Kernel em nosso código de exemplo aqui](../../../03-CoreGenerativeAITechniques/src/RAGSimple-01SK).
+> Para exemplos archivados do Semantic Kernel RAG, consulte a pasta de [exemplos descontinuados](../../../samples/deprecated/).
 
 ### Populando o repositório de conhecimento
 

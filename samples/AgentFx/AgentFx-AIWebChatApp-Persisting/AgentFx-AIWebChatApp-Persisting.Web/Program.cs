@@ -1,6 +1,7 @@
 using AgentFx_AIWebChatApp_Persisting.Web.Components;
 using AgentFx_AIWebChatApp_Persisting.Web.Services;
 using AgentFx_AIWebChatApp_Persisting.Web.Services.Ingestion;
+using ElBruno.Connectors.SqliteVec;
 using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.Hosting;
 using Microsoft.Extensions.AI;
@@ -34,8 +35,8 @@ openai.AddEmbeddingGenerator("text-embedding-3-small");
 // Register vector storage & ingestion services
 var vectorStorePath = Path.Combine(AppContext.BaseDirectory, "vector-store.db");
 var vectorStoreConnectionString = $"Data Source={vectorStorePath}";
-builder.Services.AddSqliteCollection<string, IngestedChunk>("data-chatapp21-chunks", vectorStoreConnectionString);
-builder.Services.AddSqliteCollection<string, IngestedDocument>("data-chatapp21-documents", vectorStoreConnectionString);
+builder.Services.AddSqliteVecCollection<string, IngestedChunk>("data-chatapp21-chunks", vectorStoreConnectionString);
+builder.Services.AddSqliteVecCollection<string, IngestedDocument>("data-chatapp21-documents", vectorStoreConnectionString);
 builder.Services.AddScoped<DataIngestor>();
 builder.Services.AddSingleton<SemanticSearch>();
 

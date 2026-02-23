@@ -1,6 +1,7 @@
 using ChatApp20.Web.Components;
 using ChatApp20.Web.Services;
 using ChatApp20.Web.Services.Ingestion;
+using ElBruno.Connectors.SqliteVec;
 using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.Hosting;
 using Microsoft.Extensions.AI;
@@ -34,7 +35,7 @@ builder.AddAIAgent("ChatAgent", (sp, key) =>
         tools: [AIFunctionFactory.Create(searchFunctions.SearchAsync)]
         )
     .AsBuilder()
-    .Use((agent, context, next, cancellationToken) => 
+    .Use((agent, context, next, cancellationToken) =>
         CustomFunctionCallingMiddleware(agent, context, next, cancellationToken, sp.GetRequiredService<ILogger<Program>>()))
     .UseOpenTelemetry(configure: c =>
         c.EnableSensitiveData = builder.Environment.IsDevelopment())
@@ -46,13 +47,13 @@ openai.AddEmbeddingGenerator("text-embedding-3-small");
 
 var vectorStorePath = Path.Combine(AppContext.BaseDirectory, "vector-store.db");
 var vectorStoreConnectionString = $"Data Source={vectorStorePath}";
-builder.Services.AddSqliteCollection<string, IngestedChunk>("data-chatapp20-chunks", vectorStoreConnectionString);
-builder.Services.AddSqliteCollection<string, IngestedDocument>("data-chatapp20-documents", vectorStoreConnectionString);
+builder.Services.AddSqliteVecCollection<string, IngestedChunk>("data-chatapp20-chunks", vectorStoreConnectionString);
+builder.Services.AddSqliteVecCollection<string, IngestedDocument>("data-chatapp20-documents", vectorStoreConnectionString);
 builder.Services.AddScoped<DataIngestor>();
 builder.Services.AddSingleton<SemanticSearch>();
 
 // Added DI registration for SearchFunctions to expose AI callable search tool via injected SemanticSearch
-builder.Services.AddSingleton<SearchFunctions>(); 
+builder.Services.AddSingleton<SearchFunctions>();
 
 var app = builder.Build();
 

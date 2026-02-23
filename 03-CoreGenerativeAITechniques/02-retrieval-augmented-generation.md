@@ -56,10 +56,8 @@ using Microsoft.SemanticKernel.Connectors.InMemory;
 > - [RAGSimple-03MEAIVectorsAISearch](../samples/CoreSamples/RAGSimple-03MEAIVectorsAISearch/) - Using Azure AI Search as a vector store
 > - [RAGSimple-04MEAIVectorsQdrant](../samples/CoreSamples/RAGSimple-04MEAIVectorsQdrant/) - Using Qdrant as a vector store
 >
-> **Using Ollama (local models):**
-> - [RAGSimple-01SK](../samples/CoreSamples/RAGSimple-01SK/) - Using Semantic Kernel with Ollama
-> - [RAGSimple-10SKOllama](../samples/CoreSamples/RAGSimple-10SKOllama/) - Using Semantic Kernel with Ollama and enhanced console output
-> - [RAGSimple-15Ollama-DeepSeekR1](../samples/CoreSamples/RAGSimple-15Ollama-DeepSeekR1/) - Using Ollama with DeepSeek-R1 model
+> **Archived Semantic Kernel RAG Samples (including Ollama):**
+> - See the [deprecated samples](../samples/deprecated/) folder for archived Semantic Kernel RAG examples
 
 ### Populating the knowledge store
 

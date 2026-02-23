@@ -35,14 +35,15 @@ For this lesson, we will subdivide the content into the following sections:
 
 All code samples for this lesson are located in the **[`samples/CoreSamples/`](../samples/CoreSamples/)** directory. This includes:
 
-- **Chat & Completions**: `BasicChat-01MEAI`, `BasicChat-02SK`, `BasicChat-03Ollama`, etc.
+- **Chat & Completions**: `BasicChat-01MEAI`, `BasicChat-03Ollama`, `BasicChat-05AIFoundryModels`, etc.
 - **Function Calling**: `MEAIFunctions`, `MEAIFunctionsAzureOpenAI`, `MEAIFunctionsOllama`
-- **RAG Examples**: `RAGSimple-01SK`, `RAGSimple-02MEAIVectorsMemory`, `RAGSimple-03MEAIVectorsAISearch`, etc.
+- **RAG Examples**: `RAGSimple-02MEAIVectorsMemory`, `RAGSimple-03MEAIVectorsAISearch`, etc.
 - **Vision & Audio**: `Vision-01MEAI-GitHubModels`, `Audio-01-SpeechMic`, `Audio-02-RealTimeAudio`
 - **Agents**: `AgentLabs-01-Simple`, `AgentLabs-02-Functions`, `AgentLabs-03-OpenAPIs`
 - **Image Generation**: `ImageGeneration-01`
 - **Video Generation**: `VideoGeneration-AzureSora-01`, `VideoGeneration-AzureSoraSDK-02`
-- **Local Model Runners**: `AIToolkit-01-SK-Chat`, `DockerModels-01-SK-Chat`, `AIFoundryLocal-01-MEAI-Chat`
+- **Local Model Runners**: `DockerModels-02-MEAI-Chat`, `AIFoundryLocal-01-MEAI-Chat`
+- **Deprecated (SK)**: See [`samples/deprecated/`](../samples/deprecated/) for archived Semantic Kernel samples
 
 Each lesson document links directly to the relevant samples in this centralized location.
 

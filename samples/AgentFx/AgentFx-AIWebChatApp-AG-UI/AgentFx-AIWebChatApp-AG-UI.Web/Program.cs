@@ -1,6 +1,7 @@
 using AgentFx_AIWebChatApp_AG_UI.Web.Components;
 using AgentFx_AIWebChatApp_AG_UI.Web.Services;
 using AgentFx_AIWebChatApp_AG_UI.Web.Services.Ingestion;
+using ElBruno.Connectors.SqliteVec;
 using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.AGUI;
 using Microsoft.Agents.AI.Hosting;
@@ -57,8 +58,8 @@ builder.Services.AddActivatedKeyedSingleton<AIAgent>("ChatAgent", (sp, key) =>
 
 var vectorStorePath = Path.Combine(AppContext.BaseDirectory, "vector-store.db");
 var vectorStoreConnectionString = $"Data Source={vectorStorePath}";
-builder.Services.AddSqliteCollection<string, IngestedChunk>("data-agentfx-aiwebchatapp-ag-ui-chunks", vectorStoreConnectionString);
-builder.Services.AddSqliteCollection<string, IngestedDocument>("data-agentfx-aiwebchatapp-ag-ui-documents", vectorStoreConnectionString);
+builder.Services.AddSqliteVecCollection<string, IngestedChunk>("data-agentfx-aiwebchatapp-ag-ui-chunks", vectorStoreConnectionString);
+builder.Services.AddSqliteVecCollection<string, IngestedDocument>("data-agentfx-aiwebchatapp-ag-ui-documents", vectorStoreConnectionString);
 builder.Services.AddScoped<DataIngestor>();
 builder.Services.AddSingleton<SemanticSearch>();
 

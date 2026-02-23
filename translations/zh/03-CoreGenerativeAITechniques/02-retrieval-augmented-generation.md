@@ -37,7 +37,7 @@ RAG 架构主要分为两个阶段：**检索** 和 **生成**。
 
 > 🧑‍💻**示例代码**：您可以在[这里的示例代码](../../../03-CoreGenerativeAITechniques/src/RAGSimple-02MEAIVectorsMemory)中跟随学习。
 > 
-> 您还可以查看[仅使用 Semantic Kernel 实现 RAG 应用的示例代码](../../../03-CoreGenerativeAITechniques/src/RAGSimple-01SK)。
+> 有关归档的 Semantic Kernel RAG 示例，请参阅[已弃用的示例](../../../samples/deprecated/)文件夹。
 
 ### 填充知识库
 

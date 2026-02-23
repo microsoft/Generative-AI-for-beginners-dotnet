@@ -1,4 +1,4 @@
-﻿using Microsoft.SemanticKernel.Text;
+﻿using ElBruno.Connectors.SqliteVec;
 using UglyToad.PdfPig;
 using UglyToad.PdfPig.Content;
 using UglyToad.PdfPig.DocumentLayoutAnalysis.PageSegmenter;
@@ -63,9 +63,7 @@ public class PDFDirectorySource(string sourceDirectory) : IIngestionSource
         var pageText = string.Join(Environment.NewLine + Environment.NewLine,
             textBlocks.Select(t => t.Text.ReplaceLineEndings(" ")));
 
-#pragma warning disable SKEXP0050 // Type is for evaluation purposes only
-        return TextChunker.SplitPlainTextParagraphs([pageText], 200)
+        return TextSplitter.SplitParagraphs([pageText], 200)
             .Select((text, index) => (pdfPage.Number, index, text));
-#pragma warning restore SKEXP0050 // Type is for evaluation purposes only
     }
 }

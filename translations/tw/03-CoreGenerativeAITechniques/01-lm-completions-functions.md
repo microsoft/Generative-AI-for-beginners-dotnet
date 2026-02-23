@@ -100,7 +100,7 @@ while (true)
 
 ```
 
-> 🗒️**注意：** 這也可以使用 Semantic Kernel 實現。[在這裡查看程式碼](../../../03-CoreGenerativeAITechniques/src/BasicChat-02SK)。
+> 🗒️**注意：** 對於舊版 Semantic Kernel 範例，請參閱[已棄用的範例](../../../samples/deprecated/)資料夾。
 
 > 🙋 **需要幫助？**：如果遇到問題，[在倉庫中提交一個 issue](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new)。
 

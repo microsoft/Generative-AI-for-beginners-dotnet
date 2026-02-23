@@ -77,7 +77,7 @@ Console.WriteLine(response.Text);
 >
 > **GitHub Models Endpoint:** The endpoint `https://models.github.ai/inference` is the new dedicated GitHub Models endpoint as announced in the [GitHub Models deprecation notice](https://github.blog/changelog/2025-07-17-deprecation-of-azure-endpoint-for-github-models/), replacing the previous Azure-based endpoint.
 >
-> If you want to use both Ollama and Semantic Kernel together, [check out the BasicChat-04OllamaSK example](../samples/CoreSamples/BasicChat-04OllamaSK/).
+> If you want to use Ollama with MEAI, [check out the BasicChat-03Ollama example](../samples/CoreSamples/BasicChat-03Ollama/).
 >
 > For instructions on how to set up Ollama, refer to [Getting Started with Ollama](../02-SetupDevEnvironment/getting-started-ollama.md).
 
@@ -101,7 +101,7 @@ During the chat with the model, you will need to keep track of the chat history.
 
 Let's take a look at how you would build a chat application using MEAI.
 
-> 🧑‍💻**Sample code**: You can find complete chat application examples in the [BasicChat-01MEAI](../samples/CoreSamples/BasicChat-01MEAI/) and [BasicChat-02SK](../samples/CoreSamples/BasicChat-02SK/) directories.
+> 🧑‍💻**Sample code**: You can find a complete chat application example in the [BasicChat-01MEAI](../samples/CoreSamples/BasicChat-01MEAI/) directory.
 
 ```csharp
 // assume IChatClient is instantiated as before
@@ -133,7 +133,7 @@ while (true)
 }
 ```
 
-> 🗒️**Note:** This can also be done with Semantic Kernel. [Check out the code here](../samples/CoreSamples/BasicChat-02SK/).
+> 🗒️**Note:** For legacy Semantic Kernel examples, see the [deprecated samples](../samples/deprecated/) folder.
 
 > 🙋 **Need help?**: If you encounter any issues running the chat application examples, [open an issue in the repository](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new?template=Blank+issue) and we'll help you troubleshoot.
 
