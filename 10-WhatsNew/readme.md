@@ -22,6 +22,24 @@ We've completed a major architectural upgrade to standardize on **Microsoft.Exte
 
 [View detailed changelog →](../docs/changelog/2025-sk-deprecation-nuget-upgrades.md)
 
+### **🔧 Repository Health & New Samples**
+
+Alongside the MEAI migration, we've made significant improvements to repository health, build stability, and added new samples:
+
+**Connector & Build Improvements:**
+- **ElBruno.Connectors.SqliteVec Migration**: 5 AgentFx web chat projects updated to use `ElBruno.Connectors.SqliteVec` v0.5.1-preview with simplified APIs (`AddSqliteVecCollection`, `TextSplitter`)
+- **5 Build Fixes Resolved**: Fixed MEAI.Abstractions versioning, System.ClientModel compatibility, AspNetCore.OpenApi downgrade for net9.0, and overload disambiguation across AgentFx and HFMCP projects
+- **Aspire Upgrade**: McpSample AppHost and ServiceDefaults upgraded from 9.5.2 → 13.1.1
+- **116 NuGet Upgrades**: Batch minor/patch updates across 42 projects (OllamaSharp, Spectre.Console, OpenTelemetry, Microsoft.Extensions.Hosting, Qdrant.Client, etc.)
+- **TFM Upgrades**: 5 remaining net8.0 projects upgraded to net9.0 (Vision, Audio, VideoGeneration samples). **Zero net8.0 remains.**
+- **Code Quality**: HttpClient disposal fixes in video generation, stale .NET 8 docs reference cleaned up
+
+**New Sample:**
+- **[CoreSamples-StructuredOutput](../samples/CoreSamples/CoreSamples-StructuredOutput/)**: New sample demonstrating JSON structured output with schema validation using MEAI's `ChatResponseFormat.ForJsonSchema` for type-safe AI responses
+
+**Deprecation Clarity:**
+- **8 Deprecated SK Samples Marked**: Clear ⚠️ DEPRECATED indicators added to [03-CoreGenerativeAITechniques/docs/projects.md](../03-CoreGenerativeAITechniques/docs/projects.md)
+
 ## January 2026
 
 ### **🆕 New! Basic Chat App for OpenAI gpt-oss Model**
