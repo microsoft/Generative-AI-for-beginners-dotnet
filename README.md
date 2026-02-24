@@ -32,7 +32,13 @@ Don't forget to [star (🌟) this repo](https://docs.github.com/en/get-started/e
 
 We're constantly improving this course with the latest AI tools, models, and practical samples:
 
-- **🤖 NEW! Claude Models with Agent Framework**
+- **🚀 Microsoft Agent Framework Reaches Release Candidate!**
+
+  [Microsoft Agent Framework](https://devblogs.microsoft.com/foundry/microsoft-agent-framework-reaches-release-candidate/) has reached **Release Candidate** (`1.0.0-rc1`) — the successor to Semantic Kernel for building agents and multi-agent systems in .NET. Our samples are being migrated to the RC APIs. In the meantime, explore 25+ Agent Framework samples covering console apps, web chat, multi-agent workflows, and Foundry integration.
+
+  👉 [Explore the Agent Framework Samples](./06-AgentFx/)
+
+- **🤖 Claude Models with Agent Framework**
 
   Integrate **Claude models** from Microsoft Foundry with Microsoft Agent Framework! Three comprehensive samples demonstrate:
   - Basic console chat with Claude using `ChatClientAgent`
@@ -46,26 +52,6 @@ We're constantly improving this course with the latest AI tools, models, and pra
   Plus a foundational Claude integration sample:
   
   👉 [BasicChat with Claude via Microsoft Foundry](./samples/CoreSamples/BasicChat-11FoundryClaude/)
-
-- **🌐 AG-UI Integration Sample**
-
-  Check out our new Agent Framework sample demonstrating **AG-UI** (Agent Gateway User Interface) - the distributed agent architecture pattern! This sample shows how to:
-  - Separate AI agent backend from Blazor frontend for better scalability
-  - Use `AGUIChatClient` to communicate with remote agents over HTTP
-  - Implement RAG with semantic search and PDF document ingestion
-  - Orchestrate distributed applications with .NET Aspire
-  
-  👉 [Explore the AG-UI Sample](./samples/AgentFx/AgentFx-AIWebChatApp-AG-UI/README.md)
-
-- **🤖 Microsoft Agent Framework (AgentFx) Lesson**
-
-  We've added a comprehensive new lesson on the Microsoft Agent Framework - the next evolution in .NET AI development! Learn how to:
-  - Build orchestrated AI agent systems with specialized roles
-  - Create multi-model workflows combining GitHub Models, Microsoft Foundry, and Ollama
-  - Integrate with Model Context Protocol (MCP) for enhanced capabilities
-  - Design sequential and concurrent agent workflows for complex tasks
-  
-  👉 [Explore Lesson 06: Microsoft Agent Framework](./06-AgentFx/readme.md)
 
 [View all previous updates in our What's New archive](./10-WhatsNew/readme.md)
 

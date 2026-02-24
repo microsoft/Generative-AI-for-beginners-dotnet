@@ -4,6 +4,20 @@ This page tracks the history of new features, tools, and models added to the cou
 
 ## February 2026
 
+### **🚀 Microsoft Agent Framework — Release Candidate Announced**
+
+[Microsoft Agent Framework](https://devblogs.microsoft.com/foundry/microsoft-agent-framework-reaches-release-candidate/) has reached **Release Candidate** (`1.0.0-rc1`). This milestone means the API surface is stable and all 1.0 features are complete. The framework is the successor to Semantic Kernel, providing a unified programming model for building agents and multi-agent systems across .NET and Python.
+
+**Current Status:**
+- Our **25+ Agent Framework samples** currently use `1.0.0-preview` packages and are fully functional
+- The RC introduces new APIs (e.g., `AsAIAgent` on `ResponsesClient`) — sample migration is in progress
+- Read the [announcement blog post](https://devblogs.microsoft.com/foundry/microsoft-agent-framework-reaches-release-candidate/) for details on what's new
+
+**For Learners:**
+- All existing samples work with the current preview packages — start learning now
+- The framework supports Microsoft Foundry, Azure OpenAI, OpenAI, Claude, Ollama, and more
+- Key features: function tools, graph-based workflows (sequential, concurrent, handoff, group chat), streaming, and human-in-the-loop
+
 ### **🔄 Architecture Update: Migration from Semantic Kernel to Microsoft.Extensions.AI (MEAI)**
 
 We've completed a major architectural upgrade to standardize on **Microsoft.Extensions.AI (MEAI)** as our primary AI abstraction layer. This migration ensures better alignment with .NET's modern AI ecosystem and improves long-term maintainability.
