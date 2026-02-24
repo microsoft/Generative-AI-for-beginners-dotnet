@@ -4,6 +4,20 @@ This page tracks the history of new features, tools, and models added to the cou
 
 ## February 2026
 
+### **🚀 Microsoft Agent Framework — Release Candidate Announced**
+
+[Microsoft Agent Framework](https://devblogs.microsoft.com/foundry/microsoft-agent-framework-reaches-release-candidate/) has reached **Release Candidate** (`1.0.0-rc1`). This milestone means the API surface is stable and all 1.0 features are complete. The framework is the successor to Semantic Kernel, providing a unified programming model for building agents and multi-agent systems across .NET and Python.
+
+**Current Status:**
+- Our **25+ Agent Framework samples** currently use `1.0.0-preview` packages and are fully functional
+- The RC introduces new APIs (e.g., `AsAIAgent` on `ResponsesClient`) — sample migration is in progress
+- Read the [announcement blog post](https://devblogs.microsoft.com/foundry/microsoft-agent-framework-reaches-release-candidate/) for details on what's new
+
+**For Learners:**
+- All existing samples work with the current preview packages — start learning now
+- The framework supports Microsoft Foundry, Azure OpenAI, OpenAI, Claude, Ollama, and more
+- Key features: function tools, graph-based workflows (sequential, concurrent, handoff, group chat), streaming, and human-in-the-loop
+
 ### **🔄 Architecture Update: Migration from Semantic Kernel to Microsoft.Extensions.AI (MEAI)**
 
 We've completed a major architectural upgrade to standardize on **Microsoft.Extensions.AI (MEAI)** as our primary AI abstraction layer. This migration ensures better alignment with .NET's modern AI ecosystem and improves long-term maintainability.
@@ -21,6 +35,24 @@ We've completed a major architectural upgrade to standardize on **Microsoft.Exte
 - Lesson 02 (Setup) and Lesson 03 (Core Techniques) have been updated with current best practices
 
 [View detailed changelog →](../docs/changelog/2025-sk-deprecation-nuget-upgrades.md)
+
+### **🔧 Repository Health & New Samples**
+
+Alongside the MEAI migration, we've made significant improvements to repository health, build stability, and added new samples:
+
+**Connector & Build Improvements:**
+- **ElBruno.Connectors.SqliteVec Migration**: 5 AgentFx web chat projects updated to use `ElBruno.Connectors.SqliteVec` v0.5.1-preview with simplified APIs (`AddSqliteVecCollection`, `TextSplitter`)
+- **5 Build Fixes Resolved**: Fixed MEAI.Abstractions versioning, System.ClientModel compatibility, AspNetCore.OpenApi downgrade for net9.0, and overload disambiguation across AgentFx and HFMCP projects
+- **Aspire Upgrade**: McpSample AppHost and ServiceDefaults upgraded from 9.5.2 → 13.1.1
+- **116 NuGet Upgrades**: Batch minor/patch updates across 42 projects (OllamaSharp, Spectre.Console, OpenTelemetry, Microsoft.Extensions.Hosting, Qdrant.Client, etc.)
+- **TFM Upgrades**: 5 remaining net8.0 projects upgraded to net9.0 (Vision, Audio, VideoGeneration samples). **Zero net8.0 remains.**
+- **Code Quality**: HttpClient disposal fixes in video generation, stale .NET 8 docs reference cleaned up
+
+**New Sample:**
+- **[CoreSamples-StructuredOutput](../samples/CoreSamples/CoreSamples-StructuredOutput/)**: New sample demonstrating JSON structured output with schema validation using MEAI's `ChatResponseFormat.ForJsonSchema` for type-safe AI responses
+
+**Deprecation Clarity:**
+- **8 Deprecated SK Samples Marked**: Clear ⚠️ DEPRECATED indicators added to [03-CoreGenerativeAITechniques/docs/projects.md](../03-CoreGenerativeAITechniques/docs/projects.md)
 
 ## January 2026
 
