@@ -4,7 +4,7 @@ In this lesson, you'll learn the fundamentals of interacting with AI models in .
 
 ---
 
-[![Text Completions and Chat](./images/LIM_GAN_03_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson2-chat)
+[![Text Completions and Chat](./images/LIM_GAN_03_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson3-chat)
 
 _Click the image to watch the video_
 

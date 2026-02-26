@@ -4,12 +4,6 @@ In this lesson you'll learn practical skills for building AI-enabled .NET applic
 
 ---
 
-[![Generative AI Techniques](./images/LIM_GAN_03_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson2-techniques)
-
-_Click the image to watch the video_
-
----
-
 ## What You'll Learn
 
 - Text completions and chat conversations
