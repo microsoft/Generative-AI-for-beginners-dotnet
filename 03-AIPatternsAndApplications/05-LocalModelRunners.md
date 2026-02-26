@@ -1,46 +1,33 @@
-# Running AI Models Locally: AI Toolkit, Docker, and Foundry Local
+# Local Model Runners
 
-## Table of Contents
+In this lesson, you'll learn how to run AI models locally using three popular approaches, and how to integrate them with your .NET applications.
 
-- [Introduction](#running-ai-models-locally-ai-toolkit-docker-and-foundry-local)
-- [AI Toolkit for Visual Studio Code](#ai-toolkit-for-visual-studio-code)
-  - [Key Features](#key-features)
-  - [Getting Started](#getting-started)
-- [Docker Model Runner](#docker-model-runner)
-  - [Key Features - Docker Model Runner](#key-features---docker-model-runner)
-  - [Getting Started - Docker Model Runner](#getting-started---docker-model-runner)
-- [Foundry Local](#foundry-local)
-  - [Key Features - Foundry Local](#key-features---foundry-local)
-  - [Getting Started - Foundry Local](#getting-started---foundry-local)
-- [Sample Code: Using AI Toolkit for Visual Studio Code with .NET](#sample-code-using-ai-toolkit-for-visual-studio-code-with-net)
-  - [Semantic Kernel with AI Toolkit](#1-semantic-kernel-with-ai-toolkit)
-  - [Microsoft Extensions for AI with AI Toolkit](#2-microsoft-extensions-for-ai-with-ai-toolkit)
-- [Sample Code: Using Docker Models with .NET](#sample-code-using-docker-models-with-net)
-  - [Semantic Kernel with Docker Models](#1-semantic-kernel-with-docker-models)
-  - [Microsoft Extensions for AI with Docker Models](#2-microsoft-extensions-for-ai-with-docker-models)
-- [Sample Code: Using Foundry Local with .NET](#sample-code-using-foundry-local-with-net)
-  - [Semantic Kernel with Foundry Local](#1-semantic-kernel-with-foundry-local)
-  - [Microsoft Extensions for AI with Foundry Local](#2-microsoft-extensions-for-ai-with-foundry-local)
-- [Running the Samples](#running-the-samples)
-- [Comparing Local Model Runners](#comparing-local-model-runners)
-- [Additional Resources](#additional-resources)
-- [Summary](#summary)
-- [Next Steps](#next-steps)
+---
 
-In this lesson, you'll learn how to run AI models locally using three popular approaches:
+[![Local Model Runners](./images/LIM_GAN_07_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson3-patterns)
+
+_Click the image to watch the video_
+
+---
+
+## Why Run Models Locally?
+
+Running models locally provides several benefits:
+
+- **Data privacy** – Your data never leaves your machine
+- **Cost efficiency** – No usage charges for API calls
+- **Offline availability** – Use AI even without internet connectivity
+- **Customization** – Fine-tune models for specific use cases
+
+This lesson covers three popular approaches:
 
 - **[AI Toolkit for Visual Studio Code](https://code.visualstudio.com/docs/intelligentapps/overview)** – A suite of tools for Visual Studio Code that enables running AI models locally
 - **[Docker Model Runner](https://docs.docker.com/model-runner/)** – A containerized approach for running AI models with Docker
 - **[Foundry Local](https://learn.microsoft.com/azure/ai-foundry/foundry-local/)** – A cross-platform, open-source solution for running Microsoft AI models locally
 
-Running models locally provides several benefits:
+---
 
-- Data privacy – Your data never leaves your machine
-- Cost efficiency – No usage charges for API calls
-- Offline availability – Use AI even without internet connectivity
-- Customization – Fine-tune models for specific use cases
-
-## AI Toolkit for Visual Studio Code
+## Part 1: AI Toolkit for Visual Studio Code
 
 The AI Toolkit for Visual Studio Code is a collection of tools and technologies that help you build and run AI applications locally on your PC. It leverages platform capabilities to optimize AI workloads.
 
@@ -59,7 +46,9 @@ The AI Toolkit for Visual Studio Code is a collection of tools and technologies 
 
 > 📝 **Note**: AI Toolkit for Visual Studio Code requires Visual Studio Code and compatible hardware for optimal performance.
 
-## Docker Model Runner
+---
+
+## Part 2: Docker Model Runner
 
 Docker Model Runner is a tool for running AI models in containers, making it easy to deploy and run inference workloads consistently across different environments.
 
@@ -86,7 +75,9 @@ docker run -d -p 12434:8080 \
   deepseek-ai/deepseek-llm-7b-chat
 ```
 
-## Foundry Local
+---
+
+## Part 3: Foundry Local
 
 [Foundry Local](https://learn.microsoft.com/azure/ai-foundry/foundry-local/) is an open-source, cross-platform solution for running Microsoft AI models on your own hardware. It supports Windows, Linux, and macOS, and is designed for privacy, performance, and flexibility.
 
@@ -107,7 +98,9 @@ docker run -d -p 12434:8080 \
 3. Start the Foundry Local server and download a model
 4. Use the REST API to interact with the model
 
-## Sample Code: Using AI Toolkit for Visual Studio Code with .NET
+---
+
+## Part 4: Using AI Toolkit for Visual Studio Code with .NET
 
 The AI Toolkit for Visual Studio Code provides a way to run AI models locally on your machine. We have two examples that demonstrate how to interact with AI Toolkit models using .NET:
 
@@ -128,7 +121,9 @@ ApiKeyCredential credential = new ApiKeyCredential(apiKey);
 ChatClient client = new OpenAIClient(credential, options).GetChatClient(modelId);
 ```
 
-## Sample Code: Using Docker Models with .NET
+---
+
+## Part 5: Using Docker Models with .NET
 
 In this repository, we have two examples that demonstrate how to interact with Docker-based models using .NET:
 
@@ -160,7 +155,9 @@ var response = await client.CompleteChatAsync(prompt.ToString());
 Console.WriteLine(response.Value.Content[0].Text);
 ```
 
-## Sample Code: Using Foundry Local with .NET
+---
+
+## Part 6: Using Foundry Local with .NET
 
 This repository includes two demos for Foundry Local:
 
@@ -203,6 +200,8 @@ var response = await client.CompleteChatAsync(prompt.ToString());
 Console.WriteLine(response.Value.Content[0].Text);
 ```
 
+---
+
 ## Running the Samples
 
 To run the samples in this repository:
@@ -212,6 +211,8 @@ To run the samples in this repository:
 3. Start the local model server (Docker, AI Toolkit, or Foundry Local)
 4. Navigate to one of the sample project directories
 5. Run the project with `dotnet run`
+
+---
 
 ## Comparing Local Model Runners
 
@@ -223,6 +224,18 @@ To run the samples in this repository:
 | Hardware Acceleration | DirectML, DirectX | CPU, GPU | CPU, GPU |
 | Models | Optimized for VS Code | Any containerized model | Microsoft Foundry models |
 
+---
+
+## Sample Code Reference
+
+| Sample | Description |
+|--------|-------------|
+| [AIToolkit-02-MEAI-Chat](../samples/CoreSamples/AIToolkit-02-MEAI-Chat/) | AI Toolkit with Microsoft Extensions for AI |
+| [DockerModels-02-MEAI-Chat](../samples/CoreSamples/DockerModels-02-MEAI-Chat/) | Docker Model Runner with MEAI |
+| [AIFoundryLocal-01-MEAI-Chat](../samples/CoreSamples/AIFoundryLocal-01-MEAI-Chat/) | Foundry Local with MEAI |
+
+---
+
 ## Additional Resources
 
 - [AI Toolkit for Visual Studio Code Documentation](https://code.visualstudio.com/docs/intelligentapps/overview)
@@ -232,12 +245,22 @@ To run the samples in this repository:
 - [Semantic Kernel Documentation](https://learn.microsoft.com/semantic-kernel/overview/)
 - [Microsoft Extensions for AI Documentation](https://learn.microsoft.com/dotnet/ai/)
 
-## Summary
+---
 
-Running AI models locally with AI Toolkit for Visual Studio Code, Docker Model Runner, or Foundry Local offers flexibility, privacy, and cost benefits. The samples in this repository demonstrate how to integrate these local models with your .NET applications using Semantic Kernel and Microsoft Extensions for AI.
+## Lesson Complete
 
-## Next Steps
+You now know how to run AI models locally using three approaches:
 
-You've learned how to run AI models locally using AI Toolkit for Visual Studio Code, Docker Model Runner, and Foundry Local. Next, you'll explore the latest Azure OpenAI models for image and video generation.
+- **AI Toolkit for VS Code**: Integrated development experience with DirectML acceleration
+- **Docker Model Runner**: Containerized, cross-platform model execution
+- **Foundry Local**: Microsoft models running entirely on your hardware
 
-👉 [Image and Video Generation with New Azure OpenAI Models](./07-ImageVideoGenerationNewModels.md)
+Combined with the cloud-based patterns from earlier parts, you can now choose the right deployment approach for any scenario.
+
+---
+
+## What's Next?
+
+You're ready to move beyond patterns into building **AI Agents**, systems that can plan, use tools, and collaborate autonomously.
+
+[Continue to Lesson 4: AI Agents with Microsoft Agent Framework →](../04-AgentsWithMAF/readme.md)

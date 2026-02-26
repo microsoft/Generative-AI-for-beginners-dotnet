@@ -22,7 +22,7 @@ _Click the image to watch the video_
 
 ## Lesson Structure
 
-This lesson is divided into four parts:
+This lesson is divided into five parts:
 
 ### [Part 1: Embeddings and Semantic Search](./01-embeddings-semantic-search.md)
 Understand how AI represents meaning as vectors and build search that finds by intent.
@@ -35,6 +35,9 @@ Process images, PDFs, and visual content with multimodal AI.
 
 ### [Part 4: Combining Patterns](./04-combining-patterns.md)
 Build sophisticated applications that combine multiple patterns.
+
+### [Part 5: Local Model Runners](./05-LocalModelRunners.md)
+Run AI models locally using AI Toolkit, Docker Model Runner, and Foundry Local.
 
 ---
 
@@ -50,6 +53,7 @@ In the previous lesson, you learned the techniques: chat, streaming, function ca
 | **RAG** | "Answer questions using my specific data" |
 | **Vision Processing** | "Understand and extract information from images" |
 | **Document Understanding** | "Process and analyze document content" |
+| **Local Model Runners** | "Run AI privately and offline on my own hardware" |
 
 This lesson teaches you to recognize problems and apply the right pattern.
 
@@ -68,6 +72,9 @@ All code samples for this lesson are located in the **[`samples/CoreSamples/`](.
 | | [Vision-02MEAI-Ollama](../samples/CoreSamples/Vision-02MEAI-Ollama/) | Local vision with Ollama |
 | | [Vision-03MEAI-AOAI](../samples/CoreSamples/Vision-03MEAI-AOAI/) | Vision with Azure OpenAI |
 | **Documents** | [OpenAI-FileProcessing-Pdf-01](../samples/CoreSamples/OpenAI-FileProcessing-Pdf-01/) | PDF document processing |
+| **Local Models** | [AIToolkit-02-MEAI-Chat](../samples/CoreSamples/AIToolkit-02-MEAI-Chat/) | AI Toolkit with MEAI |
+| | [DockerModels-02-MEAI-Chat](../samples/CoreSamples/DockerModels-02-MEAI-Chat/) | Docker Model Runner with MEAI |
+| | [AIFoundryLocal-01-MEAI-Chat](../samples/CoreSamples/AIFoundryLocal-01-MEAI-Chat/) | Foundry Local with MEAI |
 
 Each lesson document links directly to the relevant samples.
 

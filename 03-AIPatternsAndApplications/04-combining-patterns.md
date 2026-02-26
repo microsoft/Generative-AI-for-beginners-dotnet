@@ -611,10 +611,6 @@ These patterns are the building blocks for AI agents, systems that can reason, p
 
 ## What's Next?
 
-You're ready to move beyond patterns into building **AI Agents**, systems that can:
-- Plan multi-step solutions
-- Use tools and APIs autonomously
-- Maintain state across interactions
-- Collaborate with other agents
+You've learned how to combine AI patterns to build powerful applications. Next, learn how to run these models locally on your own hardware:
 
-[Continue to Lesson 4: AI Agents with Microsoft Agent Framework →](../04-AgentsWithMAF/readme.md)
+[Continue to Part 5: Local Model Runners →](./05-LocalModelRunners.md)
