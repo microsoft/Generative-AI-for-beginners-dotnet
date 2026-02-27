@@ -1,6 +1,4 @@
-﻿using Azure;
-using Azure.AI.Inference;
-using Azure.AI.OpenAI;
+﻿using Azure.AI.OpenAI;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -8,10 +6,7 @@ using ModelContextProtocol.Client;
 using System.ClientModel;
 
 // To run the sample, you need to set the following environment variables or user secrets:
-// Using GitHub models
 //      "HF_API_KEY": " your HF token"
-//      "GITHUB_TOKEN": " your GitHub Token "
-// Using Azure OpenAI models
 //      "endpoint": "https://<endpoint>.services.ai.azure.com/",
 //      "apikey": " your key ",
 //      "deploymentName": "a deployment name, ie: gpt-4.1-mini"
@@ -64,37 +59,15 @@ Console.WriteLine();
 
 IChatClient GetChatClient()
 {
-    IChatClient client = null;
+    var endpoint = config["endpoint"];
+    var apiKey = new ApiKeyCredential(config["apikey"]);
 
-    var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN");
-    if (string.IsNullOrEmpty(githubToken))
-    {
-        githubToken = config["GITHUB_TOKEN"];
-    }
+    var client = new AzureOpenAIClient(new Uri(endpoint), apiKey)
+        .GetChatClient(deploymentName)
+        .AsIChatClient()
+        .AsBuilder()
+        .UseFunctionInvocation()
+        .Build();
 
-    // create a client if githubToken is valid string
-    if (!string.IsNullOrEmpty(githubToken))
-    {
-        client = new ChatCompletionsClient(
-            endpoint: new Uri("https://models.github.ai/inference"),
-            new AzureKeyCredential(githubToken))
-            .AsIChatClient(deploymentName)
-            .AsBuilder()
-            .UseFunctionInvocation()
-            .Build(); ;
-    }
-    else
-    {
-        // create an Azure OpenAI client if githubToken is not valid
-        var endpoint = config["endpoint"];
-        var apiKey = new ApiKeyCredential(config["apikey"]);
-
-        client = new AzureOpenAIClient(new Uri(endpoint), apiKey)
-            .GetChatClient(deploymentName)
-            .AsIChatClient()
-            .AsBuilder()
-            .UseFunctionInvocation()
-            .Build();
-    }
     return client;
 }

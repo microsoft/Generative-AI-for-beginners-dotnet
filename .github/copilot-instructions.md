@@ -4,7 +4,7 @@
 ## Project Purpose & Structure
 - This repo is a hands-on .NET course for Generative AI, focused on real-world, runnable code and live coding.
 - Lessons are organized in numbered folders (e.g., `01-IntroToGenAI/`, `03-CoreGenerativeAITechniques/`), each with a `readme.md` and code in the root sample folder.
-- Key technologies: .NET 9+, Microsoft.Extensions.AI (MEAI), Semantic Kernel, Azure OpenAI, Ollama (local models), GitHub Models.
+- Key technologies: .NET 9+, Microsoft.Extensions.AI (MEAI), Microsoft Agent Framework, Azure OpenAI, Ollama (local models).
 - Multi-language support: see `translations/` for localized docs.
 
 ## Architecture & Patterns
@@ -54,8 +54,7 @@
 ## Integration Points & External Dependencies
 - **Azure OpenAI:** Requires endpoint, model name, and API key (see `02-SetupDevEnvironment/getting-started-azure-openai.md`).
 - **Ollama:** Requires local server running and model pulled (see `getting-started-ollama.md`).
-- **GitHub Models:** Supported in some lessons; see lesson-specific instructions.
-- **Semantic Kernel:** Used for agent orchestration and plugin integration in advanced samples.
+
 
 ## Key Files & Directories
 - `README.md` (root): Course overview, lesson map, and links to translations.

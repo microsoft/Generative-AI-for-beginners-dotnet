@@ -161,7 +161,6 @@ AI 代理是超越简单聊天交互的自主 AI 实体，它们可以：
 
 - [使用 .NET 构建一个最小化代理](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-assistants?pivots=openai)
 - [多代理协调](https://techcommunity.microsoft.com/blog/educatordeveloperblog/using-azure-ai-agent-service-with-autogen--semantic-kernel-to-build-a-multi-agen/4363121)
-- [语义内核代理框架](https://learn.microsoft.com/semantic-kernel/frameworks/agent/?pivots=programming-language-csharp)
 - [AI 代理 - 初学者生成式 AI 系列](https://github.com/microsoft/generative-ai-for-beginners/tree/main/17-ai-agents)
 
 ## 下一步

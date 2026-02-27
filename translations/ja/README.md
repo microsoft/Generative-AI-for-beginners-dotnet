@@ -49,7 +49,7 @@
   - 公式ドキュメントを確認：[Azure OpenAI画像生成モデルの使用方法](https://learn.microsoft.com/azure/ai-services/openai/how-to/dall-e?tabs=gpt-image-1)と[openai-dotnet画像生成ガイド](https://github.com/openai/openai-dotnet?tab=readme-ov-file#how-to-generate-images)で詳細を確認してください。
   - サンプルはこちら：[レッスン3：コア生成AI技術 .. /src/ImageGeneration-01.csproj](../../samples/CoreSamples/ImageGeneration-01/ImageGeneration-01.csproj)。
 
-- **新シナリオ：eShopLiteでの並行エージェントオーケストレーション**：[eShopLiteリポジトリ](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent)では、Semantic Kernelを使用した並行エージェントオーケストレーションを示すシナリオを提供しています。このシナリオでは、複数のエージェントが並行して動作してユーザークエリを分析し、将来の分析に役立つ貴重な洞察を提供する方法を紹介しています。
+- **新シナリオ：eShopLiteでの並行エージェントオーケストレーション**：[eShopLiteリポジトリ](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent)では、Microsoft Agent Frameworkを使用した並行エージェントオーケストレーションを示すシナリオを提供しています。このシナリオでは、複数のエージェントが並行して動作してユーザークエリを分析し、将来の分析に役立つ貴重な洞察を提供する方法を紹介しています。
 
 [最新情報セクションで過去のアップデートをすべて表示](./10-WhatsNew/readme.md)
 
@@ -59,9 +59,9 @@
 
 - 各レッスンごとの 5～10 分の短い動画。
 - 実行可能な .NET のコードサンプル。
-- **GitHub Codespaces** や **GitHub Models** などのツールとの統合により、簡単にセットアップしてすぐにコーディングを始められる環境。ローカルでモデルを使用してサンプルを実行することも可能です。
+- **GitHub Codespaces** や **Azure OpenAI** などのツールとの統合により、簡単にセットアップしてすぐにコーディングを始められる環境。ローカルでモデルを使用してサンプルを実行することも可能です。
 
-基本的なテキスト生成から **GitHub Models**、**Azure OpenAI Services**、**Ollama を使ったローカルモデル** まで、.NET プロジェクトに 生成 AI を実装する方法を学びます。
+基本的なテキスト生成から **Azure OpenAI**、**Azure OpenAI Services**、**Ollama を使ったローカルモデル** まで、.NET プロジェクトに 生成 AI を実装する方法を学びます。
 
 ## 📦 各レッスンの内容
 
@@ -75,7 +75,7 @@
 | #   | **レッスンリンク** | **説明** |
 | --- | --- | --- |
 | 01  | [**.NET 開発者向け 生成 AI の基礎**](./01-IntroToGenAI/readme.md) | <ul><li>生成モデルの概要と .NET における応用</li></ul> |
-| 02  | [**生成 AI のための .NET 開発環境のセットアップ**](./02-SetupDevEnvironment/readme.md) | <ul><li>**Microsoft.Extensions.AI** や **セマンティック カーネル** などのライブラリの利用。</li><li>GitHub Models、Microsoft Foundry、Ollama などのプロバイダーのセットアップ。</li></ul> |
+| 02  | [**生成 AI のための .NET 開発環境のセットアップ**](./02-SetupDevEnvironment/readme.md) | <ul><li>**Microsoft.Extensions.AI** や **セマンティック カーネル** などのライブラリの利用。</li><li>Azure OpenAI、Microsoft Foundry、Ollama などのプロバイダーのセットアップ。</li></ul> |
 | 03  | [**.NET を使った 生成 AI のコア技術**](./03-CoreGenerativeAITechniques/readme.md) | <ul><li>テキスト生成と会話フロー。</li><li>マルチモーダル機能（ビジョンと音声）。</li><li>エージェント。</li></ul> |
 | 04  | [**実践的な .NET 生成 AI サンプル**](./04-PracticalSamples/readme.md) | <ul><li>実際のシナリオでの 生成 AI を示す完全なサンプル。</li><li>セマンティック検索アプリケーション。</li><li>複数エージェントアプリケーション。</li></ul> |
 | 05  | [**.NET アプリにおける 生成 AI の責任ある利用**](./05-ResponsibleGenAI/readme.md) | <ul><li>倫理的考慮、バイアスの軽減、安全な実装。</li></ul> |

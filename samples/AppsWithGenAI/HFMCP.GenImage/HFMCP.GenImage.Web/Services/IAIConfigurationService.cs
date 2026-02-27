@@ -18,7 +18,7 @@ public class AIConfiguration
 
     public string ModelName { get; set; } = "gpt-4.1-mini";
 
-    // Optional GitHub Models settings - not required since user can choose GitHub Models OR Azure OpenAI
+    // Optional GitHub token setting
     public string? GitHubToken { get; set; } = string.Empty;
 
     // Optional Microsoft Foundry settings

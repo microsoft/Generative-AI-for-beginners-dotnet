@@ -47,7 +47,7 @@ SpectreConsoleOutput.DisplayTitleH3("Video Analysis using OpenCV done!");
 /// Microsoft.Extensions.AI using Azure OpenAI
 //////////////////////////////////////////////////////
 
-SpectreConsoleOutput.DisplayTitleH1("Video Analysis using Semantic Kernel ans Azure OpenAI");
+SpectreConsoleOutput.DisplayTitleH1("Video Analysis using Microsoft.Extensions.AI and Azure OpenAI");
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 var endpoint = config["AZURE_OPENAI_ENDPOINT"];
 var modelId = config["AZURE_OPENAI_MODEL"];
@@ -112,7 +112,7 @@ var completeResponse = "";
 AsyncCollectionResult<StreamingChatCompletionUpdate> completionUpdates = chatClient.CompleteChatStreamingAsync(messages);
 
 // display the response
-SpectreConsoleOutput.DisplayTitleH3("Azure OpenAI response using Semantic Kernel");
+SpectreConsoleOutput.DisplayTitleH3("Azure OpenAI response using Microsoft.Extensions.AI");
 
 await foreach (StreamingChatCompletionUpdate completionUpdate in completionUpdates)
 {

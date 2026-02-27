@@ -1,16 +1,15 @@
-﻿using Azure.AI.Inference;
-using OpenAI.Chat;
+﻿using OpenAI.Chat;
 
 namespace McpSample.BlazorChat.Services;
 
 public static class ChatMessageHelper
 {
-    public static IList<ChatRequestMessage> GetSampleChatMessages ()
+    public static IList<ChatMessage> GetSampleChatMessages ()
     {
-        IList<ChatRequestMessage> messages =
+        IList<ChatMessage> messages =
         [
-            new ChatRequestUserMessage("2+2"),
-            new ChatRequestAssistantMessage(@"<think>
+            new UserChatMessage("2+2"),
+            new AssistantChatMessage(@"<think>
 Okay, the user asked ""2+2"". Let me think. That's a basic arithmetic question. Let's confirm the answer step by step.
 
 First, adding 2 and 2. When you put two things together with another two things, you end up with four things. So 2 plus 2 equals 4. 
@@ -27,8 +26,8 @@ Alright, confident the answer is 4. Let me present it clearly.
 The sum of 2 + 2 is **4**. 
 
 Let me know if you have more questions! 😊"),
-            new ChatRequestUserMessage("3+3"),
-            new ChatRequestAssistantMessage(@"<think>
+            new UserChatMessage("3+3"),
+            new AssistantChatMessage(@"<think>
 
 Okay, the user asked ""3+3"" after previously getting an answer for ""2+2"". They probably want a quick answer again. Let me check the calculation first. 3 plus 3 is definitely 6. The last response was friendly with an emoji and an offer to help more. I should keep the same tone. Maybe add the bold for the number and the emoji again. Short and helpful, no need for extra info unless they ask. Yep, that's it.
 

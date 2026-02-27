@@ -20,15 +20,16 @@ Ok - vamos colocar o modelo à prova e perguntar quantos sapatos vermelhos estã
 
 ![Um composto mostrando as duas imagens que o exemplo usará. A primeira mostra vários corredores, mas apenas suas pernas. A segunda é um recibo de restaurante em alemão](../../../translated_images/example-visual-image.e2fc4ffa5f01b3d65bb9bd5d23eebf97513bf486b761209b28fea06b63a11f6c.pt.png)
 
-> 🧑‍💻**Código de exemplo**: Você pode [seguir o código de exemplo aqui](../../../03-CoreGenerativeAITechniques/src/Vision-01MEAI-GitHubModels).
+> 🧑‍💻**Código de exemplo**: Você pode [seguir o código de exemplo aqui](../../../03-CoreGenerativeAITechniques/src/Vision-01MEAI-AzureOpenAI).
 
-1. Estamos usando MEAI e Modelos do GitHub, então instancie o `IChatClient` como temos feito. Também comece a criar um histórico de conversa.
+1. Estamos usando MEAI e Azure OpenAI, então instancie o `IChatClient` como temos feito. Também comece a criar um histórico de conversa.
 
     ```csharp
-    IChatClient chatClient = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken)) // make sure to grab githubToken from the secrets or environment
-    .AsChatClient("gpt-4o-mini");
+    IChatClient chatClient = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient();
 
     List<ChatMessage> messages = 
     [

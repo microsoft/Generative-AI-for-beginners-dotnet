@@ -33,11 +33,9 @@ RAG 架构主要分为两个阶段：**检索** 和 **生成**。
 
 ## 实现 RAG
 
-我们将使用 `Microsoft.Extension.AI`，以及 [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) 和 [Microsoft.SemanticKernel.Connectors.InMemory](https://www.nuget.org/packages/Microsoft.SemanticKernel.Connectors.InMemory) 库来实现 RAG。
+我们将使用 `Microsoft.Extension.AI`，以及 [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) 和 [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) 库来实现 RAG。
 
 > 🧑‍💻**示例代码**：您可以在[这里的示例代码](../../../03-CoreGenerativeAITechniques/src/RAGSimple-02MEAIVectorsMemory)中跟随学习。
-> 
-> 有关归档的 Semantic Kernel RAG 示例，请参阅[已弃用的示例](../../../samples/deprecated/)文件夹。
 
 ### 填充知识库
 
@@ -81,12 +79,12 @@ RAG 架构主要分为两个阶段：**检索** 和 **生成**。
 3. 接下来，我们需要将知识库 (`movieData` 对象) 转换为嵌入，并将它们存储到内存向量存储中。当我们创建嵌入时，将使用不同的模型——一个嵌入模型，而不是语言模型。
 
     ```csharp
-    var endpoint = new Uri("https://models.github.ai/inference");
+    var endpoint = new Uri("https://<your-endpoint>.services.ai.azure.com/");
     var modelId = "text-embedding-3-small";
     var credential = new AzureKeyCredential(githubToken); // githubToken is retrieved from the environment variables
 
     IEmbeddingGenerator<string, Embedding<float>> generator =
-            new EmbeddingsClient(endpoint, credential)
+            new AzureOpenAIClient(new Uri(config["endpoint"]), new ApiKeyCredential(config["apikey"])).GetEmbeddingClient("text-embedding-3-small")
         .AsEmbeddingGenerator(modelId);
 
     foreach (var movie in movieData)
@@ -99,7 +97,7 @@ RAG 架构主要分为两个阶段：**检索** 和 **生成**。
     }
     ```
 
-    我们的生成器对象是一个 `IEmbeddingGenerator<string, Embedding<float>>` type. This means it is expecting inputs of `string` and outputs of `Embedding<float>`。我们再次使用 GitHub Models，这意味着需要 **Microsoft.Extensions.AI.AzureAIInference** 包。但您也可以同样轻松地使用 **Ollama** 或 **Azure OpenAI**。
+    我们的生成器对象是一个 `IEmbeddingGenerator<string, Embedding<float>>` type. This means it is expecting inputs of `string` and outputs of `Embedding<float>`。我们再次使用 Azure OpenAI，这意味着需要 **Microsoft.Extensions.AI.AzureAIInference** 包。但您也可以同样轻松地使用 **Ollama** 或 **Azure OpenAI**。
 
 > 🗒️**注意**：通常您只需要为您的知识库创建一次嵌入，然后将其存储起来。这不会在每次运行应用程序时都重新创建。但由于我们使用的是内存存储，因此每次应用程序重启时数据都会被清空，所以需要重新创建。
 

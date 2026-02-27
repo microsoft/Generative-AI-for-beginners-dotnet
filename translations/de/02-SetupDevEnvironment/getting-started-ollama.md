@@ -4,7 +4,7 @@ Wenn du Ollama verwenden möchtest, um lokale Modelle für diesen Kurs auszufüh
 
 Möchtest du Azure OpenAI nicht verwenden?
 
-👉 [Hier ist die Anleitung zur Nutzung von GitHub-Modellen](README.md)  
+👉 [Hier ist die Anleitung zur Nutzung von Azure OpenAIn](README.md)  
 👉 [Hier sind die Schritte für Ollama](getting-started-ollama.md)
 
 ## Erstellen eines GitHub Codespace
@@ -22,7 +22,7 @@ Lass uns einen GitHub Codespace erstellen, um die Entwicklung für den Rest dies
 
 Wähle im Dropdown-Menü **Dev container configuration** eine der folgenden Optionen aus:
 
-**Option 1: C# (.NET)**: Dies ist die Option, die du wählen solltest, wenn du GitHub-Modelle oder Azure OpenAI verwenden möchtest. Es ist die empfohlene Methode, um diesen Kurs abzuschließen. Sie enthält alle grundlegenden .NET-Entwicklungstools, die für den Kurs benötigt werden, und hat eine schnelle Startzeit.
+**Option 1: C# (.NET)**: Dies ist die Option, die du wählen solltest, wenn du Azure OpenAI oder Azure OpenAI verwenden möchtest. Es ist die empfohlene Methode, um diesen Kurs abzuschließen. Sie enthält alle grundlegenden .NET-Entwicklungstools, die für den Kurs benötigt werden, und hat eine schnelle Startzeit.
 
 **Option 2: C# (.NET) - Ollama**: Diese Option ist ideal, wenn du Modelle lokal mit Ollama ausführen möchtest. Sie enthält alle grundlegenden .NET-Entwicklungstools sowie Ollama, hat jedoch eine langsamere Startzeit, im Durchschnitt etwa fünf Minuten. [Folge dieser Anleitung](getting-started-ollama.md), wenn du Ollama verwenden möchtest.
 

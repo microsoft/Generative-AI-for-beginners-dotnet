@@ -18,7 +18,7 @@
 ### 新增 eShopLite 场景：并发代理编排（2025年6月）
 
 - **新场景：并发代理编排**
-- [eShopLite 仓库](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent) 现在提供一个场景，演示如何使用 Semantic Kernel 进行并发代理编排。
+- [eShopLite 仓库](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent) 现在提供一个场景，演示如何使用 Microsoft Agent Framework 进行并发代理编排。
 - 此场景展示了多个代理如何并行工作来分析用户查询并为未来分析提供有价值的见解。
 
 ## 2025年5月
@@ -33,7 +33,7 @@
 
 ### 使用 AI Toolkit 和 Docker 运行本地模型
 
-- **新增：使用 AI Toolkit 和 Docker 运行本地模型**：探索使用 [Visual Studio Code 的 AI Toolkit](https://code.visualstudio.com/docs/intelligentapps/overview) 和 [Docker Model Runner](https://docs.docker.com/model-runner/) 本地运行模型的新示例。源代码位于 [../../../samples/CoreSamples/](../../../samples/CoreSamples/)，演示了如何使用 Semantic Kernel 和 Microsoft Extensions for AI 与这些模型进行交互。
+- **新增：使用 AI Toolkit 和 Docker 运行本地模型**：探索使用 [Visual Studio Code 的 AI Toolkit](https://code.visualstudio.com/docs/intelligentapps/overview) 和 [Docker Model Runner](https://docs.docker.com/model-runner/) 本地运行模型的新示例。源代码位于 [../../../samples/CoreSamples/](../../../samples/CoreSamples/)，演示了如何使用 Microsoft.Extensions.AI 与这些模型进行交互。
 
 ## 2025年3月
 

@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="MAF-AIWebChatApp-Persisting.AppHost/MAF-AIWebChatApp-Persisting.AppHost.csproj" />
+  <Project Path="MAF-AIWebChatApp-Persisting.ServiceDefaults/MAF-AIWebChatApp-Persisting.ServiceDefaults.csproj" />
+  <Project Path="MAF-AIWebChatApp-Persisting.Web/MAF-AIWebChatApp-Persisting.Web.csproj" />
+</Solution>

@@ -17,20 +17,16 @@ Das Microsoft AI Toolkit ist eine Sammlung von Werkzeugen und Bibliotheken, mit 
 Hier ist ein Beispiel dafür, wie Sie AI Toolkit in einer .NET-Anwendung verwenden können:
 
 ```csharp
-using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.AI.ChatCompletion;
+using Microsoft.Extensions.AI;
+using OpenAI;
 
-var kernelBuilder = Kernel.CreateBuilder();
-kernelBuilder.AddAIToolkitChatCompletion(
-    modelId: "models/phi3:latest", 
-    endpoint: "http://localhost:8080/v1");
-var kernel = kernelBuilder.Build();
+var client = new OpenAIClient(new ApiKeyCredential("unused"), new OpenAIClientOptions
+{
+    Endpoint = new Uri("http://localhost:8080/v1")
+}).GetChatClient("models/phi3:latest").AsIChatClient();
 
-var chatCompletion = kernel.GetRequiredService<IChatCompletionService>();
-var chat = new ChatHistory();
-chat.AddUserMessage("Erkläre mir Quantencomputer in einfachen Worten");
-var response = await chatCompletion.GetChatMessageContentAsync(chat);
-Console.WriteLine(response.Content);
+var response = await client.GetResponseAsync("Explain quantum computing in simple terms");
+Console.WriteLine(response.Text);
 ```
 
 ## Docker für KI-Modelle
@@ -47,7 +43,7 @@ docker run -d --gpus all -p 8080:8080 ghcr.io/microsoft/phi3:latest
 
 ### Beispielanwendungen
 
-In den [DockerModels-01-SK-Chat](./src/DockerModels-01-SK-Chat) und [DockerModels-02-MEAI-Chat](./src/DockerModels-02-MEAI-Chat) Beispielen haben wir Anwendungen implementiert, die lokale Modelle sowohl mit Semantic Kernel als auch mit Microsoft.Extensions.AI verwenden.
+In den [DockerModels-02-MEAI-Chat](./src/DockerModels-02-MEAI-Chat) und [DockerModels-02-MEAI-Chat](./src/DockerModels-02-MEAI-Chat) Beispielen haben wir Anwendungen implementiert, die lokale Modelle Microsoft.Extensions.AI verwenden.
 
 ## Zusammenfassung
 

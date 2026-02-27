@@ -33,11 +33,9 @@ RAG 아키텍처에는 두 가지 주요 단계가 있습니다: **검색(Retrie
 
 ## RAG 구현하기
 
-아래에서는 Microsoft.Extension.AI와 함께 [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) 및 [Microsoft.SemanticKernel.Connectors.InMemory](https://www.nuget.org/packages/Microsoft.SemanticKernel.Connectors.InMemory) 라이브러리를 사용하여 RAG를 구현합니다.
+아래에서는 Microsoft.Extension.AI와 함께 [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) 및 [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) 라이브러리를 사용하여 RAG를 구현합니다.
 
 > 🧑‍💻**샘플 코드:** [여기에서 샘플 코드를 확인하며 따라 해보세요](../../../03-CoreGenerativeAITechniques/src/RAGSimple-02MEAIVectorsMemory).
-> 
-> 아카이브된 Semantic Kernel RAG 샘플의 경우 [더 이상 사용되지 않는 샘플](../../../samples/deprecated/) 폴더를 참조하세요.
 
 ### 지식 저장소 채우기
 
@@ -81,12 +79,12 @@ RAG 아키텍처에는 두 가지 주요 단계가 있습니다: **검색(Retrie
 3. 다음으로, 우리의 지식 저장소(`movieData` 객체)를 임베딩으로 변환한 후, 이를 인메모리 벡터 저장소에 저장해야 합니다. 임베딩을 생성할 때는 언어 모델 대신 임베딩 모델을 사용합니다.
 
     ```csharp
-    var endpoint = new Uri("https://models.github.ai/inference");
+    var endpoint = new Uri("https://<your-endpoint>.services.ai.azure.com/");
     var modelId = "text-embedding-3-small";
     var credential = new AzureKeyCredential(githubToken); // githubToken is retrieved from the environment variables
 
     IEmbeddingGenerator<string, Embedding<float>> generator =
-            new EmbeddingsClient(endpoint, credential)
+            new AzureOpenAIClient(new Uri(config["endpoint"]), new ApiKeyCredential(config["apikey"])).GetEmbeddingClient("text-embedding-3-small")
         .AsEmbeddingGenerator(modelId);
 
     foreach (var movie in movieData)
@@ -99,7 +97,7 @@ RAG 아키텍처에는 두 가지 주요 단계가 있습니다: **검색(Retrie
     }
     ```
 
-    생성기 객체는 `IEmbeddingGenerator<string, Embedding<float>>` type. This means it is expecting inputs of `string` and outputs of `Embedding<float>` 유형입니다. GitHub Models를 사용하며, 이는 **Microsoft.Extensions.AI.AzureAIInference** 패키지를 의미합니다. 하지만 **Ollama**나 **Azure OpenAI**를 사용하는 것도 가능합니다.
+    생성기 객체는 `IEmbeddingGenerator<string, Embedding<float>>` type. This means it is expecting inputs of `string` and outputs of `Embedding<float>` 유형입니다. Azure OpenAI를 사용하며, 이는 **Microsoft.Extensions.AI.AzureAIInference** 패키지를 의미합니다. 하지만 **Ollama**나 **Azure OpenAI**를 사용하는 것도 가능합니다.
 
 > 🗒️**참고:** 일반적으로 지식 저장소에 대한 임베딩은 한 번만 생성한 후 저장합니다. 매번 애플리케이션을 실행할 때마다 이를 생성하지는 않습니다. 하지만 우리는 인메모리 저장소를 사용하기 때문에, 애플리케이션이 재시작될 때마다 데이터가 삭제되어 다시 생성해야 합니다.
 

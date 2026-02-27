@@ -49,7 +49,7 @@
   - 공식 문서 보기: [Azure OpenAI 이미지 생성 모델 사용 방법](https://learn.microsoft.com/azure/ai-services/openai/how-to/dall-e?tabs=gpt-image-1) 및 [openai-dotnet 이미지 생성 가이드](https://github.com/openai/openai-dotnet?tab=readme-ov-file#how-to-generate-images)에서 자세한 내용을 확인하세요.
   - 샘플 찾기: [레슨 3: 핵심 생성 AI 기술 .. /src/ImageGeneration-01.csproj](../../samples/CoreSamples/ImageGeneration-01/ImageGeneration-01.csproj).
 
-- **새로운 시나리오: eShopLite의 동시 에이전트 오케스트레이션**: [eShopLite 저장소](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent)에서는 Semantic Kernel을 사용한 동시 에이전트 오케스트레이션을 보여주는 시나리오를 제공합니다. 이 시나리오는 여러 에이전트가 병렬로 작업하여 사용자 쿼리를 분석하고 향후 분석을 위한 귀중한 통찰력을 제공하는 방법을 보여줍니다.
+- **새로운 시나리오: eShopLite의 동시 에이전트 오케스트레이션**: [eShopLite 저장소](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent)에서는 Microsoft Agent Framework를 사용한 동시 에이전트 오케스트레이션을 보여주는 시나리오를 제공합니다. 이 시나리오는 여러 에이전트가 병렬로 작업하여 사용자 쿼리를 분석하고 향후 분석을 위한 귀중한 통찰력을 제공하는 방법을 보여줍니다.
 
 [새로운 소식 섹션에서 모든 이전 업데이트 보기](./10-WhatsNew/readme.md)
 
@@ -59,9 +59,9 @@ Generative AI는 소프트웨어 개발의 패러다임을 변화시키고 있�
 
 - 각 강의마다 5~10분 분량의 짧은 동영상.
 - 실행 가능한 완전한 .NET 코드 샘플.
-- **GitHub Codespaces** 및 **GitHub Models**와 같은 도구와의 통합으로 빠르고 간단한 환경 설정. 물론, 로컬에서 자신의 모델로 샘플을 실행하는 것도 가능합니다.
+- **GitHub Codespaces** 및 **Azure OpenAI**와 같은 도구와의 통합으로 빠르고 간단한 환경 설정. 물론, 로컬에서 자신의 모델로 샘플을 실행하는 것도 가능합니다.
 
-여러분은 **GitHub Models**, **Azure OpenAI Services**, 그리고 **Ollama와 같은 로컬 모델**을 사용하여 기본 텍스트 생성부터 완전한 솔루션 구축까지 .NET 프로젝트에 Generative AI를 구현하는 방법을 배우게 됩니다.
+여러분은 **Azure OpenAI**, **Azure OpenAI Services**, 그리고 **Ollama와 같은 로컬 모델**을 사용하여 기본 텍스트 생성부터 완전한 솔루션 구축까지 .NET 프로젝트에 Generative AI를 구현하는 방법을 배우게 됩니다.
 
 ## 📦 각 강의 구성
 
@@ -75,7 +75,7 @@ Generative AI는 소프트웨어 개발의 패러다임을 변화시키고 있�
 | #   | **강의 링크** | **설명** |
 | --- | --- | --- |
 | 01  | [**.NET 개발자를 위한 Generative AI 기본 소개**](./01-IntroToGenAI/readme.md) | <ul><li>Generative 모델과 .NET에서의 활용 개요</li></ul> |
-| 02  | [**Generative AI와 함께 .NET 개발 환경 설정하기**](./02-SetupDevEnvironment/readme.md) | <ul><li>**Microsoft.Extensions.AI** 및 **Semantic Kernel**과 같은 라이브러리 사용.</li><li>GitHub Models, Microsoft Foundry, Ollama와 같은 환경 설정.</li></ul> |
+| 02  | [**Generative AI와 함께 .NET 개발 환경 설정하기**](./02-SetupDevEnvironment/readme.md) | <ul><li>**Microsoft.Extensions.AI** 및 **Microsoft Agent Framework**과 같은 라이브러리 사용.</li><li>Azure OpenAI, Microsoft Foundry, Ollama와 같은 환경 설정.</li></ul> |
 | 03  | [**.NET에서 핵심 Generative AI 기술 배우기**](./03-CoreGenerativeAITechniques/readme.md) | <ul><li>텍스트 생성 및 대화 흐름.</li><li>멀티모달 기능(비전 및 오디오).</li><li>에이전트 활용</li></ul> |
 | 04  | [**실용적인 .NET Generative AI 샘플**](./04-PracticalSamples/readme.md) | <ul><li>현실 세계에서의 GenAI 활용 샘플</li><li>시맨틱 검색 애플리케이션.</li><li>다중 에이전트 애플리케이션</li></ul> |
 | 05  | [**.NET 애플리케이션에서 Generative AI의 책임 있는 사용**](./05-ResponsibleGenAI/readme.md) | <ul><li>윤리적 고려 사항, 편향 완화 및 안전한 구현.</li></ul> |
@@ -110,7 +110,7 @@ Generative AI는 소프트웨어 개발의 패러다임을 변화시키고 있�
 우리는 이 강좌를 최대한 간단하게 설계했습니다. 다음과 같은 기능을 활용하여 빠르게 시작할 수 있습니다:
 
 - **GitHub Codespaces에서 실행**: 한 번의 클릭으로 사전 구성된 환경에서 강의를 테스트하고 탐색할 수 있습니다.
-- **GitHub Models 활용하기**: 이 저장소에서 직접 호스팅되는 AI 기반 데모를 체험해 보세요. 과정에서 더 자세히 설명드릴 예정입니다. *(GitHub Models에 대해 더 알고 싶다면, [여기](https://docs.github.com/github-models)를 클릭하세요.)*
+- **Azure OpenAI 활용하기**: 이 저장소에서 직접 호스팅되는 AI 기반 데모를 체험해 보세요. 과정에서 더 자세히 설명드릴 예정입니다. *(Azure OpenAI에 대해 더 알고 싶다면, [여기](https://docs.github.com/github-models)를 클릭하세요.)*
 
 확장을 준비되셨다면, 다음 가이드를 참고하세요:
 

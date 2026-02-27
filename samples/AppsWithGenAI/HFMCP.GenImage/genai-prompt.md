@@ -36,12 +36,9 @@ Create a new Settings.razor page with secure configuration management:
 
 #### AI Provider Settings (Choose One)
 
-Either configure **GitHub Models** OR **Azure OpenAI** (at least one required):
+Configure **Azure OpenAI** (required):
 
-**GitHub Models (Optional)**:
-- **GitHub Model Access Token** (masked input)
-
-**Azure OpenAI (Optional)**:
+**Azure OpenAI**:
 - **Azure OpenAI service endpoint** (text input, not masked)
 - **Azure OpenAI service ApiKey** (masked input)
 
@@ -49,8 +46,7 @@ Either configure **GitHub Models** OR **Azure OpenAI** (at least one required):
 
 1. Hugging Face Access Token
 2. Model Name
-3. GitHub Models Access Token
-4. Azure OpenAI (optional)
+3. Azure OpenAI
 
 #### Settings Page UX Requirements
 
@@ -91,15 +87,14 @@ Either configure **GitHub Models** OR **Azure OpenAI** (at least one required):
 1. **AI Service Layer**:
    - Create `IAIService` interface
    - Implement `AIService` with MCP client integration AND Azure OpenAI support
-   - Support multiple AI providers (Azure OpenAI, GitHub Models, with fallback options)
+   - Support Azure OpenAI as the AI provider
    - Handle image generation and text responses
-   - Prioritize Azure OpenAI when configured, fallback to GitHub Models
 
 2. **Configuration Service**:
    - Create `IConfigurationService` interface
    - Implement secure settings storage and retrieval
    - Support environment-specific configurations
-   - Validate that at least one AI provider (Azure OpenAI OR GitHub Models) is configured along with Hugging Face
+   - Validate that Azure OpenAI is configured along with Hugging Face
 
 3. **Azure OpenAI Integration**:
    - Support standard Azure OpenAI REST API endpoints
@@ -130,7 +125,7 @@ await using var mcpClient = await McpClientFactory.CreateAsync(clientTransport);
 
 // Chat Client with MCP Tools
 var tools = await mcpClient.ListToolsAsync();
-IChatClient client = GetChatClient(); // GitHub Models or Azure OpenAI
+IChatClient client = GetChatClient(); // Azure OpenAI
 var chatOptions = new ChatOptions
 {
     Tools = [.. tools],
@@ -158,7 +153,7 @@ var chatOptions = new ChatOptions
 - Password visibility toggles for sensitive fields
 - Save confirmation messages
 - Input validation with helpful error messages
-- Quick setup buttons for common configurations (GitHub Models, Azure OpenAI, Ollama)
+- Quick setup buttons for common configurations (Azure OpenAI, Ollama)
 
 ### 6. Error Handling & Validation
 - Network connectivity issues
@@ -195,9 +190,9 @@ var chatOptions = new ChatOptions
 8. ✅ Application handles both successful and failed AI requests gracefully
 9. ✅ Security best practices are implemented for sensitive data
 10. ✅ Responsive design works on desktop and mobile devices
-11. ✅ **Azure OpenAI Integration**: Users can configure and use Azure OpenAI instead of GitHub Models
+11. ✅ **Azure OpenAI Integration**: Users can configure and use Azure OpenAI
 12. ✅ **Provider Prioritization**: Azure OpenAI is prioritized when both providers are configured
-13. ✅ **Flexible Configuration**: Users can choose either GitHub Models OR Azure OpenAI (with Hugging Face required)
+13. ✅ **Flexible Configuration**: Users can configure Azure OpenAI (with Hugging Face required)
 14. ✅ **Error Resolution**: Fixed "No configured AI provider available for chat" error when Azure OpenAI is configured
 15. ✅ **MCP Tools Panel**: Collapsible panel showing Hugging Face MCP server tools when configured
 16. ✅ **Proper MCP Integration**: Following Microsoft sample pattern from GitHub repository
@@ -233,7 +228,7 @@ var chatOptions = new ChatOptions
 2. **SseClientTransport**: Server-Sent Events transport for MCP communication
 3. **McpClientFactory**: Proper MCP client initialization
 4. **Function Invocation**: Microsoft.Extensions.AI pattern with MCP tools
-5. **Dual Provider Support**: Azure OpenAI and GitHub Models with MCP tools
+5. **Azure OpenAI Support**: Azure OpenAI with MCP tools
 6. **Tools Panel**: Collapsible UI showing available Hugging Face MCP tools
 7. **Error Handling**: Comprehensive error handling for MCP operations
 8. **Image Display**: Automatic detection and display of images from AI responses

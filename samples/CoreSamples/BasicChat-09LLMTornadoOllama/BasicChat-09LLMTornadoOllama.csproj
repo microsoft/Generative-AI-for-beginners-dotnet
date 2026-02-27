@@ -9,7 +9,7 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="LlmTornado" Version="3.8.11" />
+		<PackageReference Include="LlmTornado" Version="3.8.53" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.3" />
 	</ItemGroup>
 

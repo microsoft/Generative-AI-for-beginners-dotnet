@@ -74,7 +74,7 @@ do
         {
             toolOutputs.Add(GetResolvedToolOutput(toolCall));
         }
-        runResponse = await persistentClient.Runs.SubmitToolOutputsToRunAsync(runResponse, toolOutputs);
+        runResponse = await persistentClient.Runs.SubmitToolOutputsToRunAsync(runResponse, toolOutputs, cancellationToken: default);
     }
 }
 while (runResponse.Value.Status == RunStatus.Queued

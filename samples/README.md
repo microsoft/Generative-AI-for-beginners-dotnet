@@ -9,7 +9,7 @@ This directory contains all the code samples for the **Generative AI for Beginne
 ```text
 samples/
 ├── CoreSamples/          # Core AI techniques and fundamental concepts
-├── AgentFx/              # Microsoft Agent Framework samples
+├── MAF/              # Microsoft Agent Framework samples
 ├── PracticalSamples/     # Real-world practical applications
 └── AppsWithGenAI/        # Applications created with GenAI assistance
 ```
@@ -19,13 +19,13 @@ samples/
 ## CoreSamples
 
 **Location:** [`samples/CoreSamples/`](./CoreSamples/)  
-**Associated Lessons:** [Lesson 02](../02-SetupDevEnvironment/) & [Lesson 03](../03-CoreGenerativeAITechniques/)
+**Associated Lessons:** [Lesson 02](../02-GenerativeAITechniques/) & [Lesson 03](../03-AIPatternsAndApplications/)
 
 This folder contains fundamental samples demonstrating core Generative AI techniques with .NET. These samples cover the essential building blocks for AI-enabled applications and are referenced throughout Lessons 02 and 03.
 
 ### What you'll find in CoreSamples
 
-- **Chat & Completions** - Basic text generation and conversational AI using various providers (GitHub Models, Azure OpenAI, Ollama) and frameworks (Microsoft.Extensions.AI, Semantic Kernel)
+- **Chat & Completions** - Basic text generation and conversational AI using various providers (Azure OpenAI, Ollama) and frameworks (Microsoft.Extensions.AI)
 - **Function Calling** - Extending AI capabilities by allowing models to call custom functions and external tools
 - **Retrieval-Augmented Generation (RAG)** - Integrating external knowledge stores with AI models using different vector databases (in-memory, Azure AI Search, Qdrant)
 - **Vision & Audio** - Image analysis, speech-to-text, and real-time audio conversations
@@ -38,17 +38,17 @@ This folder includes over 40 samples demonstrating different techniques, provide
 
 ---
 
-## AgentFx
+## MAF
 
-**Location:** [`samples/AgentFx/`](./AgentFx/)  
-**Associated Lesson:** [Lesson 06](../06-AgentFx/)
+**Location:** [`samples/MAF/`](./MAF/)  
+**Associated Lesson:** [Lesson 04](../04-AgentsWithMAF/)
 
 This folder contains samples demonstrating the **Microsoft Agent Framework** for building sophisticated multi-agent AI systems.
 
-### What you'll find in AgentFx
+### What you'll find in MAF
 
 - **Basic Samples** - Single and dual-agent workflows demonstrating fundamental agent creation and orchestration patterns
-- **Advanced Multi-Provider Samples** - Complex workflows combining multiple AI providers (Azure OpenAI, GitHub Models, Ollama) in sophisticated agent orchestrations
+- **Advanced Multi-Provider Samples** - Complex workflows combining multiple AI providers (Azure OpenAI, Ollama) in sophisticated agent orchestrations
 - **Integration & Web Samples** - Web-based chat applications with Blazor UI, middleware patterns, and MCP integrations for tool usage (e.g., image generation)
 
 This folder includes 12 samples ranging from simple single-agent scenarios to complex multi-agent systems with persistent state and web interfaces.
@@ -56,7 +56,7 @@ This folder includes 12 samples ranging from simple single-agent scenarios to co
 ## PracticalSamples
 
 **Location:** [`samples/PracticalSamples/`](./PracticalSamples/)  
-**Associated Lesson:** [Lesson 04](../04-PracticalSamples/)
+**Associated Lesson:** [Lesson 03](../03-AIPatternsAndApplications/)
 
 This folder contains practical, real-world samples demonstrating AI integration patterns in production-ready scenarios.
 
@@ -81,7 +81,7 @@ dotnet run --project McpSample.AppHost/McpSample.AppHost.csproj
 ## AppsWithGenAI
 
 **Location:** [`samples/AppsWithGenAI/`](./AppsWithGenAI/)  
-**Associated Lesson:** [Lesson 05](../05-AppCreatedWithGenAI/)
+**Associated Lesson:** [Lesson 05](../05-ResponsibleAI/)
 
 This folder showcases complete, production-quality applications created with the assistance of Generative AI tools like GitHub Copilot Agent, demonstrating "vibe coding" - building real software through AI-assisted development.
 
@@ -101,7 +101,6 @@ Each application is fully functional and can be run independently with proper AI
 
 - **.NET 9 SDK** or later
 - **AI Provider Access** (at least one):
-  - GitHub Personal Access Token for GitHub Models
   - Microsoft Foundry endpoint (with managed identity or API key)
   - Ollama installed locally
 
@@ -123,7 +122,7 @@ dotnet run
 #### 2. **Building Agents**
 
 ```bash
-cd samples/AgentFx/AgentFx01
+cd samples/MAF/MAF01
 dotnet run
 ```
 
@@ -147,21 +146,20 @@ dotnet run
 
 | Lesson | Sample Folders | Key Topics |
 |--------|---------------|------------|
-| [Lesson 02](../02-SetupDevEnvironment/) | CoreSamples/BasicChat-* | Environment setup, first AI interactions |
-| [Lesson 03](../03-CoreGenerativeAITechniques/) | CoreSamples/* | Chat, RAG, Vision, Audio, Agents, Image/Video Gen |
-| [Lesson 04](../04-PracticalSamples/) | PracticalSamples/* | Real-world integration patterns, MCP |
-| [Lesson 05](../05-AppCreatedWithGenAI/) | AppsWithGenAI/* | Full applications built with AI assistance |
-| [Lesson 06](../06-AgentFx/) | AgentFx/* | Microsoft Agent Framework |
+| [Lesson 02](../02-GenerativeAITechniques/) | CoreSamples/BasicChat-* | Environment setup, first AI interactions |
+| [Lesson 03](../03-AIPatternsAndApplications/) | CoreSamples/* | Chat, RAG, Vision, Audio, Agents, Image/Video Gen |
+| [Lesson 03](../03-AIPatternsAndApplications/) | PracticalSamples/* | Real-world integration patterns, MCP |
+| [Lesson 04](../04-AgentsWithMAF/) | MAF/* | Microsoft Agent Framework |
+| [Lesson 05](../05-ResponsibleAI/) | AppsWithGenAI/* | Full applications built with AI assistance |
 
 ---
 
 ## Additional Resources
 
 - [Main Course README](../README.md)
-- [Setup Environment](../02-SetupDevEnvironment/)
-- [Troubleshooting Guide](../03-CoreGenerativeAITechniques/docs/troubleshooting-chat-api.md)
+- [Setup Environment](../02-GenerativeAITechniques/)
 - [Microsoft.Extensions.AI Documentation](https://learn.microsoft.com/dotnet/ai/ai-extensions)
-- [Semantic Kernel Documentation](https://learn.microsoft.com/semantic-kernel/)
+- [Microsoft.Extensions.AI Documentation](https://learn.microsoft.com/dotnet/ai/ai-extensions)
 - [Microsoft Agent Framework](https://learn.microsoft.com/agent-framework/)
 
-- **Web chat with persisted conversations** - `AgentFx-AIWebChatApp-Persisting` demonstrates per-user `AgentThread` serialization, storage, and resume across restarts
+- **Web chat with persisted conversations** - `MAF-AIWebChatApp-Persisting` demonstrates per-user `AgentThread` serialization, storage, and resume across restarts

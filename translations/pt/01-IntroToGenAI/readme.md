@@ -11,11 +11,11 @@ _⬆️Clique na imagem para assistir ao vídeo⬆️_
 ## O que você aprenderá nesta lição:
 
 - 🌟 Compreender os conceitos fundamentais de IA generativa e suas aplicações
-- 🔍 Explorar as ferramentas do .NET para desenvolvimento de IA, incluindo MEAI, Semantic Kernel e Azure OpenAI
+- 🔍 Explorar as ferramentas do .NET para desenvolvimento de IA, incluindo MEAI e Azure OpenAI
 
 ## Fundamentos de IA Generativa para .NET
 
-Antes de mergulharmos no código, vamos tirar um momento para revisar alguns conceitos de IA generativa (GenAI). Nesta lição, **Fundamentos de IA Generativa para .NET**, revisaremos alguns conceitos fundamentais de GenAI para que você entenda por que certas coisas são feitas de determinadas maneiras. Também apresentaremos as ferramentas e SDKs que você usará para criar aplicativos, como **MEAI** (Microsoft.Extensions.AI), **Semantic Kernel** e a **Extensão AI Toolkit para VS Code**.
+Antes de mergulharmos no código, vamos tirar um momento para revisar alguns conceitos de IA generativa (GenAI). Nesta lição, **Fundamentos de IA Generativa para .NET**, revisaremos alguns conceitos fundamentais de GenAI para que você entenda por que certas coisas são feitas de determinadas maneiras. Também apresentaremos as ferramentas e SDKs que você usará para criar aplicativos, como **MEAI** (Microsoft.Extensions.AI), e a **Extensão AI Toolkit para VS Code**.
 
 ### Uma rápida revisão sobre os conceitos de IA Generativa
 
@@ -91,35 +91,6 @@ Usando uma API unificada, o MEAI permite que desenvolvedores trabalhem com difer
 > 📖 **Documentação**: Saiba mais sobre Microsoft.Extensions.AI (MEAI) na [documentação do MEAI](https://learn.microsoft.com/dotnet/ai/ai-extensions)
  
 
-#### Semantic Kernel (SK)
-
-Semantic Kernel é um SDK de código aberto que permite que desenvolvedores integrem modelos de linguagem de IA generativa em suas aplicações .NET. Ele fornece abstrações para serviços de IA e armazenamentos de memória (vetores), permitindo a criação de plugins que podem ser automaticamente orquestrados pela IA. Ele até utiliza o padrão OpenAPI, possibilitando que desenvolvedores criem agentes de IA para interagir com APIs externas.
-
-![*Figura: SDK Semantic Kernel (SK).*](../../../translated_images/semantic-kernel.c6a96edb209a3c0d5c6564284cfc47975f49fcfedc3ed55b9e84f2d4a628e04a.pt.png)
-
-Semantic Kernel suporta .NET, bem como outras linguagens como Java e Python, oferecendo uma variedade de conectores, funções e plugins para integração. Alguns dos principais recursos do Semantic Kernel incluem:
-
-- **Kernel Core**: Fornece a funcionalidade central para o Semantic Kernel, incluindo conectores, funções e plugins para interagir com serviços e modelos de IA. O kernel é o núcleo do Semantic Kernel, disponível para serviços e plugins, recuperando-os quando necessário, monitorando agentes e atuando como middleware ativo para sua aplicação.
-
-    Por exemplo, ele pode escolher o melhor serviço de IA para uma tarefa específica, construir e enviar o prompt para o serviço e retornar a resposta para a aplicação. Abaixo, um diagrama do Kernel Core em ação:
-
-    ![*Figura: Kernel Core do Semantic Kernel (SK).*](../../../translated_images/semantic-kernel-core.c30e9e4b9674f7a90d2145844d467bff5046268e0bb3c9f69ae21c19fd443a9d.pt.png)
-
-- **Conectores de Serviços de IA**: Fornece uma camada de abstração para expor serviços de IA de vários provedores, com uma interface comum e consistente. Exemplos incluem conclusão de chat, texto para imagem, texto para fala e áudio para texto.
-
-- **Conectores de Armazenamento Vetorial**: Expõe armazenamentos vetoriais de vários provedores, por meio de uma interface comum e consistente, permitindo que desenvolvedores trabalhem com embeddings, vetores e outras representações de dados.
-
-- **Funções e Plugins**: Oferece uma gama de funções e plugins para tarefas comuns de IA, como processamento de funções, criação de prompts, busca textual e mais. Conectando isso ao serviço/modelo de IA, criando implementações para RAG e agentes, por exemplo.
-
-- **Criação de Prompts**: Fornece ferramentas para engenharia de prompts, incluindo design, teste e otimização de prompts, para melhorar o desempenho e a precisão do modelo de IA. Permite que desenvolvedores criem e testem prompts, otimizando-os para tarefas específicas.
-
-- **Filtros**: Controles sobre quando e como as funções são executadas para melhorar a segurança e as práticas de IA responsável.
-
-No Semantic Kernel, um ciclo completo seria como o diagrama abaixo:
-
-![*Figura: Ciclo completo do Semantic Kernel (SK).*](../../../translated_images/semantic-kernel-full-loop.cfdc3187979869b8188fa171e390298b4eb215be3c77ab538a62f71cc16cfdcd.pt.png)
-
-> 📖 **Documentação**: Saiba mais sobre Semantic Kernel na [documentação do Semantic Kernel](https://learn.microsoft.com/semantic-kernel/overview/)
 
 ## Conclusão
 

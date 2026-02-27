@@ -1,0 +1,6 @@
+@MAF_AIWebChatApp_AG_UI_Agents_HostAddress = http://localhost:5188
+
+GET {{MAF_AIWebChatApp_AG_UI_Agents_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

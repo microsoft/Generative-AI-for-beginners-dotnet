@@ -112,49 +112,6 @@
                             </div>
                         </div>
 
-                        <!-- GitHub Models Configuration -->
-                        <div class="card mb-4">
-                            <div class="card-header bg-light d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h5 class="mb-0">
-                                        <i class="bi bi-github"></i> GitHub Models (Optional)
-                                    </h5>
-                                    <small class="text-muted">Configure GitHub Models API access</small>
-                                </div>
-                                @if (!string.IsNullOrEmpty(configuration.GitHubToken))
-                                {
-                                    <span class="badge bg-success">
-                                        <i class="bi bi-check-circle"></i> Configured
-                                    </span>
-                                }
-                            </div>
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <label for="githubToken" class="form-label">
-                                        GitHub Personal Access Token
-                                        <i class="bi bi-info-circle" data-bs-toggle="tooltip"
-                                            title="Get your token from GitHub Settings > Developer settings > Personal access tokens"></i>
-                                    </label>
-                                    <div class="input-group">
-                                        <InputText @bind-Value="configuration.GitHubToken" class="form-control"
-                                            id="githubToken" type="@(showGitHubToken ? "text" : "password")"
-                                            placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
-                                        <button class="btn btn-outline-secondary" type="button"
-                                            @onclick="ToggleGitHubTokenVisibility">
-                                            <i class="bi @(showGitHubToken ? "bi-eye-slash" : "bi-eye")"></i>
-                                        </button>
-                                    </div>
-                                    <ValidationMessage For="@(() => configuration.GitHubToken)" class="text-danger" />
-                                    <div class="form-text">
-                                        <a href="https://github.com/settings/personal-access-tokens/new" target="_blank"
-                                            class="text-decoration-none">
-                                            <i class="bi bi-external-link"></i> Create GitHub Token
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <!-- Azure OpenAI Configuration (Optional) -->
                         <div class="card mb-4">
                             <div class="card-header bg-light d-flex justify-content-between align-items-center">
