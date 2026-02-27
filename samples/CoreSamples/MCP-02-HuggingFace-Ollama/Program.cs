@@ -41,7 +41,7 @@ Console.WriteLine();
 
 // create an IChatClient using the MCP tools
 var uri = new Uri("http://localhost:11434");
-var client = new OllamaApiClient(uri, deploymentName)
+var client = ((IChatClient)new OllamaApiClient(uri, deploymentName))
     .AsBuilder()
     .UseFunctionInvocation()
     .Build();
