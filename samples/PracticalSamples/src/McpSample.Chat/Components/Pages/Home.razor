@@ -21,7 +21,7 @@
         <div class="chat-title">MCP Server using <b>@deploymentName</b></div>
         <div class="chat-content">
             <p>Hi, I'm a client to test MCP using <b>@deploymentName</b>, let's chat!</p>
-            <p>Check the Settings page to test the model using GitHub Models, Ollama or Microsoft Foundry or to use
+            <p>Check the Settings page to test the model using Ollama or Microsoft Foundry or to use
                 custom settings.</p>
         </div>
         <div class="chat-title">Current MCP Tools in the Server:</div>
@@ -223,10 +223,11 @@
                 if (string.IsNullOrEmpty(apiKey))
                 {
                     Logger.LogInformation("Using DefaultAzureCredential");
-                    client = new Azure.AI.Inference.ChatCompletionsClient(
-                    endpoint: new Uri(endpoint),
-                    credential: new DefaultAzureCredential())
-                    .AsIChatClient(deploymentName)
+                    client = new Azure.AI.OpenAI.AzureOpenAIClient(
+                    new Uri(endpoint),
+                    new DefaultAzureCredential())
+                    .GetChatClient(deploymentName)
+                    .AsIChatClient()
                     .AsBuilder()
                     .UseFunctionInvocation()
                     .Build();
@@ -234,10 +235,11 @@
                 else
                 {
                     Logger.LogInformation("Using ApiKey");
-                    client = new Azure.AI.Inference.ChatCompletionsClient(
-                    endpoint: new Uri(endpoint),
-                    credential: new AzureKeyCredential(apiKey))
-                    .AsIChatClient(deploymentName)
+                    client = new Azure.AI.OpenAI.AzureOpenAIClient(
+                    new Uri(endpoint),
+                    new System.ClientModel.ApiKeyCredential(apiKey))
+                    .GetChatClient(deploymentName)
+                    .AsIChatClient()
                     .AsBuilder()
                     .UseFunctionInvocation()
                     .Build();

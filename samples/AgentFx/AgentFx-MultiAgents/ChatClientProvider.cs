@@ -1,6 +1,4 @@
-﻿using Azure;
-using Azure.AI.Inference;
-using Azure.AI.OpenAI;
+﻿using Azure.AI.OpenAI;
 using Azure.Identity;
 using Microsoft.Extensions.AI;
 using OllamaSharp;
@@ -10,11 +8,10 @@ namespace AgentFx_MultiAgents;
 
 /// <summary>
 /// Provides factory methods for creating chat clients for different AI services.
-/// Supports GitHub Models, Azure OpenAI, and Ollama.
+/// Supports Azure OpenAI and Ollama.
 /// </summary>
 class ChatClientProvider
 {
-    private const string GitHubModelsEndpoint = "https://models.github.ai/inference";
     private const string DefaultOllamaEndpoint = "http://localhost:11434/";
     private const string DefaultOllamaModel = "llama3.2";
 
@@ -35,31 +32,12 @@ class ChatClientProvider
 
     /// <summary>
     /// Creates a chat client based on available configuration.
-    /// Priority: GitHub Models > Azure OpenAI with API Key > Azure OpenAI with Default Credentials.
+    /// Priority: Azure OpenAI with API Key > Azure OpenAI with Default Credentials.
     /// </summary>
     /// <returns>An IChatClient configured with function invocation support.</returns>
     public static IChatClient GetChatClient()
     {
-        if (_config.HasValidGitHubToken)
-        {
-            return CreateGitHubModelsClient();
-        }
-
         return CreateAzureOpenAIClient();
-    }
-
-    /// <summary>
-    /// Creates a chat client for GitHub Models.
-    /// </summary>
-    private static IChatClient CreateGitHubModelsClient()
-    {
-        return new ChatCompletionsClient(
-                endpoint: new Uri(GitHubModelsEndpoint),
-                new AzureKeyCredential(_config.GitHubToken!))
-            .AsIChatClient(_config.DeploymentName)
-            .AsBuilder()
-            .UseFunctionInvocation()
-            .Build();
     }
 
     /// <summary>

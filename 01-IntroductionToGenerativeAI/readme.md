@@ -179,8 +179,7 @@ You have options:
 | Option | Best For | Cost |
 |--------|----------|------|
 | **Ollama (Local)** | Privacy, offline work, learning | Free |
-| **GitHub Models** | Getting started quickly | Free tier |
-| **Azure OpenAI** | Production, enterprise, compliance | Pay-per-use |
+| **Azure OpenAI / Microsoft Foundry** | Production, enterprise, compliance | Pay-per-use |
 
 All of these work with the same `IChatClient` interface!
 
@@ -203,7 +202,7 @@ We have removed the setup barriers. Choose the path that fits your workflow:
 ### Path A: GitHub Codespaces (Recommended)
 **Best for:** Beginners, or if you don't want to install anything.
 *   **What you get:** A full cloud IDE with .NET 9 and tools pre-installed.
-*   **Models:** Use **GitHub Models** (Free) or **Azure OpenAI**.
+*   **Models:** Use **Azure OpenAI / Microsoft Foundry** or **Ollama**.
 *   [**Access the Codespaces Setup Guide**](./setup-github-codespaces.md)
 
 ### Path B: Local Development (Ollama)
@@ -212,7 +211,7 @@ We have removed the setup barriers. Choose the path that fits your workflow:
 *   **Models:** **Phi-4**, **Llama 3**, etc.
 *   [**Access the Local Ollama Setup Guide**](./setup-local-ollama.md)
 
-### Path C: Azure OpenAI (Enterprise)
+### Path C: Azure OpenAI / Microsoft Foundry (Enterprise)
 **Best for:** Production scenarios and existing Azure users.
 *   [**Access the Azure OpenAI Setup Guide**](./setup-azure-openai.md)
 

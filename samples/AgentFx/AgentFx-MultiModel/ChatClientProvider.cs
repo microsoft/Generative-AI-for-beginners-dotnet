@@ -1,6 +1,4 @@
-﻿using Azure;
-using Azure.AI.Inference;
-using Azure.AI.OpenAI;
+﻿using Azure.AI.OpenAI;
 using Azure.Identity;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
@@ -26,46 +24,27 @@ class ChatClientProvider
             .Build();
         var deploymentName = config["deploymentName"] ?? "gpt-5-mini";
 
-        IChatClient client = null;
-        var githubToken = config["GITHUB_TOKEN"];
+        var endpoint = config["endpoint"];
 
-        // create a client if githubToken is valid string
-        if (!string.IsNullOrEmpty(githubToken))
+        if (!string.IsNullOrEmpty(config["apikey"]))
         {
-            client = new ChatCompletionsClient(
-                endpoint: new Uri("https://models.github.ai/inference"),
-                new AzureKeyCredential(githubToken))
-                .AsIChatClient(deploymentName)
+            var apiKey = new ApiKeyCredential(config["apikey"]);
+            return new AzureOpenAIClient(new Uri(endpoint), apiKey)
+                .GetChatClient(deploymentName)
+                .AsIChatClient()
                 .AsBuilder()
                 .UseFunctionInvocation()
                 .Build();
         }
         else
         {
-            // create an Azure OpenAI client if githubToken is not valid
-            var endpoint = config["endpoint"];
-
-            if (!string.IsNullOrEmpty(config["apikey"]))
-            {
-                var apiKey = new ApiKeyCredential(config["apikey"]);
-                client = new AzureOpenAIClient(new Uri(endpoint), apiKey)
-                    .GetChatClient(deploymentName)
-                    .AsIChatClient()
-                    .AsBuilder()
-                    .UseFunctionInvocation()
-                    .Build();
-            }
-            else
-            {
-                // use default azure credentials if no apiKey is provided
-                client = new AzureOpenAIClient(new Uri(endpoint), new DefaultAzureCredential())
-                    .GetChatClient(deploymentName)
-                    .AsIChatClient()
-                    .AsBuilder()
-                    .UseFunctionInvocation()
-                    .Build();
-            }
+            // use default azure credentials if no apiKey is provided
+            return new AzureOpenAIClient(new Uri(endpoint), new DefaultAzureCredential())
+                .GetChatClient(deploymentName)
+                .AsIChatClient()
+                .AsBuilder()
+                .UseFunctionInvocation()
+                .Build();
         }
-        return client;
     }
 }

@@ -7,9 +7,7 @@ using OpenTelemetry.Trace;
 
 
 // To run the sample, you need to set the following environment variables or user secrets:
-// Using GitHub models (for Agent 1):
-//      "GITHUB_TOKEN": "your GitHub Token"
-// Using Azure Foundry/OpenAI (for Agent 2):
+// Azure Foundry/OpenAI (for Agent 1 and Agent 2):
 //      "endpoint": "https://<endpoint>.services.ai.azure.com/"
 //      "apikey": "your key"
 //      "deploymentName": "a deployment name, ie: gpt-4o-mini"
@@ -17,8 +15,8 @@ using OpenTelemetry.Trace;
 
 Console.WriteLine("=== Microsoft Agent Framework - Multi-Model Orchestration Demo ===");
 Console.WriteLine("This demo showcases 3 agents working together:");
-Console.WriteLine("  1. Researcher (Microsoft Foundry or GitHub Models) - Researches topics");
-Console.WriteLine("  2. Writer (Microsoft Foundry or GitHub Models) - Writes content based on research");
+Console.WriteLine("  1. Researcher (Azure OpenAI) - Researches topics");
+Console.WriteLine("  2. Writer (Azure OpenAI) - Writes content based on research");
 Console.WriteLine("  3. Reviewer (Ollama - llama 3.2) - Reviews and provides feedback");
 Console.WriteLine();
 
@@ -28,8 +26,8 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .AddConsoleExporter()
     .Build();
 
-// ===== Agent 1: Researcher using GitHub Models =====
-Console.WriteLine("Setting up Agent 1: Researcher (Microsoft Foundry or GitHub Models)...");
+// ===== Agent 1: Researcher using Azure OpenAI =====
+Console.WriteLine("Setting up Agent 1: Researcher (Azure OpenAI)...");
 
 IChatClient githubChatClient = ChatClientProvider.GetChatClient();
 
@@ -41,7 +39,7 @@ AIAgent researcher = githubChatClient.CreateAIAgent(
     .Build();
 
 // ===== Agent 2: Writer using Azure Foundry/OpenAI =====
-Console.WriteLine("Setting up Agent 2: Writer (Microsoft Foundry or GitHub Models)...");
+Console.WriteLine("Setting up Agent 2: Writer (Azure OpenAI)...");
 
 IChatClient azureChatClient = ChatClientProvider.GetChatClient();
 

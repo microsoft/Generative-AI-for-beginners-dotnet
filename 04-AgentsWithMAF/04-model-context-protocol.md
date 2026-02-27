@@ -166,10 +166,11 @@ await using var mcpClient = await McpClient.CreateAsync(clientTransport);
 var tools = await mcpClient.ListToolsAsync();
 
 // Create chat client with function invocation
-IChatClient client = new ChatCompletionsClient(
-    endpoint: new Uri("https://models.github.ai/inference"),
-    new AzureKeyCredential(githubToken))
-    .AsIChatClient("gpt-4o-mini")
+IChatClient client = new AzureOpenAIClient(
+        new Uri(config["endpoint"]),
+        new ApiKeyCredential(config["apikey"]))
+        .GetChatClient("gpt-4o-mini")
+        .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()
     .Build();
@@ -411,7 +412,7 @@ Need to integrate with external service?
 
 | Sample | Description |
 |--------|-------------|
-| [MCP-01-HuggingFace](../samples/CoreSamples/MCP-01-HuggingFace/) | MCP with GitHub Models / Azure OpenAI |
+| [MCP-01-HuggingFace](../samples/CoreSamples/MCP-01-HuggingFace/) | MCP with Azure OpenAI |
 | [MCP-02-HuggingFace-Ollama](../samples/CoreSamples/MCP-02-HuggingFace-Ollama/) | MCP with local Ollama models |
 | Aspire MCP Sample | See [04-PracticalSamples](../04-PracticalSamples/) for Aspire + MCP integration |
 

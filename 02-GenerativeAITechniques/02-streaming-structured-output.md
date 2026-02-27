@@ -50,10 +50,11 @@ Here's a full streaming chat application:
 ```csharp
 using Microsoft.Extensions.AI;
 
-IChatClient client = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken))
-        .AsIChatClient("gpt-4o-mini");
+IChatClient client = new AzureOpenAIClient(
+        new Uri(config["endpoint"]),
+        new ApiKeyCredential(config["apikey"]))
+        .GetChatClient("gpt-4o-mini")
+        .AsIChatClient();
 
 List<ChatMessage> chatHistory = [];
 
@@ -337,7 +338,7 @@ Can you answer these questions?
 
 | Sample | Description |
 |--------|-------------|
-| [BasicChat-01MEAI](../samples/CoreSamples/BasicChat-01MEAI/) | Basic chat with GitHub Models |
+| [BasicChat-01MEAI](../samples/CoreSamples/BasicChat-01MEAI/) | Basic chat with Azure OpenAI |
 | [BasicChat-10ConversationHistory](../samples/CoreSamples/BasicChat-10ConversationHistory/) | Conversation history management |
 
 ---

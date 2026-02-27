@@ -1,4 +1,4 @@
-# Setting Up: GitHub Codespaces & GitHub Models (Recommended)
+# Setting Up: GitHub Codespaces
 
 This is the fastest way to get started. You'll run VS Code entirely in your browser, backed by a pre-configured cloud environment (Codespace).
 
@@ -15,7 +15,7 @@ This is the fastest way to get started. You'll run VS Code entirely in your brow
 From the **Dev container configuration** dropdown, select:
 
 *   **Option 1: C# (.NET)** (Recommended)
-    *   Best for using **Cloud Models** (GitHub Models / Azure OpenAI).
+    *   Best for using **Cloud Models** (Azure OpenAI / Microsoft Foundry).
     *   Fastest startup time.
 *   **Option 2: C# (.NET) - Ollama**
     *   Select this **ONLY** if you want to run models locally inside the Codespace (slower startup).
@@ -24,22 +24,22 @@ Click **Create codespace**.
 
 ---
 
-## 2. Setup GitHub Models (Free AI Access)
+## 2. Setup Azure OpenAI / Microsoft Foundry
 
-While your Codespace loads, let's get you free access to AI models like GPT-4o.
+While your Codespace loads, configure your AI provider credentials.
 
-### Create a Personal Access Token (PAT)
-1. Go to [GitHub Settings](https://github.com/settings/profile) -> **Settings**.
-2. Scroll down on the left to **Developer settings**.
-3. Select **Personal access tokens** → **Tokens (classic)**.
-4. Click **Generate new token (classic)**.
-    *   **Note:** Course Token
-    *   **Expiration:** 7 days (or as needed)
-    *   **Scopes:** ✅ Check the box for **`models:read`**. This is required.
+### Set User Secrets
 
-![Adding the Tokens(classic)](./images/tokens-classic-github.png)
+Once your Codespace is running, open the terminal (**Ctrl+`**) and navigate to a sample project:
 
-5. **Copy the token.** You will need it shortly.
+```bash
+cd samples/CoreSamples/BasicChat-01MEAI
+dotnet user-secrets set "endpoint" "https://<your-endpoint>.services.ai.azure.com/"
+dotnet user-secrets set "apikey" "<your-api-key>"
+dotnet user-secrets set "deploymentName" "gpt-4o-mini"
+```
+
+Replace the values with your Azure OpenAI or Microsoft Foundry endpoint, API key, and deployment name.
 
 ---
 
@@ -48,7 +48,7 @@ While your Codespace loads, let's get you free access to AI models like GPT-4o.
 Once your Codespace is running:
 
 1. Open the terminal (**Ctrl+`**).
-2. Set your token as a secret (optional, or paste it when prompted by the app).
+2. Set your user secrets as described above.
 3. You are ready for Lesson 02!
 
 [⬅️ Back to Introduction](./readme.md)

@@ -59,9 +59,9 @@ L'IA générative transforme le développement logiciel, et .NET n'y fait pas ex
 
 - De courtes vidéos de 5 à 10 minutes pour chaque leçon.
 - Des exemples de code .NET entièrement fonctionnels que vous pouvez exécuter et explorer.
-- Une intégration avec des outils comme **GitHub Codespaces** et **GitHub Models** pour une configuration facile et un démarrage rapide. Mais si vous préférez exécuter les exemples localement avec vos propres modèles, c'est également possible.
+- Une intégration avec des outils comme **GitHub Codespaces** et **Azure OpenAI** pour une configuration facile et un démarrage rapide. Mais si vous préférez exécuter les exemples localement avec vos propres modèles, c'est également possible.
 
-Vous apprendrez à intégrer l'IA générative dans des projets .NET, de la génération de texte de base à la création de solutions complètes en utilisant **GitHub Models**, **Azure OpenAI Services** et des modèles locaux avec **Ollama**.
+Vous apprendrez à intégrer l'IA générative dans des projets .NET, de la génération de texte de base à la création de solutions complètes en utilisant **Azure OpenAI**, **Azure OpenAI Services** et des modèles locaux avec **Ollama**.
 
 ## 📦 Chaque Leçon Comprend
 
@@ -75,7 +75,7 @@ Vous apprendrez à intégrer l'IA générative dans des projets .NET, de la gén
 | #   | **Lien vers la Leçon** | **Description** |
 | --- | ----------------------- | --------------- |
 | 01  | [**Introduction aux Bases de l'IA Générative pour les Développeurs .NET**](./01-IntroToGenAI/readme.md) | <ul><li>Aperçu des modèles génératifs et de leurs applications en .NET</li></ul> |
-| 02  | [**Configurer un Environnement de Développement pour l'IA Générative avec .NET**](./02-SetupDevEnvironment/readme.md) | <ul><li>Utilisation de bibliothèques comme **Microsoft.Extensions.AI** et **Microsoft Agent Framework**.</li><li>Configuration de fournisseurs comme GitHub Models, Microsoft Foundry, et développement local avec Ollama.</li></ul> |
+| 02  | [**Configurer un Environnement de Développement pour l'IA Générative avec .NET**](./02-SetupDevEnvironment/readme.md) | <ul><li>Utilisation de bibliothèques comme **Microsoft.Extensions.AI** et **Microsoft Agent Framework**.</li><li>Configuration de fournisseurs comme Azure OpenAI, Microsoft Foundry, et développement local avec Ollama.</li></ul> |
 | 03  | [**Techniques Fondamentales d'IA Générative avec .NET**](./03-CoreGenerativeAITechniques/readme.md) | <ul><li>Génération de texte et flux conversationnels.</li><li> Capacités multimodales (vision et audio).</li><li>Agents</li></ul> |
 | 04  | [**Exemples Pratiques d'IA Générative avec .NET**](./04-PracticalSamples/readme.md) | <ul><li>Exemples complets démontrant l'IA générative dans des scénarios réels</li><li>Applications de recherche sémantique.</li><li>Applications avec agents multiples</li></ul> |
 | 05  | [**Utilisation Responsable de l'IA Générative dans les Applications .NET**](./05-ResponsibleGenAI/readme.md) | <ul><li>Considérations éthiques, réduction des biais, et implémentations sécurisées.</li></ul> |

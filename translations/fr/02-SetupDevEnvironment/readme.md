@@ -1,6 +1,6 @@
 # Configurer l'environnement de développement pour ce cours
 
-Cette leçon vous guidera dans la configuration de votre environnement de développement pour ce cours. Pour garantir votre succès, nous avons préparé une configuration de devcontainer qui inclut tous les outils nécessaires pour compléter le cours. Vous pouvez exécuter le devcontainer dans GitHub Codespaces (recommandé) ou localement sur votre machine. Nous vous montrons également comment configurer vos jetons d'accès GitHub pour interagir avec les modèles GitHub.
+Cette leçon vous guidera dans la configuration de votre environnement de développement pour ce cours. Pour garantir votre succès, nous avons préparé une configuration de devcontainer qui inclut tous les outils nécessaires pour compléter le cours. Vous pouvez exécuter le devcontainer dans GitHub Codespaces (recommandé) ou localement sur votre machine. Nous vous montrons également comment configurer vos jetons d'accès GitHub pour interagir avec les Azure OpenAI.
 
 *Nous avons préparé des guides pour configurer [Azure OpenAI](getting-started-azure-openai.md) et [Ollama](getting-started-ollama.md), si vous le souhaitez.*
 
@@ -9,7 +9,7 @@ Cette leçon vous guidera dans la configuration de votre environnement de dével
 ## Ce que vous apprendrez dans cette leçon :
 
 - ⚡ Comment configurer un environnement de développement avec GitHub Codespaces
-- 🤖 Configurer votre environnement pour accéder aux LLMs via GitHub Models, Azure OpenAI ou Ollama
+- 🤖 Configurer votre environnement pour accéder aux LLMs via Azure OpenAI, Azure OpenAI ou Ollama
 - 🛠️ Configuration d'outils standards de l'industrie avec .devcontainer
 - 🎯 Enfin, tout sera prêt pour compléter le reste du cours
 
@@ -21,29 +21,29 @@ _⬆️Cliquez sur l'image pour regarder la vidéo⬆️_
 
 ## Quel service d'IA utiliser pour ce cours ?
 
-Nous fournissons des instructions pour configurer votre environnement de développement avec GitHub Models, Azure OpenAI et Ollama. Vous pouvez choisir celui qui correspond le mieux à vos besoins. Nous recommandons GitHub Models pour ce cours, mais vous pouvez utiliser l'un des trois services.
+Nous fournissons des instructions pour configurer votre environnement de développement avec Azure OpenAI, Azure OpenAI et Ollama. Vous pouvez choisir celui qui correspond le mieux à vos besoins. Nous recommandons Azure OpenAI pour ce cours, mais vous pouvez utiliser l'un des trois services.
 
 Voici un résumé des services :
 
-- **GitHub Models** : Un service gratuit pour commencer, qui vous permet de tester et d'interagir avec divers modèles d'IA directement dans votre environnement de développement. Facile à utiliser depuis Codespaces, c'est une excellente façon d'expérimenter avec différents modèles et de comprendre leurs capacités avant de les implémenter.
+- **Azure OpenAI** : Un service gratuit pour commencer, qui vous permet de tester et d'interagir avec divers modèles d'IA directement dans votre environnement de développement. Facile à utiliser depuis Codespaces, c'est une excellente façon d'expérimenter avec différents modèles et de comprendre leurs capacités avant de les implémenter.
 - **Azure OpenAI** : Un service payant qui donne accès à une large gamme de modèles d'IA. Il inclut les avantages habituels d'Azure, comme une sécurité robuste et une grande scalabilité. Une excellente option si vous avez déjà accès à un abonnement Azure.
 - **Ollama** : Ollama vous permet d'exécuter des modèles d'IA localement sur votre machine ou dans un Codespace ou devcontainer gratuitement. Une bonne option si vous préférez exécuter les modèles localement, mais cela nécessite plus de ressources matérielles et peut être plus lent que les options cloud.
 
-> Si **GitHub Models** est votre choix, suivez le reste de ce document pour configurer votre environnement de développement avec GitHub Models.
+> Si **Azure OpenAI** est votre choix, suivez le reste de ce document pour configurer votre environnement de développement avec Azure OpenAI.
 > - Vous préférez **Azure OpenAI** ? [Voici le document qu'il vous faut](getting-started-azure-openai.md).
 > - **Ollama** vous tente ? [Ce guide est fait pour vous](getting-started-ollama.md).
 
-## Apprenez et testez des modèles d'IA avec GitHub Models
+## Apprenez et testez des modèles d'IA avec Azure OpenAI
 
-**GitHub Models** offre une façon intuitive d'expérimenter avec divers modèles d'IA directement dans votre environnement de développement. Cette fonctionnalité permet aux développeurs de tester et d'interagir avec différents modèles, de comprendre leurs capacités et leurs limites avant de les implémenter. Grâce à une interface simple, vous pouvez explorer les réponses des modèles, évaluer leurs performances et déterminer celui qui convient le mieux à vos besoins. Hébergés dans l'infrastructure de GitHub, ces modèles offrent un accès fiable et des performances constantes, ce qui les rend idéaux pour les phases de développement et de test. Cerise sur le gâteau, une offre gratuite vous permet de commencer sans aucun coût.
+**Azure OpenAI** offre une façon intuitive d'expérimenter avec divers modèles d'IA directement dans votre environnement de développement. Cette fonctionnalité permet aux développeurs de tester et d'interagir avec différents modèles, de comprendre leurs capacités et leurs limites avant de les implémenter. Grâce à une interface simple, vous pouvez explorer les réponses des modèles, évaluer leurs performances et déterminer celui qui convient le mieux à vos besoins. Hébergés dans l'infrastructure de GitHub, ces modèles offrent un accès fiable et des performances constantes, ce qui les rend idéaux pour les phases de développement et de test. Cerise sur le gâteau, une offre gratuite vous permet de commencer sans aucun coût.
 
-![Image pour la page GitHub Models, montrant plusieurs modèles d'IA générative](../../../translated_images/github-models-webapge.25ecc6d29afdb2dedd949b0e5279cff6dd799af74c427d1036002f18249b9889.fr.png)
+![Image pour la page Azure OpenAI, montrant plusieurs modèles d'IA générative](../../../translated_images/github-models-webapge.25ecc6d29afdb2dedd949b0e5279cff6dd799af74c427d1036002f18249b9889.fr.png)
 
 ## Préparation : Configuration des jetons d'accès GitHub
 
-Avant toute chose, nous devons configurer les informations d'identification essentielles pour permettre à votre Codespace d'interagir avec GitHub Models et d'exécuter vos applications en toute sécurité.
+Avant toute chose, nous devons configurer les informations d'identification essentielles pour permettre à votre Codespace d'interagir avec Azure OpenAI et d'exécuter vos applications en toute sécurité.
 
-### Création d'un jeton d'accès personnel pour GitHub Models
+### Création d'un jeton d'accès personnel pour Azure OpenAI
 
 1. Rendez-vous sur [les paramètres GitHub](https://github.com/settings/profile) :
 
@@ -71,7 +71,7 @@ Avant toute chose, nous devons configurer les informations d'identification esse
 
     - Sous "Note", fournissez un nom descriptif (par ex. `GenAI-DotNet-Course-Token`)
     - Définissez une date d'expiration (recommandé : 7 jours pour respecter les bonnes pratiques de sécurité)
-    - **Important** : Vous devez sélectionner la permission **`models:read`** pour que ce jeton fonctionne avec GitHub Models.
+    - **Important** : Vous devez sélectionner la permission **`models:read`** pour que ce jeton fonctionne avec Azure OpenAI.
 
 > 💡 **Astuce de sécurité** : Utilisez toujours la portée minimale requise et la durée d'expiration la plus courte possible pour vos jetons d'accès. Cela suit le principe du moindre privilège et aide à sécuriser vos jetons.
 
@@ -90,9 +90,9 @@ Créons un Codespace GitHub à utiliser pour le reste de ce cours.
 
 Dans le menu déroulant **Dev container configuration**, sélectionnez l'une des options suivantes :
 
-**Option 1 : C# (.NET)** : C'est l'option à utiliser si vous prévoyez d'utiliser GitHub Models et c'est notre méthode recommandée pour compléter ce cours. Elle inclut tous les outils de développement .NET nécessaires pour le reste du cours et offre un démarrage rapide.
+**Option 1 : C# (.NET)** : C'est l'option à utiliser si vous prévoyez d'utiliser Azure OpenAI et c'est notre méthode recommandée pour compléter ce cours. Elle inclut tous les outils de développement .NET nécessaires pour le reste du cours et offre un démarrage rapide.
 
-**Option 2 : C# (.NET) - Ollama** : Ollama vous permet d'exécuter les démonstrations sans avoir besoin de se connecter à GitHub Models ou Azure OpenAI. Elle inclut tous les outils de développement .NET ainsi qu'Ollama, mais le démarrage est plus lent, environ cinq minutes en moyenne. [Suivez ce guide](getting-started-ollama.md) si vous voulez utiliser Ollama.
+**Option 2 : C# (.NET) - Ollama** : Ollama vous permet d'exécuter les démonstrations sans avoir besoin de se connecter à Azure OpenAI ou Azure OpenAI. Elle inclut tous les outils de développement .NET ainsi qu'Ollama, mais le démarrage est plus lent, environ cinq minutes en moyenne. [Suivez ce guide](getting-started-ollama.md) si vous voulez utiliser Ollama.
 
 > 💡**Astuce** : Lors de la création de votre Codespace, utilisez la région la plus proche de vous si vous avez cette option dans le menu. Utiliser une région éloignée peut entraîner des erreurs lors de la création.
 
@@ -100,7 +100,7 @@ Cliquez sur le bouton **Create codespace** pour lancer le processus de création
 
 ![Sélection de la configuration du conteneur de développement](../../../translated_images/select-container-codespace.9b8ca34b6ff8b4cb80973924cbc1894cf7672d233b0055b47f702db60c4c6221.fr.png)
 
-## Vérification que votre Codespace fonctionne correctement avec GitHub Models
+## Vérification que votre Codespace fonctionne correctement avec Azure OpenAI
 
 Une fois que votre Codespace est complètement chargé et configuré, testons une application exemple pour vérifier que tout fonctionne correctement :
 
@@ -143,13 +143,13 @@ ErrorCode: unknown_model
 
 Cela signifie généralement l'une des situations suivantes :
 
-1. **Votre code fait référence à un modèle déprécié** : Certains modèles ont été dépréciés ou supprimés de GitHub Models. Par exemple, `Phi-3.5-MoE-instruct` a été déprécié en septembre 2025. Assurez-vous que votre code utilise le modèle actuellement pris en charge.
+1. **Votre code fait référence à un modèle déprécié** : Certains modèles ont été dépréciés ou supprimés de Azure OpenAI. Par exemple, `Phi-3.5-MoE-instruct` a été déprécié en septembre 2025. Assurez-vous que votre code utilise le modèle actuellement pris en charge.
 
 2. **Votre fork du dépôt est obsolète** : Si vous avez forké ce dépôt avant les mises à jour récentes, votre code peut faire référence à d'anciens noms de modèles. Pour corriger cela :
    - Récupérez les dernières modifications du dépôt en amont
    - Assurez-vous que votre fichier `Program.cs` dans `02-SetupDevEnvironment/src/BasicChat-01MEAI` utilise `Phi-4-mini-instruct` (et non les anciens noms de modèles)
 
-3. **Erreur de frappe dans le nom du modèle** : Vérifiez que le nom du modèle dans votre code correspond exactement aux modèles disponibles dans [GitHub Models](https://github.com/marketplace?type=models).
+3. **Erreur de frappe dans le nom du modèle** : Vérifiez que le nom du modèle dans votre code correspond exactement aux modèles disponibles dans [Azure OpenAI](https://github.com/marketplace?type=models).
 
 **Solution rapide** : 
 - Ouvrez `/02-SetupDevEnvironment/src/BasicChat-01MEAI/Program.cs`
@@ -158,22 +158,22 @@ Cela signifie généralement l'une des situations suivantes :
   .AsIChatClient("Phi-4-mini-instruct");
   ```
 
-Pour obtenir la liste la plus récente des modèles disponibles, visitez le [GitHub Models Marketplace](https://github.com/marketplace?type=models).
+Pour obtenir la liste la plus récente des modèles disponibles, visitez le [Azure OpenAI Marketplace](https://github.com/marketplace?type=models).
 
 ### Guide de migration des modèles
 
 Si vous mettez à jour un ancien code qui utilisait des modèles dépréciés, voici une référence rapide :
 
-| Modèle déprécié (GitHub Models) | Remplacement actuel |
+| Modèle déprécié (Azure OpenAI) | Remplacement actuel |
 |----------------------------------|---------------------|
 | Phi-3.5-MoE-instruct | Phi-4-mini-instruct |
 | Phi-3.5-mini-instruct | Phi-4-mini-instruct |
 
-> **Note** : Ce guide de migration s'applique uniquement à **GitHub Models**. Si vous utilisez des exécuteurs de modèles locaux comme Ollama ou Foundry Local, ces plateformes peuvent toujours prendre en charge les modèles Phi-3.5. Consultez la documentation de votre plateforme spécifique pour connaître les modèles disponibles.
+> **Note** : Ce guide de migration s'applique uniquement à **Azure OpenAI**. Si vous utilisez des exécuteurs de modèles locaux comme Ollama ou Foundry Local, ces plateformes peuvent toujours prendre en charge les modèles Phi-3.5. Consultez la documentation de votre plateforme spécifique pour connaître les modèles disponibles.
 
 ## Résumé
 
-Dans cette leçon, vous avez appris à configurer votre environnement de développement pour le reste du cours. Vous avez créé un Codespace GitHub et l'avez configuré pour utiliser GitHub Models, Azure OpenAI ou Ollama. Vous avez également appris à créer un jeton d'accès personnel pour GitHub Models et à exécuter une application exemple pour vérifier que tout fonctionne correctement.
+Dans cette leçon, vous avez appris à configurer votre environnement de développement pour le reste du cours. Vous avez créé un Codespace GitHub et l'avez configuré pour utiliser Azure OpenAI, Azure OpenAI ou Ollama. Vous avez également appris à créer un jeton d'accès personnel pour Azure OpenAI et à exécuter une application exemple pour vérifier que tout fonctionne correctement.
 
 ### Ressources supplémentaires
 
@@ -181,7 +181,7 @@ Dans cette leçon, vous avez appris à configurer votre environnement de dévelo
     - [Azure OpenAI](getting-started-azure-openai.md)
     - [Ollama](getting-started-ollama.md)
 - [Documentation GitHub Codespaces](https://docs.github.com/en/codespaces)
-- [Documentation GitHub Models](https://docs.github.com/en/github-models/prototyping-with-ai-models)
+- [Documentation Azure OpenAI](https://docs.github.com/en/github-models/prototyping-with-ai-models)
 
 ## Prochaines étapes
 

@@ -32,10 +32,6 @@ class AppConfigurationService
     public string DeploymentName => _configuration["deploymentName"] ?? "gpt-5-mini";
 
     /// <summary>
-    /// Gets the GitHub token for authentication.
-    /// </summary>
-    public string? GitHubToken => _configuration["GITHUB_TOKEN"];
-
     /// <summary>
     /// Gets the Azure OpenAI endpoint URL.
     /// </summary>
@@ -50,11 +46,6 @@ class AppConfigurationService
     /// Gets the Azure Foundry project endpoint URL.
     /// </summary>
     public string? AzureFoundryProjectEndpoint => _configuration["AZURE_FOUNDRY_PROJECT_ENDPOINT"];
-
-    /// <summary>
-    /// Checks if GitHub token is configured and valid.
-    /// </summary>
-    public bool HasValidGitHubToken => !string.IsNullOrEmpty(GitHubToken);
 
     /// <summary>
     /// Checks if Azure API key is configured and valid.

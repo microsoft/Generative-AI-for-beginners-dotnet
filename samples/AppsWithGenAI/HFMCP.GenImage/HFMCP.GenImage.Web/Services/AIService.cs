@@ -2,8 +2,6 @@ using HFMCP.GenImage.Web.Services;
 using Microsoft.Extensions.AI;
 using ModelContextProtocol.Client;
 using Azure.AI.OpenAI;
-using Azure.AI.Inference;
-using Azure;
 using System.ClientModel;
 using System.Text;
 using System.Text.Json;
@@ -40,7 +38,7 @@ public class AIService : IAIService
                 return new AIResponse
                 {
                     IsError = true,
-                    ErrorMessage = "AI configuration is incomplete. Please configure your Hugging Face token in Settings. GitHub Models or Azure OpenAI is also required for chat functionality."
+                    ErrorMessage = "AI configuration is incomplete. Please configure your Hugging Face token in Settings. Azure OpenAI is also required for chat functionality."
                 };
             }
 
@@ -51,7 +49,7 @@ public class AIService : IAIService
                 return new AIResponse
                 {
                     IsError = true,
-                    ErrorMessage = "Please configure either GitHub Models token or Azure OpenAI credentials for chat functionality."
+                    ErrorMessage = "Please configure Azure OpenAI credentials for chat functionality."
                 };
             }
 
@@ -143,17 +141,12 @@ public class AIService : IAIService
 
     private async Task<IChatClient> GetChatClientAsync(AIConfiguration config)
     {
-        // Prioritize Azure OpenAI, then fallback to GitHub Models
         if (!string.IsNullOrEmpty(config.AzureOpenAIEndpoint) && !string.IsNullOrEmpty(config.AzureOpenAIApiKey))
         {
             return await CreateAzureOpenAIChatClientAsync(config);
         }
-        else if (!string.IsNullOrEmpty(config.GitHubToken))
-        {
-            return CreateGitHubModelsChatClient(config);
-        }
 
-        throw new InvalidOperationException("No configured AI provider available for chat.");
+        throw new InvalidOperationException("No configured AI provider available for chat. Please configure Azure OpenAI endpoint and API key.");
     }
 
     private Task<IChatClient> CreateAzureOpenAIChatClientAsync(AIConfiguration config)
@@ -171,19 +164,6 @@ public class AIService : IAIService
             .Build();
 
         return Task.FromResult(client);
-    }
-
-    private IChatClient CreateGitHubModelsChatClient(AIConfiguration config)
-    {
-        var completionsClient = new ChatCompletionsClient(
-            endpoint: new Uri("https://models.github.ai/inference"),
-            new AzureKeyCredential(config.GitHubToken!));
-
-        // Use the extension method like in the sample
-        return completionsClient.AsIChatClient(config.ModelName)
-            .AsBuilder()
-            .UseFunctionInvocation()
-            .Build();
     }
 
     private List<string> ExtractImageUrls(string responseText)
@@ -253,11 +233,7 @@ public class AzureOpenAIResponse
     public Choice[]? choices { get; set; }
 }
 
-// Response models for GitHub Models API
-public class GitHubModelsResponse
-{
-    public Choice[]? choices { get; set; }
-}
+
 
 public class Choice
 {

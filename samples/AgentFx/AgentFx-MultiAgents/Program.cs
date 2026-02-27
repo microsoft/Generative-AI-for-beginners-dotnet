@@ -17,16 +17,12 @@ using OpenTelemetry.Trace;
 //
 // REQUIRED - Agent 2 (Writer) - One of the following options:
 //
-//   Option A - GitHub Models:
-//      "GITHUB_TOKEN": "your-github-personal-access-token"
-//      "deploymentName": "model-name" (e.g., "gpt-4o-mini")
-//
-//   Option B - Azure OpenAI with API Key:
+//   Option A - Azure OpenAI with API Key:
 //      "endpoint": "https://<your-resource>.cognitiveservices.azure.com"
 //      "apikey": "your-azure-openai-api-key"
 //      "deploymentName": "your-deployment-name" (e.g., "gpt-4o-mini")
 //
-//   Option C - Azure OpenAI with Default Credentials (fallback):
+//   Option B - Azure OpenAI with Default Credentials (fallback):
 //      "endpoint": "https://<your-resource>.cognitiveservices.azure.com"
 //      "deploymentName": "your-deployment-name"
 //      Note: Requires Azure CLI login (az login) or managed identity
@@ -36,9 +32,8 @@ using OpenTelemetry.Trace;
 //      with the 'llama3.2' model downloaded and available.
 //
 // Configuration Priority for Agent 2:
-//      1. GitHub Models (if GITHUB_TOKEN is set)
-//      2. Azure OpenAI with API Key (if apikey is set)
-//      3. Azure OpenAI with Default Credentials (fallback)
+//      1. Azure OpenAI with API Key (if apikey is set)
+//      2. Azure OpenAI with Default Credentials (fallback)
 //
 // To set user secrets, run:
 //      dotnet user-secrets set "AZURE_FOUNDRY_PROJECT_ENDPOINT" "https://your-project.services.ai.azure.com/"
@@ -55,7 +50,7 @@ using OpenTelemetry.Trace;
 Console.WriteLine("=== Microsoft Agent Framework - Multi-Model Orchestration Demo ===");
 Console.WriteLine("This demo showcases 3 agents working together:");
 Console.WriteLine("  1. Researcher (Microsoft Foundry Agent) - Researches topics");
-Console.WriteLine("  2. Writer (Azure OpenAI or GitHub Models) - Writes content based on research");
+Console.WriteLine("  2. Writer (Azure OpenAI) - Writes content based on research");
 Console.WriteLine("  3. Reviewer (Ollama - llama3.2) - Reviews and provides feedback");
 Console.WriteLine();
 
@@ -65,7 +60,7 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .AddConsoleExporter()
     .Build();
 
-// ===== Agent 1: Researcher using Azure OpenAI or GitHub Models =====
+// ===== Agent 1: Researcher using Azure OpenAI =====
 Console.WriteLine("Setting up Agent 1: Researcher (Microsoft Foundry Agent)...");
 
 AIAgent researcher = AIFoundryAgentsProvider.CreateAIAgent(
@@ -75,8 +70,8 @@ AIAgent researcher = AIFoundryAgentsProvider.CreateAIAgent(
     .UseOpenTelemetry(sourceName: "agent-telemetry-source")
     .Build();
 
-// ===== Agent 2: Writer using Azure OpenAI or GitHub Models =====
-Console.WriteLine("Setting up Agent 2: Writer (Azure OpenAI or GitHub Models)...");
+// ===== Agent 2: Writer using Azure OpenAI =====
+Console.WriteLine("Setting up Agent 2: Writer (Azure OpenAI)...");
 
 IChatClient azureChatClient = ChatClientProvider.GetChatClient();
 

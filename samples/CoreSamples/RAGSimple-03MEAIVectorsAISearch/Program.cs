@@ -1,17 +1,18 @@
-﻿// This sample demonstrates RAG using GitHub Models for embeddings and Azure AI Search for vector storage.
+﻿// This sample demonstrates RAG using Azure OpenAI for embeddings and Azure AI Search for vector storage.
 // Uses the native Azure.Search.Documents SDK directly for vector search operations.
-// To use Ollama for embeddings instead, replace the GitHub Models code with:
+// To use Ollama for embeddings instead, replace the Azure OpenAI code with:
 // new OllamaEmbeddingGenerator(new Uri("http://localhost:11434/"), "all-minilm")
 
 using Microsoft.Extensions.AI;
 using Azure;
-using Azure.AI.Inference;
+using Azure.AI.OpenAI;
 using Azure.Search.Documents;
 using Azure.Search.Documents.Indexes;
 using Azure.Search.Documents.Indexes.Models;
 using Azure.Search.Documents.Models;
 using Microsoft.Extensions.Configuration;
 using Azure.Identity;
+using System.ClientModel;
 
 const string indexName = "movies";
 const int vectorDimensions = 384;
@@ -28,14 +29,15 @@ var searchClient = indexClient.GetSearchClient(indexName);
 var movieData = MovieFactory<string>.GetMovieVectorList();
 
 // get embeddings generator and generate embeddings for movies
-var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN")
-    ?? throw new InvalidOperationException("Missing GITHUB_TOKEN environment variable. Set it to use GitHub Models.");
+var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
+var endpoint = config["endpoint"];
+var apiKey = new ApiKeyCredential(config["apikey"]);
+var embeddingModelName = config["embeddingModelName"] ?? "text-embedding-3-small";
 
 IEmbeddingGenerator<string, Embedding<float>> generator =
-    new EmbeddingsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken))
-    .AsIEmbeddingGenerator("text-embedding-3-small");
+    new AzureOpenAIClient(new Uri(endpoint), apiKey)
+    .GetEmbeddingClient(embeddingModelName)
+    .AsIEmbeddingGenerator();
 
 // generate embeddings and upload documents to Azure AI Search
 var documents = new List<SearchDocument>();

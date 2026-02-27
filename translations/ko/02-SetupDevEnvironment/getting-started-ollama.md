@@ -4,7 +4,7 @@
 
 Azure OpenAI를 사용하고 싶지 않으신가요?
 
-👉 [GitHub 모델을 사용하는 방법은 이 가이드를 참고하세요](README.md)  
+👉 [Azure OpenAI을 사용하는 방법은 이 가이드를 참고하세요](README.md)  
 👉 [Ollama를 사용하는 단계는 여기를 참고하세요](getting-started-ollama.md)
 
 ## GitHub Codespace 생성하기
@@ -22,7 +22,7 @@ Azure OpenAI를 사용하고 싶지 않으신가요?
 
 **Dev container configuration** 드롭다운에서 다음 옵션 중 하나를 선택하세요:
 
-**옵션 1: C# (.NET)** : GitHub 모델이나 Azure OpenAI를 사용할 계획이라면 이 옵션을 선택하세요. 이 강의를 완료하는 데 추천되는 방법입니다. 강의의 나머지 과정에 필요한 핵심 .NET 개발 도구를 포함하고 있으며, 시작 속도가 빠릅니다.
+**옵션 1: C# (.NET)** : Azure OpenAI이나 Azure OpenAI를 사용할 계획이라면 이 옵션을 선택하세요. 이 강의를 완료하는 데 추천되는 방법입니다. 강의의 나머지 과정에 필요한 핵심 .NET 개발 도구를 포함하고 있으며, 시작 속도가 빠릅니다.
 
 **옵션 2: C# (.NET) - Ollama**: Ollama를 사용하여 로컬에서 모델을 실행하려면 이 옵션을 선택하세요. 핵심 .NET 개발 도구에 Ollama가 추가로 포함되어 있지만, 평균적으로 약 5분 정도의 느린 시작 속도를 가집니다. [이 가이드](getting-started-ollama.md)를 참고하여 Ollama를 사용해 보세요.
 

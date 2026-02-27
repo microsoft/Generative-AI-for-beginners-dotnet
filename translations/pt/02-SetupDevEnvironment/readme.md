@@ -1,6 +1,6 @@
 # Configurando o Ambiente de Desenvolvimento para Este Curso
 
-Esta lição vai te guiar na configuração do ambiente de desenvolvimento para este curso. Para garantir seu sucesso, preparamos uma configuração de devcontainer que fornecerá todas as ferramentas necessárias para concluir o curso. Você pode executar o devcontainer no GitHub Codespaces (recomendado) ou localmente na sua máquina. Além disso, mostramos como configurar seus tokens de acesso do GitHub para interagir com os Modelos do GitHub.
+Esta lição vai te guiar na configuração do ambiente de desenvolvimento para este curso. Para garantir seu sucesso, preparamos uma configuração de devcontainer que fornecerá todas as ferramentas necessárias para concluir o curso. Você pode executar o devcontainer no GitHub Codespaces (recomendado) ou localmente na sua máquina. Além disso, mostramos como configurar seus tokens de acesso do GitHub para interagir com os Azure OpenAI.
 
 *Temos guias para configurar [Azure OpenAI](getting-started-azure-openai.md) e [Ollama](getting-started-ollama.md), se preferir.*
 
@@ -9,7 +9,7 @@ Esta lição vai te guiar na configuração do ambiente de desenvolvimento para 
 ## O que você vai aprender nesta lição:
 
 - ⚡ Como configurar um ambiente de desenvolvimento com GitHub Codespaces
-- 🤖 Configurar seu ambiente de desenvolvimento para acessar LLMs via GitHub Models, Azure OpenAI ou Ollama
+- 🤖 Configurar seu ambiente de desenvolvimento para acessar LLMs via Azure OpenAI, Azure OpenAI ou Ollama
 - 🛠️ Ferramentas padrão da indústria configuradas com .devcontainer
 - 🎯 Finalmente, tudo estará pronto para completar o restante do curso
 
@@ -21,29 +21,29 @@ _⬆️Clique na imagem para assistir ao vídeo⬆️_
 
 ## Qual serviço de IA devo usar para este curso?
 
-Fornecemos instruções para configurar seu ambiente de desenvolvimento com GitHub Models, Azure OpenAI e Ollama. Você pode escolher o que melhor se adapta às suas necessidades. Recomendamos usar GitHub Models para este curso, mas você pode usar qualquer um dos três serviços.
+Fornecemos instruções para configurar seu ambiente de desenvolvimento com Azure OpenAI, Azure OpenAI e Ollama. Você pode escolher o que melhor se adapta às suas necessidades. Recomendamos usar Azure OpenAI para este curso, mas você pode usar qualquer um dos três serviços.
 
 Aqui está um resumo rápido dos serviços:
 
-- **GitHub Models**: Um serviço gratuito para começar, que permite testar e interagir com vários modelos de IA diretamente no seu ambiente de desenvolvimento. É fácil de usar no Codespaces e uma ótima maneira de experimentar diferentes modelos e entender suas capacidades antes da implementação.
+- **Azure OpenAI**: Um serviço gratuito para começar, que permite testar e interagir com vários modelos de IA diretamente no seu ambiente de desenvolvimento. É fácil de usar no Codespaces e uma ótima maneira de experimentar diferentes modelos e entender suas capacidades antes da implementação.
 - **Azure OpenAI**: Um serviço pago que oferece acesso a uma ampla gama de modelos de IA. Inclui todos os benefícios esperados do Azure, como segurança robusta e escalabilidade. Esta é uma ótima opção para este curso se você já tiver acesso a uma assinatura do Azure.
 - **Ollama**: Ollama permite executar modelos de IA localmente na sua máquina ou em um Codespace ou devcontainer gratuitamente. É uma ótima opção se você preferir executar os modelos localmente, mas requer mais recursos de hardware e pode ser mais lento do que as opções baseadas na nuvem.
 
-> Se **GitHub Models** for sua escolha, siga o restante deste documento para configurar seu ambiente de desenvolvimento com GitHub Models.
+> Se **Azure OpenAI** for sua escolha, siga o restante deste documento para configurar seu ambiente de desenvolvimento com Azure OpenAI.
 > - Interessado no **Azure OpenAI**? [Este é o documento para você](getting-started-azure-openai.md).
 > - **Ollama** é sua escolha? [Este guia tem as informações que você precisa](getting-started-ollama.md).
 
-## Aprenda e teste modelos de IA com GitHub Models
+## Aprenda e teste modelos de IA com Azure OpenAI
 
-**GitHub Models** oferece uma maneira intuitiva de experimentar vários modelos de IA diretamente no seu ambiente de desenvolvimento. Este recurso permite que desenvolvedores testem e interajam com diferentes modelos, compreendendo suas capacidades e limitações antes da implementação. Por meio de uma interface simples, você pode explorar respostas dos modelos, avaliar o desempenho e determinar a melhor opção para os requisitos do seu aplicativo. Hospedados na infraestrutura do GitHub, esses modelos oferecem acesso confiável e desempenho consistente, tornando-os ideais para fases de desenvolvimento e teste. O melhor de tudo é que há um plano gratuito para começar sua exploração sem custo.
+**Azure OpenAI** oferece uma maneira intuitiva de experimentar vários modelos de IA diretamente no seu ambiente de desenvolvimento. Este recurso permite que desenvolvedores testem e interajam com diferentes modelos, compreendendo suas capacidades e limitações antes da implementação. Por meio de uma interface simples, você pode explorar respostas dos modelos, avaliar o desempenho e determinar a melhor opção para os requisitos do seu aplicativo. Hospedados na infraestrutura do GitHub, esses modelos oferecem acesso confiável e desempenho consistente, tornando-os ideais para fases de desenvolvimento e teste. O melhor de tudo é que há um plano gratuito para começar sua exploração sem custo.
 
-![Imagem da página do GitHub Models, demonstrando vários modelos generativos de IA](../../../translated_images/github-models-webapge.25ecc6d29afdb2dedd949b0e5279cff6dd799af74c427d1036002f18249b9889.pt.png)
+![Imagem da página do Azure OpenAI, demonstrando vários modelos generativos de IA](../../../translated_images/github-models-webapge.25ecc6d29afdb2dedd949b0e5279cff6dd799af74c427d1036002f18249b9889.pt.png)
 
 ## Checklist inicial: Configurando Tokens de Acesso do GitHub
 
-Antes de qualquer outra coisa, precisamos configurar credenciais de segurança essenciais que permitirão que nosso Codespace interaja com GitHub Models e execute nossas aplicações de forma segura.
+Antes de qualquer outra coisa, precisamos configurar credenciais de segurança essenciais que permitirão que nosso Codespace interaja com Azure OpenAI e execute nossas aplicações de forma segura.
 
-### Criando um Token de Acesso Pessoal para acesso ao GitHub Models
+### Criando um Token de Acesso Pessoal para acesso ao Azure OpenAI
 
 1. Acesse [Configurações do GitHub](https://github.com/settings/profile):
 
@@ -71,7 +71,7 @@ Antes de qualquer outra coisa, precisamos configurar credenciais de segurança e
 
     - Em "Note", forneça um nome descritivo (ex.: `GenAI-DotNet-Course-Token`)
     - Defina uma data de expiração (recomendado: 7 dias para boas práticas de segurança)
-    - **Importante**: Você deve selecionar a permissão **`models:read`** para que este token funcione com GitHub Models.
+    - **Importante**: Você deve selecionar a permissão **`models:read`** para que este token funcione com Azure OpenAI.
 
 > 💡 **Dica de Segurança**: Sempre use o escopo mínimo necessário e o menor tempo prático de expiração para seus tokens de acesso. Isso segue o princípio do menor privilégio e ajuda a manter os tokens da sua conta seguros.
 
@@ -90,9 +90,9 @@ Vamos criar um GitHub Codespace para usar no restante deste curso.
 
 No menu suspenso **Dev container configuration**, selecione uma das seguintes opções:
 
-**Opção 1: C# (.NET)**: Esta é a opção que você deve usar se planeja utilizar GitHub Models e é a maneira recomendada para concluir este curso. Inclui todas as ferramentas principais de desenvolvimento .NET necessárias para o restante do curso e tem um tempo de inicialização rápido.
+**Opção 1: C# (.NET)**: Esta é a opção que você deve usar se planeja utilizar Azure OpenAI e é a maneira recomendada para concluir este curso. Inclui todas as ferramentas principais de desenvolvimento .NET necessárias para o restante do curso e tem um tempo de inicialização rápido.
 
-**Opção 2: C# (.NET) - Ollama**: Ollama permite executar as demonstrações sem precisar se conectar ao GitHub Models ou Azure OpenAI. Inclui todas as ferramentas principais de desenvolvimento .NET, além do Ollama, mas tem um tempo de inicialização mais lento, em média cinco minutos. [Siga este guia](getting-started-ollama.md) se quiser usar Ollama.
+**Opção 2: C# (.NET) - Ollama**: Ollama permite executar as demonstrações sem precisar se conectar ao Azure OpenAI ou Azure OpenAI. Inclui todas as ferramentas principais de desenvolvimento .NET, além do Ollama, mas tem um tempo de inicialização mais lento, em média cinco minutos. [Siga este guia](getting-started-ollama.md) se quiser usar Ollama.
 
 > 💡**Dica**: Ao criar seu codespace, use a região mais próxima de você, se tiver essa opção no menu. Usar uma região distante pode causar erros na criação.
 
@@ -100,7 +100,7 @@ Clique no botão **Create codespace** para iniciar o processo de criação do Co
 
 ![Selecionando sua configuração de container de desenvolvimento](../../../translated_images/select-container-codespace.9b8ca34b6ff8b4cb80973924cbc1894cf7672d233b0055b47f702db60c4c6221.pt.png)
 
-## Verificando se seu Codespace está funcionando corretamente com GitHub Models
+## Verificando se seu Codespace está funcionando corretamente com Azure OpenAI
 
 Depois que seu Codespace estiver totalmente carregado e configurado, vamos executar um aplicativo de exemplo para verificar se tudo está funcionando corretamente:
 
@@ -132,7 +132,7 @@ Depois que seu Codespace estiver totalmente carregado e configurado, vamos execu
 
 ## Resumo
 
-Nesta lição, você aprendeu como configurar seu ambiente de desenvolvimento para o restante do curso. Você criou um GitHub Codespace e o configurou para usar GitHub Models, Azure OpenAI ou Ollama. Também aprendeu a criar um token de acesso pessoal para GitHub Models e como executar um aplicativo de exemplo para verificar se tudo está funcionando corretamente.
+Nesta lição, você aprendeu como configurar seu ambiente de desenvolvimento para o restante do curso. Você criou um GitHub Codespace e o configurou para usar Azure OpenAI, Azure OpenAI ou Ollama. Também aprendeu a criar um token de acesso pessoal para Azure OpenAI e como executar um aplicativo de exemplo para verificar se tudo está funcionando corretamente.
 
 ### Recursos Adicionais
 
@@ -140,7 +140,7 @@ Nesta lição, você aprendeu como configurar seu ambiente de desenvolvimento pa
     - [Azure OpenAI](getting-started-azure-openai.md)
     - [Ollama](getting-started-ollama.md)
 - [Documentação do GitHub Codespaces](https://docs.github.com/en/codespaces)
-- [Documentação do GitHub Models](https://docs.github.com/en/github-models/prototyping-with-ai-models)
+- [Documentação do Azure OpenAI](https://docs.github.com/en/github-models/prototyping-with-ai-models)
 
 ## Próximos Passos
 

@@ -1,20 +1,17 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Azure.AI.OpenAI;
 using Microsoft.Extensions.AI;
-using Azure.AI.Inference;
-using Azure;
+using Microsoft.Extensions.Configuration;
+using System.ClientModel;
 
-var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN");
-if (string.IsNullOrEmpty(githubToken))
-{
-    var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-    githubToken = config["GITHUB_TOKEN"];
-}
+var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
+var endpoint = config["endpoint"];
+var apiKey = new ApiKeyCredential(config["apikey"]);
+var deploymentName = config["deploymentName"] ?? "gpt-4o-mini";
 
 IChatClient chatClient =
-    new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken))
-        .AsIChatClient("gpt-4o-mini");
+    new AzureOpenAIClient(new Uri(endpoint), apiKey)
+        .GetChatClient(deploymentName)
+        .AsIChatClient();
 
 
 // images

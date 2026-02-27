@@ -1,25 +1,27 @@
-﻿// This sample demonstrates RAG using GitHub Models for embeddings with simple in-memory cosine similarity search.
-// To use Ollama instead, replace the GitHub Models code with:
+﻿// This sample demonstrates RAG using Azure OpenAI for embeddings with simple in-memory cosine similarity search.
+// To use Ollama instead, replace the Azure OpenAI code with:
 // new OllamaEmbeddingGenerator(new Uri("http://localhost:11434/"), "all-minilm")
 // Or see RAGSimple-01SK or RAGSimple-10SKOllama samples for complete Ollama examples.
 
-using Azure;
-using Azure.AI.Inference;
+using Azure.AI.OpenAI;
 using Microsoft.Extensions.AI;
+using Microsoft.Extensions.Configuration;
+using System.ClientModel;
 using System.Numerics.Tensors;
 
 // get movie list and prepare in-memory storage
 var movieData = MovieFactory<int>.GetMovieVectorList();
 
 // get embeddings generator and generate embeddings for movies
-var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN")
-    ?? throw new InvalidOperationException("Missing GITHUB_TOKEN environment variable. Set it to use GitHub Models.");
+var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
+var endpoint = config["endpoint"];
+var apiKey = new ApiKeyCredential(config["apikey"]);
+var embeddingModelName = config["embeddingModelName"] ?? "text-embedding-3-small";
 
 IEmbeddingGenerator<string, Embedding<float>> generator =
-    new EmbeddingsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken))
-    .AsIEmbeddingGenerator("text-embedding-3-small");
+    new AzureOpenAIClient(new Uri(endpoint), apiKey)
+    .GetEmbeddingClient(embeddingModelName)
+    .AsIEmbeddingGenerator();
 
 // generate embeddings for all movies and store them in memory
 foreach (var movie in movieData)

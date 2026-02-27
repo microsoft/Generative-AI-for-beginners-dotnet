@@ -22,11 +22,12 @@ _⬆️이미지를 클릭하여 비디오를 시청하세요⬆️_
 
 ```csharp
 
-// this example illustrates using a model hosted on GitHub Models
-IChatClient client = new ChatCompletionsClient(
-    endpoint: new Uri("https://models.github.ai/inference"),
-    new AzureKeyCredential(githubToken)) // githubToken is retrieved from the environment variables
-    .AsChatClient("gpt-4o-mini");
+// this example illustrates using a model hosted on Azure OpenAI
+IChatClient client = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient();
 
 // here we're building the prompt
 StringBuilder prompt = new StringBuilder();
@@ -44,7 +45,7 @@ Console.WriteLine(response.Message);
 
 ```
 
-> 🗒️**참고:** 이 예제는 GitHub Models를 호스팅 서비스로 사용하는 방법을 보여줍니다. Ollama를 사용하려면 [이 예제를 확인하세요](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama) (다른 `IChatClient`를 인스턴스화합니다).
+> 🗒️**참고:** 이 예제는 Azure OpenAI를 호스팅 서비스로 사용하는 방법을 보여줍니다. Ollama를 사용하려면 [이 예제를 확인하세요](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama) (다른 `IChatClient`를 인스턴스화합니다).
 >
 > Microsoft Foundry를 사용하려면 동일한 코드를 사용할 수 있지만, 엔드포인트와 자격 증명을 변경해야 합니다.
 
@@ -147,10 +148,11 @@ MEAI로 함수를 호출하려면 몇 가지 설정 단계가 필요합니다.
 3. `IChatClient` 객체를 인스턴스화할 때 함수 호출을 사용할 것임을 지정합니다.
 
     ```csharp
-    IChatClient client = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken)) // githubToken is retrieved from the environment variables
-    .AsChatClient("gpt-4o-mini")
+    IChatClient client = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()  // here we're saying that we could be invoking functions!
     .Build();

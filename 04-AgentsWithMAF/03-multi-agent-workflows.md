@@ -220,11 +220,11 @@ AIAgent researcher = azureChatClient.CreateAIAgent(
     name: "Researcher",
     instructions: "Research topics thoroughly using your broad knowledge.");
 
-// Agent 2: Writer using GitHub Models
-IChatClient githubChatClient = new ChatClient(
-        "gpt-4o-mini",
-        new ApiKeyCredential(githubToken),
-        new OpenAIClientOptions { Endpoint = new Uri("https://models.github.ai/inference") })
+// Agent 2: Writer using Azure OpenAI
+IChatClient githubChatClient = new AzureOpenAIClient(
+        new Uri(config["endpoint"]),
+        new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
     .AsIChatClient();
 
 AIAgent writer = githubChatClient.CreateAIAgent(

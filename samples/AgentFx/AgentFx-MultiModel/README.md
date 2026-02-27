@@ -2,15 +2,14 @@
 
 This console application demonstrates the Microsoft Agent Framework with **3 different agents** working together in a sequential workflow:
 
-1. **Researcher Agent** (GitHub Models) - Uses GitHub Models API with `gpt-4o-mini` to research topics
-2. **Writer Agent** (Azure Foundry) - Uses Azure OpenAI/Azure Foundry to write content based on research
+1. **Researcher Agent** (Azure OpenAI) - Uses Azure OpenAI with `gpt-4o-mini` to research topics
+2. **Writer Agent** (Azure OpenAI) - Uses Azure OpenAI to write content based on research
 3. **Reviewer Agent** (Ollama) - Uses local Ollama with `llama3.2` model to review and provide feedback
 
 ## Prerequisites
 
-1. **GitHub Token** for GitHub Models API
-2. **Azure Foundry/OpenAI** endpoint and API key
-3. **Ollama** installed and running locally with the `llama3.2` model
+1. **Azure OpenAI / Microsoft Foundry** endpoint and API key
+2. **Ollama** installed and running locally with the `llama3.2` model
 
 ### Install Ollama
 
@@ -28,13 +27,10 @@ ollama run
 Set up the following user secrets or environment variables:
 
 ```bash
-# For Agent 1 (Researcher using GitHub Models)
-dotnet user-secrets set "GITHUB_TOKEN" "your-github-token"
-
-# For Agent 2 (Writer using Azure Foundry)
+# For Agent 1 & 2 (Researcher and Writer using Azure OpenAI)
 dotnet user-secrets set "endpoint" "https://<your-endpoint>.services.ai.azure.com/"
 dotnet user-secrets set "apikey" "your-azure-api-key"
-dotnet user-secrets set "deploymentName" "gpt-4o-mini"  # Optional, defaults to gpt-4o-mini
+dotnet user-secrets set "deploymentName" "gpt-4o-mini"  # Optional, defaults to gpt-5-mini
 ```
 
 ## How to Run
@@ -62,7 +58,7 @@ The application displays the final output from all three agents working together
 
 ## Key Features
 
-- **Multi-model orchestration**: Combines different AI providers (GitHub Models, Azure Foundry, Ollama)
+- **Multi-model orchestration**: Combines different AI providers (Azure OpenAI, Ollama)
 - **Sequential workflow**: Clear, easy-to-read agent workflow using `AgentWorkflowBuilder`
 - **Flexible configuration**: Uses user secrets for secure credential management
 - **Based on scenario 1**: Similar configuration patterns to other MCP scenarios

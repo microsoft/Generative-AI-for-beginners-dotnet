@@ -7,12 +7,12 @@ This sample demonstrates how to orchestrate multiple AI agents using different A
 This demo showcases a real-world scenario where three specialized agents collaborate to research, write, and review an article:
 
 1. **Researcher Agent** (Microsoft Foundry Persistent Agent) - Researches topics and gathers key information
-2. **Writer Agent** (Azure OpenAI or GitHub Models) - Creates engaging content based on research
+2. **Writer Agent** (Azure OpenAI) - Creates engaging content based on research
 3. **Reviewer Agent** (Ollama local model) - Reviews the article and provides constructive feedback
 
 The workflow demonstrates:
 
-- **Multi-provider orchestration**: Using different AI services (Microsoft Foundry, Azure OpenAI/GitHub Models, and Ollama) in a single workflow
+- **Multi-provider orchestration**: Using different AI services (Microsoft Foundry, Azure OpenAI, and Ollama) in a single workflow
 - **Sequential agent workflows**: Agents execute in order, with each building on the previous agent's output
 - **Persistent agents**: Creating and managing agents in Microsoft Foundry
 - **OpenTelemetry tracing**: Monitoring agent execution with distributed tracing
@@ -25,7 +25,7 @@ User Input
     ↓
 Researcher (Microsoft Foundry Agent)
     ↓ (research findings)
-Writer (Azure OpenAI/GitHub Models)
+Writer (Azure OpenAI)
     ↓ (article draft)
 Reviewer (Ollama - llama3.2)
     ↓
@@ -41,8 +41,7 @@ Before running this sample, ensure you have:
 3. **Ollama** installed and running locally with the `llama3.2` model
 4. **Microsoft Foundry Project** with access to deploy models
 5. One of the following for Agent 2 (Writer):
-   - GitHub Personal Access Token (for GitHub Models)
-   - Azure OpenAI endpoint and API key
+      - Azure OpenAI endpoint and API key
    - Azure OpenAI endpoint with managed identity/Azure CLI credentials
 
 ## Setup Instructions
@@ -83,10 +82,10 @@ dotnet user-secrets set "deploymentName" "gpt-4o-mini"
 
 Choose **ONE** of the following options:
 
-**Option A: GitHub Models** (Recommended for quick start)
+
 
 ```bash
-dotnet user-secrets set "GITHUB_TOKEN" "your-github-personal-access-token"
+
 dotnet user-secrets set "deploymentName" "gpt-4o-mini"
 ```
 
@@ -130,7 +129,6 @@ az account show
 
 The application automatically selects the chat client provider in the following order:
 
-1. **GitHub Models** - If `GITHUB_TOKEN` is set
 2. **Azure OpenAI with API Key** - If `apikey` is set
 3. **Azure OpenAI with Default Credentials** - Fallback using Azure CLI or managed identity
 
@@ -159,11 +157,11 @@ The console will display:
 === Microsoft Agent Framework - Multi-Model Orchestration Demo ===
 This demo showcases 3 agents working together:
   1. Researcher (Microsoft Foundry Agent) - Researches topics
-  2. Writer (Azure OpenAI or GitHub Models) - Writes content based on research
+  2. Writer (Azure OpenAI) - Writes content based on research
   3. Reviewer (Ollama - llama3.2) - Reviews and provides feedback
 
 Setting up Agent 1: Researcher (Microsoft Foundry Agent)...
-Setting up Agent 2: Writer (Azure OpenAI or GitHub Models)...
+Setting up Agent 2: Writer (Azure OpenAI)...
 Setting up Agent 3: Reviewer (Ollama)...
 Creating workflow: Researcher -> Writer -> Reviewer
 
@@ -207,7 +205,7 @@ Creates and manages persistent agents in Microsoft Foundry:
 
 Factory class for creating chat clients with different providers:
 
-- `GetChatClient()` - Returns a chat client based on available configuration (GitHub Models or Azure OpenAI)
+- `GetChatClient()` - Returns a chat client based on available configuration (Azure OpenAI)
 - `GetChatClientOllama()` - Returns an Ollama chat client for local inference
 
 ### AppConfigurationService
@@ -233,7 +231,7 @@ Update the `Instructions` property for any agent:
 
 ```csharp
 AIAgent researcher = new ChatClientAgent(
-    githubChatClient,
+    azureChatClient,
     new ChatClientAgentOptions
     {
         Name = "Researcher",
@@ -245,7 +243,6 @@ AIAgent researcher = new ChatClientAgent(
 
 Change the model for any provider:
 
-- **GitHub Models**: Update `deploymentName` secret (e.g., "gpt-4o", "gpt-4o-mini")
 - **Azure OpenAI**: Update `deploymentName` secret with your deployment name
 - **Ollama**: Modify the model parameter in `GetChatClientOllama()` call
 
@@ -295,7 +292,6 @@ Workflow workflow = AgentWorkflowBuilder
 - [Microsoft Agent Framework Documentation](https://learn.microsoft.com/agent-framework/overview/agent-framework-overview)
 - [Microsoft.Extensions.AI Documentation](https://learn.microsoft.com/dotnet/ai/ai-extensions)
 - [Microsoft Foundry](https://ai.azure.com/)
-- [GitHub Models](https://github.com/marketplace/models)
 - [Ollama Documentation](https://ollama.ai/docs)
 - [OpenTelemetry for .NET](https://opentelemetry.io/docs/instrumentation/net/)
 

@@ -79,12 +79,12 @@ Nous utiliserons la bibliothèque Microsoft.Extension.AI ainsi que [Microsoft.Ex
 3. Ensuite, nous devons convertir notre base de connaissances (l'objet `movieData`) en embeddings, puis les stocker dans une base vectorielle en mémoire. Pour créer ces embeddings, nous utiliserons un modèle différent - un modèle d'embeddings au lieu d'un modèle de langage.
 
     ```csharp
-    var endpoint = new Uri("https://models.github.ai/inference");
+    var endpoint = new Uri("https://<your-endpoint>.services.ai.azure.com/");
     var modelId = "text-embedding-3-small";
     var credential = new AzureKeyCredential(githubToken); // githubToken is retrieved from the environment variables
 
     IEmbeddingGenerator<string, Embedding<float>> generator =
-            new EmbeddingsClient(endpoint, credential)
+            new AzureOpenAIClient(new Uri(config["endpoint"]), new ApiKeyCredential(config["apikey"])).GetEmbeddingClient("text-embedding-3-small")
         .AsEmbeddingGenerator(modelId);
 
     foreach (var movie in movieData)
@@ -97,7 +97,7 @@ Nous utiliserons la bibliothèque Microsoft.Extension.AI ainsi que [Microsoft.Ex
     }
     ```
 
-    Notre objet générateur est de type `IEmbeddingGenerator<string, Embedding<float>>` type. This means it is expecting inputs of `string` and outputs of `Embedding<float>`. Nous utilisons à nouveau les modèles GitHub, ce qui nécessite le package **Microsoft.Extensions.AI.AzureAIInference**. Cependant, vous pourriez tout aussi bien utiliser **Ollama** ou **Azure OpenAI**.
+    Notre objet générateur est de type `IEmbeddingGenerator<string, Embedding<float>>` type. This means it is expecting inputs of `string` and outputs of `Embedding<float>`. Nous utilisons à nouveau les Azure OpenAI, ce qui nécessite le package **Microsoft.Extensions.AI.AzureAIInference**. Cependant, vous pourriez tout aussi bien utiliser **Ollama** ou **Azure OpenAI**.
 
 > 🗒️**Remarque :** En général, vous ne créerez les embeddings pour votre base de connaissances qu'une seule fois avant de les stocker. Cela ne sera pas fait à chaque fois que vous exécutez l'application. Cependant, comme nous utilisons une base en mémoire, il est nécessaire de recréer les embeddings à chaque redémarrage de l'application.
 

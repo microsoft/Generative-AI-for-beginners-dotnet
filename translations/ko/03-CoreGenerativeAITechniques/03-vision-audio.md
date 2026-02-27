@@ -20,15 +20,16 @@ _⬆️이미지를 클릭하면 영상을 시청할 수 있습니다⬆️_
 
 ![예제에서 사용할 두 이미지를 보여주는 합성 이미지. 첫 번째는 여러 명의 러너들의 다리만 보이는 사진이고, 두 번째는 독일 레스토랑 영수증](../../../translated_images/example-visual-image.e2fc4ffa5f01b3d65bb9bd5d23eebf97513bf486b761209b28fea06b63a11f6c.ko.png)
 
-> 🧑‍💻**샘플 코드**: [샘플 코드](../../../03-CoreGenerativeAITechniques/src/Vision-01MEAI-GitHubModels)를 참고하세요.
+> 🧑‍💻**샘플 코드**: [샘플 코드](../../../03-CoreGenerativeAITechniques/src/Vision-01MEAI-AzureOpenAI)를 참고하세요.
 
-1. MEAI와 GitHub 모델을 사용하고 있으므로, 이전과 마찬가지로 `IChatClient`을 초기화합니다. 또한 채팅 기록을 생성하기 시작합니다.
+1. MEAI와 Azure OpenAI을 사용하고 있으므로, 이전과 마찬가지로 `IChatClient`을 초기화합니다. 또한 채팅 기록을 생성하기 시작합니다.
 
     ```csharp
-    IChatClient chatClient = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken)) // make sure to grab githubToken from the secrets or environment
-    .AsChatClient("gpt-4o-mini");
+    IChatClient chatClient = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient();
 
     List<ChatMessage> messages = 
     [

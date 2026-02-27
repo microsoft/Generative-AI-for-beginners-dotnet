@@ -74,10 +74,11 @@ var chatOptions = new ChatOptions
     Tools = [AIFunctionFactory.Create(GetWeather)]
 };
 
-IChatClient client = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken))
-    .AsIChatClient("gpt-4o-mini")
+IChatClient client = new AzureOpenAIClient(
+        new Uri(config["endpoint"]),
+        new ApiKeyCredential(config["apikey"]))
+        .GetChatClient("gpt-4o-mini")
+        .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()  // Enable automatic function calling
     .Build();
@@ -380,8 +381,9 @@ var chatOptions = new ChatOptions
     ]
 };
 
-IChatClient client = new ChatCompletionsClient(...)
-    .AsIChatClient("gpt-4o-mini")
+IChatClient client = new AzureOpenAIClient(new Uri(config["endpoint"]), new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()
     .Build();
