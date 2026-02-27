@@ -357,9 +357,9 @@ catch (AgentException ex)
 
 | Sample | Description |
 |--------|-------------|
-| [AgentFx02](../samples/AgentFx/AgentFx02/) | Simple sequential workflow |
-| [AgentFx-MultiAgents](../samples/AgentFx/AgentFx-MultiAgents/) | Multi-model orchestration |
-| [AgentFx-MultiAgents-Factory-01](../samples/AgentFx/AgentFx-MultiAgents-Factory-01/) | Advanced workflow patterns |
+| [MAF02](../samples/MAF/MAF02/) | Simple sequential workflow |
+| [MAF-MultiAgents](../samples/MAF/MAF-MultiAgents/) | Multi-model orchestration |
+| [MAF-MultiAgents-Factory-01](../samples/MAF/MAF-MultiAgents-Factory-01/) | Advanced workflow patterns |
 
 ---
 

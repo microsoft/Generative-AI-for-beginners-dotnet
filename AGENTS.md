@@ -23,7 +23,7 @@ This repository contains **Generative AI for Beginners .NET** - a hands-on cours
 │   ├── SpaceAINet/              # AI-powered Space Battle game
 │   ├── HFMCP.GenImage/          # Image generation app
 │   └── ConsoleGpuViewer/        # GPU viewer console app
-├── 06-AgentFx/                   # Microsoft Agent Framework examples
+├── 06-MAF/                   # Microsoft Agent Framework examples
 ├── 09-ResponsibleGenAI/          # Responsible AI practices
 ├── 10-WhatsNew/                  # Latest updates and features
 └── translations/                 # Localized course materials
@@ -380,7 +380,7 @@ Translations are maintained in `translations/<language-code>/`:
 - **ConsoleGpuViewer**: GPU monitoring console app
 
 #### Lesson 06: Agent Framework
-- Microsoft Agent Framework (AgentFx) examples
+- Microsoft Agent Framework (MAF) examples
 - Multi-agent orchestration patterns
 - Integration with MCP for enhanced capabilities
 

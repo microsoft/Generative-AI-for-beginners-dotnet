@@ -450,7 +450,7 @@ Congratulations! You've completed the core curriculum. You now have the skills t
 
 ### Continue Learning
 
-- **Explore the samples** - The [samples/AgentFx](../samples/AgentFx/) folder has many more patterns
+- **Explore the samples** - The [samples/MAF](../samples/MAF/) folder has many more patterns
 - **Build a real project** - Apply what you've learned to your own use case
 - **Join the community** - Contribute to the [Agent Framework repo](https://github.com/microsoft/agent-framework)
 

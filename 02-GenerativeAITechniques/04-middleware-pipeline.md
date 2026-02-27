@@ -467,8 +467,8 @@ Console.WriteLine(response.Text);
 |--------|-------------|
 | [MEAIFunctions](../samples/CoreSamples/MEAIFunctions/) | Function calling with ChatClientBuilder pipeline |
 | [MEAIFunctionsOllama](../samples/CoreSamples/MEAIFunctionsOllama/) | Middleware pipeline with local Ollama models |
-| [AgentFx-AIWebChatApp-Middleware](../samples/AgentFx/AgentFx-AIWebChatApp-Middleware/) | Custom middleware in a web application |
-| [AgentFx-BackgroundResponses-02-Tools](../samples/AgentFx/AgentFx-BackgroundResponses-02-Tools/) | OpenTelemetry integration example |
+| [MAF-AIWebChatApp-Middleware](../samples/MAF/MAF-AIWebChatApp-Middleware/) | Custom middleware in a web application |
+| [MAF-BackgroundResponses-02-Tools](../samples/MAF/MAF-BackgroundResponses-02-Tools/) | OpenTelemetry integration example |
 
 ---
 

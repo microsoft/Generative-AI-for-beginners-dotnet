@@ -372,8 +372,8 @@ static string GetOrderStatus(string orderId) { ... }
 
 | Sample | Description |
 |--------|-------------|
-| [AgentFx-BackgroundResponses-02-Tools](../samples/AgentFx/AgentFx-BackgroundResponses-02-Tools/) | Agent with function tools |
-| [AgentFx-BackgroundResponses-03-Complex](../samples/AgentFx/AgentFx-BackgroundResponses-03-Complex/) | Complex tool scenarios |
+| [MAF-BackgroundResponses-02-Tools](../samples/MAF/MAF-BackgroundResponses-02-Tools/) | Agent with function tools |
+| [MAF-BackgroundResponses-03-Complex](../samples/MAF/MAF-BackgroundResponses-03-Complex/) | Complex tool scenarios |
 
 ---
 

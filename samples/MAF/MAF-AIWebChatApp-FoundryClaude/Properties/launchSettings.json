@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "MAF-AIWebChatApp-FoundryClaude": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:50722;http://localhost:50723"
+    }
+  }
+}

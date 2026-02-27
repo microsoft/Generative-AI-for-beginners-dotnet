@@ -102,16 +102,16 @@ Extend your agents with standardized tool servers, enabling integration with ext
 
 ## Sample Code Reference
 
-All lesson code is in the [samples/AgentFx](../samples/AgentFx/) folder:
+All lesson code is in the [samples/MAF](../samples/MAF/) folder:
 
 | Sample | Description |
 |--------|-------------|
-| [AgentFx01](../samples/AgentFx/AgentFx01/) | Basic agent with Azure OpenAI |
-| [AgentFx02](../samples/AgentFx/AgentFx02/) | Sequential workflow (writer → editor) |
-| [AgentFx-Ollama-01](../samples/AgentFx/AgentFx-Ollama-01/) | Agent using local Ollama model |
-| [AgentFx-MultiAgents](../samples/AgentFx/AgentFx-MultiAgents/) | Multi-model orchestration demo |
-| [AgentFx-BackgroundResponses-*](../samples/AgentFx/) | Agents with tools and async responses |
-| [AgentFx-Persisting-*](../samples/AgentFx/) | Agents with conversation persistence |
+| [MAF01](../samples/MAF/MAF01/) | Basic agent with Azure OpenAI |
+| [MAF02](../samples/MAF/MAF02/) | Sequential workflow (writer → editor) |
+| [MAF-Ollama-01](../samples/MAF/MAF-Ollama-01/) | Agent using local Ollama model |
+| [MAF-MultiAgents](../samples/MAF/MAF-MultiAgents/) | Multi-model orchestration demo |
+| [MAF-BackgroundResponses-*](../samples/MAF/) | Agents with tools and async responses |
+| [MAF-Persisting-*](../samples/MAF/) | Agents with conversation persistence |
 
 ---
 

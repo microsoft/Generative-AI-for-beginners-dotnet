@@ -272,9 +272,9 @@ Not every AI application needs agents. Here's a decision guide:
 
 | Sample | Description |
 |--------|-------------|
-| [AgentFx01](../samples/AgentFx/AgentFx01/) | Basic agent with Azure OpenAI |
-| [AgentFx-Ollama-01](../samples/AgentFx/AgentFx-Ollama-01/) | Agent using local Ollama model |
-| [AgentFx-Persisting-01-Simple](../samples/AgentFx/AgentFx-Persisting-01-Simple/) | Agent with conversation persistence |
+| [MAF01](../samples/MAF/MAF01/) | Basic agent with Azure OpenAI |
+| [MAF-Ollama-01](../samples/MAF/MAF-Ollama-01/) | Agent using local Ollama model |
+| [MAF-Persisting-01-Simple](../samples/MAF/MAF-Persisting-01-Simple/) | Agent with conversation persistence |
 
 ---
 
