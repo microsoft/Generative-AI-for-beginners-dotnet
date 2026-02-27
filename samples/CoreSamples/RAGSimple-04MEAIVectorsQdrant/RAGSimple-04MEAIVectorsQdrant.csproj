@@ -12,7 +12,7 @@
   <PackageReference Include="Microsoft.Extensions.AI" Version="10.3.0" />
   <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.3.0" />
   <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.3" />
-  <PackageReference Include="Qdrant.Client" Version="1.14.0" />
+  <PackageReference Include="Qdrant.Client" Version="1.17.0" />
   </ItemGroup>
 
   <ItemGroup>

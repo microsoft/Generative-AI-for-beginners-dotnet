@@ -6,7 +6,7 @@ namespace AgentFx_ImageGen_01;
 
 public class HuggingFaceMCP
 {
-    public static async Task<(McpClient client, IList<McpClientTool> tools)> GetHuggingFaceMCPClientAndToolsAsync()
+    public static async Task<(McpClient Client, IList<McpClientTool> Tools)> GetHuggingFaceMCPClientAndToolsAsync()
     {
         var builder = Host.CreateApplicationBuilder();
         var config = builder.Configuration

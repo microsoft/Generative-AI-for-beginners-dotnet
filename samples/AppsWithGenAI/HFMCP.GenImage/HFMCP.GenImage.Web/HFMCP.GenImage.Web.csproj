@@ -14,9 +14,9 @@
     <PackageReference Include="Microsoft.Extensions.AI" Version="10.3.0" />
     <PackageReference Include="Azure.AI.OpenAI" Version="2.8.0-beta.1" />
     <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.3.0" />
-    <PackageReference Include="System.ClientModel" Version="1.8.1" />
-    <PackageReference Include="ModelContextProtocol" Version="0.4.0-preview.3" />
-    <PackageReference Include="ModelContextProtocol.Core" Version="0.4.0-preview.3" />
+    <PackageReference Include="System.ClientModel" Version="1.9.0" />
+    <PackageReference Include="ModelContextProtocol" Version="1.0.0" />
+    <PackageReference Include="ModelContextProtocol.Core" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

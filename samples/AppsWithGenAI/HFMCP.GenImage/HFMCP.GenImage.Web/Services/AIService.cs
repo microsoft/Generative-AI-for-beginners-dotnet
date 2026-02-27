@@ -13,7 +13,7 @@ public class AIService : IAIService
     private readonly IAIConfigurationService _configurationService;
     private readonly ILogger<AIService> _logger;
     private readonly HttpClient _httpClient;
-    private IMcpClient? _mcpClient;
+    private McpClient? _mcpClient;
 
     public AIService(IAIConfigurationService configurationService, ILogger<AIService> logger, HttpClient httpClient)
     {

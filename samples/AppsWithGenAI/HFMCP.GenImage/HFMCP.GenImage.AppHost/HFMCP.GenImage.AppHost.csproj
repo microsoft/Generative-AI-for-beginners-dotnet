@@ -16,9 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Dashboard.Sdk.linux-x64" Version="9.5.2" />
-    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.5.2" />
-    <PackageReference Include="Aspire.Hosting.Orchestration.linux-x64" Version="9.5.2" />
+    <PackageReference Include="Aspire.Dashboard.Sdk.linux-x64" Version="13.1.2" />
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="13.1.2" />
+    <PackageReference Include="Aspire.Hosting.Orchestration.linux-x64" Version="13.1.2" />
   </ItemGroup>
 
 </Project>
