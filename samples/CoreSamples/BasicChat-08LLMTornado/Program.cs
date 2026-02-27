@@ -4,17 +4,14 @@ using LlmTornado.Chat.Models;
 using Microsoft.Extensions.Configuration;
 using System.Text;
 
-var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN");
-if (string.IsNullOrEmpty(githubToken))
-{
-    var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-    githubToken = config["GITHUB_TOKEN"];
-}
+var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
+var endpoint = config["endpoint"];
+var apiKey = config["apikey"];
 
 TornadoApi tornadoApi = new(
-    serverUri: new Uri("https://models.github.ai/inference"),
-    apiKey: githubToken,
-    provider: LlmTornado.Code.LLmProviders.OpenAi);
+    serverUri: new Uri(endpoint),
+    apiKey: apiKey,
+    provider: LlmTornado.Code.LLmProviders.AzureOpenAi);
 
 Conversation chat = tornadoApi.Chat.CreateConversation(new ChatRequest
 {
@@ -32,5 +29,5 @@ prompt.AppendLine("I found this product based on the other reviews. It worked fo
 chat.AppendUserInput(prompt.ToString());
 string? response = await chat.GetResponse();
 
-Console.WriteLine("GitHub Models gpt-4.1-mini:");
+Console.WriteLine("Azure OpenAI gpt-4.1-mini:");
 Console.WriteLine(response);

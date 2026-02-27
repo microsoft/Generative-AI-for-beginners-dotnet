@@ -22,11 +22,12 @@ _⬆️点击图片观看视频⬆️_
 
 ```csharp
 
-// this example illustrates using a model hosted on GitHub Models
-IChatClient client = new ChatCompletionsClient(
-    endpoint: new Uri("https://models.github.ai/inference"),
-    new AzureKeyCredential(githubToken)) // githubToken is retrieved from the environment variables
-    .AsChatClient("gpt-4o-mini");
+// this example illustrates using a model hosted on Azure OpenAI
+IChatClient client = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient();
 
 // here we're building the prompt
 StringBuilder prompt = new StringBuilder();
@@ -44,7 +45,7 @@ Console.WriteLine(response.Message);
 
 ```
 
-> 🗒️**注意：** 这个示例展示了 GitHub Models 作为托管服务。如果你想使用 Ollama，[请查看这个示例](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama)（它初始化了一个不同的 `IChatClient`）。
+> 🗒️**注意：** 这个示例展示了 Azure OpenAI 作为托管服务。如果你想使用 Ollama，[请查看这个示例](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama)（它初始化了一个不同的 `IChatClient`）。
 >
 > 如果你想使用 Microsoft Foundry，你可以使用相同的代码，但需要更改端点和凭据。
 
@@ -147,10 +148,11 @@ _⬆️点击图片观看视频⬆️_
 1. 当我们实例化 `IChatClient` 对象时，需要指定我们将使用函数调用。
 
     ```csharp
-    IChatClient client = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken)) // githubToken is retrieved from the environment variables
-    .AsChatClient("gpt-4o-mini")
+    IChatClient client = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()  // here we're saying that we could be invoking functions!
     .Build();

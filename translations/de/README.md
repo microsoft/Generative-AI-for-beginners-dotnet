@@ -59,9 +59,9 @@ Generative KI revolutioniert die Softwareentwicklung, und .NET bildet da keine A
 
 - Kurze Videos von 5-10 Minuten für jede Lektion.
 - Voll funktionsfähige .NET-Codebeispiele, die Sie ausführen und erkunden können.
-- Integration mit Tools wie **GitHub Codespaces** und **GitHub Models** für eine nahtlose Einrichtung und schnellen Einstieg ins Programmieren. Wenn Sie die Beispiele lieber lokal mit Ihren eigenen Modellen ausführen möchten, ist das ebenfalls möglich.
+- Integration mit Tools wie **GitHub Codespaces** und **Azure OpenAI** für eine nahtlose Einrichtung und schnellen Einstieg ins Programmieren. Wenn Sie die Beispiele lieber lokal mit Ihren eigenen Modellen ausführen möchten, ist das ebenfalls möglich.
 
-Sie lernen, wie Sie Generative KI in .NET-Projekte implementieren, von grundlegender Textgenerierung bis hin zum Aufbau vollständiger Lösungen mit **GitHub Models**, **Azure OpenAI Services** und **lokalen Modellen mit Ollama**.
+Sie lernen, wie Sie Generative KI in .NET-Projekte implementieren, von grundlegender Textgenerierung bis hin zum Aufbau vollständiger Lösungen mit **Azure OpenAI**, **Azure OpenAI Services** und **lokalen Modellen mit Ollama**.
 
 ## 📦 Jede Lektion enthält
 
@@ -75,7 +75,7 @@ Sie lernen, wie Sie Generative KI in .NET-Projekte implementieren, von grundlege
 | #   | **Lektionslink** | **Beschreibung** |
 | --- | --- | --- |
 | 01  | [**Einführung in die Grundlagen der Generativen KI für .NET-Entwickler**](./01-IntroToGenAI/readme.md) | <ul><li>Überblick über generative Modelle und ihre Anwendungen in .NET</li></ul> |
-| 02  | [**Einrichtung der Entwicklungsumgebung für Generative KI mit .NET**](./02-SetupDevEnvironment/readme.md) | <ul><li>Verwendung von Bibliotheken wie **Microsoft.Extensions.AI** und **Microsoft Agent Framework**.</li><li>Einrichtung von Anbietern wie GitHub Models, Microsoft Foundry und lokaler Entwicklung mit Ollama.</li></ul> |
+| 02  | [**Einrichtung der Entwicklungsumgebung für Generative KI mit .NET**](./02-SetupDevEnvironment/readme.md) | <ul><li>Verwendung von Bibliotheken wie **Microsoft.Extensions.AI** und **Microsoft Agent Framework**.</li><li>Einrichtung von Anbietern wie Azure OpenAI, Microsoft Foundry und lokaler Entwicklung mit Ollama.</li></ul> |
 | 03  | [**Kerntechniken der Generativen KI mit .NET**](./03-CoreGenerativeAITechniques/readme.md) | <ul><li>Textgenerierung und Konversationsflüsse.</li><li>Multimodale Fähigkeiten (Vision und Audio).</li><li>Agenten</li></ul> |
 | 04  | [**Praktische Beispiele für Generative KI mit .NET**](./04-PracticalSamples/readme.md) | <ul><li>Komplette Beispiele, die Generative KI in realen Szenarien demonstrieren</li><li>Anwendungen für semantische Suche.</li><li>Anwendungen mit mehreren Agenten</li></ul> |
 | 05  | [**Verantwortungsvoller Einsatz von Generativer KI in .NET-Anwendungen**](./05-ResponsibleGenAI/readme.md) | <ul><li>Ethische Überlegungen, Vermeidung von Verzerrungen und sichere Implementierungen.</li></ul> |
@@ -110,7 +110,7 @@ Das war's.
 Wir haben diesen Kurs so gestaltet, dass er möglichst reibungslos abläuft. Wir nutzen Folgendes, um Ihnen den Einstieg zu erleichtern:
 
 - **Ausführung in GitHub Codespaces**: Mit einem Klick erhalten Sie eine vorkonfigurierte Umgebung, um die Lektionen zu testen und zu erkunden.
-- **Nutzen Sie GitHub-Modelle**: Probieren Sie KI-gestützte Demos aus, die direkt in diesem Repository gehostet werden. Wir erklären mehr in den Lektionen, während wir fortschreiten. *(Wenn Sie mehr über GitHub-Modelle erfahren möchten, klicken Sie [hier](https://docs.github.com/github-models))*
+- **Nutzen Sie Azure OpenAI**: Probieren Sie KI-gestützte Demos aus, die direkt in diesem Repository gehostet werden. Wir erklären mehr in den Lektionen, während wir fortschreiten. *(Wenn Sie mehr über Azure OpenAI erfahren möchten, klicken Sie [hier](https://docs.github.com/github-models))*
 
 Wenn Sie bereit sind, weiter zu expandieren, haben wir auch Anleitungen für:
 

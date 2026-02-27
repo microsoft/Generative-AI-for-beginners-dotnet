@@ -22,11 +22,12 @@ Voyons comment utiliser les complétions de texte avec la bibliothèque **Micros
 
 ```csharp
 
-// this example illustrates using a model hosted on GitHub Models
-IChatClient client = new ChatCompletionsClient(
-    endpoint: new Uri("https://models.github.ai/inference"),
-    new AzureKeyCredential(githubToken)) // githubToken is retrieved from the environment variables
-    .AsChatClient("gpt-4o-mini");
+// this example illustrates using a model hosted on Azure OpenAI
+IChatClient client = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient();
 
 // here we're building the prompt
 StringBuilder prompt = new StringBuilder();
@@ -44,7 +45,7 @@ Console.WriteLine(response.Message);
 
 ```
 
-> 🗒️**Note :** Cet exemple montre les modèles GitHub comme service d'hébergement. Si vous souhaitez utiliser Ollama, [consultez cet exemple](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama) (il instancie un autre `IChatClient`).
+> 🗒️**Note :** Cet exemple montre les Azure OpenAI comme service d'hébergement. Si vous souhaitez utiliser Ollama, [consultez cet exemple](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama) (il instancie un autre `IChatClient`).
 >
 > Si vous voulez utiliser Microsoft Foundry, vous pouvez utiliser le même code, mais il faudra changer le point de terminaison et les informations d'identification.
 
@@ -147,10 +148,11 @@ Il y a quelques étapes de configuration nécessaires pour appeler des fonctions
 3. Lorsque nous instancions l'objet `IChatClient`, nous préciserons que nous utiliserons l'invocation de fonctions.
 
     ```csharp
-    IChatClient client = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken)) // githubToken is retrieved from the environment variables
-    .AsChatClient("gpt-4o-mini")
+    IChatClient client = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()  // here we're saying that we could be invoking functions!
     .Build();

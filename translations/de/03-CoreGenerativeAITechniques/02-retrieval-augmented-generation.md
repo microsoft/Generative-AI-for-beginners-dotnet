@@ -79,12 +79,12 @@ Wir verwenden Microsoft.Extension.AI zusammen mit den Bibliotheken [Microsoft.Ex
 3. Als Nächstes müssen wir unseren Wissensspeicher (das `movieData`-Objekt) in Embeddings umwandeln und diese dann im In-Memory-Vektorspeicher speichern. Dabei verwenden wir ein anderes Modell – ein Embeddings-Modell anstelle eines Sprachmodells.
 
     ```csharp
-    var endpoint = new Uri("https://models.github.ai/inference");
+    var endpoint = new Uri("https://<your-endpoint>.services.ai.azure.com/");
     var modelId = "text-embedding-3-small";
     var credential = new AzureKeyCredential(githubToken); // githubToken is retrieved from the environment variables
 
     IEmbeddingGenerator<string, Embedding<float>> generator =
-            new EmbeddingsClient(endpoint, credential)
+            new AzureOpenAIClient(new Uri(config["endpoint"]), new ApiKeyCredential(config["apikey"])).GetEmbeddingClient("text-embedding-3-small")
         .AsEmbeddingGenerator(modelId);
 
     foreach (var movie in movieData)
@@ -97,7 +97,7 @@ Wir verwenden Microsoft.Extension.AI zusammen mit den Bibliotheken [Microsoft.Ex
     }
     ```
 
-    Unser Generator-Objekt ist vom Typ `IEmbeddingGenerator<string, Embedding<float>>` type. This means it is expecting inputs of `string` and outputs of `Embedding<float>`. Wir verwenden erneut GitHub-Modelle, was das **Microsoft.Extensions.AI.AzureAIInference**-Paket erfordert. Sie könnten jedoch genauso gut **Ollama** oder **Azure OpenAI** verwenden.
+    Unser Generator-Objekt ist vom Typ `IEmbeddingGenerator<string, Embedding<float>>` type. This means it is expecting inputs of `string` and outputs of `Embedding<float>`. Wir verwenden erneut Azure OpenAI, was das **Microsoft.Extensions.AI.AzureAIInference**-Paket erfordert. Sie könnten jedoch genauso gut **Ollama** oder **Azure OpenAI** verwenden.
 
 > 🗒️**Hinweis:** Normalerweise erstellen Sie Embeddings für Ihren Wissensspeicher nur einmal und speichern sie dann. Dies wird nicht jedes Mal durchgeführt, wenn Sie die Anwendung starten. Da wir jedoch einen In-Memory-Speicher verwenden, müssen wir dies tun, da die Daten bei jedem Neustart der Anwendung gelöscht werden.
 

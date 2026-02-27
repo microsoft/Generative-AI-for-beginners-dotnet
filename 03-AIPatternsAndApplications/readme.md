@@ -68,7 +68,7 @@ All code samples for this lesson are located in the **[`samples/CoreSamples/`](.
 | **Embeddings & RAG** | [RAGSimple-02MEAIVectorsMemory](../samples/CoreSamples/RAGSimple-02MEAIVectorsMemory/) | In-memory vector store |
 | | [RAGSimple-03MEAIVectorsAISearch](../samples/CoreSamples/RAGSimple-03MEAIVectorsAISearch/) | Azure AI Search |
 | | [RAGSimple-04MEAIVectorsQdrant](../samples/CoreSamples/RAGSimple-04MEAIVectorsQdrant/) | Qdrant vector store |
-| **Vision** | [Vision-01MEAI-GitHubModels](../samples/CoreSamples/Vision-01MEAI-GitHubModels/) | Vision with GitHub Models |
+| **Vision** | [Vision-01MEAI-AzureOpenAI](../samples/CoreSamples/Vision-01MEAI-AzureOpenAI/) | Vision with Azure OpenAI |
 | | [Vision-02MEAI-Ollama](../samples/CoreSamples/Vision-02MEAI-Ollama/) | Local vision with Ollama |
 | | [Vision-03MEAI-AOAI](../samples/CoreSamples/Vision-03MEAI-AOAI/) | Vision with Azure OpenAI |
 | **Documents** | [OpenAI-FileProcessing-Pdf-01](../samples/CoreSamples/OpenAI-FileProcessing-Pdf-01/) | PDF document processing |

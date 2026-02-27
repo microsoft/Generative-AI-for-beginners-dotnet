@@ -59,14 +59,11 @@ using OpenAI;
 using OpenAI.Chat;
 using System.ClientModel;
 
-// Get your GitHub token from environment or user secrets
-var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN");
-
 // Create a chat client (same as before)
-IChatClient chatClient = new ChatClient(
-        "gpt-4o-mini",
-        new ApiKeyCredential(githubToken!),
-        new OpenAIClientOptions { Endpoint = new Uri("https://models.github.ai/inference") })
+IChatClient chatClient = new AzureOpenAIClient(
+        new Uri(config["endpoint"]),
+        new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
     .AsIChatClient();
 
 // Create an agent from the chat client
@@ -163,16 +160,16 @@ AIAgent agent = new AzureOpenAIClient(
     .CreateAIAgent(instructions: "You are a helpful assistant.");
 ```
 
-### GitHub Models
+### Azure OpenAI (with API Key)
 
 ```csharp
 using OpenAI;
 using System.ClientModel;
 
-IChatClient chatClient = new ChatClient(
-        "gpt-4o-mini",
-        new ApiKeyCredential(githubToken),
-        new OpenAIClientOptions { Endpoint = new Uri("https://models.github.ai/inference") })
+IChatClient chatClient = new AzureOpenAIClient(
+        new Uri(config["endpoint"]),
+        new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
     .AsIChatClient();
 
 AIAgent agent = chatClient.CreateAIAgent(
@@ -260,7 +257,7 @@ Not every AI application needs agents. Here's a decision guide:
 | **AIAgent** | Core abstraction for building agents |
 | **CreateAIAgent** | Extension method to create agents from any chat client |
 | **AgentThread** | Maintains conversation context across runs |
-| **Provider Flexibility** | Same code works with Azure OpenAI, GitHub Models, Ollama |
+| **Provider Flexibility** | Same code works with Azure OpenAI, Ollama |
 | **When to Use** | Agents shine when tasks need reasoning and multi-step execution |
 
 ### Quick Self-Check
@@ -275,7 +272,7 @@ Not every AI application needs agents. Here's a decision guide:
 
 | Sample | Description |
 |--------|-------------|
-| [AgentFx01](../samples/AgentFx/AgentFx01/) | Basic agent with GitHub Models |
+| [AgentFx01](../samples/AgentFx/AgentFx01/) | Basic agent with Azure OpenAI |
 | [AgentFx-Ollama-01](../samples/AgentFx/AgentFx-Ollama-01/) | Agent using local Ollama model |
 | [AgentFx-Persisting-01-Simple](../samples/AgentFx/AgentFx-Persisting-01-Simple/) | Agent with conversation persistence |
 

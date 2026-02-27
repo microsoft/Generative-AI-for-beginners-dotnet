@@ -4,7 +4,7 @@ Si deseas usar los modelos de Microsoft Foundry en tus aplicaciones de IA con .N
 
 ¿No quieres usar Azure OpenAI?
 
-👉 [Esta es la guía para usar los modelos de GitHub](README.md)  
+👉 [Esta es la guía para usar los Azure OpenAI](README.md)  
 👉 [Aquí están los pasos para usar Ollama](getting-started-ollama.md)
 
 ## Crear los recursos de Microsoft Foundry
@@ -75,9 +75,9 @@ Vamos a crear un Codespace en GitHub para desarrollar durante el resto del curso
 
 En el desplegable **Dev container configuration**, selecciona una de las siguientes opciones:
 
-**Opción 1: C# (.NET)**: Esta es la opción que debes usar si planeas utilizar los modelos de GitHub o Azure OpenAI. Incluye todas las herramientas principales de desarrollo con .NET necesarias para el curso y tiene un tiempo de inicio rápido.
+**Opción 1: C# (.NET)**: Esta es la opción que debes usar si planeas utilizar los Azure OpenAI o Azure OpenAI. Incluye todas las herramientas principales de desarrollo con .NET necesarias para el curso y tiene un tiempo de inicio rápido.
 
-**Opción 2: C# (.NET) - Ollama**: Ollama te permite ejecutar los demos sin necesidad de conectarte a los modelos de GitHub o Azure OpenAI. Incluye todas las herramientas principales de desarrollo con .NET además de Ollama, pero tiene un tiempo de inicio más lento, en promedio cinco minutos. [Sigue esta guía](getting-started-ollama.md) si deseas usar Ollama.
+**Opción 2: C# (.NET) - Ollama**: Ollama te permite ejecutar los demos sin necesidad de conectarte a los Azure OpenAI o Azure OpenAI. Incluye todas las herramientas principales de desarrollo con .NET además de Ollama, pero tiene un tiempo de inicio más lento, en promedio cinco minutos. [Sigue esta guía](getting-started-ollama.md) si deseas usar Ollama.
 
 Puedes dejar el resto de las configuraciones como están. Haz clic en el botón **Create codespace** para iniciar el proceso de creación del Codespace.
 

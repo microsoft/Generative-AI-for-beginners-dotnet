@@ -29,10 +29,11 @@ Microsoft.Extensions.AI uses a **middleware pipeline** pattern, similar to ASP.N
 The `ChatClientBuilder` creates a pipeline of middleware around your base chat client:
 
 ```csharp
-IChatClient client = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken))
-    .AsIChatClient("gpt-4o-mini")
+IChatClient client = new AzureOpenAIClient(
+        new Uri(config["endpoint"]),
+        new ApiKeyCredential(config["apikey"]))
+        .GetChatClient("gpt-4o-mini")
+        .AsIChatClient()
     .AsBuilder()                    // Start building the pipeline
     .UseFunctionInvocation()        // Add function calling
     .UseDistributedCache(cache)     // Add caching
@@ -63,10 +64,11 @@ var cache = new MemoryDistributedCache(
     Options.Create(new MemoryDistributedCacheOptions()));
 
 // Build the client with caching
-IChatClient client = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken))
-    .AsIChatClient("gpt-4o-mini")
+IChatClient client = new AzureOpenAIClient(
+        new Uri(config["endpoint"]),
+        new ApiKeyCredential(config["apikey"]))
+        .GetChatClient("gpt-4o-mini")
+        .AsIChatClient()
     .AsBuilder()
     .UseDistributedCache(cache)
     .Build();
@@ -124,10 +126,11 @@ var tracerProvider = OpenTelemetry.Sdk.CreateTracerProviderBuilder()
     .Build();
 
 // Build the client with telemetry
-IChatClient client = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken))
-    .AsIChatClient("gpt-4o-mini")
+IChatClient client = new AzureOpenAIClient(
+        new Uri(config["endpoint"]),
+        new ApiKeyCredential(config["apikey"]))
+        .GetChatClient("gpt-4o-mini")
+        .AsIChatClient()
     .AsBuilder()
     .UseOpenTelemetry(
         sourceName: sourceName,
@@ -171,10 +174,11 @@ IChatClient client = baseClient
 The real power comes from combining multiple middleware:
 
 ```csharp
-IChatClient client = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken))
-    .AsIChatClient("gpt-4o-mini")
+IChatClient client = new AzureOpenAIClient(
+        new Uri(config["endpoint"]),
+        new ApiKeyCredential(config["apikey"]))
+        .GetChatClient("gpt-4o-mini")
+        .AsIChatClient()
     .AsBuilder()
     .UseDistributedCache(cache)           // Check cache first
     .UseFunctionInvocation()              // Enable function calling
@@ -200,8 +204,9 @@ If the cache has a hit, the request never reaches the AI model.
 Set default options for all requests:
 
 ```csharp
-IChatClient client = new ChatCompletionsClient(...)
-    .AsIChatClient("gpt-4o-mini")
+IChatClient client = new AzureOpenAIClient(new Uri(config["endpoint"]), new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient()
     .AsBuilder()
     .ConfigureOptions(options => 
     {
@@ -359,10 +364,11 @@ builder.Services.AddChatClient(services =>
 {
     var cache = services.GetRequiredService<IDistributedCache>();
     
-    return new ChatCompletionsClient(
-            endpoint: new Uri("https://models.github.ai/inference"),
-            new AzureKeyCredential(githubToken))
-        .AsIChatClient("gpt-4o-mini")
+    return new AzureOpenAIClient(
+        new Uri(config["endpoint"]),
+        new ApiKeyCredential(config["apikey"]))
+        .GetChatClient("gpt-4o-mini")
+        .AsIChatClient()
         .AsBuilder()
         .UseDistributedCache(cache)
         .UseFunctionInvocation()
@@ -412,10 +418,11 @@ builder.Services.AddChatClient(services =>
     var cache = services.GetRequiredService<IDistributedCache>();
     var loggerFactory = services.GetRequiredService<ILoggerFactory>();
     
-    return new ChatCompletionsClient(
-            endpoint: new Uri("https://models.github.ai/inference"),
-            new AzureKeyCredential(Environment.GetEnvironmentVariable("GITHUB_TOKEN")!))
-        .AsIChatClient("gpt-4o-mini")
+    return new AzureOpenAIClient(
+        new Uri(config["endpoint"]),
+        new ApiKeyCredential(config["apikey"]))
+        .GetChatClient("gpt-4o-mini")
+        .AsIChatClient()
         .AsBuilder()
         .ConfigureOptions(opt => opt.Temperature = 0.7f)
         .UseDistributedCache(cache)

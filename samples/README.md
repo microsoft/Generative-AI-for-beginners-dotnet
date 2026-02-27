@@ -25,7 +25,7 @@ This folder contains fundamental samples demonstrating core Generative AI techni
 
 ### What you'll find in CoreSamples
 
-- **Chat & Completions** - Basic text generation and conversational AI using various providers (GitHub Models, Azure OpenAI, Ollama) and frameworks (Microsoft.Extensions.AI)
+- **Chat & Completions** - Basic text generation and conversational AI using various providers (Azure OpenAI, Ollama) and frameworks (Microsoft.Extensions.AI)
 - **Function Calling** - Extending AI capabilities by allowing models to call custom functions and external tools
 - **Retrieval-Augmented Generation (RAG)** - Integrating external knowledge stores with AI models using different vector databases (in-memory, Azure AI Search, Qdrant)
 - **Vision & Audio** - Image analysis, speech-to-text, and real-time audio conversations
@@ -48,7 +48,7 @@ This folder contains samples demonstrating the **Microsoft Agent Framework** for
 ### What you'll find in AgentFx
 
 - **Basic Samples** - Single and dual-agent workflows demonstrating fundamental agent creation and orchestration patterns
-- **Advanced Multi-Provider Samples** - Complex workflows combining multiple AI providers (Azure OpenAI, GitHub Models, Ollama) in sophisticated agent orchestrations
+- **Advanced Multi-Provider Samples** - Complex workflows combining multiple AI providers (Azure OpenAI, Ollama) in sophisticated agent orchestrations
 - **Integration & Web Samples** - Web-based chat applications with Blazor UI, middleware patterns, and MCP integrations for tool usage (e.g., image generation)
 
 This folder includes 12 samples ranging from simple single-agent scenarios to complex multi-agent systems with persistent state and web interfaces.
@@ -101,7 +101,6 @@ Each application is fully functional and can be run independently with proper AI
 
 - **.NET 9 SDK** or later
 - **AI Provider Access** (at least one):
-  - GitHub Personal Access Token for GitHub Models
   - Microsoft Foundry endpoint (with managed identity or API key)
   - Ollama installed locally
 

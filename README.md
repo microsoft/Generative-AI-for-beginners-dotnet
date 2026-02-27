@@ -61,9 +61,9 @@ Generative AI is transforming software development, and .NET is no exception. Th
 
 - Short 5-10 minute videos for each lesson.
 - Fully functional .NET code samples you can run and explore.
-- Integration with tools, including **GitHub Codespaces** and **GitHub Models** for seamless setup and fast time-to-code. Optinally, you can also use **Azure OpenAI Services** or **Ollama** for local model hosting.
+- Integration with tools, including **GitHub Codespaces** for seamless setup and fast time-to-code. You can use **Azure OpenAI Services** / **Microsoft Foundry** or **Ollama** for local model hosting.
 
-You'll learn how to implement Generative AI into .NET projects, from basic text generation to building full-fledged solutions using **GitHub Models**, **Azure OpenAI Services** and **local models with Ollama**.
+You'll learn how to implement Generative AI into .NET projects, from basic text generation to building full-fledged solutions using **Azure OpenAI Services** and **local models with Ollama**.
 
 ## 📦 Each Lesson Includes
 
@@ -114,11 +114,10 @@ And that's it.
 We've designed this course to be as low-friction as possible. We make use of the following to help you get started quickly:
 
 - **Run in GitHub Codespaces**: With one click, you'll get a pre-configured environment to test and explore the lessons.
-- **Leverage GitHub Models**: Try out AI-powered demos hosted directly within this repo, we explain more in the lessons, as we go. *(If you want to learn more about GitHub Models, click [here](https://docs.github.com/github-models))*
+- **Use Azure OpenAI / Microsoft Foundry**: Access powerful AI models through Azure for production-ready scenarios.
 
 Then when you're ready to expand we also have guides for:
 
-- Upgrading to **Azure OpenAI Services** for scalable and enterprise-ready solutions.
 - Using **Ollama** to run models locally on your hardware for enhanced privacy and control.
 
 ## 🤝 Want to Help?

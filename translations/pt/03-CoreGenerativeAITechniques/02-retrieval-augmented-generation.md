@@ -79,12 +79,12 @@ Usaremos o Microsoft.Extension.AI junto com as bibliotecas [Microsoft.Extensions
 3. Nossa próxima tarefa é converter nosso repositório de conhecimento (o objeto `movieData`) em embeddings e armazená-los no repositório vetorial em memória. Ao criar os embeddings, usaremos um modelo diferente – um modelo de embeddings em vez de um modelo de linguagem.
 
     ```csharp
-    var endpoint = new Uri("https://models.github.ai/inference");
+    var endpoint = new Uri("https://<your-endpoint>.services.ai.azure.com/");
     var modelId = "text-embedding-3-small";
     var credential = new AzureKeyCredential(githubToken); // githubToken is retrieved from the environment variables
 
     IEmbeddingGenerator<string, Embedding<float>> generator =
-            new EmbeddingsClient(endpoint, credential)
+            new AzureOpenAIClient(new Uri(config["endpoint"]), new ApiKeyCredential(config["apikey"])).GetEmbeddingClient("text-embedding-3-small")
         .AsEmbeddingGenerator(modelId);
 
     foreach (var movie in movieData)
@@ -97,7 +97,7 @@ Usaremos o Microsoft.Extension.AI junto com as bibliotecas [Microsoft.Extensions
     }
     ```
 
-    Nosso objeto gerador é um `IEmbeddingGenerator<string, Embedding<float>>` type. This means it is expecting inputs of `string` and outputs of `Embedding<float>`. Estamos novamente utilizando os modelos do GitHub, o que significa o pacote **Microsoft.Extensions.AI.AzureAIInference**. Mas você também poderia usar **Ollama** ou **Azure OpenAI** com a mesma facilidade.
+    Nosso objeto gerador é um `IEmbeddingGenerator<string, Embedding<float>>` type. This means it is expecting inputs of `string` and outputs of `Embedding<float>`. Estamos novamente utilizando os Azure OpenAI, o que significa o pacote **Microsoft.Extensions.AI.AzureAIInference**. Mas você também poderia usar **Ollama** ou **Azure OpenAI** com a mesma facilidade.
 
 > 🗒️**Nota:** Geralmente, você criará embeddings para seu repositório de conhecimento apenas uma vez e os armazenará. Isso não será feito toda vez que a aplicação for executada. No entanto, como estamos usando um repositório em memória, precisamos recriá-los porque os dados são apagados toda vez que a aplicação é reiniciada.
 

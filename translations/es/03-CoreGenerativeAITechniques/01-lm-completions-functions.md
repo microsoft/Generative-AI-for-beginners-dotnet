@@ -22,11 +22,12 @@ Veamos cómo usarías completaciones de texto utilizando la biblioteca **Microso
 
 ```csharp
 
-// this example illustrates using a model hosted on GitHub Models
-IChatClient client = new ChatCompletionsClient(
-    endpoint: new Uri("https://models.github.ai/inference"),
-    new AzureKeyCredential(githubToken)) // githubToken is retrieved from the environment variables
-    .AsChatClient("gpt-4o-mini");
+// this example illustrates using a model hosted on Azure OpenAI
+IChatClient client = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient();
 
 // here we're building the prompt
 StringBuilder prompt = new StringBuilder();
@@ -44,7 +45,7 @@ Console.WriteLine(response.Message);
 
 ```
 
-> 🗒️**Nota:** Este ejemplo muestra modelos de GitHub como el servicio de alojamiento. Si deseas usar Ollama, [revisa este ejemplo](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama) (se instancia un `IChatClient` diferente).
+> 🗒️**Nota:** Este ejemplo muestra Azure OpenAI como el servicio de alojamiento. Si deseas usar Ollama, [revisa este ejemplo](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama) (se instancia un `IChatClient` diferente).
 >
 > Si deseas usar Microsoft Foundry, puedes usar el mismo código, pero necesitarás cambiar el endpoint y las credenciales.
 
@@ -147,10 +148,11 @@ Hay algunos pasos de configuración que necesitas realizar para llamar funciones
 3. Cuando instanciemos el objeto `IChatClient`, querremos especificar que usaremos invocación de funciones.
 
     ```csharp
-    IChatClient client = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken)) // githubToken is retrieved from the environment variables
-    .AsChatClient("gpt-4o-mini")
+    IChatClient client = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()  // here we're saying that we could be invoking functions!
     .Build();

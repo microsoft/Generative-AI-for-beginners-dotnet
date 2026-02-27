@@ -69,10 +69,11 @@ using Azure.AI.Inference;
 
 // Create an embedding generator
 IEmbeddingGenerator<string, Embedding<float>> generator =
-    new EmbeddingsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken))
-    .AsIEmbeddingGenerator("text-embedding-3-small");
+    new AzureOpenAIClient(
+        new Uri(config["endpoint"]),
+        new ApiKeyCredential(config["apikey"]))
+    .GetEmbeddingClient("text-embedding-3-small")
+    .AsIEmbeddingGenerator();
 
 // Generate an embedding for text
 var embedding = await generator.GenerateAsync("I love pizza");
@@ -336,7 +337,7 @@ The code stays the same - just swap the vector store implementation!
 
 | Sample | Description |
 |--------|-------------|
-| [RAGSimple-02MEAIVectorsMemory](../samples/CoreSamples/RAGSimple-02MEAIVectorsMemory/) | In-memory vector store with GitHub Models |
+| [RAGSimple-02MEAIVectorsMemory](../samples/CoreSamples/RAGSimple-02MEAIVectorsMemory/) | In-memory vector store with Azure OpenAI |
 | [RAGSimple-03MEAIVectorsAISearch](../samples/CoreSamples/RAGSimple-03MEAIVectorsAISearch/) | Azure AI Search vector store |
 | [RAGSimple-04MEAIVectorsQdrant](../samples/CoreSamples/RAGSimple-04MEAIVectorsQdrant/) | Qdrant vector store |
 

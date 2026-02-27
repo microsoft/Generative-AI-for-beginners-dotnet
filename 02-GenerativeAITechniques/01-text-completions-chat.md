@@ -67,10 +67,11 @@ Think of it like asking someone a question in passing. You're not starting a con
 Here's how to get a text completion with Microsoft.Extensions.AI:
 
 ```csharp
-IChatClient client = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken))
-        .AsIChatClient("gpt-4o-mini");
+IChatClient client = new AzureOpenAIClient(
+        new Uri(config["endpoint"]),
+        new ApiKeyCredential(config["apikey"]))
+        .GetChatClient("gpt-4o-mini")
+        .AsIChatClient();
 
 var response = await client.GetResponseAsync(
     "Summarize the benefits of cloud computing in one sentence.");
@@ -82,8 +83,9 @@ Console.WriteLine(response.Text);
 
 | Line | What It Does |
 |------|-------------|
-| `ChatCompletionsClient` | Creates a connection to GitHub Models |
-| `.AsIChatClient("gpt-4o-mini")` | Wraps it in the standard `IChatClient` interface |
+| `AzureOpenAIClient` | Creates a connection to Azure OpenAI / Microsoft Foundry |
+| `.GetChatClient("gpt-4o-mini")` | Selects the deployment model |
+| `.AsIChatClient()` | Wraps it in the standard `IChatClient` interface |
 | `GetResponseAsync(prompt)` | Sends your prompt, waits for the response |
 | `response.Text` | The AI's generated text |
 
@@ -291,11 +293,12 @@ Let's put it all together. Here's a complete, working chat application:
 ```csharp
 using Microsoft.Extensions.AI;
 
-// Create the AI client (using GitHub Models)
-IChatClient client = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(Environment.GetEnvironmentVariable("GITHUB_TOKEN")!))
-        .AsIChatClient("gpt-4o-mini");
+// Create the AI client (using Azure OpenAI)
+IChatClient client = new AzureOpenAIClient(
+        new Uri(config["endpoint"]),
+        new ApiKeyCredential(config["apikey"]))
+        .GetChatClient("gpt-4o-mini")
+        .AsIChatClient();
 
 // Initialize conversation with a system message
 List<ChatMessage> conversation = new()
@@ -339,17 +342,16 @@ while (true)
 The same code works with any `IChatClient` provider. Just change the client instantiation:
 
 ```csharp
-// Option 1: GitHub Models
-IChatClient client = new ChatCompletionsClient(...)
-    .AsIChatClient("gpt-4o-mini");
+// Option 1: Azure OpenAI / Microsoft Foundry
+IChatClient client = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient();
 
 // Option 2: Ollama (local)
 IChatClient client = new OllamaChatClient(
     new Uri("http://localhost:11434"), "phi4-mini");
-
-// Option 3: Azure OpenAI
-IChatClient client = new AzureOpenAIChatClient(
-    endpoint, credential, "gpt-4o");
 ```
 
 Your conversation logic stays exactly the same.
@@ -379,7 +381,7 @@ Can you answer these questions?
 
 | Sample | Description |
 |--------|-------------|
-| [BasicChat-01MEAI](../samples/CoreSamples/BasicChat-01MEAI/) | Text completion with GitHub Models |
+| [BasicChat-01MEAI](../samples/CoreSamples/BasicChat-01MEAI/) | Text completion with Azure OpenAI |
 | [BasicChat-03Ollama](../samples/CoreSamples/BasicChat-03Ollama/) | Chat with local Ollama |
 | [BasicChat-10ConversationHistory](../samples/CoreSamples/BasicChat-10ConversationHistory/) | Managing conversation history |
 

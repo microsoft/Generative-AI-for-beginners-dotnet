@@ -65,11 +65,10 @@ public class AIConfigurationService : IAIConfigurationService
     public async Task<bool> IsConfigurationValidAsync()
     {
         var config = await GetConfigurationAsync();
-        // Hugging Face token is required, plus at least one AI provider (GitHub Models or Azure OpenAI)
+        // Hugging Face token is required, plus Azure OpenAI
         var hasHuggingFace = !string.IsNullOrEmpty(config.HuggingFaceToken);
-        var hasGitHubModels = !string.IsNullOrEmpty(config.GitHubToken);
         var hasAzureOpenAI = !string.IsNullOrEmpty(config.AzureOpenAIEndpoint) && !string.IsNullOrEmpty(config.AzureOpenAIApiKey);
 
-        return hasHuggingFace && (hasGitHubModels || hasAzureOpenAI);
+        return hasHuggingFace && hasAzureOpenAI;
     }
 }

@@ -46,10 +46,11 @@ using Azure;
 using Azure.AI.Inference;
 
 // Create a chat client with a vision-capable model
-IChatClient chatClient = new ChatCompletionsClient(
-    endpoint: new Uri("https://models.github.ai/inference"),
-    new AzureKeyCredential(githubToken))
-    .AsIChatClient("gpt-4o");  // Must be a vision-capable model
+IChatClient chatClient = new AzureOpenAIClient(
+        new Uri(config["endpoint"]),
+        new ApiKeyCredential(config["apikey"]))
+        .GetChatClient("gpt-4o")
+        .AsIChatClient();  // Must be a vision-capable model
 
 // Load an image from file
 var imageBytes = await File.ReadAllBytesAsync("product-photo.jpg");
@@ -486,7 +487,7 @@ var messages = new List<ChatMessage>
 
 | Sample | Description |
 |--------|-------------|
-| [Vision-01MEAI-GitHubModels](../samples/CoreSamples/Vision-01MEAI-GitHubModels/) | Vision with GitHub Models |
+| [Vision-01MEAI-AzureOpenAI](../samples/CoreSamples/Vision-01MEAI-AzureOpenAI/) | Vision with Azure OpenAI |
 | [Vision-02MEAI-Ollama](../samples/CoreSamples/Vision-02MEAI-Ollama/) | Local vision with Ollama |
 | [Vision-03MEAI-AOAI](../samples/CoreSamples/Vision-03MEAI-AOAI/) | Vision with Azure OpenAI |
 | [Vision-04MEAI-AOAI-Spectre](../samples/CoreSamples/Vision-04MEAI-AOAI-Spectre/) | Vision with Spectre Console output |

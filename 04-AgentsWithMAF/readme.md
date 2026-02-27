@@ -69,7 +69,7 @@ User Input ────────►│  ┌───────────�
 
 - **Provides** a unified framework for building agents and multi-agent systems in .NET
 - **Provides** enterprise-grade features (telemetry, filters, type safety)
-- **Supports** multiple AI providers (Azure OpenAI, OpenAI, GitHub Models, Ollama)
+- **Supports** multiple AI providers (Azure OpenAI, OpenAI, Ollama)
 - **Enables** both single agents and complex multi-agent workflows
 - **Integrates** with Model Context Protocol for extended capabilities
 
@@ -106,7 +106,7 @@ All lesson code is in the [samples/AgentFx](../samples/AgentFx/) folder:
 
 | Sample | Description |
 |--------|-------------|
-| [AgentFx01](../samples/AgentFx/AgentFx01/) | Basic agent with GitHub Models |
+| [AgentFx01](../samples/AgentFx/AgentFx01/) | Basic agent with Azure OpenAI |
 | [AgentFx02](../samples/AgentFx/AgentFx02/) | Sequential workflow (writer → editor) |
 | [AgentFx-Ollama-01](../samples/AgentFx/AgentFx-Ollama-01/) | Agent using local Ollama model |
 | [AgentFx-MultiAgents](../samples/AgentFx/AgentFx-MultiAgents/) | Multi-model orchestration demo |
@@ -122,7 +122,7 @@ Before starting this lesson, ensure you have:
 - Completed Lessons 1-3 (or understand chat, function calling, and RAG concepts)
 - .NET 9 SDK installed
 - Access to at least one AI provider:
-  - GitHub Models (recommended) - Free tier available
+  - Azure OpenAI / Microsoft Foundry (recommended)
   - Azure OpenAI - Requires Azure subscription
   - Ollama - For local agent execution
 

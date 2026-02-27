@@ -106,17 +106,19 @@ using Azure;
 using Azure.AI.Inference;
 
 // Chat client for generation
-IChatClient chatClient = new ChatCompletionsClient(
-    endpoint: new Uri("https://models.github.ai/inference"),
-    new AzureKeyCredential(githubToken))
-    .AsIChatClient("gpt-4o-mini");
+IChatClient chatClient = new AzureOpenAIClient(
+        new Uri(config["endpoint"]),
+        new ApiKeyCredential(config["apikey"]))
+        .GetChatClient("gpt-4o-mini")
+        .AsIChatClient();
 
 // Embedding generator for retrieval
 IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator =
-    new EmbeddingsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken))
-    .AsIEmbeddingGenerator("text-embedding-3-small");
+    new AzureOpenAIClient(
+        new Uri(config["endpoint"]),
+        new ApiKeyCredential(config["apikey"]))
+    .GetEmbeddingClient("text-embedding-3-small")
+    .AsIEmbeddingGenerator();
 
 // Vector store
 var vectorStore = new InMemoryVectorStore();

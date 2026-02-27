@@ -20,15 +20,16 @@ Okay – wir werden das Modell auf die Probe stellen und es fragen, wie viele ro
 
 ![Eine Komposition mit beiden Bildern, die im Beispiel verwendet werden. Das erste zeigt mehrere Läufer, aber nur deren Beine. Das zweite ist eine deutsche Restaurantquittung](../../../translated_images/example-visual-image.e2fc4ffa5f01b3d65bb9bd5d23eebf97513bf486b761209b28fea06b63a11f6c.de.png)
 
-> 🧑‍💻**Beispielcode**: Du kannst [dem Beispielcode hier folgen](../../../03-CoreGenerativeAITechniques/src/Vision-01MEAI-GitHubModels).
+> 🧑‍💻**Beispielcode**: Du kannst [dem Beispielcode hier folgen](../../../03-CoreGenerativeAITechniques/src/Vision-01MEAI-AzureOpenAI).
 
-1. Wir verwenden MEAI und GitHub-Modelle, also instanziere die `IChatClient` wie gewohnt. Beginne auch damit, eine Chat-Historie zu erstellen.
+1. Wir verwenden MEAI und Azure OpenAI, also instanziere die `IChatClient` wie gewohnt. Beginne auch damit, eine Chat-Historie zu erstellen.
 
     ```csharp
-    IChatClient chatClient = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken)) // make sure to grab githubToken from the secrets or environment
-    .AsChatClient("gpt-4o-mini");
+    IChatClient chatClient = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient();
 
     List<ChatMessage> messages = 
     [

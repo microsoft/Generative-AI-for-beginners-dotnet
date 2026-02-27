@@ -59,9 +59,9 @@
 
 - 每节课包含 5-10 分钟的短视频。
 - 提供完整的 .NET 代码示例，供你运行和探索。
-- 集成 **GitHub Codespaces** 和 **GitHub Models** 等工具，快速设置环境并进入编码状态。如果你想在本地运行示例并使用自己的模型，也完全可以。
+- 集成 **GitHub Codespaces** 和 **Azure OpenAI** 等工具，快速设置环境并进入编码状态。如果你想在本地运行示例并使用自己的模型，也完全可以。
 
-你将学习如何将生成式 AI 集成到 .NET 项目中，从基础的文本生成到使用 **GitHub Models**、**Azure OpenAI 服务** 和 **Ollama 的本地模型** 构建完整解决方案。
+你将学习如何将生成式 AI 集成到 .NET 项目中，从基础的文本生成到使用 **Azure OpenAI**、**Azure OpenAI 服务** 和 **Ollama 的本地模型** 构建完整解决方案。
 
 ## 📦 每节课包含
 
@@ -75,7 +75,7 @@
 | #   | **课程链接** | **课程描述** |
 | --- | --- | --- |
 | 01  | [**.NET 开发者的生成式 AI 基础入门**](./01-IntroToGenAI/readme.md) | <ul><li>概览生成模型及其在 .NET 中的应用</li></ul> |
-| 02  | [**为生成式 AI 设置 .NET 开发环境**](./02-SetupDevEnvironment/readme.md) | <ul><li>使用 **Microsoft.Extensions.AI** 和 **Microsoft Agent Framework** 等库。</li><li>配置 GitHub Models、Microsoft Foundry，以及 Ollama 等本地开发工具。</li></ul> |
+| 02  | [**为生成式 AI 设置 .NET 开发环境**](./02-SetupDevEnvironment/readme.md) | <ul><li>使用 **Microsoft.Extensions.AI** 和 **Microsoft Agent Framework** 等库。</li><li>配置 Azure OpenAI、Microsoft Foundry，以及 Ollama 等本地开发工具。</li></ul> |
 | 03  | [**.NET 中的核心生成式 AI 技术**](./03-CoreGenerativeAITechniques/readme.md) | <ul><li>文本生成与对话流程。</li><li>多模态功能（视觉和音频）。</li><li>智能代理。</li></ul> |
 | 04  | [**实用的 .NET 生成式 AI 示例**](./04-PracticalSamples/readme.md) | <ul><li>展示生成式 AI 在实际场景中的完整示例。</li><li>语义搜索应用。</li><li>多代理应用。</li></ul> |
 | 05  | [**在 .NET 应用中负责任地使用生成式 AI**](./05-ResponsibleGenAI/readme.md) | <ul><li>伦理考量、偏见缓解及安全实现。</li></ul> |
@@ -110,7 +110,7 @@
 我们设计了这门课程，力求降低学习门槛。我们使用以下工具帮助你快速入门：
 
 - **在 GitHub Codespaces 中运行**：只需点击一下，即可获得预配置的环境，方便你测试和探索课程内容。
-- **利用 GitHub 模型**：尝试直接在这个仓库中托管的 AI 驱动的演示，我们会在课程中逐步讲解更多内容。*(如果想了解更多关于 GitHub 模型的信息，请点击[这里](https://docs.github.com/github-models))*
+- **利用 Azure OpenAI**：尝试直接在这个仓库中托管的 AI 驱动的演示，我们会在课程中逐步讲解更多内容。*(如果想了解更多关于 Azure OpenAI的信息，请点击[这里](https://docs.github.com/github-models))*
 
 当你准备好进一步探索时，我们还提供以下指南：
 
