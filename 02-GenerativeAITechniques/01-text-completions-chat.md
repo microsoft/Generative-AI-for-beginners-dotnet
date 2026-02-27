@@ -4,7 +4,7 @@ In this lesson, you'll learn the fundamentals of interacting with AI models in .
 
 ---
 
-[![Text Completions and Chat](./images/LIM_GAN_03_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson2-chat)
+[![Text Completions and Chat](./images/LIM_GAN_03_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson3-chat)
 
 _Click the image to watch the video_
 
@@ -380,7 +380,6 @@ Can you answer these questions?
 | Sample | Description |
 |--------|-------------|
 | [BasicChat-01MEAI](../samples/CoreSamples/BasicChat-01MEAI/) | Text completion with GitHub Models |
-| [BasicChat-02SK](../samples/CoreSamples/BasicChat-02SK/) | Chat with Semantic Kernel |
 | [BasicChat-03Ollama](../samples/CoreSamples/BasicChat-03Ollama/) | Chat with local Ollama |
 | [BasicChat-10ConversationHistory](../samples/CoreSamples/BasicChat-10ConversationHistory/) | Managing conversation history |
 

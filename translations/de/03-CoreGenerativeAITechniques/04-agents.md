@@ -161,7 +161,6 @@ Denken Sie an Agenten als KI-Assistenten mit Handlungsspielraum – sie reagiere
 
 - [Erstellen eines minimalen Agenten mit .NET](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-assistants?pivots=openai)
 - [Orchestrierung mit mehreren Agenten](https://techcommunity.microsoft.com/blog/educatordeveloperblog/using-azure-ai-agent-service-with-autogen--semantic-kernel-to-build-a-multi-agen/4363121)
-- [Semantic Kernel Agent Framework](https://learn.microsoft.com/semantic-kernel/frameworks/agent/?pivots=programming-language-csharp)
 - [KI-Agenten - Einsteigerreihe zu GenAI](https://github.com/microsoft/generative-ai-for-beginners/tree/main/17-ai-agents)
 
 ## Nächste Schritte

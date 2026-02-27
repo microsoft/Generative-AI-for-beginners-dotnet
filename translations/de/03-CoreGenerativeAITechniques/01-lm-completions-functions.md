@@ -1,6 +1,6 @@
 # Grundlagen von Chat-Apps
 
-In dieser Lektion werden wir die Grundlagen des Erstellens von Chat-Anwendungen mit Sprachmodell-Vervollständigungen und Funktionen in .NET untersuchen. Außerdem sehen wir uns an, wie Semantic Kernel und Microsoft Extensions AI (MEAI) genutzt werden können, um Chatbots zu erstellen. Wir werden auch Semantic Kernel verwenden, um Plugins zu erstellen – Funktionen, die vom Chatbot basierend auf den Eingaben des Benutzers aufgerufen werden.
+In dieser Lektion werden wir die Grundlagen des Erstellens von Chat-Anwendungen mit Sprachmodell-Vervollständigungen und Funktionen in .NET untersuchen. Außerdem sehen wir uns an, wie Microsoft Extensions AI (MEAI) genutzt werden können, um Chatbots zu erstellen. Wir werden auch Funktionsaufrufe zu erstellen – Funktionen, die vom Chatbot basierend auf den Eingaben des Benutzers aufgerufen werden.
 
 ---
 
@@ -100,7 +100,6 @@ while (true)
 
 ```
 
-> 🗒️**Hinweis:** Für veraltete Semantic Kernel-Beispiele siehe den Ordner [veraltete Beispiele](../../../samples/deprecated/).
 
 > 🙋 **Benötigen Sie Hilfe?**: Wenn Sie auf Probleme stoßen, [öffnen Sie ein Issue im Repository](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new).
 

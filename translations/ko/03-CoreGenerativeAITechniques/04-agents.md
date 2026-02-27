@@ -161,7 +161,6 @@ AI 에이전트는 단순한 채팅 상호작용을 넘어서는 자율적인 AI
 
 - [.NET으로 최소한의 에이전트 구축하기](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-assistants?pivots=openai)
 - [다중 에이전트 오케스트레이션](https://techcommunity.microsoft.com/blog/educatordeveloperblog/using-azure-ai-agent-service-with-autogen--semantic-kernel-to-build-a-multi-agen/4363121)
-- [Semantic Kernel 에이전트 프레임워크](https://learn.microsoft.com/semantic-kernel/frameworks/agent/?pivots=programming-language-csharp)
 - [AI 에이전트 - 초보자를 위한 GenAI 시리즈](https://github.com/microsoft/generative-ai-for-beginners/tree/main/17-ai-agents)
 
 ## 다음 단계

@@ -67,7 +67,7 @@ User Input ────────►│  ┌───────────�
 
 [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) is an open-source development kit that:
 
-- **Unifies** Semantic Kernel and AutoGen concepts into one framework
+- **Provides** a unified framework for building agents and multi-agent systems in .NET
 - **Provides** enterprise-grade features (telemetry, filters, type safety)
 - **Supports** multiple AI providers (Azure OpenAI, OpenAI, GitHub Models, Ollama)
 - **Enables** both single agents and complex multi-agent workflows

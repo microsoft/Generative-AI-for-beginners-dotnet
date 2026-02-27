@@ -11,11 +11,11 @@ _⬆️Klicken Sie auf das Bild, um das Video anzusehen⬆️_
 ## Was Sie in dieser Lektion lernen werden:
 
 - 🌟 Grundlegende Konzepte der generativen KI und deren Anwendungen verstehen
-- 🔍 Erkunden der .NET-Tools für die KI-Entwicklung, einschließlich MEAI, Semantic Kernel und Azure OpenAI
+- 🔍 Erkunden der .NET-Tools für die KI-Entwicklung, einschließlich MEAI und Azure OpenAI
 
 ## Grundlagen der generativen KI für .NET
 
-Bevor wir uns in den Code stürzen, nehmen wir uns eine Minute Zeit, um einige Konzepte der generativen KI (GenAI) zu wiederholen. In dieser Lektion, **Grundlagen der generativen KI für .NET**, frischen wir einige grundlegende GenAI-Konzepte auf, damit Sie verstehen, warum bestimmte Dinge so gemacht werden, wie sie sind. Außerdem stellen wir die Tools und SDKs vor, die Sie zum Erstellen von Anwendungen verwenden, wie **MEAI** (Microsoft.Extensions.AI), **Semantic Kernel** und die **AI Toolkit Extension für VS Code**.
+Bevor wir uns in den Code stürzen, nehmen wir uns eine Minute Zeit, um einige Konzepte der generativen KI (GenAI) zu wiederholen. In dieser Lektion, **Grundlagen der generativen KI für .NET**, frischen wir einige grundlegende GenAI-Konzepte auf, damit Sie verstehen, warum bestimmte Dinge so gemacht werden, wie sie sind. Außerdem stellen wir die Tools und SDKs vor, die Sie zum Erstellen von Anwendungen verwenden, wie **MEAI** (Microsoft.Extensions.AI), und die **AI Toolkit Extension für VS Code**.
 
 ### Eine kurze Auffrischung der Konzepte der generativen KI
 
@@ -91,35 +91,6 @@ Durch die Verwendung einer einheitlichen API ermöglicht MEAI Entwicklern, mit v
 > 📖 **Dokumentation**: Erfahren Sie mehr über Microsoft.Extensions.AI (MEAI) in der [MEAI-Dokumentation](https://learn.microsoft.com/dotnet/ai/ai-extensions)
  
 
-#### Semantic Kernel (SK)
-
-Semantic Kernel ist ein Open-Source-SDK, das Entwicklern ermöglicht, generative KI-Sprachmodelle in ihre .NET-Anwendungen zu integrieren. Es bietet Abstraktionen für KI-Dienste und Memory (Vektor)-Speicher, sodass Plugins erstellt werden können, die automatisch von KI orchestriert werden. Es nutzt sogar den OpenAPI-Standard, sodass Entwickler KI-Agents erstellen können, die mit externen APIs interagieren.
-
-![*Abbildung: Semantic Kernel (SK) SDK.*](../../../translated_images/semantic-kernel.c6a96edb209a3c0d5c6564284cfc47975f49fcfedc3ed55b9e84f2d4a628e04a.de.png)
-
-Semantic Kernel unterstützt .NET sowie andere Sprachen wie Java und Python und bietet eine Vielzahl von Konnektoren, Funktionen und Plugins zur Integration. Zu den wichtigsten Funktionen von Semantic Kernel gehören:
-
-- **Kernel Core**: Bietet die Kernfunktionalität für Semantic Kernel, einschließlich Konnektoren, Funktionen und Plugins, um mit KI-Diensten und Modellen zu interagieren. Der Kernel ist das Herzstück des Semantic Kernel und steht Diensten und Plugins zur Verfügung, ruft sie bei Bedarf ab, überwacht Agents und fungiert als aktives Middleware für Ihre Anwendung.
-
-    Zum Beispiel kann er den besten KI-Dienst für eine bestimmte Aufgabe auswählen, den Prompt an den Dienst senden und die Antwort an die Anwendung zurückgeben. Nachfolgend eine Darstellung des Kernel Core in Aktion:
-
-    ![*Abbildung: Semantic Kernel (SK) Kernel Core.*](../../../translated_images/semantic-kernel-core.c30e9e4b9674f7a90d2145844d467bff5046268e0bb3c9f69ae21c19fd443a9d.de.png)
-
-- **KI-Dienst-Konnektoren**: Bietet eine Abstraktionsschicht, um KI-Dienste für mehrere Anbieter mit einer gemeinsamen und konsistenten Schnittstelle verfügbar zu machen, z. B. Chat Completion, Text to Image, Text to Speech und Audio to Text.
-
-- **Vektor-Speicher-Konnektoren**: Stellt Vektor-Speicher für mehrere Anbieter über eine gemeinsame und konsistente Schnittstelle bereit und ermöglicht es Entwicklern, mit Embeddings, Vektoren und anderen Datenrepräsentationen zu arbeiten.
-
-- **Funktionen und Plugins**: Bietet eine Vielzahl von Funktionen und Plugins für gängige KI-Aufgaben, wie Funktionsverarbeitung, Prompt-Templating, Textsuche und mehr. Dies ermöglicht die Verbindung mit dem KI-Dienst/Modell und die Implementierung von RAG und Agents.
-
-- **Prompt-Templating**: Bietet Tools für Prompt Engineering, einschließlich Prompt-Design, Testen und Optimierung, um die Leistung und Genauigkeit von KI-Modellen zu verbessern. Entwicklern wird ermöglicht, Prompts zu erstellen, zu testen und für spezifische Aufgaben zu optimieren.
-
-- **Filter**: Kontrollmechanismen, wann und wie Funktionen ausgeführt werden, um die Sicherheit und verantwortungsvolle KI-Praktiken zu verbessern.
-
-Ein vollständiger Ablauf in Semantic Kernel würde wie folgt aussehen:
-
-![*Abbildung: Semantic Kernel (SK) vollständiger Ablauf.*](../../../translated_images/semantic-kernel-full-loop.cfdc3187979869b8188fa171e390298b4eb215be3c77ab538a62f71cc16cfdcd.de.png)
-
-> 📖 **Dokumentation**: Erfahren Sie mehr über Semantic Kernel in der [Semantic Kernel-Dokumentation](https://learn.microsoft.com/semantic-kernel/overview/)
 
 ## Fazit
 

@@ -64,9 +64,9 @@ Key concepts:
 
 > **Learn more:** [Understanding tokens in Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/concepts/tokens) explains token limits, pricing, and how to count tokens.
 
-### How It's Different from Traditional Programming
+### Ok, how It's Different from Traditional Programming?
 
-Here's the key mental shift:
+Let's think about how you write code today versus how you interact with an AI model:
 
 | Traditional Programming | Generative AI |
 |------------------------|---------------|
@@ -75,7 +75,7 @@ Here's the key mental shift:
 | `if (score > 90) return "A";` | `"Grade this essay and explain why"` |
 | You handle every edge case | The model generalizes from patterns |
 
-**Example in plain terms:**
+**Example:**
 
 - **Old way:** Write 500 lines of code to analyze sentiment in customer reviews using regex and keyword matching.
 - **New way:** Send the review to an AI model with the prompt "Is this customer happy, neutral, or unhappy? Explain why."
@@ -287,11 +287,3 @@ Want to go deeper? Here are some excellent resources:
 
 **Want the Full Picture?**
 - [Generative AI for Beginners](https://github.com/microsoft/generative-ai-for-beginners): Our 21-lesson course covering GenAI concepts in depth (Python/TypeScript focus)
-
----
-
-**You've completed Lesson 1!**
-
-You now understand what generative AI is, why you're already equipped to build with it, and what tools you'll use. In the next lesson, you'll write real code and see AI respond to your prompts.
-
-Let's build something amazing.

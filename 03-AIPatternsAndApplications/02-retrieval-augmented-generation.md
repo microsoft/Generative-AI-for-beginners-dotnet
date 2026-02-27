@@ -101,7 +101,7 @@ public class Document
 
 ```csharp
 using Microsoft.Extensions.AI;
-using Microsoft.SemanticKernel.Connectors.InMemory;
+using Microsoft.Extensions.VectorData;
 using Azure;
 using Azure.AI.Inference;
 

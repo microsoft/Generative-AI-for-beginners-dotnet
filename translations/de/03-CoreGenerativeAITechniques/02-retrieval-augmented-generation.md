@@ -33,11 +33,9 @@ Vielleicht haben Sie schon von Vektordatenbanken gehört. Diese speichern Daten 
 
 ## RAG implementieren
 
-Wir verwenden Microsoft.Extension.AI zusammen mit den Bibliotheken [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) und [Microsoft.SemanticKernel.Connectors.InMemory](https://www.nuget.org/packages/Microsoft.SemanticKernel.Connectors.InMemory), um RAG zu implementieren.
+Wir verwenden Microsoft.Extension.AI zusammen mit den Bibliotheken [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) und [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/), um RAG zu implementieren.
 
 > 🧑‍💻**Beispielcode:** Sie können dem [Beispielcode hier](../../../03-CoreGenerativeAITechniques/src/RAGSimple-02MEAIVectorsMemory) folgen.  
-> 
-> Archivierte Semantic Kernel RAG-Beispiele finden Sie im Ordner [veraltete Beispiele](../../../samples/deprecated/).
 
 ### Den Wissensspeicher befüllen
 

@@ -17,20 +17,16 @@ Microsoft AI Toolkit은 로컬 AI 모델을 .NET 애플리케이션에 통합할
 다음은 .NET 애플리케이션에서 AI Toolkit을 사용하는 방법의 예입니다:
 
 ```csharp
-using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.AI.ChatCompletion;
+using Microsoft.Extensions.AI;
+using OpenAI;
 
-var kernelBuilder = Kernel.CreateBuilder();
-kernelBuilder.AddAIToolkitChatCompletion(
-    modelId: "models/phi3:latest", 
-    endpoint: "http://localhost:8080/v1");
-var kernel = kernelBuilder.Build();
+var client = new OpenAIClient(new ApiKeyCredential("unused"), new OpenAIClientOptions
+{
+    Endpoint = new Uri("http://localhost:8080/v1")
+}).GetChatClient("models/phi3:latest").AsIChatClient();
 
-var chatCompletion = kernel.GetRequiredService<IChatCompletionService>();
-var chat = new ChatHistory();
-chat.AddUserMessage("양자 컴퓨팅에 대해 쉽게 설명해주세요");
-var response = await chatCompletion.GetChatMessageContentAsync(chat);
-Console.WriteLine(response.Content);
+var response = await client.GetResponseAsync("Explain quantum computing in simple terms");
+Console.WriteLine(response.Text);
 ```
 
 ## AI 모델을 위한 Docker
@@ -47,7 +43,7 @@ docker run -d --gpus all -p 8080:8080 ghcr.io/microsoft/phi3:latest
 
 ### 샘플 애플리케이션
 
-[DockerModels-01-SK-Chat](./src/DockerModels-01-SK-Chat)과 [DockerModels-02-MEAI-Chat](./src/DockerModels-02-MEAI-Chat) 예제에서는 Semantic Kernel과 Microsoft.Extensions.AI를 모두 사용하여 로컬 모델을 활용하는 애플리케이션을 구현했습니다.
+[DockerModels-02-MEAI-Chat](./src/DockerModels-02-MEAI-Chat)과 [DockerModels-02-MEAI-Chat](./src/DockerModels-02-MEAI-Chat) 예제에서는 Microsoft.Extensions.AI를 모두 사용하여 로컬 모델을 활용하는 애플리케이션을 구현했습니다.
 
 ## 요약
 

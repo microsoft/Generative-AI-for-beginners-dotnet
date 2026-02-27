@@ -33,7 +33,7 @@ In unseren ersten Demos erkunden wir die **eShopLite**-Projekte. **eShopLite** i
 
 Diese Demos nutzen [Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service) und [Microsoft Foundry Models](https://ai.azure.com/), um die Inferenzprozesse (den generativen KI-Teil) für die Anwendungen durchzuführen.
 
-Im ersten Demo zeigen wir, wie der Semantic Kernel verwendet wird, um die Suchfunktionen zu verbessern. Dieser versteht den Kontext der Benutzeranfragen und liefert präzise Ergebnisse.
+Im ersten Demo zeigen wir, wie generative KI verwendet wird, um die Suchfunktionen zu verbessern. Dieser versteht den Kontext der Benutzeranfragen und liefert präzise Ergebnisse.
 
 ### eShopLite mit semantischer Suche
 
@@ -41,7 +41,7 @@ Im ersten Demo zeigen wir, wie der Semantic Kernel verwendet wird, um die Suchfu
 
 _⬆️Klicken Sie auf das Bild, um das Video anzusehen⬆️_
 
-In eShopLite mit semantischer Suche nutzen wir den Semantic Kernel, um die Suchfunktionen der E-Commerce-Anwendung zu verbessern. Der Semantic Kernel hilft uns, eine robustere Suchmaschine zu erstellen, die den Kontext der Benutzeranfragen versteht und präzisere Ergebnisse liefert.
+In eShopLite mit semantischer Suche nutzen wir generative KI eingesetzt. Die KI hilft uns, eine robustere Suchmaschine zu erstellen, die den Kontext der Benutzeranfragen versteht und präzisere Ergebnisse liefert.
 
 Zum Beispiel: Wenn ein Benutzer nach "Haben Sie etwas zum Kochen?" sucht, kann die Suchmaschine verstehen, dass der Benutzer nach Küchenutensilien sucht, und die relevantesten Produkte anzeigen. In unserem Beispiel werden Camping-Kochgeschirr-Produkte zurückgegeben.
 
@@ -342,7 +342,7 @@ Diese Lösung basiert auf vier speziellen Modulen, die zusammenarbeiten, um qual
 - Writer: Synthetisiert die Ergebnisse von Researcher und Marketing und erstellt einen kohärenten Artikelentwurf.
 - Editor: Bewertet den Entwurf, schlägt Korrekturen vor und entscheidet, ob er veröffentlichungsbereit ist.
 
-Der Workflow integriert relevante Daten, effektive Botschaften und Überprüfung, orchestriert durch Semantic Kernel, Microsoft AI Extension und .NET Aspire.
+Der Workflow integriert relevante Daten, effektive Botschaften und Überprüfung, orchestriert durch Microsoft AI Extension und .NET Aspire.
 
 ![Bild, das die Architektur des Creative Writer Agent zeigt](../../../translated_images/creative-writer-agent-architecture.792ab7a807e66accb729c6a49d9393dd22f6060d83610cd1a187ab2b8a74efff.de.png)
 

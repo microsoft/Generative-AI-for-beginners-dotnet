@@ -49,7 +49,7 @@
   - 公式ドキュメントを確認：[Azure OpenAI画像生成モデルの使用方法](https://learn.microsoft.com/azure/ai-services/openai/how-to/dall-e?tabs=gpt-image-1)と[openai-dotnet画像生成ガイド](https://github.com/openai/openai-dotnet?tab=readme-ov-file#how-to-generate-images)で詳細を確認してください。
   - サンプルはこちら：[レッスン3：コア生成AI技術 .. /src/ImageGeneration-01.csproj](../../samples/CoreSamples/ImageGeneration-01/ImageGeneration-01.csproj)。
 
-- **新シナリオ：eShopLiteでの並行エージェントオーケストレーション**：[eShopLiteリポジトリ](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent)では、Semantic Kernelを使用した並行エージェントオーケストレーションを示すシナリオを提供しています。このシナリオでは、複数のエージェントが並行して動作してユーザークエリを分析し、将来の分析に役立つ貴重な洞察を提供する方法を紹介しています。
+- **新シナリオ：eShopLiteでの並行エージェントオーケストレーション**：[eShopLiteリポジトリ](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent)では、Microsoft Agent Frameworkを使用した並行エージェントオーケストレーションを示すシナリオを提供しています。このシナリオでは、複数のエージェントが並行して動作してユーザークエリを分析し、将来の分析に役立つ貴重な洞察を提供する方法を紹介しています。
 
 [最新情報セクションで過去のアップデートをすべて表示](./10-WhatsNew/readme.md)
 

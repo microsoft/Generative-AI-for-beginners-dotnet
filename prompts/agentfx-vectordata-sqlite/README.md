@@ -2,7 +2,7 @@
 
 ## Status
 
-🟢 **DONE** — All 5 AgentFx projects now use `ElBruno.Connectors.SqliteVec` instead of `Microsoft.SemanticKernel.Connectors.SqliteVec` and `Microsoft.SemanticKernel.Core`.
+✅ **ARCHIVED** — Migration completed. All 5 AgentFx projects now use `ElBruno.Connectors.SqliteVec` instead of `Microsoft.SemanticKernel.Connectors.SqliteVec` and `Microsoft.SemanticKernel.Core`. This document is kept as a historical reference of the completed migration.
 
 ## Goal
 

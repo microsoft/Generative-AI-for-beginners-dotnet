@@ -49,7 +49,7 @@
   - 查看官方文档：[如何使用 Azure OpenAI 图像生成模型](https://learn.microsoft.com/azure/ai-services/openai/how-to/dall-e?tabs=gpt-image-1) 和 [openai-dotnet 图像生成指南](https://github.com/openai/openai-dotnet?tab=readme-ov-file#how-to-generate-images) 了解更多详情。
   - 在这里找到示例：[第3课：核心生成式 AI 技术 .. /src/ImageGeneration-01.csproj](../../samples/CoreSamples/ImageGeneration-01/ImageGeneration-01.csproj)。
 
-- **新场景：eShopLite 中的并发代理编排**：[eShopLite 仓库](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent) 现在提供一个场景，演示如何使用 Semantic Kernel 进行并发代理编排。此场景展示了多个代理如何并行工作来分析用户查询并为未来分析提供有价值的见解。
+- **新场景：eShopLite 中的并发代理编排**：[eShopLite 仓库](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent) 现在提供一个场景，演示如何使用 Microsoft Agent Framework 进行并发代理编排。此场景展示了多个代理如何并行工作来分析用户查询并为未来分析提供有价值的见解。
 
 [在我们的最新更新部分查看所有之前的更新](./10-WhatsNew/readme.md)
 
@@ -75,7 +75,7 @@
 | #   | **课程链接** | **课程描述** |
 | --- | --- | --- |
 | 01  | [**.NET 开发者的生成式 AI 基础入门**](./01-IntroToGenAI/readme.md) | <ul><li>概览生成模型及其在 .NET 中的应用</li></ul> |
-| 02  | [**为生成式 AI 设置 .NET 开发环境**](./02-SetupDevEnvironment/readme.md) | <ul><li>使用 **Microsoft.Extensions.AI** 和 **Semantic Kernel** 等库。</li><li>配置 GitHub Models、Microsoft Foundry，以及 Ollama 等本地开发工具。</li></ul> |
+| 02  | [**为生成式 AI 设置 .NET 开发环境**](./02-SetupDevEnvironment/readme.md) | <ul><li>使用 **Microsoft.Extensions.AI** 和 **Microsoft Agent Framework** 等库。</li><li>配置 GitHub Models、Microsoft Foundry，以及 Ollama 等本地开发工具。</li></ul> |
 | 03  | [**.NET 中的核心生成式 AI 技术**](./03-CoreGenerativeAITechniques/readme.md) | <ul><li>文本生成与对话流程。</li><li>多模态功能（视觉和音频）。</li><li>智能代理。</li></ul> |
 | 04  | [**实用的 .NET 生成式 AI 示例**](./04-PracticalSamples/readme.md) | <ul><li>展示生成式 AI 在实际场景中的完整示例。</li><li>语义搜索应用。</li><li>多代理应用。</li></ul> |
 | 05  | [**在 .NET 应用中负责任地使用生成式 AI**](./05-ResponsibleGenAI/readme.md) | <ul><li>伦理考量、偏见缓解及安全实现。</li></ul> |
