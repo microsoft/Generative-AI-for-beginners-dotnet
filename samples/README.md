@@ -19,7 +19,7 @@ samples/
 ## CoreSamples
 
 **Location:** [`samples/CoreSamples/`](./CoreSamples/)  
-**Associated Lessons:** [Lesson 02](../02-SetupDevEnvironment/) & [Lesson 03](../03-CoreGenerativeAITechniques/)
+**Associated Lessons:** [Lesson 02](../02-GenerativeAITechniques/) & [Lesson 03](../03-AIPatternsAndApplications/)
 
 This folder contains fundamental samples demonstrating core Generative AI techniques with .NET. These samples cover the essential building blocks for AI-enabled applications and are referenced throughout Lessons 02 and 03.
 
@@ -41,7 +41,7 @@ This folder includes over 40 samples demonstrating different techniques, provide
 ## AgentFx
 
 **Location:** [`samples/AgentFx/`](./AgentFx/)  
-**Associated Lesson:** [Lesson 06](../06-AgentFx/)
+**Associated Lesson:** [Lesson 04](../04-AgentsWithMAF/)
 
 This folder contains samples demonstrating the **Microsoft Agent Framework** for building sophisticated multi-agent AI systems.
 
@@ -56,7 +56,7 @@ This folder includes 12 samples ranging from simple single-agent scenarios to co
 ## PracticalSamples
 
 **Location:** [`samples/PracticalSamples/`](./PracticalSamples/)  
-**Associated Lesson:** [Lesson 04](../04-PracticalSamples/)
+**Associated Lesson:** [Lesson 03](../03-AIPatternsAndApplications/)
 
 This folder contains practical, real-world samples demonstrating AI integration patterns in production-ready scenarios.
 
@@ -81,7 +81,7 @@ dotnet run --project McpSample.AppHost/McpSample.AppHost.csproj
 ## AppsWithGenAI
 
 **Location:** [`samples/AppsWithGenAI/`](./AppsWithGenAI/)  
-**Associated Lesson:** [Lesson 05](../05-AppCreatedWithGenAI/)
+**Associated Lesson:** [Lesson 05](../05-ResponsibleAI/)
 
 This folder showcases complete, production-quality applications created with the assistance of Generative AI tools like GitHub Copilot Agent, demonstrating "vibe coding" - building real software through AI-assisted development.
 
@@ -146,19 +146,19 @@ dotnet run
 
 | Lesson | Sample Folders | Key Topics |
 |--------|---------------|------------|
-| [Lesson 02](../02-SetupDevEnvironment/) | CoreSamples/BasicChat-* | Environment setup, first AI interactions |
-| [Lesson 03](../03-CoreGenerativeAITechniques/) | CoreSamples/* | Chat, RAG, Vision, Audio, Agents, Image/Video Gen |
-| [Lesson 04](../04-PracticalSamples/) | PracticalSamples/* | Real-world integration patterns, MCP |
-| [Lesson 05](../05-AppCreatedWithGenAI/) | AppsWithGenAI/* | Full applications built with AI assistance |
-| [Lesson 06](../06-AgentFx/) | AgentFx/* | Microsoft Agent Framework |
+| [Lesson 02](../02-GenerativeAITechniques/) | CoreSamples/BasicChat-* | Environment setup, first AI interactions |
+| [Lesson 03](../03-AIPatternsAndApplications/) | CoreSamples/* | Chat, RAG, Vision, Audio, Agents, Image/Video Gen |
+| [Lesson 03](../03-AIPatternsAndApplications/) | PracticalSamples/* | Real-world integration patterns, MCP |
+| [Lesson 04](../04-AgentsWithMAF/) | AgentFx/* | Microsoft Agent Framework |
+| [Lesson 05](../05-ResponsibleAI/) | AppsWithGenAI/* | Full applications built with AI assistance |
 
 ---
 
 ## Additional Resources
 
 - [Main Course README](../README.md)
-- [Setup Environment](../02-SetupDevEnvironment/)
-- [Troubleshooting Guide](../03-CoreGenerativeAITechniques/docs/troubleshooting-chat-api.md)
+- [Setup Environment](../02-GenerativeAITechniques/)
+- [Microsoft.Extensions.AI Documentation](https://learn.microsoft.com/dotnet/ai/ai-extensions)
 - [Microsoft.Extensions.AI Documentation](https://learn.microsoft.com/dotnet/ai/ai-extensions)
 - [Microsoft Agent Framework](https://learn.microsoft.com/agent-framework/)
 
