@@ -3,7 +3,6 @@
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.SemanticKernel.ChatCompletion;
 using ModelContextProtocol.Client;
 using OllamaSharp;
 
@@ -44,9 +43,8 @@ Console.WriteLine();
 
 // create an IChatClient using the MCP tools
 var uri = new Uri("http://localhost:11434");
-var client = new OllamaApiClient(uri, deploymentName)
-    .AsChatCompletionService()
-    .AsChatClient()
+IChatClient ollamaClient = new OllamaApiClient(uri, deploymentName);
+var client = ollamaClient
     .AsBuilder()
     .UseFunctionInvocation()
     .Build();
