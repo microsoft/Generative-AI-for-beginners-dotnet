@@ -14,7 +14,6 @@
 		<PackageReference Include="Microsoft.Extensions.AI" Version="10.3.0" />
 		<PackageReference Include="Microsoft.Extensions.AI.AzureAIInference" Version="10.0.0-preview.1.25559.3" />
 		<PackageReference Include="ModelContextProtocol" Version="0.4.0-preview.3" />
-		<PackageReference Include="ModelContextProtocol-SemanticKernel" Version="0.3.0" />
 		<PackageReference Include="ModelContextProtocol.Core" Version="0.4.0-preview.3" />
 	</ItemGroup>
 

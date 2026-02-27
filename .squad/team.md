@@ -3,7 +3,7 @@
 ## Project Context
 
 - **Project:** Generative AI for Beginners .NET
-- **Stack:** .NET 9+, C#, Microsoft.Extensions.AI, Semantic Kernel, Azure OpenAI, Ollama, GitHub Models
+- **Stack:** .NET 9+, C#, Microsoft.Extensions.AI, Microsoft Agent Framework, Azure OpenAI, Ollama, GitHub Models
 - **Description:** Hands-on course teaching .NET developers to build Generative AI applications. Lesson-based structure with real-world samples.
 - **User:** Bruno Capuano
 

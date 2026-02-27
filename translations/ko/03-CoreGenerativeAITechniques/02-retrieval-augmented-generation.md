@@ -33,11 +33,9 @@ RAG 아키텍처에는 두 가지 주요 단계가 있습니다: **검색(Retrie
 
 ## RAG 구현하기
 
-아래에서는 Microsoft.Extension.AI와 함께 [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) 및 [Microsoft.SemanticKernel.Connectors.InMemory](https://www.nuget.org/packages/Microsoft.SemanticKernel.Connectors.InMemory) 라이브러리를 사용하여 RAG를 구현합니다.
+아래에서는 Microsoft.Extension.AI와 함께 [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) 및 [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) 라이브러리를 사용하여 RAG를 구현합니다.
 
 > 🧑‍💻**샘플 코드:** [여기에서 샘플 코드를 확인하며 따라 해보세요](../../../03-CoreGenerativeAITechniques/src/RAGSimple-02MEAIVectorsMemory).
-> 
-> 아카이브된 Semantic Kernel RAG 샘플의 경우 [더 이상 사용되지 않는 샘플](../../../samples/deprecated/) 폴더를 참조하세요.
 
 ### 지식 저장소 채우기
 

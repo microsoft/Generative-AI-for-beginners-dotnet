@@ -380,7 +380,6 @@ Can you answer these questions?
 | Sample | Description |
 |--------|-------------|
 | [BasicChat-01MEAI](../samples/CoreSamples/BasicChat-01MEAI/) | Text completion with GitHub Models |
-| [BasicChat-02SK](../samples/CoreSamples/BasicChat-02SK/) | Chat with Semantic Kernel |
 | [BasicChat-03Ollama](../samples/CoreSamples/BasicChat-03Ollama/) | Chat with local Ollama |
 | [BasicChat-10ConversationHistory](../samples/CoreSamples/BasicChat-10ConversationHistory/) | Managing conversation history |
 

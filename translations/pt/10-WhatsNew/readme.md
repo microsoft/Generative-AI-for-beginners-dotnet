@@ -18,7 +18,7 @@ Esta página acompanha o histórico de novas funcionalidades, ferramentas e mode
 ### Novo Cenário eShopLite: Orquestração de Agentes Concorrentes (Junho 2025)
 
 - **Novo Cenário: Orquestração de Agentes Concorrentes**
-- O [repositório eShopLite](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent) agora apresenta um cenário demonstrando orquestração de agentes concorrentes usando Semantic Kernel.
+- O [repositório eShopLite](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent) agora apresenta um cenário demonstrando orquestração de agentes concorrentes usando Microsoft Agent Framework.
 - Este cenário mostra como múltiplos agentes podem trabalhar em paralelo para analisar consultas de usuários e fornecer insights valiosos para análises futuras.
 
 ## Maio 2025
@@ -33,7 +33,7 @@ Esta página acompanha o histórico de novas funcionalidades, ferramentas e mode
 
 ### Executar Modelos Locais com AI Toolkit e Docker
 
-- **Novo: Executar Modelos Locais com AI Toolkit e Docker**: Explore novos exemplos para executar modelos localmente usando [AI Toolkit para Visual Studio Code](https://code.visualstudio.com/docs/intelligentapps/overview) e [Docker Model Runner](https://docs.docker.com/model-runner/). O código-fonte está em [../../../samples/CoreSamples/](../../../samples/CoreSamples/) e demonstra como usar Semantic Kernel e Microsoft Extensions para AI para interagir com esses modelos.
+- **Novo: Executar Modelos Locais com AI Toolkit e Docker**: Explore novos exemplos para executar modelos localmente usando [AI Toolkit para Visual Studio Code](https://code.visualstudio.com/docs/intelligentapps/overview) e [Docker Model Runner](https://docs.docker.com/model-runner/). O código-fonte está em [../../../samples/CoreSamples/](../../../samples/CoreSamples/) e demonstra como usar Microsoft.Extensions.AI para interagir com esses modelos.
 
 ## Março 2025
 

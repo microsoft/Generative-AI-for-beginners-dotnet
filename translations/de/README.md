@@ -49,7 +49,7 @@ Wir verbessern diesen Kurs kontinuierlich mit den neuesten KI-Tools, Modellen un
   - Siehe die offizielle Dokumentation: [Wie man Azure OpenAI Bild-Generierungsmodelle verwendet](https://learn.microsoft.com/azure/ai-services/openai/how-to/dall-e?tabs=gpt-image-1) und den [openai-dotnet Bild-Generierungsleitfaden](https://github.com/openai/openai-dotnet?tab=readme-ov-file#how-to-generate-images) für weitere Details.
   - Finden Sie das Beispiel unter [Lektion 3: Grundlegende Generative KI-Techniken .. /src/ImageGeneration-01.csproj](../../samples/CoreSamples/ImageGeneration-01/ImageGeneration-01.csproj).
 
-- **Neues Szenario: Parallele Agent-Orchestrierung in eShopLite**: Das [eShopLite Repository](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent) bietet jetzt ein Szenario, das parallele Agent-Orchestrierung mit Semantic Kernel demonstriert. Dieses Szenario zeigt, wie mehrere Agenten parallel arbeiten können, um Benutzeranfragen zu analysieren und wertvolle Erkenntnisse für zukünftige Analysen zu liefern.
+- **Neues Szenario: Parallele Agent-Orchestrierung in eShopLite**: Das [eShopLite Repository](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent) bietet jetzt ein Szenario, das parallele Agent-Orchestrierung mit Microsoft Agent Framework demonstriert. Dieses Szenario zeigt, wie mehrere Agenten parallel arbeiten können, um Benutzeranfragen zu analysieren und wertvolle Erkenntnisse für zukünftige Analysen zu liefern.
 
 [Alle vorherigen Updates in unserem Was ist neu-Bereich anzeigen](./10-WhatsNew/readme.md)
 
@@ -75,7 +75,7 @@ Sie lernen, wie Sie Generative KI in .NET-Projekte implementieren, von grundlege
 | #   | **Lektionslink** | **Beschreibung** |
 | --- | --- | --- |
 | 01  | [**Einführung in die Grundlagen der Generativen KI für .NET-Entwickler**](./01-IntroToGenAI/readme.md) | <ul><li>Überblick über generative Modelle und ihre Anwendungen in .NET</li></ul> |
-| 02  | [**Einrichtung der Entwicklungsumgebung für Generative KI mit .NET**](./02-SetupDevEnvironment/readme.md) | <ul><li>Verwendung von Bibliotheken wie **Microsoft.Extensions.AI** und **Semantic Kernel**.</li><li>Einrichtung von Anbietern wie GitHub Models, Microsoft Foundry und lokaler Entwicklung mit Ollama.</li></ul> |
+| 02  | [**Einrichtung der Entwicklungsumgebung für Generative KI mit .NET**](./02-SetupDevEnvironment/readme.md) | <ul><li>Verwendung von Bibliotheken wie **Microsoft.Extensions.AI** und **Microsoft Agent Framework**.</li><li>Einrichtung von Anbietern wie GitHub Models, Microsoft Foundry und lokaler Entwicklung mit Ollama.</li></ul> |
 | 03  | [**Kerntechniken der Generativen KI mit .NET**](./03-CoreGenerativeAITechniques/readme.md) | <ul><li>Textgenerierung und Konversationsflüsse.</li><li>Multimodale Fähigkeiten (Vision und Audio).</li><li>Agenten</li></ul> |
 | 04  | [**Praktische Beispiele für Generative KI mit .NET**](./04-PracticalSamples/readme.md) | <ul><li>Komplette Beispiele, die Generative KI in realen Szenarien demonstrieren</li><li>Anwendungen für semantische Suche.</li><li>Anwendungen mit mehreren Agenten</li></ul> |
 | 05  | [**Verantwortungsvoller Einsatz von Generativer KI in .NET-Anwendungen**](./05-ResponsibleGenAI/readme.md) | <ul><li>Ethische Überlegungen, Vermeidung von Verzerrungen und sichere Implementierungen.</li></ul> |

@@ -20,14 +20,14 @@ Analyze repository content for educational quality, research AI/GenAI trends, an
 
 ### AI & GenAI Research
 - Track latest developments in Generative AI (new models, techniques, tools)
-- Monitor Microsoft AI announcements (Azure AI, Semantic Kernel, MEAI updates)
+- Monitor Microsoft AI announcements (Azure AI, Microsoft Agent Framework, MEAI updates)
 - Identify emerging patterns in AI application development
 - Evaluate relevance of new AI capabilities for .NET developers
 
 ### Microsoft Technology Scouting
 - Track .NET releases, preview features, and breaking changes
 - Monitor Azure OpenAI service updates and new model availability
-- Follow Semantic Kernel and Microsoft.Extensions.AI evolution
+- Follow Microsoft Agent Framework and Microsoft.Extensions.AI evolution
 - Identify new Microsoft tools and SDKs relevant to GenAI development
 
 ### Suggestion Format

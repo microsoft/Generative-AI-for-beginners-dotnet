@@ -33,11 +33,9 @@ RAG アーキテクチャには主に2つのフェーズがあります: **検�
 
 ## RAGの実装
 
-以下では、Microsoft.Extension.AI と [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) および [Microsoft.SemanticKernel.Connectors.InMemory](https://www.nuget.org/packages/Microsoft.SemanticKernel.Connectors.InMemory) ライブラリを使用して RAG を実装します。
+以下では、Microsoft.Extension.AI と [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) および [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) ライブラリを使用して RAG を実装します。
 
 > 🧑‍💻**サンプルコード:** [こちらのサンプルコード](../../../03-CoreGenerativeAITechniques/src/RAGSimple-02MEAIVectorsMemory) を参考にしてください。
-> 
-> アーカイブされた Semantic Kernel RAG サンプルについては、[廃止予定のサンプル](../../../samples/deprecated/)フォルダーを参照してください。
 
 ### 知識ストアの準備
 

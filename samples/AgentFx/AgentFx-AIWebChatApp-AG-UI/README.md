@@ -263,7 +263,6 @@ The AG-UI feature enables a distributed agent architecture where:
 - **[Microsoft.Extensions.AI](https://learn.microsoft.com/dotnet/ai/ai-extensions?wt.mc_id=dotnet-153583-brunocapuano)**: AI service abstractions for .NET
 - **[.NET Aspire](https://learn.microsoft.com/dotnet/aspire?wt.mc_id=dotnet-153583-brunocapuano)**: Cloud-native application orchestration
 - **[Blazor Server](https://learn.microsoft.com/aspnet/core/blazor?wt.mc_id=dotnet-153583-brunocapuano)**: Interactive web UI with streaming support
-- **[Semantic Kernel](https://learn.microsoft.com/semantic-kernel?wt.mc_id=dotnet-153583-brunocapuano)**: Vector store integration
 - **[Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai?wt.mc_id=dotnet-153583-brunocapuano)**: LLM and embedding models
 
 ## NuGet Packages
@@ -286,7 +285,7 @@ The AG-UI feature enables a distributed agent architecture where:
 <PackageReference Include="Microsoft.Agents.AI.AGUI" Version="1.0.0-preview.251114.1" />
 <PackageReference Include="Microsoft.Agents.AI.Hosting" Version="1.0.0-preview.251114.1" />
 <PackageReference Include="Microsoft.Extensions.AI" Version="10.0.0" />
-<PackageReference Include="Microsoft.SemanticKernel.Connectors.SqliteVec" Version="1.67.1-preview" />
+<PackageReference Include="ElBruno.Connectors.SqliteVec" Version="0.5.1-preview" />
 <PackageReference Include="PdfPig" Version="0.1.13-alpha-20251115-aef0a" />
 ```
 
@@ -296,7 +295,6 @@ The AG-UI feature enables a distributed agent architecture where:
 - [AG-UI Integration Guide](https://learn.microsoft.com/agent-framework/integrations/ag-ui/?pivots=programming-language-csharp&wt.mc_id=dotnet-153583-brunocapuano)
 - [.NET Aspire Documentation](https://learn.microsoft.com/dotnet/aspire?wt.mc_id=dotnet-153583-brunocapuano)
 - [Microsoft.Extensions.AI](https://learn.microsoft.com/dotnet/ai/ai-extensions?wt.mc_id=dotnet-153583-brunocapuano)
-- [Semantic Kernel](https://learn.microsoft.com/semantic-kernel?wt.mc_id=dotnet-153583-brunocapuano)
 
 ## Troubleshooting
 

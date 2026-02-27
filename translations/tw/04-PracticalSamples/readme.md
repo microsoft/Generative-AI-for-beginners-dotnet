@@ -33,7 +33,7 @@ _⬆️點擊圖片觀看影片⬆️_
 
 這些示範使用 [Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service) 和 [Microsoft Foundry Models](https://ai.azure.com/) 進行推論（即應用程式中的生成式 AI 部分）。
 
-在第一個示範中，我們展示如何使用 Semantic Kernel 增強搜尋功能，使其能理解使用者查詢的上下文並提供準確的結果。
+在第一個示範中，我們展示如何使用 生成式 AI 增強搜尋功能，使其能理解使用者查詢的上下文並提供準確的結果。
 
 ### eShopLite 與語意搜尋
 
@@ -41,7 +41,7 @@ _⬆️點擊圖片觀看影片⬆️_
 
 _⬆️點擊圖片觀看影片⬆️_
 
-在 eShopLite 的語意搜尋中，我們利用 Semantic Kernel 增強電商應用程式的搜尋功能。Semantic Kernel 幫助我們創建一個更強大的搜尋引擎，可以理解使用者查詢的上下文並提供更準確的結果。
+在 eShopLite 的語意搜尋中，我們利用 生成式 AI 增強了電商應用程式的搜尋功能。它幫助我們創建一個更強大的搜尋引擎，可以理解使用者查詢的上下文並提供更準確的結果。
 
 例如，如果使用者搜尋「你有沒有什麼可以用來烹飪的東西」，搜尋引擎可以理解使用者正在尋找廚房用品，並顯示最相關的產品。在此範例中，它會回傳露營炊具。
 
@@ -342,7 +342,7 @@ _⬆️點擊圖片觀看影片⬆️_
 - **撰寫者 (Writer)**：綜合研究員和行銷的結果，生成連貫的文章。
 - **編輯者 (Editor)**：評估草稿，提出修改建議，並決定是否可以發佈。
 
-整個流程結合相關數據、有效訊息和審查，由 Semantic Kernel、Microsoft AI Extension 和 .NET Aspire 協同運作。
+整個流程結合相關數據、有效訊息和審查，由 Microsoft AI Extension 和 .NET Aspire 協同運作。
 
 ![顯示創意寫作代理架構的圖片](../../../translated_images/creative-writer-agent-architecture.792ab7a807e66accb729c6a49d9393dd22f6060d83610cd1a187ab2b8a74efff.tw.png)
 

@@ -25,7 +25,7 @@ This folder contains fundamental samples demonstrating core Generative AI techni
 
 ### What you'll find in CoreSamples
 
-- **Chat & Completions** - Basic text generation and conversational AI using various providers (GitHub Models, Azure OpenAI, Ollama) and frameworks (Microsoft.Extensions.AI, Semantic Kernel)
+- **Chat & Completions** - Basic text generation and conversational AI using various providers (GitHub Models, Azure OpenAI, Ollama) and frameworks (Microsoft.Extensions.AI)
 - **Function Calling** - Extending AI capabilities by allowing models to call custom functions and external tools
 - **Retrieval-Augmented Generation (RAG)** - Integrating external knowledge stores with AI models using different vector databases (in-memory, Azure AI Search, Qdrant)
 - **Vision & Audio** - Image analysis, speech-to-text, and real-time audio conversations
@@ -161,7 +161,6 @@ dotnet run
 - [Setup Environment](../02-SetupDevEnvironment/)
 - [Troubleshooting Guide](../03-CoreGenerativeAITechniques/docs/troubleshooting-chat-api.md)
 - [Microsoft.Extensions.AI Documentation](https://learn.microsoft.com/dotnet/ai/ai-extensions)
-- [Semantic Kernel Documentation](https://learn.microsoft.com/semantic-kernel/)
 - [Microsoft Agent Framework](https://learn.microsoft.com/agent-framework/)
 
 - **Web chat with persisted conversations** - `AgentFx-AIWebChatApp-Persisting` demonstrates per-user `AgentThread` serialization, storage, and resume across restarts

@@ -198,7 +198,6 @@ Microsoft.Extensions.VectorData provides abstractions for vector stores:
 
 ```csharp
 using Microsoft.Extensions.VectorData;
-using Microsoft.SemanticKernel.Connectors.InMemory;
 
 // Define your data model
 public class Product
@@ -283,7 +282,7 @@ The `InMemoryVectorStore` is great for development, but for production you need 
 
 ```csharp
 using Azure.Search.Documents.Indexes;
-using Microsoft.SemanticKernel.Connectors.AzureAISearch;
+using Microsoft.Extensions.VectorData.AzureAISearch;
 
 var searchClient = new SearchIndexClient(
     new Uri(azureSearchEndpoint),
@@ -296,7 +295,7 @@ var collection = vectorStore.GetCollection<string, Product>("products");
 ### Qdrant
 
 ```csharp
-using Microsoft.SemanticKernel.Connectors.Qdrant;
+using Microsoft.Extensions.VectorData.Qdrant;
 using Qdrant.Client;
 
 var qdrantClient = new QdrantClient("localhost", 6333);

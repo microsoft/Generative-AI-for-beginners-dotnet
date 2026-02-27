@@ -1,6 +1,5 @@
 # Noções Básicas de Aplicativos de Chat
 
-Nesta lição, exploraremos os fundamentos da construção de aplicativos de chat usando conclusões de modelos de linguagem e funções no .NET. Também veremos como utilizar o Semantic Kernel e o Microsoft Extensions AI (MEAI) para criar chatbots. Além disso, aprenderemos a usar o Semantic Kernel para criar plugins, ou funcionalidades que o chatbot pode chamar com base na entrada do usuário.
 
 ---
 
@@ -100,7 +99,6 @@ while (true)
 
 ```
 
-> 🗒️**Nota:** Para exemplos legados do Semantic Kernel, consulte a pasta de [exemplos descontinuados](../../../samples/deprecated/).
 
 > 🙋 **Precisa de ajuda?**: Se encontrar algum problema, [abra uma issue no repositório](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new).
 

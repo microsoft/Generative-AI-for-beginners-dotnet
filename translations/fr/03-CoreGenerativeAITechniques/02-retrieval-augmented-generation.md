@@ -33,11 +33,9 @@ Vous avez peut-être entendu parler des bases de données vectorielles. Ce sont 
 
 ## Implémentation de RAG
 
-Nous utiliserons la bibliothèque Microsoft.Extension.AI ainsi que [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) et [Microsoft.SemanticKernel.Connectors.InMemory](https://www.nuget.org/packages/Microsoft.SemanticKernel.Connectors.InMemory) pour implémenter RAG ci-dessous.
+Nous utiliserons la bibliothèque Microsoft.Extension.AI ainsi que [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) et [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) pour implémenter RAG ci-dessous.
 
 > 🧑‍💻**Exemple de code :** Suivez l'exemple de code [ici](../../../03-CoreGenerativeAITechniques/src/RAGSimple-02MEAIVectorsMemory).
-> 
-> Pour les exemples archivés de Semantic Kernel RAG, consultez le dossier des [exemples obsolètes](../../../samples/deprecated/).
 
 ### Remplissage de la base de connaissances
 

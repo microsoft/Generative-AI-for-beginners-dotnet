@@ -102,13 +102,9 @@ docker run -d -p 12434:8080 \
 
 ## Part 4: Using AI Toolkit for Visual Studio Code with .NET
 
-The AI Toolkit for Visual Studio Code provides a way to run AI models locally on your machine. We have two examples that demonstrate how to interact with AI Toolkit models using .NET:
+The AI Toolkit for Visual Studio Code provides a way to run AI models locally on your machine.
 
-### 1. ~~Semantic Kernel with AI Toolkit~~ (Deprecated)
-
-> ⚠️ This sample has been moved to [`samples/deprecated/AIToolkit-01-SK-Chat`](../samples/deprecated/AIToolkit-01-SK-Chat/). See the MEAI example below instead.
-
-### 2. Microsoft Extensions for AI with AI Toolkit
+### Microsoft Extensions for AI with AI Toolkit
 
 The [AIToolkit-02-MEAI-Chat](../samples/CoreSamples/AIToolkit-02-MEAI-Chat/) project demonstrates how to use Microsoft Extensions for AI to interact with AI Toolkit for Visual Studio Code models.
 
@@ -125,13 +121,7 @@ ChatClient client = new OpenAIClient(credential, options).GetChatClient(modelId)
 
 ## Part 5: Using Docker Models with .NET
 
-In this repository, we have two examples that demonstrate how to interact with Docker-based models using .NET:
-
-### 1. ~~Semantic Kernel with Docker Models~~ (Deprecated)
-
-> ⚠️ This sample has been moved to [`samples/deprecated/DockerModels-01-SK-Chat`](../samples/deprecated/DockerModels-01-SK-Chat/). See the MEAI example below instead.
-
-### 2. Microsoft Extensions for AI with Docker Models
+### Microsoft Extensions for AI with Docker Models
 
 The [DockerModels-02-MEAI-Chat](../samples/CoreSamples/DockerModels-02-MEAI-Chat/) project demonstrates how to use Microsoft Extensions for AI to interact with Docker-based models.
 
@@ -159,13 +149,7 @@ Console.WriteLine(response.Value.Content[0].Text);
 
 ## Part 6: Using Foundry Local with .NET
 
-This repository includes two demos for Foundry Local:
-
-### 1. ~~Semantic Kernel with Foundry Local~~ (Deprecated)
-
-> ⚠️ This sample has been moved to [`samples/deprecated/AIFoundryLocal-01-SK-Chat`](../samples/deprecated/AIFoundryLocal-01-SK-Chat/). See the MEAI example below instead.
-
-### 2. Microsoft Extensions for AI with Foundry Local
+### Microsoft Extensions for AI with Foundry Local
 
 The [AIFoundryLocal-01-MEAI-Chat](../samples/CoreSamples/AIFoundryLocal-01-MEAI-Chat/Program.cs) project demonstrates how to use Microsoft Extensions for AI to interact with Foundry Local models.
 
@@ -242,7 +226,6 @@ To run the samples in this repository:
 - [Docker Model Runner Documentation](https://docs.docker.com/model-runner/)
 - [Foundry Local Documentation](https://learn.microsoft.com/azure/ai-foundry/foundry-local/)
 - [Foundry Local GitHub Repository](https://github.com/microsoft/Foundry-Local/tree/main)
-- [Semantic Kernel Documentation](https://learn.microsoft.com/semantic-kernel/overview/)
 - [Microsoft Extensions for AI Documentation](https://learn.microsoft.com/dotnet/ai/)
 
 ---

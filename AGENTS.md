@@ -9,7 +9,7 @@ This repository contains **Generative AI for Beginners .NET** - a hands-on cours
 - **Lesson-based structure**: Organized in numbered folders (01-10) containing lessons, documentation, and code samples
 - **Multi-language support**: Course materials translated into 8 languages (located in `translations/`)
 - **Sample applications**: Full-featured AI-powered apps demonstrating practical GenAI integration
-- **Key technologies**: .NET 9+, Microsoft.Extensions.AI (MEAI), Semantic Kernel, Azure OpenAI, Ollama, GitHub Models
+- **Key technologies**: .NET 9+, Microsoft.Extensions.AI (MEAI), Microsoft Agent Framework, Azure OpenAI, Ollama, GitHub Models
 
 ### Project Structure
 
@@ -229,7 +229,7 @@ dotnet format <path-to-solution>.sln
 - **Never hardcode API keys** - use user secrets or environment variables
 - **Abstract AI providers** behind service classes for easy swapping
 - **Use IChatClient** from Microsoft.Extensions.AI for provider-agnostic code
-- **Semantic Kernel** for advanced orchestration and plugin integration
+- **Microsoft Agent Framework** for advanced agent orchestration and multi-agent workflows
 - Support multiple providers (Azure OpenAI, Ollama, GitHub Models) where applicable
 
 ### File Organization
@@ -402,7 +402,7 @@ When updating documentation:
 
 - [.NET Documentation](https://learn.microsoft.com/dotnet/)
 - [Microsoft.Extensions.AI](https://learn.microsoft.com/dotnet/ai/ai-extensions)
-- [Semantic Kernel](https://learn.microsoft.com/semantic-kernel/)
+- [Microsoft Agent Framework](https://learn.microsoft.com/agent-framework/)
 - [Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/)
 - [Ollama Documentation](https://ollama.com/docs)
 - [GitHub Models](https://docs.github.com/github-models)

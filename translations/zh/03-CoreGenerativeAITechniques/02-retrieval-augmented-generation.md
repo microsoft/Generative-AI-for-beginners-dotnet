@@ -33,11 +33,9 @@ RAG 架构主要分为两个阶段：**检索** 和 **生成**。
 
 ## 实现 RAG
 
-我们将使用 `Microsoft.Extension.AI`，以及 [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) 和 [Microsoft.SemanticKernel.Connectors.InMemory](https://www.nuget.org/packages/Microsoft.SemanticKernel.Connectors.InMemory) 库来实现 RAG。
+我们将使用 `Microsoft.Extension.AI`，以及 [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) 和 [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) 库来实现 RAG。
 
 > 🧑‍💻**示例代码**：您可以在[这里的示例代码](../../../03-CoreGenerativeAITechniques/src/RAGSimple-02MEAIVectorsMemory)中跟随学习。
-> 
-> 有关归档的 Semantic Kernel RAG 示例，请参阅[已弃用的示例](../../../samples/deprecated/)文件夹。
 
 ### 填充知识库
 

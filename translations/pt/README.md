@@ -49,7 +49,7 @@ Estamos constantemente melhorando este curso com as mais recentes ferramentas de
   - Veja a documentação oficial: [Como usar modelos de geração de imagens do Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/how-to/dall-e?tabs=gpt-image-1) e [guia de geração de imagens openai-dotnet](https://github.com/openai/openai-dotnet?tab=readme-ov-file#how-to-generate-images) para mais detalhes.
   - Encontre o exemplo em [Lição 3: Técnicas de IA Generativa Fundamentais .. /src/ImageGeneration-01.csproj](../../samples/CoreSamples/ImageGeneration-01/ImageGeneration-01.csproj).
 
-- **Novo Cenário: Orquestração de Agentes Concorrentes no eShopLite**: O [repositório eShopLite](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent) agora apresenta um cenário demonstrando orquestração de agentes concorrentes usando Semantic Kernel. Este cenário mostra como múltiplos agentes podem trabalhar em paralelo para analisar consultas de usuários e fornecer insights valiosos para análises futuras.
+- **Novo Cenário: Orquestração de Agentes Concorrentes no eShopLite**: O [repositório eShopLite](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent) agora apresenta um cenário demonstrando orquestração de agentes concorrentes usando Microsoft Agent Framework. Este cenário mostra como múltiplos agentes podem trabalhar em paralelo para analisar consultas de usuários e fornecer insights valiosos para análises futuras.
 
 [Veja todas as atualizações anteriores em nossa seção Novidades](./10-WhatsNew/readme.md)
 
@@ -75,7 +75,7 @@ Você aprenderá como implementar IA Generativa em projetos .NET, desde geraçã
 | #   | **Link da Aula** | **Descrição** |
 | --- | --- | --- |
 | 01  | [**Introdução aos Fundamentos de IA Generativa para Desenvolvedores .NET**](./01-IntroToGenAI/readme.md) | <ul><li>Visão geral dos modelos generativos e suas aplicações no .NET</li></ul> |
-| 02  | [**Configurando o Ambiente para Desenvolvimento .NET com IA Generativa**](./02-SetupDevEnvironment/readme.md) | <ul><li>Usando bibliotecas como **Microsoft.Extensions.AI** e **Semantic Kernel**.</li><li>Configurando provedores como GitHub Models, Microsoft Foundry e desenvolvimento local com Ollama.</li></ul> |
+| 02  | [**Configurando o Ambiente para Desenvolvimento .NET com IA Generativa**](./02-SetupDevEnvironment/readme.md) | <ul><li>Usando bibliotecas como **Microsoft.Extensions.AI** e **Microsoft Agent Framework**.</li><li>Configurando provedores como GitHub Models, Microsoft Foundry e desenvolvimento local com Ollama.</li></ul> |
 | 03  | [**Técnicas Essenciais de IA Generativa com .NET**](./03-CoreGenerativeAITechniques/readme.md) | <ul><li>Geração de texto e fluxos conversacionais.</li><li> Capacidades multimodais (visão e áudio).</li><li>Agentes</li></ul> |
 | 04  | [**Exemplos Práticos de IA Generativa com .NET**](./04-PracticalSamples/readme.md) | <ul><li>Exemplos completos demonstrando IA Generativa em cenários do dia a dia</li><li>Aplicações de busca semântica.</li><li>Aplicações com múltiplos agentes</li></ul> |
 | 05  | [**Uso Responsável de IA Generativa em Aplicações .NET**](./05-ResponsibleGenAI/readme.md) | <ul><li>Considerações éticas, mitigação de vieses e implementações seguras.</li></ul> |

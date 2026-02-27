@@ -45,8 +45,8 @@ dotnet run
 The sample uses:
 - **Microsoft.Extensions.AI** for embeddings generation
 - **Azure.AI.Inference** for connecting to GitHub Models
-- **Microsoft.SemanticKernel.Connectors.InMemory** for in-memory vector storage
+- **Microsoft.Extensions.VectorData** for in-memory vector storage
 
 ## Alternative Providers
 
-To use Ollama, see the [deprecated samples](../../deprecated/) for archived Semantic Kernel RAG examples.
+See the other RAG samples (RAGSimple-03, RAGSimple-04) for Azure AI Search and Qdrant vector store examples.

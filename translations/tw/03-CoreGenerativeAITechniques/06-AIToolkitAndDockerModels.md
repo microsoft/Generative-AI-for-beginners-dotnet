@@ -17,20 +17,16 @@ Microsoft AI Toolkit 是一組工具和庫的集合，允許您將本地 AI 模�
 以下是在 .NET 應用程式中使用 AI Toolkit 的示例：
 
 ```csharp
-using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.AI.ChatCompletion;
+using Microsoft.Extensions.AI;
+using OpenAI;
 
-var kernelBuilder = Kernel.CreateBuilder();
-kernelBuilder.AddAIToolkitChatCompletion(
-    modelId: "models/phi3:latest", 
-    endpoint: "http://localhost:8080/v1");
-var kernel = kernelBuilder.Build();
+var client = new OpenAIClient(new ApiKeyCredential("unused"), new OpenAIClientOptions
+{
+    Endpoint = new Uri("http://localhost:8080/v1")
+}).GetChatClient("models/phi3:latest").AsIChatClient();
 
-var chatCompletion = kernel.GetRequiredService<IChatCompletionService>();
-var chat = new ChatHistory();
-chat.AddUserMessage("用簡單的詞語解釋量子計算");
-var response = await chatCompletion.GetChatMessageContentAsync(chat);
-Console.WriteLine(response.Content);
+var response = await client.GetResponseAsync("Explain quantum computing in simple terms");
+Console.WriteLine(response.Text);
 ```
 
 ## 用於 AI 模型的 Docker
@@ -47,7 +43,7 @@ docker run -d --gpus all -p 8080:8080 ghcr.io/microsoft/phi3:latest
 
 ### 範例應用程式
 
-在 [DockerModels-01-SK-Chat](./src/DockerModels-01-SK-Chat) 和 [DockerModels-02-MEAI-Chat](./src/DockerModels-02-MEAI-Chat) 示例中，我們實現了使用 Semantic Kernel 和 Microsoft.Extensions.AI 來利用本地模型的應用程式。
+在 [DockerModels-02-MEAI-Chat](./src/DockerModels-02-MEAI-Chat) 和 [DockerModels-02-MEAI-Chat](./src/DockerModels-02-MEAI-Chat) 示例中，我們實現了使用 Microsoft.Extensions.AI 來利用本地模型的應用程式。
 
 ## 總結
 
