@@ -12,7 +12,7 @@ You are working in the `03-CoreGenerativeAITechniques` lesson of the Generative-
   - Main features and demo capabilities.
   - Any unique AI techniques, models, or integration patterns.
   - Key files or entry points.
-  - Add a set of relevant tags (e.g., #SemanticKernel, #Ollama, #AzureOpenAI, #RAG, #Vision, #Audio, #Chat, #Agents, etc.) for each project.
+  - Add a set of relevant tags (e.g., #Ollama, #AzureOpenAI, #RAG, #Vision, #Audio, #Chat, #Agents, etc.) for each project.
 
 ---
 

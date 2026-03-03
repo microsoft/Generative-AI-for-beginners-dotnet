@@ -33,7 +33,7 @@ Pour nos premières démos, nous explorerons les projets **eShopLite**. **eShopL
 
 Ces démos utilisent [Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service) et [Microsoft Foundry Models](https://ai.azure.com/) pour effectuer les inférences (ou la partie IA générative) nécessaires à ces applications.
 
-Dans la première démo, nous montrons comment utiliser le Semantic Kernel pour améliorer les capacités de recherche, en permettant une compréhension contextuelle des requêtes des utilisateurs et en fournissant des résultats précis.
+Dans la première démo, nous montrons comment utiliser l'IA générative pour améliorer les capacités de recherche, en permettant une compréhension contextuelle des requêtes des utilisateurs et en fournissant des résultats précis.
 
 ### eShopLite avec recherche sémantique
 
@@ -41,7 +41,7 @@ Dans la première démo, nous montrons comment utiliser le Semantic Kernel pour 
 
 _⬆️Cliquez sur l'image pour regarder la vidéo⬆️_
 
-Dans eShopLite avec recherche sémantique, nous utilisons le Semantic Kernel pour améliorer les capacités de recherche de l'application e-commerce. Le Semantic Kernel nous aide à créer un moteur de recherche plus performant, capable de comprendre le contexte des requêtes des utilisateurs et de fournir des résultats plus pertinents.
+Dans eShopLite avec recherche sémantique, nous utilisons l'IA générative pour améliorer les capacités de recherche de l'application e-commerce. Le AI nous aide à créer un moteur de recherche plus performant, capable de comprendre le contexte des requêtes des utilisateurs et de fournir des résultats plus pertinents.
 
 Par exemple, si un utilisateur recherche "avez-vous quelque chose pour cuisiner", le moteur de recherche peut comprendre qu'il cherche des ustensiles de cuisine et afficher les produits les plus pertinents. Dans notre exemple, il retourne des équipements de cuisine pour le camping.
 
@@ -342,7 +342,7 @@ Cette solution repose sur quatre modules dédiés qui se combinent pour génére
 - **Rédacteur** : Synthétise les informations fournies par le Chercheur et le Marketing, produisant une rédaction cohérente de l'article.
 - **Éditeur** : Évalue le brouillon, propose des corrections, et décide s'il est prêt pour publication.
 
-Le flux de travail intègre des données pertinentes, un message efficace, et une révision, orchestré par Semantic Kernel, Microsoft AI Extension, et .NET Aspire.
+Le flux de travail intègre des données pertinentes, un message efficace, et une révision, orchestré par Microsoft AI Extension et .NET Aspire.
 
 ![Image illustrant l'architecture de l'Agent d'Écriture Créative](../../../translated_images/creative-writer-agent-architecture.792ab7a807e66accb729c6a49d9393dd22f6060d83610cd1a187ab2b8a74efff.fr.png)
 

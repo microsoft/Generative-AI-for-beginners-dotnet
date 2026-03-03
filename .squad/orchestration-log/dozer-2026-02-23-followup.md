@@ -37,7 +37,7 @@ Microsoft.Extensions.AI.OpenAI transitioned from preview (10.2.0-preview.1.26063
 - BasicChat-01HelloAI
 - BasicChat-05AIFoundryModels
 - RAGSimple
-- AgentFx-ChatBot
+- MAF-ChatBot
 - SpaceAINet.Console
 
 ## Packages Intentionally Left Unchanged

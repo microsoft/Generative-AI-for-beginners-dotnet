@@ -49,7 +49,7 @@
   - 查看官方文件：[如何使用 Azure OpenAI 圖像產生模型](https://learn.microsoft.com/azure/ai-services/openai/how-to/dall-e?tabs=gpt-image-1) 和 [openai-dotnet 圖像產生指南](https://github.com/openai/openai-dotnet?tab=readme-ov-file#how-to-generate-images) 了解更多詳情。
   - 在這裡找到範例：[第3課：核心生成式 AI 技術 .. /src/ImageGeneration-01.csproj](../../samples/CoreSamples/ImageGeneration-01/ImageGeneration-01.csproj)。
 
-- **新情境：eShopLite 中的並發代理協調**：[eShopLite 存放庫](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent) 現在提供一個情境，展示如何使用 Semantic Kernel 進行並發代理協調。這個情境展示了多個代理如何並行工作來分析使用者查詢並為未來分析提供有價值的洞察。
+- **新情境：eShopLite 中的並發代理協調**：[eShopLite 存放庫](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent) 現在提供一個情境，展示如何使用 Microsoft Agent Framework 進行並發代理協調。這個情境展示了多個代理如何並行工作來分析使用者查詢並為未來分析提供有價值的洞察。
 
 [在我們的最新消息部分查看所有先前的更新](./10-WhatsNew/readme.md)
 
@@ -59,9 +59,9 @@
 
 - 每節課包含 5-10 分鐘的短影片。
 - 完整的 .NET 程式碼範例，可直接執行與探索。
-- 支援工具如 **GitHub Codespaces** 和 **GitHub Models**，讓你快速上手。如果你想在本地端使用自己的模型來運行範例，也完全可以做到。
+- 支援工具如 **GitHub Codespaces** 和 **Azure OpenAI**，讓你快速上手。如果你想在本地端使用自己的模型來運行範例，也完全可以做到。
 
-你將學會如何將生成式 AI 整合到 .NET 專案中，從基本的文字生成到利用 **GitHub Models**、**Azure OpenAI Services** 和 **Ollama 的本地模型** 構建完整的解決方案。
+你將學會如何將生成式 AI 整合到 .NET 專案中，從基本的文字生成到利用 **Azure OpenAI**、**Azure OpenAI Services** 和 **Ollama 的本地模型** 構建完整的解決方案。
 
 ## 📦 每節課包含的內容
 
@@ -75,7 +75,7 @@
 | #   | **課程連結** | **內容簡介** |
 | --- | --- | --- |
 | 01  | [**.NET 開發者的生成式 AI 基礎介紹**](./01-IntroToGenAI/readme.md) | <ul><li>生成模型的概述及其在 .NET 中的應用</li></ul> |
-| 02  | [**生成式 AI 的 .NET 開發環境設定**](./02-SetupDevEnvironment/readme.md) | <ul><li>使用 **Microsoft.Extensions.AI** 和 **Semantic Kernel** 等函式庫。</li><li>設定 GitHub Models、Microsoft Foundry，以及本地開發（如 Ollama）。</li></ul> |
+| 02  | [**生成式 AI 的 .NET 開發環境設定**](./02-SetupDevEnvironment/readme.md) | <ul><li>使用 **Microsoft.Extensions.AI** 和 **Microsoft Agent Framework** 等函式庫。</li><li>設定 Azure OpenAI、Microsoft Foundry，以及本地開發（如 Ollama）。</li></ul> |
 | 03  | [**.NET 的核心生成式 AI 技術**](./03-CoreGenerativeAITechniques/readme.md) | <ul><li>文字生成與對話流程。</li><li>多模態能力（視覺與音訊）。</li><li>代理（Agents）。</li></ul> |
 | 04  | [**實用的 .NET 生成式 AI 範例**](./04-PracticalSamples/readme.md) | <ul><li>展示生成式 AI 在實際場景中的完整範例。</li><li>語意搜尋應用。</li><li>多代理應用。</li></ul> |
 | 05  | [**在 .NET 應用程式中負責任地使用生成式 AI**](./05-ResponsibleGenAI/readme.md) | <ul><li>倫理考量、偏差減少與安全實作。</li></ul> |
@@ -110,7 +110,7 @@
 我們設計這門課程時，盡量降低學習門檻。我們使用以下方式幫助你快速入門：
 
 - **在 GitHub Codespaces 中運行**：只需點擊一次，即可獲得預先配置的環境，方便測試與探索課程內容。
-- **利用 GitHub Models**：試試看直接在這個倉庫中提供的 AI 驅動示範，我們會在課程中逐步解釋更多內容。*(如果你想了解更多關於 GitHub Models 的資訊，請點擊[這裡](https://docs.github.com/github-models))*
+- **利用 Azure OpenAI**：試試看直接在這個倉庫中提供的 AI 驅動示範，我們會在課程中逐步解釋更多內容。*(如果你想了解更多關於 Azure OpenAI 的資訊，請點擊[這裡](https://docs.github.com/github-models))*
 
 當你準備好進一步探索時，我們還提供以下指南：
 

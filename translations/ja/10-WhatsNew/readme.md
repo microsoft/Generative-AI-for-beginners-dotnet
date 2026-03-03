@@ -18,7 +18,7 @@
 ### 新しいeShopLiteシナリオ：並行エージェントオーケストレーション（2025年6月）
 
 - **新シナリオ：並行エージェントオーケストレーション**
-- [eShopLiteリポジトリ](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent)では、Semantic Kernelを使用した並行エージェントオーケストレーションを示すシナリオを提供しています。
+- [eShopLiteリポジトリ](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent)では、Microsoft Agent Frameworkを使用した並行エージェントオーケストレーションを示すシナリオを提供しています。
 - このシナリオでは、複数のエージェントが並行して動作してユーザークエリを分析し、将来の分析に役立つ貴重な洞察を提供する方法を紹介しています。
 
 ## 2025年5月
@@ -33,7 +33,7 @@
 
 ### AI ToolkitとDockerを使用してローカルモデルを実行
 
-- **新機能：AI ToolkitとDockerを使用してローカルモデルを実行**：[Visual Studio Code用AI Toolkit](https://code.visualstudio.com/docs/intelligentapps/overview)と[Docker Model Runner](https://docs.docker.com/model-runner/)を使用してローカルでモデルを実行する新しいサンプルを探索してください。ソースコードは[../../../samples/CoreSamples/](../../../samples/CoreSamples/)にあり、Semantic KernelとMicrosoft Extensions for AIを使用してこれらのモデルと相互作用する方法を示しています。
+- **新機能：AI ToolkitとDockerを使用してローカルモデルを実行**：[Visual Studio Code用AI Toolkit](https://code.visualstudio.com/docs/intelligentapps/overview)と[Docker Model Runner](https://docs.docker.com/model-runner/)を使用してローカルでモデルを実行する新しいサンプルを探索してください。ソースコードは[../../../samples/CoreSamples/](../../../samples/CoreSamples/)にあり、Microsoft.Extensions.AIを使用してこれらのモデルと相互作用する方法を示しています。
 
 ## 2025年3月
 

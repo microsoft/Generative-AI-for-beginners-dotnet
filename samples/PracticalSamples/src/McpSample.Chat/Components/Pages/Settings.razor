@@ -14,18 +14,16 @@
     <input type="text" id="deploymentName" @bind="deploymentName" class="input-field" />
 </div>
 <div>
-    <label for="apiKey">API Key / GitHub Token:</label>
+    <label for="apiKey">API Key:</label>
     <input type="password" id="apiKey" @bind="apiKey" class="input-field" />
 </div>
 
 <button class="btn btn-primary" @onclick="SaveSettings">SAVE</button>
 <button class="btn btn-secondary" @onclick="SetOllamaDefaults">Set Ollama Default values</button>
-<button class="btn btn-secondary" @onclick="SetGitHubModelsDefaults">Set GitHub Models Default Endpoint</button>
 
 <p></p>
 <p>
-    To create a GitHub token to be used in the <strong>API Key / GitHub Token</strong> field, please follow the instructions
-    <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens" target="_blank">here</a>.
+    Configure your Azure OpenAI endpoint, deployment name, and API key to get started.
 </p>
 
 @if (!string.IsNullOrEmpty(saveMessage))
@@ -58,14 +56,6 @@
 
         // Display a message to inform the user that the changes were saved
         saveMessage = "Settings have been saved successfully.";
-    }
-
-    private void SetGitHubModelsDefaults()
-    {
-        endpoint = "https://models.github.ai/inference";
-        apiKey = "<your GitHub Personal Access Token here>";
-        deploymentName = "< your model name here>";
-
     }
 
     private void SetOllamaDefaults()

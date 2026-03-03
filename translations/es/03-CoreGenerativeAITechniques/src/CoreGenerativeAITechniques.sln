@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35514.174
@@ -29,7 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 Vision Analysis", "04 Vi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RAGSimple-04MEAIVectorsQdrant", "RAGSimple-04MEAIVectorsQdrant\RAGSimple-04MEAIVectorsQdrant.csproj", "{79D4682D-0916-4A52-B970-79DD3B05443F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vision-01MEAI-GitHubModels", "Vision-01MEAI-GitHubModels\Vision-01MEAI-GitHubModels.csproj", "{61FADD8F-E575-4344-A161-A1E99E2A170B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vision-01MEAI-AzureOpenAI", "Vision-01MEAI-AzureOpenAI\Vision-01MEAI-AzureOpenAI.csproj", "{61FADD8F-E575-4344-A161-A1E99E2A170B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vision-02MEAI-Ollama", "Vision-02MEAI-Ollama\Vision-02MEAI-Ollama.csproj", "{78B601B3-C260-4472-82D5-38636D5DDFAB}"
 EndProject

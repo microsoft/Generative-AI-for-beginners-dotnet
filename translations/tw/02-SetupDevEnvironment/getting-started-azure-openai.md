@@ -4,7 +4,7 @@
 
 不想使用 Azure OpenAI？
 
-👉 [如果你想使用 GitHub 模型，請參考這份指南](README.md)  
+👉 [如果你想使用 Azure OpenAI，請參考這份指南](README.md)  
 👉 [這是 Ollama 的步驟指南](getting-started-ollama.md)
 
 ## 建立 Microsoft Foundry 資源
@@ -75,9 +75,9 @@
 
 在 **Dev container configuration** 下拉選單中，選擇以下選項之一：
 
-**選項 1: C# (.NET)**：如果你計劃使用 GitHub 模型或 Azure OpenAI，應選擇此選項。它包含本課程所需的核心 .NET 開發工具，啟動速度快。  
+**選項 1: C# (.NET)**：如果你計劃使用 Azure OpenAI或 Azure OpenAI，應選擇此選項。它包含本課程所需的核心 .NET 開發工具，啟動速度快。  
 
-**選項 2: C# (.NET) - Ollama**：Ollama 允許你在不連接 GitHub 模型或 Azure OpenAI 的情況下運行演示。此選項包含所有核心 .NET 開發工具以及 Ollama，但啟動速度較慢，平均需五分鐘。[參考這份指南](getting-started-ollama.md) 如果你想使用 Ollama。  
+**選項 2: C# (.NET) - Ollama**：Ollama 允許你在不連接 Azure OpenAI或 Azure OpenAI 的情況下運行演示。此選項包含所有核心 .NET 開發工具以及 Ollama，但啟動速度較慢，平均需五分鐘。[參考這份指南](getting-started-ollama.md) 如果你想使用 Ollama。  
 
 其他設置可以保持默認。點擊 **Create codespace** 按鈕開始創建 Codespace。
 

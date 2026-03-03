@@ -5,7 +5,7 @@
 | Badge | Name | Role | Responsibilities | Sample Prompts |
 |-------|------|------|-----------------|----------------|
 | 🏗️ | **Morpheus** | Lead | Scope, decisions, code review, architecture | *"Morpheus, review the project structure"* |
-| 🔧 | **Neo** | .NET Dev | Core samples, implementations, C#/.NET code | *"Neo, build a new Semantic Kernel sample"* |
+| 🔧 | **Neo** | .NET Dev | Core samples, implementations, C#/.NET code | *"Neo, build a new MEAI sample"* |
 | 📝 | **Trinity** | Content Dev | Lessons, documentation, translations, READMEs | *"Trinity, improve the lesson 03 readme"* |
 | 🧪 | **Tank** | Tester | Tests, quality, edge cases, build verification | *"Tank, verify all samples build correctly"* |
 | 📊 | **Oracle** | Changelog Analyst | Repo changes, What's New updates in README & 10-WhatsNew | *"Oracle, analyze recent changes and update What's New"* |
@@ -44,7 +44,7 @@
 - Creating new projects
 
 **Sample prompts:**
-- *"Neo, build a new Semantic Kernel sample"*
+- *"Neo, build a new MEAI sample"*
 - *"Neo, add error handling to the chat sample"*
 - *"Neo, create a new MEAI integration example"*
 
@@ -141,7 +141,7 @@
 **Capabilities:**
 - **Content Analysis** — reviews lessons for completeness, clarity, progression
 - **AI/GenAI Research** — tracks new models, techniques, tools
-- **Microsoft Tech Scouting** — monitors .NET, Azure AI, Semantic Kernel, MEAI updates
+- **Microsoft Tech Scouting** — monitors .NET, Azure AI, Microsoft Agent Framework, MEAI updates
 - **Proposals** — structured suggestions with priority and effort ratings
 
 **Sample prompts:**

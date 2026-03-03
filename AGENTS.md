@@ -9,7 +9,7 @@ This repository contains **Generative AI for Beginners .NET** - a hands-on cours
 - **Lesson-based structure**: Organized in numbered folders (01-10) containing lessons, documentation, and code samples
 - **Multi-language support**: Course materials translated into 8 languages (located in `translations/`)
 - **Sample applications**: Full-featured AI-powered apps demonstrating practical GenAI integration
-- **Key technologies**: .NET 9+, Microsoft.Extensions.AI (MEAI), Semantic Kernel, Azure OpenAI, Ollama, GitHub Models
+- **Key technologies**: .NET 9+, Microsoft.Extensions.AI (MEAI), Microsoft Agent Framework, Azure OpenAI, Ollama
 
 ### Project Structure
 
@@ -23,7 +23,7 @@ This repository contains **Generative AI for Beginners .NET** - a hands-on cours
 │   ├── SpaceAINet/              # AI-powered Space Battle game
 │   ├── HFMCP.GenImage/          # Image generation app
 │   └── ConsoleGpuViewer/        # GPU viewer console app
-├── 06-AgentFx/                   # Microsoft Agent Framework examples
+├── 06-MAF/                   # Microsoft Agent Framework examples
 ├── 09-ResponsibleGenAI/          # Responsible AI practices
 ├── 10-WhatsNew/                  # Latest updates and features
 └── translations/                 # Localized course materials
@@ -40,8 +40,7 @@ Each lesson folder contains:
 
 - [.NET 9 SDK](https://dotnet.microsoft.com/download) or later
 - Access to at least one AI provider:
-  - **GitHub Models** (recommended for beginners - free tier available)
-  - **Azure OpenAI** (requires Azure subscription)
+    - **Azure OpenAI** (requires Azure subscription)
   - **Ollama** (for local model execution)
 
 ### Initial Setup
@@ -56,10 +55,6 @@ dotnet --version  # Should be 9.0 or higher
 ```
 
 ### AI Provider Setup
-
-#### GitHub Models (Recommended)
-1. Create a Personal Access Token at https://github.com/settings/tokens
-2. Set as environment variable or user secret (see lesson 02)
 
 #### Azure OpenAI
 ```bash
@@ -229,8 +224,8 @@ dotnet format <path-to-solution>.sln
 - **Never hardcode API keys** - use user secrets or environment variables
 - **Abstract AI providers** behind service classes for easy swapping
 - **Use IChatClient** from Microsoft.Extensions.AI for provider-agnostic code
-- **Semantic Kernel** for advanced orchestration and plugin integration
-- Support multiple providers (Azure OpenAI, Ollama, GitHub Models) where applicable
+- **Microsoft Agent Framework** for advanced agent orchestration and multi-agent workflows
+- Support multiple providers (Azure OpenAI, Ollama) where applicable
 
 ### File Organization
 
@@ -331,7 +326,6 @@ Use descriptive titles that clearly indicate the change:
 - **Package restore fails**: Delete `bin/` and `obj/` folders, then `dotnet restore`
 
 #### AI Provider Issues
-- **GitHub Models**: Verify Personal Access Token is set correctly
 - **Azure OpenAI**: Check user secrets are configured: `dotnet user-secrets list`
 - **Ollama**: Ensure service is running and model is pulled: `ollama list`
 
@@ -366,7 +360,7 @@ Translations are maintained in `translations/<language-code>/`:
 
 #### Lesson 02: Setup
 - Focus on environment configuration and AI provider access
-- Three paths: GitHub Models, Azure OpenAI, Ollama
+- Two paths: Azure OpenAI, Ollama
 - Core samples: BasicChat-01MEAI, BasicChat-03Ollama
 
 #### Lesson 03: Core Techniques
@@ -386,7 +380,7 @@ Translations are maintained in `translations/<language-code>/`:
 - **ConsoleGpuViewer**: GPU monitoring console app
 
 #### Lesson 06: Agent Framework
-- Microsoft Agent Framework (AgentFx) examples
+- Microsoft Agent Framework (MAF) examples
 - Multi-agent orchestration patterns
 - Integration with MCP for enhanced capabilities
 
@@ -402,10 +396,9 @@ When updating documentation:
 
 - [.NET Documentation](https://learn.microsoft.com/dotnet/)
 - [Microsoft.Extensions.AI](https://learn.microsoft.com/dotnet/ai/ai-extensions)
-- [Semantic Kernel](https://learn.microsoft.com/semantic-kernel/)
+- [Microsoft Agent Framework](https://learn.microsoft.com/agent-framework/)
 - [Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/)
 - [Ollama Documentation](https://ollama.com/docs)
-- [GitHub Models](https://docs.github.com/github-models)
 
 ---
 

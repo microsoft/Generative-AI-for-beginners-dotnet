@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net9.0</TargetFramework>
+		<RootNamespace>MAF_ImageGen_01</RootNamespace>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<UserSecretsId>661d4c7f-443d-4764-8f40-479a24a64b0b</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Azure.AI.OpenAI" Version="2.8.0-beta.1" />
+		<PackageReference Include="Azure.Identity" Version="1.18.0" />
+		<PackageReference Include="Microsoft.Agents.AI" Version="1.0.0-preview.260108.1" />
+		<PackageReference Include="Microsoft.Agents.AI.OpenAI" Version="1.0.0-preview.260108.1" />
+<PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.3" />
+		<PackageReference Include="Microsoft.Extensions.AI" Version="10.3.0" />
+		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.3.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.3" />
+		<PackageReference Include="ModelContextProtocol" Version="1.0.0" />
+		<PackageReference Include="OpenAI" Version="2.8.0" />
+		<PackageReference Include="OpenTelemetry" Version="1.15.0" />
+		<PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.15.0" />
+	</ItemGroup>
+
+</Project>

@@ -1,6 +1,6 @@
 # このコースの開発環境をセットアップする
 
-このレッスンでは、このコースのための開発環境をセットアップする手順を説明します。成功を確実にするために、必要なツールがすべて揃った devcontainer 設定を用意しました。この devcontainer は、GitHub Codespaces（推奨）またはローカル環境で実行できます。また、GitHub Models と連携するための GitHub アクセストークンの設定方法も解説します。
+このレッスンでは、このコースのための開発環境をセットアップする手順を説明します。成功を確実にするために、必要なツールがすべて揃った devcontainer 設定を用意しました。この devcontainer は、GitHub Codespaces（推奨）またはローカル環境で実行できます。また、Azure OpenAI と連携するための GitHub アクセストークンの設定方法も解説します。
 
 *必要に応じて、[Azure OpenAI](getting-started-azure-openai.md) や [Ollama](getting-started-ollama.md) のセットアップガイドも用意しています。*
 
@@ -9,7 +9,7 @@
 ## このレッスンで学ぶこと:
 
 - ⚡ GitHub Codespaces を使った開発環境のセットアップ方法
-- 🤖 GitHub Models、Azure OpenAI、または Ollama を介して LLM にアクセスするための環境設定
+- 🤖 Azure OpenAI、Azure OpenAI、または Ollama を介して LLM にアクセスするための環境設定
 - 🛠️ .devcontainer を使った業界標準のツール構成
 - 🎯 最終的に、コースの残りを進める準備がすべて整う
 
@@ -21,29 +21,29 @@ _⬆️画像をクリックしてビデオを見る⬆️_
 
 ## このコースでどの AI サービスを使うべき？
 
-GitHub Models、Azure OpenAI、Ollama のいずれかを使って開発環境をセットアップする方法を説明します。ニーズに最も合ったものを選択してください。このコースでは GitHub Models を使用することを推奨していますが、どのサービスを使っても構いません。
+Azure OpenAI、Azure OpenAI、Ollama のいずれかを使って開発環境をセットアップする方法を説明します。ニーズに最も合ったものを選択してください。このコースでは Azure OpenAI を使用することを推奨していますが、どのサービスを使っても構いません。
 
 以下は各サービスの概要です：
 
-- **GitHub Models**: 無料で始められるサービスで、開発環境内でさまざまな AI モデルを直接テスト・操作できます。Codespaces から簡単に使用でき、モデルの能力を理解しながら実験するのに最適です。
+- **Azure OpenAI**: 無料で始められるサービスで、開発環境内でさまざまな AI モデルを直接テスト・操作できます。Codespaces から簡単に使用でき、モデルの能力を理解しながら実験するのに最適です。
 - **Azure OpenAI**: 有料サービスで、多様な AI モデルにアクセスできます。Azure の堅牢なセキュリティやスケーラビリティを活用できるのが特徴です。Azure サブスクリプションを既にお持ちの場合、このコースに最適な選択肢です。
 - **Ollama**: AI モデルをローカル環境、または Codespace や devcontainer 内で無料で実行できるサービスです。ローカル実行を好む場合に適していますが、ハードウェアリソースが多く必要で、クラウドベースのオプションよりも動作が遅くなることがあります。
 
-> **GitHub Models** を選ぶ場合は、このドキュメントの残りを参考にしてセットアップを進めてください。
+> **Azure OpenAI** を選ぶ場合は、このドキュメントの残りを参考にしてセットアップを進めてください。
 > - **Azure OpenAI** を選ぶなら、[こちらのドキュメント](getting-started-azure-openai.md)をご覧ください。
 > - **Ollama** を選ぶなら、[こちらのガイド](getting-started-ollama.md)をご覧ください。
 
-## GitHub Models を使って AI モデルを学び、テストする
+## Azure OpenAI を使って AI モデルを学び、テストする
 
-**GitHub Models** は、開発環境内でさまざまな AI モデルを直感的に試せる機能を提供します。開発者はシンプルなインターフェースを通じて、モデルの応答を調べ、パフォーマンスを評価し、アプリケーション要件に最適なモデルを選定できます。GitHub のインフラ内でホストされているため、信頼性の高いアクセスと一貫したパフォーマンスを提供し、開発やテスト段階に最適です。さらに、無料の利用枠があり、コストをかけずに探索を始められます。
+**Azure OpenAI** は、開発環境内でさまざまな AI モデルを直感的に試せる機能を提供します。開発者はシンプルなインターフェースを通じて、モデルの応答を調べ、パフォーマンスを評価し、アプリケーション要件に最適なモデルを選定できます。GitHub のインフラ内でホストされているため、信頼性の高いアクセスと一貫したパフォーマンスを提供し、開発やテスト段階に最適です。さらに、無料の利用枠があり、コストをかけずに探索を始められます。
 
-![複数の生成 AI モデルを示す GitHub Models ページの画像](../../../translated_images/github-models-webapge.25ecc6d29afdb2dedd949b0e5279cff6dd799af74c427d1036002f18249b9889.ja.png)
+![複数の生成 AI モデルを示す Azure OpenAI ページの画像](../../../translated_images/github-models-webapge.25ecc6d29afdb2dedd949b0e5279cff6dd799af74c427d1036002f18249b9889.ja.png)
 
 ## 事前準備: GitHub アクセストークンの設定
 
-まず最初に、Codespace が GitHub Models と連携し、安全にアプリケーションを実行できるようにするためのセキュリティ資格情報を設定します。
+まず最初に、Codespace が Azure OpenAI と連携し、安全にアプリケーションを実行できるようにするためのセキュリティ資格情報を設定します。
 
-### GitHub Models にアクセスするための個人アクセストークンの作成
+### Azure OpenAI にアクセスするための個人アクセストークンの作成
 
 1. [GitHub 設定ページ](https://github.com/settings/profile) に移動します：
 
@@ -71,7 +71,7 @@ GitHub Models、Azure OpenAI、Ollama のいずれかを使って開発環境を
 
     - 「Note」には、`GenAI-DotNet-Course-Token` のようなわかりやすい名前を入力
     - 有効期限を設定（推奨: セキュリティの観点から 7 日間）
-    - **重要**: このトークンが GitHub Models で機能するためには、**`models:read`** 権限スコープを選択する必要があります。
+    - **重要**: このトークンが Azure OpenAI で機能するためには、**`models:read`** 権限スコープを選択する必要があります。
 
 > 💡 **セキュリティのヒント**: アクセストークンには最小限のスコープと最短の有効期限を設定するのがベストプラクティスです。これにより、アカウントの安全性を確保できます。
 
@@ -90,9 +90,9 @@ GitHub Models、Azure OpenAI、Ollama のいずれかを使って開発環境を
 
 **Dev container configuration** ドロップダウンから以下のオプションのいずれかを選択します：
 
-**オプション 1: C# (.NET)** : GitHub Models を使用する場合に選ぶべきオプションで、このコースを進めるための推奨設定です。必要な .NET 開発ツールがすべて揃っており、起動時間も高速です。
+**オプション 1: C# (.NET)** : Azure OpenAI を使用する場合に選ぶべきオプションで、このコースを進めるための推奨設定です。必要な .NET 開発ツールがすべて揃っており、起動時間も高速です。
 
-**オプション 2: C# (.NET) - Ollama**: GitHub Models や Azure OpenAI に接続せずにデモを実行する場合に適したオプションです。必要な .NET 開発ツールに加え、Ollama が含まれていますが、起動時間は平均で 5 分ほどかかります。[こちらのガイド](getting-started-ollama.md)を参照してください。
+**オプション 2: C# (.NET) - Ollama**: Azure OpenAI や Azure OpenAI に接続せずにデモを実行する場合に適したオプションです。必要な .NET 開発ツールに加え、Ollama が含まれていますが、起動時間は平均で 5 分ほどかかります。[こちらのガイド](getting-started-ollama.md)を参照してください。
 
 > 💡**ヒント** : Codespace を作成する際、メニューに選択肢がある場合は、自分の近くのリージョンを選んでください。遠いリージョンを選ぶと、作成時にエラーが発生する可能性があります。
 
@@ -100,7 +100,7 @@ GitHub Models、Azure OpenAI、Ollama のいずれかを使って開発環境を
 
 ![開発コンテナ設定の選択](../../../translated_images/select-container-codespace.9b8ca34b6ff8b4cb80973924cbc1894cf7672d233b0055b47f702db60c4c6221.ja.png)
 
-## GitHub Models を使用して Codespace が正しく動作していることを確認する
+## Azure OpenAI を使用して Codespace が正しく動作していることを確認する
 
 Codespace が完全にロードされ、設定が完了したら、サンプルアプリを実行してすべてが正しく動作しているか確認しましょう：
 
@@ -132,7 +132,7 @@ Codespace が完全にロードされ、設定が完了したら、サンプル�
 
 ## まとめ
 
-このレッスンでは、コースの残りを進めるための開発環境のセットアップ方法を学びました。GitHub Codespace を作成し、GitHub Models、Azure OpenAI、または Ollama を使用するように構成しました。また、GitHub Models 用の個人アクセストークンの作成方法と、サンプルアプリケーションを実行して動作確認を行う方法も学びました。
+このレッスンでは、コースの残りを進めるための開発環境のセットアップ方法を学びました。GitHub Codespace を作成し、Azure OpenAI、Azure OpenAI、または Ollama を使用するように構成しました。また、Azure OpenAI 用の個人アクセストークンの作成方法と、サンプルアプリケーションを実行して動作確認を行う方法も学びました。
 
 ### 追加リソース
 
@@ -140,7 +140,7 @@ Codespace が完全にロードされ、設定が完了したら、サンプル�
     - [Azure OpenAI](getting-started-azure-openai.md)
     - [Ollama](getting-started-ollama.md)
 - [GitHub Codespaces ドキュメント](https://docs.github.com/en/codespaces)
-- [GitHub Models ドキュメント](https://docs.github.com/en/github-models/prototyping-with-ai-models)
+- [Azure OpenAI ドキュメント](https://docs.github.com/en/github-models/prototyping-with-ai-models)
 
 ## 次のステップ
 

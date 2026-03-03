@@ -4,7 +4,7 @@
 
 Azure OpenAI を使いたくない場合は？
 
-👉 [GitHub Models を使用する場合はこちらのガイドをご覧ください](README.md)  
+👉 [Azure OpenAI を使用する場合はこちらのガイドをご覧ください](README.md)  
 👉 [Ollama の手順はこちら](getting-started-ollama.md)
 
 ## Microsoft Foundry リソースを作成する
@@ -75,9 +75,9 @@ Microsoft Foundry モデルを使用するには、Microsoft Foundry ポータ�
 
 **Dev container configuration** ドロップダウンから次のオプションのいずれかを選択してください：
 
-**オプション 1: C# (.NET)** : GitHub Models または Azure OpenAI を使用する場合、このオプションを選択します。このコースで必要な .NET 開発ツールがすべて含まれており、起動時間も短いです。
+**オプション 1: C# (.NET)** : Azure OpenAI または Azure OpenAI を使用する場合、このオプションを選択します。このコースで必要な .NET 開発ツールがすべて含まれており、起動時間も短いです。
 
-**オプション 2: C# (.NET) - Ollama**: Ollama を使用してデモを実行し、GitHub Models または Azure OpenAI に接続する必要がない場合、このオプションを選択します。Ollama の他に .NET 開発ツールも含まれていますが、起動時間がやや長く、平均で 5 分ほどかかります。[こちらのガイド](getting-started-ollama.md) を参照してください。
+**オプション 2: C# (.NET) - Ollama**: Ollama を使用してデモを実行し、Azure OpenAI または Azure OpenAI に接続する必要がない場合、このオプションを選択します。Ollama の他に .NET 開発ツールも含まれていますが、起動時間がやや長く、平均で 5 分ほどかかります。[こちらのガイド](getting-started-ollama.md) を参照してください。
 
 他の設定はそのままで構いません。**Create codespace** ボタンをクリックして、Codespace 作成プロセスを開始します。
 

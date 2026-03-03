@@ -33,7 +33,7 @@ En nuestras primeras demos, exploraremos los proyectos de **eShopLite**. **eShop
 
 Estas demos utilizan [Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service) y [Microsoft Foundry Models](https://ai.azure.com/) para realizar las inferencias (o la parte de IA generativa) en las aplicaciones.
 
-En la primera demo, mostramos cómo usar Semantic Kernel para mejorar las capacidades de búsqueda, logrando entender el contexto de las consultas de los usuarios y proporcionando resultados más precisos.
+En la primera demo, mostramos cómo usar IA generativa para mejorar las capacidades de búsqueda, logrando entender el contexto de las consultas de los usuarios y proporcionando resultados más precisos.
 
 ### eShopLite con búsqueda semántica
 
@@ -41,7 +41,7 @@ En la primera demo, mostramos cómo usar Semantic Kernel para mejorar las capaci
 
 _⬆️Haz clic en la imagen para ver el video⬆️_
 
-En eShopLite con búsqueda semántica, utilizamos Semantic Kernel para mejorar las capacidades de búsqueda de la aplicación de comercio electrónico. Semantic Kernel nos ayuda a crear un motor de búsqueda más robusto que entiende el contexto de las consultas de los usuarios y ofrece resultados más precisos.
+En eShopLite con búsqueda semántica, utilizamos IA generativa para mejorar las capacidades de búsqueda de la aplicación de comercio electrónico. AI nos ayuda a crear un motor de búsqueda más robusto que entiende el contexto de las consultas de los usuarios y ofrece resultados más precisos.
 
 Por ejemplo, si un usuario busca "¿tienes algo para cocinar?", el motor de búsqueda puede entender que el usuario está buscando utensilios de cocina y mostrar los productos más relevantes. En este caso, devuelve utensilios de cocina para camping.
 
@@ -342,7 +342,7 @@ Esta solución se centra en cuatro módulos dedicados que trabajan juntos para g
 - Escritor: Sintetiza los hallazgos del Investigador y Marketing, produciendo un escrito cohesivo del artículo.
 - Editor: Evalúa el borrador, ofrece correcciones y decide si está listo para su publicación.
 
-El flujo de trabajo integra datos relevantes, mensajes efectivos y revisión, siendo orquestado por Semantic Kernel, Microsoft AI Extension y .NET Aspire.
+El flujo de trabajo integra datos relevantes, mensajes efectivos y revisión, siendo orquestado por Microsoft AI Extension y .NET Aspire.
 
 ![Imagen que demuestra la arquitectura del Agente Escritor Creativo](../../../translated_images/creative-writer-agent-architecture.792ab7a807e66accb729c6a49d9393dd22f6060d83610cd1a187ab2b8a74efff.es.png)
 

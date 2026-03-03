@@ -12,7 +12,7 @@ public class MCPService : IMCPService
 {
     private readonly IAIConfigurationService _configurationService;
     private readonly ILogger<MCPService> _logger;
-    private IMcpClient? _mcpClient;
+    private McpClient? _mcpClient;
 
     public MCPService(IAIConfigurationService configurationService, ILogger<MCPService> logger)
     {

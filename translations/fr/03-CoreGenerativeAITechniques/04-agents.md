@@ -161,7 +161,6 @@ Pensez aux agents comme des assistants IA dotés d'une autonomie - ils ne se con
 
 - [Créer un agent minimal avec .NET](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-assistants?pivots=openai)
 - [Orchestration multi-agents](https://techcommunity.microsoft.com/blog/educatordeveloperblog/using-azure-ai-agent-service-with-autogen--semantic-kernel-to-build-a-multi-agen/4363121)
-- [Framework d'agents Semantic Kernel](https://learn.microsoft.com/semantic-kernel/frameworks/agent/?pivots=programming-language-csharp)
 - [Agents IA - Série pour débutants sur l'IA générative](https://github.com/microsoft/generative-ai-for-beginners/tree/main/17-ai-agents)
 
 ## Prochaines étapes

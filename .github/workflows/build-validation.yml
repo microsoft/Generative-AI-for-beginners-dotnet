@@ -29,8 +29,8 @@ jobs:
           name: "HFMCP GenImage App"
         - path: "samples/AppsWithGenAI/SpaceAINet/SpaceAINet.sln"
           name: "SpaceAINet App"
-        - path: "samples/AgentFx/AgentFx-Demos.slnx"
-          name: "AgentFx Demos"
+        - path: "samples/MAF/MAF-Demos.slnx"
+          name: "MAF Demos"
 
     steps:
     - name: Checkout code

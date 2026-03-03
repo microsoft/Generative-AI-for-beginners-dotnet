@@ -161,7 +161,6 @@ AI Agents 是自主的 AI 實體，不僅僅局限於簡單的聊天互動——
 
 - [使用 .NET 建立一個簡單代理](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-assistants?pivots=openai)
 - [多代理協作](https://techcommunity.microsoft.com/blog/educatordeveloperblog/using-azure-ai-agent-service-with-autogen--semantic-kernel-to-build-a-multi-agen/4363121)
-- [Semantic Kernel Agent Framework](https://learn.microsoft.com/semantic-kernel/frameworks/agent/?pivots=programming-language-csharp)
 - [AI Agents - 初學者生成式 AI 系列](https://github.com/microsoft/generative-ai-for-beginners/tree/main/17-ai-agents)
 
 ## 下一步

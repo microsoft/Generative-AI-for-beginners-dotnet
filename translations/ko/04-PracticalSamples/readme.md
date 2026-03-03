@@ -33,7 +33,7 @@ _⬆️ 이미지를 클릭하면 영상을 볼 수 있습니다 ⬆️_
 
 이 데모는 [Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service)와 [Microsoft Foundry Models](https://ai.azure.com/)을 사용하여 애플리케이션에서 생성형 AI 작업(추론)을 수행합니다.
 
-첫 번째 데모에서는 Semantic Kernel을 활용하여 사용자의 쿼리 맥락을 이해하고 정확한 결과를 제공하는 검색 기능을 개선하는 방법을 보여줍니다.
+첫 번째 데모에서는 생성형 AI를 활용하여 사용자의 쿼리 맥락을 이해하고 정확한 결과를 제공하는 검색 기능을 개선하는 방법을 보여줍니다.
 
 ### eShopLite와 시맨틱 검색
 
@@ -41,7 +41,7 @@ _⬆️ 이미지를 클릭하면 영상을 볼 수 있습니다 ⬆️_
 
 _⬆️ 이미지를 클릭하면 영상을 볼 수 있습니다 ⬆️_
 
-eShopLite와 시맨틱 검색에서는 Semantic Kernel을 활용해 전자상거래 애플리케이션의 검색 기능을 강화합니다. Semantic Kernel은 사용자의 쿼리 맥락을 이해하고 보다 정확한 결과를 제공하는 강력한 검색 엔진을 생성하는 데 도움을 줍니다.
+eShopLite와 시맨틱 검색에서는 생성형 AI를 활용해 전자상거래 앱의 검색 기능을 향상시켰습니다. AI는 사용자의 쿼리 맥락을 이해하고 보다 정확한 결과를 제공하는 강력한 검색 엔진을 생성하는 데 도움을 줍니다.
 
 예를 들어, 사용자가 "요리에 쓸 만한 게 있나요?"라고 검색하면, 검색 엔진은 사용자가 주방용품을 찾고 있다는 것을 이해하고 가장 관련성이 높은 제품(샘플에서는 캠핑 조리기구)을 보여줍니다.
 
@@ -342,7 +342,7 @@ _⬆️ 이미지를 클릭하면 영상을 볼 수 있습니다 ⬆️_
 - Writer: Researcher와 Marketing에서 얻은 결과를 종합해 기사를 작성합니다.
 - Editor: 초안을 검토하고 수정 사항을 제안하며, 게시 준비가 되었는지 판단합니다.
 
-이 워크플로는 Semantic Kernel, Microsoft AI Extension, .NET Aspire에 의해 조율되며 관련 데이터를 통합하고 효과적인 메시징 및 검토 과정을 포함합니다.
+이 워크플로는 Microsoft AI Extension, .NET Aspire에 의해 조율되며 관련 데이터를 통합하고 효과적인 메시징 및 검토 과정을 포함합니다.
 
 ![Creative Writer Agent 아키텍처를 보여주는 이미지](../../../translated_images/creative-writer-agent-architecture.792ab7a807e66accb729c6a49d9393dd22f6060d83610cd1a187ab2b8a74efff.ko.png)
 

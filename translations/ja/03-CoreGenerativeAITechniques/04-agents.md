@@ -161,7 +161,6 @@ AIエージェントは、単なるチャットのやり取りを超えた自律
 
 - [.NETで最小限のエージェントを構築する](https://learn.microsoft.com/dotnet/ai/quickstarts/quickstart-assistants?pivots=openai)
 - [マルチエージェントのオーケストレーション](https://techcommunity.microsoft.com/blog/educatordeveloperblog/using-azure-ai-agent-service-with-autogen--semantic-kernel-to-build-a-multi-agen/4363121)
-- [セマンティック カーネル エージェント フレームワーク](https://learn.microsoft.com/semantic-kernel/frameworks/agent/?pivots=programming-language-csharp)
 - [AI Agents - Beginners Series to GenAI](https://github.com/microsoft/generative-ai-for-beginners/tree/main/17-ai-agents)
 
 ## 次のステップ

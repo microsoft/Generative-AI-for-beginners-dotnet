@@ -4,7 +4,7 @@ Si vous souhaitez utiliser Ollama pour exécuter des modèles localement dans le
 
 Vous ne voulez pas utiliser Azure OpenAI ?
 
-👉 [Pour utiliser les modèles GitHub, voici le guide qu'il vous faut](README.md)  
+👉 [Pour utiliser les Azure OpenAI, voici le guide qu'il vous faut](README.md)  
 👉 [Voici les étapes pour Ollama](getting-started-ollama.md)
 
 ## Création d'un Codespace GitHub
@@ -22,7 +22,7 @@ Créons un Codespace GitHub pour développer tout au long de ce cours.
 
 Dans le menu déroulant **Dev container configuration**, sélectionnez l'une des options suivantes :
 
-**Option 1 : C# (.NET)** : C'est l'option recommandée si vous prévoyez d'utiliser les modèles GitHub ou Azure OpenAI. Elle inclut tous les outils de développement .NET nécessaires pour le reste du cours et offre un temps de démarrage rapide.
+**Option 1 : C# (.NET)** : C'est l'option recommandée si vous prévoyez d'utiliser les Azure OpenAI ou Azure OpenAI. Elle inclut tous les outils de développement .NET nécessaires pour le reste du cours et offre un temps de démarrage rapide.
 
 **Option 2 : C# (.NET) - Ollama** : Choisissez cette option pour exécuter des modèles localement avec Ollama. Elle inclut tous les outils de développement .NET en plus d'Ollama, mais le temps de démarrage est plus lent, environ cinq minutes en moyenne. [Suivez ce guide](getting-started-ollama.md) si vous voulez utiliser Ollama.
 

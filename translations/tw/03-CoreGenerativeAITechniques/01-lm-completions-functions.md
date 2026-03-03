@@ -1,6 +1,6 @@
 # 聊天應用基礎
 
-在這節課中，我們將探索如何使用語言模型的補全功能和 .NET 中的功能來構建聊天應用。我們還會學習如何使用 Semantic Kernel 和 Microsoft Extensions AI (MEAI) 來創建聊天機器人，以及如何使用 Semantic Kernel 創建插件，讓聊天機器人根據用戶的輸入調用特定功能。
+在這節課中，我們將探索如何使用語言模型的補全功能和 .NET 中的功能來構建聊天應用。我們還會學習如何使用 Microsoft Extensions AI (MEAI) 來創建聊天機器人，以及如何創建函數調用，讓聊天機器人根據用戶的輸入調用特定功能。
 
 ---
 
@@ -22,11 +22,12 @@ _⬆️點擊圖片觀看影片⬆️_
 
 ```csharp
 
-// this example illustrates using a model hosted on GitHub Models
-IChatClient client = new ChatCompletionsClient(
-    endpoint: new Uri("https://models.github.ai/inference"),
-    new AzureKeyCredential(githubToken)) // githubToken is retrieved from the environment variables
-    .AsChatClient("gpt-4o-mini");
+// this example illustrates using a model hosted on Azure OpenAI
+IChatClient client = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient();
 
 // here we're building the prompt
 StringBuilder prompt = new StringBuilder();
@@ -44,7 +45,7 @@ Console.WriteLine(response.Message);
 
 ```
 
-> 🗒️**注意：** 這個範例使用了 GitHub Models 作為託管服務。如果您想使用 Ollama，[請參考這個範例](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama)（它實例化了一個不同的 `IChatClient`）。
+> 🗒️**注意：** 這個範例使用了 Azure OpenAI 作為託管服務。如果您想使用 Ollama，[請參考這個範例](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama)（它實例化了一個不同的 `IChatClient`）。
 >
 > 如果您想使用 Microsoft Foundry，可以使用相同的程式碼，但需要更改端點和憑證。
 
@@ -100,7 +101,6 @@ while (true)
 
 ```
 
-> 🗒️**注意：** 對於舊版 Semantic Kernel 範例，請參閱[已棄用的範例](../../../samples/deprecated/)資料夾。
 
 > 🙋 **需要幫助？**：如果遇到問題，[在倉庫中提交一個 issue](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new)。
 
@@ -148,10 +148,11 @@ _⬆️點擊圖片觀看影片⬆️_
 1. 當我們實例化 `IChatClient` 物件時，需要指定我們將使用函數調用功能。
 
     ```csharp
-    IChatClient client = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken)) // githubToken is retrieved from the environment variables
-    .AsChatClient("gpt-4o-mini")
+    IChatClient client = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()  // here we're saying that we could be invoking functions!
     .Build();

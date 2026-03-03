@@ -18,7 +18,7 @@ Cette page suit l'historique des nouvelles fonctionnalités, outils et modèles 
 ### Nouveau scénario eShopLite : Orchestration d'agents concurrents (Juin 2025)
 
 - **Nouveau scénario : Orchestration d'agents concurrents**
-- Le [dépôt eShopLite](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent) propose maintenant un scénario démontrant l'orchestration d'agents concurrents en utilisant Semantic Kernel.
+- Le [dépôt eShopLite](https://github.com/Azure-Samples/eShopLite/tree/main/scenarios/07-AgentsConcurrent) propose maintenant un scénario démontrant l'orchestration d'agents concurrents en utilisant Microsoft Agent Framework.
 - Ce scénario montre comment plusieurs agents peuvent travailler en parallèle pour analyser les requêtes utilisateur et fournir des insights précieux pour l'analyse future.
 
 ## Mai 2025
@@ -33,7 +33,7 @@ Cette page suit l'historique des nouvelles fonctionnalités, outils et modèles 
 
 ### Exécuter des modèles locaux avec AI Toolkit et Docker
 
-- **Nouveau : Exécuter des modèles locaux avec AI Toolkit et Docker** : Explorez de nouveaux exemples pour exécuter des modèles localement en utilisant [AI Toolkit pour Visual Studio Code](https://code.visualstudio.com/docs/intelligentapps/overview) et [Docker Model Runner](https://docs.docker.com/model-runner/). Le code source se trouve dans [../../../samples/CoreSamples/](../../../samples/CoreSamples/) et démontre comment utiliser Semantic Kernel et Microsoft Extensions pour AI pour interagir avec ces modèles.
+- **Nouveau : Exécuter des modèles locaux avec AI Toolkit et Docker** : Explorez de nouveaux exemples pour exécuter des modèles localement en utilisant [AI Toolkit pour Visual Studio Code](https://code.visualstudio.com/docs/intelligentapps/overview) et [Docker Model Runner](https://docs.docker.com/model-runner/). Le code source se trouve dans [../../../samples/CoreSamples/](../../../samples/CoreSamples/) et démontre comment utiliser Microsoft.Extensions.AI pour interagir avec ces modèles.
 
 ## Mars 2025
 

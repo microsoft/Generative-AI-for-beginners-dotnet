@@ -20,15 +20,16 @@ Très bien - nous allons mettre le modèle à l'épreuve et lui demander s'il pe
 
 ![Un montage montrant les deux images utilisées dans l'exemple. La première montre plusieurs coureurs, mais uniquement leurs jambes. La seconde est un reçu de restaurant allemand](../../../translated_images/example-visual-image.e2fc4ffa5f01b3d65bb9bd5d23eebf97513bf486b761209b28fea06b63a11f6c.fr.png)
 
-> 🧑‍💻**Code d'exemple** : Vous pouvez suivre [le code d'exemple ici](../../../03-CoreGenerativeAITechniques/src/Vision-01MEAI-GitHubModels).
+> 🧑‍💻**Code d'exemple** : Vous pouvez suivre [le code d'exemple ici](../../../03-CoreGenerativeAITechniques/src/Vision-01MEAI-AzureOpenAI).
 
-1. Nous utilisons MEAI et les modèles GitHub, donc instanciez le `IChatClient` comme nous l'avons fait jusqu'à présent. Commencez également à créer un historique de conversation.
+1. Nous utilisons MEAI et les Azure OpenAI, donc instanciez le `IChatClient` comme nous l'avons fait jusqu'à présent. Commencez également à créer un historique de conversation.
 
     ```csharp
-    IChatClient chatClient = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken)) // make sure to grab githubToken from the secrets or environment
-    .AsChatClient("gpt-4o-mini");
+    IChatClient chatClient = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient();
 
     List<ChatMessage> messages = 
     [

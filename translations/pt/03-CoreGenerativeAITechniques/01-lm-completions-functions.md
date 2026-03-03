@@ -1,6 +1,5 @@
 # Noções Básicas de Aplicativos de Chat
 
-Nesta lição, exploraremos os fundamentos da construção de aplicativos de chat usando conclusões de modelos de linguagem e funções no .NET. Também veremos como utilizar o Semantic Kernel e o Microsoft Extensions AI (MEAI) para criar chatbots. Além disso, aprenderemos a usar o Semantic Kernel para criar plugins, ou funcionalidades que o chatbot pode chamar com base na entrada do usuário.
 
 ---
 
@@ -22,11 +21,12 @@ Vamos ver como você pode usar conclusões de texto utilizando a biblioteca **Mi
 
 ```csharp
 
-// this example illustrates using a model hosted on GitHub Models
-IChatClient client = new ChatCompletionsClient(
-    endpoint: new Uri("https://models.github.ai/inference"),
-    new AzureKeyCredential(githubToken)) // githubToken is retrieved from the environment variables
-    .AsChatClient("gpt-4o-mini");
+// this example illustrates using a model hosted on Azure OpenAI
+IChatClient client = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient();
 
 // here we're building the prompt
 StringBuilder prompt = new StringBuilder();
@@ -44,7 +44,7 @@ Console.WriteLine(response.Message);
 
 ```
 
-> 🗒️**Nota:** Este exemplo utilizou os modelos do GitHub como serviço de hospedagem. Se você quiser usar o Ollama, [confira este exemplo](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama) (ele instancia um `IChatClient` diferente).
+> 🗒️**Nota:** Este exemplo utilizou os Azure OpenAI como serviço de hospedagem. Se você quiser usar o Ollama, [confira este exemplo](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama) (ele instancia um `IChatClient` diferente).
 >
 > Se você quiser usar o Microsoft Foundry, pode usar o mesmo código, mas será necessário alterar o endpoint e as credenciais.
 
@@ -100,7 +100,6 @@ while (true)
 
 ```
 
-> 🗒️**Nota:** Para exemplos legados do Semantic Kernel, consulte a pasta de [exemplos descontinuados](../../../samples/deprecated/).
 
 > 🙋 **Precisa de ajuda?**: Se encontrar algum problema, [abra uma issue no repositório](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new).
 
@@ -148,10 +147,11 @@ Existem alguns passos de configuração que você precisa seguir para chamar fun
 1. Ao instanciar o objeto `IChatClient`, especificaremos que usaremos a invocação de funções.
 
     ```csharp
-    IChatClient client = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken)) // githubToken is retrieved from the environment variables
-    .AsChatClient("gpt-4o-mini")
+    IChatClient client = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()  // here we're saying that we could be invoking functions!
     .Build();

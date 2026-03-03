@@ -9,7 +9,7 @@
 - As of July 2025, no standalone MEAI-native NuGet packages exist for InMemory, AzureAISearch, Qdrant, or SqliteVec vector stores. The SK connector packages remain the only implementations.
 - `Microsoft.SemanticKernel.Text.TextChunker` has no MEAI-native replacement. SK Core is still required for text chunking.
 - `AddSqliteCollection<>()` extension method is provided by `Microsoft.SemanticKernel.Connectors.SqliteVec` with no MEAI equivalent.
-- The Middleware AgentFx project has a pre-existing NU1605 package downgrade error (MEAI 10.2.0 vs 9.10.1) unrelated to connector changes.
+- The Middleware MAF project has a pre-existing NU1605 package downgrade error (MEAI 10.2.0 vs 9.10.1) unrelated to connector changes.
 
 ### PR #491 Build Fix (Feb 2026)
 - **Transitive dependencies must be tracked explicitly**: BasicChat-11FoundryClaude was missing explicit `Azure.AI.OpenAI` reference because SK provided it transitively. When removing SK, explicit references are not added automatically—manual audit required.

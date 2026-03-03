@@ -1,6 +1,6 @@
 # Conceptos Básicos de una App de Chat
 
-En esta lección, exploraremos los fundamentos para construir aplicaciones de chat utilizando completaciones de modelos de lenguaje y funciones en .NET. También veremos cómo usar Semantic Kernel y Microsoft Extensions AI (MEAI) para crear chatbots, y cómo emplear Semantic Kernel para crear plugins o funcionalidades que el chatbot puede invocar según la entrada del usuario.
+En esta lección, exploraremos los fundamentos para construir aplicaciones de chat utilizando completaciones de modelos de lenguaje y funciones en .NET. También veremos cómo usar Microsoft Extensions AI (MEAI) para crear chatbots, y cómo emplear crear funciones o funcionalidades que el chatbot puede invocar según la entrada del usuario.
 
 ---
 
@@ -22,11 +22,12 @@ Veamos cómo usarías completaciones de texto utilizando la biblioteca **Microso
 
 ```csharp
 
-// this example illustrates using a model hosted on GitHub Models
-IChatClient client = new ChatCompletionsClient(
-    endpoint: new Uri("https://models.github.ai/inference"),
-    new AzureKeyCredential(githubToken)) // githubToken is retrieved from the environment variables
-    .AsChatClient("gpt-4o-mini");
+// this example illustrates using a model hosted on Azure OpenAI
+IChatClient client = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient();
 
 // here we're building the prompt
 StringBuilder prompt = new StringBuilder();
@@ -44,7 +45,7 @@ Console.WriteLine(response.Message);
 
 ```
 
-> 🗒️**Nota:** Este ejemplo muestra modelos de GitHub como el servicio de alojamiento. Si deseas usar Ollama, [revisa este ejemplo](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama) (se instancia un `IChatClient` diferente).
+> 🗒️**Nota:** Este ejemplo muestra Azure OpenAI como el servicio de alojamiento. Si deseas usar Ollama, [revisa este ejemplo](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama) (se instancia un `IChatClient` diferente).
 >
 > Si deseas usar Microsoft Foundry, puedes usar el mismo código, pero necesitarás cambiar el endpoint y las credenciales.
 
@@ -100,7 +101,6 @@ while (true)
 
 ```
 
-> 🗒️**Nota:** Para ejemplos heredados de Semantic Kernel, consulta la carpeta de [ejemplos obsoletos](../../../samples/deprecated/).
 
 > 🙋 **¿Necesitas ayuda?**: Si encuentras algún problema, [abre un issue en el repositorio](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new).
 
@@ -148,10 +148,11 @@ Hay algunos pasos de configuración que necesitas realizar para llamar funciones
 3. Cuando instanciemos el objeto `IChatClient`, querremos especificar que usaremos invocación de funciones.
 
     ```csharp
-    IChatClient client = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken)) // githubToken is retrieved from the environment variables
-    .AsChatClient("gpt-4o-mini")
+    IChatClient client = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()  // here we're saying that we could be invoking functions!
     .Build();

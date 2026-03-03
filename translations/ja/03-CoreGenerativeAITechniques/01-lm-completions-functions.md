@@ -22,11 +22,12 @@ _⬆️画像をクリックして動画を見る⬆️_
 
 ```csharp
 
-// this example illustrates using a model hosted on GitHub Models
-IChatClient client = new ChatCompletionsClient(
-    endpoint: new Uri("https://models.github.ai/inference"),
-    new AzureKeyCredential(githubToken)) // githubToken is retrieved from the environment variables
-    .AsChatClient("gpt-4o-mini");
+// this example illustrates using a model hosted on Azure OpenAI
+IChatClient client = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient();
 
 // here we're building the prompt
 StringBuilder prompt = new StringBuilder();
@@ -44,7 +45,7 @@ Console.WriteLine(response.Message);
 
 ```
 
-> 🗒️**Note:** この例ではGitHub Modelsをホスティングサービスとして使用しています。Ollamaを使用したい場合は、[こちらの例](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama) をご覧ください（異なる `IChatClient` をインスタンス化しています）。
+> 🗒️**Note:** この例ではAzure OpenAIをホスティングサービスとして使用しています。Ollamaを使用したい場合は、[こちらの例](../../../03-CoreGenerativeAITechniques/src/BasicChat-03Ollama) をご覧ください（異なる `IChatClient` をインスタンス化しています）。
 >
 > Microsoft Foundryを使用したい場合は、同じコードを使用できますが、エンドポイントと認証情報を変更する必要があります。
 
@@ -100,7 +101,6 @@ while (true)
 
 ```
 
-> 🗒️**Note:** レガシー Semantic Kernel サンプルについては、[廃止予定のサンプル](../../../samples/deprecated/)フォルダーを参照してください。
 
 > 🙋 **Need help?**: 問題が発生した場合は、[リポジトリでIssueを開いてください](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/issues/new)。
 
@@ -148,10 +148,11 @@ MEAIを使用して関数を呼び出すには、いくつかの設定手順が�
 3. `IChatClient` オブジェクトをインスタンス化する際に、関数呼び出しを使用することを指定します。
 
     ```csharp
-    IChatClient client = new ChatCompletionsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken)) // githubToken is retrieved from the environment variables
-    .AsChatClient("gpt-4o-mini")
+    IChatClient client = new AzureOpenAIClient(
+    new Uri(config["endpoint"]),
+    new ApiKeyCredential(config["apikey"]))
+    .GetChatClient("gpt-4o-mini")
+    .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()  // here we're saying that we could be invoking functions!
     .Build();

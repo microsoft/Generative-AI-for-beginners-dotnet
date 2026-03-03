@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>MAF_BackgroundResponses_02_Tools</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>42e198fa-c0ed-4dfc-a973-8997094e73e3</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\MAF-BackgroundResponses-01-Simple\ChatClientProvider.cs" Link="ChatClientProvider.cs" />
+    <Compile Include="..\MAF-BackgroundResponses-01-Simple\ConsoleHelper.cs" Link="ConsoleHelper.cs" />
+    <Compile Include="..\MAF-BackgroundResponses-01-Simple\ResponseClientProvider.cs" Link="ResponseClientProvider.cs" />
+    <Compile Include="..\MAF-BackgroundResponses-01-Simple\StreamConsoleHelper.cs" Link="StreamConsoleHelper.cs" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Azure.AI.OpenAI" Version="2.8.0-beta.1" />
+		<PackageReference Include="Azure.Identity" Version="1.18.0" />
+		<PackageReference Include="Microsoft.Agents.AI" Version="1.0.0-preview.260108.1" />
+		<PackageReference Include="Microsoft.Agents.AI.Abstractions" Version="1.0.0-preview.260108.1" />
+		<PackageReference Include="Microsoft.Agents.AI.AzureAI" Version="1.0.0-preview.251219.1" />
+		<PackageReference Include="Microsoft.Agents.AI.OpenAI" Version="1.0.0-preview.260108.1" />
+<PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.3" />
+		<PackageReference Include="Microsoft.Extensions.AI" Version="10.3.0" />
+		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.3.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.3" />
+		<PackageReference Include="OpenAI" Version="2.8.0" />
+		<PackageReference Include="OpenTelemetry" Version="1.15.0" />
+		<PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.15.0" />
+	</ItemGroup>
+
+</Project>

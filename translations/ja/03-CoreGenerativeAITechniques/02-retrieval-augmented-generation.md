@@ -33,11 +33,9 @@ RAG アーキテクチャには主に2つのフェーズがあります: **検�
 
 ## RAGの実装
 
-以下では、Microsoft.Extension.AI と [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) および [Microsoft.SemanticKernel.Connectors.InMemory](https://www.nuget.org/packages/Microsoft.SemanticKernel.Connectors.InMemory) ライブラリを使用して RAG を実装します。
+以下では、Microsoft.Extension.AI と [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) および [Microsoft.Extensions.VectorData](https://www.nuget.org/packages/Microsoft.Extensions.VectorData.Abstractions/) ライブラリを使用して RAG を実装します。
 
 > 🧑‍💻**サンプルコード:** [こちらのサンプルコード](../../../03-CoreGenerativeAITechniques/src/RAGSimple-02MEAIVectorsMemory) を参考にしてください。
-> 
-> アーカイブされた Semantic Kernel RAG サンプルについては、[廃止予定のサンプル](../../../samples/deprecated/)フォルダーを参照してください。
 
 ### 知識ストアの準備
 
@@ -81,12 +79,12 @@ RAG アーキテクチャには主に2つのフェーズがあります: **検�
 2. 次に、知識ストア（`movieData` オブジェクト）を埋め込みに変換し、それをインメモリベクターストアに保存します。この埋め込みを作成する際には、言語モデルではなく埋め込みモデルを使用します。
 
     ```csharp
-    var endpoint = new Uri("https://models.github.ai/inference");
+    var endpoint = new Uri("https://<your-endpoint>.services.ai.azure.com/");
     var modelId = "text-embedding-3-small";
     var credential = new AzureKeyCredential(githubToken); // githubToken is retrieved from the environment variables
 
     IEmbeddingGenerator<string, Embedding<float>> generator =
-            new EmbeddingsClient(endpoint, credential)
+            new AzureOpenAIClient(new Uri(config["endpoint"]), new ApiKeyCredential(config["apikey"])).GetEmbeddingClient("text-embedding-3-small")
         .AsEmbeddingGenerator(modelId);
 
     foreach (var movie in movieData)

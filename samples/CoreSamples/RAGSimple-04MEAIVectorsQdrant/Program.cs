@@ -1,11 +1,12 @@
-﻿// This sample demonstrates RAG using GitHub Models for embeddings and Qdrant for vector storage.
+﻿// This sample demonstrates RAG using Azure OpenAI for embeddings and Qdrant for vector storage.
 // Uses the native Qdrant.Client SDK directly for vector operations.
-// To use Ollama for embeddings instead, replace the GitHub Models code with:
+// To use Ollama for embeddings instead, replace the Azure OpenAI code with:
 // new OllamaEmbeddingGenerator(new Uri("http://localhost:11434/"), "all-minilm")
 
 using Microsoft.Extensions.AI;
-using Azure;
-using Azure.AI.Inference;
+using Azure.AI.OpenAI;
+using Microsoft.Extensions.Configuration;
+using System.ClientModel;
 using Qdrant.Client;
 using Qdrant.Client.Grpc;
 
@@ -32,14 +33,15 @@ catch
 var movieData = MovieFactory<ulong>.GetMovieVectorList();
 
 // get embeddings generator and generate embeddings for movies
-var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN")
-    ?? throw new InvalidOperationException("Missing GITHUB_TOKEN environment variable. Set it to use GitHub Models.");
+var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
+var endpoint = config["endpoint"];
+var apiKey = new ApiKeyCredential(config["apikey"]);
+var embeddingModelName = config["embeddingModelName"] ?? "text-embedding-3-small";
 
 IEmbeddingGenerator<string, Embedding<float>> generator =
-    new EmbeddingsClient(
-        endpoint: new Uri("https://models.github.ai/inference"),
-        new AzureKeyCredential(githubToken))
-    .AsIEmbeddingGenerator("text-embedding-3-small");
+    new AzureOpenAIClient(new Uri(endpoint), apiKey)
+    .GetEmbeddingClient(embeddingModelName)
+    .AsIEmbeddingGenerator();
 
 // generate embeddings and upsert points into Qdrant
 var points = new List<PointStruct>();
