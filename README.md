@@ -36,7 +36,7 @@ We're constantly improving this course with the latest AI tools, models, and pra
 
   [Microsoft Agent Framework](https://devblogs.microsoft.com/foundry/microsoft-agent-framework-reaches-release-candidate/) has reached **Release Candidate** (`1.0.0-rc1`) — a framework for building agents and multi-agent systems in .NET. Our samples are being migrated to the RC APIs. In the meantime, explore 25+ Agent Framework samples covering console apps, web chat, multi-agent workflows, and Foundry integration.
 
-  👉 [Explore the Agent Framework Samples](./06-MAF/)
+  👉 [Explore the Agent Framework Samples](./samples/MAF/)
 
 - **🤖 Claude Models with Agent Framework**
 
