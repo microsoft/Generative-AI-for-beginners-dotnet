@@ -13,10 +13,14 @@ using System.ClientModel.Primitives;
 using System.Text;
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-var endpoint = config["endpoint"];
-var endpointClaude = config["endpointClaude"];
-var apiKey = config["apikey"];
-var deploymentName = config["deploymentName"];
+var endpoint = config["AzureOpenAI:Endpoint"]
+    ?? throw new InvalidOperationException("Set AzureOpenAI:Endpoint in User Secrets. See: https://github.com/microsoft/Generative-AI-for-beginners-dotnet/blob/main/01-IntroductionToGenerativeAI/setup-azure-openai.md");
+var endpointClaude = config["Claude:Endpoint"]
+    ?? throw new InvalidOperationException("Set Claude:Endpoint in User Secrets.");
+var apiKey = config["AzureOpenAI:ApiKey"]
+    ?? throw new InvalidOperationException("Set AzureOpenAI:ApiKey in User Secrets. See: https://github.com/microsoft/Generative-AI-for-beginners-dotnet/blob/main/01-IntroductionToGenerativeAI/setup-azure-openai.md");
+var deploymentName = config["Claude:Deployment"]
+    ?? throw new InvalidOperationException("Set Claude:Deployment in User Secrets.");
 
 // 1. create custom http client that will handle Claude endpoint in Azure
 var customHttpMessageHandler = new ClaudeToOpenAIMessageHandler

@@ -76,7 +76,7 @@ When you call `GetResponseAsync()`, the response object provides:
 
 3. Run the application:
    ```bash
-   dotnet run
+   dotnet run app.cs
    ```
 
 4. Type "conversation" to start chatting, then enter your questions.

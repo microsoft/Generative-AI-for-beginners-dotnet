@@ -9,8 +9,10 @@ using Microsoft.Extensions.Configuration;
 using System.Text;
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-var endpoint = config["endpoint"];
-var apiKey = config["apikey"];
+var endpoint = config["AzureOpenAI:Endpoint"]
+    ?? throw new InvalidOperationException("Set AzureOpenAI:Endpoint in User Secrets. See: https://github.com/microsoft/Generative-AI-for-beginners-dotnet/blob/main/01-IntroductionToGenerativeAI/setup-azure-openai.md");
+var apiKey = config["AzureOpenAI:ApiKey"]
+    ?? throw new InvalidOperationException("Set AzureOpenAI:ApiKey in User Secrets. See: https://github.com/microsoft/Generative-AI-for-beginners-dotnet/blob/main/01-IntroductionToGenerativeAI/setup-azure-openai.md");
 
 TornadoApi tornadoApi = new(
     serverUri: new Uri(endpoint),

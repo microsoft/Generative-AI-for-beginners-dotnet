@@ -6,18 +6,18 @@
 #:property UserSecretsId=genai-beginners-dotnet
 
 ﻿using Azure.AI.OpenAI;
+using Azure.Identity;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
-using System.ClientModel;
 using System.ComponentModel;
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 
-var endpoint = config["endpoint"];
-var apiKey = new ApiKeyCredential(config["apikey"]);
+var endpoint = config["AzureOpenAI:Endpoint"]
+    ?? throw new InvalidOperationException("Set AzureOpenAI:Endpoint in User Secrets. See: https://github.com/microsoft/Generative-AI-for-beginners-dotnet/blob/main/01-IntroductionToGenerativeAI/setup-azure-openai.md");
 var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 
-IChatClient client = new AzureOpenAIClient(new Uri(endpoint), apiKey)
+IChatClient client = new AzureOpenAIClient(new Uri(endpoint), new AzureCliCredential())
     .GetChatClient(deploymentName)
     .AsIChatClient()
     .AsBuilder()

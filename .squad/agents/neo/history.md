@@ -88,3 +88,18 @@
   - `samples/AppsWithGenAI/HFMCP.GenImage/genai-prompt.md` — 1 reference
 - **Verified clean:** No `gpt-4o-mini`, `gpt-4o`, `gpt-4-turbo`, `gpt-4.1-mini`, or `gpt-4.1` references remain outside `translations/` and `.squad/`.
 - **Skipped (per instructions):** translations/ (separate update), .squad/ (agent infrastructure), Ollama models, dall-e-3, sora, Claude, speech/audio models, appsettings.json (none found with old models).
+
+### Phase 6 — Azure OpenAI Auth Migration (AzureCliCredential)
+- **Fixed 8 file-based app.cs samples** with Azure OpenAI auth bugs:
+  - **GROUP 1 (AzureCliCredential migration, 5 files):**
+    - BasicChat-01MEAI, BasicChat-05AIFoundryModels, MEAIFunctions, MEAIFunctionsAzureOpenAI, ImageGeneration-01
+    - Changed: `config["endpoint"]` → `config["AzureOpenAI:Endpoint"] ?? throw`, `config["apikey"]` → removed, `ApiKeyCredential` → removed, `new AzureCliCredential()` auth
+    - Added: `#:package Azure.Identity@1.18.0`, `using Azure.Identity;`, helpful error messages with setup guide link
+    - Removed: `using System.ClientModel;` (no longer needed)
+  - **GROUP 2 (config key fixes only, 3 files):**
+    - BasicChat-08LLMTornado: `config["endpoint"]` → `config["AzureOpenAI:Endpoint"]`, `config["apikey"]` → `config["AzureOpenAI:ApiKey"]` (LlmTornado library requires API key string, cannot use AzureCliCredential)
+    - BasicChat-06OpenAIAPIs: `config["APIKEY"]` → `config["OpenAI:ApiKey"]` (OpenAI direct, not Azure)
+    - BasicChat-11FoundryClaude: `config["endpoint"]` → `config["AzureOpenAI:Endpoint"]`, `config["apikey"]` → `config["AzureOpenAI:ApiKey"]`, `config["endpointClaude"]` → `config["Claude:Endpoint"]`, `config["deploymentName"]` → `config["Claude:Deployment"]` (Claude adapter requires API key for x-api-key header)
+- **Reference pattern:** https://github.com/Azure-Samples/agent-skills-dotnet-demo/blob/main/src/agentSkillsDemo.cs — uses `AzureCliCredential()` for Azure OpenAI auth (no API key needed, just `az login`)
+- **Key insight:** File-based .NET 10 apps were reading wrong config keys (`endpoint`, `apikey`) but user secrets are set as `AzureOpenAI:Endpoint`, `AzureOpenAI:Deployment`. Auth should use `AzureCliCredential()` for modern Azure OpenAI SDK instead of `ApiKeyCredential`.
+- **Projects skipped (no changes needed):** BasicChat-03Ollama, BasicChat-07Ollama-gpt-oss, BasicChat-09LLMTornadoOllama, BasicChat-10ConversationHistory (Ollama only), AgentLabs-01-Simple (already uses DefaultAzureCredential)

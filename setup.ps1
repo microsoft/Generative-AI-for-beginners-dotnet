@@ -112,4 +112,4 @@ if ($endpoint) {
 Write-Host "========================================`n" -ForegroundColor Cyan
 
 Write-Host "Setup complete. Navigate to a sample folder and run:" -ForegroundColor Green
-Write-Host "  dotnet run`n"
+Write-Host "  dotnet run app.cs`n"
