@@ -4,6 +4,14 @@ MCP (Model Context Protocol) servers extend Squad with tools for external servic
 
 > **Full patterns:** Read `.squad/skills/mcp-tool-discovery/SKILL.md` for discovery patterns, domain-specific usage, and graceful degradation.
 
+## Security Considerations
+
+> ⚠️ **Important:** The sample configs below use `npx -y` to run MCP server packages without version pinning. For production use:
+> - **Pin versions:** Use `npx -y @trello/mcp-server@1.2.3` instead of bare package names
+> - **Audit packages:** Review MCP server source code before granting access to credentials
+> - **Use least-privilege tokens:** Create tokens with minimal required scopes
+> - **Consider local installs:** Install packages locally (`npm install`) rather than fetching on each run
+
 ## Config File Locations
 
 Users configure MCP servers at these locations (checked in priority order):
