@@ -111,6 +111,8 @@ To get started, you'll need:
 
 1. **Azure Developer CLI (azd)** — [Install here](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd?WT.mc_id=academic-105485-koreyst) (required for automated Azure setup)
 
+1. An **Azure account** — [Create a free account here](https://azure.microsoft.com/free/?WT.mc_id=academic-105485-koreyst) (a free account works!)
+
 And that's it.
 
 We've designed this course to be as low-friction as possible. We make use of the following to help you get started quickly:
