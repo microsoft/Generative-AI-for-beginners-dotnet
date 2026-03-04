@@ -13,18 +13,20 @@ using OpenTelemetry.Trace;
 //
 // REQUIRED - Microsoft Foundry Persistent Agent (Agent 1 - Researcher):
 //      "AZURE_FOUNDRY_PROJECT_ENDPOINT": "https://<your-project>.services.ai.azure.com/"
-//      "deploymentName": "your-model-deployment-name" (default: "gpt-5-mini")
+//
+// REQUIRED - Azure OpenAI Model Deployment:
+//      "AzureOpenAI:Deployment": "your-model-deployment-name" (default: "gpt-5-mini")
 //
 // REQUIRED - Agent 2 (Writer) - One of the following options:
 //
 //   Option A - Azure OpenAI with API Key:
 //      "endpoint": "https://<your-resource>.cognitiveservices.azure.com"
 //      "apikey": "your-azure-openai-api-key"
-//      "deploymentName": "your-deployment-name" (e.g., "gpt-4o-mini")
+//      "AzureOpenAI:Deployment": "your-deployment-name" (e.g., "gpt-5-mini")
 //
 //   Option B - Azure OpenAI with Default Credentials (fallback):
 //      "endpoint": "https://<your-resource>.cognitiveservices.azure.com"
-//      "deploymentName": "your-deployment-name"
+//      "AzureOpenAI:Deployment": "your-deployment-name"
 //      Note: Requires Azure CLI login (az login) or managed identity
 //
 // REQUIRED - Ollama (Agent 3 - Reviewer):
@@ -37,7 +39,7 @@ using OpenTelemetry.Trace;
 //
 // To set user secrets, run:
 //      dotnet user-secrets set "AZURE_FOUNDRY_PROJECT_ENDPOINT" "https://your-project.services.ai.azure.com/"
-//      dotnet user-secrets set "deploymentName" "gpt-4o-mini"
+//      dotnet user-secrets set "AzureOpenAI:Deployment" "gpt-5-mini"
 //      dotnet user-secrets set "endpoint" "https://your-resource.cognitiveservices.azure.com"
 //      dotnet user-secrets set "apikey" "your-api-key"
 //

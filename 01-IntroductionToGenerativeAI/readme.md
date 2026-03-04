@@ -138,13 +138,13 @@ Microsoft created a unified abstraction called `IChatClient` (part of Microsoft.
 
 ```csharp
 // Use OpenAI
-IChatClient client = new OpenAIChatClient("gpt-4o", apiKey);
+IChatClient client = new OpenAIChatClient("gpt-5-mini", apiKey);
 
 // Or use a local model with Ollama
 IChatClient client = new OllamaChatClient(new Uri("http://localhost:11434"), "phi4-mini");
 
 // Or use Azure OpenAI
-IChatClient client = new AzureOpenAIChatClient(endpoint, credential, "gpt-4o");
+IChatClient client = new AzureOpenAIChatClient(endpoint, credential, "gpt-5-mini");
 
 // Your application code stays exactly the same!
 var response = await client.GetResponseAsync("Hello, AI!");
@@ -199,21 +199,17 @@ _Click the image to watch the setup video_
 
 We have removed the setup barriers. Choose the path that fits your workflow:
 
-### Path A: GitHub Codespaces (Recommended)
-**Best for:** Beginners, or if you don't want to install anything.
-*   **What you get:** A full cloud IDE with .NET 9 and tools pre-installed.
-*   **Models:** Use **Azure OpenAI / Microsoft Foundry** or **Ollama**.
-*   [**Access the Codespaces Setup Guide**](./setup-github-codespaces.md)
+### Path A: Azure OpenAI / Microsoft Foundry (Recommended)
+**Best for:** Full course experience with cloud-hosted AI models.
+*   Run `./setup.ps1` to automatically provision Azure resources, or use your own existing Azure OpenAI deployment.
+*   **Models:** `gpt-5-mini` (chat) and `text-embedding-3-small` (embeddings).
+*   [**Access the Azure OpenAI Setup Guide**](./setup-azure-openai.md)
 
 ### Path B: Local Development (Ollama)
 **Best for:** Privacy, offline work, and free local capability.
 *   **What you get:** You run the "brain" on your own laptop.
 *   **Models:** **Phi-4**, **Llama 3**, etc.
 *   [**Access the Local Ollama Setup Guide**](./setup-local-ollama.md)
-
-### Path C: Azure OpenAI / Microsoft Foundry (Enterprise)
-**Best for:** Production scenarios and existing Azure users.
-*   [**Access the Azure OpenAI Setup Guide**](./setup-azure-openai.md)
 
 ---
 
@@ -261,7 +257,7 @@ If you can answer all three, you're ready for the next lesson!
 
 You have two things to do:
 
-1. **Set up your environment** using one of the paths above (we recommend GitHub Codespaces to start)
+1. **Set up your environment** using one of the paths above (we recommend running `./setup.ps1` to get started quickly)
 2. **Move to the next lesson** where you'll write your first real AI application
 
 [Continue to Lesson 2: Generative AI Techniques →](../02-GenerativeAITechniques/readme.md)

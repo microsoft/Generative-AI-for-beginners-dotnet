@@ -32,14 +32,14 @@
 
 ### 在 Microsoft Foundry 中部署語言模型
 
-現在，讓我們將 **gpt-4o-mini** 模型部署到你的 Project 中：
+現在，讓我們將 **gpt-5-mini** 模型部署到你的 Project 中：
 
 1. 在 Microsoft Foundry 入口網站中，導航到你的 Project（創建完成後應該會自動打開）。  
 1. 從左側選單中點擊 **Models and Endpoints**，然後點擊 **Deploy Model** 按鈕。  
 1. 從下拉選單中選擇 **Deploy base model**。  
-1. 在模型目錄中搜尋 **gpt-4o-mini**。  
+1. 在模型目錄中搜尋 **gpt-5-mini**。  
 1. 選擇模型並點擊 **Confirm** 按鈕。  
-1. 指定一個部署名稱（例如 "gpt-4o-mini"）。其他選項可保持默認。  
+1. 指定一個部署名稱（例如 "gpt-5-mini"）。其他選項可保持默認。  
 1. 點擊 **Deploy**，等待模型部署完成。  
 1. 部署完成後，從模型詳細資訊頁面記下 **Model Name**、**Target URI** 和 **API Key**。  
 
@@ -47,7 +47,7 @@
 
 ![模型已部署，複製模型名稱、端點 URL 和 API Key](../../../translated_images/deploytoazure-20-copymodelinfo.9797a0bffd24459c9b977d98e18a089accaece2917d2abcde4ab96db957e0fcb.tw.png)
 
-> 📝 **注意：** 端點可能類似於 `https://< your hub name>.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview`。我們需要的端點名稱僅為 `https://< your hub name >.openai.azure.com/`*。
+> 📝 **注意：** 端點可能類似於 `https://< your hub name>.openai.azure.com/openai/deployments/gpt-5-mini/chat/completions?api-version=2024-08-01-preview`。我們需要的端點名稱僅為 `https://< your hub name >.openai.azure.com/`*。
 
 ## 將 Azure AI API Key 添加到 Codespace 的 Secrets
 
@@ -114,7 +114,7 @@
 1. Create new variables to hold the model name, endpoint, and API key:
 
     ```csharp
-    var deploymentName = "< deployment name > "; // 例如 "gpt-4o-mini"
+    var deploymentName = "< deployment name > "; // 例如 "gpt-5-mini"
     var endpoint = new Uri("< endpoint >"); // 例如 "https://< your hub name >.openai.azure.com/"
     var apiKey = new ApiKeyCredential(Environment.GetEnvironmentVariable("AZURE_AI_SECRET"));
     ```

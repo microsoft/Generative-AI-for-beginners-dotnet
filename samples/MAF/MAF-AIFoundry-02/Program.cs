@@ -11,7 +11,7 @@ using System.ClientModel;
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 var endpoint = config["endpoint"];
 var apiKey = new ApiKeyCredential(config["apikey"]);
-var deploymentName = !string.IsNullOrEmpty(config["deploymentName"]) ? config["deploymentName"] : "gpt-4o-mini";
+var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 
 AIAgent agent = new AzureOpenAIClient(new Uri(endpoint), apiKey)
     .GetChatClient(deploymentName)

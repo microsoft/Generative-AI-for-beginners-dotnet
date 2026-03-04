@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 var azureFoundryProjectEndpoint = config["azureFoundryProjectEndpoint"] ?? throw new InvalidOperationException("Missing 'azureFoundryProjectEndpoint' configuration");
-var deploymentName = config["deploymentName"] ?? throw new InvalidOperationException("Missing 'deploymentName' configuration");
+var deploymentName = config["AzureOpenAI:Deployment"] ?? throw new InvalidOperationException("Missing 'AzureOpenAI:Deployment' configuration");
 var agentName = config["agentName"] ?? throw new InvalidOperationException("Missing 'agentName' configuration");
 
 AIProjectClient projectClient = new(

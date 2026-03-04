@@ -64,7 +64,71 @@ Whenever you are submitting any changes to the Generative AI for Beginners repos
 * If you are submitting a typo or documentation fix, you can combine modifications to a single PR where suitable
 * All pull requests must reference the issue number that describes the change being made
 
-## General Guidance for writing
+## Code Standards for .NET Samples
+
+When adding new code samples to this course, follow these conventions:
+
+### Shared User Secrets Configuration
+
+All samples use the **shared User Secrets ID** `genai-beginners-dotnet` for consistency. This allows learners to configure secrets once and use them across all samples.
+
+**In your project file (.csproj):**
+```xml
+<PropertyGroup>
+  <UserSecretsId>genai-beginners-dotnet</UserSecretsId>
+</PropertyGroup>
+```
+
+**Never hardcode Azure OpenAI model names.** Reference the configured deployment:
+```csharp
+// Load from configuration (will use User Secrets automatically)
+var config = new ConfigurationBuilder()
+    .AddUserSecrets(userSecretsId: "genai-beginners-dotnet")
+    .AddEnvironmentVariables()
+    .Build();
+
+string deployment = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
+string embeddingDeployment = config["AzureOpenAI:EmbeddingDeployment"] ?? "text-embedding-3-small";
+```
+
+### File-Based Console Apps (.NET 10)
+
+For simple console samples, use .NET 10 file-based programs to minimize boilerplate:
+
+**Instead of a full project folder**, create a simple `.cs` file:
+```powershell
+# Users can run directly
+dotnet run my-sample.cs
+
+# Or compile and execute
+dotnet compile my-sample.cs
+./my-sample
+```
+
+This pattern is ideal for:
+- Quick demonstrations
+- Single-file utilities
+- Lesson code walkthroughs
+
+**Place file-based samples in `samples/` with clear naming:**
+```
+samples/
+  ├── quick-completions.cs
+  ├── basic-chat.cs
+  └── embeddings-demo.cs
+```
+
+### Configuration & Secrets Best Practices
+
+- **Always use User Secrets** for local development (never commit API keys)
+- **Use environment variables** for CI/CD and containers
+- **Support both** via ConfigurationBuilder (User Secrets take precedence)
+- **Default to "gpt-5-mini"** for chat, **"text-embedding-3-small"** for embeddings
+- **Reference docs:** [Azure Resource Setup Guide](./01-IntroductionToGenerativeAI/setup-azure-openai.md)
+
+---
+
+## General Guidance for Writing
 
 - Ensure that all your URLs are wrapped in square brackets followed by a parenthesis with no extra spaces around them or inside them `[]()`.
 - Ensure that any relative link (i.e. links to other files and folders in the repository) starts with a `./` referring to a file or a folder located in the current working directory or a `../` referring to a file or a folder located in a parent working directory.

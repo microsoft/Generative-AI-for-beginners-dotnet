@@ -6,7 +6,7 @@
     <RootNamespace>AgentLabs_03_OpenAPIs</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UserSecretsId>a64c8380-199f-443a-bd85-412406011e1e</UserSecretsId>
+    <UserSecretsId>genai-beginners-dotnet</UserSecretsId>
   </PropertyGroup>
 
 	<ItemGroup>

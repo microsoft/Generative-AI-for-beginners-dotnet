@@ -49,7 +49,7 @@ using Azure.AI.Inference;
 IChatClient chatClient = new AzureOpenAIClient(
         new Uri(config["endpoint"]),
         new ApiKeyCredential(config["apikey"]))
-        .GetChatClient("gpt-4o")
+        .GetChatClient("gpt-5-mini")
         .AsIChatClient();  // Must be a vision-capable model
 
 // Load an image from file

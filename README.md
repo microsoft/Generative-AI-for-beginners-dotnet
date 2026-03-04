@@ -109,6 +109,8 @@ To get started, you'll need:
 
 1. A basic understanding of **.NET development**. Learn more about .NET [here](https://dotnet.microsoft.com/learn/dotnet/what-is-dotnet).
 
+1. **Azure Developer CLI (azd)** — [Install here](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd?WT.mc_id=academic-105485-koreyst) (required for automated Azure setup)
+
 And that's it.
 
 We've designed this course to be as low-friction as possible. We make use of the following to help you get started quickly:
@@ -119,6 +121,73 @@ We've designed this course to be as low-friction as possible. We make use of the
 Then when you're ready to expand we also have guides for:
 
 - Using **Ollama** to run models locally on your hardware for enhanced privacy and control.
+
+---
+
+## 🚀 Quick Start with Azure
+
+### Automated Setup (Recommended)
+
+For first-time Azure users, we provide an automated setup script that deploys all necessary resources:
+
+```powershell
+# Navigate to the repository root
+cd Generative-AI-for-beginners-dotnet
+
+# Run the setup script
+./setup.ps1
+```
+
+This will:
+
+- ✅ Deploy Azure OpenAI resources (gpt-5-mini, text-embedding-3-small)
+- ✅ Create necessary storage and support services
+- ✅ Configure .NET User Secrets automatically
+- ✅ Display your Azure OpenAI endpoint and credentials
+
+**For detailed instructions, see [Azure Resource Setup Guide](./01-IntroductionToGenerativeAI/setup-azure-openai.md?WT.mc_id=academic-105485-koreyst).**
+
+---
+
+## Manual Setup for Existing Azure Accounts
+
+If you already have an Azure OpenAI account and the models deployed, configure secrets directly:
+
+```powershell
+# Set shared secrets (used by all samples)
+dotnet user-secrets set --id genai-beginners-dotnet "AzureOpenAI:Endpoint" "https://<your-region>.openai.azure.com/"
+dotnet user-secrets set --id genai-beginners-dotnet "AzureOpenAI:Deployment" "gpt-5-mini"
+dotnet user-secrets set --id genai-beginners-dotnet "AzureOpenAI:EmbeddingDeployment" "text-embedding-3-small"
+```
+
+Then navigate to any sample and run:
+
+```powershell
+cd samples/CoreSamples/BasicChat-01MEAI
+dotnet run app.cs
+```
+
+> **Note:** Azure OpenAI samples use `az login` for authentication. Run `az login` before running any Azure sample.
+
+**For detailed manual setup options, see [Azure Resource Setup Guide](./01-IntroductionToGenerativeAI/setup-azure-openai.md?WT.mc_id=academic-105485-koreyst).**
+
+---
+
+## 🧹 Resource Cleanup
+
+When you're done with the course, clean up Azure resources to avoid ongoing charges:
+
+```powershell
+./cleanup.ps1
+```
+
+This will:
+
+- Delete all Azure resources
+- Clear local configuration
+- Remove User Secrets
+
+**Learn more in [Azure Resource Setup Guide - Cleanup](./01-IntroductionToGenerativeAI/setup-azure-openai.md#resource-cleanup?WT.mc_id=academic-105485-koreyst).**
 
 ## 🤝 Want to Help?
 
@@ -140,7 +209,6 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 We have a lot of other content to help your learning journey. Check out:
 
-
 ### Generative AI Series
 
 [![Generative AI for Beginners](https://img.shields.io/badge/Generative%20AI%20for%20Beginners-8B5CF6?style=for-the-badge&labelColor=E5E7EB&color=8B5CF6)](https://github.com/microsoft/generative-ai-for-beginners?WT.mc_id=academic-105485-koreyst)
@@ -159,7 +227,6 @@ We have a lot of other content to help your learning journey. Check out:
 [![Web Dev for Beginners](https://img.shields.io/badge/Web%20Dev%20for%20Beginners-EC4899?style=for-the-badge&labelColor=E5E7EB&color=EC4899)](https://aka.ms/webdev-beginners?WT.mc_id=academic-105485-koreyst)
 [![IoT for Beginners](https://img.shields.io/badge/IoT%20for%20Beginners-14B8A6?style=for-the-badge&labelColor=E5E7EB&color=14B8A6)](https://aka.ms/iot-beginners?WT.mc_id=academic-105485-koreyst)
 [![XR Development for Beginners](https://img.shields.io/badge/XR%20Development%20for%20Beginners-38BDF8?style=for-the-badge&labelColor=E5E7EB&color=38BDF8)](https://github.com/microsoft/xr-development-for-beginners?WT.mc_id=academic-105485-koreyst)
-
 
 ## Getting Help
 

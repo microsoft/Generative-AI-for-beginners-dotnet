@@ -29,7 +29,7 @@ class AppConfigurationService
     /// <summary>
     /// Gets the deployment name for the AI model, defaults to "gpt-5-mini".
     /// </summary>
-    public string DeploymentName => _configuration["deploymentName"] ?? "gpt-5-mini";
+    public string DeploymentName => _configuration["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 
     /// <summary>
     /// <summary>

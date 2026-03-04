@@ -6,7 +6,7 @@
     <RootNamespace>MAF_MultiAgents</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UserSecretsId>6aa0a957-e8bb-4bb9-bde3-b1de465309a7</UserSecretsId>
+    <UserSecretsId>genai-beginners-dotnet</UserSecretsId>
   </PropertyGroup>
 
 	<ItemGroup>

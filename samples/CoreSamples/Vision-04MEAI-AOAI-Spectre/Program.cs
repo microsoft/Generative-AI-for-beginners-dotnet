@@ -50,7 +50,7 @@ SpectreConsoleOutput.DisplayTitleH3("Video Analysis using OpenCV done!");
 SpectreConsoleOutput.DisplayTitleH1("Video Analysis using Microsoft.Extensions.AI and Azure OpenAI");
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 var endpoint = config["AZURE_OPENAI_ENDPOINT"];
-var modelId = config["AZURE_OPENAI_MODEL"];
+var modelId = config["AzureOpenAI:Deployment"];
 
 // create client using API Keys
 var apiKey = config["AZURE_OPENAI_APIKEY"];

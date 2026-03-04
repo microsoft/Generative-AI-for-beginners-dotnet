@@ -9,14 +9,14 @@ using System.ClientModel;
 //      "HF_API_KEY": " your HF token"
 //      "endpoint": "https://<endpoint>.services.ai.azure.com/",
 //      "apikey": " your key ",
-//      "deploymentName": "a deployment name, ie: gpt-4.1-mini"
+//      "deploymentName": "a deployment name, ie: gpt-5-mini"
 
 var builder = Host.CreateApplicationBuilder(args);
 var config = builder.Configuration
     .AddEnvironmentVariables()
     .AddUserSecrets<Program>()
     .Build();
-var deploymentName = config["deploymentName"] ?? "gpt-4.1-mini"; // Default to gpt-4.1-mini if not specified 
+var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 
 // create MCP Client using Hugging Face endpoint
 var hfHeaders = new Dictionary<string, string>

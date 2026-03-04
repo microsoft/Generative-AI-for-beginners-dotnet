@@ -28,7 +28,7 @@ Ok - vamos colocar o modelo à prova e perguntar quantos sapatos vermelhos estã
     IChatClient chatClient = new AzureOpenAIClient(
     new Uri(config["endpoint"]),
     new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-4o-mini")
+    .GetChatClient("gpt-5-mini")
     .AsIChatClient();
 
     List<ChatMessage> messages = 

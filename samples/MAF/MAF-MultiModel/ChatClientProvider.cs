@@ -22,7 +22,7 @@ class ChatClientProvider
             .AddEnvironmentVariables()
             .AddUserSecrets<Program>()
             .Build();
-        var deploymentName = config["deploymentName"] ?? "gpt-5-mini";
+        var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 
         var endpoint = config["endpoint"];
 

@@ -1,3 +1,6 @@
+#:package LlmTornado@3.8.53
+#:package Microsoft.Extensions.Configuration.UserSecrets@10.0.3
+
 ﻿using LlmTornado;
 using LlmTornado.Chat;
 using LlmTornado.Chat.Models;

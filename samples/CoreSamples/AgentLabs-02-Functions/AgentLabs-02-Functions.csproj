@@ -6,7 +6,7 @@
     <RootNamespace>AgentLabs_02</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UserSecretsId>606b5f90-3722-4f5b-bda9-d69669847184</UserSecretsId>
+    <UserSecretsId>genai-beginners-dotnet</UserSecretsId>
   </PropertyGroup>
 
 	<ItemGroup>

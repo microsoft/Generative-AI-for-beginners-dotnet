@@ -16,7 +16,7 @@ public class AIConfiguration
 
     public string HuggingFaceMCPServer { get; set; } = "https://huggingface.co/mcp";
 
-    public string ModelName { get; set; } = "gpt-4.1-mini";
+    public string ModelName { get; set; } = "gpt-5-mini";
 
     // Optional GitHub token setting
     public string? GitHubToken { get; set; } = string.Empty;

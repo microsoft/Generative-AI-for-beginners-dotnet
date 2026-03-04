@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 var openai = builder.AddAzureOpenAIClient("openai");
-openai.AddChatClient("gpt-4o-mini")
+openai.AddChatClient("gpt-5-mini")
     .UseFunctionInvocation()
     .UseOpenTelemetry(configure: c =>
         c.EnableSensitiveData = builder.Environment.IsDevelopment());
@@ -22,7 +22,7 @@ builder.AddAIAgent("ChatAgent", (sp, key) =>
 {
     // Get required services
     var logger = sp.GetRequiredService<ILogger<Program>>();
-    logger.LogInformation("Configuring AI Agent with key '{Key}' for model '{Model}'", key, "gpt-4o-mini");
+    logger.LogInformation("Configuring AI Agent with key '{Key}' for model '{Model}'", key, "gpt-5-mini");
     var chatClient = sp.GetRequiredService<IChatClient>();
 
     // Create and configure the AI agent

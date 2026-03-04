@@ -45,14 +45,14 @@
 ## Project-Specific Conventions
 - All lessons include a short video, code sample, and step-by-step guide.
 - The code samples can be found at the `samples` folder
-- Use `02-SetupDevEnvironment/getting-started-azure-openai.md` and `getting-started-ollama.md` for setup.
+- Use `01-IntroductionToGenerativeAI/setup-azure-openai.md` and `01-IntroductionToGenerativeAI/setup-local-ollama.md` for setup.
 - AI integration is always via service abstraction (never direct model calls in UI or game logic).
 - Use key bindings in sample apps to toggle AI modes, save screenshots, and display FPS (see app README for details).
 - For translations, update the corresponding `translations/<lang>/README.md`.
 - Maintain existing code structure and organization—place new samples in the correct lesson folder
 
 ## Integration Points & External Dependencies
-- **Azure OpenAI:** Requires endpoint, model name, and API key (see `02-SetupDevEnvironment/getting-started-azure-openai.md`).
+- **Azure OpenAI:** Requires endpoint, model name, and API key (see `01-IntroductionToGenerativeAI/setup-azure-openai.md`).
 - **Ollama:** Requires local server running and model pulled (see `getting-started-ollama.md`).
 
 

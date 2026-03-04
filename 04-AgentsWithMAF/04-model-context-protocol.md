@@ -169,7 +169,7 @@ var tools = await mcpClient.ListToolsAsync();
 IChatClient client = new AzureOpenAIClient(
         new Uri(config["endpoint"]),
         new ApiKeyCredential(config["apikey"]))
-        .GetChatClient("gpt-4o-mini")
+        .GetChatClient("gpt-5-mini")
         .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()

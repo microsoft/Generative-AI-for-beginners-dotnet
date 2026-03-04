@@ -28,7 +28,7 @@ _⬆️点击图片观看视频⬆️_
     IChatClient chatClient = new AzureOpenAIClient(
     new Uri(config["endpoint"]),
     new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-4o-mini")
+    .GetChatClient("gpt-5-mini")
     .AsIChatClient();
 
     List<ChatMessage> messages = 

@@ -14,6 +14,7 @@ using System.Text.Json;
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 var tenantid = config["aifoundryproject_tenantid"];
 var aifoundryproject_endpoint = config["aifoundryproject_endpoint"];
+var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 
 var options = new DefaultAzureCredentialOptions
 {
@@ -34,7 +35,7 @@ OpenApiToolDefinition parksinformationOpenApiTool = new(
 
 // create Agent
 var agentResponse = await persistentClient.Administration.CreateAgentAsync(
-   model: "gpt-4.1",
+   model: deploymentName,
     name: "SDK Test Agent - Vacation",
     instructions: @"You are a travel assistant. Use the provided functions to help answer questions. 
 Customize your responses to the user's preferences as much as possible. Write and run code to answer user questions.",

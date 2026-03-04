@@ -6,7 +6,7 @@
     <RootNamespace>MAF_BackgroundResponses_02_Tools</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UserSecretsId>42e198fa-c0ed-4dfc-a973-8997094e73e3</UserSecretsId>
+    <UserSecretsId>genai-beginners-dotnet</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

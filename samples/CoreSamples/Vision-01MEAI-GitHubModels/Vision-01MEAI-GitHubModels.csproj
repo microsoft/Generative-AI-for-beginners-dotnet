@@ -5,7 +5,7 @@
     <RootNamespace>ConsoleMEAI_04_Vision</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UserSecretsId>191519e3-ce5a-467f-bb4b-ace51d47e99c</UserSecretsId>
+    <UserSecretsId>genai-beginners-dotnet</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Azure.AI.OpenAI" Version="2.8.0-beta.1" />

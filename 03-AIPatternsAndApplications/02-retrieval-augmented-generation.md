@@ -109,7 +109,7 @@ using Azure.AI.Inference;
 IChatClient chatClient = new AzureOpenAIClient(
         new Uri(config["endpoint"]),
         new ApiKeyCredential(config["apikey"]))
-        .GetChatClient("gpt-4o-mini")
+        .GetChatClient("gpt-5-mini")
         .AsIChatClient();
 
 // Embedding generator for retrieval

@@ -28,7 +28,7 @@ Très bien - nous allons mettre le modèle à l'épreuve et lui demander s'il pe
     IChatClient chatClient = new AzureOpenAIClient(
     new Uri(config["endpoint"]),
     new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-4o-mini")
+    .GetChatClient("gpt-5-mini")
     .AsIChatClient();
 
     List<ChatMessage> messages = 

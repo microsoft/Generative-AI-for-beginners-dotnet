@@ -26,7 +26,7 @@ Veamos cómo usarías completaciones de texto utilizando la biblioteca **Microso
 IChatClient client = new AzureOpenAIClient(
     new Uri(config["endpoint"]),
     new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-4o-mini")
+    .GetChatClient("gpt-5-mini")
     .AsIChatClient();
 
 // here we're building the prompt
@@ -151,7 +151,7 @@ Hay algunos pasos de configuración que necesitas realizar para llamar funciones
     IChatClient client = new AzureOpenAIClient(
     new Uri(config["endpoint"]),
     new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-4o-mini")
+    .GetChatClient("gpt-5-mini")
     .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()  // here we're saying that we could be invoking functions!

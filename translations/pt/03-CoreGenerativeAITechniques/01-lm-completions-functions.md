@@ -25,7 +25,7 @@ Vamos ver como você pode usar conclusões de texto utilizando a biblioteca **Mi
 IChatClient client = new AzureOpenAIClient(
     new Uri(config["endpoint"]),
     new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-4o-mini")
+    .GetChatClient("gpt-5-mini")
     .AsIChatClient();
 
 // here we're building the prompt
@@ -150,7 +150,7 @@ Existem alguns passos de configuração que você precisa seguir para chamar fun
     IChatClient client = new AzureOpenAIClient(
     new Uri(config["endpoint"]),
     new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-4o-mini")
+    .GetChatClient("gpt-5-mini")
     .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()  // here we're saying that we could be invoking functions!

@@ -63,7 +63,7 @@ using System.ClientModel;
 IChatClient chatClient = new AzureOpenAIClient(
         new Uri(config["endpoint"]),
         new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-4o-mini")
+    .GetChatClient("gpt-5-mini")
     .AsIChatClient();
 
 // Create an agent from the chat client
@@ -156,7 +156,7 @@ using Azure.Identity;
 AIAgent agent = new AzureOpenAIClient(
     new Uri("https://your-resource.openai.azure.com/"),
     new AzureCliCredential())
-    .GetChatClient("gpt-4o-mini")
+    .GetChatClient("gpt-5-mini")
     .CreateAIAgent(instructions: "You are a helpful assistant.");
 ```
 
@@ -169,7 +169,7 @@ using System.ClientModel;
 IChatClient chatClient = new AzureOpenAIClient(
         new Uri(config["endpoint"]),
         new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-4o-mini")
+    .GetChatClient("gpt-5-mini")
     .AsIChatClient();
 
 AIAgent agent = chatClient.CreateAIAgent(

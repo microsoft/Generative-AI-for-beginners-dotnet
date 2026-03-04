@@ -70,7 +70,7 @@ Here's how to get a text completion with Microsoft.Extensions.AI:
 IChatClient client = new AzureOpenAIClient(
         new Uri(config["endpoint"]),
         new ApiKeyCredential(config["apikey"]))
-        .GetChatClient("gpt-4o-mini")
+        .GetChatClient("gpt-5-mini")
         .AsIChatClient();
 
 var response = await client.GetResponseAsync(
@@ -84,7 +84,7 @@ Console.WriteLine(response.Text);
 | Line | What It Does |
 |------|-------------|
 | `AzureOpenAIClient` | Creates a connection to Azure OpenAI / Microsoft Foundry |
-| `.GetChatClient("gpt-4o-mini")` | Selects the deployment model |
+| `.GetChatClient("gpt-5-mini")` | Selects the deployment model |
 | `.AsIChatClient()` | Wraps it in the standard `IChatClient` interface |
 | `GetResponseAsync(prompt)` | Sends your prompt, waits for the response |
 | `response.Text` | The AI's generated text |
@@ -109,7 +109,7 @@ To run the sample code, you'll need to:
 5. Run the application:
 
    ```bash
-   dotnet run
+   dotnet run app.cs
    ```
 
 ### A Practical Example: Sentiment Analysis
@@ -297,7 +297,7 @@ using Microsoft.Extensions.AI;
 IChatClient client = new AzureOpenAIClient(
         new Uri(config["endpoint"]),
         new ApiKeyCredential(config["apikey"]))
-        .GetChatClient("gpt-4o-mini")
+        .GetChatClient("gpt-5-mini")
         .AsIChatClient();
 
 // Initialize conversation with a system message
@@ -346,7 +346,7 @@ The same code works with any `IChatClient` provider. Just change the client inst
 IChatClient client = new AzureOpenAIClient(
     new Uri(config["endpoint"]),
     new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-4o-mini")
+    .GetChatClient("gpt-5-mini")
     .AsIChatClient();
 
 // Option 2: Ollama (local)

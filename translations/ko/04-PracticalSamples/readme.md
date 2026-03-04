@@ -61,11 +61,11 @@ if (builder.ExecutionContext.IsPublishMode)
     // Add the Azure Application Insights for monitoring
     var appInsights = builder.AddAzureApplicationInsights("appInsights");
     // Add the Azure OpenAI for the chat and embeddings deployments, the embedding is used for the vector entities
-    var chatDeploymentName = "gpt-4o-mini";
+    var chatDeploymentName = "gpt-5-mini";
     var embeddingsDeploymentName = "text-embedding-ada-002";
     var aoai = builder.AddAzureOpenAI("openai")
         .AddDeployment(new AzureOpenAIDeployment(chatDeploymentName,
-        "gpt-4o-mini",
+        "gpt-5-mini",
         "2024-07-18",
         "GlobalStandard",
         10))
@@ -94,7 +94,7 @@ builder.AddAzureOpenAIClient(azureOpenAiClientName);
 // get azure openai client and create Chat client from aspire hosting configuration
 builder.Services.AddSingleton<ChatClient>(serviceProvider =>
 {
-    var chatDeploymentName = "gpt-4o-mini";
+    var chatDeploymentName = "gpt-5-mini";
     var logger = serviceProvider.GetService<ILogger<Program>>()!;
     logger.LogInformation($"Chat client configuration, modelId: {chatDeploymentName}");
     ChatClient chatClient = null;

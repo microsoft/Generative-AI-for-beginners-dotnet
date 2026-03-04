@@ -1,0 +1,7 @@
+name: genai-beginners-dotnet
+metadata:
+  template: genai-beginners-dotnet
+infra:
+  provider: bicep
+  path: infra
+  module: main
