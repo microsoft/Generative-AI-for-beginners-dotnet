@@ -43,6 +43,35 @@
 
 ---
 
+### 4. .NET 10 File-Based App Migration Pattern
+
+**Author:** Neo (Phase 4)  
+**Date:** 2026-03-04  
+**Status:** Implemented  
+**Scope:** 13 Tier 1 CoreSamples
+
+**Decision:** Use file-based app format (`app.cs` with `#:package` and `#:property` directives) for simple console samples. Multi-file projects merge all .cs types into single `app.cs`. Ollama-only projects omit `#:property UserSecretsId`. All package versions preserved from original .csproj files.
+
+**Rationale:** .NET 10 supports `dotnet run app.cs` without .csproj files, simplifying the developer experience for basic samples. Complex projects (Aspire, web, multi-project) remain as traditional .csproj projects.
+
+**Implications:** Future simple samples should follow file-based pattern. Multi-file projects require merging all types into single `app.cs`. Aspire, web, and complex multi-project samples continue as traditional .csproj.
+
+---
+
+### 5. Centralized Azure Resource Setup Documentation
+
+**Author:** Trinity (Phases 5–6)  
+**Date:** 2026-03-04  
+**Status:** Implemented
+
+**Decision:** Create single comprehensive setup guide at `docs/azure-resource-setup.md` rather than scattering docs. Consolidates all paths (automated via `setup.ps1`, manual, existing accounts) in one place. Enforce `UserSecretsId = genai-beginners-dotnet` in CONTRIBUTING.MD. Default models: `gpt-5-mini` (chat), `text-embedding-3-small` (embeddings).
+
+**Rationale:** Setup is prerequisite for all lessons, not specific to any single lesson. Single source of truth reduces documentation drift. Students configure secrets once, reuse across all samples.
+
+**Outcome:** `docs/azure-resource-setup.md` (12,700+ words), CONTRIBUTING.MD updated with "Code Standards for .NET Samples," root README enhanced with setup guidance. Existing translation files remain independent; translators update at own pace.
+
+**Team Impact:** Translation volunteers can update language-specific setup docs independently using English guide as source. New sample contributors must follow CONTRIBUTING.MD standards.
+
 ## Governance
 
 - All meaningful changes require team consensus

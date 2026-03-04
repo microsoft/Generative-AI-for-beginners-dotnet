@@ -55,3 +55,11 @@
   - Ollama model names (`llama3.2`) in MAF-MultiModel, MAF-MultiAgents
   - Image generation models (dall-e-3) in MAF-ImageGen-01/02
   - ServiceDefaults .csproj files (no UserSecretsId, no Azure references)
+
+### Phase 4 — .NET 10 File-Based App Migration + setup-secrets.ps1
+- **Migrated 13 CoreSamples to .NET 10 file-based apps** (`dotnet run app.cs`, no .csproj):
+  - BasicChat-01MEAI, BasicChat-03Ollama, BasicChat-05AIFoundryModels, BasicChat-06OpenAIAPIs, BasicChat-07Ollama-gpt-oss, BasicChat-08LLMTornado, BasicChat-09LLMTornadoOllama, BasicChat-10ConversationHistory, BasicChat-11FoundryClaude, ImageGeneration-01, MEAIFunctions, MEAIFunctionsAzureOpenAI, AgentLabs-01-Simple
+- **Migration pattern**: Read .csproj for PackageReferences → create `app.cs` with `#:package Name@Version` directives + `#:property UserSecretsId=genai-beginners-dotnet` (where applicable) + original Program.cs code → delete .csproj, Program.cs, bin/, obj/
+- **Ollama-only projects** (BasicChat-03Ollama, BasicChat-07Ollama-gpt-oss, BasicChat-09LLMTornadoOllama) do NOT include `#:property UserSecretsId`
+- **Multi-file merge**: BasicChat-11FoundryClaude had `ClaudeToOpenAIMessageHandler.cs` merged into `app.cs` after the top-level statements (file-based apps compile single file only)
+- **Created `setup-secrets.ps1`** at repo root: manual user secrets configuration script (alternative to `azd`). Takes `-Endpoint` (required), `-Deployment` (default: gpt-5-mini), `-EmbeddingDeployment` (default: text-embedding-3-small). Sets secrets under ID `genai-beginners-dotnet`.
