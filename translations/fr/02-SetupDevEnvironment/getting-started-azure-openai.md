@@ -32,14 +32,14 @@ Pour utiliser les modèles Microsoft Foundry, vous devez créer un hub et un pro
 
 ### Déployer un modèle de langage dans Microsoft Foundry
 
-Déployons maintenant un modèle **gpt-4o-mini** dans votre projet :
+Déployons maintenant un modèle **gpt-5-mini** dans votre projet :
 
 1. Dans le portail Microsoft Foundry, accédez à votre projet (il devrait s'ouvrir automatiquement après sa création).  
 1. Cliquez sur **Modèles et Points de terminaison** dans le menu de gauche, puis sur le bouton **Déployer un modèle**.  
 1. Sélectionnez **Déployer un modèle de base** dans le menu déroulant.  
-1. Recherchez **gpt-4o-mini** dans le catalogue de modèles.  
+1. Recherchez **gpt-5-mini** dans le catalogue de modèles.  
 1. Sélectionnez le modèle et cliquez sur le bouton **Confirmer**.  
-1. Spécifiez un nom de déploiement (par ex., "gpt-4o-mini"). Vous pouvez laisser les autres options par défaut.  
+1. Spécifiez un nom de déploiement (par ex., "gpt-5-mini"). Vous pouvez laisser les autres options par défaut.  
 1. Cliquez sur **Déployer** et attendez que le modèle soit provisionné.  
 1. Une fois déployé, notez le **Nom du modèle**, l'**URI cible**, et la **Clé API** depuis la page des détails du modèle.  
 
@@ -47,7 +47,7 @@ Déployons maintenant un modèle **gpt-4o-mini** dans votre projet :
 
 ![Modèle déployé, copiez le nom du modèle, l'URL du point de terminaison et la clé API](../../../translated_images/deploytoazure-20-copymodelinfo.9797a0bffd24459c9b977d98e18a089accaece2917d2abcde4ab96db957e0fcb.fr.png)
 
-> 📝 **Note :** Le point de terminaison pourrait ressembler à `https://< your hub name>.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview`. Le nom du point de terminaison dont nous avons besoin est uniquement `https://< your hub name >.openai.azure.com/`*.
+> 📝 **Note :** Le point de terminaison pourrait ressembler à `https://< your hub name>.openai.azure.com/openai/deployments/gpt-5-mini/chat/completions?api-version=2024-08-01-preview`. Le nom du point de terminaison dont nous avons besoin est uniquement `https://< your hub name >.openai.azure.com/`*.
 
 ## Ajouter la clé API Azure AI aux secrets de votre Codespace
 
@@ -114,7 +114,7 @@ Mettons à jour le code pour utiliser le modèle que vous venez de déployer. To
 1. Create new variables to hold the model name, endpoint, and API key:
 
     ```csharp
-    var deploymentName = "< deployment name > "; // ex. "gpt-4o-mini"
+    var deploymentName = "< deployment name > "; // ex. "gpt-5-mini"
     var endpoint = new Uri("< endpoint >"); // ex. "https://< your hub name >.openai.azure.com/"
     var apiKey = new ApiKeyCredential(Environment.GetEnvironmentVariable("AZURE_AI_SECRET"));
     ```

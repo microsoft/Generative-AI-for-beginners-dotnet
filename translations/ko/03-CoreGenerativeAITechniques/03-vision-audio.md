@@ -28,7 +28,7 @@ _⬆️이미지를 클릭하면 영상을 시청할 수 있습니다⬆️_
     IChatClient chatClient = new AzureOpenAIClient(
     new Uri(config["endpoint"]),
     new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-4o-mini")
+    .GetChatClient("gpt-5-mini")
     .AsIChatClient();
 
     List<ChatMessage> messages = 

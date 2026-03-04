@@ -26,7 +26,7 @@ Schauen wir uns an, wie Sie Textvervollständigungen mit der **Microsoft.Extensi
 IChatClient client = new AzureOpenAIClient(
     new Uri(config["endpoint"]),
     new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-4o-mini")
+    .GetChatClient("gpt-5-mini")
     .AsIChatClient();
 
 // here we're building the prompt
@@ -151,7 +151,7 @@ Es gibt ein paar Schritte, die Sie einrichten müssen, um Funktionen mit MEAI au
     IChatClient client = new AzureOpenAIClient(
     new Uri(config["endpoint"]),
     new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-4o-mini")
+    .GetChatClient("gpt-5-mini")
     .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()  // here we're saying that we could be invoking functions!

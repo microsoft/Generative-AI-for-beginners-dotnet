@@ -2,7 +2,7 @@
 
 This console application demonstrates the Microsoft Agent Framework with **3 different agents** working together in a sequential workflow:
 
-1. **Researcher Agent** (Azure OpenAI) - Uses Azure OpenAI with `gpt-4o-mini` to research topics
+1. **Researcher Agent** (Azure OpenAI) - Uses Azure OpenAI with `gpt-5-mini` to research topics
 2. **Writer Agent** (Azure OpenAI) - Uses Azure OpenAI to write content based on research
 3. **Reviewer Agent** (Ollama) - Uses local Ollama with `llama3.2` model to review and provide feedback
 
@@ -30,7 +30,7 @@ Set up the following user secrets or environment variables:
 # For Agent 1 & 2 (Researcher and Writer using Azure OpenAI)
 dotnet user-secrets set "endpoint" "https://<your-endpoint>.services.ai.azure.com/"
 dotnet user-secrets set "apikey" "your-azure-api-key"
-dotnet user-secrets set "deploymentName" "gpt-4o-mini"  # Optional, defaults to gpt-5-mini
+dotnet user-secrets set "deploymentName" "gpt-5-mini"  # Optional, defaults to gpt-5-mini
 ```
 
 ## How to Run

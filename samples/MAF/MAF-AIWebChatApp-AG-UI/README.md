@@ -68,7 +68,7 @@ Built with .NET Aspire for:
 
 - [.NET 9 SDK](https://dotnet.microsoft.com/download) or later
 - Access to **Azure OpenAI** with:
-  - `gpt-4o-mini` (or `gpt-5-mini`) model deployment
+  - `gpt-5-mini` model deployment
   - `text-embedding-3-small` model deployment
 - Visual Studio 2022 or Visual Studio Code with C# extensions
 
@@ -315,7 +315,7 @@ The AG-UI feature enables a distributed agent architecture where:
 **"OpenAI API errors"**
 
 - Verify your Azure OpenAI connection string is correct
-- Ensure both model deployments (`gpt-4o-mini` and `text-embedding-3-small`) exist
+- Ensure both model deployments (`gpt-5-mini` and `text-embedding-3-small`) exist
 - Check your Azure OpenAI quota and rate limits
 
 **"Build errors with Microsoft.Agents.AI packages"**

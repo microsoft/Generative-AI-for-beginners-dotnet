@@ -32,14 +32,14 @@ Um Microsoft Foundry-Modelle zu verwenden, musst du ein Hub und ein Projekt im M
 
 ### Bereitstellen eines Sprachmodells in Microsoft Foundry
 
-Jetzt stellen wir ein **gpt-4o-mini**-Modell in deinem Projekt bereit:
+Jetzt stellen wir ein **gpt-5-mini**-Modell in deinem Projekt bereit:
 
 1. Navigiere im Microsoft Foundry-Portal zu deinem Projekt (es sollte sich nach der Erstellung automatisch öffnen).
 1. Klicke im Menü auf der linken Seite auf **Modelle und Endpunkte** und dann auf die Schaltfläche **Modell bereitstellen**.
 1. Wähle **Basis-Modell bereitstellen** aus dem Dropdown-Menü.
-1. Suche im Modellkatalog nach **gpt-4o-mini**.
+1. Suche im Modellkatalog nach **gpt-5-mini**.
 1. Wähle das Modell aus und klicke auf die Schaltfläche **Bestätigen**.
-1. Gib einen Bereitstellungsnamen ein (z. B. "gpt-4o-mini"). Du kannst die restlichen Optionen so lassen, wie sie sind.
+1. Gib einen Bereitstellungsnamen ein (z. B. "gpt-5-mini"). Du kannst die restlichen Optionen so lassen, wie sie sind.
 1. Klicke auf **Bereitstellen** und warte, bis das Modell bereitgestellt ist.
 1. Sobald das Modell bereitgestellt wurde, notiere dir den **Modellnamen**, die **Ziel-URI** und den **API-Schlüssel** auf der Detailseite des Modells.
 
@@ -47,7 +47,7 @@ Jetzt stellen wir ein **gpt-4o-mini**-Modell in deinem Projekt bereit:
 
 ![Modell bereitgestellt, Modellname, Endpunkt-URL und API-Schlüssel kopieren](../../../translated_images/deploytoazure-20-copymodelinfo.9797a0bffd24459c9b977d98e18a089accaece2917d2abcde4ab96db957e0fcb.de.png)
 
-> 📝 **Hinweis:** Der Endpunkt könnte ähnlich wie `https://< your hub name>.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview` aussehen. Der benötigte Endpunktname ist nur `https://< your hub name >.openai.azure.com/`*.
+> 📝 **Hinweis:** Der Endpunkt könnte ähnlich wie `https://< your hub name>.openai.azure.com/openai/deployments/gpt-5-mini/chat/completions?api-version=2024-08-01-preview` aussehen. Der benötigte Endpunktname ist nur `https://< your hub name >.openai.azure.com/`*.
 
 ## Hinzufügen des Azure AI API-Schlüssels zu den Secrets deiner Codespace-Umgebung
 
@@ -114,7 +114,7 @@ Aktualisieren wir nun den Code, um das neu bereitgestellte Modell zu verwenden. 
 1. Create new variables to hold the model name, endpoint, and API key:
 
     ```csharp
-    var deploymentName = "< deployment name > "; // z. B. "gpt-4o-mini"
+    var deploymentName = "< deployment name > "; // z. B. "gpt-5-mini"
     var endpoint = new Uri("< endpoint >"); // z. B. "https://< your hub name >.openai.azure.com/"
     var apiKey = new ApiKeyCredential(Environment.GetEnvironmentVariable("AZURE_AI_SECRET"));
     ```

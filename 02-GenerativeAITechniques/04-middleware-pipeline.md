@@ -32,7 +32,7 @@ The `ChatClientBuilder` creates a pipeline of middleware around your base chat c
 IChatClient client = new AzureOpenAIClient(
         new Uri(config["endpoint"]),
         new ApiKeyCredential(config["apikey"]))
-        .GetChatClient("gpt-4o-mini")
+        .GetChatClient("gpt-5-mini")
         .AsIChatClient()
     .AsBuilder()                    // Start building the pipeline
     .UseFunctionInvocation()        // Add function calling
@@ -67,7 +67,7 @@ var cache = new MemoryDistributedCache(
 IChatClient client = new AzureOpenAIClient(
         new Uri(config["endpoint"]),
         new ApiKeyCredential(config["apikey"]))
-        .GetChatClient("gpt-4o-mini")
+        .GetChatClient("gpt-5-mini")
         .AsIChatClient()
     .AsBuilder()
     .UseDistributedCache(cache)
@@ -129,7 +129,7 @@ var tracerProvider = OpenTelemetry.Sdk.CreateTracerProviderBuilder()
 IChatClient client = new AzureOpenAIClient(
         new Uri(config["endpoint"]),
         new ApiKeyCredential(config["apikey"]))
-        .GetChatClient("gpt-4o-mini")
+        .GetChatClient("gpt-5-mini")
         .AsIChatClient()
     .AsBuilder()
     .UseOpenTelemetry(
@@ -177,7 +177,7 @@ The real power comes from combining multiple middleware:
 IChatClient client = new AzureOpenAIClient(
         new Uri(config["endpoint"]),
         new ApiKeyCredential(config["apikey"]))
-        .GetChatClient("gpt-4o-mini")
+        .GetChatClient("gpt-5-mini")
         .AsIChatClient()
     .AsBuilder()
     .UseDistributedCache(cache)           // Check cache first
@@ -205,10 +205,10 @@ Set default options for all requests:
 
 ```csharp
 IChatClient client = new AzureOpenAIClient(new Uri(config["endpoint"]), new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-4o-mini")
+    .GetChatClient("gpt-5-mini")
     .AsIChatClient()
     .AsBuilder()
-    .ConfigureOptions(options => 
+    .ConfigureOptions(options =>
     {
         options.Temperature = 0.7f;
         options.MaxOutputTokens = 1000;
@@ -367,7 +367,7 @@ builder.Services.AddChatClient(services =>
     return new AzureOpenAIClient(
         new Uri(config["endpoint"]),
         new ApiKeyCredential(config["apikey"]))
-        .GetChatClient("gpt-4o-mini")
+        .GetChatClient("gpt-5-mini")
         .AsIChatClient()
         .AsBuilder()
         .UseDistributedCache(cache)
@@ -421,7 +421,7 @@ builder.Services.AddChatClient(services =>
     return new AzureOpenAIClient(
         new Uri(config["endpoint"]),
         new ApiKeyCredential(config["apikey"]))
-        .GetChatClient("gpt-4o-mini")
+        .GetChatClient("gpt-5-mini")
         .AsIChatClient()
         .AsBuilder()
         .ConfigureOptions(opt => opt.Temperature = 0.7f)

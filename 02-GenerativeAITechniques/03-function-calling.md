@@ -77,7 +77,7 @@ var chatOptions = new ChatOptions
 IChatClient client = new AzureOpenAIClient(
         new Uri(config["endpoint"]),
         new ApiKeyCredential(config["apikey"]))
-        .GetChatClient("gpt-4o-mini")
+        .GetChatClient("gpt-5-mini")
         .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()  // Enable automatic function calling
@@ -382,7 +382,7 @@ var chatOptions = new ChatOptions
 };
 
 IChatClient client = new AzureOpenAIClient(new Uri(config["endpoint"]), new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-4o-mini")
+    .GetChatClient("gpt-5-mini")
     .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()

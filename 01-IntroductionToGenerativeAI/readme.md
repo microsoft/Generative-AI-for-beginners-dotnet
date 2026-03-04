@@ -138,13 +138,13 @@ Microsoft created a unified abstraction called `IChatClient` (part of Microsoft.
 
 ```csharp
 // Use OpenAI
-IChatClient client = new OpenAIChatClient("gpt-4o", apiKey);
+IChatClient client = new OpenAIChatClient("gpt-5-mini", apiKey);
 
 // Or use a local model with Ollama
 IChatClient client = new OllamaChatClient(new Uri("http://localhost:11434"), "phi4-mini");
 
 // Or use Azure OpenAI
-IChatClient client = new AzureOpenAIChatClient(endpoint, credential, "gpt-4o");
+IChatClient client = new AzureOpenAIChatClient(endpoint, credential, "gpt-5-mini");
 
 // Your application code stays exactly the same!
 var response = await client.GetResponseAsync("Hello, AI!");
@@ -203,7 +203,7 @@ We have removed the setup barriers. Choose the path that fits your workflow:
 **Best for:** Beginners, or if you don't want to install anything.
 *   **What you get:** A full cloud IDE with .NET 9 and tools pre-installed.
 *   **Models:** Use **Azure OpenAI / Microsoft Foundry** or **Ollama**.
-*   [**Access the Azure Resource Setup Guide**](../docs/azure-resource-setup.md)
+*   [**Access the Azure Resource Setup Guide**](./setup-azure-openai.md)
 
 ### Path B: Local Development (Ollama)
 **Best for:** Privacy, offline work, and free local capability.

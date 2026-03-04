@@ -63,3 +63,28 @@
 - **Ollama-only projects** (BasicChat-03Ollama, BasicChat-07Ollama-gpt-oss, BasicChat-09LLMTornadoOllama) do NOT include `#:property UserSecretsId`
 - **Multi-file merge**: BasicChat-11FoundryClaude had `ClaudeToOpenAIMessageHandler.cs` merged into `app.cs` after the top-level statements (file-based apps compile single file only)
 - **Created `setup-secrets.ps1`** at repo root: manual user secrets configuration script (alternative to `azd`). Takes `-Endpoint` (required), `-Deployment` (default: gpt-5-mini), `-EmbeddingDeployment` (default: text-embedding-3-small). Sets secrets under ID `genai-beginners-dotnet`.
+
+### Phase 5 — Repo-Wide Model Consistency Sweep
+- **Comprehensive sweep** across all `.cs`, `.md`, `.json`, `.yaml` files for old model references (`gpt-4o-mini`, `gpt-4o`, `gpt-4-turbo`, `gpt-4.1-mini`, `gpt-4.1`).
+- **CS files fixed (3):**
+  - `samples/AppsWithGenAI/HFMCP.GenImage/HFMCP.GenImage.Web/Services/IAIConfigurationService.cs` — default ModelName `gpt-4.1-mini` → `gpt-5-mini`
+  - `samples/CoreSamples/BasicChat-08LLMTornado/app.cs` — console output label `gpt-4.1-mini` → `gpt-5-mini`
+  - `samples/CoreSamples/MCP-01-HuggingFace/Program.cs` — comment example `gpt-4.1-mini` → `gpt-5-mini`
+- **MD files fixed (14):**
+  - `01-IntroductionToGenerativeAI/readme.md` — 2 code examples (`gpt-4o` → `gpt-5-mini`)
+  - `01-IntroductionToGenerativeAI/setup-azure-openai.md` — 4 references updated (deployment name, secrets commands)
+  - `02-GenerativeAITechniques/01-text-completions-chat.md` — 4 code examples + table entry
+  - `02-GenerativeAITechniques/02-streaming-structured-output.md` — 1 code example
+  - `02-GenerativeAITechniques/03-function-calling.md` — 2 code examples
+  - `02-GenerativeAITechniques/04-middleware-pipeline.md` — 7 code examples
+  - `03-AIPatternsAndApplications/02-retrieval-augmented-generation.md` — 1 code example
+  - `03-AIPatternsAndApplications/03-vision-document-understanding.md` — 1 code example (`gpt-4o` → `gpt-5-mini`)
+  - `04-AgentsWithMAF/01-building-first-agent.md` — 3 code examples
+  - `04-AgentsWithMAF/03-multi-agent-workflows.md` — 2 code examples (`gpt-4o` + `gpt-4o-mini` → `gpt-5-mini`)
+  - `04-AgentsWithMAF/04-model-context-protocol.md` — 1 code example
+  - `samples/MAF/MAF-MultiModel/README.md` — 2 references (description + secrets command)
+  - `samples/MAF/MAF-AIWebChatApp-AG-UI/README.md` — 2 references (prereqs + troubleshooting)
+  - `samples/MAF/MAF-MultiAgents/README.md` — 4 secrets commands
+  - `samples/AppsWithGenAI/HFMCP.GenImage/genai-prompt.md` — 1 reference
+- **Verified clean:** No `gpt-4o-mini`, `gpt-4o`, `gpt-4-turbo`, `gpt-4.1-mini`, or `gpt-4.1` references remain outside `translations/` and `.squad/`.
+- **Skipped (per instructions):** translations/ (separate update), .squad/ (agent infrastructure), Ollama models, dall-e-3, sora, Claude, speech/audio models, appsettings.json (none found with old models).

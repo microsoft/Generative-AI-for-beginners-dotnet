@@ -33,5 +33,5 @@ prompt.AppendLine("I found this product based on the other reviews. It worked fo
 chat.AppendUserInput(prompt.ToString());
 string? response = await chat.GetResponse();
 
-Console.WriteLine("Azure OpenAI gpt-4.1-mini:");
+Console.WriteLine("Azure OpenAI gpt-5-mini:");
 Console.WriteLine(response);

@@ -9,7 +9,7 @@ using System.ClientModel;
 //      "HF_API_KEY": " your HF token"
 //      "endpoint": "https://<endpoint>.services.ai.azure.com/",
 //      "apikey": " your key ",
-//      "deploymentName": "a deployment name, ie: gpt-4.1-mini"
+//      "deploymentName": "a deployment name, ie: gpt-5-mini"
 
 var builder = Host.CreateApplicationBuilder(args);
 var config = builder.Configuration

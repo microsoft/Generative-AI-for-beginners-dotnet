@@ -26,7 +26,7 @@ _⬆️이미지를 클릭하여 비디오를 시청하세요⬆️_
 IChatClient client = new AzureOpenAIClient(
     new Uri(config["endpoint"]),
     new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-4o-mini")
+    .GetChatClient("gpt-5-mini")
     .AsIChatClient();
 
 // here we're building the prompt
@@ -151,7 +151,7 @@ MEAI로 함수를 호출하려면 몇 가지 설정 단계가 필요합니다.
     IChatClient client = new AzureOpenAIClient(
     new Uri(config["endpoint"]),
     new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-4o-mini")
+    .GetChatClient("gpt-5-mini")
     .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()  // here we're saying that we could be invoking functions!

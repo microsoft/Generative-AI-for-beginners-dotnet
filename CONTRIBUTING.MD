@@ -124,7 +124,7 @@ samples/
 - **Use environment variables** for CI/CD and containers
 - **Support both** via ConfigurationBuilder (User Secrets take precedence)
 - **Default to "gpt-5-mini"** for chat, **"text-embedding-3-small"** for embeddings
-- **Reference docs:** [Azure Resource Setup Guide](../docs/azure-resource-setup.md)
+- **Reference docs:** [Azure Resource Setup Guide](./01-IntroductionToGenerativeAI/setup-azure-openai.md)
 
 ---
 

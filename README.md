@@ -144,7 +144,7 @@ This will:
 - ✅ Configure .NET User Secrets automatically
 - ✅ Display your Azure OpenAI endpoint and credentials
 
-**For detailed instructions, see [Azure Resource Setup Guide](./docs/azure-resource-setup.md?WT.mc_id=academic-105485-koreyst).**
+**For detailed instructions, see [Azure Resource Setup Guide](./01-IntroductionToGenerativeAI/setup-azure-openai.md?WT.mc_id=academic-105485-koreyst).**
 
 ---
 
@@ -167,7 +167,7 @@ cd samples/CoreSamples/BasicChat-01MEAI
 dotnet run
 ```
 
-**For detailed manual setup options, see [Azure Resource Setup Guide](./docs/azure-resource-setup.md?WT.mc_id=academic-105485-koreyst).**
+**For detailed manual setup options, see [Azure Resource Setup Guide](./01-IntroductionToGenerativeAI/setup-azure-openai.md?WT.mc_id=academic-105485-koreyst).**
 
 ---
 
@@ -184,7 +184,7 @@ This will:
 - Clear local configuration
 - Remove User Secrets
 
-**Learn more in [Azure Resource Setup Guide - Cleanup](./docs/azure-resource-setup.md#resource-cleanup?WT.mc_id=academic-105485-koreyst).**
+**Learn more in [Azure Resource Setup Guide - Cleanup](./01-IntroductionToGenerativeAI/setup-azure-openai.md#resource-cleanup?WT.mc_id=academic-105485-koreyst).**
 
 ## 🤝 Want to Help?
 

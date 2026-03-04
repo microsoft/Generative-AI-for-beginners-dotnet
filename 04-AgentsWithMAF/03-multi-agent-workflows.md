@@ -213,7 +213,7 @@ var azureClient = new AzureOpenAIClient(
     new AzureCliCredential());
 
 IChatClient azureChatClient = azureClient
-    .GetChatClient("gpt-4o")
+    .GetChatClient("gpt-5-mini")
     .AsIChatClient();
 
 AIAgent researcher = azureChatClient.CreateAIAgent(
@@ -224,7 +224,7 @@ AIAgent researcher = azureChatClient.CreateAIAgent(
 IChatClient githubChatClient = new AzureOpenAIClient(
         new Uri(config["endpoint"]),
         new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-4o-mini")
+    .GetChatClient("gpt-5-mini")
     .AsIChatClient();
 
 AIAgent writer = githubChatClient.CreateAIAgent(

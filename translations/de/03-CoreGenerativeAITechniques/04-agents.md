@@ -62,7 +62,7 @@ Wir erstellen einen Agenten mit einer einzigen Aufgabe, der als Tutor für Mathe
 
     ```csharp
     Agent tutorAgent = (await client.CreateAgentAsync(
-    model: "gpt-4o",
+    model: "gpt-5-mini",
     name: "Math Tutor",
     instructions: "You are a personal math tutor. Write and run code to answer math questions.",
     tools: [new CodeInterpreterToolDefinition()])).Value;

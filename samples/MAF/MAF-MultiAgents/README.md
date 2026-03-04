@@ -75,7 +75,7 @@ cd 06-MAF/src/MAF-MultiAgents
 dotnet user-secrets set "AZURE_FOUNDRY_PROJECT_ENDPOINT" "https://<your-project>.services.ai.azure.com/"
 
 # Set your model deployment name (default: gpt-5-mini)
-dotnet user-secrets set "deploymentName" "gpt-4o-mini"
+dotnet user-secrets set "deploymentName" "gpt-5-mini"
 ```
 
 #### Required: Writer Agent Configuration (Agent 2)
@@ -86,7 +86,7 @@ Choose **ONE** of the following options:
 
 ```bash
 
-dotnet user-secrets set "deploymentName" "gpt-4o-mini"
+dotnet user-secrets set "deploymentName" "gpt-5-mini"
 ```
 
 To create a GitHub token:
@@ -101,14 +101,14 @@ To create a GitHub token:
 ```bash
 dotnet user-secrets set "endpoint" "https://<your-resource>.cognitiveservices.azure.com"
 dotnet user-secrets set "apikey" "your-azure-openai-api-key"
-dotnet user-secrets set "deploymentName" "gpt-4o-mini"
+dotnet user-secrets set "deploymentName" "gpt-5-mini"
 ```
 
 **Option C: Azure OpenAI with Managed Identity** (Fallback)
 
 ```bash
 dotnet user-secrets set "endpoint" "https://<your-resource>.cognitiveservices.azure.com"
-dotnet user-secrets set "deploymentName" "gpt-4o-mini"
+dotnet user-secrets set "deploymentName" "gpt-5-mini"
 ```
 
 Note: This option requires Azure CLI login (`az login`) or a configured managed identity.
