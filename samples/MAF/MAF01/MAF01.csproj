@@ -5,7 +5,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UserSecretsId>639dc622-5360-4c6c-9387-f7a3b151d179</UserSecretsId>
+    <UserSecretsId>genai-beginners-dotnet</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

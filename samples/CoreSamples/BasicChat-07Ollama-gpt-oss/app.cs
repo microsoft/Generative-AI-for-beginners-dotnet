@@ -1,3 +1,6 @@
+#:package Microsoft.Extensions.AI.Ollama@9.7.0-preview.1.25356.2
+#:package Microsoft.Extensions.Configuration.UserSecrets@10.0.3
+
 ﻿using Microsoft.Extensions.AI;
 using System.Text;
 

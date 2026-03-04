@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 var azureFoundryProjectEndpoint = config["azureFoundryProjectEndpoint"];
-var deploymentName = config["deploymentName"];
+var deploymentName = config["AzureOpenAI:Deployment"];
 var assistantId = config["assistantId"];
 
 var persistentAgentClient = new PersistentAgentsClient(

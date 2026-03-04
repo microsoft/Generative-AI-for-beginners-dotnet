@@ -6,7 +6,7 @@
     <RootNamespace>MAF_ImageGen_02</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UserSecretsId>9107d9be-3f98-427b-8f05-c07fc5f7e16f</UserSecretsId>
+    <UserSecretsId>genai-beginners-dotnet</UserSecretsId>
   </PropertyGroup>
 
 	<ItemGroup>

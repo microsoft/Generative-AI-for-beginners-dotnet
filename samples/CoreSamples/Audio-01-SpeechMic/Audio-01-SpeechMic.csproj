@@ -6,7 +6,7 @@
     <RootNamespace>Audio_01_SpeechMic</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UserSecretsId>c6196591-f697-451c-9fb0-8d39d7989ba5</UserSecretsId>
+    <UserSecretsId>genai-beginners-dotnet</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

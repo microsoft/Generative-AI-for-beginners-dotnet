@@ -10,7 +10,7 @@ using OpenTelemetry.Trace;
 // Azure Foundry/OpenAI (for Agent 1 and Agent 2):
 //      "endpoint": "https://<endpoint>.services.ai.azure.com/"
 //      "apikey": "your key"
-//      "deploymentName": "a deployment name, ie: gpt-4o-mini"
+//      "AzureOpenAI:Deployment": "a deployment name, ie: gpt-5-mini"
 // Ollama should be running locally on http://localhost:11434/ with llama3.2 model (for Agent 3)
 
 Console.WriteLine("=== Microsoft Agent Framework - Multi-Model Orchestration Demo ===");

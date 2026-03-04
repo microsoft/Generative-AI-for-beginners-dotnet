@@ -203,7 +203,7 @@ We have removed the setup barriers. Choose the path that fits your workflow:
 **Best for:** Beginners, or if you don't want to install anything.
 *   **What you get:** A full cloud IDE with .NET 9 and tools pre-installed.
 *   **Models:** Use **Azure OpenAI / Microsoft Foundry** or **Ollama**.
-*   [**Access the Codespaces Setup Guide**](./setup-github-codespaces.md)
+*   [**Access the Azure Resource Setup Guide**](../docs/azure-resource-setup.md)
 
 ### Path B: Local Development (Ollama)
 **Best for:** Privacy, offline work, and free local capability.

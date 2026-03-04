@@ -1,3 +1,7 @@
+#:package Microsoft.Extensions.AI.Ollama@9.7.0-preview.1.25356.2
+#:package Microsoft.Extensions.Configuration.UserSecrets@10.0.3
+#:property UserSecretsId=genai-beginners-dotnet
+
 using Microsoft.Extensions.AI;
 
 // Create chat client (using Ollama as an example, but this works with any IChatClient)

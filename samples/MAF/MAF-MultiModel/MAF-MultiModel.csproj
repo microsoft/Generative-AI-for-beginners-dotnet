@@ -6,7 +6,7 @@
 		<RootNamespace>MAF_MultiModel</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<UserSecretsId>c8b3f2d4-6a7e-4b9c-8d1e-2f3a4b5c6d7e</UserSecretsId>
+		<UserSecretsId>genai-beginners-dotnet</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -6,7 +6,7 @@
 		<RootNamespace>MCP_01_HuggingFace</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<UserSecretsId>ad64421d-fac3-407f-be06-cbd6b4f22a1b</UserSecretsId>
+		<UserSecretsId>genai-beginners-dotnet</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>

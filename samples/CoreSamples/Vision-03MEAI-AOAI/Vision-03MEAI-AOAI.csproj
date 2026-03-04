@@ -6,7 +6,7 @@
 		<RootNamespace>ConsoleMEAI_07_AOAI</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-	  <UserSecretsId>2f7f814e-fb6e-41de-8503-e8f65f8f01db</UserSecretsId>
+	  <UserSecretsId>genai-beginners-dotnet</UserSecretsId>
   </PropertyGroup>
 
 	<ItemGroup>

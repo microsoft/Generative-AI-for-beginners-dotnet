@@ -6,7 +6,7 @@
     <RootNamespace>SpectreConsole_SK_01_AOAI</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UserSecretsId>593898e1-3bba-416a-98be-44399b990c92</UserSecretsId>
+    <UserSecretsId>genai-beginners-dotnet</UserSecretsId>
   </PropertyGroup>
 
 	<ItemGroup>

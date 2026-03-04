@@ -1,3 +1,9 @@
+#:package Azure.AI.Agents.Persistent@1.2.0-beta.8
+#:package Azure.AI.Projects@1.1.0
+#:package Azure.Identity@1.18.0
+#:package Microsoft.Extensions.Configuration.UserSecrets@10.0.3
+#:property UserSecretsId=genai-beginners-dotnet
+
 ﻿using Azure;
 using Azure.AI.Agents.Persistent;
 using Azure.Identity;
@@ -13,6 +19,7 @@ using Microsoft.Extensions.Configuration;
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 var tenantid = config["aifoundryproject_tenantid"];
 var aifoundryproject_endpoint = config["aifoundryproject_endpoint"];
+var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 
 var options = new DefaultAzureCredentialOptions
 {
@@ -25,7 +32,7 @@ PersistentAgentsClient persistentClient = new(aifoundryproject_endpoint, new Def
 
 // create Agent
 var agentResponse = await persistentClient.Administration.CreateAgentAsync(
-   model: "gpt-4.1",
+   model: deploymentName,
     name: "Math Tutor",
     instructions: "You are a personal math tutor. Write and run code to answer math questions.",
     tools: [new CodeInterpreterToolDefinition()]);

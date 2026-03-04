@@ -6,7 +6,7 @@
 		<RootNamespace>MAF_FoundryClaude_Persisting_01</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<UserSecretsId>c9a4d3b2-8e5f-4a0b-9c3d-2f6e7g8h9i0j</UserSecretsId>
+		<UserSecretsId>genai-beginners-dotnet</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>

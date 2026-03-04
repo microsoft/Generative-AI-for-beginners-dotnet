@@ -6,7 +6,7 @@
 		<RootNamespace>AIToolkit_02_MEAI_Chat</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<UserSecretsId>98c8b3fa-47d5-4bd5-a28b-777d98132a72</UserSecretsId>
+		<UserSecretsId>genai-beginners-dotnet</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>

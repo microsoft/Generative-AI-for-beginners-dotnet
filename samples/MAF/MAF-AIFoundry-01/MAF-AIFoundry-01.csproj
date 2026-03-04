@@ -6,7 +6,7 @@
     <RootNamespace>MAF_AIFoundry_01</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UserSecretsId>a9a2e9c9-feee-4f3b-99b6-b926c6ad8718</UserSecretsId>
+    <UserSecretsId>genai-beginners-dotnet</UserSecretsId>
   </PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Azure.AI.OpenAI" Version="2.8.0-beta.1" />

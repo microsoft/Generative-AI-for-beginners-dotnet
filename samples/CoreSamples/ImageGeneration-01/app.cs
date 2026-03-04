@@ -1,3 +1,7 @@
+#:package Microsoft.Extensions.Configuration.UserSecrets@10.0.3
+#:package Azure.AI.OpenAI@2.8.0-beta.1
+#:property UserSecretsId=genai-beginners-dotnet
+
 ﻿using Microsoft.Extensions.Configuration;
 using Azure.AI.OpenAI;
 using OpenAI.Images;

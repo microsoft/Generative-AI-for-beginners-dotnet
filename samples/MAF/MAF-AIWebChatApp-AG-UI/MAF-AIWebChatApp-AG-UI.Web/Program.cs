@@ -30,7 +30,7 @@ builder.Services.AddHttpClient<AgentsService>(
 builder.Services.AddActivatedKeyedSingleton<AIAgent>("ChatAgent", (sp, key) =>
 {
     var logger = sp.GetRequiredService<ILogger<Program>>();
-    logger.LogInformation("Configuring AI Agent with key '{Key}' for model '{Model}'", key, "gpt-4o-mini");
+    logger.LogInformation("Configuring AI Agent with key '{Key}' for model '{Model}'", key, "gpt-5-mini");
 
     // Create frontend tools
     var searchFunctions = sp.GetRequiredService<SearchFunctions>();

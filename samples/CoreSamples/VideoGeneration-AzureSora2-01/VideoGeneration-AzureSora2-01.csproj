@@ -6,7 +6,7 @@
     <RootNamespace>VideoGeneration_AzureSora2_01</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UserSecretsId>e089e76d-6a51-475d-bad5-aa56fc3d19d8</UserSecretsId>
+    <UserSecretsId>genai-beginners-dotnet</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

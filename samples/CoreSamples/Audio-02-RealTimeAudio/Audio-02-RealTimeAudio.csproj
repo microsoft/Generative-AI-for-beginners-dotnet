@@ -6,7 +6,7 @@
     <RootNamespace>console_with_mic</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UserSecretsId>24ec6f60-3132-4977-a40e-6f64314d49c3</UserSecretsId>
+    <UserSecretsId>genai-beginners-dotnet</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

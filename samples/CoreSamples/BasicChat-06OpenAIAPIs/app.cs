@@ -1,16 +1,21 @@
+#:package Microsoft.Extensions.AI@10.3.0
+#:package Microsoft.Extensions.AI.OpenAI@10.3.0
+#:package Microsoft.Extensions.Configuration@10.0.3
+#:package Microsoft.Extensions.Configuration.Json@10.0.3
+#:package Microsoft.Extensions.Configuration.UserSecrets@10.0.3
+#:package OpenAI@2.8.0
+#:property UserSecretsId=genai-beginners-dotnet
+
 ﻿using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 using System.Text;
 
-var openai_apikey = Environment.GetEnvironmentVariable("APIKEY");
-if (string.IsNullOrEmpty(openai_apikey))
-{
-    var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-    openai_apikey = config["APIKEY"];
-}
+var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
+var openai_apikey = Environment.GetEnvironmentVariable("APIKEY") ?? config["APIKEY"];
+var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 
 IChatClient client =
-    new OpenAI.Chat.ChatClient("gpt-4.1-mini", openai_apikey)
+    new OpenAI.Chat.ChatClient(deploymentName, openai_apikey)
     .AsIChatClient();
 
 // here we're building the prompt

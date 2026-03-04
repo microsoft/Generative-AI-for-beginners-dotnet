@@ -109,6 +109,8 @@ To get started, you'll need:
 
 1. A basic understanding of **.NET development**. Learn more about .NET [here](https://dotnet.microsoft.com/learn/dotnet/what-is-dotnet).
 
+1. **Azure Developer CLI (azd)** — [Install here](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd?WT.mc_id=academic-105485-koreyst) (required for automated Azure setup)
+
 And that's it.
 
 We've designed this course to be as low-friction as possible. We make use of the following to help you get started quickly:
@@ -119,6 +121,70 @@ We've designed this course to be as low-friction as possible. We make use of the
 Then when you're ready to expand we also have guides for:
 
 - Using **Ollama** to run models locally on your hardware for enhanced privacy and control.
+
+---
+
+## 🚀 Quick Start with Azure
+
+### Automated Setup (Recommended)
+
+For first-time Azure users, we provide an automated setup script that deploys all necessary resources:
+
+```powershell
+# Navigate to the repository root
+cd Generative-AI-for-beginners-dotnet
+
+# Run the setup script
+./setup.ps1
+```
+
+This will:
+- ✅ Deploy Azure OpenAI resources (gpt-5-mini, text-embedding-3-small)
+- ✅ Create necessary storage and support services
+- ✅ Configure .NET User Secrets automatically
+- ✅ Display your Azure OpenAI endpoint and credentials
+
+**For detailed instructions, see [Azure Resource Setup Guide](./docs/azure-resource-setup.md?WT.mc_id=academic-105485-koreyst).**
+
+---
+
+## Manual Setup for Existing Azure Accounts
+
+If you already have an Azure OpenAI account, configure secrets directly:
+
+```powershell
+# Set shared secrets (used by all samples)
+$endpoint = "https://<your-region>.openai.azure.com/"
+
+dotnet user-secrets set --id genai-beginners-dotnet "AzureOpenAI:Endpoint" $endpoint
+dotnet user-secrets set --id genai-beginners-dotnet "AzureOpenAI:Deployment" "gpt-5-mini"
+dotnet user-secrets set --id genai-beginners-dotnet "AzureOpenAI:EmbeddingDeployment" "text-embedding-3-small"
+```
+
+Then navigate to any sample and run:
+```powershell
+cd samples/CoreSamples/BasicChat-01MEAI
+dotnet run
+```
+
+**For detailed manual setup options, see [Azure Resource Setup Guide](./docs/azure-resource-setup.md?WT.mc_id=academic-105485-koreyst).**
+
+---
+
+## 🧹 Resource Cleanup
+
+When you're done with the course, clean up Azure resources to avoid ongoing charges:
+
+```powershell
+./cleanup.ps1
+```
+
+This will:
+- Delete all Azure resources
+- Clear local configuration
+- Remove User Secrets
+
+**Learn more in [Azure Resource Setup Guide - Cleanup](./docs/azure-resource-setup.md#resource-cleanup?WT.mc_id=academic-105485-koreyst).**
 
 ## 🤝 Want to Help?
 
