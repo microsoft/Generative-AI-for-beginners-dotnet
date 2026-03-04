@@ -139,6 +139,7 @@ cd Generative-AI-for-beginners-dotnet
 ```
 
 This will:
+
 - ✅ Deploy Azure OpenAI resources (gpt-5-mini, text-embedding-3-small)
 - ✅ Create necessary storage and support services
 - ✅ Configure .NET User Secrets automatically
@@ -150,18 +151,17 @@ This will:
 
 ## Manual Setup for Existing Azure Accounts
 
-If you already have an Azure OpenAI account, configure secrets directly:
+If you already have an Azure OpenAI account and the models deployed, configure secrets directly:
 
 ```powershell
 # Set shared secrets (used by all samples)
-$endpoint = "https://<your-region>.openai.azure.com/"
-
-dotnet user-secrets set --id genai-beginners-dotnet "AzureOpenAI:Endpoint" $endpoint
+dotnet user-secrets set --id genai-beginners-dotnet "AzureOpenAI:Endpoint" "https://<your-region>.openai.azure.com/"
 dotnet user-secrets set --id genai-beginners-dotnet "AzureOpenAI:Deployment" "gpt-5-mini"
 dotnet user-secrets set --id genai-beginners-dotnet "AzureOpenAI:EmbeddingDeployment" "text-embedding-3-small"
 ```
 
 Then navigate to any sample and run:
+
 ```powershell
 cd samples/CoreSamples/BasicChat-01MEAI
 dotnet run
@@ -180,6 +180,7 @@ When you're done with the course, clean up Azure resources to avoid ongoing char
 ```
 
 This will:
+
 - Delete all Azure resources
 - Clear local configuration
 - Remove User Secrets
@@ -206,7 +207,6 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 We have a lot of other content to help your learning journey. Check out:
 
-
 ### Generative AI Series
 
 [![Generative AI for Beginners](https://img.shields.io/badge/Generative%20AI%20for%20Beginners-8B5CF6?style=for-the-badge&labelColor=E5E7EB&color=8B5CF6)](https://github.com/microsoft/generative-ai-for-beginners?WT.mc_id=academic-105485-koreyst)
@@ -225,7 +225,6 @@ We have a lot of other content to help your learning journey. Check out:
 [![Web Dev for Beginners](https://img.shields.io/badge/Web%20Dev%20for%20Beginners-EC4899?style=for-the-badge&labelColor=E5E7EB&color=EC4899)](https://aka.ms/webdev-beginners?WT.mc_id=academic-105485-koreyst)
 [![IoT for Beginners](https://img.shields.io/badge/IoT%20for%20Beginners-14B8A6?style=for-the-badge&labelColor=E5E7EB&color=14B8A6)](https://aka.ms/iot-beginners?WT.mc_id=academic-105485-koreyst)
 [![XR Development for Beginners](https://img.shields.io/badge/XR%20Development%20for%20Beginners-38BDF8?style=for-the-badge&labelColor=E5E7EB&color=38BDF8)](https://github.com/microsoft/xr-development-for-beginners?WT.mc_id=academic-105485-koreyst)
-
 
 ## Getting Help
 
