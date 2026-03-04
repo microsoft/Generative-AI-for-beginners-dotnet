@@ -1,0 +1,5 @@
+{
+  "universe_allowlist": ["the-matrix"],
+  "max_agents_per_universe": 12,
+  "overflow_strategy": "diegetic-expansion"
+}

@@ -1,9 +1,10 @@
 name: Squad Heartbeat (Ralph)
 
 on:
-  schedule:
-    # Every 30 minutes — adjust or remove if not needed
-    - cron: '*/30 * * * *'
+  # DISABLED: Cron heartbeat commented out pre-migration — re-enable when ready
+  # schedule:
+  #   # Every 30 minutes — adjust or remove if not needed
+  #   - cron: '*/30 * * * *'
 
   # React to completed work or new squad work
   issues:
