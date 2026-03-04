@@ -401,3 +401,6 @@ FodyWeavers.xsd
 .env
 /pdf
 /docs
+# Squad: ignore generated logs
+.squad/orchestration-log/
+.squad/log/
