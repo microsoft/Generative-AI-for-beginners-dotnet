@@ -109,7 +109,7 @@ To run the sample code, you'll need to:
 5. Run the application:
 
    ```bash
-   dotnet run
+   dotnet run app.cs
    ```
 
 ### A Practical Example: Sentiment Analysis

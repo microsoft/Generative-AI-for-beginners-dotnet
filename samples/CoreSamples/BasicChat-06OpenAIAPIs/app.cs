@@ -11,7 +11,8 @@ using Microsoft.Extensions.Configuration;
 using System.Text;
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-var openai_apikey = Environment.GetEnvironmentVariable("APIKEY") ?? config["APIKEY"];
+var openai_apikey = Environment.GetEnvironmentVariable("APIKEY") ?? config["OpenAI:ApiKey"]
+    ?? throw new InvalidOperationException("Set OpenAI:ApiKey in User Secrets or APIKEY environment variable.");
 var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 
 IChatClient client =

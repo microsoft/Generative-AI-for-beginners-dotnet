@@ -50,14 +50,14 @@ When everything succeeds, you'll see a summary like this:
 ========================================
 
 Setup complete. Navigate to a sample folder and run:
-  dotnet run
+  dotnet run app.cs
 ```
 
 ### Verify it works
 
 ```powershell
 cd samples/CoreSamples/BasicChat-01MEAI
-dotnet run
+dotnet run app.cs
 ```
 
 If you see the AI respond, you're all set! 🎉
@@ -173,7 +173,7 @@ dotnet user-secrets list --id genai-beginners-dotnet
 
 # Run a sample
 cd samples/CoreSamples/BasicChat-01MEAI
-dotnet run
+dotnet run app.cs
 ```
 
 You should see your three secrets listed (`AzureOpenAI:Endpoint`, `AzureOpenAI:Deployment`, `AzureOpenAI:EmbeddingDeployment`) and the sample should start chatting with the AI.

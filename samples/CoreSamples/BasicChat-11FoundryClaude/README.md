@@ -35,7 +35,7 @@ Replace:
 ### 2. Run the Sample
 
 ```bash
-dotnet run
+dotnet run app.cs
 ```
 
 ## Authentication

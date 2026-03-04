@@ -164,8 +164,10 @@ Then navigate to any sample and run:
 
 ```powershell
 cd samples/CoreSamples/BasicChat-01MEAI
-dotnet run
+dotnet run app.cs
 ```
+
+> **Note:** Azure OpenAI samples use `az login` for authentication. Run `az login` before running any Azure sample.
 
 **For detailed manual setup options, see [Azure Resource Setup Guide](./01-IntroductionToGenerativeAI/setup-azure-openai.md?WT.mc_id=academic-105485-koreyst).**
 

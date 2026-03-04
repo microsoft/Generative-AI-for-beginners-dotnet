@@ -46,4 +46,4 @@ Write-Host "`nFor Azure AI Search (RAG samples), also run:" -ForegroundColor Yel
 Write-Host "  dotnet user-secrets set --id $secretsId `"AzureAISearch:Endpoint`" `"<your-search-endpoint>`""
 Write-Host "  dotnet user-secrets set --id $secretsId `"AzureAISearch:Key`" `"<your-search-key>`""
 
-Write-Host "`nDone! Run any sample with: dotnet run (or dotnet run app.cs for file-based samples)`n" -ForegroundColor Green
+Write-Host "`nDone! Make sure to run 'az login' first, then run file-based samples with: dotnet run app.cs`n" -ForegroundColor Green
