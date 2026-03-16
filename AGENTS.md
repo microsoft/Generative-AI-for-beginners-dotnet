@@ -124,7 +124,7 @@ dotnet run
 
 # Example: Run basic chat sample with MEAI
 cd samples/CoreSamples/BasicChat-01MEAI
-dotnet run
+dotnet run app.cs
 
 # Example: Run with Ollama
 cd samples/CoreSamples/BasicChat-03Ollama
