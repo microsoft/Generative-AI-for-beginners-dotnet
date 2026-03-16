@@ -120,7 +120,7 @@ All lesson code is in the [samples/MAF](../samples/MAF/) folder:
 Before starting this lesson, ensure you have:
 
 - Completed Lessons 1-3 (or understand chat, function calling, and RAG concepts)
-- .NET 9 SDK installed
+- .NET 10 SDK installed
 - Access to at least one AI provider:
   - Azure OpenAI / Microsoft Foundry (recommended)
   - Azure OpenAI - Requires Azure subscription

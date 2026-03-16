@@ -6,39 +6,47 @@ This repository contains **Generative AI for Beginners .NET** - a hands-on cours
 
 ### Architecture
 
-- **Lesson-based structure**: Organized in numbered folders (01-10) containing lessons, documentation, and code samples
+- **Lesson-based structure**: Organized in numbered folders (01-05) containing lesson documentation
+- **Centralized samples**: All code samples live in the `samples/` directory, organized by category
 - **Multi-language support**: Course materials translated into 8 languages (located in `translations/`)
 - **Sample applications**: Full-featured AI-powered apps demonstrating practical GenAI integration
-- **Key technologies**: .NET 9+, Microsoft.Extensions.AI (MEAI), Microsoft Agent Framework, Azure OpenAI, Ollama
+- **Key technologies**: .NET 10+, Microsoft.Extensions.AI (MEAI), Microsoft Agent Framework, Azure OpenAI, Ollama
 
 ### Project Structure
 
 ```
 .
-├── 01-IntroToGenAI/              # Introduction to Generative AI
-├── 02-SetupDevEnvironment/       # Environment setup guides
-├── 03-CoreGenerativeAITechniques/ # Core AI techniques and samples
-├── 04-PracticalSamples/          # Practical AI application samples
-├── 05-AppCreatedWithGenAI/       # Apps built using GenAI tools
-│   ├── SpaceAINet/              # AI-powered Space Battle game
-│   ├── HFMCP.GenImage/          # Image generation app
-│   └── ConsoleGpuViewer/        # GPU viewer console app
-├── 06-MAF/                   # Microsoft Agent Framework examples
-├── 09-ResponsibleGenAI/          # Responsible AI practices
-├── 10-WhatsNew/                  # Latest updates and features
-└── translations/                 # Localized course materials
+├── 01-IntroductionToGenerativeAI/     # Introduction to Generative AI + setup guides
+├── 02-GenerativeAITechniques/         # Text completions, streaming, function calling, middleware
+├── 03-AIPatternsAndApplications/      # Embeddings, RAG, vision, combining patterns
+├── 04-AgentsWithMAF/                  # Microsoft Agent Framework + MCP
+├── 05-ResponsibleAI/                  # Responsible AI practices
+├── samples/
+│   ├── CoreSamples/                   # Core technique samples (chat, vision, RAG, functions, etc.)
+│   │   └── CoreGenerativeAITechniques.sln
+│   ├── MAF/                           # Microsoft Agent Framework samples (25+ projects)
+│   │   └── MAF-Demos.slnx
+│   ├── AppsWithGenAI/                 # Full AI-powered applications
+│   │   ├── SpaceAINet/               # AI-powered Space Battle game
+│   │   ├── HFMCP.GenImage/           # Image generation Aspire app
+│   │   └── ConsoleGpuViewer/         # GPU viewer console app
+│   └── PracticalSamples/             # Aspire MCP sample
+│       └── Aspire.MCP.Sample.sln
+├── infra/                             # Azure Bicep infrastructure
+├── translations/                      # Localized course materials (8 languages)
+└── images/                            # Course branding assets
 
 Each lesson folder contains:
-- readme.md: Lesson documentation
-- src/: Source code and samples
+- readme.md: Lesson documentation with step-by-step guidance
 - images/: Visual assets
+- Setup guides (in lesson 01)
 ```
 
 ## Setup Commands
 
 ### Prerequisites
 
-- [.NET 9 SDK](https://dotnet.microsoft.com/download) or later
+- [.NET 10 SDK](https://dotnet.microsoft.com/download) or later
 - Access to at least one AI provider:
     - **Azure OpenAI** (requires Azure subscription)
   - **Ollama** (for local model execution)
@@ -51,7 +59,7 @@ git clone https://github.com/microsoft/Generative-AI-for-beginners-dotnet.git
 cd Generative-AI-for-beginners-dotnet
 
 # Verify .NET installation
-dotnet --version  # Should be 9.0 or higher
+dotnet --version  # Should be 10.0 or higher
 ```
 
 ### AI Provider Setup
@@ -86,11 +94,14 @@ curl http://localhost:11434/api/version
 # Restore dependencies for a specific solution
 dotnet restore <path-to-solution>.sln
 
-# Example: Restore setup samples
-dotnet restore 02-SetupDevEnvironment/src/GettingReadySamples.sln
+# Example: Restore core samples
+dotnet restore samples/CoreSamples/CoreGenerativeAITechniques.sln
 
-# Restore all projects in a lesson
-dotnet restore 03-CoreGenerativeAITechniques/src/CoreGenerativeAITechniques.sln
+# Restore MAF samples
+dotnet restore samples/MAF/MAF-Demos.slnx
+
+# Restore Aspire MCP sample
+dotnet restore samples/PracticalSamples/Aspire.MCP.Sample.sln
 ```
 
 ## Development Workflow
@@ -100,7 +111,7 @@ dotnet restore 03-CoreGenerativeAITechniques/src/CoreGenerativeAITechniques.sln
 1. Fork this repository to your GitHub account
 2. Create a new Codespace from your fork
 3. Select the appropriate dev container:
-   - Default: .NET 9 with Azure CLI and GitHub CLI
+   - Default: .NET 10 with Azure CLI and GitHub CLI
    - Ollama: Includes Ollama for local model execution
 4. The postCreateCommand will automatically set up .NET workloads and trust dev certificates
 
@@ -112,11 +123,11 @@ cd <project-directory>
 dotnet run
 
 # Example: Run basic chat sample with MEAI
-cd 02-SetupDevEnvironment/src/BasicChat-01MEAI
-dotnet run
+cd samples/CoreSamples/BasicChat-01MEAI
+dotnet run app.cs
 
 # Example: Run with Ollama
-cd 02-SetupDevEnvironment/src/BasicChat-03Ollama
+cd samples/CoreSamples/BasicChat-03Ollama
 dotnet run
 ```
 
@@ -124,7 +135,7 @@ dotnet run
 
 #### SpaceAINet (AI-powered game)
 ```bash
-cd 05-AppCreatedWithGenAI/SpaceAINet/SpaceAINet.Console
+cd samples/AppsWithGenAI/SpaceAINet/SpaceAINet.Console
 dotnet build
 dotnet run
 
@@ -137,8 +148,8 @@ dotnet run
 
 #### Aspire MCP Sample
 ```bash
-cd 04-PracticalSamples/src
-dotnet run --project src/McpSample.AppHost/McpSample.AppHost.csproj
+cd samples/PracticalSamples/src
+dotnet run --project McpSample.AppHost/McpSample.AppHost.csproj
 ```
 
 ### Hot Reload and Watch Mode
@@ -164,19 +175,19 @@ dotnet restore <solution-path>
 # Build in Release mode (as CI does)
 dotnet build <solution-path> --no-restore --configuration Release --verbosity minimal
 
-# Example: Validate all setup samples
-dotnet restore 02-SetupDevEnvironment/src/GettingReadySamples.sln
-dotnet build 02-SetupDevEnvironment/src/GettingReadySamples.sln --no-restore --configuration Release
+# Example: Validate core samples
+dotnet restore samples/CoreSamples/CoreGenerativeAITechniques.sln
+dotnet build samples/CoreSamples/CoreGenerativeAITechniques.sln --no-restore --configuration Release
 ```
 
 ### Validated Solutions
 
 The following solutions are validated in CI:
-- `02-SetupDevEnvironment/src/GettingReadySamples.sln`
-- `03-CoreGenerativeAITechniques/src/CoreGenerativeAITechniques.sln`
-- `04-PracticalSamples/src/Aspire.MCP.Sample.sln`
-- `05-AppCreatedWithGenAI/HFMCP.GenImage/HFMCP.GenImage.sln`
-- `05-AppCreatedWithGenAI/SpaceAINet/SpaceAINet.sln`
+- `samples/CoreSamples/CoreGenerativeAITechniques.sln`
+- `samples/PracticalSamples/Aspire.MCP.Sample.sln`
+- `samples/AppsWithGenAI/HFMCP.GenImage/HFMCP.GenImage.sln`
+- `samples/AppsWithGenAI/SpaceAINet/SpaceAINet.sln`
+- `samples/MAF/MAF-Demos.slnx`
 
 ### Manual Testing
 
@@ -229,7 +240,7 @@ dotnet format <path-to-solution>.sln
 
 ### File Organization
 
-- Place lesson code in `<lesson-number>/src/` directories
+- Place sample code in the `samples/` directory under the appropriate category
 - Store images in `<lesson-number>/images/` or root `images/` folder
 - Keep README files in lesson root directories
 - Use descriptive file names with English characters, numbers, and dashes
@@ -312,7 +323,7 @@ Examples:
 ### PR Title Format
 
 Use descriptive titles that clearly indicate the change:
-- `docs: Update lesson 02 for .NET 9 compatibility`
+- `docs: Update lesson 02 for .NET 10 compatibility`
 - `feat: Add Agent Framework orchestration sample`
 - `fix: Resolve build errors in SpaceAINet project`
 
@@ -321,7 +332,7 @@ Use descriptive titles that clearly indicate the change:
 ### Common Issues and Solutions
 
 #### Build Errors
-- **Missing SDK**: Ensure .NET 9 SDK is installed (`dotnet --version`)
+- **Missing SDK**: Ensure .NET 10 SDK is installed (`dotnet --version`)
 - **Workload issues**: Run `dotnet workload update`
 - **Package restore fails**: Delete `bin/` and `obj/` folders, then `dotnet restore`
 
@@ -358,31 +369,42 @@ Translations are maintained in `translations/<language-code>/`:
 
 ### Project-Specific Context
 
-#### Lesson 02: Setup
-- Focus on environment configuration and AI provider access
-- Two paths: Azure OpenAI, Ollama
-- Core samples: BasicChat-01MEAI, BasicChat-03Ollama
+#### Lesson 01: Introduction to Generative AI
+- What generative AI is, why .NET is a first-class citizen for AI
+- Setup guides for Azure OpenAI and Ollama
+- GitHub Codespaces configuration
 
-#### Lesson 03: Core Techniques
-- LLM completions, chat flows, function calling
-- RAG (Retrieval-Augmented Generation) samples
-- Vision and audio AI applications
-- Agent implementations
+#### Lesson 02: Generative AI Techniques
+- Text completions, chat conversations, streaming, structured output
+- Function calling and middleware pipeline
+- Core samples: BasicChat-01MEAI, BasicChat-03Ollama, MEAIFunctions
 
-#### Lesson 04: Practical Samples
+#### Lesson 03: AI Patterns and Applications
+- Embeddings and semantic search
+- RAG (Retrieval-Augmented Generation) with vectors
+- Vision and document understanding
+- Combining AI patterns, local model runners
+
+#### Lesson 04: Agents with MAF
+- Building first agent with Microsoft Agent Framework
+- Agents with tools, multi-agent workflows
+- Model Context Protocol (MCP) integration
+- 25+ MAF sample projects
+
+#### Lesson 05: Responsible AI
+- Identifying and mitigating bias
+- Content safety, guardrails, transparency
+- Ethical considerations for agentic systems
+
+#### Sample Applications (samples/AppsWithGenAI/)
+- **SpaceAINet**: AI-powered retro Space Battle game (created with Copilot Agent)
+- **HFMCP.GenImage**: Image generation Aspire app with HuggingFace MCP
+- **ConsoleGpuViewer**: GPU monitoring console app
+
+#### Practical Samples (samples/PracticalSamples/)
 - Aspire MCP sample demonstrating Model Context Protocol
 - Multi-project Aspire solution with Blazor chat UI
 - Integration with external MCP servers
-
-#### Lesson 05: Apps Created with GenAI
-- **SpaceAINet**: AI-powered retro game (created with Copilot Agent)
-- **HFMCP.GenImage**: Image generation Aspire app
-- **ConsoleGpuViewer**: GPU monitoring console app
-
-#### Lesson 06: Agent Framework
-- Microsoft Agent Framework (MAF) examples
-- Multi-agent orchestration patterns
-- Integration with MCP for enhanced capabilities
 
 ### Contributing to Documentation
 

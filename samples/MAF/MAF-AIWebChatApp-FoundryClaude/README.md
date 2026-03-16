@@ -4,7 +4,7 @@ This sample demonstrates a **Blazor Server web application** using **Microsoft A
 
 ## Overview
 
-- **Framework**: Blazor Server (.NET 9) + Microsoft Agent Framework
+- **Framework**: Blazor Server (.NET 10) + Microsoft Agent Framework
 - **AI Model**: Claude (Haiku, Sonnet, or Opus) via Microsoft Foundry
 - **Pattern**: Interactive web chat with dependency injection
 - **Key Package**: [elbruno.Extensions.AI.Claude](https://www.nuget.org/packages/elbruno.Extensions.AI.Claude/) - provides seamless Claude integration
@@ -23,7 +23,7 @@ This sample demonstrates a **Blazor Server web application** using **Microsoft A
 
 ### 2. .NET Environment
 
-- [.NET 9 SDK](https://dotnet.microsoft.com/download) or later
+- [.NET 10 SDK](https://dotnet.microsoft.com/download) or later
 
 ## Configuration
 
@@ -224,7 +224,7 @@ Potential improvements:
 
 ### Application Won't Start
 
-- Verify .NET 9 SDK is installed
+- Verify .NET 10 SDK is installed
 - Check user secrets are configured correctly
 - Ensure ports 5000/5001 are available
 

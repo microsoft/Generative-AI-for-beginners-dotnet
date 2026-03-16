@@ -2,7 +2,7 @@
 
 > **Note:** The core functionality of this game was created using [this prompt](https://aka.ms/spaceainet/prompt) and GitHub Copilot Agent Mode with GPT-4.1. For an overview and walkthrough on how to create and use the game, check out our [YouTube video](https://www.youtube.com/watch?v=XLg9Qt61RVs).
 
-**SpaceAINet** is an AI-powered Space Battle game for .NET 9, designed to showcase how modern AI models can play classic games. The solution allows you to run the game with either local AI models (via Ollama) or cloud-based models (via Microsoft Foundry), which analyze the game state and predict the next best action to win.
+**SpaceAINet** is an AI-powered Space Battle game for .NET 10, designed to showcase how modern AI models can play classic games. The solution allows you to run the game with either local AI models (via Ollama) or cloud-based models (via Microsoft Foundry), which analyze the game state and predict the next best action to win.
 
 ![Demo of the game running with Azure OpenAI models](./images/01-demo.gif)
 
@@ -15,7 +15,7 @@
 
 ## Requirements
 
-- [.NET 9 or newer](https://dotnet.microsoft.com/download/)
+- [.NET 10 or newer](https://dotnet.microsoft.com/download/)
 - **For local AI (Ollama):**
   - [Ollama](https://ollama.com/) running locally (default: `http://localhost:11434`)
   - At least one supported model pulled (e.g., `ollama run phi4-mini`)

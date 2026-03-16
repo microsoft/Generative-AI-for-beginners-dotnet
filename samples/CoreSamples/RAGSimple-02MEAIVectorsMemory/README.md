@@ -4,7 +4,7 @@ This sample demonstrates Retrieval-Augmented Generation (RAG) using Microsoft.Ex
 
 ## Prerequisites
 
-- .NET 9.0 SDK
+- .NET 10.0 SDK
 - Azure OpenAI / Microsoft Foundry endpoint and API key
 
 ## Setup

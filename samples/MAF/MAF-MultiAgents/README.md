@@ -36,7 +36,7 @@ Final Output (reviewed article with feedback)
 
 Before running this sample, ensure you have:
 
-1. **.NET 9 SDK** or later installed
+1. **.NET 10 SDK** or later installed
 2. **Azure CLI** installed and authenticated (`az login`)
 3. **Ollama** installed and running locally with the `llama3.2` model
 4. **Microsoft Foundry Project** with access to deploy models

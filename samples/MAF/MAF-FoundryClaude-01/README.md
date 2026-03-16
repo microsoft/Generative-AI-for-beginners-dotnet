@@ -22,7 +22,7 @@ This sample demonstrates how to use **Microsoft Agent Framework (MAF)** with **C
 
 ### 2. .NET Environment
 
-- [.NET 9 SDK](https://dotnet.microsoft.com/download) or later
+- [.NET 10 SDK](https://dotnet.microsoft.com/download) or later
 
 ## Configuration
 
@@ -160,7 +160,7 @@ Response:
 
 ### Build Errors
 
-- Ensure .NET 9 SDK is installed
+- Ensure .NET 10 SDK is installed
 - Run `dotnet restore` to restore NuGet packages
 - Check that all package versions are compatible
 
