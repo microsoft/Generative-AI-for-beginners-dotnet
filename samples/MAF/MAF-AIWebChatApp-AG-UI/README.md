@@ -66,7 +66,7 @@ Built with .NET Aspire for:
 
 ## Prerequisites
 
-- [.NET 9 SDK](https://dotnet.microsoft.com/download) or later
+- [.NET 10 SDK](https://dotnet.microsoft.com/download) or later
 - Access to **Azure OpenAI** with:
   - `gpt-5-mini` model deployment
   - `text-embedding-3-small` model deployment
@@ -320,7 +320,7 @@ The AG-UI feature enables a distributed agent architecture where:
 
 **"Build errors with Microsoft.Agents.AI packages"**
 
-- Ensure you're using .NET 9 SDK or later
+- Ensure you're using .NET 10 SDK or later
 - Clear NuGet cache: `dotnet nuget locals all --clear`
 - Restore packages: `dotnet restore`
 

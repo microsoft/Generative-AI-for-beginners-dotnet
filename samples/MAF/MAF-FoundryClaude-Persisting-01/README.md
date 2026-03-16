@@ -32,7 +32,7 @@ This sample walks through four key steps:
 
 ### 2. .NET Environment
 
-- [.NET 9 SDK](https://dotnet.microsoft.com/download) or later
+- [.NET 10 SDK](https://dotnet.microsoft.com/download) or later
 
 ## Configuration
 
