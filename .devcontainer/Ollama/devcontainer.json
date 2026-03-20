@@ -2,7 +2,7 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/dotnet
 {
     "name": "C# (.NET) - Ollama",
-    "image": "mcr.microsoft.com/devcontainers/dotnet:1-10.0-noble",
+    "image": "mcr.microsoft.com/devcontainers/dotnet:1-10.0-bookworm",
     "features": {
         "ghcr.io/devcontainers/features/docker-in-docker:2": {},
         "ghcr.io/devcontainers/features/azure-cli:1": {
