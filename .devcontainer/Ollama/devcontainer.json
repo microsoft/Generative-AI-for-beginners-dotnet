@@ -1,48 +1,46 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/dotnet
 {
-	"name": "C# (.NET) - Ollama",
-    "image": "mcr.microsoft.com/devcontainers/dotnet:1-10.0-noble",
+    "name": "C# (.NET) - Ollama",
+    "image": "mcr.microsoft.com/devcontainers/dotnet",
     "features": {
         "ghcr.io/devcontainers/features/docker-in-docker:2": {},
-        "ghcr.io/devcontainers/features/common-utils:2": {},
-		"ghcr.io/devcontainers/features/azure-cli:1": {
+        "ghcr.io/devcontainers/features/azure-cli:1": {
             "installBicep": true,
             "version": "latest"
         },
         "ghcr.io/azure/azure-dev/azd:0": {
             "version": "stable"
-        },		
-		"ghcr.io/devcontainers/features/github-cli:1": {},
-		"ghcr.io/prulloac/devcontainer-features/ollama:latest": {},
-		"sshd": "latest"
+        },
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+        "ghcr.io/prulloac/devcontainer-features/ollama:latest": {},
+        "ghcr.io/devcontainers/features/sshd:1": {}
     },
 
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"GitHub.copilot",
-				"ms-dotnettools.csdevkit",
-				"ms-azuretools.vscode-azure-github-copilot"
-			]
-		}
-	},
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "GitHub.copilot",
+                "ms-dotnettools.csdevkit",
+                "ms-azuretools.vscode-azure-github-copilot"
+            ]
+        }
+    },
 
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    "forwardPorts": [17057],
+    "portsAttributes": {
+        "17057": {
+            "protocol": "http"
+        }
+    },
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [17057],
-	"portsAttributes": {
-			"17057": {
-				"protocol": "http"
-			}
-	},
+    // Use 'postCreateCommand' to run commands after the container is created.
+    "postCreateCommand": "sudo dotnet workload update && sudo dotnet workload list && ollama pull all-minilm && ollama pull llama3.2 && ollama pull phi4-mini",
+    "postStartCommand": "",
 
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "sudo dotnet workload update && sudo dotnet workload list && ollama pull all-minilm && ollama pull llama3.2 && ollama pull phi4-mini",
-	"postStartCommand": "",
-
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	"remoteUser": "vscode",
+    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+    "remoteUser": "vscode",
     "hostRequirements": {
         "memory": "16gb",
         "cpus": 4
