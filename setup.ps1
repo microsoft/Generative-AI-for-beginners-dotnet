@@ -5,7 +5,7 @@
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-Write-Host "`n=== Generative AI for Beginners .NET — Automated Setup ===" -ForegroundColor Cyan
+Write-Host "`n=== Generative AI for Beginners .NET - Automated Setup ===" -ForegroundColor Cyan
 
 # --- Check prerequisites ---
 foreach ($tool in @("azd", "dotnet")) {
@@ -17,7 +17,7 @@ foreach ($tool in @("azd", "dotnet")) {
 if (Get-Command "az" -ErrorAction SilentlyContinue) {
     Write-Host "Prerequisites OK (azd, dotnet, az)" -ForegroundColor Green
 } else {
-    Write-Host "Prerequisites OK (azd, dotnet). 'az' CLI not found — tenant detection will be skipped." -ForegroundColor Green
+    Write-Host "Prerequisites OK (azd, dotnet). 'az' CLI not found - tenant detection will be skipped." -ForegroundColor Green
 }
 
 # --- Deploy Azure infrastructure ---
