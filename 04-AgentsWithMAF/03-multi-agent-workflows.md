@@ -185,9 +185,11 @@ AIAgent technicalSupport = chatClient.CreateAIAgent(
         configuration issues, and how-to questions.
         """);
 
-// Build handoff workflow - agents can transfer control
-Workflow handoff = AgentWorkflowBuilder.BuildHandoff(
-    generalSupport, billingSpecialist, technicalSupport);
+// Build handoff workflow - the starting agent decides when to hand off
+Workflow handoff = AgentWorkflowBuilder.CreateHandoffBuilderWith(generalSupport)
+    .WithHandoffs(generalSupport, [billingSpecialist, technicalSupport])
+    .WithHandoff(billingSpecialist, generalSupport)
+    .Build();
 
 // First query goes to GeneralSupport, which may route to specialists
 var response = await handoff.AsAgent().RunAsync(
@@ -255,39 +257,56 @@ This is powerful for:
 
 ---
 
-## Part 6: Custom Workflow Graphs
+## Part 6: Conditional Handoff Workflows
 
-For complex routing, build custom workflow graphs:
+For complex routing where agents decide who handles the request next, use the `CreateHandoffBuilderWith` API with agent instructions to guide routing:
 
 ```csharp
 using Microsoft.Agents.AI.Workflows;
 
-// Create a workflow builder
-var builder = new WorkflowBuilder();
+// Create specialized agents with routing instructions baked into their prompts
+AIAgent intakeAgent = chatClient.CreateAIAgent(
+    name: "Intake",
+    instructions: """
+        You receive and categorize incoming requests.
+        If the request is simple or straightforward, hand off to SimpleHandler.
+        If the request is complex, technical, or requires deep expertise, hand off to ComplexHandler.
+        """);
 
-// Define nodes (agents)
-var intake = builder.AddAgent(intakeAgent, "intake");
-var analyzer = builder.AddAgent(analyzerAgent, "analyzer");
-var simpleHandler = builder.AddAgent(simpleAgent, "simple");
-var complexHandler = builder.AddAgent(complexAgent, "complex");
-var responder = builder.AddAgent(responderAgent, "responder");
+AIAgent simpleAgent = chatClient.CreateAIAgent(
+    name: "SimpleHandler",
+    instructions: """
+        Handle simple, straightforward requests concisely.
+        Once done, hand off to Responder.
+        """);
 
-// Define edges (connections)
-builder.AddEdge("intake", "analyzer");
+AIAgent complexAgent = chatClient.CreateAIAgent(
+    name: "ComplexHandler",
+    instructions: """
+        Handle complex, technical requests with detailed explanations.
+        Once done, hand off to Responder.
+        """);
 
-// Conditional routing based on analysis
-builder.AddConditionalEdge("analyzer", context =>
-{
-    var lastMessage = context.Thread.Messages.Last().Content;
-    return lastMessage.Contains("complex") ? "complex" : "simple";
-});
+AIAgent responderAgent = chatClient.CreateAIAgent(
+    name: "Responder",
+    instructions: "Craft the final, polished response to the user based on the analysis provided.");
 
-builder.AddEdge("simple", "responder");
-builder.AddEdge("complex", "responder");
+// Build a conditional handoff workflow:
+// - intakeAgent decides whether to route to simpleAgent or complexAgent
+// - both handlers pass the result to responderAgent
+Workflow customWorkflow = AgentWorkflowBuilder.CreateHandoffBuilderWith(intakeAgent)
+    .WithHandoffs(intakeAgent, [simpleAgent, complexAgent])
+    .WithHandoff(simpleAgent, responderAgent)
+    .WithHandoff(complexAgent, responderAgent)
+    .Build();
 
-// Build and run
-Workflow customWorkflow = builder.Build();
+var response = await customWorkflow.AsAgent().RunAsync(
+    "Explain quantum entanglement in detail with mathematical formulations.");
+
+Console.WriteLine(response.Text);
 ```
+
+The routing logic lives in the agent instructions—the LLM decides which agent to hand off to based on the request content. `CreateHandoffBuilderWith` defines the allowed handoff paths, ensuring agents can only transfer control to explicitly permitted targets.
 
 ---
 
