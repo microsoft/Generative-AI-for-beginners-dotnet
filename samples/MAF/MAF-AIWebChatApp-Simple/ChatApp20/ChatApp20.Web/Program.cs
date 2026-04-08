@@ -28,7 +28,7 @@ builder.AddAIAgent("ChatAgent", (sp, key) =>
 
     // create agent
     var chatClient = sp.GetRequiredService<IChatClient>();
-    var aiAgent = chatClient.CreateAIAgent(
+    var aiAgent = chatClient.AsAIAgent(
         name: key,
         instructions: "You are an useful agent that helps users with short and funny answers.",
         description: "An AI agent that helps users with short and funny answers.",

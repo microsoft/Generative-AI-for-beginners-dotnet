@@ -29,7 +29,7 @@ builder.AddAIAgent("ChatAgent", (sp, key) =>
 
     // create agent
     var chatClient = sp.GetRequiredService<IChatClient>();
-    var aiAgent = chatClient.CreateAIAgent(
+    var aiAgent = chatClient.AsAIAgent(
         name: key,
         instructions: "You are an useful agent that helps users with short and funny answers.",
         description: "An AI agent that helps users with short and funny answers.",
@@ -48,7 +48,7 @@ builder.AddAIAgent("ResearchAgent", (sp, key) =>
     var chatClient = sp.GetRequiredService<IChatClient>();
     var searchFunctions = sp.GetRequiredService<SearchFunctions>();
 
-    return chatClient.CreateAIAgent(
+    return chatClient.AsAIAgent(
         name: "ResearchAgent",
         instructions: @"You are a research specialist. Find and summarize information from documents.
         Use the search tool to find relevant information. When you do this, end your
@@ -72,7 +72,7 @@ builder.AddAIAgent("WritingAgent", (sp, key) =>
 {
     var chatClient = sp.GetRequiredService<IChatClient>();
 
-    return chatClient.CreateAIAgent(
+    return chatClient.AsAIAgent(
         name: "WritingAgent",
         instructions: @"You are a writing specialist. Take information and create well-structured, engaging content.
         When you find citations, validate that they follow this special XML format:
@@ -108,7 +108,7 @@ builder.AddAIAgent("CoordinatorAgent", (sp, key) =>
         return result.Text ?? "";
     }
 
-    return chatClient.CreateAIAgent(
+    return chatClient.AsAIAgent(
         name: "CoordinatorAgent",
         instructions: @"You coordinate research and writing to create comprehensive articles.
         Do not answer questions about anything else.
