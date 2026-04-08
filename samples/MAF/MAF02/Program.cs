@@ -15,12 +15,12 @@ IChatClient chatClient =
         .GetChatClient(deploymentName)
         .AsIChatClient();
 
-AIAgent writer = chatClient.CreateAIAgent(
+AIAgent writer = chatClient.AsAIAgent(
     name: "Writer",
     instructions: "Write stories that are engaging and creative.");
 
 // Create a specialized editor agent
-AIAgent editor = chatClient.CreateAIAgent(
+AIAgent editor = chatClient.AsAIAgent(
     name: "Editor",
     instructions: "Make the story more engaging, fix grammar, and enhance the plot.");
 
@@ -29,9 +29,9 @@ Workflow workflow =
     AgentWorkflowBuilder
         .BuildSequential(writer, editor);
 
-AIAgent workflowAgent = workflow.AsAgent();
+AIAgent workflowAgent = workflow.AsAIAgent();
 
-AgentRunResponse workflowResponse =
+AgentResponse workflowResponse =
     await workflowAgent.RunAsync("Write a short story about a haunted house.");
 
 Console.WriteLine(workflowResponse.Text);

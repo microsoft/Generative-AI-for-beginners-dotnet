@@ -183,11 +183,11 @@ You have options:
 
 All of these work with the same `IChatClient` interface!
 
-### Layer 3: Microsoft Agent Framework (Coming Later)
+### Layer 3: Microsoft Agent Framework
 
-Once you're comfortable with basic AI calls, you'll learn to build **Agents**. AI workers that can use tools, maintain state, and collaborate with other agents.
+**Microsoft Agent Framework** — Build intelligent agents with .NET using the open-source Microsoft Agent Framework. Agents are AI workers that can use tools, maintain state, and collaborate with other agents. See [Lesson 04: Agents with MAF](../04-AgentsWithMAF/readme.md) for hands-on samples.
 
-But that's for later lessons. First, let's get you coding.
+But first, let's get you coding with the basics.
 
 ---
 

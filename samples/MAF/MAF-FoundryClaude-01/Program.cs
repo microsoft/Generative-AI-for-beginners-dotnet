@@ -27,7 +27,7 @@ IChatClient chatClient = new AzureClaudeClient(
     apiKey: apiKey);
 
 // Create AI Agent with ChatClientAgent
-AIAgent writer = chatClient.CreateAIAgent(
+AIAgent writer = chatClient.AsAIAgent(
     name: "Writer",
     instructions: "You are a creative writer who crafts engaging and imaginative stories. Keep responses concise but vivid.");
 
@@ -37,7 +37,7 @@ Console.WriteLine();
 Console.WriteLine("Response:");
 Console.WriteLine("-".PadRight(60, '-'));
 
-AgentRunResponse response = await writer.RunAsync("Write a short story about a haunted house with a character named Lucia.");
+AgentResponse response = await writer.RunAsync("Write a short story about a haunted house with a character named Lucia.");
 
 Console.WriteLine(response.Text);
 Console.WriteLine("-".PadRight(60, '-'));

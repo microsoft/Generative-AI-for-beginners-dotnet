@@ -17,9 +17,9 @@ internal static class StreamConsoleHelper
             Console.Clear();
         }
         Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine(new string('=',60));
+        Console.WriteLine(new string('=', 60));
         Console.WriteLine(text);
-        Console.WriteLine(new string('=',60));
+        Console.WriteLine(new string('=', 60));
         Console.ResetColor();
         Console.WriteLine();
     }
@@ -52,7 +52,7 @@ internal static class StreamConsoleHelper
         if (!string.IsNullOrWhiteSpace(continuationToken))
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine($" token: {Truncate(continuationToken,60)}");
+            Console.WriteLine($" token: {Truncate(continuationToken, 60)}");
             Console.ResetColor();
         }
     }
@@ -122,7 +122,7 @@ internal static class StreamConsoleHelper
         if (!string.IsNullOrWhiteSpace(continuationToken))
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine($" token: {Truncate(continuationToken,60)}");
+            Console.WriteLine($" token: {Truncate(continuationToken, 60)}");
             Console.ResetColor();
         }
 
@@ -156,9 +156,9 @@ internal static class StreamConsoleHelper
     {
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine();
-        Console.WriteLine(new string('=',60));
+        Console.WriteLine(new string('=', 60));
         Console.WriteLine(text);
-        Console.WriteLine(new string('=',60));
+        Console.WriteLine(new string('=', 60));
         Console.ResetColor();
     }
 
