@@ -16,7 +16,7 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .AddConsoleExporter()
     .Build();
 
-var imageGenerator = chatClient.CreateAIAgent(
+var imageGenerator = chatClient.AsAIAgent(
     name: "Image Generator",
     instructions: "You are an agent that is specialized on image generation. If the user ask to create an image, the image should always be pixelated with big pixels.",
     description: "An AI agent that generate images using Microsoft Foundry models.",
@@ -28,7 +28,7 @@ var imageGenerator = chatClient.CreateAIAgent(
 // test agent
 var message = "create an image of a racoon in Canada";
 
-AgentRunResponse response = await imageGenerator.RunAsync(
+AgentResponse response = await imageGenerator.RunAsync(
     message: message);
 
 Console.WriteLine(response.Text);

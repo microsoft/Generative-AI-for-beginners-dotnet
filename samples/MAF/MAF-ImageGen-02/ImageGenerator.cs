@@ -16,7 +16,7 @@ public static class ImageGenerator
     [Description("Generates an image from a prompt. Returns the absolute path to the saved image file.")]
     public static async Task<string> GenerateImageFromPrompt(
         [Description("The prompt to generate the image from.")]
-        string imageGenerationPrompt) 
+        string imageGenerationPrompt)
     {
         var builder = Host.CreateApplicationBuilder();
         var config = builder.Configuration

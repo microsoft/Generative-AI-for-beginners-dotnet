@@ -22,7 +22,7 @@ internal static class BackgroundResponsesWithToolsDemo
             .Build();
 
         // Create agent with tools and OpenTelemetry
-        var agent = responseClient.CreateAIAgent(
+        var agent = responseClient.AsAIAgent(
                 name: "agent",
                 instructions: "You are a helpful assistant",
                 tools: new[] { AIFunctionFactory.Create(Tools.GetWeatherAsync) }
@@ -36,8 +36,8 @@ internal static class BackgroundResponsesWithToolsDemo
             AllowBackgroundResponses = true
         };
 
-        AgentThread thread = agent.GetNewThread();
-        AgentRunResponseUpdate? latestReceivedUpdate = null;
+        AgentSession thread = await agent.CreateSessionAsync();
+        AgentResponseUpdate? latestReceivedUpdate = null;
 
         var question = "How is the weather in Toronto";
 

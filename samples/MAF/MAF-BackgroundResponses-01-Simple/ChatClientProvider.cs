@@ -27,10 +27,10 @@ class ChatClientProvider
         if (!string.IsNullOrEmpty(apiKey))
         {
             azureClient = new AzureOpenAIClient(
-                new Uri(endpoint), 
+                new Uri(endpoint),
                 new ApiKeyCredential(apiKey));
         }
-        
+
         return azureClient
             .GetChatClient(deploymentName)
             .AsIChatClient()

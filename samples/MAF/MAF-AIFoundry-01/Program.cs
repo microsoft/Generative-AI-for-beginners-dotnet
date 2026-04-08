@@ -20,10 +20,10 @@ IChatClient chatClient =
     .AsIChatClient();
 
 
-AIAgent writer = chatClient.CreateAIAgent(
+AIAgent writer = chatClient.AsAIAgent(
     name: "Writer",
     instructions: "Write stories that are engaging and creative.");
 
-AgentRunResponse response = await writer.RunAsync("Write a short story about a haunted house.");
+AgentResponse response = await writer.RunAsync("Write a short story about a haunted house.");
 
 Console.WriteLine(response.Text);

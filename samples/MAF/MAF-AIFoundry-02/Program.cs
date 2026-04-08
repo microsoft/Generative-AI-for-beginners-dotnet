@@ -16,7 +16,7 @@ var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 AIAgent agent = new AzureOpenAIClient(new Uri(endpoint), apiKey)
     .GetChatClient(deploymentName)
     .AsIChatClient()
-    .CreateAIAgent(instructions: "You are a useful agent that replies in short and direct sentences.");
+    .AsAIAgent(instructions: "You are a useful agent that replies in short and direct sentences.");
 
 while (true)
 {
