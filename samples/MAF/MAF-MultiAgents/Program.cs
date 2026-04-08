@@ -77,7 +77,7 @@ Console.WriteLine("Setting up Agent 2: Writer (Azure OpenAI)...");
 
 IChatClient azureChatClient = ChatClientProvider.GetChatClient();
 
-AIAgent writer = azureChatClient.CreateAIAgent(
+AIAgent writer = azureChatClient.AsAIAgent(
     name: "Writer",
     instructions: "You are a creative writer. Take the research provided and write an engaging, well-structured article. Make it informative yet entertaining.")
     .AsBuilder()
@@ -89,7 +89,7 @@ AIAgent writer = azureChatClient.CreateAIAgent(
 Console.WriteLine("Setting up Agent 3: Reviewer (Ollama)...");
 IChatClient ollamaChatClient = ChatClientProvider.GetChatClientOllama();
 
-AIAgent reviewer = ollamaChatClient.CreateAIAgent(
+AIAgent reviewer = ollamaChatClient.AsAIAgent(
     name: "Reviewer",
     instructions: "You are an editor and reviewer. Analyze the article provided, give constructive feedback, and suggest improvements for clarity, grammar, and engagement.")
     .AsBuilder()
@@ -104,7 +104,7 @@ Workflow workflow =
     AgentWorkflowBuilder
         .BuildSequential(researcher, writer, reviewer);
 
-AIAgent workflowAgent = workflow.AsAgent();
+AIAgent workflowAgent = workflow.AsAIAgent();
 
 // ===== Execute the Workflow =====
 var topic = "artificial intelligence in healthcare";
@@ -112,7 +112,7 @@ Console.WriteLine($"Starting workflow with topic: '{topic}'");
 Console.WriteLine(new string('=', 80));
 Console.WriteLine();
 
-AgentRunResponse workflowResponse =
+AgentResponse workflowResponse =
     await workflowAgent.RunAsync($"Research and write an article about: {topic}");
 
 Console.WriteLine("=== Final Output ===");

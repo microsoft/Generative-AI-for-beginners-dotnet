@@ -24,7 +24,7 @@ class ChatClientProvider
     /// <param name="endpoint">The Ollama endpoint URL (default: http://localhost:11434/).</param>
     /// <returns>An IChatClient configured for Ollama.</returns>
     public static IChatClient GetChatClientOllama(
-        string model = DefaultOllamaModel, 
+        string model = DefaultOllamaModel,
         string endpoint = DefaultOllamaEndpoint)
     {
         return new OllamaApiClient(new Uri(endpoint), model);
