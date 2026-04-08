@@ -1,0 +1,6 @@
+name: timezone-agent
+version: "1.0"
+description: A .NET agent that provides current time in any timezone
+runtime:
+  type: container
+  port: 8088
