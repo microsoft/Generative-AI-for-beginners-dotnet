@@ -32,6 +32,18 @@ Don't forget to [star (🌟) this repo](https://docs.github.com/en/get-started/e
 
 We're constantly improving this course with the latest AI tools, models, and practical samples:
 
+- **🚀 Microsoft Agent Framework v1.0 GA (April 2026)**
+
+  All 28 MAF samples upgraded from preview to **stable v1.0** packages. This includes a **breaking change:** `Microsoft.Agents.AI.AzureAI` renamed to `Microsoft.Agents.AI.Foundry`.
+
+  **2 new Hosted Agent scenarios** — deploy containerized agents to Azure Foundry Agent Service:
+  - [MAF-HostedAgent-01-TimeZone](samples/MAF/MAF-HostedAgent-01-TimeZone/) — Basic hosted agent with timezone tool
+  - [MAF-HostedAgent-02-MultiAgent](samples/MAF/MAF-HostedAgent-02-MultiAgent/) — Multi-agent Research Assistant workflow
+
+  Multi-agent workflows, streaming, persistence, and MCP all production-ready.
+  
+  👉 [Official GA Release](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.0.0) | [Foundry Agent Service GA](https://devblogs.microsoft.com/foundry/foundry-agent-service-ga/)
+
 - **🚀 Microsoft Agent Framework Reaches Release Candidate!**
 
   [Microsoft Agent Framework](https://devblogs.microsoft.com/foundry/microsoft-agent-framework-reaches-release-candidate/) has reached **Release Candidate** (`1.0.0-rc1`) — a framework for building agents and multi-agent systems in .NET. Our samples are being migrated to the RC APIs. In the meantime, explore 25+ Agent Framework samples covering console apps, web chat, multi-agent workflows, and Foundry integration.

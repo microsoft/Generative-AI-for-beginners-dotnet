@@ -77,7 +77,7 @@ User Input ────────►│  ┌───────────�
 
 ```bash
 # Install the Agent Framework
-dotnet add package Microsoft.Agents.AI.OpenAI --prerelease
+dotnet add package Microsoft.Agents.AI.OpenAI --version 1.0.0
 ```
 
 ---
@@ -100,9 +100,36 @@ Extend your agents with standardized tool servers, enabling integration with ext
 
 ---
 
+## Hosted Agents
+
+### What Are Hosted Agents?
+
+Hosted Agents are containerized AI agents running on [Azure Foundry Agent Service](https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/hosted-agents). Instead of running agents in your local application, you deploy them to a managed service where they can:
+
+- **Run autonomously** without a client application
+- **Scale automatically** based on demand
+- **Maintain persistent state** across invocations
+- **Integrate with enterprise systems** securely
+- **Enable scheduled and event-driven execution**
+
+Hosted Agents are ideal for production scenarios where you need reliability, scalability, and enterprise deployment patterns.
+
+### Hosted Agent Samples
+
+Explore these samples to see Hosted Agents in action:
+
+| Sample | Description |
+|--------|-------------|
+| [MAF-HostedAgent-01-TimeZone](../samples/MAF/MAF-HostedAgent-01-TimeZone/) | Simple Hosted Agent that provides timezone information |
+| [MAF-HostedAgent-02-MultiAgent](../samples/MAF/MAF-HostedAgent-02-MultiAgent/) | Multi-agent Hosted Agent deployment with specialized roles |
+
+**Learn more:** [Hosted Agents on Microsoft Learn](https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/hosted-agents)
+
+---
+
 ## Sample Code Reference
 
-All lesson code is in the [samples/MAF](../samples/MAF/) folder:
+All lesson code is in the [samples/MAF](../samples/MAF/) folder (28 total samples):
 
 | Sample | Description |
 |--------|-------------|
@@ -112,6 +139,8 @@ All lesson code is in the [samples/MAF](../samples/MAF/) folder:
 | [MAF-MultiAgents](../samples/MAF/MAF-MultiAgents/) | Multi-model orchestration demo |
 | [MAF-BackgroundResponses-*](../samples/MAF/) | Agents with tools and async responses |
 | [MAF-Persisting-*](../samples/MAF/) | Agents with conversation persistence |
+| [MAF-HostedAgent-01-TimeZone](../samples/MAF/MAF-HostedAgent-01-TimeZone/) | Hosted Agent: timezone information |
+| [MAF-HostedAgent-02-MultiAgent](../samples/MAF/MAF-HostedAgent-02-MultiAgent/) | Hosted Agent: multi-agent orchestration |
 
 ---
 

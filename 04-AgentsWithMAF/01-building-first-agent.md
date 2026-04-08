@@ -47,7 +47,7 @@ The agent abstracts away the complexity of managing conversations, tools, and mu
 ### Install the Agent Framework
 
 ```bash
-dotnet add package Microsoft.Agents.AI.OpenAI --prerelease
+dotnet add package Microsoft.Agents.AI.OpenAI --version 1.0.0
 ```
 
 ### Create a Simple Agent
