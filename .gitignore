@@ -404,3 +404,10 @@ FodyWeavers.xsd
 # Squad: ignore generated logs
 .squad/orchestration-log/
 .squad/log/
+.squad/decisions/inbox/
+.squad/sessions/
+.squad-workstream
+
+# IDE / build cache
+*.lscache
+.copilot/skills/
