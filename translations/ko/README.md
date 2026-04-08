@@ -31,6 +31,18 @@
 
 우리는 최신 AI 도구, 모델 및 실용적인 샘플로 이 강좌를 지속적으로 개선하고 있습니다:
 
+- **🚀 Microsoft Agent Framework v1.0 GA (2026년 4월)**
+
+  모든 28개의 MAF 샘플이 프리뷰에서 **안정 v1.0** 패키지로 업그레이드되었습니다. 여기에는 **주요 변경 사항**이 포함됩니다: `Microsoft.Agents.AI.AzureAI`가 `Microsoft.Agents.AI.Foundry`로 이름이 변경되었습니다.
+
+  **2개의 새로운 호스팅 에이전트 시나리오** — 컨테이너화된 에이전트를 Azure Foundry Agent Service에 배포:
+  - [MAF-HostedAgent-01-TimeZone](samples/MAF/MAF-HostedAgent-01-TimeZone/) — 타임존 도구가 있는 기본 호스팅 에이전트
+  - [MAF-HostedAgent-02-MultiAgent](samples/MAF/MAF-HostedAgent-02-MultiAgent/) — 멀티 에이전트 연구 어시스턴트 워크플로우
+
+  멀티 에이전트 워크플로우, 스트리밍, 영속성 및 MCP는 모두 프로덕션 준비가 완료되었습니다.
+  
+  👉 [Official GA Release](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.0.0) | [Foundry Agent Service GA](https://devblogs.microsoft.com/foundry/foundry-agent-service-ga/)
+
 - **새로운 기능: Foundry Local 데모!**
   - 레슨 3에서는 [Foundry Local 모델](https://github.com/microsoft/Foundry-Local/tree/main)에 대한 실습 데모를 제공합니다.
   - 공식 문서 보기: [Foundry Local 문서](https://learn.microsoft.com/azure/ai-foundry/foundry-local/)
