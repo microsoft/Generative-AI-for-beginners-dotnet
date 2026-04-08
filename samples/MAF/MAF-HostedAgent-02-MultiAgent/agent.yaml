@@ -1,0 +1,6 @@
+name: multi-agent-research-assistant
+version: "1.0"
+description: A multi-agent research assistant using Researcher, Writer, and Reviewer agents in a sequential workflow
+runtime:
+  type: container
+  port: 8088
