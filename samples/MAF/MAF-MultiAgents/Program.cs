@@ -40,8 +40,8 @@ using OpenTelemetry.Trace;
 // To set user secrets, run:
 //      dotnet user-secrets set "AZURE_FOUNDRY_PROJECT_ENDPOINT" "https://your-project.services.ai.azure.com/"
 //      dotnet user-secrets set "AzureOpenAI:Deployment" "gpt-5-mini"
-//      dotnet user-secrets set "endpoint" "https://your-resource.cognitiveservices.azure.com"
-//      dotnet user-secrets set "apikey" "your-api-key"
+//      dotnet user-secrets set "AzureOpenAI:Endpoint" "https://your-resource.openai.azure.com/"
+//      dotnet user-secrets set "AzureOpenAI:ApiKey" "your-api-key"  // Optional: omit to use DefaultAzureCredential
 //
 // To set up Ollama:
 //      1. Install Ollama from https://ollama.ai/

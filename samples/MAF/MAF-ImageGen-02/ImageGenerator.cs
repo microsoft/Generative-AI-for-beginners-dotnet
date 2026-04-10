@@ -25,7 +25,7 @@ public static class ImageGenerator
             .Build();
 
         // You will need to set these environment variables or edit the following values.
-        var endpoint = config["endpoint"];
+        var endpoint = config["AzureOpenAI:Endpoint"];
         var deployment = config["FLUX_DEPLOYMENT_NAME"];
         var apiKey = config["AZURE_OPENAI_API_KEY"];
 

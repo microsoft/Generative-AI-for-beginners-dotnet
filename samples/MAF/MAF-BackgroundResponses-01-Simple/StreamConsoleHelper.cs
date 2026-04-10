@@ -1,6 +1,4 @@
-﻿using System.ClientModel;
-
-/// <summary>
+﻿/// <summary>
 /// Small helper to keep console printing consistent and easy to read.
 /// Uses simple colored output and labeled sections to make the streaming flow obvious.
 /// Renamed to StreamConsoleHelper to avoid conflicts with other helpers in the solution.
