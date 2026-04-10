@@ -47,7 +47,7 @@ The agent abstracts away the complexity of managing conversations, tools, and mu
 ### Install the Agent Framework
 
 ```bash
-dotnet add package Microsoft.Agents.AI.OpenAI --version 1.0.0
+dotnet add package Microsoft.Agents.AI --version 1.0.0
 ```
 
 ### Create a Simple Agent
@@ -55,16 +55,18 @@ dotnet add package Microsoft.Agents.AI.OpenAI --version 1.0.0
 ```csharp
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
-using OpenAI;
-using OpenAI.Chat;
-using System.ClientModel;
+using Azure.AI.OpenAI;
+using Azure.Identity;
 
 // Create a chat client (same as before)
-IChatClient chatClient = new AzureOpenAIClient(
-        new Uri(config["endpoint"]),
-        new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-5-mini")
-    .AsIChatClient();
+var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
+var endpoint = config["AzureOpenAI:Endpoint"];
+var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
+
+IChatClient chatClient =
+    new AzureOpenAIClient(new Uri(endpoint), new AzureCliCredential())
+        .GetChatClient(deploymentName)
+        .AsIChatClient();
 
 // Create an agent from the chat client
 AIAgent writer = chatClient.AsAIAgent(
@@ -160,16 +162,18 @@ AIAgent agent = new AzureOpenAIClient(
     .AsAIAgent(instructions: "You are a helpful assistant.");
 ```
 
-### Azure OpenAI (with API Key)
+### Azure OpenAI (with AzureCliCredential)
 
 ```csharp
-using OpenAI;
-using System.ClientModel;
+using Azure.AI.OpenAI;
+using Azure.Identity;
+
+var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 
 IChatClient chatClient = new AzureOpenAIClient(
-        new Uri(config["endpoint"]),
-        new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-5-mini")
+        new Uri(config["AzureOpenAI:Endpoint"]),
+        new AzureCliCredential())
+    .GetChatClient(config["AzureOpenAI:Deployment"] ?? "gpt-5-mini")
     .AsIChatClient();
 
 AIAgent agent = chatClient.AsAIAgent(

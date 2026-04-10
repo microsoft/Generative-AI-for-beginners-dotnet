@@ -40,9 +40,9 @@ Before running samples, configure your AI provider:
 
 ```bash
 cd samples/MAF/<sample-name>
-dotnet user-secrets set "endpoint" "https://<your-endpoint>.openai.azure.com/"
-dotnet user-secrets set "apikey" "<your-api-key>"
+dotnet user-secrets set "AzureOpenAI:Endpoint" "https://<your-endpoint>.openai.azure.com/"
 dotnet user-secrets set "AzureOpenAI:Deployment" "gpt-5-mini"
+# az login is required (samples use AzureCliCredential)
 ```
 
 ---
@@ -62,8 +62,9 @@ Start here to learn the basics of MAF with simple agents.
 **Quick Start:**
 ```bash
 cd samples/MAF/MAF01
-dotnet user-secrets set "endpoint" "https://<your-endpoint>.openai.azure.com/"
-dotnet user-secrets set "apikey" "<your-api-key>"
+dotnet user-secrets set "AzureOpenAI:Endpoint" "https://<your-endpoint>.openai.azure.com/"
+dotnet user-secrets set "AzureOpenAI:Deployment" "gpt-5-mini"
+# az login is required (samples use AzureCliCredential)
 dotnet run
 ```
 
@@ -121,8 +122,9 @@ Orchestrate multiple specialized agents working together.
 ```bash
 cd samples/MAF/MAF-MultiAgents
 dotnet user-secrets set "AZURE_FOUNDRY_PROJECT_ENDPOINT" "https://<resource>.services.ai.azure.com/"
-dotnet user-secrets set "endpoint" "https://<openai-resource>.openai.azure.com/"
-dotnet user-secrets set "apikey" "<your-key>"
+dotnet user-secrets set "AzureOpenAI:Endpoint" "https://<openai-resource>.openai.azure.com/"
+dotnet user-secrets set "AzureOpenAI:Deployment" "gpt-5-mini"
+# az login is required (samples use AzureCliCredential)
 ollama pull llama3.2
 dotnet run
 ```
@@ -142,8 +144,9 @@ Demonstrate streaming responses and background processing.
 **Run:**
 ```bash
 cd samples/MAF/MAF-BackgroundResponses-01-Simple
-dotnet user-secrets set "endpoint" "https://<your-endpoint>.openai.azure.com/"
-dotnet user-secrets set "apikey" "<your-api-key>"
+dotnet user-secrets set "AzureOpenAI:Endpoint" "https://<your-endpoint>.openai.azure.com/"
+dotnet user-secrets set "AzureOpenAI:Deployment" "gpt-5-mini"
+# az login is required (samples use AzureCliCredential)
 dotnet run
 ```
 
@@ -162,8 +165,9 @@ Save and resume agent conversations across sessions.
 **Run:**
 ```bash
 cd samples/MAF/MAF-Persisting-01-Simple
-dotnet user-secrets set "endpoint" "https://<your-endpoint>.openai.azure.com/"
-dotnet user-secrets set "apikey" "<your-api-key>"
+dotnet user-secrets set "AzureOpenAI:Endpoint" "https://<your-endpoint>.openai.azure.com/"
+dotnet user-secrets set "AzureOpenAI:Deployment" "gpt-5-mini"
+# az login is required (samples use AzureCliCredential)
 dotnet run
 ```
 
@@ -201,8 +205,9 @@ AI-powered image generation samples.
 **Run:**
 ```bash
 cd samples/MAF/MAF-ImageGen-01
-dotnet user-secrets set "endpoint" "https://<your-endpoint>.openai.azure.com/"
-dotnet user-secrets set "apikey" "<your-api-key>"
+dotnet user-secrets set "AzureOpenAI:Endpoint" "https://<your-endpoint>.openai.azure.com/"
+dotnet user-secrets set "AzureOpenAI:Deployment" "gpt-5-mini"
+# az login is required (samples use AzureCliCredential)
 dotnet run
 ```
 

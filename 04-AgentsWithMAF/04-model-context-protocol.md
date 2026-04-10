@@ -146,8 +146,8 @@ var tools = await mcpClient.ListToolsAsync();
 The samples folder includes a complete working example with Hugging Face:
 
 ```csharp
-using Azure;
-using Azure.AI.Inference;
+using Azure.AI.OpenAI;
+using Azure.Identity;
 using Microsoft.Extensions.AI;
 using ModelContextProtocol.Client;
 
@@ -167,9 +167,9 @@ var tools = await mcpClient.ListToolsAsync();
 
 // Create chat client with function invocation
 IChatClient client = new AzureOpenAIClient(
-        new Uri(config["endpoint"]),
-        new ApiKeyCredential(config["apikey"]))
-        .GetChatClient("gpt-5-mini")
+        new Uri(config["AzureOpenAI:Endpoint"]),
+        new AzureCliCredential())
+        .GetChatClient(config["AzureOpenAI:Deployment"] ?? "gpt-5-mini")
         .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()

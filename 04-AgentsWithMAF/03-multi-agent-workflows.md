@@ -224,9 +224,9 @@ AIAgent researcher = azureChatClient.AsAIAgent(
 
 // Agent 2: Writer using Azure OpenAI
 IChatClient githubChatClient = new AzureOpenAIClient(
-        new Uri(config["endpoint"]),
-        new ApiKeyCredential(config["apikey"]))
-    .GetChatClient("gpt-5-mini")
+        new Uri(config["AzureOpenAI:Endpoint"]),
+        new AzureCliCredential())
+    .GetChatClient(config["AzureOpenAI:Deployment"] ?? "gpt-5-mini")
     .AsIChatClient();
 
 AIAgent writer = githubChatClient.AsAIAgent(
