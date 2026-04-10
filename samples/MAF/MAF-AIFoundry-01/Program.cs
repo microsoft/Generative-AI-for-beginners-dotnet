@@ -4,8 +4,9 @@ using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 
-var config= new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-var endpoint = config["AzureOpenAI:Endpoint"];
+var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
+var endpoint = config["AzureOpenAI:Endpoint"] ?? throw new InvalidOperationException(
+    "Missing 'AzureOpenAI:Endpoint'. Run: dotnet user-secrets set \"AzureOpenAI:Endpoint\" \"https://<your-resource>.openai.azure.com/\"");
 var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 
 IChatClient chatClient =

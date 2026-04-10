@@ -356,7 +356,7 @@ AIAgent documenter = chatClient.AsAIAgent(
 Workflow devWorkflow = AgentWorkflowBuilder.BuildSequential(
     researcher, coder, documenter);
 
-await devWorkflow.AsAgent().RunAsync(
+await devWorkflow.AsAIAgent().RunAsync(
     "Research best practices for error handling, implement them, and document the changes.");
 ```
 

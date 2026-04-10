@@ -104,7 +104,7 @@ internal static class BackgroundResponsesDemo
     /// <summary>
     /// Unified interaction function: prompts the user for a question, runs the agent using the provided thread,
     /// prints the response using StreamConsoleHelper, and optionally persists the thread to disk.
-    /// The function returns the (possibly updated) AgentThread so callers can continue working with it.
+    /// The function returns the (possibly updated) AgentSession so callers can continue working with it.
     /// </summary>
     private static async Task<AgentSession> RunQuestionWithThread(AIAgent agent, AgentSession thread, bool persistAfter)
     {

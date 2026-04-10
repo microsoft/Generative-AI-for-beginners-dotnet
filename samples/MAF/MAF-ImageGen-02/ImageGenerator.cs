@@ -25,9 +25,12 @@ public static class ImageGenerator
             .Build();
 
         // You will need to set these environment variables or edit the following values.
-        var endpoint = config["AzureOpenAI:Endpoint"];
-        var deployment = config["FLUX_DEPLOYMENT_NAME"];
-        var apiKey = config["AZURE_OPENAI_API_KEY"];
+        var endpoint = config["AzureOpenAI:Endpoint"] ?? throw new InvalidOperationException(
+            "Missing 'AzureOpenAI:Endpoint'. Run: dotnet user-secrets set \"AzureOpenAI:Endpoint\" \"https://<your-resource>.openai.azure.com/\"");
+        var deployment = config["FLUX_DEPLOYMENT_NAME"] ?? throw new InvalidOperationException(
+            "Missing 'FLUX_DEPLOYMENT_NAME'. Run: dotnet user-secrets set \"FLUX_DEPLOYMENT_NAME\" \"<your-flux-deployment>\"");
+        var apiKey = config["AZURE_OPENAI_API_KEY"] ?? throw new InvalidOperationException(
+            "Missing 'AZURE_OPENAI_API_KEY'. Run: dotnet user-secrets set \"AZURE_OPENAI_API_KEY\" \"<your-api-key>\"");
 
         // Ensure endpoint ends with /openai/v1/
         if (!endpoint.EndsWith("/openai/v1/"))

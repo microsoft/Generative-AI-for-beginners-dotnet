@@ -79,7 +79,7 @@ AIAgent editor = chatClient.AsAIAgent(
 Workflow workflow = AgentWorkflowBuilder.BuildSequential(writer, editor);
 
 // Run the workflow
-AIAgent workflowAgent = workflow.AsAgent();
+AIAgent workflowAgent = workflow.AsAIAgent();
 
 AgentResponse response = await workflowAgent.RunAsync(
     "Write a short story about a haunted house.");
@@ -112,7 +112,7 @@ AIAgent factChecker = chatClient.AsAIAgent(
 Workflow pipeline = AgentWorkflowBuilder.BuildSequential(
     researcher, writer, editor, factChecker);
 
-var response = await pipeline.AsAgent().RunAsync(
+var response = await pipeline.AsAIAgent().RunAsync(
     "Create an article about the history of quantum computing.");
 ```
 
@@ -139,7 +139,7 @@ AIAgent keywordExtractor = chatClient.AsAIAgent(
 Workflow concurrent = AgentWorkflowBuilder.BuildConcurrent(
     sentimentAnalyst, summaryAgent, keywordExtractor);
 
-var response = await concurrent.AsAgent().RunAsync("""
+var response = await concurrent.AsAIAgent().RunAsync("""
     The new product launch exceeded all expectations. Sales were 
     up 200% compared to last year, and customer feedback has been 
     overwhelmingly positive. The marketing team's innovative 
@@ -192,7 +192,7 @@ Workflow handoff = AgentWorkflowBuilder.CreateHandoffBuilderWith(generalSupport)
     .Build();
 
 // First query goes to GeneralSupport, which may route to specialists
-var response = await handoff.AsAgent().RunAsync(
+var response = await handoff.AsAIAgent().RunAsync(
     "I was charged twice for my subscription last month.");
 ```
 
@@ -246,7 +246,7 @@ AIAgent reviewer = ollamaClient.AsAIAgent(
 Workflow multiModel = AgentWorkflowBuilder.BuildSequential(
     researcher, writer, reviewer);
 
-var response = await multiModel.AsAgent().RunAsync(
+var response = await multiModel.AsAIAgent().RunAsync(
     "Create an article about renewable energy innovations.");
 ```
 
@@ -300,7 +300,7 @@ Workflow customWorkflow = AgentWorkflowBuilder.CreateHandoffBuilderWith(intakeAg
     .WithHandoff(complexAgent, responderAgent)
     .Build();
 
-var response = await customWorkflow.AsAgent().RunAsync(
+var response = await customWorkflow.AsAIAgent().RunAsync(
     "Explain quantum entanglement in detail with mathematical formulations.");
 
 Console.WriteLine(response.Text);
