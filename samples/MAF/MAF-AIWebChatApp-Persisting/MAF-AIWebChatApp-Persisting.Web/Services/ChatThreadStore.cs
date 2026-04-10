@@ -4,7 +4,7 @@ using Microsoft.Agents.AI;
 namespace MAF_AIWebChatApp_Persisting.Web.Services;
 
 /// <summary>
-/// File-based persistence for an <see cref="AgentThread"/> using the Agent Framework's
+/// File-based persistence for an <see cref="AgentSession"/> using the Agent Framework's
 /// built-in serialization. Stores JSON in wwwroot/App_Data/agent-thread.json.
 /// </summary>
 public class ChatThreadStore
@@ -20,29 +20,29 @@ public class ChatThreadStore
     }
 
     /// <summary>
-    /// Loads a persisted thread; if none exists, returns a new thread instance from the provided agent.
+    /// Loads a persisted session; if none exists, returns a new session instance from the provided agent.
     /// </summary>
-    public async Task<AgentThread> LoadThreadAsync(AIAgent agent, CancellationToken cancellationToken = default)
+    public async Task<AgentSession> LoadThreadAsync(AIAgent agent, CancellationToken cancellationToken = default)
     {
         if (!File.Exists(_filePath))
         {
-            return agent.GetNewThread();
+            return await agent.CreateSessionAsync();
         }
         var json = await File.ReadAllTextAsync(_filePath, cancellationToken);
         if (string.IsNullOrWhiteSpace(json))
         {
-            return agent.GetNewThread();
+            return await agent.CreateSessionAsync();
         }
         var element = JsonSerializer.Deserialize<JsonElement>(json, _jsonOptions);
-        return agent.DeserializeThread(element, _jsonOptions);
+        return await agent.DeserializeSessionAsync(element, _jsonOptions);
     }
 
     /// <summary>
-    /// Persists the specified thread state to disk (overwrite).
+    /// Persists the specified session state to disk (overwrite).
     /// </summary>
-    public async Task SaveThreadAsync(AgentThread thread, CancellationToken cancellationToken = default)
+    public async Task SaveThreadAsync(AIAgent agent, AgentSession session, CancellationToken cancellationToken = default)
     {
-        var serialized = thread.Serialize(_jsonOptions).GetRawText();
+        var serialized = (await agent.SerializeSessionAsync(session, _jsonOptions)).GetRawText();
         await File.WriteAllTextAsync(_filePath, serialized, cancellationToken);
     }
 

@@ -51,7 +51,7 @@ builder.AddAIAgent("ChatAgent", (sp, key) =>
     var searchFunctions = sp.GetRequiredService<SearchFunctions>();
     var chatClient = sp.GetRequiredService<IChatClient>();
 
-    var agent = chatClient.CreateAIAgent(
+    var agent = chatClient.AsAIAgent(
     name: key,
     instructions: systemPrompt,
     description: "Helpful agent",

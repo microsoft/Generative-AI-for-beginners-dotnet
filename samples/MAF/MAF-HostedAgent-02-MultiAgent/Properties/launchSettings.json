@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "MAF-HostedAgent-02-MultiAgent": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "AZURE_OPENAI_ENDPOINT": "",
+        "AZURE_OPENAI_MODEL": "gpt-5-mini",
+        "AZURE_OPENAI_APIKEY": "",
+        "OLLAMA_ENDPOINT": "http://localhost:11434/",
+        "OLLAMA_MODEL": "phi4-mini"
+      }
+    }
+  }
+}

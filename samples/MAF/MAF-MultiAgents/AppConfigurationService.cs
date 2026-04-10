@@ -32,15 +32,14 @@ class AppConfigurationService
     public string DeploymentName => _configuration["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 
     /// <summary>
-    /// <summary>
     /// Gets the Azure OpenAI endpoint URL.
     /// </summary>
-    public string? AzureEndpoint => _configuration["endpoint"];
+    public string? AzureEndpoint => _configuration["AzureOpenAI:Endpoint"];
 
     /// <summary>
     /// Gets the API key for Azure services.
     /// </summary>
-    public string? ApiKey => _configuration["apikey"];
+    public string? ApiKey => _configuration["AzureOpenAI:ApiKey"];
 
     /// <summary>
     /// Gets the Azure Foundry project endpoint URL.

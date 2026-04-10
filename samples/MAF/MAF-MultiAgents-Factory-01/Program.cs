@@ -1,6 +1,6 @@
 ﻿using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.Workflows;
-using Microsoft.Bot.ObjectModel;
+using Microsoft.Agents.ObjectModel;
 using Microsoft.Extensions.AI;
 using OllamaSharp;
 using System.ComponentModel;
@@ -116,7 +116,7 @@ static TemplateLine ToInstructions(string text) =>
 static async Task RunWorkflowAsync(Func<Workflow> workflowFactory, List<ChatMessage> messages)
 {
     Workflow workflow = workflowFactory();
-    StreamingRun run = await InProcessExecution.StreamAsync(workflow, messages);
+    StreamingRun run = await InProcessExecution.Default.RunStreamingAsync(workflow, messages);
     await run.TrySendMessageAsync(new TurnToken(emitEvents: true));
 
     string? currentAgent = null;
@@ -125,7 +125,7 @@ static async Task RunWorkflowAsync(Func<Workflow> workflowFactory, List<ChatMess
     {
         switch (evt)
         {
-            case AgentRunUpdateEvent agentUpdate:
+            case AgentResponseUpdateEvent agentUpdate:
                 if (currentAgent != agentUpdate.ExecutorId)
                 {
                     currentAgent = agentUpdate.ExecutorId;

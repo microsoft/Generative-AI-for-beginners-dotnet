@@ -1,25 +1,21 @@
-﻿using Azure.AI.Agents.Persistent;
+﻿using Azure.AI.Projects;
 using Azure.Identity;
 using Microsoft.Agents.AI;
+using Microsoft.Agents.AI.Foundry;
 using Microsoft.Extensions.Configuration;
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 var azureFoundryProjectEndpoint = config["azureFoundryProjectEndpoint"];
 var deploymentName = config["AzureOpenAI:Deployment"];
-var assistantId = config["assistantId"];
 
-var persistentAgentClient = new PersistentAgentsClient(
-    azureFoundryProjectEndpoint!,
+AIProjectClient projectClient = new(
+    new Uri(azureFoundryProjectEndpoint!),
     new AzureCliCredential());
 
-// create agent
-//AIAgent aiAgent = persistentAgentClient.CreateAIAgent(
-//    model: deploymentName,
-//    name: "Agent",
-//    instructions: "You are a useful agent that replies in short and direct sentences.");
-
-// get existing agent
-AIAgent aiAgent = await persistentAgentClient.GetAIAgentAsync(assistantId);
+// create agent using Responses API
+AIAgent aiAgent = projectClient.AsAIAgent(
+    model: deploymentName!,
+    instructions: "You are a useful agent that replies in short and direct sentences.");
 
 while (true)
 {

@@ -14,14 +14,14 @@ string SavedThreadFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
 
 // create a simple agent
 var client = ChatClientProvider.GetChatClient();
-var agent = client.CreateAIAgent(
+var agent = client.AsAIAgent(
     name: "agent",
     instructions: "You are a helpful assistant");
 
 // ------------------------------------------------------------
 // Step1, create new thread, ask a question and persist the thread
 
-var thread = agent.GetNewThread();
+var thread = await agent.CreateSessionAsync();
 var question = "My name is Bruno";
 
 StreamConsoleHelper.PrintHeader("Step1, create new thread, ask a question and persist the thread", false);
@@ -31,7 +31,7 @@ var response = await agent.RunAsync(question, thread);
 StreamConsoleHelper.PrintAccumulatedLine(response.Text);
 
 // Serialize thread state and write to file
-var threadRaw = thread.Serialize(JsonSerializerOptions.Web).GetRawText();
+var threadRaw = (await agent.SerializeSessionAsync(thread, JsonSerializerOptions.Web)).GetRawText();
 await File.WriteAllTextAsync(SavedThreadFilePath, threadRaw);
 StreamConsoleHelper.PrintLabeled("Saved thread to", SavedThreadFilePath);
 
@@ -39,7 +39,7 @@ StreamConsoleHelper.PrintLabeled("Saved thread to", SavedThreadFilePath);
 // Step2, create new thread and ask the question "what is my name"
 
 StreamConsoleHelper.PrintHeader("Step2, create new thread and ask the question \"what is my name\"", false);
-thread = agent.GetNewThread();
+thread = await agent.CreateSessionAsync();
 question = "What is my name?";
 
 StreamConsoleHelper.PrintSection("Start answering your question");
@@ -56,7 +56,7 @@ var loadedJson = await File.ReadAllTextAsync(SavedThreadFilePath);
 JsonElement reloaded = JsonSerializer.Deserialize<JsonElement>(loadedJson, JsonSerializerOptions.Web);
 
 // Rehydrate the thread for this agent
-thread = agent.DeserializeThread(reloaded, JsonSerializerOptions.Web);
+thread = await agent.DeserializeSessionAsync(reloaded, JsonSerializerOptions.Web);
 question = "What is my name?";
 
 StreamConsoleHelper.PrintSection("Start answering your question");

@@ -16,9 +16,9 @@ Setup and run
  ```bash
 
 cd samples/MAF/MAF-Persisting-02-Menu
-dotnet user-secrets set "endpoint" "https://<your-endpoint>.services.ai.azure.com/"
-dotnet user-secrets set "deploymentName" "gpt-5-mini"
-dotnet user-secrets set "apikey" "<your-api-key>"
+dotnet user-secrets set "AzureOpenAI:Endpoint" "https://<your-endpoint>.openai.azure.com/"
+dotnet user-secrets set "AzureOpenAI:Deployment" "gpt-5-mini"
+# az login is required (samples use AzureCliCredential)
  ```
 
 1. Build and run:

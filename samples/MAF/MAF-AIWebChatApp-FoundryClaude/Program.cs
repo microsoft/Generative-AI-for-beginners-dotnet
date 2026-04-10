@@ -32,7 +32,7 @@ builder.Services.AddSingleton<AIAgent>(sp =>
     logger.LogInformation("Configuring AI Agent with Claude model '{Model}'", deploymentName);
 
     var chatClient = sp.GetRequiredService<IChatClient>();
-    return chatClient.CreateAIAgent(
+    return chatClient.AsAIAgent(
         name: "ClaudeChat",
         instructions: "You are a helpful and friendly AI assistant."
     );

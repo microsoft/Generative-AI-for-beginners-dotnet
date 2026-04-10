@@ -31,6 +31,18 @@
 
 私たちは最新のAIツール、モデル、実践的なサンプルでこのコースを継続的に改良しています：
 
+- **🚀 Microsoft Agent Framework v1.0 GA (2026年4月)**
+
+  すべての28個のMAFサンプルがプレビューから**安定版v1.0**パッケージにアップグレードされました。これには**重大な変更**が含まれます：`Microsoft.Agents.AI.AzureAI`が`Microsoft.Agents.AI.Foundry`にリネームされました。
+
+  **2つの新しいHosted Agentシナリオ** — コンテナ化されたエージェントをAzure Foundry Agent Serviceに展開：
+  - [MAF-HostedAgent-01-TimeZone](samples/MAF/MAF-HostedAgent-01-TimeZone/) — タイムゾーンツール付きの基本的なホスト済みエージェント
+  - [MAF-HostedAgent-02-MultiAgent](samples/MAF/MAF-HostedAgent-02-MultiAgent/) — マルチエージェント研究アシスタントワークフロー
+
+  マルチエージェントワークフロー、ストリーミング、永続性、およびMCPはすべて本番環境対応になりました。
+  
+  👉 [Official GA Release](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.0.0) | [Foundry Agent Service GA](https://devblogs.microsoft.com/foundry/foundry-agent-service-ga/)
+
 - **新機能：Foundry Local デモ！**
   - レッスン3では、[Foundry Local モデル](https://github.com/microsoft/Foundry-Local/tree/main) の実践的なデモを提供しています。
   - 公式ドキュメントを確認：[Foundry Local ドキュメント](https://learn.microsoft.com/azure/ai-foundry/foundry-local/)

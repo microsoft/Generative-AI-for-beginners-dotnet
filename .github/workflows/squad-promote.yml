@@ -36,7 +36,7 @@ jobs:
           echo "=== dev HEAD ===" && git log origin/dev -1 --oneline
           echo "=== preview HEAD ===" && git log origin/preview -1 --oneline
           echo "=== Files that would be stripped ==="
-          git diff origin/preview..origin/dev --name-only | grep -E "^(\.(ai-team|squad|ai-team-templates|squad-templates)|team-docs/|docs/proposals/)" || echo "(none)"
+          git diff origin/preview..origin/dev --name-only | grep -E "^(\.(ai-team|squad|ai-team-templates)|team-docs/|docs/proposals/)" || echo "(none)"
 
       - name: Merge dev → preview (strip forbidden paths)
         if: ${{ inputs.dry_run == 'false' }}
@@ -49,7 +49,6 @@ jobs:
             .ai-team/ \
             .squad/ \
             .ai-team-templates/ \
-            .squad-templates/ \
             team-docs/ \
             "docs/proposals/" || true
 
@@ -101,7 +100,7 @@ jobs:
           echo "✅ Version $VERSION has CHANGELOG entry"
 
           # Verify no forbidden files on preview
-          FORBIDDEN=$(git ls-files | grep -E "^(\.(ai-team|squad|ai-team-templates|squad-templates)/|team-docs/|docs/proposals/)" || true)
+          FORBIDDEN=$(git ls-files | grep -E "^(\.(ai-team|squad|ai-team-templates)/|team-docs/|docs/proposals/)" || true)
           if [ -n "$FORBIDDEN" ]; then
             echo "::error::Forbidden files found on preview: $FORBIDDEN"
             exit 1

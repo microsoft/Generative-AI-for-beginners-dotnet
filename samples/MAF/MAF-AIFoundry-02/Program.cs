@@ -6,17 +6,15 @@ using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 using OpenAI;
 using OpenAI.Chat;
-using System.ClientModel;
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-var endpoint = config["endpoint"];
-var apiKey = new ApiKeyCredential(config["apikey"]);
+var endpoint = config["AzureOpenAI:Endpoint"];
 var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 
-AIAgent agent = new AzureOpenAIClient(new Uri(endpoint), apiKey)
+AIAgent agent = new AzureOpenAIClient(new Uri(endpoint), new AzureCliCredential())
     .GetChatClient(deploymentName)
     .AsIChatClient()
-    .CreateAIAgent(instructions: "You are a useful agent that replies in short and direct sentences.");
+    .AsAIAgent(instructions: "You are a useful agent that replies in short and direct sentences.");
 
 while (true)
 {

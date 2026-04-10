@@ -146,8 +146,8 @@ var tools = await mcpClient.ListToolsAsync();
 The samples folder includes a complete working example with Hugging Face:
 
 ```csharp
-using Azure;
-using Azure.AI.Inference;
+using Azure.AI.OpenAI;
+using Azure.Identity;
 using Microsoft.Extensions.AI;
 using ModelContextProtocol.Client;
 
@@ -167,9 +167,9 @@ var tools = await mcpClient.ListToolsAsync();
 
 // Create chat client with function invocation
 IChatClient client = new AzureOpenAIClient(
-        new Uri(config["endpoint"]),
-        new ApiKeyCredential(config["apikey"]))
-        .GetChatClient("gpt-5-mini")
+        new Uri(config["AzureOpenAI:Endpoint"]),
+        new AzureCliCredential())
+        .GetChatClient(config["AzureOpenAI:Deployment"] ?? "gpt-5-mini")
         .AsIChatClient()
     .AsBuilder()
     .UseFunctionInvocation()
@@ -333,21 +333,21 @@ Combine MCP with multi-agent patterns:
 ```csharp
 // Research agent with web search MCP
 var webSearchMcp = await McpClient.ConnectAsync("https://mcp.websearch.com");
-AIAgent researcher = chatClient.CreateAIAgent(
+AIAgent researcher = chatClient.AsAIAgent(
     name: "Researcher",
     instructions: "Research topics using web search.",
     tools: await webSearchMcp.GetToolsAsync());
 
 // Code agent with GitHub MCP
 var githubMcp = await McpClient.ConnectAsync("https://mcp.github.com");
-AIAgent coder = chatClient.CreateAIAgent(
+AIAgent coder = chatClient.AsAIAgent(
     name: "Coder",
     instructions: "Write and manage code in the repository.",
     tools: await githubMcp.GetToolsAsync());
 
 // Documentation agent with filesystem MCP
 var fsMcp = await McpClient.ConnectAsync("stdio://mcp-filesystem");
-AIAgent documenter = chatClient.CreateAIAgent(
+AIAgent documenter = chatClient.AsAIAgent(
     name: "Documenter",
     instructions: "Create and update documentation files.",
     tools: await fsMcp.GetToolsAsync());
@@ -356,7 +356,7 @@ AIAgent documenter = chatClient.CreateAIAgent(
 Workflow devWorkflow = AgentWorkflowBuilder.BuildSequential(
     researcher, coder, documenter);
 
-await devWorkflow.AsAgent().RunAsync(
+await devWorkflow.AsAIAgent().RunAsync(
     "Research best practices for error handling, implement them, and document the changes.");
 ```
 

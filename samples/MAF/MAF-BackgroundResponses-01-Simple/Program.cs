@@ -20,7 +20,7 @@ internal static class BackgroundResponsesDemo
         var responseClient = ResponseClientProvider.GetResponseClient();
 
         // create a simple agent with basic instructions
-        var agent = responseClient.CreateAIAgent(
+        var agent = responseClient.AsAIAgent(
             name: "agent",
             instructions: "You are a helpful assistant");
 
@@ -31,7 +31,7 @@ internal static class BackgroundResponsesDemo
         };
 
         //1) Create a thread for the conversation
-        var thread = agent.GetNewThread();
+        var thread = await agent.CreateSessionAsync();
 
         //2) The question we'll ask
         var question = "Write a 2 lines story about .NET Conf";
@@ -42,7 +42,7 @@ internal static class BackgroundResponsesDemo
         // Streaming phase: start streaming and simulate an interruption when we receive some text
         StreamConsoleHelper.PrintSection("Start streaming (background responses enabled)");
 
-        AgentRunResponseUpdate? latestReceivedUpdate = null;
+        AgentResponseUpdate? latestReceivedUpdate = null;
 
         await foreach (var update in agent.RunStreamingAsync(question, thread, options))
         {

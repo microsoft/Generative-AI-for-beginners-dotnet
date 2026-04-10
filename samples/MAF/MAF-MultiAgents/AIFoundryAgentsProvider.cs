@@ -1,51 +1,53 @@
-using Azure.AI.Agents.Persistent;
+using Azure.AI.Projects;
 using Azure.Identity;
 using Microsoft.Agents.AI;
+using Microsoft.Agents.AI.Foundry;
 
 namespace MAF_MultiAgents;
 
 /// <summary>
-/// Provides factory methods for creating and managing AI Foundry persistent agents.
+/// Provides factory methods for creating and managing AI Foundry agents using the Responses API.
 /// </summary>
 class AIFoundryAgentsProvider
 {
     private static readonly AppConfigurationService _config = AppConfigurationService.Instance;
 
     /// <summary>
-    /// Creates a persistent AI agent in Microsoft Foundry.
+    /// Creates an AI agent in Microsoft Foundry using the Responses API.
     /// </summary>
     /// <param name="name">The name of the agent.</param>
     /// <param name="instructions">The instructions that define the agent's behavior.</param>
     /// <returns>A configured AIAgent instance.</returns>
     public static AIAgent CreateAIAgent(string name, string instructions)
     {
-        var persistentAgentsClient = CreatePersistentAgentsClient();
+        var projectClient = CreateProjectClient();
 
-        AIAgent aiAgent = persistentAgentsClient.CreateAIAgent(
+        AIAgent aiAgent = projectClient.AsAIAgent(
             model: _config.DeploymentName,
-            name: name,
-            instructions: instructions);
+            instructions: instructions,
+            name: name);
 
         return aiAgent;
     }
 
     /// <summary>
     /// Deletes an existing AI agent from Microsoft Foundry.
+    /// Responses API agents are ephemeral and do not persist on the server,
+    /// so this method is a no-op.
     /// </summary>
     /// <param name="agent">The agent to delete.</param>
     public static void DeleteAIAgentInAIFoundry(AIAgent agent)
     {
-        var persistentAgentsClient = CreatePersistentAgentsClient();
-        persistentAgentsClient.Administration.DeleteAgent(agent.Id);
+        // Responses API agents are ephemeral — no server-side cleanup needed.
     }
 
     /// <summary>
-    /// Creates a PersistentAgentsClient using Azure CLI credentials.
+    /// Creates an AIProjectClient using Azure CLI credentials.
     /// </summary>
-    private static PersistentAgentsClient CreatePersistentAgentsClient()
+    private static AIProjectClient CreateProjectClient()
     {
-        return new PersistentAgentsClient(
-            _config.AzureFoundryProjectEndpoint!,
+        return new AIProjectClient(
+            new Uri(_config.AzureFoundryProjectEndpoint!),
             new AzureCliCredential());
     }
 }

@@ -23,7 +23,7 @@ IChatClient client = new AzureClaudeClient(
     apiKey: apiKey);
 
 // Create a simple agent
-var agent = client.CreateAIAgent(
+var agent = client.AsAIAgent(
     name: "agent",
     instructions: "You are a helpful assistant with a good memory");
 
@@ -34,7 +34,7 @@ StreamConsoleHelper.PrintHeader("Step 1: Create new thread, ask a question, and 
 StreamConsoleHelper.PrintInfo($"Using Claude model: {deploymentName}");
 Console.WriteLine();
 
-var thread = agent.GetNewThread();
+var thread = await agent.CreateSessionAsync();
 var question = "My name is Bruno and I live in Madrid";
 
 StreamConsoleHelper.PrintSection("Start answering your question");
@@ -44,7 +44,7 @@ StreamConsoleHelper.PrintAccumulatedLine(response.Text);
 Console.WriteLine();
 
 // Serialize thread state and write to file
-var threadRaw = thread.Serialize(JsonSerializerOptions.Web).GetRawText();
+var threadRaw = (await agent.SerializeSessionAsync(thread, JsonSerializerOptions.Web)).GetRawText();
 await File.WriteAllTextAsync(SavedThreadFilePath, threadRaw);
 StreamConsoleHelper.PrintLabeled("Saved thread to", SavedThreadFilePath);
 Console.WriteLine();
@@ -53,7 +53,7 @@ Console.WriteLine();
 // Step 2: Create new thread and ask a question without context
 
 StreamConsoleHelper.PrintHeader("Step 2: Create new thread and ask \"where do I live?\"", clearConsole: false);
-thread = agent.GetNewThread();
+thread = await agent.CreateSessionAsync();
 question = "Where do I live?";
 
 StreamConsoleHelper.PrintSection("Start answering your question (without context)");
@@ -70,7 +70,7 @@ var loadedJson = await File.ReadAllTextAsync(SavedThreadFilePath);
 JsonElement reloaded = JsonSerializer.Deserialize<JsonElement>(loadedJson, JsonSerializerOptions.Web);
 
 // Rehydrate the thread for this agent
-thread = agent.DeserializeThread(reloaded, JsonSerializerOptions.Web);
+thread = await agent.DeserializeSessionAsync(reloaded, JsonSerializerOptions.Web);
 question = "Where do I live?";
 
 StreamConsoleHelper.PrintSection("Start answering your question (with context)");
@@ -92,7 +92,7 @@ StreamConsoleHelper.PrintAccumulatedLine(response.Text);
 Console.WriteLine();
 
 // Save updated thread
-threadRaw = thread.Serialize(JsonSerializerOptions.Web).GetRawText();
+threadRaw = (await agent.SerializeSessionAsync(thread, JsonSerializerOptions.Web)).GetRawText();
 await File.WriteAllTextAsync(SavedThreadFilePath, threadRaw);
 StreamConsoleHelper.PrintLabeled("Updated thread saved to", SavedThreadFilePath);
 Console.WriteLine();

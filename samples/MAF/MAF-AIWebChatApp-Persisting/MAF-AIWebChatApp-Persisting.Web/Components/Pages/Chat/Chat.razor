@@ -33,7 +33,7 @@
     private ChatInput? chatInput;
     private ChatSuggestions? chatSuggestions;
     private AIAgent aiAgent = default!;
-    private AgentThread thread = default!;
+    private AgentSession thread = default!;
 
     protected override async Task OnInitializedAsync()
     {
@@ -76,14 +76,14 @@
     {
         CancelAnyCurrentResponse();
         ThreadStore.DeletePersistedThread();
-        thread = aiAgent.GetNewThread();
+        thread = await aiAgent.CreateSessionAsync();
         messages.Clear();
         await PersistThreadAsync();
         chatSuggestions?.Clear();
         await chatInput!.FocusAsync();
     }
 
-    private Task PersistThreadAsync() => ThreadStore.SaveThreadAsync(thread);
+    private Task PersistThreadAsync() => ThreadStore.SaveThreadAsync(aiAgent, thread);
 
     public void Dispose() => currentResponseCancellation?.Cancel();
 }

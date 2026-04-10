@@ -1,11 +1,9 @@
-﻿using Azure.AI.Agents.Persistent;
-using Azure.AI.OpenAI;
-using Azure.AI.Projects;
+﻿using Azure.AI.Projects;
 using Azure.Identity;
 using Microsoft.Agents.AI;
+using Microsoft.Agents.AI.Foundry;
 using Microsoft.Extensions.Configuration;
 
-#pragma warning disable CA2252 // Opt-in for preview features used by AIProjectClient in samples
 using System.Diagnostics;
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
@@ -14,8 +12,8 @@ var deploymentName = config["AzureOpenAI:Deployment"] ?? throw new InvalidOperat
 var agentName = config["agentName"] ?? throw new InvalidOperationException("Missing 'agentName' configuration");
 
 AIProjectClient projectClient = new(
-    endpoint: new Uri(azureFoundryProjectEndpoint),
-    tokenProvider: new AzureCliCredential());
+    new Uri(azureFoundryProjectEndpoint),
+    new AzureCliCredential());
 
 Console.WriteLine("=== AI Agent Session ===");
 Console.WriteLine($"Project Endpoint: {azureFoundryProjectEndpoint}");
@@ -23,16 +21,13 @@ Console.WriteLine($"Model Deployment: {deploymentName}");
 Console.WriteLine($"Agent Name: {agentName}");
 Console.WriteLine();
 
-// create agent (example with tools)
-//AIAgent aiAgent = projectClient.CreateAIAgent(
-//    model: deploymentName,
-//    name: "Agent",
-//    instructions: "You are a useful agent that replies in short and direct sentences.");
-
-// get existing agent
-Console.WriteLine($"Retrieving agent '{agentName}'...");
-AIAgent aiAgent = await projectClient.GetAIAgentAsync(agentName);
-Console.WriteLine($"✓ Agent retrieved: {aiAgent.Id}");
+// create agent using Responses API
+Console.WriteLine($"Creating agent '{agentName}'...");
+AIAgent aiAgent = projectClient.AsAIAgent(
+    model: deploymentName,
+    instructions: "You are a useful agent that replies in short and direct sentences.",
+    name: agentName);
+Console.WriteLine($"✓ Agent created: {agentName}");
 Console.WriteLine();
 
 while (true)

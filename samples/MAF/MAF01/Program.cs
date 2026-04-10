@@ -1,23 +1,23 @@
 ﻿using Azure.AI.OpenAI;
+using Azure.Identity;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
-using System.ClientModel;
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-var endpoint = config["endpoint"];
-var apiKey = new ApiKeyCredential(config["apikey"]);
+var endpoint = config["AzureOpenAI:Endpoint"] ?? throw new InvalidOperationException(
+    "Missing 'AzureOpenAI:Endpoint'. Run: dotnet user-secrets set \"AzureOpenAI:Endpoint\" \"https://<your-resource>.openai.azure.com/\"");
 var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 
 IChatClient chatClient =
-    new AzureOpenAIClient(new Uri(endpoint), apiKey)
+    new AzureOpenAIClient(new Uri(endpoint), new AzureCliCredential())
         .GetChatClient(deploymentName)
         .AsIChatClient();
 
-AIAgent writer = chatClient.CreateAIAgent(
+AIAgent writer = chatClient.AsAIAgent(
     name: "Writer",
     instructions: "Write stories that are engaging and creative.");
 
-AgentRunResponse response = await writer.RunAsync("Write a short story about a haunted house with a character named Lucia.");
+AgentResponse response = await writer.RunAsync("Write a short story about a haunted house with a character named Lucia.");
 
 Console.WriteLine(response.Text);

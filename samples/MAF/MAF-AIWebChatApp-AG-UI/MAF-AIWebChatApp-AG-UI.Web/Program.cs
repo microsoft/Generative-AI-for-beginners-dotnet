@@ -41,7 +41,7 @@ builder.Services.AddActivatedKeyedSingleton<AIAgent>("ChatAgent", (sp, key) =>
     AGUIChatClient chatClient = new(agentService.HttpClient, "https+http://aichatweb-agents");
 
     // Create and configure the AI agent
-    var aiAgent = chatClient.CreateAIAgent(
+    var aiAgent = chatClient.AsAIAgent(
         name: key.ToString(),
         instructions: "You are a useful agent that helps users with short and funny answers.",
         description: "An AI agent that helps users with short and funny answers.",

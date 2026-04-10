@@ -31,6 +31,18 @@ Não se esqueça de [dar uma estrela (🌟) neste repositório](https://docs.git
 
 Estamos constantemente melhorando este curso com as mais recentes ferramentas de IA, modelos e exemplos práticos:
 
+- **🚀 Microsoft Agent Framework v1.0 GA (Abril de 2026)**
+
+  Todas as 28 amostras de MAF foram atualizadas de visualização para pacotes **estáveis v1.0**. Isso inclui uma **mudança significativa:** `Microsoft.Agents.AI.AzureAI` foi renomeado para `Microsoft.Agents.AI.Foundry`.
+
+  **2 novos cenários de Hosted Agent** — implante agentes containerizados no Azure Foundry Agent Service:
+  - [MAF-HostedAgent-01-TimeZone](samples/MAF/MAF-HostedAgent-01-TimeZone/) — Agente hospedado básico com ferramenta de fuso horário
+  - [MAF-HostedAgent-02-MultiAgent](samples/MAF/MAF-HostedAgent-02-MultiAgent/) — Fluxo de trabalho de Assistente de Pesquisa Multi-Agente
+
+  Fluxos de trabalho multi-agente, streaming, persistência e MCP estão prontos para produção.
+  
+  👉 [Official GA Release](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.0.0) | [Foundry Agent Service GA](https://devblogs.microsoft.com/foundry/foundry-agent-service-ga/)
+
 - **Novo: Demos do Foundry Local!**
   - A Lição 3 agora apresenta demonstrações práticas para [modelos Foundry Local](https://github.com/microsoft/Foundry-Local/tree/main).
   - Veja a documentação oficial: [Documentação do Foundry Local](https://learn.microsoft.com/azure/ai-foundry/foundry-local/)

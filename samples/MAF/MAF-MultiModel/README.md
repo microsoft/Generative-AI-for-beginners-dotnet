@@ -8,7 +8,7 @@ This console application demonstrates the Microsoft Agent Framework with **3 dif
 
 ## Prerequisites
 
-1. **Azure OpenAI / Microsoft Foundry** endpoint and API key
+1. **Azure OpenAI / Microsoft Foundry** endpoint (API key optional — uses DefaultAzureCredential by default)
 2. **Ollama** installed and running locally with the `llama3.2` model
 
 ### Install Ollama
@@ -28,9 +28,9 @@ Set up the following user secrets or environment variables:
 
 ```bash
 # For Agent 1 & 2 (Researcher and Writer using Azure OpenAI)
-dotnet user-secrets set "endpoint" "https://<your-endpoint>.services.ai.azure.com/"
-dotnet user-secrets set "apikey" "your-azure-api-key"
-dotnet user-secrets set "deploymentName" "gpt-5-mini"  # Optional, defaults to gpt-5-mini
+dotnet user-secrets set "AzureOpenAI:Endpoint" "https://<your-endpoint>.openai.azure.com/"
+dotnet user-secrets set "AzureOpenAI:Deployment" "gpt-5-mini"  # Optional, defaults to gpt-5-mini
+# az login is required (samples use DefaultAzureCredential)
 ```
 
 ## How to Run

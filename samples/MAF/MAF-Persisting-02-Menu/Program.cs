@@ -22,7 +22,7 @@ internal static class BackgroundResponsesDemo
         var client = ChatClientProvider.GetChatClient();
 
         // create a simple agent with basic instructions
-        var agent = client.CreateAIAgent(
+        var agent = client.AsAIAgent(
             name: "agent",
             instructions: "You are a helpful assistant");
 
@@ -58,7 +58,7 @@ internal static class BackgroundResponsesDemo
     private static async Task OptionStartNewThread(AIAgent agent)
     {
         // create a brand new thread, pass it to the unified handler, persist after
-        var thread = agent.GetNewThread();
+        var thread = await agent.CreateSessionAsync();
         await RunQuestionWithThread(agent, thread, persistAfter: true);
 
         PersistingUI.PrintMessage(string.Empty);
@@ -69,7 +69,7 @@ internal static class BackgroundResponsesDemo
     private static async Task OptionSimpleSession(AIAgent agent)
     {
         // create a temporary thread, do not persist after
-        var tempThread = agent.GetNewThread();
+        var tempThread = await agent.CreateSessionAsync();
         await RunQuestionWithThread(agent, tempThread, persistAfter: false);
 
         PersistingUI.PrintMessage(string.Empty);
@@ -91,7 +91,7 @@ internal static class BackgroundResponsesDemo
         JsonElement reloaded = JsonSerializer.Deserialize<JsonElement>(loadedJson, JsonSerializerOptions.Web);
 
         // Rehydrate the thread for this agent
-        var resumedThread = agent.DeserializeThread(reloaded, JsonSerializerOptions.Web);
+        var resumedThread = await agent.DeserializeSessionAsync(reloaded, JsonSerializerOptions.Web);
 
         // Use the unified handler and persist after execution
         await RunQuestionWithThread(agent, resumedThread, persistAfter: true);
@@ -104,9 +104,9 @@ internal static class BackgroundResponsesDemo
     /// <summary>
     /// Unified interaction function: prompts the user for a question, runs the agent using the provided thread,
     /// prints the response using StreamConsoleHelper, and optionally persists the thread to disk.
-    /// The function returns the (possibly updated) AgentThread so callers can continue working with it.
+    /// The function returns the (possibly updated) AgentSession so callers can continue working with it.
     /// </summary>
-    private static async Task<AgentThread> RunQuestionWithThread(AIAgent agent, AgentThread thread, bool persistAfter)
+    private static async Task<AgentSession> RunQuestionWithThread(AIAgent agent, AgentSession thread, bool persistAfter)
     {
         var question = PersistingUI.PromptInput("Enter your question: ");
 
@@ -123,7 +123,7 @@ internal static class BackgroundResponsesDemo
         if (persistAfter)
         {
             // Serialize thread state and write to file
-            var threadRaw = thread.Serialize(JsonSerializerOptions.Web).GetRawText();
+            var threadRaw = (await agent.SerializeSessionAsync(thread, JsonSerializerOptions.Web)).GetRawText();
             await File.WriteAllTextAsync(SavedThreadFilePath, threadRaw);
             StreamConsoleHelper.PrintLabeled("Saved thread to", SavedThreadFilePath);
         }

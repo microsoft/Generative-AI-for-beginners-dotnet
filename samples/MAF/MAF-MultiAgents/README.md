@@ -99,19 +99,18 @@ To create a GitHub token:
 **Option B: Azure OpenAI with API Key**
 
 ```bash
-dotnet user-secrets set "endpoint" "https://<your-resource>.cognitiveservices.azure.com"
-dotnet user-secrets set "apikey" "your-azure-openai-api-key"
-dotnet user-secrets set "deploymentName" "gpt-5-mini"
+dotnet user-secrets set "AzureOpenAI:Endpoint" "https://<your-resource>.openai.azure.com/"
+dotnet user-secrets set "AzureOpenAI:ApiKey" "your-azure-openai-api-key"
+dotnet user-secrets set "AzureOpenAI:Deployment" "gpt-5-mini"
 ```
 
-**Option C: Azure OpenAI with Managed Identity** (Fallback)
+**Option C: Azure OpenAI with DefaultAzureCredential** (Recommended)
 
 ```bash
-dotnet user-secrets set "endpoint" "https://<your-resource>.cognitiveservices.azure.com"
-dotnet user-secrets set "deploymentName" "gpt-5-mini"
+dotnet user-secrets set "AzureOpenAI:Endpoint" "https://<your-resource>.openai.azure.com/"
+dotnet user-secrets set "AzureOpenAI:Deployment" "gpt-5-mini"
+az login  # Required for DefaultAzureCredential
 ```
-
-Note: This option requires Azure CLI login (`az login`) or a configured managed identity.
 
 ### Step 3: Verify Azure CLI Authentication
 

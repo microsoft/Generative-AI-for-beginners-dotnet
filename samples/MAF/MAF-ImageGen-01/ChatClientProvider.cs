@@ -1,8 +1,8 @@
 using Azure.AI.OpenAI;
+using Azure.Identity;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using System.ClientModel;
 
 namespace MAF_ImageGen_01;
 
@@ -17,10 +17,9 @@ class ChatClientProvider
             .Build();
         var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 
-        var endpoint = config["endpoint"];
-        var apiKey = new ApiKeyCredential(config["apikey"]);
+        var endpoint = config["AzureOpenAI:Endpoint"];
 
-        var client = new AzureOpenAIClient(new Uri(endpoint), apiKey)
+        var client = new AzureOpenAIClient(new Uri(endpoint), new AzureCliCredential())
             .GetChatClient(deploymentName)
             .AsIChatClient()
             .AsBuilder()

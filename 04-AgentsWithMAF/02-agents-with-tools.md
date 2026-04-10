@@ -88,7 +88,7 @@ using Microsoft.Extensions.AI;
 var weatherTool = AIFunctionFactory.Create(GetWeather);
 
 // Create an agent with tools
-AIAgent assistant = chatClient.CreateAIAgent(
+AIAgent assistant = chatClient.AsAIAgent(
     name: "WeatherAssistant",
     instructions: "You are a helpful assistant that can check the weather.",
     tools: [weatherTool]);
@@ -120,7 +120,7 @@ static string ConvertCurrency(string from, string to, decimal amount)
     => $"{amount} {from} is approximately {amount * 0.85m} {to}.";
 
 // Create agent with multiple tools
-AIAgent assistant = chatClient.CreateAIAgent(
+AIAgent assistant = chatClient.AsAIAgent(
     name: "MultiToolAssistant",
     instructions: "You are a helpful assistant with access to weather, time, and currency tools.",
     tools: [
@@ -168,7 +168,7 @@ static string SearchFlights(FlightSearchRequest request)
         """;
 }
 
-AIAgent travelAgent = chatClient.CreateAIAgent(
+AIAgent travelAgent = chatClient.AsAIAgent(
     name: "TravelAgent",
     instructions: "You are a travel booking assistant.",
     tools: [AIFunctionFactory.Create(SearchFlights)]);
@@ -213,7 +213,7 @@ static async Task<string> PlaceOrder(
     return $"Order {orderId} placed for {quantity}x {productName}. Estimated delivery: 3-5 days.";
 }
 
-AIAgent shopAgent = chatClient.CreateAIAgent(
+AIAgent shopAgent = chatClient.AsAIAgent(
     name: "ShoppingAssistant",
     instructions: "Help users find and order products.",
     tools: [
@@ -263,7 +263,7 @@ public class WeatherService
 // Create agent with instance method as tool
 var weatherService = new WeatherService();
 
-AIAgent agent = chatClient.CreateAIAgent(
+AIAgent agent = chatClient.AsAIAgent(
     name: "WeatherBot",
     instructions: "You provide accurate weather information.",
     tools: [AIFunctionFactory.Create(weatherService.GetRealWeather)]);
@@ -277,7 +277,7 @@ You can also provide tools at runtime, not just at construction:
 
 ```csharp
 // Agent created without tools
-AIAgent agent = chatClient.CreateAIAgent(
+AIAgent agent = chatClient.AsAIAgent(
     name: "FlexibleAgent",
     instructions: "You are a flexible assistant.");
 
