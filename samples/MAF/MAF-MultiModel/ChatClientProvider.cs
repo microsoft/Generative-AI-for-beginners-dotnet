@@ -4,7 +4,6 @@ using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using OllamaSharp;
-using System.ClientModel;
 
 namespace MAF_MultiModel;
 
@@ -24,27 +23,13 @@ class ChatClientProvider
             .Build();
         var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 
-        var endpoint = config["endpoint"];
+        var endpoint = config["AzureOpenAI:Endpoint"];
 
-        if (!string.IsNullOrEmpty(config["apikey"]))
-        {
-            var apiKey = new ApiKeyCredential(config["apikey"]);
-            return new AzureOpenAIClient(new Uri(endpoint), apiKey)
-                .GetChatClient(deploymentName)
-                .AsIChatClient()
-                .AsBuilder()
-                .UseFunctionInvocation()
-                .Build();
-        }
-        else
-        {
-            // use default azure credentials if no apiKey is provided
-            return new AzureOpenAIClient(new Uri(endpoint), new DefaultAzureCredential())
-                .GetChatClient(deploymentName)
-                .AsIChatClient()
-                .AsBuilder()
-                .UseFunctionInvocation()
-                .Build();
-        }
+        return new AzureOpenAIClient(new Uri(endpoint), new DefaultAzureCredential())
+            .GetChatClient(deploymentName)
+            .AsIChatClient()
+            .AsBuilder()
+            .UseFunctionInvocation()
+            .Build();
     }
 }

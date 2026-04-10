@@ -3,7 +3,6 @@ using Azure.Identity;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using System.ClientModel;
 
 namespace MAF_BackgroundResponses_01_Simple;
 
@@ -18,18 +17,11 @@ class ChatClientProvider
             .Build();
 
         var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
-        var endpoint = config["endpoint"];
-        var apiKey = config["apikey"];
+        var endpoint = config["AzureOpenAI:Endpoint"];
 
         var azureClient = new AzureOpenAIClient(
             new Uri(endpoint),
             new AzureCliCredential());
-        if (!string.IsNullOrEmpty(apiKey))
-        {
-            azureClient = new AzureOpenAIClient(
-                new Uri(endpoint),
-                new ApiKeyCredential(apiKey));
-        }
 
         return azureClient
             .GetChatClient(deploymentName)

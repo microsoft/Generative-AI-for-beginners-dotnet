@@ -3,13 +3,9 @@ using Azure.Identity;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
-using OpenAI;
-using OpenAI.Chat;
-using System.ClientModel;
 
-var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-var endpoint = config["endpoint"];
-var apiKey = new ApiKeyCredential(config["apikey"]);
+var config= new ConfigurationBuilder().AddUserSecrets<Program>().Build();
+var endpoint = config["AzureOpenAI:Endpoint"];
 var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 
 IChatClient chatClient =

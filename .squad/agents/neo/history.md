@@ -112,3 +112,16 @@
   - `MAF-HostedAgent-01-TimeZone`: launchSettings.json, Program.cs (fallback default), README.md (env var example + Docker run)
   - `MAF-HostedAgent-02-MultiAgent`: launchSettings.json, Program.cs (fallback default), README.md (env var example + Docker run)
 - **Key insight:** HostedAgent samples used environment variables instead of user secrets (they're designed for Docker/container deployment), so they were missed in earlier sweeps that focused on `config["..."]` patterns.
+
+### Phase 8 — MAF Console Samples Auth Standardization (AzureCliCredential)
+- **Standardized 10 MAF files** to use `AzureCliCredential` (passwordless) + `config["AzureOpenAI:Endpoint"]`, matching the CoreSamples pattern (e.g., BasicChat-01MEAI):
+  - **MAF01/Program.cs, MAF02/Program.cs:** Replaced `config["endpoint"]`/`ApiKeyCredential(config["apikey"])` → `config["AzureOpenAI:Endpoint"]`/`AzureCliCredential()`. Added `Azure.Identity` NuGet (v1.20.0) + `using Azure.Identity;`. Removed `using System.ClientModel;`.
+  - **MAF-AIFoundry-01/Program.cs:** Fixed `config["endpoint"]` → `config["AzureOpenAI:Endpoint"]`. Removed dead `apiKey` variable (was never used, would crash on null). Removed `using System.ClientModel;`, `using OpenAI;`, `using OpenAI.Chat;`.
+  - **MAF-AIFoundry-02/Program.cs:** Replaced `ApiKeyCredential` auth → `AzureCliCredential()`. Fixed endpoint key. Removed `using System.ClientModel;`.
+  - **MAF-BackgroundResponses-01-Simple/ChatClientProvider.cs:** Fixed endpoint key. Removed apiKey variable and if-block that overrode AzureCliCredential with ApiKeyCredential. Removed `using System.ClientModel;`.
+  - **MAF-BackgroundResponses-01-Simple/ResponseClientProvider.cs:** Same as ChatClientProvider — simplified to AzureCliCredential only.
+  - **MAF-ImageGen-01/ChatClientProvider.cs:** Replaced `ApiKeyCredential` → `AzureCliCredential()`. Fixed endpoint key. Added `using Azure.Identity;`, removed `using System.ClientModel;`.
+  - **MAF-ImageGen-02/ChatClientProvider.cs:** Same as ImageGen-01.
+  - **MAF-MultiModel/ChatClientProvider.cs:** Fixed endpoint key. Removed apiKey if-branch, kept only `DefaultAzureCredential` path (already used DefaultAzureCredential). Removed `using System.ClientModel;`.
+- **Intentionally skipped:** MAF-ImageGen-02/ImageGenerator.cs (Flux deployment with separate config), MAF-HostedAgent-* (environment variables), MAF-FoundryClaude-* (Claude secrets), MAF-AIFoundryAgents-01/MAF-MicrosoftFoundryAgents-* (Foundry project endpoint), MAF-MultiAgents (complex config provider).
+- **Build result:** `dotnet build MAF-Demos.slnx` — 0 errors, 2 warnings (pre-existing nullable warnings).
