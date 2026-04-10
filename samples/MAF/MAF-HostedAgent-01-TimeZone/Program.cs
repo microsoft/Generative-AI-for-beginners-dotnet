@@ -60,7 +60,7 @@ static IChatClient CreateChatClient()
 {
     // Try Azure OpenAI first
     var azureEndpoint = Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT");
-    var azureModel = Environment.GetEnvironmentVariable("AZURE_OPENAI_MODEL") ?? "gpt-4o-mini";
+    var azureModel = Environment.GetEnvironmentVariable("AZURE_OPENAI_MODEL") ?? "gpt-5-mini";
     var azureApiKey = Environment.GetEnvironmentVariable("AZURE_OPENAI_APIKEY");
 
     if (!string.IsNullOrEmpty(azureEndpoint) && !string.IsNullOrEmpty(azureApiKey))

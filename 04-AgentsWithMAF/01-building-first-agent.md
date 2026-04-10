@@ -22,7 +22,7 @@ Console.WriteLine(response.Text);
 And here's an agent:
 
 ```csharp
-AIAgent joker = chatClient.CreateAIAgent(
+AIAgent joker = chatClient.AsAIAgent(
     instructions: "You are good at telling jokes.");
 
 var response = await joker.RunAsync("Tell me a joke about pirates");
@@ -67,18 +67,18 @@ IChatClient chatClient = new AzureOpenAIClient(
     .AsIChatClient();
 
 // Create an agent from the chat client
-AIAgent writer = chatClient.CreateAIAgent(
+AIAgent writer = chatClient.AsAIAgent(
     name: "Writer",
     instructions: "Write stories that are engaging and creative.");
 
 // Run the agent
-AgentRunResponse response = await writer.RunAsync(
+AgentResponse response = await writer.RunAsync(
     "Write a short story about a haunted house with a character named Lucia.");
 
 Console.WriteLine(response.Text);
 ```
 
-That's it! The `CreateAIAgent` extension method transforms any `IChatClient` into an agent.
+That's it! The `AsAIAgent` extension method transforms any `IChatClient` into an agent.
 
 ---
 
@@ -93,10 +93,10 @@ public abstract class AIAgent
     public string Name { get; }
     
     // Execute the agent with a message
-    public Task<AgentRunResponse> RunAsync(string message, AgentRunOptions? options = null);
+    public Task<AgentResponse> RunAsync(string message, AgentRunOptions? options = null);
     
     // Execute with a thread (for conversation continuity)
-    public Task<AgentRunResponse> RunAsync(AgentThread thread, string message, AgentRunOptions? options = null);
+    public Task<AgentResponse> RunAsync(AgentThread thread, string message, AgentRunOptions? options = null);
 }
 ```
 
@@ -119,7 +119,7 @@ Agents can maintain conversation context using `AgentThread`:
 using Microsoft.Agents.AI;
 
 // Create an agent
-AIAgent assistant = chatClient.CreateAIAgent(
+AIAgent assistant = chatClient.AsAIAgent(
     name: "Assistant",
     instructions: "You are a helpful assistant that remembers our conversation.");
 
@@ -157,7 +157,7 @@ AIAgent agent = new AzureOpenAIClient(
     new Uri("https://your-resource.openai.azure.com/"),
     new AzureCliCredential())
     .GetChatClient("gpt-5-mini")
-    .CreateAIAgent(instructions: "You are a helpful assistant.");
+    .AsAIAgent(instructions: "You are a helpful assistant.");
 ```
 
 ### Azure OpenAI (with API Key)
@@ -172,7 +172,7 @@ IChatClient chatClient = new AzureOpenAIClient(
     .GetChatClient("gpt-5-mini")
     .AsIChatClient();
 
-AIAgent agent = chatClient.CreateAIAgent(
+AIAgent agent = chatClient.AsAIAgent(
     instructions: "You are a helpful assistant.");
 ```
 
@@ -185,7 +185,7 @@ IChatClient chatClient = new OllamaApiClient(
     new Uri("http://localhost:11434/"), 
     "llama3.2");
 
-AIAgent agent = chatClient.CreateAIAgent(
+AIAgent agent = chatClient.AsAIAgent(
     name: "LocalAgent",
     instructions: "You are a helpful assistant running locally.");
 
@@ -213,7 +213,7 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .Build();
 
 // Create an agent with telemetry
-AIAgent agent = chatClient.CreateAIAgent(
+AIAgent agent = chatClient.AsAIAgent(
     name: "TracedAgent",
     instructions: "You are a helpful assistant.")
     .AsBuilder()
@@ -255,7 +255,7 @@ Not every AI application needs agents. Here's a decision guide:
 | Concept | Key Takeaway |
 |---------|-------------|
 | **AIAgent** | Core abstraction for building agents |
-| **CreateAIAgent** | Extension method to create agents from any chat client |
+| **AsAIAgent** | Extension method to create agents from any chat client |
 | **AgentThread** | Maintains conversation context across runs |
 | **Provider Flexibility** | Same code works with Azure OpenAI, Ollama |
 | **When to Use** | Agents shine when tasks need reasoning and multi-step execution |

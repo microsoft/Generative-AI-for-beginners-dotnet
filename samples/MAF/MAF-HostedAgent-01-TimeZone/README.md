@@ -41,7 +41,7 @@ MAF-HostedAgent-01-TimeZone/
 
 ```bash
 export AZURE_OPENAI_ENDPOINT="https://<your-resource>.openai.azure.com/"
-export AZURE_OPENAI_MODEL="gpt-4o-mini"
+export AZURE_OPENAI_MODEL="gpt-5-mini"
 export AZURE_OPENAI_APIKEY="<your-api-key>"
 ```
 
@@ -81,7 +81,7 @@ docker build -t timezone-agent:latest .
 ```bash
 docker run -it --rm \
   -e AZURE_OPENAI_ENDPOINT="https://<your-resource>.openai.azure.com/" \
-  -e AZURE_OPENAI_MODEL="gpt-4o-mini" \
+  -e AZURE_OPENAI_MODEL="gpt-5-mini" \
   -e AZURE_OPENAI_APIKEY="<your-api-key>" \
   timezone-agent:latest
 ```

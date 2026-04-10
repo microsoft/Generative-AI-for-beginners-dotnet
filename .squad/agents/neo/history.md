@@ -103,3 +103,12 @@
 - **Reference pattern:** https://github.com/Azure-Samples/agent-skills-dotnet-demo/blob/main/src/agentSkillsDemo.cs — uses `AzureCliCredential()` for Azure OpenAI auth (no API key needed, just `az login`)
 - **Key insight:** File-based .NET 10 apps were reading wrong config keys (`endpoint`, `apikey`) but user secrets are set as `AzureOpenAI:Endpoint`, `AzureOpenAI:Deployment`. Auth should use `AzureCliCredential()` for modern Azure OpenAI SDK instead of `ApiKeyCredential`.
 - **Projects skipped (no changes needed):** BasicChat-03Ollama, BasicChat-07Ollama-gpt-oss, BasicChat-09LLMTornadoOllama, BasicChat-10ConversationHistory (Ollama only), AgentLabs-01-Simple (already uses DefaultAzureCredential)
+
+### Phase 7 — README & HostedAgent Model Consistency Fixes
+- **Fixed wrong NuGet package name** in `samples/MAF/CLAUDE-SAMPLES-README.md`: `Microsoft.Agents.AI.Core` → `Microsoft.Agents.AI` (the `.Core` package doesn't exist).
+- **Fixed user secrets key mismatch** in `samples/MAF/README.md` line 45: `dotnet user-secrets set "deploymentName" "gpt-4o-mini"` → `dotnet user-secrets set "AzureOpenAI:Deployment" "gpt-5-mini"` to match actual code that reads `config["AzureOpenAI:Deployment"]`.
+- **Fixed model name in README code examples**: `samples/MAF/README.md` lines 252 and 289 — Docker example and code snippet both changed `gpt-4o-mini` → `gpt-5-mini`.
+- **Standardized HostedAgent samples to `gpt-5-mini`** (6 files, 8 edits total):
+  - `MAF-HostedAgent-01-TimeZone`: launchSettings.json, Program.cs (fallback default), README.md (env var example + Docker run)
+  - `MAF-HostedAgent-02-MultiAgent`: launchSettings.json, Program.cs (fallback default), README.md (env var example + Docker run)
+- **Key insight:** HostedAgent samples used environment variables instead of user secrets (they're designed for Docker/container deployment), so they were missed in earlier sweeps that focused on `config["..."]` patterns.

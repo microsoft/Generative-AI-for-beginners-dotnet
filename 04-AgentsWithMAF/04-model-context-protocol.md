@@ -333,21 +333,21 @@ Combine MCP with multi-agent patterns:
 ```csharp
 // Research agent with web search MCP
 var webSearchMcp = await McpClient.ConnectAsync("https://mcp.websearch.com");
-AIAgent researcher = chatClient.CreateAIAgent(
+AIAgent researcher = chatClient.AsAIAgent(
     name: "Researcher",
     instructions: "Research topics using web search.",
     tools: await webSearchMcp.GetToolsAsync());
 
 // Code agent with GitHub MCP
 var githubMcp = await McpClient.ConnectAsync("https://mcp.github.com");
-AIAgent coder = chatClient.CreateAIAgent(
+AIAgent coder = chatClient.AsAIAgent(
     name: "Coder",
     instructions: "Write and manage code in the repository.",
     tools: await githubMcp.GetToolsAsync());
 
 // Documentation agent with filesystem MCP
 var fsMcp = await McpClient.ConnectAsync("stdio://mcp-filesystem");
-AIAgent documenter = chatClient.CreateAIAgent(
+AIAgent documenter = chatClient.AsAIAgent(
     name: "Documenter",
     instructions: "Create and update documentation files.",
     tools: await fsMcp.GetToolsAsync());

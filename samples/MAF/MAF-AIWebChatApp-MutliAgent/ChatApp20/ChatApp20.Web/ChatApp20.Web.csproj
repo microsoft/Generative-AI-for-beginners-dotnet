@@ -20,7 +20,7 @@
     <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.4.0" />
     <PackageReference Include="Microsoft.Extensions.AI" Version="10.4.0" />
     <PackageReference Include="ElBruno.Connectors.SqliteVec" Version="0.5.2" />
-    <PackageReference Include="PdfPig" Version="0.1.14-alpha-20251224-7c4f5" />
+    <PackageReference Include="PdfPig" Version="0.1.13" />
     <PackageReference Include="System.Linq.Async" Version="7.0.0" />
   </ItemGroup>
 

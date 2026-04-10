@@ -42,7 +42,7 @@ Before running samples, configure your AI provider:
 cd samples/MAF/<sample-name>
 dotnet user-secrets set "endpoint" "https://<your-endpoint>.openai.azure.com/"
 dotnet user-secrets set "apikey" "<your-api-key>"
-dotnet user-secrets set "deploymentName" "gpt-4o-mini"
+dotnet user-secrets set "AzureOpenAI:Deployment" "gpt-5-mini"
 ```
 
 ---
@@ -249,7 +249,7 @@ docker build -t timezone-agent:latest .
 # Run in Docker
 docker run -it --rm \
   -e AZURE_OPENAI_ENDPOINT="https://<your-resource>.openai.azure.com/" \
-  -e AZURE_OPENAI_MODEL="gpt-4o-mini" \
+  -e AZURE_OPENAI_MODEL="gpt-5-mini" \
   -e AZURE_OPENAI_APIKEY="<your-api-key>" \
   timezone-agent:latest
 ```
@@ -286,7 +286,7 @@ using Microsoft.Extensions.AI;
 using Microsoft.Agents.AI;
 using Azure.AI.OpenAI;
 
-var client = new AzureOpenAIClient(...).GetChatClient("gpt-4o-mini").AsIChatClient();
+var client = new AzureOpenAIClient(...).GetChatClient("gpt-5-mini").AsIChatClient();
 
 AIAgent agent = client.AsAIAgent(
     name: "MyAgent",

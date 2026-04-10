@@ -67,11 +67,11 @@ using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.Workflows;
 
 // Create specialized agents
-AIAgent writer = chatClient.CreateAIAgent(
+AIAgent writer = chatClient.AsAIAgent(
     name: "Writer",
     instructions: "Write stories that are engaging and creative.");
 
-AIAgent editor = chatClient.CreateAIAgent(
+AIAgent editor = chatClient.AsAIAgent(
     name: "Editor",
     instructions: "Make the story more engaging, fix grammar, and enhance the plot.");
 
@@ -81,7 +81,7 @@ Workflow workflow = AgentWorkflowBuilder.BuildSequential(writer, editor);
 // Run the workflow
 AIAgent workflowAgent = workflow.AsAgent();
 
-AgentRunResponse response = await workflowAgent.RunAsync(
+AgentResponse response = await workflowAgent.RunAsync(
     "Write a short story about a haunted house.");
 
 Console.WriteLine(response.Text);
@@ -92,19 +92,19 @@ The story flows from Writer → Editor, producing a polished result.
 ### Adding More Steps
 
 ```csharp
-AIAgent researcher = chatClient.CreateAIAgent(
+AIAgent researcher = chatClient.AsAIAgent(
     name: "Researcher",
     instructions: "Research and gather key facts about the topic.");
 
-AIAgent writer = chatClient.CreateAIAgent(
+AIAgent writer = chatClient.AsAIAgent(
     name: "Writer",
     instructions: "Write content based on the research provided.");
 
-AIAgent editor = chatClient.CreateAIAgent(
+AIAgent editor = chatClient.AsAIAgent(
     name: "Editor",
     instructions: "Polish the writing for clarity and engagement.");
 
-AIAgent factChecker = chatClient.CreateAIAgent(
+AIAgent factChecker = chatClient.AsAIAgent(
     name: "FactChecker",
     instructions: "Verify claims and add [citation needed] where facts cannot be confirmed.");
 
@@ -123,15 +123,15 @@ var response = await pipeline.AsAgent().RunAsync(
 When agents can work independently on the same input:
 
 ```csharp
-AIAgent sentimentAnalyst = chatClient.CreateAIAgent(
+AIAgent sentimentAnalyst = chatClient.AsAIAgent(
     name: "SentimentAnalyst",
     instructions: "Analyze the emotional tone and sentiment of the text.");
 
-AIAgent summaryAgent = chatClient.CreateAIAgent(
+AIAgent summaryAgent = chatClient.AsAIAgent(
     name: "Summarizer",
     instructions: "Provide a concise summary of the text.");
 
-AIAgent keywordExtractor = chatClient.CreateAIAgent(
+AIAgent keywordExtractor = chatClient.AsAIAgent(
     name: "KeywordExtractor",
     instructions: "Extract the main keywords and topics from the text.");
 
@@ -160,7 +160,7 @@ Dynamic routing where agents decide when to pass control:
 
 ```csharp
 // Support agent for general questions
-AIAgent generalSupport = chatClient.CreateAIAgent(
+AIAgent generalSupport = chatClient.AsAIAgent(
     name: "GeneralSupport",
     instructions: """
         You handle general customer questions.
@@ -169,7 +169,7 @@ AIAgent generalSupport = chatClient.CreateAIAgent(
         """);
 
 // Specialist for billing issues
-AIAgent billingSpecialist = chatClient.CreateAIAgent(
+AIAgent billingSpecialist = chatClient.AsAIAgent(
     name: "BillingSpecialist",
     instructions: """
         You are a billing expert. Handle payment, invoice, and 
@@ -178,7 +178,7 @@ AIAgent billingSpecialist = chatClient.CreateAIAgent(
         """);
 
 // Specialist for technical issues
-AIAgent technicalSupport = chatClient.CreateAIAgent(
+AIAgent technicalSupport = chatClient.AsAIAgent(
     name: "TechnicalSupport",
     instructions: """
         You are a technical support expert. Handle software bugs,
@@ -218,7 +218,7 @@ IChatClient azureChatClient = azureClient
     .GetChatClient("gpt-5-mini")
     .AsIChatClient();
 
-AIAgent researcher = azureChatClient.CreateAIAgent(
+AIAgent researcher = azureChatClient.AsAIAgent(
     name: "Researcher",
     instructions: "Research topics thoroughly using your broad knowledge.");
 
@@ -229,7 +229,7 @@ IChatClient githubChatClient = new AzureOpenAIClient(
     .GetChatClient("gpt-5-mini")
     .AsIChatClient();
 
-AIAgent writer = githubChatClient.CreateAIAgent(
+AIAgent writer = githubChatClient.AsAIAgent(
     name: "Writer",
     instructions: "Write engaging content based on research.");
 
@@ -238,7 +238,7 @@ IChatClient ollamaClient = new OllamaApiClient(
     new Uri("http://localhost:11434/"), 
     "llama3.2");
 
-AIAgent reviewer = ollamaClient.CreateAIAgent(
+AIAgent reviewer = ollamaClient.AsAIAgent(
     name: "Reviewer",
     instructions: "Review content for accuracy and suggest improvements.");
 
@@ -265,7 +265,7 @@ For complex routing where agents decide who handles the request next, use the `C
 using Microsoft.Agents.AI.Workflows;
 
 // Create specialized agents with routing instructions baked into their prompts
-AIAgent intakeAgent = chatClient.CreateAIAgent(
+AIAgent intakeAgent = chatClient.AsAIAgent(
     name: "Intake",
     instructions: """
         You receive and categorize incoming requests.
@@ -273,21 +273,21 @@ AIAgent intakeAgent = chatClient.CreateAIAgent(
         If the request is complex, technical, or requires deep expertise, hand off to ComplexHandler.
         """);
 
-AIAgent simpleAgent = chatClient.CreateAIAgent(
+AIAgent simpleAgent = chatClient.AsAIAgent(
     name: "SimpleHandler",
     instructions: """
         Handle simple, straightforward requests concisely.
         Once done, hand off to Responder.
         """);
 
-AIAgent complexAgent = chatClient.CreateAIAgent(
+AIAgent complexAgent = chatClient.AsAIAgent(
     name: "ComplexHandler",
     instructions: """
         Handle complex, technical requests with detailed explanations.
         Once done, hand off to Responder.
         """);
 
-AIAgent responderAgent = chatClient.CreateAIAgent(
+AIAgent responderAgent = chatClient.AsAIAgent(
     name: "Responder",
     instructions: "Craft the final, polished response to the user based on the analysis provided.");
 
@@ -316,17 +316,17 @@ The routing logic lives in the agent instructions—the LLM decides which agent 
 
 ```csharp
 // ❌ Bad - overlapping responsibilities
-AIAgent agent1 = chatClient.CreateAIAgent(
+AIAgent agent1 = chatClient.AsAIAgent(
     instructions: "Write and edit content.");
 
-AIAgent agent2 = chatClient.CreateAIAgent(
+AIAgent agent2 = chatClient.AsAIAgent(
     instructions: "Edit and improve content.");
 
 // ✅ Good - distinct responsibilities
-AIAgent writer = chatClient.CreateAIAgent(
+AIAgent writer = chatClient.AsAIAgent(
     instructions: "Write creative, engaging first drafts. Focus on ideas and flow.");
 
-AIAgent editor = chatClient.CreateAIAgent(
+AIAgent editor = chatClient.AsAIAgent(
     instructions: "Polish writing for grammar, clarity, and consistency. Don't change the core ideas.");
 ```
 
