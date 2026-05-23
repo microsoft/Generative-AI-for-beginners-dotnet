@@ -39,7 +39,7 @@ prompt.AppendLine("I found this product based on the other reviews. It worked fo
 // send the prompt to the model and wait for the text completion
 var response = await client.GetResponseAsync(prompt.ToString());
 
-// display the repsonse
+// display the response
 Console.WriteLine(response.Message);
 
 ```
