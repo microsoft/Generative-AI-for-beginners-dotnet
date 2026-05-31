@@ -33,6 +33,14 @@ const string question =
     "What is the latest version of Microsoft Agent Framework for C#? " +
     "Answer with the version number and a Microsoft Learn docs link.";
 
+// A short system instruction so the model commits to an answer (instead of asking
+// clarifying questions) and, when tools are available, grounds itself in the docs.
+const string systemPrompt =
+    "You are a .NET documentation assistant. Answer directly and concisely. " +
+    "Do not ask clarifying questions. 'Microsoft Agent Framework for C#' refers to the " +
+    "Microsoft.Agents.AI NuGet packages. If documentation tools are available, you MUST " +
+    "use them to find the current version and cite a Microsoft Learn link.";
+
 // Create an IChatClient and enable automatic function (tool) invocation.
 IChatClient client = new AzureOpenAIClient(new Uri(endpoint), new AzureCliCredential())
     .GetChatClient(deploymentName)
@@ -51,7 +59,11 @@ Console.WriteLine($"Question: {question}");
 Console.WriteLine();
 
 var beforeResponse = await client.GetResponseAsync(
-    question,
+    new List<ChatMessage>
+    {
+        new(ChatRole.System, systemPrompt),
+        new(ChatRole.User, question)
+    },
     new ChatOptions { ModelId = deploymentName });
 
 Console.WriteLine(beforeResponse.Text);
@@ -87,7 +99,11 @@ Console.WriteLine("Asking the model (it will call the MCP tools as needed)...");
 Console.WriteLine();
 
 var afterResponse = await client.GetResponseAsync(
-    question,
+    new List<ChatMessage>
+    {
+        new(ChatRole.System, systemPrompt),
+        new(ChatRole.User, question)
+    },
     new ChatOptions { Tools = [.. tools], ModelId = deploymentName });
 
 Console.WriteLine(afterResponse.Text);
