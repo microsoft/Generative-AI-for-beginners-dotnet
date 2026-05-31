@@ -1,7 +1,12 @@
-﻿// This sample shows how to use the C# MCP SDK to connect to the public
-// Microsoft Learn MCP Server (https://learn.microsoft.com/api/mcp) and let an
-// Azure OpenAI model call its documentation tools (microsoft_docs_search,
-// microsoft_docs_fetch, microsoft_code_sample_search) via MEAI function invocation.
+﻿// This sample shows the value of grounding a model with the public Microsoft Learn
+// MCP Server (https://learn.microsoft.com/api/mcp). It asks the SAME question twice:
+//
+//   1. WITHOUT MCP  -> the model answers only from its (frozen) training knowledge,
+//                      so for fast-moving topics the answer is often stale or vague.
+//   2. WITH MCP     -> the model calls the Microsoft Learn documentation tools
+//                      (microsoft_docs_search, microsoft_docs_fetch,
+//                       microsoft_code_sample_search) and answers from the live docs,
+//                      including an up-to-date version and a docs link.
 //
 // The Microsoft Learn MCP Server is a public, keyless, streamable-HTTP MCP server,
 // so no API key or Authorization header is required to connect to it.
@@ -22,24 +27,13 @@ var endpoint = config["AzureOpenAI:Endpoint"]
     ?? throw new InvalidOperationException("Set AzureOpenAI:Endpoint in User Secrets.");
 var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 
-// 1. Connect to the public Microsoft Learn MCP Server (no auth needed).
-var clientTransport = new HttpClientTransport(new HttpClientTransportOptions
-{
-    Name = "Microsoft Learn MCP",
-    Endpoint = new Uri("https://learn.microsoft.com/api/mcp")
-});
-await using var mcpClient = await McpClient.CreateAsync(clientTransport);
+// The question is intentionally about a fast-moving topic so the difference between
+// "model knowledge only" and "grounded in Microsoft Learn" is easy to see live.
+const string question =
+    "What is the latest version of Microsoft Agent Framework for C#? " +
+    "Answer with the version number and a Microsoft Learn docs link.";
 
-// 2. Discover the tools the server exposes.
-var tools = await mcpClient.ListToolsAsync();
-Console.WriteLine("Connected to the Microsoft Learn MCP Server. Available tools:");
-foreach (var tool in tools)
-{
-    Console.WriteLine($"  - {tool.Name}: {tool.Description}");
-}
-Console.WriteLine();
-
-// 3. Create an IChatClient and enable automatic function (tool) invocation.
+// Create an IChatClient and enable automatic function (tool) invocation.
 IChatClient client = new AzureOpenAIClient(new Uri(endpoint), new AzureCliCredential())
     .GetChatClient(deploymentName)
     .AsIChatClient()
@@ -47,19 +41,53 @@ IChatClient client = new AzureOpenAIClient(new Uri(endpoint), new AzureCliCreden
     .UseFunctionInvocation()
     .Build();
 
-var chatOptions = new ChatOptions
-{
-    Tools = [.. tools],
-    ModelId = deploymentName
-};
+// =====================================================================
+// 1. BEFORE: ask WITHOUT MCP. The model can only use its training data.
+// =====================================================================
+Console.WriteLine("============================================================");
+Console.WriteLine(" BEFORE  -  no MCP  (answer from model knowledge only)");
+Console.WriteLine("============================================================");
+Console.WriteLine($"Question: {question}");
+Console.WriteLine();
 
-// 4. Ask a question that the model can only answer well by calling the Learn tools.
-var question = "Using the Microsoft Learn docs, what is Microsoft.Extensions.AI " +
-               "and which interface do I use to chat with a model? Include a docs link.";
+var beforeResponse = await client.GetResponseAsync(
+    question,
+    new ChatOptions { ModelId = deploymentName });
+
+Console.WriteLine(beforeResponse.Text);
+Console.WriteLine();
+
+// =====================================================================
+// 2. AFTER: ask WITH the Microsoft Learn MCP Server tools attached.
+// =====================================================================
+
+// Connect to the public Microsoft Learn MCP Server (no auth needed).
+var clientTransport = new HttpClientTransport(new HttpClientTransportOptions
+{
+    Name = "Microsoft Learn MCP",
+    Endpoint = new Uri("https://learn.microsoft.com/api/mcp")
+});
+await using var mcpClient = await McpClient.CreateAsync(clientTransport);
+
+// Discover the tools the server exposes.
+var tools = await mcpClient.ListToolsAsync();
+
+Console.WriteLine("============================================================");
+Console.WriteLine(" AFTER  -  with Microsoft Learn MCP  (grounded in live docs)");
+Console.WriteLine("============================================================");
+Console.WriteLine("Connected to the Microsoft Learn MCP Server. Available tools:");
+foreach (var tool in tools)
+{
+    Console.WriteLine($"  - {tool.Name}: {tool.Description}");
+}
+Console.WriteLine();
 Console.WriteLine($"Question: {question}");
 Console.WriteLine();
 Console.WriteLine("Asking the model (it will call the MCP tools as needed)...");
 Console.WriteLine();
 
-var response = await client.GetResponseAsync(question, chatOptions);
-Console.WriteLine(response.Text);
+var afterResponse = await client.GetResponseAsync(
+    question,
+    new ChatOptions { Tools = [.. tools], ModelId = deploymentName });
+
+Console.WriteLine(afterResponse.Text);

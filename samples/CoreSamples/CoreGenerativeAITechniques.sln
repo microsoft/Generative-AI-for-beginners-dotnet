@@ -69,6 +69,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCP-03-MicrosoftLearn", "MC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataIngestion-01-Simple", "DataIngestion-01-Simple\DataIngestion-01-Simple.csproj", "{E5E21F6D-230A-4862-9B38-AAE41242B25C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A2A-01", "A2A-01\A2A-01.csproj", "{7E6EEC6A-CCEE-4189-9CA9-67719F39CEFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -355,6 +357,18 @@ Global
 		{E5E21F6D-230A-4862-9B38-AAE41242B25C}.Release|x64.Build.0 = Release|Any CPU
 		{E5E21F6D-230A-4862-9B38-AAE41242B25C}.Release|x86.ActiveCfg = Release|Any CPU
 		{E5E21F6D-230A-4862-9B38-AAE41242B25C}.Release|x86.Build.0 = Release|Any CPU
+		{7E6EEC6A-CCEE-4189-9CA9-67719F39CEFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E6EEC6A-CCEE-4189-9CA9-67719F39CEFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E6EEC6A-CCEE-4189-9CA9-67719F39CEFD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7E6EEC6A-CCEE-4189-9CA9-67719F39CEFD}.Debug|x64.Build.0 = Debug|Any CPU
+		{7E6EEC6A-CCEE-4189-9CA9-67719F39CEFD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7E6EEC6A-CCEE-4189-9CA9-67719F39CEFD}.Debug|x86.Build.0 = Debug|Any CPU
+		{7E6EEC6A-CCEE-4189-9CA9-67719F39CEFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E6EEC6A-CCEE-4189-9CA9-67719F39CEFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E6EEC6A-CCEE-4189-9CA9-67719F39CEFD}.Release|x64.ActiveCfg = Release|Any CPU
+		{7E6EEC6A-CCEE-4189-9CA9-67719F39CEFD}.Release|x64.Build.0 = Release|Any CPU
+		{7E6EEC6A-CCEE-4189-9CA9-67719F39CEFD}.Release|x86.ActiveCfg = Release|Any CPU
+		{7E6EEC6A-CCEE-4189-9CA9-67719F39CEFD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

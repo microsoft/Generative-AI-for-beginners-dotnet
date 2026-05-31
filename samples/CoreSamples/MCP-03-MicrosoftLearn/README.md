@@ -14,10 +14,23 @@ The Microsoft Learn MCP Server is a public, **keyless**, streamable-HTTP MCP ser
 
 ## What it shows
 
+The sample asks the **same question twice** to make the value of MCP obvious:
+
+```
+What is the latest version of Microsoft Agent Framework for C#?
+```
+
+1. **BEFORE — no MCP:** the model answers only from its frozen training knowledge, so
+   for a fast-moving topic the answer is often stale or vague.
+2. **AFTER — with the Microsoft Learn MCP Server:** the model calls the Learn tools and
+   answers from the live documentation, including an up-to-date version and a docs link.
+
+Under the hood:
+
 1. Create an `McpClient` over an HTTP transport to the Learn MCP endpoint.
 2. Discover the available tools with `ListToolsAsync()`.
 3. Pass those tools into `ChatOptions` and enable `UseFunctionInvocation()`.
-4. Ask a question — the model decides when to call the Learn tools to ground its answer.
+4. The model decides when to call the Learn tools to ground its answer.
 
 ## Run it
 
