@@ -20,7 +20,7 @@ The whole agent package
 | Building block | Concept to show | Existing sample(s) | Status |
 |---|---|---|---|
 | **Cold-open / close app** | Zava Support Center: 3 agents (image + NeMo + MAF), grounded RAG, citations, A2A | `MAF-A2A-NVIDIA-NemoAgents` (separate repo) | ✅ **Built** (bookend demo) |
-| **MEAI — image** | `IImageGenerator`, GPT-Image-2 | `ElBruno.Text2Image.Foundry` (in Zava); `samples/CoreSamples/ImageGeneration-01` | ✅ In Zava / reuse |
+| **MEAI — image** | `IImageGenerator`, GPT-Image-2 | `ElBruno.Text2Image.Foundry` (in Zava); `samples/MAF/MAF-ImageGen-03-Foundry` (MAF agent + GPT-Image-2) | ✅ **Built** — mirrors Zava Pitch Image Agent |
 | **MEAI — chat** | `IChatClient`, provider-agnostic | `samples/CoreSamples/BasicChat-01MEAI` | ✅ Reuse |
 | **MEAI — Foundry model swap** | one endpoint, many models: `gpt-5.5 → grok-4`; Integrated Security | `samples/CoreSamples/BasicChat-05AIFoundryModels` | ✅ **Block 2 demo** |
 | **MEAI — provider swap** | Foundry ↔ Ollama | `samples/CoreSamples/BasicChat-03Ollama` | ✅ Reuse |
@@ -28,7 +28,7 @@ The whole agent package
 | **MEAI — functions/middleware** | function calling, `UseFunctionInvocation` | `samples/CoreSamples/MEAIFunctions*` | ✅ Reuse (mention) |
 | **MCP — C# SDK** | `McpClient`, tools → `ChatOptions`; *same question before/after MCP* | `samples/CoreSamples/MCP-03-MicrosoftLearn` | ✅ Reuse (keyless Learn MCP) |
 | **MCP — local model** | MCP tools + Ollama | `samples/CoreSamples/MCP-02-HuggingFace-Ollama` | ⚠️ Backup (HF MCP deprecated) |
-| **VectorData — search** | embeddings + similarity search | `samples/CoreSamples/RAGSimple-02MEAIVectorsMemory` | ⚠️ Reuse, but manual cosine (not `VectorStoreCollection`) |
+| **VectorData — search** | embeddings + similarity search | `samples/CoreSamples/RAGSimple-02MEAIVectorsMemory` | ✅ **Rewritten** on `InMemoryVectorStore` + `VectorStoreCollection.SearchAsync` (keyless) |
 | **VectorData — real store** | Azure AI Search / Qdrant connectors | `RAGSimple-03MEAIVectorsAISearch`, `RAGSimple-04MEAIVectorsQdrant` | ✅ Reuse (mention) |
 | **DataIngestion — pipeline** | `IngestionPipeline<T>` read→chunk→enrich→embed→write | `samples/CoreSamples/DataIngestion-01-Simple` | ✅ **Built** |
 | **VectorData in the app** | `[VectorStoreKey]`, `[VectorStoreVector]`, grounded search tool | Zava `KnowledgeSearch` + `MafActionAgent` | ✅ In Zava |

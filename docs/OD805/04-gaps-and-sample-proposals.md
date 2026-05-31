@@ -9,7 +9,7 @@ samples that fill the gaps. The High-severity gap is now **closed** (see below).
 |---|---|---|---|
 | No standalone **`Microsoft.Extensions.DataIngestion`** sample | Block 3B (the RAG "engine" reveal) had no focused demo; the only ingestion in-repo is the hand-rolled `DataIngestor` inside `ChatApp20` | **High** | ✅ **Closed** — `samples/CoreSamples/DataIngestion-01-Simple` built |
 | Deprecated **HuggingFace MCP** demo (`MCP-01-HuggingFace`) | The tools block (Block 4) relied on a server/sample that is no longer supported | **High** | ✅ **Closed** — replaced by keyless `samples/CoreSamples/MCP-03-MicrosoftLearn` |
-| No standalone **`Microsoft.Extensions.VectorData`** sample using `VectorStoreCollection` | `RAGSimple-02` uses manual `TensorPrimitives.CosineSimilarity`, not the official abstraction | **Medium** | ⚠️ Partially addressed — `DataIngestion-01-Simple` queries via `VectorStoreCollection.SearchAsync` |
+| No standalone **`Microsoft.Extensions.VectorData`** sample using `VectorStoreCollection` | `RAGSimple-02` used manual `TensorPrimitives.CosineSimilarity`, not the official abstraction | **Medium** | ✅ **Closed** — `RAGSimple-02MEAIVectorsMemory` rewritten on `InMemoryVectorStore` + `VectorStoreCollection.SearchAsync` (keyless) |
 
 > Everything else in the flow (MEAI, MCP, MAF, the chat app) is already well covered —
 > see [03-building-blocks-and-samples-map.md](./03-building-blocks-and-samples-map.md).
@@ -67,20 +67,35 @@ runs a semantic query — the "engine view" of what `ChatApp20` does at startup.
   every stage — read → chunk → enrich → embed → write — and the writer targets the *same*
   VectorData store abstraction."
 
-## Proposal B — `VectorData-01` (OPTIONAL, fills the Medium gap)
+## Proposal B — `RAGSimple-02MEAIVectorsMemory` rewrite (✅ DONE — fills the Medium gap)
 
-A console sample using the **`VectorStoreCollection`** abstraction directly (not manual
-cosine), so the "it's literally the same block as the app" line is exact.
+The existing sample was rewritten to use the **`VectorStoreCollection`** abstraction
+directly (not manual `TensorPrimitives.CosineSimilarity`), so the "it's literally the same
+block as the app" line is now exact.
 
-- **Location:** `samples/CoreSamples/VectorData-01-InMemory/`
-- **Shape:** define a `MovieVector` record with `[VectorStoreKey]` / `[VectorStoreData]` /
-  `[VectorStoreVector(1536)]`, register `InMemoryVectorStore`, upsert the movie list,
-  `collection.SearchAsync(query, top: 2)`.
-- **Note:** could reuse `MEAIVectorsShared` (already references
-  `Microsoft.Extensions.VectorData.Abstractions 10.0.0`).
-- **Decision:** **nice-to-have.** If `RAGSimple-03/04` (which use real connectors) are
-  shown briefly, Proposal A alone may be enough. Recommend building A first; add B only
-  if the rehearsal exposes a weak spot.
+- **Location:** `samples/CoreSamples/RAGSimple-02MEAIVectorsMemory/`
+- **As built:** local `MovieVectorRecord` with `[VectorStoreKey]` / `[VectorStoreData]` /
+  `[VectorStoreVector(1536, DistanceFunction = DistanceFunction.CosineSimilarity)]`,
+  `InMemoryVectorStore` → `GetCollection` → `UpsertAsync` the movie list →
+  `collection.SearchAsync(queryEmbedding, top: 2)`.
+- **Auth:** **keyless** (`AzureCliCredential`), reuses `AzureOpenAI:Endpoint` +
+  `AzureOpenAI:EmbeddingDeployment`. No new secret.
+- **Verified:** "A family friendly movie that includes ogres and dragons" → Shrek (0.476),
+  Lion King (0.307).
+
+## Proposal C — `MAF-ImageGen-03-Foundry` (✅ BUILT — the image building block)
+
+A MAF agent whose **tool** generates an image with **GPT-Image-2** on Microsoft Foundry,
+mirroring the Zava **Pitch Image Agent** — so the cold-open hero image stops being a black box.
+
+- **Location:** `samples/MAF/MAF-ImageGen-03-Foundry/`
+- **As built:** `GptImage2Generator` (`ElBruno.Text2Image.Foundry` 1.2.11) wrapped as an
+  `AIFunction` and handed to `chatClient.AsAIAgent(..., tools: [...])`; `agent.RunAsync(prompt)`
+  infers a prompt, calls the tool, and writes the PNG.
+- **Auth:** chat client **keyless** (`AzureCliCredential`); GPT-Image-2 uses **key auth**
+  (`AzureOpenAI:ApiKey`), deployment `AzureOpenAI:ImageDeployment` (default `gpt-image-2`).
+- **Stage note:** GPT-Image-2 is slow; pre-render the PNG and show the file rather than
+  generating live.
 
 ## Recommendation / status
 
@@ -90,12 +105,13 @@ cosine), so the "it's literally the same block as the app" line is exact.
    HuggingFace MCP demo.
 3. ✅ Both samples added to `CoreGenerativeAITechniques.sln`; full solution validated with
    `dotnet build … --configuration Release` (0 warnings / 0 errors).
-4. ⏭️ **Proposal B (`VectorData-01`)** remains an optional stretch goal — `DataIngestion-01-Simple`
-   already exercises `VectorStoreCollection.SearchAsync`, so it partially covers the Medium gap.
+4. ✅ **`RAGSimple-02MEAIVectorsMemory` rewritten** on the official `InMemoryVectorStore` +
+   `VectorStoreCollection` abstraction (keyless), closing the Medium gap directly.
+5. ✅ **`MAF-ImageGen-03-Foundry` built** — the GPT-Image-2 image building block as a MAF agent
+   tool, added to `MAF-Demos.slnx` (folder *4 Image Generation*).
 
 ## Open questions for Bruno
 
 - Should the new samples also be referenced from **lesson 03** docs
   (`03-AIPatternsAndApplications`), or stay sample-only for now?
-- Still want a dedicated **`VectorData-01`** sample (Proposal B), or is the search path in
-  `DataIngestion-01-Simple` enough?
+- The image agent (`MAF-ImageGen-03-Foundry`) runs live on stage, or show a pre-rendered PNG?

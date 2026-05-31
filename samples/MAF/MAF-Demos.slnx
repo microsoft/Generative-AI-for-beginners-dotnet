@@ -14,6 +14,7 @@
   <Folder Name="/4 Image Generation/">
     <Project Path="MAF-ImageGen-01/MAF-ImageGen-01.csproj" Id="25c06364-ad74-420c-96af-f607d96fa496" />
     <Project Path="MAF-ImageGen-02/MAF-ImageGen-02.csproj" Id="5c192bf7-4138-464e-8149-05d91ae7f24d" />
+    <Project Path="MAF-ImageGen-03-Foundry/MAF-ImageGen-03-Foundry.csproj" />
   </Folder>
   <Folder Name="/5 MultiModel Agents/">
     <Project Path="MAF-MultiAgents-Factory-01/MAF-MultiAgents-Factory-01.csproj" Id="fd8cfa03-9cb1-4b3c-a326-7ea32ff003b3" />

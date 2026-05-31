@@ -89,11 +89,14 @@ many models. The magic is *an interface*.
 
 - **Concept slide (60s):** the pipeline diagram —
   `Reader → Chunker → (Enrich) → Embeddings → VectorStoreWriter → VectorStore`.
-- **Demo A — VectorData search (existing):**
-  `samples/CoreSamples/RAGSimple-02MEAIVectorsMemory` — embeddings + cosine similarity
-  over the movie data; show a semantic query returning the right movies.
-  - **Say:** "Embeddings + a vector store + similarity search. The store is swappable —
-    in-memory today, SQLite/Qdrant/Azure AI Search in prod, same abstraction."
+- **Demo A — VectorData search (official abstraction):**
+  `samples/CoreSamples/RAGSimple-02MEAIVectorsMemory` — now built on
+  **`Microsoft.Extensions.VectorData`**: `InMemoryVectorStore` → `GetCollection` →
+  `UpsertAsync` → `SearchAsync`, over the movie data. Keyless (`az login`), reuses the
+  standard `AzureOpenAI:Endpoint` + `AzureOpenAI:EmbeddingDeployment` secrets.
+  - **Say:** "This is the *official* VectorData block — not a hand-rolled cosine loop. The
+    store is swappable: in-memory today, SQLite/Qdrant/Azure AI Search in prod, same
+    `VectorStoreCollection.SearchAsync` code."
 - **Demo B — DataIngestion pipeline (NEW — built):**
   `samples/CoreSamples/DataIngestion-01-Simple` console app using
   `IngestionPipeline<T>` (`MarkdownReader` → `SemanticSimilarityChunker` →
@@ -172,6 +175,16 @@ the standard wire for that, and there's a first-class **C# MCP SDK**.
     Python/NVIDIA NeMo agent in the cold open."
 - **Optional — tie it back:** "MAF for the .NET agents, A2A as the protocol between vendors —
   the same JSON-RPC plumbing you just saw locally is what crossed to NeMo in Zava."
+- **Demo E — an agent that paints (NEW — built, optional):**
+  `samples/MAF/MAF-ImageGen-03-Foundry` — a MAF agent whose **tool** wraps
+  `GptImage2Generator` (`ElBruno.Text2Image.Foundry`) to create an image with
+  **GPT-Image-2** on Foundry. `dotnet run` → the agent infers a prompt, calls the tool, and
+  saves the PNG. This is the **same Pitch Image Agent pattern** behind the Zava cold-open hero image.
+  - **Say:** "Same `AsAIAgent` shape as the docs agent — but this tool returns pixels. The
+    incident-hero image from the cold open? It's just a MAF agent with an `IImageGenerator`
+    tool. No black box."
+  - **Note:** GPT-Image-2 can take a while; for the cold open the image is **pre-rendered**.
+    Run this only if time allows, or show a pre-generated PNG.
 
 > **Learn more:** [Agents in .NET](https://learn.microsoft.com/dotnet/ai/get-started-app-chat-template?wt.mc_id=) ·
 > [Microsoft Agent Framework](https://learn.microsoft.com/agent-framework/?wt.mc_id=) ·
@@ -207,9 +220,10 @@ the standard wire for that, and there's a first-class **C# MCP SDK**.
 |-------|----------------|-----------|
 | 0 / 6 | **Zava Support Center** (`MAF-A2A-NVIDIA-NemoAgents`) | `aspire start` OK; Python venv + deps; NVIDIA + AOAI + GPT-Image-2 secrets; hero image pre-rendered; 3 prompts rehearsed; citations clickable; **recorded fallback** |
 | 2 | `BasicChat-05AIFoundryModels`, `BasicChat-03Ollama` | Foundry endpoint set; `gpt-5.5` + `grok-4` deployments exist; apikey set; `az login` for Integrated Security; Ollama model pulled |
-| 3A | `RAGSimple-02MEAIVectorsMemory` | embedding deployment set |
+| 3A | `RAGSimple-02MEAIVectorsMemory` | rewritten on official VectorData (`InMemoryVectorStore`); **keyless** — reuses `AzureOpenAI:Endpoint` + `AzureOpenAI:EmbeddingDeployment`; `az login`; built & verified |
 | 3B | `DataIngestion-01-Simple` | built & verified; chat + embedding deployments set |
 | 4 | `MCP-03-MicrosoftLearn` | AOAI secret set; `learn.microsoft.com/api/mcp` reachable (keyless); both before/after paths rehearsed |
 | 5 | `MAF01` / `MAF-MCP-01` / `A2A-01` | MAF packages restored; A2A-01 builds (prerelease pkgs); AOAI secret set for all three |
+| 5 (opt) | `MAF-ImageGen-03-Foundry` | built & verified; needs `AzureOpenAI:ApiKey` (GPT-Image-2 key auth) + `AzureOpenAI:ImageDeployment=gpt-image-2`; GPT-Image-2 is slow — prefer a pre-rendered PNG on stage |
 
 > Full setup/secrets/fallbacks in [05-constraints-and-demo-notes.md](./05-constraints-and-demo-notes.md).
