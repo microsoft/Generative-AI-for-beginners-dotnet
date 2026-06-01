@@ -53,6 +53,26 @@ Operational notes to make the OD805 demos reliable on stage.
 - **Integrated Security** is the recommended Foundry path: `AzureCliCredential` /
   `DefaultAzureCredential` — no keys in config, just `az login`.
 - `MCP-03-MicrosoftLearn`: **no token** — the Learn MCP server is public/keyless.
+- `MAF-ImageGen-03-Foundry` (standalone Pitch Image Agent demo) — **mixed auth**: the
+  chat brain is keyless (`az login`) but GPT-Image-2 uses an **API key**:
+  - `AzureOpenAI:Endpoint` — **required** (bare Foundry resource URL; any `/openai` suffix is stripped automatically)
+  - `AzureOpenAI:ApiKey` — **required** (GPT-Image-2 uses key auth)
+  - `AzureOpenAI:Deployment` — optional, chat model, default `gpt-5-mini` (keyless via `az login`)
+  - `AzureOpenAI:ImageDeployment` — optional, default `gpt-image-2`
+  - `AzureOpenAI:ImageModelName` — optional, default `GPT-Image-2`
+  - Saves PNGs to `images/` next to the binary; GPT-Image-2 latency is ~3–4 min, so
+    pre-render before going live (same caveat as the Zava hero image).
+  - Setup (run from `samples/MAF/MAF-ImageGen-03-Foundry`):
+
+    ```powershell
+    dotnet user-secrets set "AzureOpenAI:Endpoint" "https://<your-endpoint>.services.ai.azure.com/"
+    dotnet user-secrets set "AzureOpenAI:ApiKey" "<your-api-key>"
+    # Optional overrides (defaults shown):
+    dotnet user-secrets set "AzureOpenAI:Deployment" "gpt-5-mini"
+    dotnet user-secrets set "AzureOpenAI:ImageDeployment" "gpt-image-2"
+    dotnet user-secrets set "AzureOpenAI:ImageModelName" "GPT-Image-2"
+    az login   # for the keyless chat brain
+    ```
 
 > Zava uses **keyless** Azure auth where possible (`AzureCliCredential` /
 > `DefaultAzureCredential`) — make sure the presenting account has the **Azure AI
@@ -72,6 +92,9 @@ Operational notes to make the OD805 demos reliable on stage.
 - [ ] **RAGSimple-02MEAIVectorsMemory** returns expected movies for the query.
 - [ ] **DataIngestion-01-Simple** ingests + queries successfully.
 - [ ] **MAF01 / MAF02** restore + run.
+- [ ] **MAF-ImageGen-03-Foundry** (if used): `AzureOpenAI:Endpoint` + `AzureOpenAI:ApiKey`
+      set; `az login` done for the keyless chat brain; GPT-Image-2 deployment exists;
+      **image pre-rendered** (never generate on the critical path).
 - [ ] Solutions build in Release: `CoreGenerativeAITechniques.sln`, `MAF-Demos.slnx`.
 
 ## Risks & mitigations
