@@ -17,7 +17,7 @@ backstage for the talk.
 | 03 | [Building Blocks → Samples Map](./03-building-blocks-and-samples-map.md) | Which repo sample backs each building block. |
 | 04 | [Gaps & Sample Proposals](./04-gaps-and-sample-proposals.md) | Missing scenarios (VectorData / DataIngestion) + proposed minimal samples. |
 | 05 | [Constraints & Demo Notes](./05-constraints-and-demo-notes.md) | Setup, secrets, models, risks, fallbacks. |
-| 06 | [Slides](./06-slides.md) | Intro + cumulative recap slides that build the stack block by block. |
+| 06 | [Slides](./06-slides-v02.md) | Intro + cumulative recap slides that build the stack block by block. |
 
 ## TL;DR of the concept
 
@@ -46,7 +46,7 @@ backstage for the talk.
 - [x] Rewrite `RAGSimple-02MEAIVectorsMemory` on the official `InMemoryVectorStore` /
       `VectorStoreCollection` abstraction (keyless) — closes the VectorData gap
 - [x] Build `MAF-ImageGen-03-Foundry` — GPT-Image-2 image building block as a MAF agent tool
-- [x] Author slides (`06-slides.md`) with cumulative recap build
+- [x] Author slides (`06-slides-v02.md`) with cumulative recap build
 - [ ] Review / approve final concept + hook line (Bruno)
 - [ ] Capture backup recordings (Zava cold open + one cloud demo)
 - [ ] Full dry run within 40 min on the presenting machine
