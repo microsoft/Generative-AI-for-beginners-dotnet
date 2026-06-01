@@ -30,7 +30,7 @@ IEmbeddingGenerator<string, Embedding<float>> generator =
 // --- The official VectorData abstraction: a typed collection over a supported local store ---
 var vectorStorePath = Path.Combine(AppContext.BaseDirectory, "movie-vectors.db");
 var vectorStoreConnectionString = $"Data Source={vectorStorePath}";
-var movies = new SqliteVecVectorStoreCollection<int, MovieVectorRecord>(
+var movies = new SqliteVecVectorStoreCollection<string, MovieVectorRecord>(
     "movies",
     vectorStoreConnectionString,
     generator);
@@ -39,7 +39,7 @@ await movies.EnsureCollectionDeletedAsync();
 await movies.EnsureCollectionExistsAsync();
 
 // Embed each movie description and upsert it into the collection.
-foreach (var movie in MovieFactory<int>.GetMovieList())
+foreach (var movie in MovieFactory<string>.GetMovieList())
 {
     var embedding = await generator.GenerateVectorAsync(movie.Description!);
     await movies.UpsertAsync(new MovieVectorRecord
@@ -79,7 +79,7 @@ foreach (var query in queries)
 internal sealed class MovieVectorRecord
 {
     [VectorStoreKey]
-    public int Key { get; set; }
+    public string Key { get; set; } = "";
 
     [VectorStoreData]
     public string Title { get; set; } = "";
