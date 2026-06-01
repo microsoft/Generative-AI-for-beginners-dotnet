@@ -15,7 +15,7 @@ using the official .NET building blocks:
 | **Read** | `MarkdownReader` | Reads Markdown files from `./data` into a unified document model |
 | **Chunk** | `SemanticSimilarityChunker` | Splits documents into semantically coherent chunks |
 | **Enrich** | `SummaryEnricher` | Adds an AI-generated summary to each chunk to improve retrieval |
-| **Embed + Write** | `VectorStoreWriter` + `SqliteVectorStore` | Generates embeddings and writes chunks into a local SQLite vector store |
+| **Embed + Write** | custom `IngestionChunkWriter` + `SqliteVecVectorStoreCollection` | Generates embeddings and writes chunks into a local sqlite-vec vector store (ElBruno connector, no Semantic Kernel) |
 | **Search** | `VectorStoreCollection.SearchAsync` | Runs semantic search over the ingested content |
 
 The reader, chunker, enricher and writer are composed into a single
@@ -34,4 +34,5 @@ dotnet run
 ```
 
 After ingestion, type a question and the app returns the most relevant chunks with
-their similarity scores. The vector data is persisted to a local `vectors.db` SQLite file.
+their similarity scores. The vector data is persisted to a local `buildingblocks-vectors.db`
+sqlite-vec file next to the app binary.
