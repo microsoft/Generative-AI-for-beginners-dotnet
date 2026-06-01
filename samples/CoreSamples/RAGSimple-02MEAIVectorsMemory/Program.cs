@@ -52,15 +52,26 @@ foreach (var movie in MovieFactory<int>.GetMovieList())
 }
 
 // Search the collection — embeddings + similarity handled by the VectorData building block.
-var query = "A family friendly movie that includes ogres and dragons";
-var queryEmbedding = await generator.GenerateVectorAsync(query);
+// The same query path works for any natural-language question: embed it, then search.
+string[] queries =
+[
+    "A family friendly movie that includes ogres and dragons",
+    "A movie about space adventures and aliens"
+];
 
-Console.WriteLine($"Query: {query}\n");
-await foreach (var result in movies.SearchAsync(queryEmbedding, top: 2))
+foreach (var query in queries)
 {
-    Console.WriteLine($"Score: {result.Score:F3}");
-    Console.WriteLine($"  {result.Record.Title}");
-    Console.WriteLine($"  {result.Record.Description}\n");
+    var queryEmbedding = await generator.GenerateVectorAsync(query);
+
+    Console.WriteLine($"Query: {query}\n");
+    await foreach (var result in movies.SearchAsync(queryEmbedding, top: 2))
+    {
+        Console.WriteLine($"Score: {result.Score:F3}");
+        Console.WriteLine($"  {result.Record.Title}");
+        Console.WriteLine($"  {result.Record.Description}\n");
+    }
+
+    Console.WriteLine(new string('-', 60) + "\n");
 }
 
 // The data model annotated with the VectorData attributes. text-embedding-3-small
