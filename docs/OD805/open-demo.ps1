@@ -65,7 +65,7 @@ $demoFiles = @(
     # Block 5 -- The whole package: Microsoft Agent Framework + A2A
     'samples/MAF/MAF01/Program.cs'
     'samples/MAF/MAF-MCP-01/Program.cs'
-    'samples/CoreSamples/A2A-01/Program.cs'
+    'samples/MAF/A2A-01/Program.cs'
 
     # Block 5 (optional) -- an agent that paints: GPT-Image-2 as a MAF tool
     'samples/MAF/MAF-ImageGen-03-Foundry/Program.cs'

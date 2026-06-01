@@ -36,7 +36,7 @@ The whole agent package
 | **MAF — agent owns MCP tools** | `AsAIAgent(name, instructions, tools)` over Learn MCP | `samples/MAF/MAF-MCP-01` | ✅ **Built** |
 | **MAF — multi-agent** | orchestration / workflows | `samples/MAF/MAF02`, `samples/MAF/MAF-MultiAgents` | ✅ Reuse (optional) |
 | **MAF in the app** | `Microsoft.Agents.AI` action agent + RAG tool | Zava `MafActionAgent` | ✅ In Zava (callback) |
-| **A2A — host + call an agent** | `app.MapA2A(agent, path)` + `A2AClient(uri).AsAIAgent()` | `samples/CoreSamples/A2A-01` | ✅ **Built** |
+| **A2A — host + call an agent** | `app.MapA2A(agent, path)` + `A2AClient(uri).AsAIAgent()` | `samples/MAF/A2A-01` | ✅ **Built** |
 | **A2A — cross-vendor** | JSON-RPC between .NET MAF ↔ Python NVIDIA NeMo | Zava A2A bridge | ✅ In Zava |
 
 ## Notes on key reuse targets

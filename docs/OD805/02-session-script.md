@@ -169,7 +169,7 @@ the standard wire for that, and there's a first-class **C# MCP SDK**.
   → the **clickable citation chips** from Block 0.
   - **Say:** "Same MAF agent, same `IChatClient`, same VectorData search tool — the action
     agent you saw cite `RB-014` is just these blocks composed."
-- **Demo D — A2A, the agent-to-agent wire (NEW — built):** `samples/CoreSamples/A2A-01` —
+- **Demo D — A2A, the agent-to-agent wire (NEW — built):** `samples/MAF/A2A-01` —
   a single console app that **hosts** a MAF writer-agent over **A2A** (`app.MapA2A(agent,
   "/a2a/writer-agent")`) and then **calls it as a remote agent** from a client
   (`new A2AClient(uri).AsAIAgent(...)` → `RunAsync(...)`). One process, real A2A round trip.

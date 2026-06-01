@@ -42,6 +42,9 @@
   <Folder Name="/11 MCP Tools/">
     <Project Path="MAF-MCP-01/MAF-MCP-01.csproj" />
   </Folder>
+  <Folder Name="/12 A2A/">
+    <Project Path="A2A-01/A2A-01.csproj" />
+  </Folder>
   <Folder Name="/9 Microsoft Foundry/">
     <Project Path="MAF-MicrosoftFoundryAgents-01/MAF-MicrosoftFoundryAgents-01.csproj" Id="28071859-0089-4443-82f9-b60ca0ee8f9a" />
     <Project Path="MAF-MicrosoftFoundryAgents-02/MAF-MicrosoftFoundryAgents-02.csproj" Id="d452346f-ea67-433e-9517-cc3b3d43f40e" />
