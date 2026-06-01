@@ -58,15 +58,20 @@ Console.WriteLine("============================================================"
 Console.WriteLine($"Question: {question}");
 Console.WriteLine();
 
-var beforeResponse = await client.GetResponseAsync(
-    new List<ChatMessage>
-    {
-        new(ChatRole.System, systemPrompt),
-        new(ChatRole.User, question)
-    },
-    new ChatOptions { ModelId = deploymentName });
+var beforeMessages = new List<ChatMessage>
+{
+    new(ChatRole.System, systemPrompt),
+    new(ChatRole.User, question)
+};
 
-Console.WriteLine(beforeResponse.Text);
+// Stream the answer token-by-token so the response appears live in the console.
+await foreach (var update in client.GetStreamingResponseAsync(
+    beforeMessages,
+    new ChatOptions { ModelId = deploymentName }))
+{
+    Console.Write(update.Text);
+}
+Console.WriteLine();
 Console.WriteLine();
 
 // =====================================================================
@@ -98,12 +103,18 @@ Console.WriteLine();
 Console.WriteLine("Asking the model (it will call the MCP tools as needed)...");
 Console.WriteLine();
 
-var afterResponse = await client.GetResponseAsync(
-    new List<ChatMessage>
-    {
-        new(ChatRole.System, systemPrompt),
-        new(ChatRole.User, question)
-    },
-    new ChatOptions { Tools = [.. tools], ModelId = deploymentName });
+var afterMessages = new List<ChatMessage>
+{
+    new(ChatRole.System, systemPrompt),
+    new(ChatRole.User, question)
+};
 
-Console.WriteLine(afterResponse.Text);
+// Stream the grounded answer. Tool calls happen automatically behind the scenes; the
+// final text streams in live once the model has gathered what it needs from the docs.
+await foreach (var update in client.GetStreamingResponseAsync(
+    afterMessages,
+    new ChatOptions { Tools = [.. tools], ModelId = deploymentName }))
+{
+    Console.Write(update.Text);
+}
+Console.WriteLine();
