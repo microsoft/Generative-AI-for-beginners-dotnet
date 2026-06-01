@@ -61,7 +61,7 @@ The console prints the active **model** and **auth** mode, and labels each answe
 Use this question in Block 2 to make the model identity visible and invite a slightly
 different answer after the deployment swap:
 
-`hi, my name is Bruno, tell me your model name and something about your model card information`
+`Q: hi, what is your model name?`
 
 > Integrated Security requires the signed-in account to have the **Azure AI Developer**
 > role on the Foundry resource.

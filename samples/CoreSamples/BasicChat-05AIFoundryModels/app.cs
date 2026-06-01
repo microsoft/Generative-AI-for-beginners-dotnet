@@ -10,7 +10,6 @@ using Azure.AI.OpenAI;
 using Azure.Identity;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
-using System.Text;
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 
@@ -47,7 +46,7 @@ Console.WriteLine($"Microsoft Foundry chat  ·  model: {deploymentName}  ·  aut
 Console.WriteLine("(swap the model with AzureOpenAI:Deployment, e.g. gpt-5.5 -> grok-4)");
 Console.WriteLine("Streaming is enabled for a better live demo experience.");
 Console.WriteLine("Suggested demo prompt:");
-Console.WriteLine("hi, my name is Bruno, tell me your model name and something about your model card information");
+Console.WriteLine("Q: hi, what is your model name?");
 Console.WriteLine();
 
 var history = new List<ChatMessage>
@@ -65,30 +64,14 @@ while (true)
     }
     history.Add(new ChatMessage(ChatRole.User, userQ));
 
-    var sb = new StringBuilder();
-    var result = client.GetStreamingResponseAsync(history);
+    List<ChatResponseUpdate> updates = [];
     Console.Write($"AI [{deploymentName}] (streaming): ");
-    await foreach (var item in result)
+    await foreach (ChatResponseUpdate update in client.GetStreamingResponseAsync(history))
     {
-        // validate if the item is null or has no contents
-        if (item == null || item.Contents.Count == 0)
-        {
-            continue; // skip to the next item if it's null or empty
-        }
-
-        foreach (var content in item.Contents)
-        {
-            var text = content?.ToString();
-            if (string.IsNullOrWhiteSpace(text))
-            {
-                continue;
-            }
-
-            sb.Append(text);
-            Console.Write(text);
-        }
+        Console.Write(update);
+        updates.Add(update);
     }
     Console.WriteLine();
 
-    history.Add(new ChatMessage(ChatRole.Assistant, sb.ToString()));
+    history.AddMessages(updates);
 }
