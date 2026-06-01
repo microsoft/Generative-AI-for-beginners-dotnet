@@ -18,6 +18,11 @@ AIAgent writer = chatClient.AsAIAgent(
     name: "Writer",
     instructions: "Write stories that are engaging and creative.");
 
-AgentResponse response = await writer.RunAsync("Write a short story about a haunted house with a character named Lucia.");
-
-Console.WriteLine(response.Text);
+// Stream the response so the story appears token-by-token in the console — a livelier
+// demo experience than waiting for the full response.
+await foreach (var update in writer.RunStreamingAsync(
+    "Write a short story about a haunted house with a character named Lucia."))
+{
+    Console.Write(update.Text);
+}
+Console.WriteLine();

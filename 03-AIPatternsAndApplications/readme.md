@@ -25,18 +25,23 @@ _Click the image to watch the video_
 This lesson is divided into five parts:
 
 ### [Part 1: Embeddings and Semantic Search](./01-embeddings-semantic-search.md)
+
 Understand how AI represents meaning as vectors and build search that finds by intent.
 
 ### [Part 2: Retrieval-Augmented Generation (RAG)](./02-retrieval-augmented-generation.md)
+
 Ground AI responses in your own documents and data.
 
 ### [Part 3: Vision and Document Understanding](./03-vision-document-understanding.md)
+
 Process images, PDFs, and visual content with multimodal AI.
 
 ### [Part 4: Combining Patterns](./04-combining-patterns.md)
+
 Build sophisticated applications that combine multiple patterns.
 
 ### [Part 5: Local Model Runners](./05-LocalModelRunners.md)
+
 Run AI models locally using AI Toolkit, Docker Model Runner, and Foundry Local.
 
 ---
@@ -65,7 +70,7 @@ All code samples for this lesson are located in the **[`samples/CoreSamples/`](.
 
 | Category | Samples | Description |
 |----------|---------|-------------|
-| **Embeddings & RAG** | [RAGSimple-02MEAIVectorsMemory](../samples/CoreSamples/RAGSimple-02MEAIVectorsMemory/) | In-memory vector store |
+| **Embeddings & RAG** | [RAGSimple-02MEAIVectorsMemory](../samples/CoreSamples/RAGSimple-02MEAIVectorsMemory/) | Local sqlite-vec vector store |
 | | [RAGSimple-03MEAIVectorsAISearch](../samples/CoreSamples/RAGSimple-03MEAIVectorsAISearch/) | Azure AI Search |
 | | [RAGSimple-04MEAIVectorsQdrant](../samples/CoreSamples/RAGSimple-04MEAIVectorsQdrant/) | Qdrant vector store |
 | **Vision** | [Vision-01MEAI-AzureOpenAI](../samples/CoreSamples/Vision-01MEAI-AzureOpenAI/) | Vision with Azure OpenAI |

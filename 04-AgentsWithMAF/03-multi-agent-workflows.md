@@ -379,6 +379,7 @@ catch (AgentException ex)
 | [MAF02](../samples/MAF/MAF02/) | Simple sequential workflow |
 | [MAF-MultiAgents](../samples/MAF/MAF-MultiAgents/) | Multi-model orchestration |
 | [MAF-MultiAgents-Factory-01](../samples/MAF/MAF-MultiAgents-Factory-01/) | Advanced workflow patterns |
+| [A2A-01](../samples/MAF/A2A-01/) | Agent-to-Agent (A2A) protocol: host a MAF agent and call it as a remote agent |
 
 ---
 

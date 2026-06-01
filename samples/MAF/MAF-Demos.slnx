@@ -14,6 +14,7 @@
   <Folder Name="/4 Image Generation/">
     <Project Path="MAF-ImageGen-01/MAF-ImageGen-01.csproj" Id="25c06364-ad74-420c-96af-f607d96fa496" />
     <Project Path="MAF-ImageGen-02/MAF-ImageGen-02.csproj" Id="5c192bf7-4138-464e-8149-05d91ae7f24d" />
+    <Project Path="MAF-ImageGen-03-Foundry/MAF-ImageGen-03-Foundry.csproj" />
   </Folder>
   <Folder Name="/5 MultiModel Agents/">
     <Project Path="MAF-MultiAgents-Factory-01/MAF-MultiAgents-Factory-01.csproj" Id="fd8cfa03-9cb1-4b3c-a326-7ea32ff003b3" />
@@ -37,6 +38,12 @@
   <Folder Name="/10 Hosted Agents/">
     <Project Path="MAF-HostedAgent-01-TimeZone/MAF-HostedAgent-01-TimeZone.csproj" />
     <Project Path="MAF-HostedAgent-02-MultiAgent/MAF-HostedAgent-02-MultiAgent.csproj" />
+  </Folder>
+  <Folder Name="/11 MCP Tools/">
+    <Project Path="MAF-MCP-01/MAF-MCP-01.csproj" />
+  </Folder>
+  <Folder Name="/12 A2A/">
+    <Project Path="A2A-01/A2A-01.csproj" />
   </Folder>
   <Folder Name="/9 Microsoft Foundry/">
     <Project Path="MAF-MicrosoftFoundryAgents-01/MAF-MicrosoftFoundryAgents-01.csproj" Id="28071859-0089-4443-82f9-b60ca0ee8f9a" />

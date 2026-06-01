@@ -374,6 +374,7 @@ static string GetOrderStatus(string orderId) { ... }
 |--------|-------------|
 | [MAF-BackgroundResponses-02-Tools](../samples/MAF/MAF-BackgroundResponses-02-Tools/) | Agent with function tools |
 | [MAF-BackgroundResponses-03-Complex](../samples/MAF/MAF-BackgroundResponses-03-Complex/) | Complex tool scenarios |
+| [MAF-ImageGen-03-Foundry](../samples/MAF/MAF-ImageGen-03-Foundry/) | Agent with an image-generation tool (GPT-Image-2 on Microsoft Foundry) |
 
 ---
 

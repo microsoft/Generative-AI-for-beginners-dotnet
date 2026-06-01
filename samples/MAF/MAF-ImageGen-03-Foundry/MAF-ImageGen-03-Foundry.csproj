@@ -1,21 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net10.0</TargetFramework>
-    <RootNamespace>MEAIVector01_</RootNamespace>
+    <RootNamespace>MAF_ImageGen_03_Foundry</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <UserSecretsId>genai-beginners-dotnet</UserSecretsId>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Azure.AI.OpenAI" Version="2.8.0-beta.1" />
     <PackageReference Include="Azure.Identity" Version="1.18.0" />
-    <PackageReference Include="ElBruno.Connectors.SqliteVec" Version="0.5.2" />
+    <PackageReference Include="ElBruno.Text2Image.Foundry" Version="1.2.11" />
+    <PackageReference Include="Microsoft.Agents.AI" Version="1.0.0" />
     <PackageReference Include="Microsoft.Extensions.AI" Version="10.6.0" />
     <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.6.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.3" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MEAIVectorsShared\MEAIVectorsShared.csproj" />
-  </ItemGroup>
+
 </Project>
