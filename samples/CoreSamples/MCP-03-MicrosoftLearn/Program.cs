@@ -72,6 +72,11 @@ await foreach (var update in client.GetStreamingResponseAsync(
     Console.Write(update.Text);
 }
 Console.WriteLine();
+
+// A clear visual delimiter so the two answers are easy to tell apart on screen.
+Console.WriteLine();
+Console.WriteLine(new string('=', 60));
+Console.WriteLine(new string('=', 60));
 Console.WriteLine();
 
 // =====================================================================
