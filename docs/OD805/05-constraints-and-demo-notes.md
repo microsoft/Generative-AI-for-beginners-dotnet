@@ -27,6 +27,13 @@ Operational notes to make the OD805 demos reliable on stage.
 
 ## Secrets / config (per `AGENTS.md`, never hardcode)
 
+### Recommended baseline setup (run once before demo prep)
+
+- Run the repo helper script to pre-populate the shared .NET user-secrets used by most demos:
+  - `./setup-secrets.ps1 -Endpoint "<your-azure-openai-endpoint>" -Deployment "gpt-5-mini" -EmbeddingDeployment "text-embedding-3-small"`
+- This sets the common `AzureOpenAI:*` values for the course samples and reduces per-project setup mistakes.
+- Then add any demo-specific extras called out below (for example NVIDIA / GPT-Image-2 for Zava, optional AI Foundry endpoint, Azure AI Search keys).
+
 **Zava Support Center** (the bookend app — see its `docs/CONFIGURATION.md`):
 
 - **Azure OpenAI** chat (`AZURE_OPENAI_ENDPOINT`, deployment name) — keyless preferred.
@@ -53,6 +60,7 @@ Operational notes to make the OD805 demos reliable on stage.
 
 ## Per-demo pre-flight checklist
 
+- [ ] Ran `./setup-secrets.ps1 -Endpoint "<your-azure-openai-endpoint>"` to seed shared `AzureOpenAI:*` user-secrets.
 - [ ] **Zava Support Center** runs via `aspire start`; venv created + deps installed; NVIDIA
       + AOAI + GPT-Image-2 secrets set; **hero image pre-rendered**; local-embeddings KB
       indexed; 3 prompts rehearsed; citation chips clickable; `/knowledge` viewer opens.
