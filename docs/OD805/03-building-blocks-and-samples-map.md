@@ -77,8 +77,7 @@ The whole agent package
   from **`gpt-5.5` → `grok-4`** — same code, same endpoint, same `IChatClient`.
 - Toggle `AzureOpenAI:AuthMode` between `apikey` and `integrated` to contrast key auth with
   **Integrated Security** (`AzureCliCredential` / Microsoft Entra ID — the recommended path).
-- Ask: `Q: hi, what is your model name?`
-  so the model swap is obvious and the streamed answer feels lively on stage.
+- The sample asks the hardcoded question `what is your model name?` so the model swap is obvious without extra console interaction.
 - Then switch to `BasicChat-03Ollama` to run the same `IChatClient` against a local model.
 
 ### `MCP-03-MicrosoftLearn` (tools)

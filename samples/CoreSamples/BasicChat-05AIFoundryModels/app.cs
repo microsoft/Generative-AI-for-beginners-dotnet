@@ -20,8 +20,7 @@ var endpoint = config["AzureOpenAI:Endpoint"]
 // Swap the model by changing ONLY the deployment name.
 // In Microsoft Foundry you deploy several models behind the same endpoint, e.g.:
 //   gpt-5.5  ->  grok-4.3  ->  phi-4  ->  ...   (same code, same endpoint, just this string).
-//var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
-var deploymentName = "gpt-5-mini";
+var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 //var deploymentName = "Kimi-K2.6";
 
 // Auth mode. "integrated" = Microsoft Entra ID (recommended for Foundry: no keys to leak).
@@ -38,40 +37,17 @@ AzureOpenAIClient azureClient = authMode.Equals("apikey", StringComparison.Ordin
 
 IChatClient client = azureClient
     .GetChatClient(deploymentName)
-    .AsIChatClient()
-    .AsBuilder()
-    .Build();
+    .AsIChatClient();
 
 Console.WriteLine($"Microsoft Foundry chat  ·  model: {deploymentName}  ·  auth: {authMode}");
 Console.WriteLine("(swap the model with AzureOpenAI:Deployment, e.g. gpt-5.5 -> grok-4)");
-Console.WriteLine("Streaming is enabled for a better live demo experience.");
-Console.WriteLine("Suggested demo prompt:");
-Console.WriteLine("Q: hi, what is your model name?");
+Console.WriteLine("(switch auth with AzureOpenAI:AuthMode = apikey or integrated)");
 Console.WriteLine();
 
-var history = new List<ChatMessage>
-{
-    new(ChatRole.Assistant, "You are a useful chatbot. If you don't know an answer, say 'I don't know!'. Always reply in a funny way. Use emojis if possible.")
-};
+var question = "what is your model name?";
+Console.WriteLine($"Q: {question}");
 
-while (true)
-{
-    Console.Write("Q: ");
-    var userQ = Console.ReadLine();
-    if (string.IsNullOrEmpty(userQ))
-    {
-        break;
-    }
-    history.Add(new ChatMessage(ChatRole.User, userQ));
+var response = await client.GetResponseAsync(question);
 
-    List<ChatResponseUpdate> updates = [];
-    Console.Write($"AI [{deploymentName}] (streaming): ");
-    await foreach (ChatResponseUpdate update in client.GetStreamingResponseAsync(history))
-    {
-        Console.Write(update);
-        updates.Add(update);
-    }
-    Console.WriteLine();
-
-    history.AddMessages(updates);
-}
+Console.WriteLine();
+Console.WriteLine($"AI [{deploymentName}]: {response.Text}");
