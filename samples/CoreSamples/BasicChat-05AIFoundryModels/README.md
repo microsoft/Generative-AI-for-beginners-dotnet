@@ -11,6 +11,8 @@ and authenticate the way you should in Foundry: **Integrated Security (Microsoft
    **`gpt-5.5` → `grok-4`** (same code, same endpoint, same `IChatClient`).
 3. **Integrated Security (recommended)** — drop the key entirely and use
    `AzureCliCredential` / Microsoft Entra ID. This is the way to work in Foundry.
+4. **Streaming response UX** — responses stream token-by-token in the console so the
+   model swap is more obvious and the live demo feels snappier.
 
 > Then the demo switches to **`BasicChat-03Ollama`** to run the same `IChatClient`
 > against a local model — zero changes to app logic.
@@ -53,6 +55,13 @@ dotnet run app.cs
 
 The console prints the active **model** and **auth** mode, and labels each answer with
 `AI [<deployment>]:` so the model swap is visible while presenting.
+
+## Suggested on-stage prompt
+
+Use this question in Block 2 to make the model identity visible and invite a slightly
+different answer after the deployment swap:
+
+`hi, my name is Bruno, tell me your model name and something about your model card information`
 
 > Integrated Security requires the signed-in account to have the **Azure AI Developer**
 > role on the Foundry resource.

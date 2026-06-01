@@ -62,9 +62,11 @@ many models. The magic is *an interface*.
 - **Demo A — Foundry chat (one live demo):** `samples/CoreSamples/BasicChat-05AIFoundryModels`
   (`app.cs`, file-based app). Run it once with **deployment name + endpoint + apikey**.
   - Highlight `IChatClient` and `client.GetStreamingResponseAsync(...)`.
+  - **Ask:** `hi, my name is Bruno, tell me your model name and something about your model card information`
   - **Say:** "No SDK-specific types in my logic — just `IChatClient` over a Foundry model."
 - **Demo B — swap the model (Foundry):** change **only** `AzureOpenAI:Deployment` to switch
   **`gpt-5.5` → `grok-4`**. Same code, same endpoint, same `IChatClient`.
+  - Ask the **same question again** so the audience sees the model identity/card answer change while the streaming output stays the same UX.
   - **Say:** "One endpoint hosts many models in Foundry. To move from GPT-5.5 to Grok-4 I
     change a single string — the deployment name — nothing else."
 - **Demo C — Integrated Security (the right way):** flip `AzureOpenAI:AuthMode` to
@@ -75,7 +77,7 @@ many models. The magic is *an interface*.
   - Same `IChatClient`, different registration (Foundry → local Ollama).
   - **Say:** "Cloud model to a local model on my laptop — zero changes to app logic.
     That's the foundation everything else sits on."
-- **Optional 20s:** mention streaming + structured output exist (lesson 02) without demoing.
+- **Optional 20s:** mention structured output exists too (lesson 02); streaming is already visible in the demo.
 
 > **Learn more:** [Microsoft.Extensions.AI](https://learn.microsoft.com/dotnet/ai/microsoft-extensions-ai?wt.mc_id=) ·
 > [Build a chat app](https://learn.microsoft.com/dotnet/ai/quickstarts/build-chat-app?wt.mc_id=) ·

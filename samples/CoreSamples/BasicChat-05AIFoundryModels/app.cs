@@ -21,7 +21,8 @@ var endpoint = config["AzureOpenAI:Endpoint"]
 // Swap the model by changing ONLY the deployment name.
 // In Microsoft Foundry you deploy several models behind the same endpoint, e.g.:
 //   gpt-5.5  ->  grok-4.3  ->  phi-4  ->  ...   (same code, same endpoint, just this string).
-var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5.5";
+//var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
+var deploymentName = "gpt-5-mini";
 //var deploymentName = "Kimi-K2.6";
 
 // Auth mode. "integrated" = Microsoft Entra ID (recommended for Foundry: no keys to leak).
@@ -44,6 +45,9 @@ IChatClient client = azureClient
 
 Console.WriteLine($"Microsoft Foundry chat  ·  model: {deploymentName}  ·  auth: {authMode}");
 Console.WriteLine("(swap the model with AzureOpenAI:Deployment, e.g. gpt-5.5 -> grok-4)");
+Console.WriteLine("Streaming is enabled for a better live demo experience.");
+Console.WriteLine("Suggested demo prompt:");
+Console.WriteLine("hi, my name is Bruno, tell me your model name and something about your model card information");
 Console.WriteLine();
 
 var history = new List<ChatMessage>
@@ -63,7 +67,7 @@ while (true)
 
     var sb = new StringBuilder();
     var result = client.GetStreamingResponseAsync(history);
-    Console.Write($"AI [{deploymentName}]: ");
+    Console.Write($"AI [{deploymentName}] (streaming): ");
     await foreach (var item in result)
     {
         // validate if the item is null or has no contents
@@ -71,8 +75,18 @@ while (true)
         {
             continue; // skip to the next item if it's null or empty
         }
-        sb.Append(item);
-        Console.Write(item.Contents[0].ToString());
+
+        foreach (var content in item.Contents)
+        {
+            var text = content?.ToString();
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                continue;
+            }
+
+            sb.Append(text);
+            Console.Write(text);
+        }
     }
     Console.WriteLine();
 
