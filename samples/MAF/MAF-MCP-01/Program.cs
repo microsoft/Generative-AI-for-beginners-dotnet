@@ -66,5 +66,10 @@ Console.WriteLine();
 Console.WriteLine("Agent is thinking (it will call the MCP tools as needed)...");
 Console.WriteLine();
 
-AgentResponse response = await docsAgent.RunAsync(question);
-Console.WriteLine(response.Text);
+// Stream the grounded answer so it appears token-by-token in the console. Tool calls
+// happen automatically behind the scenes; the final text streams in live.
+await foreach (var update in docsAgent.RunStreamingAsync(question))
+{
+    Console.Write(update.Text);
+}
+Console.WriteLine();
