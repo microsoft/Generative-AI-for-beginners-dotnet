@@ -1,8 +1,8 @@
-﻿// This sample demonstrates semantic search using the OFFICIAL .NET building block
-// Microsoft.Extensions.VectorData (InMemoryVectorStore + VectorStoreCollection) instead of
-// a hand-rolled cosine-similarity loop. It is the *same* abstraction the chat app uses —
-// swap InMemoryVectorStore for SQLite / Qdrant / Azure AI Search in production with no
-// changes to the search code.
+﻿// This sample demonstrates semantic search using the OFFICIAL .NET VectorData abstraction
+// (VectorStoreCollection + VectorData attributes) with an ElBruno sqlite-vec backed store
+// instead of Semantic Kernel connectors or a hand-rolled cosine-similarity loop. It is the
+// *same* abstraction the chat app uses — swap the backing store with no changes to the
+// search code.
 //
 // Keyless: uses your `az login` credentials (Microsoft Entra ID). Reuses the standard secrets:
 //      dotnet user-secrets set "AzureOpenAI:Endpoint" "https://<your-endpoint>.services.ai.azure.com/"
@@ -11,10 +11,10 @@
 
 using Azure.AI.OpenAI;
 using Azure.Identity;
+using ElBruno.Connectors.SqliteVec;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.VectorData;
-using Microsoft.SemanticKernel.Connectors.InMemory;
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 var endpoint = config["AzureOpenAI:Endpoint"]
@@ -27,9 +27,15 @@ IEmbeddingGenerator<string, Embedding<float>> generator =
     .GetEmbeddingClient(embeddingDeployment)
     .AsIEmbeddingGenerator();
 
-// --- The official VectorData abstraction: a store and a typed collection ---
-using var vectorStore = new InMemoryVectorStore();
-var movies = vectorStore.GetCollection<int, MovieVectorRecord>("movies");
+// --- The official VectorData abstraction: a typed collection over a supported local store ---
+var vectorStorePath = Path.Combine(AppContext.BaseDirectory, "movie-vectors.db");
+var vectorStoreConnectionString = $"Data Source={vectorStorePath}";
+var movies = new SqliteVecVectorStoreCollection<int, MovieVectorRecord>(
+    "movies",
+    vectorStoreConnectionString,
+    generator);
+
+await movies.EnsureCollectionDeletedAsync();
 await movies.EnsureCollectionExistsAsync();
 
 // Embed each movie description and upsert it into the collection.
@@ -45,7 +51,7 @@ foreach (var movie in MovieFactory<int>.GetMovieList())
     });
 }
 
-// Search the collection — embeddings + similarity handled by the building block.
+// Search the collection — embeddings + similarity handled by the VectorData building block.
 var query = "A family friendly movie that includes ogres and dragons";
 var queryEmbedding = await generator.GenerateVectorAsync(query);
 

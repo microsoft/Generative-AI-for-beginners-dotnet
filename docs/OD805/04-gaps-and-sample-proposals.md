@@ -9,7 +9,7 @@ samples that fill the gaps. The High-severity gap is now **closed** (see below).
 |---|---|---|---|
 | No standalone **`Microsoft.Extensions.DataIngestion`** sample | Block 3B (the RAG "engine" reveal) had no focused demo; the only ingestion in-repo is the hand-rolled `DataIngestor` inside `ChatApp20` | **High** | ✅ **Closed** — `samples/CoreSamples/DataIngestion-01-Simple` built |
 | Deprecated **HuggingFace MCP** demo (`MCP-01-HuggingFace`) | The tools block (Block 4) relied on a server/sample that is no longer supported | **High** | ✅ **Closed** — replaced by keyless `samples/CoreSamples/MCP-03-MicrosoftLearn` |
-| No standalone **`Microsoft.Extensions.VectorData`** sample using `VectorStoreCollection` | `RAGSimple-02` used manual `TensorPrimitives.CosineSimilarity`, not the official abstraction | **Medium** | ✅ **Closed** — `RAGSimple-02MEAIVectorsMemory` rewritten on `InMemoryVectorStore` + `VectorStoreCollection.SearchAsync` (keyless) |
+| No standalone **`Microsoft.Extensions.VectorData`** sample using `VectorStoreCollection` | `RAGSimple-02` used manual `TensorPrimitives.CosineSimilarity`, not the official abstraction | **Medium** | ✅ **Closed** — `RAGSimple-02MEAIVectorsMemory` rewritten on `SqliteVecVectorStoreCollection` + `VectorStoreCollection.SearchAsync` (keyless) |
 
 > Everything else in the flow (MEAI, MCP, MAF, the chat app) is already well covered —
 > see [03-building-blocks-and-samples-map.md](./03-building-blocks-and-samples-map.md).
@@ -76,7 +76,7 @@ block as the app" line is now exact.
 - **Location:** `samples/CoreSamples/RAGSimple-02MEAIVectorsMemory/`
 - **As built:** local `MovieVectorRecord` with `[VectorStoreKey]` / `[VectorStoreData]` /
   `[VectorStoreVector(1536, DistanceFunction = DistanceFunction.CosineSimilarity)]`,
-  `InMemoryVectorStore` → `GetCollection` → `UpsertAsync` the movie list →
+  `SqliteVecVectorStoreCollection` → `UpsertAsync` the movie list →
   `collection.SearchAsync(queryEmbedding, top: 2)`.
 - **Auth:** **keyless** (`AzureCliCredential`), reuses `AzureOpenAI:Endpoint` +
   `AzureOpenAI:EmbeddingDeployment`. No new secret.
@@ -105,8 +105,8 @@ mirroring the Zava **Pitch Image Agent** — so the cold-open hero image stops b
    HuggingFace MCP demo.
 3. ✅ Both samples added to `CoreGenerativeAITechniques.sln`; full solution validated with
    `dotnet build … --configuration Release` (0 warnings / 0 errors).
-4. ✅ **`RAGSimple-02MEAIVectorsMemory` rewritten** on the official `InMemoryVectorStore` +
-   `VectorStoreCollection` abstraction (keyless), closing the Medium gap directly.
+4. ✅ **`RAGSimple-02MEAIVectorsMemory` rewritten** on the official `VectorStoreCollection`
+  abstraction with an `ElBruno.Connectors.SqliteVec` backing store (keyless), closing the Medium gap directly.
 5. ✅ **`MAF-ImageGen-03-Foundry` built** — the GPT-Image-2 image building block as a MAF agent
    tool, added to `MAF-Demos.slnx` (folder *4 Image Generation*).
 

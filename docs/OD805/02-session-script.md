@@ -93,11 +93,12 @@ many models. The magic is *an interface*.
   `Reader → Chunker → (Enrich) → Embeddings → VectorStoreWriter → VectorStore`.
 - **Demo A — VectorData search (official abstraction):**
   `samples/CoreSamples/RAGSimple-02MEAIVectorsMemory` — now built on
-  **`Microsoft.Extensions.VectorData`**: `InMemoryVectorStore` → `GetCollection` →
-  `UpsertAsync` → `SearchAsync`, over the movie data. Keyless (`az login`), reuses the
-  standard `AzureOpenAI:Endpoint` + `AzureOpenAI:EmbeddingDeployment` secrets.
+  **`Microsoft.Extensions.VectorData`** with an **`ElBruno.Connectors.SqliteVec`** backing
+  store: `SqliteVecVectorStoreCollection` → `UpsertAsync` → `SearchAsync`, over the movie
+  data. Keyless (`az login`), reuses the standard `AzureOpenAI:Endpoint` +
+  `AzureOpenAI:EmbeddingDeployment` secrets.
   - **Say:** "This is the *official* VectorData block — not a hand-rolled cosine loop. The
-    store is swappable: in-memory today, SQLite/Qdrant/Azure AI Search in prod, same
+    abstraction is swappable: sqlite-vec today, Azure AI Search or Qdrant tomorrow, same
     `VectorStoreCollection.SearchAsync` code."
 - **Demo B — DataIngestion pipeline (NEW — built):**
   `samples/CoreSamples/DataIngestion-01-Simple` console app using
@@ -222,7 +223,7 @@ the standard wire for that, and there's a first-class **C# MCP SDK**.
 |-------|----------------|-----------|
 | 0 / 6 | **Zava Support Center** (`MAF-A2A-NVIDIA-NemoAgents`) | `aspire start` OK; Python venv + deps; NVIDIA + AOAI + GPT-Image-2 secrets; hero image pre-rendered; 3 prompts rehearsed; citations clickable; **recorded fallback** |
 | 2 | `BasicChat-05AIFoundryModels`, `BasicChat-03Ollama` | Foundry endpoint set; `gpt-5.5` + `grok-4` deployments exist; apikey set; `az login` for Integrated Security; Ollama model pulled |
-| 3A | `RAGSimple-02MEAIVectorsMemory` | rewritten on official VectorData (`InMemoryVectorStore`); **keyless** — reuses `AzureOpenAI:Endpoint` + `AzureOpenAI:EmbeddingDeployment`; `az login`; built & verified |
+| 3A | `RAGSimple-02MEAIVectorsMemory` | rewritten on official VectorData with `ElBruno.Connectors.SqliteVec`; **keyless** — reuses `AzureOpenAI:Endpoint` + `AzureOpenAI:EmbeddingDeployment`; `az login`; built & verified |
 | 3B | `DataIngestion-01-Simple` | built & verified; chat + embedding deployments set |
 | 4 | `MCP-03-MicrosoftLearn` | AOAI secret set; `learn.microsoft.com/api/mcp` reachable (keyless); both before/after paths rehearsed |
 | 5 | `MAF01` / `MAF-MCP-01` / `A2A-01` | MAF packages restored; A2A-01 builds (prerelease pkgs); AOAI secret set for all three |

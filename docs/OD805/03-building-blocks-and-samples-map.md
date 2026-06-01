@@ -28,7 +28,7 @@ The whole agent package
 | **MEAI — functions/middleware** | function calling, `UseFunctionInvocation` | `samples/CoreSamples/MEAIFunctions*` | ✅ Reuse (mention) |
 | **MCP — C# SDK** | `McpClient`, tools → `ChatOptions`; *same question before/after MCP* | `samples/CoreSamples/MCP-03-MicrosoftLearn` | ✅ Reuse (keyless Learn MCP) |
 | **MCP — local model** | MCP tools + Ollama | `samples/CoreSamples/MCP-02-HuggingFace-Ollama` | ⚠️ Backup (HF MCP deprecated) |
-| **VectorData — search** | embeddings + similarity search | `samples/CoreSamples/RAGSimple-02MEAIVectorsMemory` | ✅ **Rewritten** on `InMemoryVectorStore` + `VectorStoreCollection.SearchAsync` (keyless) |
+| **VectorData — search** | embeddings + similarity search | `samples/CoreSamples/RAGSimple-02MEAIVectorsMemory` | ✅ **Rewritten** on `SqliteVecVectorStoreCollection` + `VectorStoreCollection.SearchAsync` (keyless) |
 | **VectorData — real store** | Azure AI Search / Qdrant connectors | `RAGSimple-03MEAIVectorsAISearch`, `RAGSimple-04MEAIVectorsQdrant` | ✅ Reuse (mention) |
 | **DataIngestion — pipeline** | `IngestionPipeline<T>` read→chunk→enrich→embed→write | `samples/CoreSamples/DataIngestion-01-Simple` | ✅ **Built** |
 | **VectorData in the app** | `[VectorStoreKey]`, `[VectorStoreVector]`, grounded search tool | Zava `KnowledgeSearch` + `MafActionAgent` | ✅ In Zava |

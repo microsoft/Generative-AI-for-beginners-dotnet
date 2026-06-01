@@ -43,8 +43,8 @@ backstage for the talk.
       local embeddings, GPT-Image-2 pitch agent, clickable citations)
 - [x] Build/verify supporting samples (`DataIngestion-01-Simple`, `MCP-03-MicrosoftLearn`)
 - [x] Build/verify new agent samples (`MAF-MCP-01` agent-owned MCP tools, `A2A-01` agent-to-agent)
-- [x] Rewrite `RAGSimple-02MEAIVectorsMemory` on the official `InMemoryVectorStore` /
-      `VectorStoreCollection` abstraction (keyless) — closes the VectorData gap
+- [x] Rewrite `RAGSimple-02MEAIVectorsMemory` on the official `VectorStoreCollection`
+   abstraction with `ElBruno.Connectors.SqliteVec` (keyless) — closes the VectorData gap
 - [x] Build `MAF-ImageGen-03-Foundry` — GPT-Image-2 image building block as a MAF agent tool
 - [x] Author slides (`06-slides-v02.md`) with cumulative recap build
 - [ ] Review / approve final concept + hook line (Bruno)
