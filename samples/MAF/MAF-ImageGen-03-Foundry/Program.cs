@@ -55,6 +55,9 @@ ElBruno.Text2Image.IImageGenerator imageGenerator = new GptImage2Generator(
 var outputDir = Path.Combine(AppContext.BaseDirectory, "images");
 Directory.CreateDirectory(outputDir);
 
+// Tracks the most recent image saved by the tool, so we can open it after the agent finishes.
+string? lastImagePath = null;
+
 // The tool the agent can call: generate an image from a prompt and save it as a PNG.
 [Description("Generates an image from a detailed text prompt using GPT-Image-2 and saves it as a PNG. Returns the saved file path.")]
 async Task<string> GenerateImage(
@@ -65,6 +68,7 @@ async Task<string> GenerateImage(
 
     var path = Path.Combine(outputDir, $"image-{DateTime.Now:yyyyMMdd-HHmmss}.png");
     await File.WriteAllBytesAsync(path, result.ImageBytes);
+    lastImagePath = path;
 
     Console.WriteLine($"[tool] Image generated in {result.InferenceTimeMs}ms and saved to:\n[tool] {path}\n");
     return path;
@@ -96,10 +100,41 @@ Console.WriteLine("Agent is thinking (it will call the GPT-Image-2 tool as neede
 AgentResponse response = await imageAgent.RunAsync(request);
 Console.WriteLine($"\nAgent: {response.Text}");
 
+// Open the generated image in the OS default viewer.
+if (lastImagePath is not null && File.Exists(lastImagePath))
+{
+    Console.WriteLine($"\nOpening image: {lastImagePath}");
+    OpenFile(lastImagePath);
+}
+
 // Strip any "/openai..." suffix so GptImage2Generator gets the bare Foundry resource URL.
 static string NormalizeEndpoint(string endpoint)
 {
     var trimmed = endpoint.Trim().TrimEnd('/');
     var openAiIndex = trimmed.IndexOf("/openai", StringComparison.OrdinalIgnoreCase);
     return openAiIndex >= 0 ? trimmed[..openAiIndex] : trimmed;
+}
+
+// Open a file using the OS default application (cross-platform).
+static void OpenFile(string path)
+{
+    try
+    {
+        if (OperatingSystem.IsWindows())
+        {
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(path) { UseShellExecute = true });
+        }
+        else if (OperatingSystem.IsMacOS())
+        {
+            System.Diagnostics.Process.Start("open", path);
+        }
+        else if (OperatingSystem.IsLinux())
+        {
+            System.Diagnostics.Process.Start("xdg-open", path);
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Could not open the image automatically: {ex.Message}");
+    }
 }
