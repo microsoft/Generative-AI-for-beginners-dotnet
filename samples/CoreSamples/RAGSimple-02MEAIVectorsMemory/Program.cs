@@ -38,8 +38,17 @@ var movies = new SqliteVecVectorStoreCollection<string, MovieVectorRecord>(
 await movies.EnsureCollectionDeletedAsync();
 await movies.EnsureCollectionExistsAsync();
 
+// Show the catalog we're searching over (titles only) so the search results have context.
+var movieList = MovieFactory<string>.GetMovieList();
+Console.WriteLine("Movies in the vector store:");
+foreach (var movie in movieList)
+{
+    Console.WriteLine($"  - {movie.Title}");
+}
+Console.WriteLine();
+
 // Embed each movie description and upsert it into the collection.
-foreach (var movie in MovieFactory<string>.GetMovieList())
+foreach (var movie in movieList)
 {
     var embedding = await generator.GenerateVectorAsync(movie.Description!);
     await movies.UpsertAsync(new MovieVectorRecord
@@ -56,7 +65,7 @@ foreach (var movie in MovieFactory<string>.GetMovieList())
 string[] queries =
 [
     "A family friendly movie that includes ogres and dragons",
-    "A movie about space adventures and aliens"
+    "A movie about a hacker who discovers reality is a simulation"
 ];
 
 foreach (var query in queries)
