@@ -1,0 +1,39 @@
+{
+  "agents": {
+    "lead": {
+      "persistent_name": "Morpheus",
+      "universe": "The Matrix",
+      "created_at": "2026-07-15T18:32:11Z",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "ai-backend": {
+      "persistent_name": "Tank",
+      "universe": "The Matrix",
+      "created_at": "2026-07-15T18:32:11Z",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "apps-samples": {
+      "persistent_name": "Trinity",
+      "universe": "The Matrix",
+      "created_at": "2026-07-15T18:32:11Z",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "tester": {
+      "persistent_name": "Mouse",
+      "universe": "The Matrix",
+      "created_at": "2026-07-15T18:32:11Z",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "devrel-docs": {
+      "persistent_name": "Dozer",
+      "universe": "The Matrix",
+      "created_at": "2026-07-15T18:32:11Z",
+      "legacy_named": false,
+      "status": "active"
+    }
+  }
+}

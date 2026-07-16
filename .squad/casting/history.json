@@ -1,0 +1,22 @@
+{
+  "universe_usage_history": [
+    {
+      "universe": "The Matrix",
+      "assignment_id": "genai-dotnet-2026-07-15",
+      "used_at": "2026-07-15T18:32:11Z"
+    }
+  ],
+  "assignment_cast_snapshots": {
+    "genai-dotnet-2026-07-15": {
+      "universe": "The Matrix",
+      "agents": {
+        "lead": "Morpheus",
+        "ai-backend": "Tank",
+        "apps-samples": "Trinity",
+        "tester": "Mouse",
+        "devrel-docs": "Dozer"
+      },
+      "created_at": "2026-07-15T18:32:11Z"
+    }
+  }
+}

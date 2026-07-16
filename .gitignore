@@ -411,3 +411,7 @@ FodyWeavers.xsd
 # IDE / build cache
 *.lscache
 .copilot/skills/
+# Squad: ignore runtime state (logs, inbox, sessions)
+# Note: .squad/casting/* is identity and MUST be committed to main, not ignored
+.squad/.scratch/
+.squad/.cache/
