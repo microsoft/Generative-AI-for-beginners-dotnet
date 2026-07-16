@@ -38,10 +38,6 @@ var chatOptions = new ChatOptions
     ModelId = deploymentName
 };
 
-client.AsBuilder()
-.UseFunctionInvocation()
-.Build();
-
 var funcCallingResponseOne = await client.GetResponseAsync("What is today's date?", chatOptions);
 var funcCallingResponseTwo = await client.GetResponseAsync("Why don't you tell me about today's temperature?", chatOptions);
 var funcCallingResponseThree = await client.GetResponseAsync("Should I bring an umbrella with me today?", chatOptions);

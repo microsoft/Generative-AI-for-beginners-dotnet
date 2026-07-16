@@ -491,7 +491,6 @@ var messages = new List<ChatMessage>
 | [Vision-02MEAI-Ollama](../samples/CoreSamples/Vision-02MEAI-Ollama/) | Local vision with Ollama |
 | [Vision-03MEAI-AOAI](../samples/CoreSamples/Vision-03MEAI-AOAI/) | Vision with Azure OpenAI |
 | [Vision-04MEAI-AOAI-Spectre](../samples/CoreSamples/Vision-04MEAI-AOAI-Spectre/) | Vision with Spectre Console output |
-| [OpenAI-FileProcessing-Pdf-01](../samples/CoreSamples/OpenAI-FileProcessing-Pdf-01/) | PDF document processing |
 
 ---
 
