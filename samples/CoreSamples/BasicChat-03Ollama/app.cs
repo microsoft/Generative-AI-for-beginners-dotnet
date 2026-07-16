@@ -1,11 +1,12 @@
-#:package Microsoft.Extensions.AI.Ollama@9.7.0-preview.1.25356.2
+#:package OllamaSharp@5.4.18
 #:package Microsoft.Extensions.Configuration.UserSecrets@10.0.3
 
 ﻿using Microsoft.Extensions.AI;
+using OllamaSharp;
 using System.Text;
 
 IChatClient client =
-    new OllamaChatClient(new Uri("http://localhost:11434/"), "phi4-mini");
+    new OllamaApiClient(new Uri("http://localhost:11434/"), "phi4-mini");
 
 // here we're building the prompt
 StringBuilder prompt = new StringBuilder();

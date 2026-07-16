@@ -12,7 +12,7 @@
 		<PackageReference Include="Azure.AI.OpenAI" Version="2.8.0-beta.1" />
 		<PackageReference Include="Azure.Identity" Version="1.18.0" />
 		<PackageReference Include="Microsoft.Extensions.AI" Version="10.3.0" />
-		<PackageReference Include="Microsoft.Extensions.AI.Ollama" Version="9.7.0-preview.1.25356.2" />
+		<PackageReference Include="OllamaSharp" Version="5.4.18" />
 		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.3.0" />
 		<PackageReference Include="ModelContextProtocol" Version="1.0.0" />
 		<PackageReference Include="OpenAI" Version="2.8.0" />

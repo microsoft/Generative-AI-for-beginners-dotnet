@@ -1,13 +1,14 @@
-#:package Microsoft.Extensions.AI.Ollama@9.7.0-preview.1.25356.2
+#:package OllamaSharp@5.4.18
 #:package Microsoft.Extensions.Configuration.UserSecrets@10.0.3
 
 ﻿using Microsoft.Extensions.AI;
+using OllamaSharp;
 using System.Text;
 
 // download the model from: https://ollama.com/library/gpt-oss:20b
 
 IChatClient client =
-    new OllamaChatClient(new Uri("http://localhost:11434/"), "gpt-oss:20b");
+    new OllamaApiClient(new Uri("http://localhost:11434/"), "gpt-oss:20b");
 
 // Prompt to test a reasoning model capability
 var prompt = new StringBuilder();

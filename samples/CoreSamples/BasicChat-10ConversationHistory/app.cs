@@ -1,11 +1,12 @@
-#:package Microsoft.Extensions.AI.Ollama@9.7.0-preview.1.25356.2
+#:package OllamaSharp@5.4.18
 #:package Microsoft.Extensions.Configuration.UserSecrets@10.0.3
 #:property UserSecretsId=genai-beginners-dotnet
 
 using Microsoft.Extensions.AI;
+using OllamaSharp;
 
 // Create chat client (using Ollama as an example, but this works with any IChatClient)
-IChatClient client = new OllamaChatClient(new Uri("http://localhost:11434"), "phi4-mini");
+IChatClient client = new OllamaApiClient(new Uri("http://localhost:11434"), "phi4-mini");
 
 // Create a conversation history list
 // This is the CORRECT way to initialize a conversation with a system message

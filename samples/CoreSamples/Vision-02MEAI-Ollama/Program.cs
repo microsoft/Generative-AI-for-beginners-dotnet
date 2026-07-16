@@ -1,7 +1,8 @@
 ﻿using Microsoft.Extensions.AI;
+using OllamaSharp;
 
 IChatClient chatClient =
-    new OllamaChatClient(new Uri("http://localhost:11434/"), "llama3.2-vision");
+    new OllamaApiClient(new Uri("http://localhost:11434/"), "llama3.2-vision");
 
 // images
 string imgRunningShoes = "running-shoes.jpg";

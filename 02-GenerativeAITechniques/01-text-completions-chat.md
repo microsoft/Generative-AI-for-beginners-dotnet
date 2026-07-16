@@ -350,7 +350,7 @@ IChatClient client = new AzureOpenAIClient(
     .AsIChatClient();
 
 // Option 2: Ollama (local)
-IChatClient client = new OllamaChatClient(
+IChatClient client = new OllamaApiClient(
     new Uri("http://localhost:11434"), "phi4-mini");
 ```
 

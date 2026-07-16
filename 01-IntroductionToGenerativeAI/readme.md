@@ -141,7 +141,7 @@ Microsoft created a unified abstraction called `IChatClient` (part of Microsoft.
 IChatClient client = new OpenAIChatClient("gpt-5-mini", apiKey);
 
 // Or use a local model with Ollama
-IChatClient client = new OllamaChatClient(new Uri("http://localhost:11434"), "phi4-mini");
+IChatClient client = new OllamaApiClient(new Uri("http://localhost:11434"), "phi4-mini");
 
 // Or use Azure OpenAI
 IChatClient client = new AzureOpenAIChatClient(endpoint, credential, "gpt-5-mini");

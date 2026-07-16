@@ -1,12 +1,11 @@
 ﻿using Microsoft.Extensions.AI;
+using OllamaSharp;
 using System.ComponentModel;
 
 var ollamaEndpoint = "http://localhost:11434";
 var chatModel = "llama3.2";
 
-IChatClient client = new OllamaChatClient(
-    endpoint: ollamaEndpoint,
-    modelId: chatModel)
+IChatClient client = ((IChatClient)new OllamaApiClient(ollamaEndpoint, chatModel))
     .AsBuilder()
     .UseFunctionInvocation()
     .Build();

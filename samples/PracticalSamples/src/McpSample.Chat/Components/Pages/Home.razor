@@ -4,6 +4,7 @@
 @using Azure.Identity
 @using McpSample.BlazorChat.Services
 @using Microsoft.Extensions.AI
+@using OllamaSharp
 @using Microsoft.Extensions.Configuration
 @using System.Text.RegularExpressions
 @using ModelContextProtocol.Client
@@ -211,9 +212,7 @@
             {
                 Logger.LogInformation("Using localhost endpoint - Ollama");
                 var ollamaEndpoint = new Uri(endpoint);
-                client = new OllamaChatClient(
-                endpoint: ollamaEndpoint,
-                modelId: deploymentName)
+                client = ((IChatClient)new OllamaApiClient(ollamaEndpoint, deploymentName))
                 .AsBuilder()
                 .UseFunctionInvocation()
                 .Build();
