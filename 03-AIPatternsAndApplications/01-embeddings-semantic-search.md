@@ -15,13 +15,14 @@ _Click the image to watch the video_
 Traditional search works by matching keywords. If you search for "running shoes," it finds documents containing those exact words.
 
 But what if someone searches for:
+
 - "sneakers for jogging"
 - "athletic footwear"
 - "shoes for my morning run"
 
 These all mean the same thing, but keyword search would miss them.
 
-**Semantic search** solves this by understanding *meaning*, not just words.
+**Semantic search** solves this by understanding _meaning_, not just words.
 
 ---
 
@@ -33,7 +34,7 @@ An **embedding** is a way to represent text (or images, or other data) as a list
 "I love pizza" → [0.12, -0.45, 0.89, 0.23, -0.67, ...]
 ```
 
-These numbers capture the *meaning* of the text. Similar meanings produce similar numbers.
+These numbers capture the _meaning_ of the text. Similar meanings produce similar numbers.
 
 > **Learn more:** [Understand embeddings in .NET](https://learn.microsoft.com/dotnet/ai/conceptual/embeddings) explains how embedding models work and when to use them.
 
@@ -129,6 +130,7 @@ static float CosineSimilarity(ReadOnlyMemory<float> a, ReadOnlyMemory<float> b)
 ```
 
 Cosine similarity returns a value between -1 and 1:
+
 - **1.0** = Identical meaning
 - **0.0** = Unrelated
 - **-1.0** = Opposite meaning
@@ -185,10 +187,12 @@ Notice: "sneakers for jogging" ranks high even though it shares no words with th
 ## Part 4: Vector Stores
 
 For real applications, you don't want to:
+
 1. Generate embeddings for your entire dataset on every search
 2. Loop through all embeddings to find matches
 
 **Vector stores** (or vector databases) solve this by:
+
 - Storing embeddings persistently
 - Using optimized algorithms for fast similarity search
 - Scaling to millions of documents
@@ -218,6 +222,7 @@ public class Product
 ```
 
 Key attributes:
+
 - `[VectorStoreKey]` - Unique identifier
 - `[VectorStoreData]` - Searchable/filterable data
 - `[VectorStoreVector(dimensions, distanceFunction)]` - The embedding vector
@@ -337,7 +342,7 @@ The code stays the same - just swap the vector store implementation!
 
 | Sample | Description |
 |--------|-------------|
-| [RAGSimple-02MEAIVectorsMemory](../samples/CoreSamples/RAGSimple-02MEAIVectorsMemory/) | In-memory vector store with Azure OpenAI |
+| [RAGSimple-02MEAIVectorsMemory](../samples/CoreSamples/RAGSimple-02MEAIVectorsMemory/) | Local sqlite-vec vector store with Azure OpenAI |
 | [RAGSimple-03MEAIVectorsAISearch](../samples/CoreSamples/RAGSimple-03MEAIVectorsAISearch/) | Azure AI Search vector store |
 | [RAGSimple-04MEAIVectorsQdrant](../samples/CoreSamples/RAGSimple-04MEAIVectorsQdrant/) | Qdrant vector store |
 

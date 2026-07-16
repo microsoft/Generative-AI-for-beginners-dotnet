@@ -28,9 +28,11 @@ Language models are trained on data from a specific point in time. They don't kn
 RAG has two phases:
 
 ### Phase 1: Retrieval
+
 Find relevant documents from your knowledge base using semantic search.
 
 ### Phase 2: Generation
+
 Pass those documents to the AI along with the user's question.
 
 ![How RAG Works](./images/how-rag-works.png)
@@ -366,7 +368,8 @@ IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator =
 
 | Sample | Description |
 |--------|-------------|
-| [RAGSimple-02MEAIVectorsMemory](../samples/CoreSamples/RAGSimple-02MEAIVectorsMemory/) | RAG with in-memory vectors |
+| [RAGSimple-02MEAIVectorsMemory](../samples/CoreSamples/RAGSimple-02MEAIVectorsMemory/) | RAG with a local sqlite-vec store |
+| [DataIngestion-01-Simple](../samples/CoreSamples/DataIngestion-01-Simple/) | Document ingestion pipeline (read → chunk → embed → store) with sqlite-vec |
 | [RAGSimple-03MEAIVectorsAISearch](../samples/CoreSamples/RAGSimple-03MEAIVectorsAISearch/) | RAG with Azure AI Search |
 | [RAGSimple-04MEAIVectorsQdrant](../samples/CoreSamples/RAGSimple-04MEAIVectorsQdrant/) | RAG with Qdrant |
 | [RAGSimple-15Ollama-DeepSeekR1](../samples/CoreSamples/RAGSimple-15Ollama-DeepSeekR1/) | RAG with DeepSeek reasoning |

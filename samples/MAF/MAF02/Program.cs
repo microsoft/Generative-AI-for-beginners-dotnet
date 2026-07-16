@@ -31,7 +31,11 @@ Workflow workflow =
 
 AIAgent workflowAgent = workflow.AsAIAgent();
 
-AgentResponse workflowResponse =
-    await workflowAgent.RunAsync("Write a short story about a haunted house.");
-
-Console.WriteLine(workflowResponse.Text);
+// Stream the workflow response so the edited story appears token-by-token in the
+// console — a livelier demo experience than waiting for the full response.
+await foreach (var update in workflowAgent.RunStreamingAsync(
+    "Write a short story about a haunted house."))
+{
+    Console.Write(update.Text);
+}
+Console.WriteLine();
