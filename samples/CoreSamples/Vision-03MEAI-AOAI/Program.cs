@@ -7,7 +7,27 @@ using System;
 
 
 // define video file and data folder
-string videoFile = VideosHelper.GetVideoFilePathFireTruck();
+// NOTE: sample videos are not committed to the repo (to keep it lightweight).
+// See README.md — drop your own .mp4 into a "videos" folder (e.g. samples/CoreSamples/videos/firetruck.mp4).
+string videoFile;
+try
+{
+    videoFile = VideosHelper.GetVideoFilePathFireTruck();
+}
+catch (DirectoryNotFoundException)
+{
+    videoFile = null;
+}
+
+if (string.IsNullOrEmpty(videoFile) || !File.Exists(videoFile))
+{
+    Console.WriteLine("⚠️  Video file not found.");
+    Console.WriteLine("This sample analyzes a local video and needs an .mp4 file to run.");
+    Console.WriteLine("Create a 'videos' folder (e.g. samples/CoreSamples/videos) and add 'firetruck.mp4'.");
+    Console.WriteLine("See the README.md in this sample folder for details.");
+    return;
+}
+
 string dataFolderPath = VideosHelper.CreateDataFolder();
 
 //////////////////////////////////////////////////////
