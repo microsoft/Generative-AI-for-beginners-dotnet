@@ -1,0 +1,7 @@
+fix: Bump OpenTelemetry.Exporter.OpenTelemetryProtocol to 1.15.3
+
+Resolves 24 moderate Dependabot alerts across 8 ServiceDefaults
+projects by upgrading from 1.15.0 to the patched 1.15.3.
+
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
+Copilot-Session: 493a109c-725f-45d8-aaf0-c584405fbc2d
