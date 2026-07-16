@@ -415,3 +415,4 @@ FodyWeavers.xsd
 # Note: .squad/casting/* is identity and MUST be committed to main, not ignored
 .squad/.scratch/
 .squad/.cache/
+commit_msg.txt
