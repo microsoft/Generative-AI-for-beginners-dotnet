@@ -52,6 +52,9 @@ module embedding 'modules/model-deployment-embedding.bicep' = {
     openAiServiceName: openAi.outputs.name
     location: location
   }
+  dependsOn: [
+    gpt5mini
+  ]
 }
 
 // Outputs for azd and downstream use
