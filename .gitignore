@@ -400,9 +400,6 @@ FodyWeavers.xsd
 .venv/
 .env
 /pdf
-# Ignore generated docs output, but keep hand-authored event/session notes
-/docs/*
-!/docs/events/
 # Squad: ignore generated logs
 .squad/orchestration-log/
 .squad/log/
