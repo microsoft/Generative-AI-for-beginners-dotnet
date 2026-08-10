@@ -21,6 +21,7 @@ var endpoint = config["AzureOpenAI:Endpoint"]
 // In Microsoft Foundry you deploy several models behind the same endpoint, e.g.:
 //   gpt-5-mini  ->  grok-4  ->  phi-4  ->  ...   (same code, same endpoint, just this string).
 var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
+//var deploymentName = "grok-4-20-reasoning"; //"Kimi-K2.6"; //config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 
 // Auth mode. "integrated" = Microsoft Entra ID (recommended for Foundry: no keys to leak).
 // "apikey" = key from the Foundry portal (endpoint + deployment + apikey).
