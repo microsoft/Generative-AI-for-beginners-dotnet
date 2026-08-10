@@ -27,8 +27,12 @@ IChatClient client = new AzureOpenAIClient(new Uri(endpoint), new AzureCliCreden
 [Description("Get the weather")]
 static string GetWeather()
 {
+    // Uncomment the next line to prove the model really called this function.
+    // It prints the moment the tool runs, before any response is written below.
+    // Console.WriteLine(">>> [tool] GetWeather() was called by the model");
+
     var temperature = Random.Shared.Next(5, 20);
-    var condition = Random.Shared.Next(0, 1) == 0 ? "sunny" : "rainy";
+    var condition = Random.Shared.Next(0, 2) == 0 ? "sunny" : "rainy";
     return $"The weather is {temperature} degree C and {condition}";
 }
 

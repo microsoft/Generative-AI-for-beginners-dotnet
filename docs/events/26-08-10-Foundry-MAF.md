@@ -139,12 +139,19 @@ cd samples\CoreSamples\MEAIFunctionsAzureOpenAI
 dotnet run app.cs
 ```
 
+> 🎬 **Reveal built into the code.** Inside `GetWeather()` there is a commented-out
+> `Console.WriteLine(">>> [tool] GetWeather() was called by the model")`. Run once with it
+> commented — the audience sees three plausible answers and has to *take your word* that a
+> C# method ran. Then uncomment it, rerun, and the `>>> [tool]` lines appear **before** the
+> responses, twice, unprompted. That is the whole demo in one edit: proof the model reached
+> out of the conversation and executed your code. Leave it commented when you start.
+
 **What the code does.** This is the moment the model stops being a text generator and starts *doing things*. A plain local C# function `GetWeather()` is decorated with `[Description]`, wrapped with `AIFunctionFactory.Create(...)`, and handed to the model through `ChatOptions.Tools`. The critical line is `.AsBuilder().UseFunctionInvocation().Build()` — that middleware runs the full tool loop for you: the model requests a call, MEAI invokes your C# method, feeds the result back, and the model composes a final answer. The sample then asks three questions to show the model's own judgement: one it answers directly, one that clearly needs the tool, and one ("should I bring an umbrella?") where it must call the tool *and* reason over the result.
 
 **Top 3 talking points**
 1. **A tool is just a C# method.** No plugin manifest, no schema by hand — the `[Description]` attribute plus reflection generate the JSON schema the model sees.
 2. **`UseFunctionInvocation()` is middleware.** `IChatClient` is a pipeline, exactly like ASP.NET Core. You can stack function invocation, telemetry, caching, and logging in the same builder chain.
-3. **The model chooses.** Notice question 1 does not trigger the tool and question 3 does. That decision is the seed of agency — it's what makes Demo 7's agents possible.
+3. **The model chooses.** Notice question 1 does not trigger the tool and question 3 does — and with the log line uncommented you can *count* the calls rather than assert them. That decision is the seed of agency: it's what makes Demo 7's agents possible.
 
 **Docs**
 - [Function calling with Microsoft.Extensions.AI](https://learn.microsoft.com/dotnet/ai/quickstarts/use-function-calling?wt.mc_id=dotnet-153583-brunocapuano)
