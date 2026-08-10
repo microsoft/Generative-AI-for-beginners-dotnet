@@ -2,7 +2,7 @@
 public class Movie<T>
 {
     [VectorStoreKey]
-    public T Key { get; set; }
+    public T Key { get; set; } = default!;
 
     [VectorStoreData]
     public string? Title { get; set; }

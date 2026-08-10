@@ -31,11 +31,21 @@ Workflow workflow =
 
 AIAgent workflowAgent = workflow.AsAIAgent();
 
-// Stream the workflow response so the edited story appears token-by-token in the
+// Stream the workflow response so the story appears token-by-token in the
 // console — a livelier demo experience than waiting for the full response.
+// Print a header whenever the speaking agent changes, so the Writer -> Editor
+// handoff is visible instead of arriving as one anonymous wall of text.
+string? currentAuthor = null;
 await foreach (var update in workflowAgent.RunStreamingAsync(
-    "Write a short story about a haunted house."))
+    "Write a short story about a haunted house. Keep it under 200 words."))
 {
+    if (update.AuthorName is { Length: > 0 } author && author != currentAuthor)
+    {
+        currentAuthor = author;
+        Console.WriteLine();
+        Console.WriteLine($"=== {author} ===");
+    }
+
     Console.Write(update.Text);
 }
 Console.WriteLine();

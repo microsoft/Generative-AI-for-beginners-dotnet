@@ -1,10 +1,10 @@
 ﻿public class MovieFactory<T>
 {
-    private static T _currentKey;
+    private static T _currentKey = default!;
 
     static MovieFactory()
     {
-        _currentKey = default(T);
+        _currentKey = default!;
     }
 
     public static List<Movie<T>> GetMovieList()

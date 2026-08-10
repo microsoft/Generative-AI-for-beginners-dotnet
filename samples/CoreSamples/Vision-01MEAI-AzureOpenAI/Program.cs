@@ -40,6 +40,14 @@ var promptAnalyze = "How many red shoes are in the picture? and what other shoes
 var promptOcr = "What is the text in this picture? Is there a theme for this?";
 var promptReceipt = "I bought the coffee and the sausage. How much do I owe? Add a 18% tip.";
 
+// The extra images and prompts above are ready-to-use variants: swap them into
+// `prompt` and `imageFileName` below to demo OCR (license), receipt math
+// (german-receipt), or counting (promptAnalyze). They are intentionally left
+// unassigned until you swap, so silence the "assigned but never used" warning.
+#pragma warning disable CS0219
+_ = (imgCarLicense, imgReceipt, promptAnalyze, promptOcr, promptReceipt);
+#pragma warning restore CS0219
+
 // prompts
 string systemPrompt = @"You are a useful assistant that describes images using a direct style.";
 var prompt = promptDescribe;
