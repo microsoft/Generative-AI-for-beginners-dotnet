@@ -5,18 +5,39 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
-// load endpoint and api_key values
+// All samples in this repo share the user-secrets store "genai-beginners-dotnet", so this sample
+// reads its own scoped "Sora:*" keys first and only then falls back to the old generic key names.
 var builder = new ConfigurationBuilder().AddUserSecrets<Program>();
 var configuration = builder.Build();
-string endpoint = configuration["endpoint"];
-string apiKey = configuration["api_key"];
-string model = "sora";
+string? endpoint = configuration["Sora:Endpoint"] ?? configuration["endpoint"];
+string? apiKey = configuration["Sora:ApiKey"] ?? configuration["api_key"];
+string model = configuration["Sora:Deployment"] ?? configuration["deploymentName"] ?? "sora-2";
 string outputDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "sora_videos");
 
-if (string.IsNullOrWhiteSpace(endpoint) || string.IsNullOrWhiteSpace(apiKey))
+var missing = new List<string>();
+if (string.IsNullOrWhiteSpace(endpoint)) missing.Add("Sora:Endpoint");
+if (string.IsNullOrWhiteSpace(apiKey)) missing.Add("Sora:ApiKey");
+
+if (missing.Count > 0)
 {
-    Console.WriteLine("Please set the endpoint and apikey as user secrets in this project.");
-    return;
+    Console.WriteLine($"""
+        Azure Sora video generation is not configured. Missing: {string.Join(", ", missing)}
+
+        Prerequisite: a Sora video deployment in Azure AI Foundry (currently the available model
+        is "sora-2"). Create it in the Azure AI Foundry portal under Deployments, in a region that
+        offers Sora. Without that deployment these keys cannot be filled in.
+
+        Then set the missing values (all samples share the user-secrets id "genai-beginners-dotnet"):
+
+        dotnet user-secrets set --id genai-beginners-dotnet "Sora:Endpoint" "https://<your-resource>.openai.azure.com"
+        dotnet user-secrets set --id genai-beginners-dotnet "Sora:ApiKey" "<your-api-key>"
+        dotnet user-secrets set --id genai-beginners-dotnet "Sora:Deployment" "sora-2"
+
+        Sora:Deployment is optional and defaults to "sora-2".
+        The legacy keys "endpoint" and "api_key" still work, but they are shared with other
+        samples in this store, so the scoped "Sora:*" keys are recommended.
+        """);
+    return 1;
 }
 
 // prompt
@@ -28,6 +49,7 @@ Console.WriteLine($"Today is {DateTime.Now:dd-MMM-yyyy HH:mm:ss}");
 // run
 string videoFile = await Sora(prompt, 480, 480, 5);
 Console.WriteLine($"Generated video: {videoFile}");
+return 0;
 
 async Task<string> Sora(string prompt, int width = 480, int height = 480, int nSeconds = 5)
 {

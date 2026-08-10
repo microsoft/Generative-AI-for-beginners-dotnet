@@ -9,9 +9,12 @@ namespace MAF_MultiModel;
 
 class ChatClientProvider
 {
-    public static IChatClient GetChatClientOllama(string model = "llama3.2")
+    public const string OllamaEndpoint = "http://localhost:11434/";
+    public const string OllamaModel = "llama3.2";
+
+    public static IChatClient GetChatClientOllama(string model = OllamaModel)
     {
-        return new OllamaApiClient(new Uri("http://localhost:11434/"), model);
+        return new OllamaApiClient(new Uri(OllamaEndpoint), model);
     }
 
     public static IChatClient GetChatClient()

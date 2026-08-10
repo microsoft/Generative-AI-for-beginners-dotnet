@@ -17,8 +17,53 @@ using System.ClientModel;
 const string indexName = "movies";
 const int vectorDimensions = 384;
 
-// get the search index client using Azure Default Credentials or Azure Key Credential
-var indexClient = GetSearchIndexClient();
+// All samples in this repo share the user-secrets store "genai-beginners-dotnet", so scoped keys
+// are read first ("AzureAISearch:*", the repo-wide "AzureOpenAI:*") before the legacy generic ones.
+var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
+var endpoint = config["AzureOpenAI:Endpoint"] ?? config["endpoint"];
+var apiKey = config["AzureOpenAI:ApiKey"] ?? config["apikey"];
+var embeddingModelName = config["AzureOpenAI:EmbeddingDeployment"] ?? config["embeddingModelName"] ?? "text-embedding-3-small";
+var azureAISearchUri = config["AzureAISearch:Uri"] ?? config["AZURE_AISEARCH_URI"];
+var azureAISearchSecret = config["AzureAISearch:Secret"] ?? config["AZURE_AISEARCH_SECRET"];
+
+var missing = new List<string>();
+if (string.IsNullOrWhiteSpace(azureAISearchUri)) missing.Add("AzureAISearch:Uri");
+if (string.IsNullOrWhiteSpace(azureAISearchSecret)) missing.Add("AzureAISearch:Secret");
+if (string.IsNullOrWhiteSpace(endpoint)) missing.Add("AzureOpenAI:Endpoint");
+
+if (missing.Count > 0)
+{
+    Console.WriteLine($"""
+        This RAG sample is not configured. Missing: {string.Join(", ", missing)}
+
+        It needs TWO different Azure services:
+
+        1) Azure AI Search - a separate resource from Azure OpenAI. Create one in the Azure portal
+           (Search services > Create). Then open the resource:
+             - Overview blade > "Url" -> that is AzureAISearch:Uri (https://<name>.search.windows.net)
+             - Settings > Keys blade > "Primary admin key" -> that is AzureAISearch:Secret
+
+        2) Azure OpenAI with a text embedding deployment (default "text-embedding-3-small").
+
+        Set the missing values (all samples share the user-secrets id "genai-beginners-dotnet"):
+
+        dotnet user-secrets set --id genai-beginners-dotnet "AzureAISearch:Uri" "https://<your-search-service>.search.windows.net"
+        dotnet user-secrets set --id genai-beginners-dotnet "AzureAISearch:Secret" "<your-search-admin-key>"
+        dotnet user-secrets set --id genai-beginners-dotnet "AzureOpenAI:Endpoint" "https://<your-resource>.services.ai.azure.com/"
+        dotnet user-secrets set --id genai-beginners-dotnet "AzureOpenAI:EmbeddingDeployment" "text-embedding-3-small"
+
+        AzureOpenAI:EmbeddingDeployment is optional and defaults to "text-embedding-3-small".
+        Embeddings are keyless by default and use your `az login` credentials; set
+        "AzureOpenAI:ApiKey" only if you prefer key based authentication.
+        The legacy keys "endpoint", "apikey", "embeddingModelName", "AZURE_AISEARCH_URI" and
+        "AZURE_AISEARCH_SECRET" still work, but "endpoint"/"apikey" are shared with other samples
+        in this store, so the scoped keys are recommended.
+        """);
+    return 1;
+}
+
+// get the search index client using the Azure AI Search admin key
+var indexClient = new SearchIndexClient(new Uri(azureAISearchUri!), new AzureKeyCredential(azureAISearchSecret!));
 
 // create or update the search index with vector field
 await CreateOrUpdateIndexAsync(indexClient);
@@ -28,14 +73,11 @@ var searchClient = indexClient.GetSearchClient(indexName);
 // get movie list
 var movieData = MovieFactory<string>.GetMovieVectorList();
 
-// get embeddings generator and generate embeddings for movies
-var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-var endpoint = config["endpoint"];
-var apiKey = new ApiKeyCredential(config["apikey"]);
-var embeddingModelName = config["embeddingModelName"] ?? "text-embedding-3-small";
-
+// keyless by default (Microsoft Entra ID via `az login`), or key based when AzureOpenAI:ApiKey is set
 IEmbeddingGenerator<string, Embedding<float>> generator =
-    new AzureOpenAIClient(new Uri(endpoint), apiKey)
+    (string.IsNullOrWhiteSpace(apiKey)
+        ? new AzureOpenAIClient(new Uri(endpoint!), new AzureCliCredential())
+        : new AzureOpenAIClient(new Uri(endpoint!), new ApiKeyCredential(apiKey)))
     .GetEmbeddingClient(embeddingModelName)
     .AsIEmbeddingGenerator();
 
@@ -72,6 +114,8 @@ foreach (var question in questions)
 {
     await SearchMovieAsync(question.Question, question.ResultCount);
 }
+
+return 0;
 
 async Task SearchMovieAsync(string question, int resultCount)
 {
@@ -138,21 +182,4 @@ async Task CreateOrUpdateIndexAsync(SearchIndexClient client)
     };
 
     await client.CreateOrUpdateIndexAsync(index);
-}
-
-SearchIndexClient GetSearchIndexClient()
-{
-    var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-    var azureAISearchUri = config["AZURE_AISEARCH_URI"];
-
-    var credential = new DefaultAzureCredential();
-    var client = new SearchIndexClient(new Uri(azureAISearchUri), credential);
-    var secret = config["AZURE_AISEARCH_SECRET"];
-
-    if (!string.IsNullOrEmpty(secret))
-    {
-        client = new SearchIndexClient(new Uri(azureAISearchUri), new AzureKeyCredential(secret));
-    }
-
-    return client;
 }

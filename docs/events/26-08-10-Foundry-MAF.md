@@ -543,12 +543,20 @@ committed sample in this repo — and **every one of them was executed on this m
 | "Can I build my own MCP server?" | `samples/PracticalSamples/src` — `McpSample.AspNetCoreServer` (Aspire) | 🧱 |
 | "Show me something fun." | `samples/AppsWithGenAI/SpaceAINet` | 🧱 |
 
-> ⚠️ **The one trap:** `MAF-MultiModel` prints **"Workflow completed successfully!"** and exits
-> `0` even though its third agent failed — Ollama isn't installed on this machine, and the
-> failure only shows up buried in the OpenTelemetry output as
-> `error.type: System.Net.Http.HttpRequestException`. Agents 1 and 2 (Azure OpenAI) do produce
-> a full article, so it *looks* green on stage. If you show it, say out loud that the reviewer
-> step is the local one and it's not wired up here.
+> ✅ **All six 🔑/⚠️ rows now fail *honestly*.** Every one of them used to die with a null
+> reference, a raw HTTP 400, or a native `0x5`. As of today each prints exactly which secret is
+> missing, the copy-pasteable `dotnet user-secrets set` command, and which Azure resource it
+> needs — and returns a non-zero exit code. **You can safely run any of them on stage**: instead
+> of a stack trace you get a clean, readable "here's what this needs" screen. That's a
+> demonstrable point in itself about developer experience.
+
+> ⚠️ **The one trap — now fixed.** `MAF-MultiModel` used to print **"Workflow completed
+> successfully!"** and exit `0` even though its third agent had failed (Ollama isn't installed
+> here; the failure was buried in OpenTelemetry as
+> `error.type: System.Net.Http.HttpRequestException`). It looked green on stage while only 2 of
+> 3 agents ran. It now preflights Ollama, says **"Reviewer SKIPPED"** up front, and ends with
+> **"Workflow completed PARTIALLY (2/3 agents)"**, exit code `2`. Agents 1 and 2 still produce
+> the full article, so it's a *better* demo now — you can show the degraded path deliberately.
 
 ### The five most likely branches
 
@@ -669,24 +677,96 @@ dotnet run
 > *"No continuation token available to resume the response. Aborting continuation."*, which is
 > the exact opposite of its point. Make sure you're on the latest `main`.
 
-### Why the 🔑 rows are blocked
+### Why the 🔑 rows are blocked — and exactly how to unblock them
 
 All five were run; all five failed for the same underlying reason — **this subscription has
 no deployment for that modality.** The resource currently has `gpt-5.5`, `gpt-5-mini`,
 `gpt-5.4-mini`, `gpt-5.6-sol`, `gpt-chat-latest`, `DeepSeek-V4-Flash`, `Kimi-K2.6`,
 `grok-4-20-reasoning`, and `text-embedding-3-small`. No image model, no Sora, no Claude.
 
-| Sample | What it actually says |
-|---|---|
-| `ImageGeneration-01` | `HTTP 400 OperationNotSupported` — *"imageGenerations does not work with gpt-5-mini"*. It reuses `AzureOpenAI:Deployment`, which is a **chat** deployment. |
-| `VideoGeneration-AzureSora-01` | Exits cleanly with *"Please set the endpoint and apikey as user secrets"*. Also needs a `sora` deployment. |
-| `MAF-FoundryClaude-01` | *"Missing 'endpointClaude' configuration"*. |
-| `RAGSimple-03MEAIVectorsAISearch` | Null `uriString` — needs `AZURE_AISEARCH_URI` / `_SECRET` and a real Azure AI Search resource. |
-| `Audio-01-SpeechMic` | `0x5` in `SpeechTranslationConfig.FromSubscription` — needs `SPEECH_KEY` / `SPEECH_REGION` from a separate Azure AI Speech resource. |
+The good news: **every one of these is available in `eastus2`**, the same region as the
+resource. Each is one portal deployment plus one or two secrets away from working. The samples
+now tell you this themselves when you run them.
 
-These are still fine to **talk** about and to open the code for — just don't run them.
+#### ⚠️ Read this first — the shared-secrets trap
+
+Every sample in this repo shares **one** user-secrets store, `genai-beginners-dotnet`. Some
+samples historically read *unscoped* keys out of it — `endpoint`, `apikey`, `api_key` — which
+means **setting a secret for one sample could silently change another's behaviour.** That is
+now fixed: each sample reads a scoped key first (`Sora:Endpoint`, `Claude:Endpoint`,
+`AzureAISearch:Uri`, `AzureOpenAI:ImageDeployment`) and only falls back to the old generic name
+for backward compatibility. **Use the scoped names below.**
+
+#### Images — `ImageGeneration-01`
+
+Deploy `gpt-image-1` (or `gpt-image-1.5` / `gpt-image-2`) in Azure AI Foundry, then:
+
+```powershell
+dotnet user-secrets set --id genai-beginners-dotnet "AzureOpenAI:ImageDeployment" "gpt-image-1"
+```
+
+> This sample used to pass `AzureOpenAI:Deployment` — the **shared chat** deployment — straight
+> into `GetImageClient()`, so it could never work on a correctly-configured machine. It now uses
+> its own key and explains the difference if you point it at a chat model.
+
+#### Video — `VideoGeneration-AzureSora-01`
+
+Deploy `sora-2` in a region that offers Sora, then:
+
+```powershell
+dotnet user-secrets set --id genai-beginners-dotnet "Sora:Endpoint" "https://<your-resource>.openai.azure.com"
+dotnet user-secrets set --id genai-beginners-dotnet "Sora:ApiKey" "<your-api-key>"
+dotnet user-secrets set --id genai-beginners-dotnet "Sora:Deployment" "sora-2"   # optional, this is the default
+```
+
+#### Claude — `MAF-FoundryClaude-01`
+
+Deploy `claude-haiku-4-5` (the sample's default) in Azure AI Foundry, then:
+
+```powershell
+dotnet user-secrets set --id genai-beginners-dotnet "Claude:Endpoint" "https://<your-resource>.services.ai.azure.com"
+dotnet user-secrets set --id genai-beginners-dotnet "Claude:ApiKey" "<your-api-key>"
+```
+
+Nice talking point: Claude, DeepSeek, Grok and Kimi all sit behind the *same* `IChatClient`
+abstraction as GPT. Swapping model vendors is a config change, not a code change.
+
+#### Production RAG — `RAGSimple-03MEAIVectorsAISearch`
+
+Needs an **Azure AI Search** resource (a different service from Azure OpenAI). Only two secrets
+are required — the endpoint and embedding model now fall back to the `AzureOpenAI:*` values you
+already set in Pre-flight:
+
+```powershell
+dotnet user-secrets set --id genai-beginners-dotnet "AzureAISearch:Uri" "https://<your-search-service>.search.windows.net"
+dotnet user-secrets set --id genai-beginners-dotnet "AzureAISearch:Secret" "<primary admin key>"
+```
+
+Portal path: **Search services → your resource → Overview → "Url"**, and **Settings → Keys →
+"Primary admin key"**.
+
+#### Speech — `Audio-01-SpeechMic`
+
+Needs an **Azure AI Speech** (or multi-service Azure AI services) resource — again separate from
+your Foundry endpoint — **and a working microphone**:
+
+```powershell
+dotnet user-secrets set --id genai-beginners-dotnet "SPEECH_KEY" "<key>"
+dotnet user-secrets set --id genai-beginners-dotnet "SPEECH_REGION" "eastus2"
+```
+
+Portal path: your Speech resource → **Keys and Endpoint** → KEY 1 + Location/Region.
 
 ### The two 🧱 rows
+
+- **`SpaceAINet`** builds clean (0 errors), but its AI mode uses its own secret names
+  (`AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_MODEL`, `AZURE_OPENAI_APIKEY`) rather than the
+  `AzureOpenAI:*` convention every other demo shares, and those are not set. It's also a
+  keyboard-driven game, so it's a "look at this" not a "watch it run."
+- **`samples/PracticalSamples/src`** — the Aspire MCP AppHost builds clean, but launching it
+  brings up the Aspire dashboard, which is a detour mid-podcast. Good code to open, slow to
+  demo.
+
 
 - **`SpaceAINet`** builds clean (0 errors), but its AI mode uses its own secret names
   (`AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_MODEL`, `AZURE_OPENAI_APIKEY`) rather than the
@@ -744,7 +824,7 @@ All 15 appendix entries were executed. Results drive the readiness marks in the 
 | Result | Count | Samples |
 |---|---|---|
 | ✅ Ran end to end | 7 | `AgentLabs-01-Simple`, `MAF-Persisting-01-Simple`, `MAF-BackgroundResponses-01-Simple`, `A2A-01`, `01-foundrylocal-hello-world`, `MAF-AIWebChatApp-Simple`, `MAF-AIWebChatApp-Middleware` |
-| ⚠️ Ran, one agent silently failed | 1 | `MAF-MultiModel` (Ollama not installed; still exits 0) |
+| ⚠️ Ran, one agent silently failed | 1 | `MAF-MultiModel` (Ollama not installed — **since fixed**, now reports 2/3 and exits `2`) |
 | 🔑 Blocked on a missing resource | 5 | `MAF-FoundryClaude-01`, `RAGSimple-03MEAIVectorsAISearch`, `ImageGeneration-01`, `VideoGeneration-AzureSora-01`, `Audio-01-SpeechMic` |
 | 🧱 Builds clean, not run | 2 | `SpaceAINet`, `PracticalSamples/src` (Aspire MCP) |
 
@@ -752,6 +832,23 @@ Four of the seven ✅ results required a fix or a config change that is now capt
 Pre-flight step 4 and in the per-branch notes: the `aifoundryproject_*` keys, the
 `ConnectionStrings:openai` value, the Foundry Local dynamic port, and two code fixes in
 `MAF-BackgroundResponses-01-Simple`.
+
+### Second pass — making the failures honest
+
+The 6 non-passing samples were then fixed so that they **fail usefully**. No Azure resources
+were provisioned; the goal was that every failure names its own cause and its own fix.
+
+| Sample | Before | After (verified live) |
+|---|---|---|
+| `MAF-MultiModel` | Exit `0`, *"Workflow completed successfully!"* with a dead agent | Ollama preflight, *"Reviewer SKIPPED"*, *"completed PARTIALLY (2/3 agents)"*, exit `2` |
+| `ImageGeneration-01` | Raw `HTTP 400 OperationNotSupported` | Names `AzureOpenAI:ImageDeployment`, lists image models, explains the chat-model mistake, exit `1` |
+| `VideoGeneration-AzureSora-01` | *"Please set the endpoint and apikey"* | Names `Sora:Endpoint` / `Sora:ApiKey`, states the Sora deployment prerequisite, exit `1` |
+| `MAF-FoundryClaude-01` | *"Missing 'endpointClaude' configuration"* | Names `Claude:Endpoint` / `Claude:ApiKey` + deployment prerequisite, exit `1` |
+| `RAGSimple-03MEAIVectorsAISearch` | Null `uriString` crash | Resolves endpoint + embedding model from existing secrets; asks only for the 2 Search keys with portal directions, exit `1` |
+| `Audio-01-SpeechMic` | Native `0x5` | Preflight naming `SPEECH_KEY`/`SPEECH_REGION`, portal steps, microphone requirement, exit `1` |
+
+All six were re-run after the change and the output above was observed directly. Both
+solutions rebuild in Release with **0 errors and 0 warnings**.
 
 ### Fixes made as a result of running them
 
@@ -763,6 +860,10 @@ Pre-flight step 4 and in the per-branch notes: the `aifoundryproject_*` keys, th
   2. `Console.Clear()` in `StreamConsoleHelper.PrintHeader` and `ConsoleHelper.PrintHeader` threw `IOException: The handle is invalid` whenever output was redirected (piping to a file, CI, or a recorded session), killing the app before it did anything. Both are now guarded with `!Console.IsOutputRedirected`.
 
   These files are shared by link into six other projects (`MAF-BackgroundResponses-02/-03`, `MAF-Persisting-01/-02`, `MAF-FoundryClaude-Persisting-01`); the full `MAF-Demos.slnx` still builds with **0 errors and 0 advisories**, and `MAF-Persisting-01-Simple` was re-run to confirm unchanged behaviour.
+- **`MAF-MultiModel` reported success while failing.** `Program.cs` ended in an unconditional `Console.WriteLine("Workflow completed successfully!")` — the workflow result was never inspected. With Ollama absent, agent 3 of 3 died and the app still exited `0`. In a beginners repo that's worse than a crash. Now: a 3-second preflight probe against the Ollama endpoint (URL and model hoisted into `ChatClientProvider` constants so they can't drift), explicit `Reviewer SKIPPED` messaging, a degraded 2-agent run that exits `2`, and a `try/catch` around `RunAsync` that names the failing stage and exits `1`.
+- **Unscoped secret keys in a shared store.** Every sample shares `UserSecretsId=genai-beginners-dotnet`, yet `VideoGeneration-AzureSora-01` read `endpoint`/`api_key`, `RAGSimple-03` read `endpoint`/`apikey`, and `MAF-FoundryClaude-01` read `apikey` — so these samples were quietly fighting over the same two key names. All three now read scoped keys (`Sora:*`, `Claude:*`, `AzureAISearch:*`) with fallback to the legacy names, so existing setups keep working. `RAGSimple-03` additionally reuses `AzureOpenAI:Endpoint` and `AzureOpenAI:EmbeddingDeployment`, cutting its required secrets from five to two, and switched its embeddings client to keyless `AzureCliCredential` instead of crashing on a null `ApiKeyCredential`.
+- **`ImageGeneration-01` could never work.** It passed `AzureOpenAI:Deployment` — the shared *chat* deployment — into `GetImageClient()`. Now reads `AzureOpenAI:ImageDeployment` (falling back for compatibility) and traps the resulting HTTP 400 to explain, in plain language, that the deployment is a chat model.
+- **`Audio-01-SpeechMic` surfaced a bare `0x5`.** Added a preflight for `SPEECH_KEY`/`SPEECH_REGION` that explains Azure AI Speech is a separate resource, gives the portal path and the exact secret commands, and notes the microphone requirement.
 
 ### Build & supply chain
 
