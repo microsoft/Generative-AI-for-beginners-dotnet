@@ -38,12 +38,16 @@ Write-Host "  Chat Model: $Deployment" -ForegroundColor White
 Write-Host "  Embedding:  $EmbeddingDeployment" -ForegroundColor White
 Write-Host "========================================`n" -ForegroundColor Cyan
 
-Write-Host "For AI Foundry Agent samples, also run:" -ForegroundColor Yellow
-Write-Host "  dotnet user-secrets set --id $secretsId `"AIFoundry:Endpoint`" `"<your-foundry-endpoint>`""
-Write-Host "  dotnet user-secrets set --id $secretsId `"AIFoundry:TenantId`" `"<your-tenant-id>`""
+Write-Host "For the MAF Foundry Agent samples (MAF-MicrosoftFoundryAgents-*, MAF-AIFoundryAgents-01, MAF-MultiAgents), also run:" -ForegroundColor Yellow
+Write-Host "  dotnet user-secrets set --id $secretsId `"azureFoundryProjectEndpoint`" `"<your-foundry-project-endpoint>`""
+Write-Host "  dotnet user-secrets set --id $secretsId `"agentName`" `"<your-agent-name>`""
 
-Write-Host "`nFor Azure AI Search (RAG samples), also run:" -ForegroundColor Yellow
-Write-Host "  dotnet user-secrets set --id $secretsId `"AzureAISearch:Endpoint`" `"<your-search-endpoint>`""
-Write-Host "  dotnet user-secrets set --id $secretsId `"AzureAISearch:Key`" `"<your-search-key>`""
+Write-Host "`nFor the AgentLabs samples (AgentLabs-01/02/03), also run:" -ForegroundColor Yellow
+Write-Host "  dotnet user-secrets set --id $secretsId `"aifoundryproject_endpoint`" `"<your-foundry-project-endpoint>`""
+Write-Host "  dotnet user-secrets set --id $secretsId `"aifoundryproject_tenantid`" `"<your-tenant-id>`""
+
+Write-Host "`nFor Azure AI Search (RAGSimple-03MEAIVectorsAISearch), also run:" -ForegroundColor Yellow
+Write-Host "  dotnet user-secrets set --id $secretsId `"AZURE_AISEARCH_URI`" `"<your-search-endpoint>`""
+Write-Host "  dotnet user-secrets set --id $secretsId `"AZURE_AISEARCH_SECRET`" `"<your-search-key>`""
 
 Write-Host "`nDone! Make sure to run 'az login' first, then run file-based samples with: dotnet run app.cs`n" -ForegroundColor Green

@@ -61,7 +61,7 @@ var apiKey = config["AZURE_OPENAI_APIKEY"];
 var credential = new ApiKeyCredential(apiKey);
 
 IChatClient chatClient =
-    new AzureOpenAIClient(new Uri(endpoint),credential)
+    new AzureOpenAIClient(new Uri(endpoint), credential)
             .GetChatClient(modelId)
             .AsIChatClient();
 

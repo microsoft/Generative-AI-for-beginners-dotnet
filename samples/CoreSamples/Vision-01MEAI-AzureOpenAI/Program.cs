@@ -1,15 +1,30 @@
-﻿using Azure.AI.OpenAI;
+﻿// Multimodal (vision) chat against Microsoft Foundry using Microsoft.Extensions.AI.
+//
+// Keyless by default: uses your `az login` credentials (Microsoft Entra ID).
+//      dotnet user-secrets set "AzureOpenAI:Endpoint" "https://<your-endpoint>.openai.azure.com/"
+//      dotnet user-secrets set "AzureOpenAI:Deployment" "gpt-5-mini"
+// Then sign in with: az login
+//
+// Optional key auth: also set "AzureOpenAI:ApiKey" and it will be used instead.
+
+using Azure.AI.OpenAI;
+using Azure.Identity;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 using System.ClientModel;
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-var endpoint = config["endpoint"];
-var apiKey = new ApiKeyCredential(config["apikey"]);
+var endpoint = config["AzureOpenAI:Endpoint"]
+    ?? throw new InvalidOperationException("Set AzureOpenAI:Endpoint in User Secrets. See: https://github.com/microsoft/Generative-AI-for-beginners-dotnet/blob/main/01-IntroductionToGenerativeAI/setup-azure-openai.md");
 var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
+var apiKey = config["AzureOpenAI:ApiKey"];
 
-IChatClient chatClient =
-    new AzureOpenAIClient(new Uri(endpoint), apiKey)
+// Keyless (Microsoft Entra ID) is the recommended path; fall back to a key when provided.
+AzureOpenAIClient azureClient = string.IsNullOrEmpty(apiKey)
+    ? new AzureOpenAIClient(new Uri(endpoint), new AzureCliCredential())
+    : new AzureOpenAIClient(new Uri(endpoint), new ApiKeyCredential(apiKey));
+
+IChatClient chatClient = azureClient
         .GetChatClient(deploymentName)
         .AsIChatClient();
 
@@ -29,7 +44,7 @@ var promptReceipt = "I bought the coffee and the sausage. How much do I owe? Add
 string systemPrompt = @"You are a useful assistant that describes images using a direct style.";
 var prompt = promptDescribe;
 string imageFileName = imgRunningShoes;
-string image = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName, "images", imageFileName);
+string image = Path.Combine(AppContext.BaseDirectory, "images", imageFileName);
 
 
 List<ChatMessage> messages =
@@ -41,7 +56,7 @@ List<ChatMessage> messages =
 // read the image bytes, create a new image content part and add it to the messages
 AIContent aic = new DataContent(File.ReadAllBytes(image), "image/jpeg");
 var message = new ChatMessage(Microsoft.Extensions.AI.ChatRole.User, [aic]);
-    messages.Add(message);
+messages.Add(message);
 
 // send the messages to the assistant
 var response = await chatClient.GetResponseAsync(messages);

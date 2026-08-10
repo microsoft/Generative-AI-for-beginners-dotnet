@@ -28,8 +28,8 @@
 		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.4.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.3" />
 		<PackageReference Include="OpenAI" Version="2.10.0" />
-		<PackageReference Include="OpenTelemetry" Version="1.15.0" />
-		<PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.15.0" />
+		<PackageReference Include="OpenTelemetry" Version="1.15.3" />
+		<PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.15.3" />
 	</ItemGroup>
 
 </Project>

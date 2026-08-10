@@ -25,6 +25,8 @@
     <PackageReference Include="Microsoft.Extensions.DataIngestion.Markdig" Version="10.6.0-preview.1.26261.4" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="10.0.3" />
     <PackageReference Include="Microsoft.ML.Tokenizers.Data.O200kBase" Version="3.0.0-preview.26160.2" />
+    <!-- Pin the SQLite native bundle above the version with advisory GHSA-2m69-gcr7-jv3q. -->
+    <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.12" />
   </ItemGroup>
 
 </Project>

@@ -64,22 +64,26 @@ When you call `GetResponseAsync()`, the response object provides:
 
 ## Running This Example
 
-1. Ensure Ollama is running:
-   ```bash
-   ollama serve
-   ```
+The sample is **Microsoft Foundry first**, with a local Ollama fallback so it always runs.
 
-2. Pull the required model:
-   ```bash
-   ollama pull phi4:latest
-   ```
+**Option A — Microsoft Foundry (recommended):**
 
-3. Run the application:
-   ```bash
-   dotnet run app.cs
-   ```
+```bash
+dotnet user-secrets set "AzureOpenAI:Endpoint" "https://<your-endpoint>.openai.azure.com/"
+dotnet user-secrets set "AzureOpenAI:Deployment" "gpt-5-mini"
+az login
+dotnet run app.cs
+```
 
-4. Type "conversation" to start chatting, then enter your questions.
+**Option B — Local Ollama (no secrets set):**
+
+```bash
+ollama serve
+ollama pull phi4-mini
+dotnet run app.cs
+```
+
+Type a question and press Enter. Press Enter on an empty line to exit.
 
 ## Alternative: Using GetStreamingResponseAsync
 

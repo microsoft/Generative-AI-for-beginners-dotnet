@@ -8,12 +8,14 @@
     <UserSecretsId>genai-beginners-dotnet</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Azure.AI.OpenAI" Version="2.8.0-beta.1" />
-    <PackageReference Include="Azure.Identity" Version="1.18.0" />
-    <PackageReference Include="ElBruno.Connectors.SqliteVec" Version="0.5.2" />
-    <PackageReference Include="Microsoft.Extensions.AI" Version="10.6.0" />
-    <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.6.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.3" />
+    <PackageReference Include="Azure.AI.OpenAI" Version="2.9.0-beta.1" />
+    <PackageReference Include="Azure.Identity" Version="1.21.0" />
+    <PackageReference Include="ElBruno.Connectors.SqliteVec" Version="0.5.3" />
+    <PackageReference Include="Microsoft.Extensions.AI" Version="10.8.3" />
+    <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.8.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.10" />
+    <!-- Pin the SQLite native bundle above the version with advisory GHSA-2m69-gcr7-jv3q. -->
+    <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.12" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MEAIVectorsShared\MEAIVectorsShared.csproj" />

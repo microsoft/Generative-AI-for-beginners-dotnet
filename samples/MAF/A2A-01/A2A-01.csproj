@@ -17,6 +17,9 @@
     <PackageReference Include="Microsoft.Agents.AI.Hosting.A2A.AspNetCore" Version="1.0.0-preview.260402.1" />
     <PackageReference Include="Microsoft.Extensions.AI" Version="10.4.0" />
     <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.4.0" />
+  
+    <!-- Pin OpenTelemetry.Api above the version with advisory GHSA-g94r-2vxg-569j. -->
+    <PackageReference Include="OpenTelemetry.Api" Version="1.15.3" />
   </ItemGroup>
 
 </Project>

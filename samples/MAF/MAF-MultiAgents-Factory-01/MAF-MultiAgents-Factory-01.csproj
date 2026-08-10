@@ -20,5 +20,8 @@
 		<None Update="image01.jpg">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
-	</ItemGroup>
+	
+    <!-- Pin OpenTelemetry.Api above the version with advisory GHSA-g94r-2vxg-569j. -->
+    <PackageReference Include="OpenTelemetry.Api" Version="1.15.3" />
+  </ItemGroup>
 </Project>
