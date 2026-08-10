@@ -1,6 +1,6 @@
 # Microsoft Agent Framework Samples
 
-Welcome to the comprehensive guide for **Microsoft Agent Framework (MAF)** samples! These samples demonstrate how to build intelligent agents using .NET 10, Microsoft.Extensions.AI, and various AI providers (Azure OpenAI, Ollama, Claude, and Microsoft Foundry).
+Welcome to the comprehensive guide for **Microsoft Agent Framework (MAF)** samples! These samples demonstrate how to build intelligent agents using .NET 10, Microsoft.Extensions.AI, and various AI providers (Azure OpenAI, Ollama, Microsoft Foundry, and optional provider-specific integrations).
 
 ## Overview
 
@@ -12,7 +12,7 @@ Microsoft Agent Framework v1.0 GA provides a modern, extensible foundation for b
 - **Persistence** — Saving and resuming conversation state
 - **Web applications** — Blazor Server chat interfaces
 - **Hosted deployment** — Docker containerization for Azure Foundry Agent Service
-- **Multiple AI providers** — Azure OpenAI, Ollama, Claude, Microsoft Foundry, and more
+- **Multiple AI providers** — Azure OpenAI, Ollama, Microsoft Foundry, and optional provider-specific integrations
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ Microsoft Agent Framework v1.0 GA provides a modern, extensible foundation for b
 ### Choose at least one AI provider:
 - **Azure OpenAI** — Cloud-based GPT models (requires Azure subscription)
 - **Ollama** — Local LLM inference ([ollama.com](https://ollama.com))
-- **Claude via Microsoft Foundry** — Anthropic models deployed in Azure
+- **Optional: Claude via Microsoft Foundry** — provider-specific Anthropic models deployed in Azure, available if you want that branch but easy to skip for the core path
 - **Microsoft Foundry** — Azure AI Foundry projects with multiple models
 
 ### Optional
@@ -213,9 +213,9 @@ dotnet run
 
 ---
 
-### 9. Claude Integration
+### 9. Optional Claude Integration
 
-Work with Anthropic Claude models via Microsoft Foundry.
+Work with Anthropic Claude models via Microsoft Foundry if you specifically want that provider branch. These samples are kept as reference material and are easy to skip in the main learning path.
 
 | Sample | Description | Difficulty | Key Concepts |
 |--------|-------------|------------|--------------|
@@ -225,8 +225,8 @@ Work with Anthropic Claude models via Microsoft Foundry.
 **Setup:**
 ```bash
 cd samples/MAF/MAF-FoundryClaude-01
-dotnet user-secrets set "endpointClaude" "https://<resource>.services.ai.azure.com/anthropic/v1/messages"
-dotnet user-secrets set "apikey" "<your-api-key>"
+dotnet user-secrets set "Claude:Endpoint" "https://<resource>.services.ai.azure.com/anthropic/v1/messages"
+dotnet user-secrets set "Claude:ApiKey" "<your-api-key>"
 dotnet user-secrets set "deploymentName" "claude-haiku-4-5"
 dotnet run
 ```
@@ -277,9 +277,9 @@ docker run -it --rm \
 
 ### For Advanced Scenarios
 1. **MAF-MultiModel** — Mix Azure OpenAI + Ollama
-2. **MAF-FoundryClaude-01** — Integrate Claude
-3. **MAF-BackgroundResponses-01-Simple** — Implement streaming
-4. **MAF-HostedAgent-02-MultiAgent** — Complex hosted agents
+2. **MAF-BackgroundResponses-01-Simple** — Implement streaming
+3. **MAF-HostedAgent-02-MultiAgent** — Complex hosted agents
+4. **MAF-FoundryClaude-01** — Optional provider-specific branch if you want Anthropic coverage
 
 ---
 
@@ -382,7 +382,7 @@ static string GetTime() => DateTime.Now.ToString();
 - **Solution:** Ensure Ollama is running: `ollama run llama3.2`
 
 **Problem:** Claude model not found
-- **Solution:** Verify Claude is deployed in Microsoft Foundry and deployment name is correct
+- **Solution:** Verify Claude is deployed in Microsoft Foundry and deployment name is correct. If you are following the default learning path, you can skip the optional Claude samples.
 
 ### Build/Run Issues
 

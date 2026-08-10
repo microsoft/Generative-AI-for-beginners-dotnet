@@ -52,15 +52,9 @@ Microsoft Agent Framework reached **Release Candidate** (`1.0.0-rc1`), bringing 
 
 ---
 
-## 🤖 Claude Models with Agent Framework (Previous Update)
+## 🤖 Optional provider-specific update: Claude with Agent Framework (Previous Update)
 
-Integration of **Claude models** from Microsoft Foundry with Microsoft Agent Framework, including:
-
-- Basic console chat with Claude using `ChatClientAgent`
-- Conversation persistence with thread serialization/deserialization
-- Interactive Blazor web chat application with modern UI
-- Custom `ClaudeToOpenAIMessageHandler` for seamless API bridging
-- Support for Claude Haiku, Sonnet, and Opus models
+Claude-via-Foundry samples remain in the repository as optional reference material. They are still useful if you specifically want Anthropic coverage, but they are **not** part of the current recommended learning path.
 
 ### Resources
 

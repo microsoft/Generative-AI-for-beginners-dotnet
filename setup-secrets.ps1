@@ -8,7 +8,9 @@ param(
     
     [string]$Deployment = "gpt-5-mini",
     
-    [string]$EmbeddingDeployment = "text-embedding-3-small"
+    [string]$EmbeddingDeployment = "text-embedding-3-small",
+
+    [string]$ImageDeployment
 )
 
 Set-StrictMode -Version Latest
@@ -30,12 +32,19 @@ dotnet user-secrets set --id $secretsId "AzureOpenAI:Endpoint" $Endpoint
 dotnet user-secrets set --id $secretsId "AzureOpenAI:Deployment" $Deployment
 dotnet user-secrets set --id $secretsId "AzureOpenAI:EmbeddingDeployment" $EmbeddingDeployment
 
+if ($ImageDeployment) {
+    dotnet user-secrets set --id $secretsId "AzureOpenAI:ImageDeployment" $ImageDeployment
+}
+
 Write-Host "`n========================================" -ForegroundColor Cyan
 Write-Host "  User Secrets configured!" -ForegroundColor Green
 Write-Host "  Secrets ID: $secretsId" -ForegroundColor White
 Write-Host "  Endpoint:   $Endpoint" -ForegroundColor White
 Write-Host "  Chat Model: $Deployment" -ForegroundColor White
 Write-Host "  Embedding:  $EmbeddingDeployment" -ForegroundColor White
+if ($ImageDeployment) {
+    Write-Host "  Image:      $ImageDeployment" -ForegroundColor White
+}
 Write-Host "========================================`n" -ForegroundColor Cyan
 
 Write-Host "For the MAF Foundry Agent samples (MAF-MicrosoftFoundryAgents-*, MAF-AIFoundryAgents-01, MAF-MultiAgents), also run:" -ForegroundColor Yellow
@@ -49,5 +58,9 @@ Write-Host "  dotnet user-secrets set --id $secretsId `"aifoundryproject_tenanti
 Write-Host "`nFor Azure AI Search (RAGSimple-03MEAIVectorsAISearch), also run:" -ForegroundColor Yellow
 Write-Host "  dotnet user-secrets set --id $secretsId `"AZURE_AISEARCH_URI`" `"<your-search-endpoint>`""
 Write-Host "  dotnet user-secrets set --id $secretsId `"AZURE_AISEARCH_SECRET`" `"<your-search-key>`""
+
+Write-Host "`nFor Azure AI Speech (Audio-01-SpeechMic), also run:" -ForegroundColor Yellow
+Write-Host "  dotnet user-secrets set --id $secretsId `"SPEECH_KEY`" `"<your-speech-key>`""
+Write-Host "  dotnet user-secrets set --id $secretsId `"SPEECH_REGION`" `"<your-speech-region>`""
 
 Write-Host "`nDone! Make sure to run 'az login' first, then run file-based samples with: dotnet run app.cs`n" -ForegroundColor Green

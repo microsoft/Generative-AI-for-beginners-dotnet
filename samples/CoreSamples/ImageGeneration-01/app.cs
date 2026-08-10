@@ -70,7 +70,7 @@ string prompt = "A kitten playing soccer in the moon. Use a comic style";
 ImageGenerationOptions options = new()
 {
     Size = GeneratedImageSize.W1024xH1024,
-    Quality = "standard"
+    Quality = "auto"
 };
 
 GeneratedImage image;
@@ -96,9 +96,7 @@ catch (ClientResultException ex) when (ex.Status == 400 && ex.Message.Contains("
     return 1;
 }
 
-// Download the image bytes from the URL
-using var httpClient = new HttpClient();
-var imageBytes = await httpClient.GetByteArrayAsync(image.ImageUri);
+var imageBytes = image.ImageBytes.ToArray();
 
 // Save the image to a file
 string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}/genimage{DateTimeOffset.Now.Ticks}.png";

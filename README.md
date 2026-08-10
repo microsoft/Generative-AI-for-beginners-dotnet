@@ -56,20 +56,11 @@ We're constantly improving this course with the latest AI tools, models, and pra
 
   👉 [Explore the Agent Framework Samples](./samples/MAF/)
 
-- **🤖 Claude Models with Agent Framework**
+- **🧪 Optional provider-specific samples**
 
-  Integrate **Claude models** from Microsoft Foundry with Microsoft Agent Framework! Three comprehensive samples demonstrate:
-  - Basic console chat with Claude using `ChatClientAgent`
-  - Conversation persistence with thread serialization/deserialization
-  - Interactive Blazor web chat application with modern UI
-  - Custom `ClaudeToOpenAIMessageHandler` for seamless API bridging
-  - Support for Claude Haiku, Sonnet, and Opus models
+  Additional provider-specific samples remain available in the repo, including Claude-via-Foundry integrations and legacy video-generation experiments. They are useful reference material, but they are **not** part of the current recommended beginner-to-advanced learning path.
   
-  👉 [Explore the Claude MAF Samples](./samples/MAF/CLAUDE-SAMPLES-README.md)
-  
-  Plus a foundational Claude integration sample:
-  
-  👉 [BasicChat with Claude via Microsoft Foundry](./samples/CoreSamples/BasicChat-11FoundryClaude/)
+  👉 [Browse the MAF samples](./samples/MAF/) and [CoreSamples](./samples/CoreSamples/)
 
 [View all previous updates in our What's New archive](./10-WhatsNew/readme.md)
 
