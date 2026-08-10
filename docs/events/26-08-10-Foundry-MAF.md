@@ -505,6 +505,111 @@ var response = await aiAgent.RunAsync(userInput);   // same AIAgent interface as
 
 ---
 
+## Appendix · If the conversation goes somewhere else
+
+Unscripted branches, in the order they're most likely to come up. Every entry is a real,
+committed sample in this repo — nothing aspirational.
+
+**Readiness key:** ✅ runs with the secrets you already set · 🔑 needs one extra secret ·
+💻 needs a local runtime (Foundry Local, Ollama, or Docker)
+
+| If they ask… | Go to | Ready |
+|---|---|---|
+| "Can I see the *other* Foundry agent type?" | `samples/CoreSamples/AgentLabs-01-Simple` | 🔑 |
+| "Does the agent remember across restarts?" | `samples/MAF/MAF-Persisting-01-Simple` | ✅ |
+| "What about long-running or interrupted work?" | `samples/MAF/MAF-BackgroundResponses-01-Simple` | ✅ |
+| "How do agents talk to *other* agents / other stacks?" | `samples/MAF/A2A-01` | ✅ |
+| "Can this run locally / offline / on-device?" | `samples/CoreSamples/01-foundrylocal-hello-world` | 💻 |
+| "Can I mix cloud and local models?" | `samples/MAF/MAF-MultiModel` | 💻 |
+| "What about non-OpenAI models — Claude?" | `samples/MAF/MAF-FoundryClaude-01` | 🔑 |
+| "What does this look like in a real web app?" | `samples/MAF/MAF-AIWebChatApp-Simple` | 🔑 |
+| "Where do guardrails / responsible AI fit?" | `samples/MAF/MAF-AIWebChatApp-Middleware` | 🔑 |
+| "Production RAG with a real vector database?" | `samples/CoreSamples/RAGSimple-03MEAIVectorsAISearch` | 🔑 |
+| "Can it generate images?" | `samples/CoreSamples/ImageGeneration-01` | 🔑 |
+| "Can it generate video?" | `samples/CoreSamples/VideoGeneration-AzureSora-01` | 🔑 |
+| "What about speech / audio?" | `samples/CoreSamples/Audio-01-SpeechMic` | 🔑 |
+| "Can I build my own MCP server?" | `samples/PracticalSamples/src` — `McpSample.AspNetCoreServer` (Aspire) | 🔑 |
+| "Show me something fun." | `samples/AppsWithGenAI/SpaceAINet` | 🔑 |
+
+### The five most likely branches
+
+**A · The other Foundry agent type** — `AgentLabs-01-Simple`
+The natural follow-up to Demo 8's talking point 3. Where `MAF-MicrosoftFoundryAgents-01` uses
+the Responses API and creates nothing server-side, this one calls
+`PersistentAgentsClient.Administration.CreateAgentAsync(...)` — a real, server-managed agent
+that **does** appear in the Foundry portal, and which the sample explicitly tears down with
+`DeleteAgentAsync` at the end. That create/delete pair is the cleanest way to show the
+difference live. 🔑 Note it reads *different* secret keys: `aifoundryproject_endpoint` and
+`aifoundryproject_tenantid`, not `azureFoundryProjectEndpoint`.
+
+**B · Memory that survives a restart** — `MAF-Persisting-01-Simple`
+Answers "is the agent stateful?" properly, and it's a great three-beat demo. Step 1 creates a
+session with `CreateSessionAsync()`, says "My name is Bruno", and serializes the thread to
+`agent_thread.json`. Step 2 opens a **fresh** thread and asks "What is my name?" — the model
+says it has no idea. Step 3 reloads the persisted thread, asks the identical question, and
+gets "Your name is Bruno." Same code, same model, one difference: state. It's the production
+answer to the in-memory `List<ChatMessage>` from Demo 2. ✅ Live-verified today.
+
+```powershell
+cd D:\microsoft\Generative-AI-for-beginners-dotnet\samples\MAF\MAF-Persisting-01-Simple   # from repo root
+cd ..\MAF-Persisting-01-Simple                                                            # from a previous MAF sample
+dotnet run
+```
+
+**C · Local and offline** — `01-foundrylocal-hello-world`, or `MAF-MultiModel`
+The privacy/cost/latency question always comes. Foundry Local runs models on your machine
+behind the same `IChatClient`, so the story is "same code, no cloud." `MAF-MultiModel` is the
+stronger flex: one workflow with a researcher and a writer on Azure OpenAI / Foundry and a
+reviewer on local Ollama (`llama3.2`) — plus OpenTelemetry tracing across all three. 💻 Both
+need a local runtime installed and a model pulled, so mention rather than run if you haven't
+warmed it up.
+
+**D · Agent-to-agent interop** — `A2A-01`
+One console process that is *both* sides of the A2A protocol: it hosts a writer agent over
+the A2A HTTP+JSON binding at `http://localhost:5099/a2a/writer-agent`, then connects to its
+own endpoint with an `A2AClient`, wraps that as a standard `AIAgent`, and calls `RunAsync`.
+The client never references the agent's implementation — only its endpoint, so the remote
+agent could be Python or any other stack. Good answer to "how does this work across teams or
+languages?" ✅ Live-verified today.
+
+> ⚠️ **Gotcha:** this one is an ASP.NET Core Web project, so user secrets only load in the
+> Development environment. Running `dotnet run` bare throws
+> *"Set AzureOpenAI:Endpoint in User Secrets"* even though the secret is set. Set the
+> environment variable first — the command below already does.
+
+```powershell
+cd D:\microsoft\Generative-AI-for-beginners-dotnet\samples\MAF\A2A-01   # from repo root
+cd ..\A2A-01                                                           # from a previous MAF sample
+$env:ASPNETCORE_ENVIRONMENT='Development'
+dotnet run
+```
+
+**E · Beyond the console** — `MAF-AIWebChatApp-Simple` and `-Middleware`
+For "how would I actually ship this." Blazor apps (project lives at
+`ChatApp20/ChatApp20.Web`) built on the same `IChatClient` and `AIAgent` types, with
+`UseFunctionInvocation()` and OpenTelemetry already wired. The `-Middleware` variant is the
+natural hook for a responsible-AI turn — its `CustomFunctionCallingMiddleware` is where
+content filtering, logging, and guardrails would live, on the same builder chain you showed
+in Demo 3. 🔑 These use the Aspire-style `ConnectionStrings:openai` rather than
+`AzureOpenAI:Endpoint`, so **open the code, don't try to run it cold.**
+
+### Three honest caveats
+
+- **`ImageGeneration-01` reuses `AzureOpenAI:Deployment` as the image model.** Yours is a chat
+  deployment, so it will fail unless you point that key at an image-capable deployment first.
+  Talk about it rather than run it cold.
+- **`SpaceAINet` uses its own secret names** (`AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_MODEL`,
+  `AZURE_OPENAI_APIKEY`) — not the `AzureOpenAI:*` convention the rest of the demos share.
+- **Anything marked 💻 or 🔑 was not exercised in this session's validation pass.** Those rows
+  are listed because they're the right answer to the question, not because they were run
+  today. Two ✅ rows — `MAF-Persisting-01-Simple` and `A2A-01` — **were** run live against
+  Foundry today and produced correct output on your current secrets.
+  `MAF-BackgroundResponses-01-Simple` shares the exact same config path as Persisting, but it
+  calls `Console.Clear()` on startup so it can't be captured by automation — it needs a real
+  terminal window, which is what you'll be screen-sharing anyway.
+
+---
+
 ## Fallback plan
 
 If a live demo misbehaves, do not debug on air — switch and keep moving.
@@ -518,7 +623,9 @@ If a live demo misbehaves, do not debug on air — switch and keep moving.
 | Network is fully down | `samples/CoreSamples/01-foundrylocal-hello-world` (Foundry Local, fully on-device) |
 | Time is short (need to cut ~8 min) | Drop Demo 4 (vision) and Demo 2 (fold streaming into Demo 1) |
 
-**Bonus demos if time runs long:** `MAF-Persisting-01-Simple` (thread persistence), `MAF-MultiAgents` (three models, one workflow, OpenTelemetry), `samples/AppsWithGenAI/SpaceAINet` (an AI that plays a console game — a fun closer).
+**Bonus demos if time runs long — or if the conversation wanders:** see the
+[Appendix](#appendix--if-the-conversation-goes-somewhere-else) above for a full
+"if they ask X → go to Y" lookup table with readiness marks.
 
 ---
 
