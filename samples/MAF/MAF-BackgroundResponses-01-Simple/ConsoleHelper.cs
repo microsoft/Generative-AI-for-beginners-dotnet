@@ -7,7 +7,12 @@ public static class ConsoleHelper
 {
     public static void PrintHeader(string text)
     {
-        Console.Clear();
+        // Console.Clear() throws when output is redirected (piped to a file, CI, or a
+        // recorded session), so only clear when we actually own a console buffer.
+        if (!Console.IsOutputRedirected)
+        {
+            Console.Clear();
+        }
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine(new string('=', 60));
         Console.WriteLine(text);

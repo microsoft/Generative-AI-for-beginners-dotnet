@@ -36,7 +36,15 @@ az login
 dotnet user-secrets set --id genai-beginners-dotnet "azureFoundryProjectEndpoint" "https://<your-project>.services.ai.azure.com/api/projects/<project>"
 dotnet user-secrets set --id genai-beginners-dotnet "agentName" "PodcastAgent"
 
-# 4. Warm the build cache so no demo pauses on a cold compile
+# 4. OPTIONAL — only if you might use the appendix demos. These unlock three
+#    extra samples that use different key names for the same resources.
+#    AgentLabs-* wants its own spelling of the Foundry project endpoint:
+dotnet user-secrets set --id genai-beginners-dotnet "aifoundryproject_endpoint" "https://<your-project>.services.ai.azure.com/api/projects/<project>"
+dotnet user-secrets set --id genai-beginners-dotnet "aifoundryproject_tenantid" "<your-tenant-id>"   # az account show --query tenantId -o tsv
+#    The Blazor web chat apps are Aspire-flavoured and want a connection string:
+dotnet user-secrets set --id genai-beginners-dotnet "ConnectionStrings:openai" "Endpoint=https://<your-endpoint>.openai.azure.com/"
+
+# 5. Warm the build cache so no demo pauses on a cold compile
 dotnet build samples\CoreSamples\CoreGenerativeAITechniques.sln -c Release
 dotnet build samples\MAF\MAF-Demos.slnx -c Release
 ```
@@ -508,28 +516,39 @@ var response = await aiAgent.RunAsync(userInput);   // same AIAgent interface as
 ## Appendix · If the conversation goes somewhere else
 
 Unscripted branches, in the order they're most likely to come up. Every entry is a real,
-committed sample in this repo — nothing aspirational.
+committed sample in this repo — and **every one of them was executed on this machine on
+2026-08-10**, so the marks below are measured, not guessed.
 
-**Readiness key:** ✅ runs with the secrets you already set · 🔑 needs one extra secret ·
-💻 needs a local runtime (Foundry Local, Ollama, or Docker)
+**Readiness key:**
+✅ **run it** — live-verified today, works end to end ·
+⚠️ **runs, but incomplete** — starts and looks fine, part of it silently doesn't work ·
+🔑 **talk, don't run** — needs a resource/secret this subscription doesn't have ·
+🧱 **build/code only** — compiles clean, but interactive or unconfigured
 
 | If they ask… | Go to | Ready |
 |---|---|---|
-| "Can I see the *other* Foundry agent type?" | `samples/CoreSamples/AgentLabs-01-Simple` | 🔑 |
+| "Can I see the *other* Foundry agent type?" | `samples/CoreSamples/AgentLabs-01-Simple` | ✅ |
 | "Does the agent remember across restarts?" | `samples/MAF/MAF-Persisting-01-Simple` | ✅ |
 | "What about long-running or interrupted work?" | `samples/MAF/MAF-BackgroundResponses-01-Simple` | ✅ |
 | "How do agents talk to *other* agents / other stacks?" | `samples/MAF/A2A-01` | ✅ |
-| "Can this run locally / offline / on-device?" | `samples/CoreSamples/01-foundrylocal-hello-world` | 💻 |
-| "Can I mix cloud and local models?" | `samples/MAF/MAF-MultiModel` | 💻 |
+| "Can this run locally / offline / on-device?" | `samples/CoreSamples/01-foundrylocal-hello-world` | ✅ |
+| "What does this look like in a real web app?" | `samples/MAF/MAF-AIWebChatApp-Simple` | ✅ |
+| "Where do guardrails / responsible AI fit?" | `samples/MAF/MAF-AIWebChatApp-Middleware` | ✅ |
+| "Can I mix cloud and local models?" | `samples/MAF/MAF-MultiModel` | ⚠️ |
 | "What about non-OpenAI models — Claude?" | `samples/MAF/MAF-FoundryClaude-01` | 🔑 |
-| "What does this look like in a real web app?" | `samples/MAF/MAF-AIWebChatApp-Simple` | 🔑 |
-| "Where do guardrails / responsible AI fit?" | `samples/MAF/MAF-AIWebChatApp-Middleware` | 🔑 |
 | "Production RAG with a real vector database?" | `samples/CoreSamples/RAGSimple-03MEAIVectorsAISearch` | 🔑 |
 | "Can it generate images?" | `samples/CoreSamples/ImageGeneration-01` | 🔑 |
 | "Can it generate video?" | `samples/CoreSamples/VideoGeneration-AzureSora-01` | 🔑 |
 | "What about speech / audio?" | `samples/CoreSamples/Audio-01-SpeechMic` | 🔑 |
-| "Can I build my own MCP server?" | `samples/PracticalSamples/src` — `McpSample.AspNetCoreServer` (Aspire) | 🔑 |
-| "Show me something fun." | `samples/AppsWithGenAI/SpaceAINet` | 🔑 |
+| "Can I build my own MCP server?" | `samples/PracticalSamples/src` — `McpSample.AspNetCoreServer` (Aspire) | 🧱 |
+| "Show me something fun." | `samples/AppsWithGenAI/SpaceAINet` | 🧱 |
+
+> ⚠️ **The one trap:** `MAF-MultiModel` prints **"Workflow completed successfully!"** and exits
+> `0` even though its third agent failed — Ollama isn't installed on this machine, and the
+> failure only shows up buried in the OpenTelemetry output as
+> `error.type: System.Net.Http.HttpRequestException`. Agents 1 and 2 (Azure OpenAI) do produce
+> a full article, so it *looks* green on stage. If you show it, say out loud that the reviewer
+> step is the local one and it's not wired up here.
 
 ### The five most likely branches
 
@@ -538,9 +557,20 @@ The natural follow-up to Demo 8's talking point 3. Where `MAF-MicrosoftFoundryAg
 the Responses API and creates nothing server-side, this one calls
 `PersistentAgentsClient.Administration.CreateAgentAsync(...)` — a real, server-managed agent
 that **does** appear in the Foundry portal, and which the sample explicitly tears down with
-`DeleteAgentAsync` at the end. That create/delete pair is the cleanest way to show the
-difference live. 🔑 Note it reads *different* secret keys: `aifoundryproject_endpoint` and
-`aifoundryproject_tenantid`, not `azureFoundryProjectEndpoint`.
+`DeleteAgentAsync` at the end. It solves `3x + 11 = 14` and signs off with
+**"Agent Math Tutor deleted."** — that create/solve/delete arc is the cleanest way to show
+the difference live. ✅ Live-verified today.
+
+> 💡 This one reads *different* secret keys — `aifoundryproject_endpoint` and
+> `aifoundryproject_tenantid`, not `azureFoundryProjectEndpoint`. Both are now set (see
+> Pre-flight), so it just runs. If you ever hit
+> *"Value cannot be null. (Parameter 'endpoint')"*, that's the missing key.
+
+```powershell
+cd D:\microsoft\Generative-AI-for-beginners-dotnet\samples\CoreSamples\AgentLabs-01-Simple   # from repo root
+cd ..\AgentLabs-01-Simple                                                                    # from a previous CoreSamples demo
+dotnet run app.cs
+```
 
 **B · Memory that survives a restart** — `MAF-Persisting-01-Simple`
 Answers "is the agent stateful?" properly, and it's a great three-beat demo. Step 1 creates a
@@ -556,13 +586,28 @@ cd ..\MAF-Persisting-01-Simple                                                  
 dotnet run
 ```
 
-**C · Local and offline** — `01-foundrylocal-hello-world`, or `MAF-MultiModel`
-The privacy/cost/latency question always comes. Foundry Local runs models on your machine
-behind the same `IChatClient`, so the story is "same code, no cloud." `MAF-MultiModel` is the
-stronger flex: one workflow with a researcher and a writer on Azure OpenAI / Foundry and a
-reviewer on local Ollama (`llama3.2`) — plus OpenTelemetry tracing across all three. 💻 Both
-need a local runtime installed and a model pulled, so mention rather than run if you haven't
-warmed it up.
+**C · Local and offline** — `01-foundrylocal-hello-world`
+The privacy/cost/latency question always comes. Foundry Local runs the model on your machine
+behind the same `IChatClient`, so the story is "same code, no cloud." Verified today: it
+answered **"Hello, Foundry Local!"** running on the GPU
+(`qwen2.5-0.5b-instruct-trtrtx-gpu`), with the network path never leaving `127.0.0.1`. ✅
+
+> ⚠️ **Gotcha:** the sample defaults to `http://127.0.0.1:5273/v1`, but Foundry Local
+> **0.8.x picks a dynamic port** (it was `57157` here) — so a bare `dotnet run` fails
+> preflight with *"Could not reach Foundry Local service."* Run `foundry service status` to
+> read the real port, then set the override. The command below does both.
+
+```powershell
+foundry service status        # confirm it's running + read the port from the status URL
+cd D:\microsoft\Generative-AI-for-beginners-dotnet\samples\CoreSamples\01-foundrylocal-hello-world
+$env:FOUNDRY_LOCAL_BASE_URL="http://127.0.0.1:57157/v1"   # <-- swap in the port you just saw
+$env:FOUNDRY_LOCAL_MODEL="qwen2.5-0.5b"
+dotnet run
+```
+
+If `foundry cache list` says *"No models cached on device"*, pull one first with
+`foundry model download qwen2.5-0.5b` (~1 min). The `qwen2.5-0.5b` model **is** cached on
+this machine already.
 
 **D · Agent-to-agent interop** — `A2A-01`
 One console process that is *both* sides of the A2A protocol: it hosts a writer agent over
@@ -585,28 +630,71 @@ dotnet run
 ```
 
 **E · Beyond the console** — `MAF-AIWebChatApp-Simple` and `-Middleware`
-For "how would I actually ship this." Blazor apps (project lives at
-`ChatApp20/ChatApp20.Web`) built on the same `IChatClient` and `AIAgent` types, with
-`UseFunctionInvocation()` and OpenTelemetry already wired. The `-Middleware` variant is the
-natural hook for a responsible-AI turn — its `CustomFunctionCallingMiddleware` is where
-content filtering, logging, and guardrails would live, on the same builder chain you showed
-in Demo 3. 🔑 These use the Aspire-style `ConnectionStrings:openai` rather than
-`AzureOpenAI:Endpoint`, so **open the code, don't try to run it cold.**
+For "how would I actually ship this." Blazor apps built on the same `IChatClient` and
+`AIAgent` types, with `UseFunctionInvocation()`, SQLite vector storage and OpenTelemetry
+already wired. The `-Middleware` variant is the natural hook for a responsible-AI turn — its
+`CustomFunctionCallingMiddleware` is where content filtering, logging, and guardrails would
+live, on the same builder chain you showed in Demo 3. Both served **HTTP 200 on
+`http://localhost:5297`** today. ✅
 
-### Three honest caveats
+> ⚠️ **Two gotchas, both already handled:** these are Aspire-flavoured, so they read
+> `ConnectionStrings:openai` (now set) instead of `AzureOpenAI:Endpoint`, and they're Web SDK
+> projects so secrets need `ASPNETCORE_ENVIRONMENT=Development`. The deployment names are
+> **hardcoded** in `Program.cs` as `gpt-5-mini` + `text-embedding-3-small` — which happen to
+> match this resource exactly. Note you run from the nested `ChatApp20\ChatApp20.Web` folder,
+> not the sample root.
 
-- **`ImageGeneration-01` reuses `AzureOpenAI:Deployment` as the image model.** Yours is a chat
-  deployment, so it will fail unless you point that key at an image-capable deployment first.
-  Talk about it rather than run it cold.
-- **`SpaceAINet` uses its own secret names** (`AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_MODEL`,
-  `AZURE_OPENAI_APIKEY`) — not the `AzureOpenAI:*` convention the rest of the demos share.
-- **Anything marked 💻 or 🔑 was not exercised in this session's validation pass.** Those rows
-  are listed because they're the right answer to the question, not because they were run
-  today. Two ✅ rows — `MAF-Persisting-01-Simple` and `A2A-01` — **were** run live against
-  Foundry today and produced correct output on your current secrets.
-  `MAF-BackgroundResponses-01-Simple` shares the exact same config path as Persisting, but it
-  calls `Console.Clear()` on startup so it can't be captured by automation — it needs a real
-  terminal window, which is what you'll be screen-sharing anyway.
+```powershell
+cd D:\microsoft\Generative-AI-for-beginners-dotnet\samples\MAF\MAF-AIWebChatApp-Simple\ChatApp20\ChatApp20.Web
+$env:ASPNETCORE_ENVIRONMENT='Development'
+dotnet run     # then open http://localhost:5297
+```
+
+**F · Interrupt and resume** — `MAF-BackgroundResponses-01-Simple`
+The "what about long-running work?" answer, and a genuinely surprising demo. It streams a
+response, deliberately breaks out of the loop mid-generation, captures the
+`ContinuationToken`, and then resumes from that token in a second call. Today it cut off at
+**"Develop"** and resumed with **"ers gathered at .NET Conf…"** — it continues *mid-word*.
+That's the moment worth pausing on: the work kept happening server-side while the client was
+gone. ✅ Live-verified today.
+
+```powershell
+cd D:\microsoft\Generative-AI-for-beginners-dotnet\samples\MAF\MAF-BackgroundResponses-01-Simple
+cd ..\MAF-BackgroundResponses-01-Simple                                                        # from a previous MAF sample
+dotnet run
+```
+
+> 🔧 **This sample was broken until today** and got two fixes while validating this appendix —
+> see *Fixes made as a result of running them* at the bottom. Before the fix it printed
+> *"No continuation token available to resume the response. Aborting continuation."*, which is
+> the exact opposite of its point. Make sure you're on the latest `main`.
+
+### Why the 🔑 rows are blocked
+
+All five were run; all five failed for the same underlying reason — **this subscription has
+no deployment for that modality.** The resource currently has `gpt-5.5`, `gpt-5-mini`,
+`gpt-5.4-mini`, `gpt-5.6-sol`, `gpt-chat-latest`, `DeepSeek-V4-Flash`, `Kimi-K2.6`,
+`grok-4-20-reasoning`, and `text-embedding-3-small`. No image model, no Sora, no Claude.
+
+| Sample | What it actually says |
+|---|---|
+| `ImageGeneration-01` | `HTTP 400 OperationNotSupported` — *"imageGenerations does not work with gpt-5-mini"*. It reuses `AzureOpenAI:Deployment`, which is a **chat** deployment. |
+| `VideoGeneration-AzureSora-01` | Exits cleanly with *"Please set the endpoint and apikey as user secrets"*. Also needs a `sora` deployment. |
+| `MAF-FoundryClaude-01` | *"Missing 'endpointClaude' configuration"*. |
+| `RAGSimple-03MEAIVectorsAISearch` | Null `uriString` — needs `AZURE_AISEARCH_URI` / `_SECRET` and a real Azure AI Search resource. |
+| `Audio-01-SpeechMic` | `0x5` in `SpeechTranslationConfig.FromSubscription` — needs `SPEECH_KEY` / `SPEECH_REGION` from a separate Azure AI Speech resource. |
+
+These are still fine to **talk** about and to open the code for — just don't run them.
+
+### The two 🧱 rows
+
+- **`SpaceAINet`** builds clean (0 errors), but its AI mode uses its own secret names
+  (`AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_MODEL`, `AZURE_OPENAI_APIKEY`) rather than the
+  `AzureOpenAI:*` convention every other demo shares, and those are not set. It's also a
+  keyboard-driven game, so it's a "look at this" not a "watch it run."
+- **`samples/PracticalSamples/src`** — the Aspire MCP AppHost builds clean, but launching it
+  brings up the Aspire dashboard, which is a detour mid-podcast. Good code to open, slow to
+  demo.
 
 ---
 
@@ -649,11 +737,32 @@ Every demo below was actually **run**, not just compiled. All exited 0 with **ze
 | 8a | `MAF02` | ✅ Sequential workflow ran; Writer → Editor handoff visible |
 | 8b | `MAF-MicrosoftFoundryAgents-01` | ✅ Foundry Responses agent replied as `Agent [PodcastAgent]` |
 
+### Appendix samples (also run on 2026-08-10)
+
+All 15 appendix entries were executed. Results drive the readiness marks in the table above.
+
+| Result | Count | Samples |
+|---|---|---|
+| ✅ Ran end to end | 7 | `AgentLabs-01-Simple`, `MAF-Persisting-01-Simple`, `MAF-BackgroundResponses-01-Simple`, `A2A-01`, `01-foundrylocal-hello-world`, `MAF-AIWebChatApp-Simple`, `MAF-AIWebChatApp-Middleware` |
+| ⚠️ Ran, one agent silently failed | 1 | `MAF-MultiModel` (Ollama not installed; still exits 0) |
+| 🔑 Blocked on a missing resource | 5 | `MAF-FoundryClaude-01`, `RAGSimple-03MEAIVectorsAISearch`, `ImageGeneration-01`, `VideoGeneration-AzureSora-01`, `Audio-01-SpeechMic` |
+| 🧱 Builds clean, not run | 2 | `SpaceAINet`, `PracticalSamples/src` (Aspire MCP) |
+
+Four of the seven ✅ results required a fix or a config change that is now captured in
+Pre-flight step 4 and in the per-branch notes: the `aifoundryproject_*` keys, the
+`ConnectionStrings:openai` value, the Foundry Local dynamic port, and two code fixes in
+`MAF-BackgroundResponses-01-Simple`.
+
 ### Fixes made as a result of running them
 
 - **Demo 4** emitted 5 `CS0219` warnings that scrolled on screen before the answer — the unused prompt/image variants are intentional swap-in options, now explicitly marked so the console stays clean.
 - **Demo 5** emitted 3 nullability warnings (`CS8618`/`CS8601`) from the shared `MEAIVectorsShared` project — fixed with the standard `default!` idiom for unconstrained generics. This also cleans up the other RAG samples that share it.
 - **Demo 8a** streamed **15,412 characters** as one anonymous wall of text — the multi-agent point was invisible. Now prints `=== Writer ===` / `=== Editor ===` as the stream's author changes, and caps the story length. Output dropped to **2,283 characters**, and the Editor's rewrite can be compared against the draft live.
+- **`MAF-BackgroundResponses-01-Simple` — two real bugs**, both found by running the appendix samples:
+  1. `ResponseClientProvider` was returning `azureClient.GetChatClient(...)` — the **chat completions** client. Background responses and continuation tokens are a **Responses API** feature, so `update.ContinuationToken` was always `null` and the sample's whole second half printed *"No continuation token available to resume the response. Aborting continuation."* Changed to `azureClient.GetResponsesClient().AsIChatClient(deploymentName)`. The demo now genuinely interrupts and resumes mid-word.
+  2. `Console.Clear()` in `StreamConsoleHelper.PrintHeader` and `ConsoleHelper.PrintHeader` threw `IOException: The handle is invalid` whenever output was redirected (piping to a file, CI, or a recorded session), killing the app before it did anything. Both are now guarded with `!Console.IsOutputRedirected`.
+
+  These files are shared by link into six other projects (`MAF-BackgroundResponses-02/-03`, `MAF-Persisting-01/-02`, `MAF-FoundryClaude-Persisting-01`); the full `MAF-Demos.slnx` still builds with **0 errors and 0 advisories**, and `MAF-Persisting-01-Simple` was re-run to confirm unchanged behaviour.
 
 ### Build & supply chain
 

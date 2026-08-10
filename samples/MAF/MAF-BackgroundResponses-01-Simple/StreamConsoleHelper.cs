@@ -10,7 +10,9 @@ internal static class StreamConsoleHelper
 
     public static void PrintHeader(string text, bool clearConsole = true)
     {
-        if (clearConsole)
+        // Console.Clear() throws when output is redirected (piped to a file, CI, or a
+        // recorded session), so only clear when we actually own a console buffer.
+        if (clearConsole && !Console.IsOutputRedirected)
         {
             Console.Clear();
         }

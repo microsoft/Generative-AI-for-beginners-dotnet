@@ -26,7 +26,9 @@ class ResponseClientProvider
             new Uri(endpoint),
             new AzureCliCredential());
 
-        // Create a Chat client for the target deployment and return the IChatClient wrapper
-        return azureClient.GetChatClient(deploymentName).AsIChatClient();
+        // Background responses and continuation tokens are a Responses API feature, so this
+        // must be the response client — the chat-completions client never emits a
+        // ContinuationToken, which makes the continuation phase of this sample impossible.
+        return azureClient.GetResponsesClient().AsIChatClient(deploymentName);
     }
 }
