@@ -89,7 +89,7 @@ No code. Set the frame so the demos land:
 **Code:** [`samples/CoreSamples/BasicChat-05AIFoundryModels/app.cs`](../../samples/CoreSamples/BasicChat-05AIFoundryModels/app.cs)
 
 ```powershell
-cd samples\CoreSamples\BasicChat-05AIFoundryModels
+cd samples\CoreSamples\BasicChat-05AIFoundryModels   # from the repo root
 dotnet run app.cs
 ```
 
@@ -99,6 +99,21 @@ dotnet run app.cs
 1. **One endpoint, many models.** Change only `AzureOpenAI:Deployment` and the same code talks to a different model. Swap `gpt-5-mini` → another deployment live and re-run — that is the whole demo.
 2. **`IChatClient` is the contract.** From this line forward, nothing in the session is Azure-specific. The same interface backs Ollama, GitHub Models, Foundry Local, and OpenAI.
 3. **Keyless by default.** `AzureCliCredential` means no key in source, in config, or on screen. This is the recommended production posture, not just a demo trick.
+
+**The code that matters**
+
+```csharp
+// One endpoint, many models — the deployment name is the only thing that changes.
+var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
+
+// Keyless: Microsoft Entra ID via `az login`. No key in source, config, or on screen.
+IChatClient client = new AzureOpenAIClient(new Uri(endpoint), new AzureCliCredential())
+    .GetChatClient(deploymentName)
+    .AsIChatClient();          // <- provider-specific becomes provider-agnostic
+
+var response = await client.GetResponseAsync("what is your model name?");
+Console.WriteLine(response.Text);
+```
 
 **Docs**
 - [Microsoft.Extensions.AI libraries](https://learn.microsoft.com/dotnet/ai/microsoft-extensions-ai?wt.mc_id=dotnet-153583-brunocapuano)
@@ -112,7 +127,8 @@ dotnet run app.cs
 **Code:** [`samples/CoreSamples/BasicChat-10ConversationHistory/app.cs`](../../samples/CoreSamples/BasicChat-10ConversationHistory/app.cs)
 
 ```powershell
-cd samples\CoreSamples\BasicChat-10ConversationHistory
+cd samples\CoreSamples\BasicChat-10ConversationHistory   # from the repo root
+cd ..\BasicChat-10ConversationHistory                    # from Demo 1
 dotnet run app.cs
 ```
 
@@ -122,6 +138,29 @@ dotnet run app.cs
 1. **Streaming is a UX feature, not a model feature.** Same request, different consumption pattern — time-to-first-token drops dramatically and the app feels alive.
 2. **The model has no memory.** You own the history. Every turn resends the whole list, which is exactly why context windows and token costs grow with conversation length.
 3. **The `.Messages` gotcha.** The response exposes `.Text` and `.Message` (singular) — not `.Messages`. This trips up nearly everyone the first time; the README documents the correct patterns.
+
+**The code that matters**
+
+```csharp
+// This list IS the memory. The model is stateless — every turn resends the whole thing.
+List<ChatMessage> conversation =
+[
+    new ChatMessage(ChatRole.System, "You are a good assistance with short and smart answers")
+];
+
+conversation.Add(new ChatMessage(ChatRole.User, question));
+
+// Stream token-by-token, accumulating so the completed turn can be stored.
+var sb = new StringBuilder();
+await foreach (var update in client.GetStreamingResponseAsync(conversation))
+{
+    Console.Write(update.Text);
+    sb.Append(update.Text);
+}
+
+// Append the assistant turn, or the next question starts from nothing.
+conversation.Add(new ChatMessage(ChatRole.Assistant, sb.ToString()));
+```
 
 **Docs**
 - [Build a chat app with .NET](https://learn.microsoft.com/dotnet/ai/quickstarts/build-chat-app?wt.mc_id=dotnet-153583-brunocapuano)
@@ -135,7 +174,8 @@ dotnet run app.cs
 **Code:** [`samples/CoreSamples/MEAIFunctionsAzureOpenAI/app.cs`](../../samples/CoreSamples/MEAIFunctionsAzureOpenAI/app.cs)
 
 ```powershell
-cd samples\CoreSamples\MEAIFunctionsAzureOpenAI
+cd samples\CoreSamples\MEAIFunctionsAzureOpenAI   # from the repo root
+cd ..\MEAIFunctionsAzureOpenAI                    # from Demo 2
 dotnet run app.cs
 ```
 
@@ -153,6 +193,32 @@ dotnet run app.cs
 2. **`UseFunctionInvocation()` is middleware.** `IChatClient` is a pipeline, exactly like ASP.NET Core. You can stack function invocation, telemetry, caching, and logging in the same builder chain.
 3. **The model chooses.** Notice question 1 does not trigger the tool and question 3 does — and with the log line uncommented you can *count* the calls rather than assert them. That decision is the seed of agency: it's what makes Demo 7's agents possible.
 
+**The code that matters**
+
+```csharp
+// 1. A tool is just a C# method plus a description. No manifest, no hand-written schema.
+[Description("Get the weather")]
+static string GetWeather()
+{
+    // Console.WriteLine(">>> [tool] GetWeather() was called by the model");   // <- the reveal
+    var temperature = Random.Shared.Next(5, 20);
+    var condition = Random.Shared.Next(0, 2) == 0 ? "sunny" : "rainy";
+    return $"The weather is {temperature} degree C and {condition}";
+}
+
+// 2. One middleware call runs the entire tool loop for you.
+IChatClient client = new AzureOpenAIClient(new Uri(endpoint), new AzureCliCredential())
+    .GetChatClient(deploymentName)
+    .AsIChatClient()
+    .AsBuilder()
+    .UseFunctionInvocation()
+    .Build();
+
+// 3. Hand the method to the model and let it decide whether to call it.
+var chatOptions = new ChatOptions { Tools = [AIFunctionFactory.Create(GetWeather)] };
+var response = await client.GetResponseAsync("Should I bring an umbrella with me today?", chatOptions);
+```
+
 **Docs**
 - [Function calling with Microsoft.Extensions.AI](https://learn.microsoft.com/dotnet/ai/quickstarts/use-function-calling?wt.mc_id=dotnet-153583-brunocapuano)
 - [`AIFunctionFactory` reference](https://learn.microsoft.com/dotnet/api/microsoft.extensions.ai.aifunctionfactory?wt.mc_id=dotnet-153583-brunocapuano)
@@ -165,7 +231,8 @@ dotnet run app.cs
 **Code:** [`samples/CoreSamples/Vision-01MEAI-AzureOpenAI/Program.cs`](../../samples/CoreSamples/Vision-01MEAI-AzureOpenAI/Program.cs)
 
 ```powershell
-cd samples\CoreSamples\Vision-01MEAI-AzureOpenAI
+cd samples\CoreSamples\Vision-01MEAI-AzureOpenAI   # from the repo root
+cd ..\Vision-01MEAI-AzureOpenAI                    # from Demo 3
 dotnet run
 ```
 
@@ -175,6 +242,23 @@ dotnet run
 1. **Multimodal is not a different API.** Text and images are both `AIContent` in the same `ChatMessage` list — no separate vision client, no separate SDK.
 2. **Real business value, not a party trick.** The receipt image ("I bought the coffee and the sausage, add 18% tip") is document understanding replacing what used to be a bespoke OCR-plus-rules pipeline.
 3. **Model choice matters here.** Vision requires a multimodal deployment. This is a natural place to mention Foundry's model catalog and picking the right model per task.
+
+**The code that matters**
+
+```csharp
+// An image is just AIContent — the same message list, no separate vision client or SDK.
+AIContent aic = new DataContent(File.ReadAllBytes(image), "image/jpeg");
+
+List<ChatMessage> messages =
+[
+    new ChatMessage(ChatRole.System, "You are a useful assistant that describes images using a direct style."),
+    new ChatMessage(ChatRole.User, "Describe the image"),
+    new ChatMessage(ChatRole.User, [aic]),      // <- the picture rides along as content
+];
+
+// Identical call to every text-only demo so far.
+var response = await chatClient.GetResponseAsync(messages);
+```
 
 **Docs**
 - [Vision-enabled chat models in Microsoft Foundry](https://learn.microsoft.com/azure/ai-foundry/openai/how-to/gpt-with-vision?wt.mc_id=dotnet-153583-brunocapuano)
@@ -188,7 +272,8 @@ dotnet run
 **Code:** [`samples/CoreSamples/RAGSimple-02MEAIVectorsMemory/Program.cs`](../../samples/CoreSamples/RAGSimple-02MEAIVectorsMemory/Program.cs)
 
 ```powershell
-cd samples\CoreSamples\RAGSimple-02MEAIVectorsMemory
+cd samples\CoreSamples\RAGSimple-02MEAIVectorsMemory   # from the repo root
+cd ..\RAGSimple-02MEAIVectorsMemory                    # from Demo 4
 dotnet run
 ```
 
@@ -198,6 +283,34 @@ dotnet run
 1. **Semantic ≠ keyword.** Nothing here does string matching. Meaning is compared as distance between vectors, which is why the ogres/dragons query works.
 2. **`Microsoft.Extensions.VectorData` is the same story as `IChatClient`.** One abstraction, swappable stores — sqlite-vec locally today, Azure AI Search or Qdrant in production (see the sibling `RAGSimple-03` and `-04` samples) with the search code unchanged.
 3. **This is only the "R" in RAG.** Retrieval returns candidate documents; you then stuff them into the prompt from Demo 2 for grounded generation. Good place to mention chunking and why retrieval quality caps answer quality.
+
+**The code that matters**
+
+```csharp
+// 1. Same client, different building block: embeddings instead of chat.
+IEmbeddingGenerator<string, Embedding<float>> generator =
+    new AzureOpenAIClient(new Uri(endpoint), new AzureCliCredential())
+        .GetEmbeddingClient(embeddingDeployment)
+        .AsIEmbeddingGenerator();
+
+// 2. Attributes describe the record. 1536 dimensions, compared by cosine similarity.
+internal sealed class MovieVectorRecord
+{
+    [VectorStoreKey]  public string Key { get; set; } = "";
+    [VectorStoreData] public string Title { get; set; } = "";
+    [VectorStoreData] public string Description { get; set; } = "";
+
+    [VectorStoreVector(1536, DistanceFunction = DistanceFunction.CosineSimilarity)]
+    public ReadOnlyMemory<float> Embedding { get; set; }
+}
+
+// 3. Retrieval is always the same two steps: embed the question, search for neighbours.
+var queryEmbedding = await generator.GenerateVectorAsync(
+    "A family friendly movie that includes ogres and dragons");
+
+await foreach (var result in movies.SearchAsync(queryEmbedding, top: 2))
+    Console.WriteLine($"{result.Score:F3}  {result.Record.Title}");   // -> Shrek
+```
 
 **Docs**
 - [Implement RAG with .NET](https://learn.microsoft.com/dotnet/ai/conceptual/rag?wt.mc_id=dotnet-153583-brunocapuano)
@@ -211,7 +324,8 @@ dotnet run
 **Code:** [`samples/CoreSamples/MCP-03-MicrosoftLearn/Program.cs`](../../samples/CoreSamples/MCP-03-MicrosoftLearn/Program.cs)
 
 ```powershell
-cd samples\CoreSamples\MCP-03-MicrosoftLearn
+cd samples\CoreSamples\MCP-03-MicrosoftLearn   # from the repo root
+cd ..\MCP-03-MicrosoftLearn                    # from Demo 5
 dotnet run
 ```
 
@@ -221,6 +335,30 @@ dotnet run
 1. **MCP is USB-C for AI tools.** An open protocol: any MCP server's tools drop into any MCP-aware client. You wrote no integration code for Microsoft Learn — you just connected.
 2. **The before/after is the argument for grounding.** Same model, same prompt; the only variable is access to live information. This is the cheapest possible answer to "how do I stop hallucinations about my domain?"
 3. **`ListToolsAsync()` means discovery at runtime.** The tool list isn't compiled in. Add tools to the server and the client picks them up on the next run — and note that the discovered tools slot into the exact same `ChatOptions.Tools` from Demo 3.
+
+**The code that matters**
+
+```csharp
+// BEFORE — no tools. The model answers from frozen training data.
+await foreach (var update in client.GetStreamingResponseAsync(messages, new ChatOptions()))
+    Console.Write(update.Text);
+
+// Connect to the public, keyless Microsoft Learn MCP server. No integration code, no API key.
+var transport = new HttpClientTransport(new HttpClientTransportOptions
+{
+    Name = "Microsoft Learn MCP",
+    Endpoint = new Uri("https://learn.microsoft.com/api/mcp")
+});
+await using var mcpClient = await McpClient.CreateAsync(transport);
+
+// Discover what the server offers at runtime — nothing is compiled in.
+var tools = await mcpClient.ListToolsAsync();
+
+// AFTER — same model, same question. The only variable is access to live docs.
+await foreach (var update in client.GetStreamingResponseAsync(
+    messages, new ChatOptions { Tools = [.. tools] }))   // <- same ChatOptions.Tools as Demo 3
+    Console.Write(update.Text);
+```
 
 **Docs**
 - [Model Context Protocol in .NET](https://learn.microsoft.com/dotnet/ai/get-started-mcp?wt.mc_id=dotnet-153583-brunocapuano)
@@ -234,7 +372,8 @@ dotnet run
 **Code:** [`samples/MAF/MAF01/Program.cs`](../../samples/MAF/MAF01/Program.cs)
 
 ```powershell
-cd samples\MAF\MAF01
+cd samples\MAF\MAF01        # from the repo root
+cd ..\..\MAF\MAF01          # from Demo 6 (note: hops out of CoreSamples)
 dotnet run
 ```
 
@@ -246,6 +385,27 @@ dotnet run
 1. **An agent = model + instructions + tools + memory.** MAF gives that bundle a first-class type (`AIAgent`) instead of leaving it as loose variables scattered around your app.
 2. **It sits on top of MEAI, not beside it.** `chatClient.AsAIAgent(...)` — the whole framework builds on the `IChatClient` from Demo 1, so nothing learned so far is thrown away.
 3. **Threads and persistence come next.** `CreateSessionAsync` / `SerializeSessionAsync` let a conversation survive process restarts (see `MAF-Persisting-01-Simple`) — the natural production follow-up.
+
+**The code that matters**
+
+```csharp
+// Everything from Demo 1, completely unchanged.
+IChatClient chatClient = new AzureOpenAIClient(new Uri(endpoint), new AzureCliCredential())
+    .GetChatClient(deploymentName)
+    .AsIChatClient();
+
+// One extension method is the entire step up to an agent:
+// a name and standing instructions, instead of re-sending a system message every turn.
+AIAgent writer = chatClient.AsAIAgent(
+    name: "Writer",
+    instructions: "Write stories that are engaging and creative.");
+
+await foreach (var update in writer.RunStreamingAsync(
+    "Write a short story about a haunted house with a character named Lucia."))
+{
+    Console.Write(update.Text);
+}
+```
 
 **Docs**
 - [Microsoft Agent Framework overview](https://learn.microsoft.com/agent-framework/overview/agent-framework-overview?wt.mc_id=dotnet-153583-brunocapuano)
@@ -260,11 +420,13 @@ dotnet run
 
 ```powershell
 # 8a — two agents in a sequential workflow
-cd samples\MAF\MAF02
+cd samples\MAF\MAF02        # from the repo root
+cd ..\MAF02                 # from Demo 7
 dotnet run
 
 # 8b — an agent that lives in Microsoft Foundry
-cd ..\MAF-MicrosoftFoundryAgents-01
+cd samples\MAF\MAF-MicrosoftFoundryAgents-01   # from the repo root
+cd ..\MAF-MicrosoftFoundryAgents-01            # from 8a
 dotnet run
 ```
 
@@ -278,6 +440,51 @@ dotnet run
 1. **Specialists beat one giant prompt.** A focused Writer and a focused Editor produce better output than a single prompt trying to do both, and each is independently testable and swappable.
 2. **Workflows are agents.** `workflow.AsAIAgent()` means a multi-agent system composes into a larger system exactly like a single agent. Sequential is just the starter; concurrent, hand-off, and group-chat patterns build from the same builder.
 3. **Foundry has two agent types — know which one you're using.** A **Responses Agent** (this demo) is code-first and ephemeral: you own the definition, it ships with your app, nothing is registered server-side. A **Foundry Agent** is versioned and service-managed via `AgentAdministrationClient` or the portal, with strict instructions/tools and portal governance. Same `AIAgent` interface, same calling code — the choice is about *who owns the definition*, and it's the question most teams get wrong first. (`MAF-MultiAgents` goes further, mixing a Foundry agent, an Azure OpenAI agent, and a local Ollama agent in one workflow with OpenTelemetry tracing.)
+
+**The code that matters — 8a, a team of agents**
+
+```csharp
+// Two specialists, each independently testable and swappable, instead of one giant prompt.
+AIAgent writer = chatClient.AsAIAgent(name: "Writer",
+    instructions: "Write stories that are engaging and creative.");
+AIAgent editor = chatClient.AsAIAgent(name: "Editor",
+    instructions: "Make the story more engaging, fix grammar, and enhance the plot.");
+
+// Compose them, then turn the whole workflow back into a single agent.
+Workflow workflow = AgentWorkflowBuilder.BuildSequential(writer, editor);
+AIAgent workflowAgent = workflow.AsAIAgent();       // <- the composability insight
+
+// Identical call to Demo 7. A team is consumed exactly like one agent.
+string? currentAuthor = null;
+await foreach (var update in workflowAgent.RunStreamingAsync(
+    "Write a short story about a haunted house. Keep it under 200 words."))
+{
+    if (update.AuthorName is { Length: > 0 } author && author != currentAuthor)
+    {
+        currentAuthor = author;
+        Console.WriteLine($"\n=== {author} ===");   // makes the Writer -> Editor handoff visible
+    }
+    Console.Write(update.Text);
+}
+```
+
+**The code that matters — 8b, an agent in Microsoft Foundry**
+
+```csharp
+// Point at a Foundry PROJECT endpoint, not a chat deployment.
+AIProjectClient projectClient = new(
+    new Uri(azureFoundryProjectEndpoint),
+    new AzureCliCredential());
+
+// Responses API -> a code-first ChatClientAgent.
+// You own the definition; nothing is registered server-side, nothing appears in the portal.
+AIAgent aiAgent = projectClient.AsAIAgent(
+    model: deploymentName,
+    instructions: "You are a useful agent that replies in short and direct sentences.",
+    name: agentName);
+
+var response = await aiAgent.RunAsync(userInput);   // same AIAgent interface as Demo 7
+```
 
 **Docs**
 - [Microsoft Foundry provider — the two agent types](https://learn.microsoft.com/agent-framework/agents/providers/microsoft-foundry?wt.mc_id=dotnet-153583-brunocapuano)
