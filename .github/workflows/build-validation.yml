@@ -42,10 +42,10 @@ jobs:
         dotnet-version: '10.0.x'
 
     - name: Restore dependencies for ${{ matrix.solution.name }}
-      run: dotnet restore "${{ matrix.solution.path }}"
+      run: dotnet restore "${{ matrix.solution.path }}" -p:EnableWindowsTargeting=true
 
     - name: Build ${{ matrix.solution.name }}
-      run: dotnet build "${{ matrix.solution.path }}" --no-restore --configuration Release --verbosity minimal
+      run: dotnet build "${{ matrix.solution.path }}" --no-restore --configuration Release --verbosity minimal -p:EnableWindowsTargeting=true
 
     - name: Display build result
       if: success()
