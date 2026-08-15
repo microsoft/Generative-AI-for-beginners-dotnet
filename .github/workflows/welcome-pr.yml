@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add Label and thanks comment to Pull request
-        uses: actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410 # v6.4.1
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             const issueAuthor = context.payload.sender.login
@@ -28,7 +28,7 @@ jobs:
               body: `👋 Thanks for contributing @${ issueAuthor }! We will review the pull request and get back to you soon.`
             })
       - name: Auto-assign issue
-        uses: pozil/auto-assign-issue@e0a56afd8846954587b00fff254caf1ec918554e # v1
+        uses: pozil/auto-assign-issue@af6beea6bdf1e8eb373f061c5bc168681fc6d011 # v1
         with:
           repo-token:  ${{ secrets.GITHUB_TOKEN }}
           assignees: elbruno
