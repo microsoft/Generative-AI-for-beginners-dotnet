@@ -55,3 +55,12 @@ updates:
       interval: "weekly"
       day: "monday"
     target-branch: "main"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    groups:
+      github-actions:
+        patterns: ["*"]
+    schedule:
+      interval: "weekly"
+    cooldown:
+      default-days: 7
