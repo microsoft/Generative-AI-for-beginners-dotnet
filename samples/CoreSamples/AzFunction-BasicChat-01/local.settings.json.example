@@ -1,0 +1,9 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "Foundry__Endpoint": "https://<your-foundry-resource>.openai.azure.com/",
+    "Foundry__DeploymentName": "<your-model-deployment-name>"
+  }
+}
