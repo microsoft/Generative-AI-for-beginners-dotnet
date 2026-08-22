@@ -7,7 +7,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>AzFunction_BasicChat_01</RootNamespace>
-    <UserSecretsId>0ea08cc8-75f4-405a-be62-3ef61944dfad</UserSecretsId>
+    <UserSecretsId>genai-beginners-dotnet</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
