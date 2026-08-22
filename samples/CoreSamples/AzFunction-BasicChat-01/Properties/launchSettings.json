@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "AzFunction_BasicChat_01": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7209",
+      "launchBrowser": false
+    }
+  }
+}

@@ -1,0 +1,21 @@
+name: azfunction-basicchat-01
+metadata:
+  template: azfunction-basicchat-01@0.0.1
+hooks:
+  predown:
+    windows:
+      shell: pwsh
+      run: ./infra/scripts/remove-foundry-role.ps1
+      interactive: false
+    posix:
+      shell: sh
+      run: bash ./infra/scripts/remove-foundry-role.sh
+      interactive: false
+services:
+  api:
+    project: .
+    language: dotnet
+    host: function
+infra:
+  provider: bicep
+  path: infra

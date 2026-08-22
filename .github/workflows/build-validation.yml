@@ -47,6 +47,10 @@ jobs:
     - name: Build ${{ matrix.solution.name }}
       run: dotnet build "${{ matrix.solution.path }}" --no-restore --configuration Release --verbosity minimal -p:EnableWindowsTargeting=true
 
+    - name: Run tests for ${{ matrix.solution.name }}
+      if: matrix.solution.name == 'Core Samples'
+      run: dotnet test "samples/CoreSamples/AzFunction-BasicChat-01/AzFunction-BasicChat-01.Tests/AzFunction-BasicChat-01.Tests.csproj" --no-build --configuration Release --verbosity minimal
+
     - name: Display build result
       if: success()
       run: echo "✅ ${{ matrix.solution.name }} build succeeded"
