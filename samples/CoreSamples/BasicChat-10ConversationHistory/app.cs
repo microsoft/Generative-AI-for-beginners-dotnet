@@ -5,6 +5,7 @@
 #:package OllamaSharp@5.4.30
 #:package Microsoft.Extensions.Configuration.UserSecrets@10.0.10
 #:property UserSecretsId=genai-beginners-dotnet
+#:property JsonSerializerIsReflectionEnabledByDefault=true
 
 using Azure.AI.OpenAI;
 using Azure.Identity;
