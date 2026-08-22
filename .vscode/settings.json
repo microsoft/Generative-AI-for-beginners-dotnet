@@ -1,4 +1,3 @@
 {
-    "aspire.enableSettingsFileCreationPromptOnStartup": false,
-    "azureFunctions.projectSubpath": "samples\\CoreSamples\\AzFunction-BasicChat-01"
+    "aspire.enableSettingsFileCreationPromptOnStartup": false
 }
