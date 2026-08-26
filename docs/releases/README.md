@@ -8,11 +8,13 @@ human-dispatched action.
 ## Tag convention
 
 Release tags are the UTC calendar date the release was cut, in strict
-`YYYY-MM-DD` form (for example `2026-08-24`). This matches every tag already
-published for this repository (`git tag --list`). If you leave the `tag`
+`YYYY-MM-DD` form within 2000–2099 (for example `2026-08-24`). This matches
+every tag already published for this repository (`git tag --list`) and the
+namespace protected by the immutable ruleset below. If you leave the `tag`
 input empty when dispatching the workflow, it computes the current UTC date
 for you; if you supply one explicitly, it must be a real calendar date in
-that exact format (e.g. `2026-02-30` is rejected).
+that exact range and format (`1999-12-31`, `2100-01-01`, and `2026-02-30`
+are rejected).
 
 ## Immutable date-tag ruleset
 
@@ -26,8 +28,8 @@ this check" path.
 - **Ruleset:** `Immutable date-tag releases` (id `21576333`), target `tag`,
   enforcement `active`.
 - **Pattern:** `refs/tags/20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]` — matches only
-  the repository's `YYYY-MM-DD` release-tag convention; no other tag names
-  are affected.
+  the repository's 2000–2099 `YYYY-MM-DD` release-tag convention; no other
+  tag names are affected.
 - **Rules:** `update` (restrict updates/retargeting) and `deletion`
   (restrict deletion). Tag **creation** is deliberately left unrestricted —
   this ruleset makes a matching tag immutable *after* it exists, it does not
@@ -50,11 +52,11 @@ and race safety" below).
 
 If the ruleset is ever recreated (for example, after a repository transfer),
 it must be re-created with exactly these properties — one active ruleset,
-target `tag`, pattern matching only `YYYY-MM-DD` tags, `update` + `deletion`
-rules, zero bypass actors, no `creation` rule — and no second, overlapping
-ruleset should be added; the workflow fails closed if it ever finds more
-than one active ruleset independently protecting the same tag namespace,
-since that is an ambiguous protection state.
+target `tag`, the exact 2000–2099 pattern shown above, `update` + `deletion`
+rules, zero bypass actors, no `creation` rule, and an empty exclusion list —
+and no second, overlapping ruleset should be added; the workflow fails closed
+if it ever finds more than one active ruleset independently protecting the
+same tag namespace, since that is an ambiguous protection state.
 
 ## Release notes: curated first, generated fallback
 
@@ -226,4 +228,3 @@ pattern, ambiguous duplicate rulesets, the successful path, an annotated-
 object mismatch (wrong type, wrong target commit), a ref conflict (ref
 replaced by another actor), a release-creation failure that must leave the
 owned tag untouched, and a fully successful post-release re-verification.
-

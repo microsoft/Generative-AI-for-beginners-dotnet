@@ -17,6 +17,8 @@ REPO_ROOT="$(cd -- "$SCRIPT_DIR/../../.." >/dev/null 2>&1 && pwd)"
 source "$REPO_ROOT/.github/scripts/verify-tag-ruleset.sh"
 # shellcheck source=../verify-tag-object.sh
 source "$REPO_ROOT/.github/scripts/verify-tag-object.sh"
+# shellcheck source=../validate-release-tag.sh
+source "$REPO_ROOT/.github/scripts/validate-release-tag.sh"
 
 PASS_COUNT=0
 FAIL_COUNT=0
@@ -113,6 +115,29 @@ VALID_DETAIL='{
   "rules": [{"type": "update"}, {"type": "deletion"}]
 }'
 
+echo "== validate-release-tag.sh =="
+
+if [ "$(resolve_release_tag "2026-08-26" 2>"$STDERR_CAPTURE")" = "2026-08-26" ]; then
+  pass "protected 20xx date: accepted"
+else
+  fail "protected 20xx date: expected success"
+fi
+
+for unprotected_tag in "1999-12-31" "2100-01-01"; do
+  if resolve_release_tag "$unprotected_tag" >"$STDOUT_CAPTURE" 2>"$STDERR_CAPTURE"; then
+    fail "unprotected date $unprotected_tag: expected failure, got success"
+  else
+    pass "unprotected date $unprotected_tag: fails closed"
+  fi
+done
+
+if resolve_release_tag "2026-02-30" >"$STDOUT_CAPTURE" 2>"$STDERR_CAPTURE"; then
+  fail "calendar-invalid date: expected failure, got success"
+else
+  pass "calendar-invalid date: fails closed"
+fi
+
+echo
 echo "== verify-tag-ruleset.sh =="
 
 # 1. Missing ruleset (empty active list)

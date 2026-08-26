@@ -8,7 +8,7 @@ on:
     inputs:
       tag:
         description: >-
-          Release tag (YYYY-MM-DD). Leave empty to use the current UTC date.
+          Release tag (2000-2099, YYYY-MM-DD). Leave empty to use the current UTC date.
         required: false
         default: ''
         type: string
@@ -97,27 +97,10 @@ jobs:
             exit 1
           fi
 
-          # --- Validate/compute tag ---
-          if [ -z "$TAG_INPUT" ]; then
-            TAG="$(date -u +%Y-%m-%d)"
-          else
-            TAG="$TAG_INPUT"
-            if [[ ! "$TAG" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
-              echo "::error::tag '$TAG' must match the literal format YYYY-MM-DD."
-              exit 1
-            fi
-            # Reject shell/relative-date tricks and calendar-invalid dates
-            # (e.g. 2026-02-30) by round-tripping through `date -u` and
-            # requiring an exact match back to the literal input.
-            NORMALIZED="$(date -u -d "$TAG" +%Y-%m-%d 2>/dev/null)" || {
-              echo "::error::tag '$TAG' is not a valid calendar date."
-              exit 1
-            }
-            if [ "$NORMALIZED" != "$TAG" ]; then
-              echo "::error::tag '$TAG' is not a valid calendar date."
-              exit 1
-            fi
-          fi
+          # The active ruleset protects only 20xx date tags. Resolve and
+          # calendar-validate through the shared guard so the workflow cannot
+          # publish a syntactically valid but mutable 19xx/21xx tag.
+          TAG="$(bash .github/scripts/validate-release-tag.sh "$TAG_INPUT")"
 
           # --- Validate notes path (empty => GitHub-generated notes) ---
           USE_GENERATED_NOTES="true"
