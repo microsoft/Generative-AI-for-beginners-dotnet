@@ -45,9 +45,10 @@ auto-generated PR list would obscure.
    what you expect.
 3. **Live run.** Re-dispatch the same workflow with `dry_run: false` (all
    other inputs unchanged). Only after validation succeeds again does the
-   workflow create the tag and publish the GitHub release — both from the
-   exact SHA that was validated, not whatever `main` happens to point to when
-   the publish step runs.
+   workflow atomically create an annotated tag at the exact validated SHA and
+   publish the GitHub release from that tag — see "Duplicate behavior and
+   race safety" below for how tag creation and publishing are kept race-safe
+   against concurrent actors.
 
 > There is no "promote" step and no `dev`/`preview`/`insider` branches in this
 > repository — every release is cut directly from `main`.
@@ -75,23 +76,62 @@ call a live model.
   unless a packable project and feed are explicitly introduced in a future
   change.
 
-## Duplicate behavior
+## Duplicate behavior and race safety
 
 If the resolved tag already has a tag or a published GitHub release, the
-`resolve` job fails before any validation or publish work runs. The `publish`
-job re-checks immediately before publishing, in case another run created the
-same tag/release in the meantime. To re-release the same date, choose a
-different tag (unusual) or delete the existing tag/release first (rare,
-manual, outside this workflow).
+`resolve` job fails before any validation or publish work runs. Because a
+second actor (another dispatch, a manual `git push --tags`, etc.) could still
+create the same tag *after* `resolve` passes but before `publish` runs, the
+`publish` job does not trust a duplicate-check-then-create sequence to be
+race-safe — a check-then-act gap is exactly the kind of race that lets an
+unvalidated commit get published under the tag `--target` would otherwise
+have picked. Instead, `publish` uses an atomic, ownership-scoped protocol,
+entirely within a single step:
+
+1. Create an **annotated Git tag object** (Git Tags API) pointing at the
+   validated commit SHA, with a `github-actions[bot]` tagger identity. This
+   step cannot race — tag objects are content-addressed and never collide.
+2. **Atomically create `refs/tags/<tag>`** (Git Refs API) pointing at that
+   exact tag-object SHA. This call is the true race boundary: GitHub rejects
+   ref creation if the ref already exists, so if another actor's tag lands
+   first, this run's ref-create fails and it stops immediately — it never
+   publishes, and it never touches the ref it didn't create.
+3. **Verify** the ref still resolves to this run's own tag-object SHA before
+   publishing (defends against a replacement landing in the instant between
+   steps 2 and 4).
+4. **Publish** with `gh release create "$TAG" --verify-tag ...` — this
+   verifies the existing tag rather than selecting code via `--target`, so
+   the release can never be attached to a tag object other than the one this
+   run just verified.
+5. Ownership of the ref is tracked in a local shell variable for the
+   lifetime of the step (not a cross-step `GITHUB_OUTPUT`, which cannot
+   reliably survive a step that fails partway through). A shell `EXIT` trap
+   runs unconditional cleanup logic: it deletes `refs/tags/<tag>` **only**
+   if this run created that ref, the release was not published, no release
+   exists for the tag, and the ref still points at this run's own tag-object
+   SHA. If any of those don't hold — including a duplicate-check/ref-conflict
+   failure, or another actor replacing the ref after this run's failure —
+   nothing is deleted.
+
+To re-release the same date, choose a different tag (unusual) or delete the
+existing tag/release first (rare, manual, outside this workflow).
 
 ## Recovery
 
-- **Tag created but release publish failed:** `gh release create --target
-  <sha>` creates the tag and the release in one API-driven step, so this
-  should be rare. If it happens anyway, the `publish` job's cleanup step
-  detects a tag with no matching release and deletes only that tag
+- **Ref creation loses a race (another actor's tag lands first):** the Git
+  Refs API rejects the create-ref call outright. The run fails immediately,
+  publishes nothing, and never deletes the other actor's tag — it never
+  owned it.
+- **Tag ref created but release publish failed:** the `publish` step's
+  ownership-gated cleanup (an `EXIT` trap) detects that this run created the
+  ref, no release exists, and the ref still points at this run's own
+  tag-object SHA, then deletes only that tag ref
   (`gh api -X DELETE .../git/refs/tags/<tag>`) — no history is rewritten, and
-  no other tag or branch is touched. No manual cleanup should be needed.
+  no other tag or branch is touched.
+- **Another actor replaces the tag ref after this run's publish failed:**
+  cleanup re-checks the ref's current object SHA immediately before
+  deleting. If it no longer matches the tag object this run created, cleanup
+  skips deletion and only emits a warning — the foreign tag is left alone.
 - **`main` moved between dispatch and validation:** the `resolve` job
   compares the dispatched SHA against the live tip of `main` via the GitHub
   API and fails closed if they differ. Just re-run the workflow to capture

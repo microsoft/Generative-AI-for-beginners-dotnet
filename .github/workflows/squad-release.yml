@@ -222,27 +222,123 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Re-check for a duplicate tag/release immediately before publishing
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -euo pipefail
-          if gh api "repos/${{ github.repository }}/git/ref/tags/$TAG" >/dev/null 2>&1; then
-            echo "::error::tag '$TAG' was created by another run since validation. Aborting."
-            exit 1
-          fi
-          if gh release view "$TAG" --repo "${{ github.repository }}" >/dev/null 2>&1; then
-            echo "::error::a GitHub release for tag '$TAG' was created by another run since validation. Aborting."
-            exit 1
-          fi
-
-      - name: Create tag and publish release atomically at the validated SHA
+      - name: Race-safe tag + release publish (single step, ownership-scoped)
         id: publish
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          set -euo pipefail
+          set -uo pipefail
+          # This entire protocol lives in one step, with ownership state kept
+          # in local shell variables and a trap, rather than spread across
+          # steps/outputs. That is deliberate: GITHUB_OUTPUT from a step that
+          # fails partway through is not a reliable place to prove "did *this
+          # run* create the ref", and splitting create/publish/cleanup across
+          # steps re-opens the exact race this rewrite closes. Ownership must
+          # survive a mid-script failure, so a shell EXIT trap owns it instead.
+          REPO="${{ github.repository }}"
+          OWNED_REF="false"      # true only after *our* ref-create call succeeds
+          TAG_OBJECT_SHA=""      # the tag object *this run* created
+          RELEASE_CREATED="false"
 
+          cleanup() {
+            local exit_code="$1"
+
+            if [ "$RELEASE_CREATED" = "true" ]; then
+              return "$exit_code"
+            fi
+            if [ "$OWNED_REF" != "true" ]; then
+              # We never created the ref (duplicate-check or ref-conflict
+              # failure) — never touch a tag we don't own.
+              return "$exit_code"
+            fi
+
+            # Ownership gate: only clean up if (a) we created the ref,
+            # (b) release creation did not succeed, (c) no release exists
+            # for this tag, and (d) the ref still points at *our* tag
+            # object (i.e. nobody replaced it under us).
+            if gh release view "$TAG" --repo "$REPO" >/dev/null 2>&1; then
+              echo "::warning::a release for '$TAG' exists despite this run not recording success; leaving tag '$TAG' in place."
+              return "$exit_code"
+            fi
+
+            CURRENT_SHA="$(gh api "repos/$REPO/git/ref/tags/$TAG" --jq .object.sha 2>/dev/null || echo "")"
+            if [ -z "$CURRENT_SHA" ]; then
+              echo "::warning::tag ref 'refs/tags/$TAG' no longer exists; nothing to clean up."
+              return "$exit_code"
+            fi
+            if [ "$CURRENT_SHA" != "$TAG_OBJECT_SHA" ]; then
+              echo "::warning::tag 'refs/tags/$TAG' now points at object '$CURRENT_SHA', not this run's object '$TAG_OBJECT_SHA'. Another actor owns it now; not deleting."
+              return "$exit_code"
+            fi
+
+            echo "Removing orphaned tag '$TAG' (object $TAG_OBJECT_SHA) created and owned by this run."
+            if ! gh api -X DELETE "repos/$REPO/git/refs/tags/$TAG"; then
+              echo "::warning::failed to delete orphaned tag '$TAG'; manual cleanup may be required."
+            fi
+            return "$exit_code"
+          }
+          trap 'cleanup $?' EXIT
+
+          # --- Defense-in-depth pre-flight (not relied on for atomicity) ---
+          if gh api "repos/$REPO/git/ref/tags/$TAG" >/dev/null 2>&1; then
+            echo "::error::tag '$TAG' was created by another run since validation. Aborting without publishing or cleanup."
+            exit 1
+          fi
+          if gh release view "$TAG" --repo "$REPO" >/dev/null 2>&1; then
+            echo "::error::a GitHub release for tag '$TAG' was created by another run since validation. Aborting without publishing or cleanup."
+            exit 1
+          fi
+
+          # --- Step 1: create an annotated tag *object* at the validated SHA ---
+          # This does not create a ref and cannot race: tag objects are
+          # content-addressed and never collide with a concurrent actor's tag.
+          TAGGER_NAME="github-actions[bot]"
+          TAGGER_EMAIL="41898282+github-actions[bot]@users.noreply.github.com"
+          TAGGER_DATE="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
+          TAG_OBJECT_PAYLOAD="$(jq -n \
+            --arg tag "$TAG" \
+            --arg message "Release $TAG" \
+            --arg object "$SHA" \
+            --arg name "$TAGGER_NAME" \
+            --arg email "$TAGGER_EMAIL" \
+            --arg date "$TAGGER_DATE" \
+            '{tag: $tag, message: $message, object: $object, type: "commit", tagger: {name: $name, email: $email, date: $date}}')"
+
+          TAG_OBJECT_SHA="$(printf '%s' "$TAG_OBJECT_PAYLOAD" | gh api "repos/$REPO/git/tags" --input - --jq .sha)"
+          if [ -z "$TAG_OBJECT_SHA" ]; then
+            echo "::error::failed to create annotated tag object for '$TAG' at '$SHA'."
+            exit 1
+          fi
+          echo "Created annotated tag object $TAG_OBJECT_SHA ('$TAG' -> commit $SHA)."
+
+          # --- Step 2: atomically create refs/tags/$TAG -> tag object SHA ---
+          # The Git Refs API's create-ref call fails (422) if the ref already
+          # exists — it never overwrites. This is the actual atomicity
+          # boundary: whichever actor's create-ref call lands first wins, and
+          # every loser fails here, before publishing or touching any tag.
+          REF_PAYLOAD="$(jq -n --arg ref "refs/tags/$TAG" --arg sha "$TAG_OBJECT_SHA" '{ref: $ref, sha: $sha}')"
+          REF_RESPONSE="$(printf '%s' "$REF_PAYLOAD" | gh api -X POST "repos/$REPO/git/refs" --input - 2>&1)"
+          REF_STATUS=$?
+          if [ "$REF_STATUS" -ne 0 ]; then
+            if printf '%s' "$REF_RESPONSE" | grep -qi "already exists"; then
+              echo "::error::refs/tags/$TAG was created by another actor since validation (ref conflict). Aborting without publishing or cleanup of that ref."
+            else
+              echo "::error::failed to create refs/tags/$TAG: $REF_RESPONSE"
+            fi
+            exit 1
+          fi
+          OWNED_REF="true"
+          echo "Created refs/tags/$TAG -> tag object $TAG_OBJECT_SHA (this run owns this ref)."
+
+          # --- Step 3: verify the ref still resolves to our exact tag object ---
+          ACTUAL_SHA="$(gh api "repos/$REPO/git/ref/tags/$TAG" --jq .object.sha 2>/dev/null || echo "")"
+          if [ "$ACTUAL_SHA" != "$TAG_OBJECT_SHA" ]; then
+            echo "::error::refs/tags/$TAG resolves to '$ACTUAL_SHA', expected this run's tag object '$TAG_OBJECT_SHA'. Refusing to publish."
+            exit 1
+          fi
+
+          # --- Step 4: publish, verifying the existing tag rather than selecting code by --target ---
           NOTES_ARGS=(--generate-notes)
           if [ "$USE_GENERATED_NOTES" = "false" ]; then
             NOTES_ARGS=(--notes-file "$NOTES_PATH")
@@ -253,37 +349,17 @@ jobs:
             LATEST_ARG="--latest"
           fi
 
-          # `--target <sha>` with a tag name that does not yet exist makes
-          # `gh release create` create the tag from that exact commit and
-          # publish the release as a single API-driven action, instead of a
-          # separate `git tag` + `git push` step. This avoids the failure
-          # mode where a tag is pushed but the release creation call then
-          # fails, leaving an orphaned tag with no release: here, either the
-          # whole call succeeds, or nothing is created remotely.
-          gh release create "$TAG" \
-            --repo "${{ github.repository }}" \
-            --target "$SHA" \
+          if gh release create "$TAG" \
+            --repo "$REPO" \
+            --verify-tag \
             --title "$TAG" \
             "$LATEST_ARG" \
-            "${NOTES_ARGS[@]}"
-
-          echo "created=true" >> "$GITHUB_OUTPUT"
-
-      - name: Clean up an orphaned tag if publish failed
-        if: ${{ failure() && steps.publish.outputs.created != 'true' }}
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -euo pipefail
-          # Only ever touch the tag this run was responsible for, and only
-          # if it exists remotely with no matching release (i.e. gh created
-          # the tag ref but failed before/while publishing the release).
-          # No history is rewritten; this deletes a single tag ref at most.
-          if gh api "repos/${{ github.repository }}/git/ref/tags/$TAG" >/dev/null 2>&1; then
-            if ! gh release view "$TAG" --repo "${{ github.repository }}" >/dev/null 2>&1; then
-              echo "Removing orphaned tag '$TAG' left by a failed publish step."
-              gh api -X DELETE "repos/${{ github.repository }}/git/refs/tags/$TAG"
-            fi
+            "${NOTES_ARGS[@]}"; then
+            RELEASE_CREATED="true"
+            echo "Published release '$TAG' from tag object $TAG_OBJECT_SHA (commit $SHA)."
+          else
+            echo "::error::gh release create failed after refs/tags/$TAG was published by this run; evaluating ownership-gated cleanup."
+            exit 1
           fi
 
   dry-run-summary:
