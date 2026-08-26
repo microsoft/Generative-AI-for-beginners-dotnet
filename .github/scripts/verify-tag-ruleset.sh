@@ -23,8 +23,9 @@ set -euo pipefail
 find_protecting_ruleset() {
   local repo="$1" tag="$2"
   local target_ref="refs/tags/$tag"
+  local expected_pattern='refs/tags/20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]'
   local ids id detail enforcement target bypass_count
-  local has_update has_deletion has_creation matched excluded pattern
+  local has_update has_deletion has_creation include_count expected_include_count exclude_count
   local found_id="" found_name=""
 
   if ! ids="$(gh api "repos/$repo/rulesets?includes_parents=true&targets=tag" --paginate --jq '.[] | select(.enforcement=="active") | .id' 2>/dev/null | tr -d '\r')"; then
@@ -66,23 +67,17 @@ find_protecting_ruleset() {
     # silently accepted as "protection".
     [ "$has_creation" -eq 0 ] || continue
 
-    matched="false"
-    while IFS= read -r pattern; do
-      [ -z "$pattern" ] && continue
-      case "$target_ref" in
-        $pattern) matched="true" ;;
-      esac
-    done < <(jq -r '(.conditions.ref_name.include // [])[]' <<<"$detail" | tr -d '\r')
-    [ "$matched" = "true" ] || continue
-
-    excluded="false"
-    while IFS= read -r pattern; do
-      [ -z "$pattern" ] && continue
-      case "$target_ref" in
-        $pattern) excluded="true" ;;
-      esac
-    done < <(jq -r '(.conditions.ref_name.exclude // [])[]' <<<"$detail" | tr -d '\r')
-    [ "$excluded" = "false" ] || continue
+    # Do not emulate GitHub's File.fnmatch(..., FNM_PATHNAME) semantics with
+    # shell globs: Bash allows '*' to cross '/', while GitHub does not. Require
+    # the reviewed repository policy exactly so a broader or excluded pattern
+    # cannot make this fail-closed guard accept a misconfigured ruleset.
+    include_count="$(jq '(.conditions.ref_name.include // []) | length' <<<"$detail")"
+    expected_include_count="$(jq --arg expected "$expected_pattern" \
+      '[(.conditions.ref_name.include // [])[] | select(. == $expected)] | length' <<<"$detail")"
+    exclude_count="$(jq '(.conditions.ref_name.exclude // []) | length' <<<"$detail")"
+    [ "$include_count" -eq 1 ] || continue
+    [ "$expected_include_count" -eq 1 ] || continue
+    [ "$exclude_count" -eq 0 ] || continue
 
     if [ -n "$found_id" ]; then
       echo "::error::multiple active tag rulesets on '$repo' independently protect '$target_ref' with zero bypass (ids $found_id and $id). Consolidate to exactly one ruleset — an ambiguous protection state is not acceptable." >&2

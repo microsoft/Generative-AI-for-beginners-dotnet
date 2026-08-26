@@ -191,6 +191,41 @@ else
   pass "non-matching pattern: fails closed"
 fi
 
+# 5b. A broad Bash-matching pattern must be rejected. GitHub evaluates
+# ruleset patterns with File.fnmatch(..., FNM_PATHNAME), where '*' cannot
+# cross '/', so refs/* does not protect refs/tags/YYYY-MM-DD.
+reset_call_log
+GH_MOCK_RULESETS_JSON='[{"id": 51, "enforcement": "active"}]'
+GH_MOCK_RULESET_DETAIL[51]='{
+  "id": 51, "name": "Bash-only broad match", "target": "tag", "enforcement": "active", "bypass_actors": [],
+  "conditions": {"ref_name": {"include": ["refs/*"], "exclude": []}},
+  "rules": [{"type": "update"}, {"type": "deletion"}]
+}'
+if find_protecting_ruleset "o/r" "2026-08-26" >"$STDOUT_CAPTURE" 2>"$STDERR_CAPTURE"; then
+  fail "GitHub-incompatible broad pattern: expected failure, got success"
+else
+  pass "GitHub-incompatible broad pattern: fails closed"
+fi
+
+# 5c. Even the exact include is insufficient when an exclusion is present.
+reset_call_log
+GH_MOCK_RULESETS_JSON='[{"id": 52, "enforcement": "active"}]'
+GH_MOCK_RULESET_DETAIL[52]='{
+  "id": 52, "name": "Excluded release tag", "target": "tag", "enforcement": "active", "bypass_actors": [],
+  "conditions": {
+    "ref_name": {
+      "include": ["refs/tags/20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]"],
+      "exclude": ["refs/tags/2026-08-26"]
+    }
+  },
+  "rules": [{"type": "update"}, {"type": "deletion"}]
+}'
+if find_protecting_ruleset "o/r" "2026-08-26" >"$STDOUT_CAPTURE" 2>"$STDERR_CAPTURE"; then
+  fail "ruleset with exclusion: expected failure, got success"
+else
+  pass "ruleset with exclusion: fails closed"
+fi
+
 # 6. Duplicate: two independently-valid active rulesets both match
 reset_call_log
 GH_MOCK_RULESETS_JSON='[{"id": 6, "enforcement": "active"}, {"id": 7, "enforcement": "active"}]'
