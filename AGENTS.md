@@ -280,6 +280,30 @@ happens to mention the topic somewhere.
 No repository/org/cloud secrets are used anywhere in this workflow, and nothing secret is ever
 printed.
 
+### Release Workflow (`workflow_dispatch` only)
+
+`.github/workflows/squad-release.yml` is the only release automation in this repository — it has
+no `push` trigger and requires manual dispatch from the Actions tab against `main`. See
+`docs/releases/README.md` for the full tag convention, notes policy, and dry-run-first procedure.
+Key points for maintainers:
+- The workflow fails closed unless dispatched with `main` selected, and re-verifies via the
+  GitHub API that the dispatched commit is still the current tip of `main` before doing any
+  validation work, so a stale UI selection or a race with a fresh push is caught immediately.
+- `tag` and `notes_path` inputs are strictly validated (calendar-valid `YYYY-MM-DD`; a single
+  `docs/releases/<name>.md` file, no traversal/absolute paths/symlink escape) before anything
+  else runs.
+- Validation reuses `.github/workflows/build-validation.yml` via `workflow_call`, pinned to the
+  exact captured SHA (`ref` input) — the same five Release solution builds, six tests, and 13
+  file-based `app.cs` compiles used for PR validation, with no separate matrix to keep in sync.
+- `dry_run` (default `true`) runs every validation and duplicate-tag/release check and prints the
+  proposed SHA/tag/notes/latest plan, but creates nothing. Only a second dispatch with
+  `dry_run: false` can publish, and only after validation succeeds again against the same
+  captured SHA.
+- Publishing uses `gh release create --target <sha>` (not a separate `git tag` + push), so tag
+  creation and release publication happen as a single API-driven step — there is no window where
+  a tag exists with no matching release. `dotnet pack`/NuGet publishing is intentionally out of
+  scope and not implemented anywhere in this workflow.
+
 ### Manual Testing
 
 ```bash
