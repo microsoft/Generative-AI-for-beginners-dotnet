@@ -189,6 +189,19 @@ The following solutions are validated in CI:
 - `samples/AppsWithGenAI/SpaceAINet/SpaceAINet.sln`
 - `samples/MAF/MAF-Demos.slnx`
 
+### Validated File-Based `app.cs` Samples
+
+In addition to the solution matrix above, `.github/workflows/build-validation.yml` runs a
+secret-free `discover-file-based-apps` / `compile-file-based-apps` job pair that:
+- Discovers every tracked `samples/**/app.cs` file with `git ls-files` (no manual list to keep in sync).
+- Compiles each one independently with `dotnet build <path>` (no run, no credentials, no Ollama).
+- Uses `fail-fast: false` so every sample reports its own pass/fail, named by its path.
+
+To intentionally exclude a sample from this check (for example, a future OS-specific or
+credential-only file-based app), add its exact `git ls-files` path to the `EXCLUDED_SAMPLES`
+array in the `Discover tracked app.cs samples` step, with a comment explaining why. This list is
+empty today — every tracked file-based sample must compile secret-free.
+
 ### Manual Testing
 
 ```bash

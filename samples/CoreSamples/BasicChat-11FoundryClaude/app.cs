@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 
 var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 var endpoint = config["AzureOpenAI:Endpoint"]
@@ -85,9 +87,6 @@ while (true)
 
     history.Add(new ChatMessage(ChatRole.Assistant, sb.ToString()));
 }
-
-using System.Text.Json;
-using System.Text.Json.Nodes;
 
 /// <summary>
 /// HTTP message handler that transforms requests/responses between OpenAI format and Claude (Anthropic) format
