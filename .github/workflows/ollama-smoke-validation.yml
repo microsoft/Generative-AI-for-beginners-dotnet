@@ -1,10 +1,11 @@
 name: Ollama Smoke Validation (opt-in)
 
-# Manually triggered only. This workflow installs a real Ollama daemon, pulls a small
-# pinned model, and exercises the request + streaming paths of the three file-based
-# samples that talk to Ollama through OllamaSharp. It exists because compilation
-# (build-validation.yml) cannot catch runtime-only failures such as the OllamaSharp
-# serialization bug fixed in #528 — that bug only surfaced on the first live model call.
+# Manually triggered only. This workflow installs a real Ollama daemon from a pinned,
+# checksum-verified release asset, pulls a single fixed small model, and exercises the
+# request + streaming paths of the three file-based samples that talk to Ollama through
+# OllamaSharp. It exists because compilation (build-validation.yml) cannot catch
+# runtime-only failures such as the OllamaSharp serialization bug fixed in #528 — that
+# bug only surfaced on the first live model call.
 #
 # Scope (see "Validated File-Based app.cs Samples — Ollama Smoke Validation" in
 # AGENTS.md for the full policy):
@@ -12,17 +13,27 @@ name: Ollama Smoke Validation (opt-in)
 #   - samples/CoreSamples/BasicChat-10ConversationHistory/app.cs
 #       (Ollama fallback path, streaming, multi-turn context — no Azure secrets set)
 #   - samples/CoreSamples/BasicChat-07Ollama-gpt-oss/app.cs
-#       (runner-local TEMP COPY only, with gpt-oss:20b swapped for phi4-mini;
+#       (runner-local TEMP COPY only, with gpt-oss:20b swapped for the pinned model;
 #        the tracked source file is never modified)
+#
+# Model policy: OLLAMA_MODEL below is the single source of truth for the pinned model
+# tag (phi4-mini). It is NOT exposed as a workflow_dispatch input — an arbitrary
+# operator-supplied model tag would be unpulled/unpinned and could silently invalidate
+# every assertion in this workflow. To change the pinned model, edit OLLAMA_MODEL here
+# and the matching policy text in AGENTS.md together.
+#
+# Install policy: Ollama is installed from the official versioned GitHub release asset
+# (not `curl | sh`, which fetches a mutable script and runs it as root). The exact
+# release tag and the artifact's published SHA-256 digest (from the release's own
+# sha256sum.txt, cross-checked by downloading and hashing the artifact) are pinned
+# below and verified with `sha256sum --check` before the archive is ever extracted.
 #
 # No repository/org/cloud secrets are used. Nothing secret is ever printed.
 'on':
-  workflow_dispatch:
-    inputs:
-      model:
-        description: 'Ollama model tag to pull and smoke-test (small models only; default matches the pinned tag documented in AGENTS.md)'
-        required: false
-        default: 'phi4-mini'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
 
 jobs:
   ollama-smoke:
@@ -31,31 +42,57 @@ jobs:
     timeout-minutes: 30
 
     env:
-      OLLAMA_MODEL: ${{ inputs.model }}
+      # Single documented pinned-model constant (see AGENTS.md). Not overridable.
+      OLLAMA_MODEL: phi4-mini
       OLLAMA_HOST_URL: http://127.0.0.1:11434
+      # Pinned Ollama release (linux/amd64) + its official published SHA-256 digest.
+      # Digest verified against https://github.com/ollama/ollama/releases/download/v0.12.11/sha256sum.txt
+      OLLAMA_RELEASE_VERSION: v0.12.11
+      OLLAMA_RELEASE_ASSET: ollama-linux-amd64.tgz
+      OLLAMA_RELEASE_SHA256: fb140ea4243706d0087b0108418ee5c6f74edcebf5f14e2f289b8e36bd303d0f
 
     steps:
     - name: Checkout code
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
 
     - name: Setup .NET 10.0
       uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
       with:
         dotnet-version: '10.0.x'
 
-    - name: Install Ollama
+    - name: Install Ollama (pinned release, checksum-verified)
       id: install
       shell: bash
       run: |
         set -euo pipefail
         echo "### Ollama install" >> "$GITHUB_STEP_SUMMARY"
-        if curl -fsSL https://ollama.com/install.sh | sh; then
-          echo "- ✅ Ollama installed" >> "$GITHUB_STEP_SUMMARY"
-        else
-          echo "- ❌ Ollama install script failed" >> "$GITHUB_STEP_SUMMARY"
+
+        download_url="https://github.com/ollama/ollama/releases/download/${OLLAMA_RELEASE_VERSION}/${OLLAMA_RELEASE_ASSET}"
+        archive_path="$RUNNER_TEMP/${OLLAMA_RELEASE_ASSET}"
+        install_dir="$RUNNER_TEMP/ollama-${OLLAMA_RELEASE_VERSION}"
+
+        curl --fail --show-error --silent --location \
+          --connect-timeout 10 --max-time 120 \
+          --output "$archive_path" "$download_url"
+
+        printf '%s  %s\n' "$OLLAMA_RELEASE_SHA256" "$archive_path" > "$archive_path.sha256"
+        if ! sha256sum --check --strict "$archive_path.sha256"; then
+          echo "- ❌ Downloaded artifact failed SHA-256 verification against the pinned digest — aborting, not extracting" >> "$GITHUB_STEP_SUMMARY"
           exit 1
         fi
-        ollama --version
+
+        mkdir -p "$install_dir"
+        tar -xzf "$archive_path" -C "$install_dir"
+        rm -f "$archive_path" "$archive_path.sha256"
+
+        echo "$install_dir/bin" >> "$GITHUB_PATH"
+        echo "- ✅ Installed Ollama ${OLLAMA_RELEASE_VERSION} from the pinned release asset (SHA-256 verified, no installer script executed, no root required)" >> "$GITHUB_STEP_SUMMARY"
+
+    - name: Verify Ollama binary
+      shell: bash
+      run: ollama --version
 
     - name: Start Ollama daemon
       id: start
@@ -74,7 +111,9 @@ jobs:
         echo "### Ollama readiness" >> "$GITHUB_STEP_SUMMARY"
         ready=false
         for attempt in $(seq 1 30); do
-          if curl -fsS "$OLLAMA_HOST_URL/api/version" > /dev/null 2>&1; then
+          if curl --fail --silent --show-error \
+            --connect-timeout 2 --max-time 5 \
+            "$OLLAMA_HOST_URL/api/version" > /dev/null 2>&1; then
             ready=true
             break
           fi
@@ -165,14 +204,66 @@ jobs:
           exit 1
         fi
 
-        answer_count=$(grep -c "^AI: " "$output_file" || true)
-        if [ "$answer_count" -lt 2 ]; then
-          echo "- ❌ Expected 2 streamed AI answers, found $answer_count — multi-turn context was not exercised" >> "$GITHUB_STEP_SUMMARY"
+        # Parse the two streamed responses out of the exact piped-stdin output shape:
+        # each turn is "Q (empty to exit): AI: <streamed text>\n", so splitting on the
+        # prompt marker isolates response 1 and response 2 even if the streamed text
+        # itself spans multiple lines. This deliberately does NOT just count "AI: "
+        # markers or grep the whole file — each response is validated on its own.
+        response1_file="$RUNNER_TEMP/basicchat-10-response1.txt"
+        response2_file="$RUNNER_TEMP/basicchat-10-response2.txt"
+        if ! python3 - "$output_file" "$response1_file" "$response2_file" <<'PY'
+        import sys
+
+        output_path, r1_path, r2_path = sys.argv[1:4]
+        text = open(output_path, encoding="utf-8", errors="replace").read()
+
+        MARKER = "Q (empty to exit): "
+        parts = text.split(MARKER)
+        # parts[0] is the banner before the first prompt; parts[1] and parts[2] are the
+        # two question/answer turns (each begins with "AI: "); anything after is the
+        # trailing empty-input exit prompt.
+        if len(parts) < 3:
+            print(f"Expected two prompt/answer turns, found {max(len(parts) - 1, 0)}.", file=sys.stderr)
+            sys.exit(1)
+
+        def extract_answer(turn_text):
+            prefix = "AI: "
+            if not turn_text.startswith(prefix):
+                return None
+            return turn_text[len(prefix):].strip()
+
+        answer1 = extract_answer(parts[1])
+        answer2 = extract_answer(parts[2])
+
+        if answer1 is None or answer2 is None:
+            print("One or both turns did not start with the expected 'AI: ' marker.", file=sys.stderr)
+            sys.exit(1)
+
+        open(r1_path, "w", encoding="utf-8").write(answer1)
+        open(r2_path, "w", encoding="utf-8").write(answer2)
+        PY
+        then
+          echo "- ❌ Could not parse two distinct streamed responses out of the piped-stdin output" >> "$GITHUB_STEP_SUMMARY"
           exit 1
         fi
 
-        if ! grep -qiE "france|paris|capital" "$output_file"; then
-          echo "- ❌ Second turn does not reference the first turn's topic — conversation history may not be carried across turns" >> "$GITHUB_STEP_SUMMARY"
+        response1_words=$(wc -w < "$response1_file")
+        response2_words=$(wc -w < "$response2_file")
+
+        if [ "$response1_words" -lt 3 ]; then
+          echo "- ❌ First response was only $response1_words word(s) — treating as no model response" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+        if [ "$response2_words" -lt 3 ]; then
+          echo "- ❌ Second response was only $response2_words word(s) — treating as no model response" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+
+        # Context-carryover check applies ONLY to response 2 — response 1 is the
+        # answer to the France question itself, so checking it here would be
+        # tautological and wouldn't prove history was carried into turn 2.
+        if ! grep -qiE "france|paris|capital" "$response2_file"; then
+          echo "- ❌ Second response does not reference the first question's topic — conversation history may not be carried across turns" >> "$GITHUB_STEP_SUMMARY"
           exit 1
         fi
 
@@ -180,9 +271,9 @@ jobs:
           echo "- ❌ Sample output contains an exception signature" >> "$GITHUB_STEP_SUMMARY"
           exit 1
         fi
-        echo "- ✅ Ollama fallback selected, $answer_count streamed answers, second turn kept first turn's context" >> "$GITHUB_STEP_SUMMARY"
+        echo "- ✅ Ollama fallback selected, both responses substantive ($response1_words / $response2_words words), second response carried the first turn's context" >> "$GITHUB_STEP_SUMMARY"
 
-    - name: Smoke test BasicChat-07Ollama-gpt-oss (runner-local phi4-mini copy)
+    - name: Smoke test BasicChat-07Ollama-gpt-oss (runner-local pinned-model copy)
       id: sample-07
       shell: bash
       run: |
@@ -192,16 +283,19 @@ jobs:
         # The tracked source is never modified. We copy it to a runner-local temp
         # directory outside the repo working tree and only swap the model tag there.
         src_dir="samples/CoreSamples/BasicChat-07Ollama-gpt-oss"
-        tmp_dir="$RUNNER_TEMP/basicchat-07-phi4mini"
+        tmp_dir="$RUNNER_TEMP/basicchat-07-${OLLAMA_MODEL}"
         rm -rf "$tmp_dir"
         mkdir -p "$tmp_dir"
         cp "$src_dir/app.cs" "$tmp_dir/app.cs"
 
-        # Model-tag drift risk: this substitution assumes phi4-mini's smaller size and
-        # non-reasoning profile is an acceptable stand-in for gpt-oss:20b's reasoning
-        # behavior purely to exercise the OllamaSharp request path. It does NOT validate
-        # gpt-oss:20b-specific reasoning output — see AGENTS.md for the documented policy.
-        sed -i 's/gpt-oss:20b/phi4-mini/' "$tmp_dir/app.cs"
+        # Model-tag drift risk: this substitution assumes the pinned OLLAMA_MODEL's
+        # smaller size and non-reasoning profile is an acceptable stand-in for
+        # gpt-oss:20b's reasoning behavior purely to exercise the OllamaSharp request
+        # path. It does NOT validate gpt-oss:20b-specific reasoning output — see
+        # AGENTS.md for the documented policy. OLLAMA_MODEL is a fixed workflow
+        # constant (not operator input), so substituting it via sed carries no
+        # injection risk.
+        sed -i "s/gpt-oss:20b/${OLLAMA_MODEL}/" "$tmp_dir/app.cs"
         if grep -q "gpt-oss:20b" "$tmp_dir/app.cs"; then
           echo "- ❌ Model tag substitution failed on the temp copy" >> "$GITHUB_STEP_SUMMARY"
           exit 1
@@ -236,7 +330,7 @@ jobs:
           echo "- ❌ Sample output contains an exception/serialization error signature" >> "$GITHUB_STEP_SUMMARY"
           exit 1
         fi
-        echo "- ✅ Temp copy compiled/ran against phi4-mini, tracked source untouched, ${word_count}-word response, no exception signatures" >> "$GITHUB_STEP_SUMMARY"
+        echo "- ✅ Temp copy compiled/ran against ${OLLAMA_MODEL}, tracked source untouched, ${word_count}-word response, no exception signatures" >> "$GITHUB_STEP_SUMMARY"
 
     - name: Stop Ollama daemon
       if: always()

@@ -225,11 +225,29 @@ OllamaSharp code path:
   substitutes the model tag before compiling/running the copy (see Substitution policy below).
   The workflow step verifies with `git diff --quiet` that the tracked source is untouched.
 
-**Substitution policy & model-tag drift risk** — the workflow pulls a single small pinned
-model, `phi4-mini` (overridable via the `model` `workflow_dispatch` input for maintainers who
-need to test a different tag). `BasicChat-07Ollama-gpt-oss` is written against `gpt-oss:20b`,
-a much larger reasoning model that isn't practical to pull on a hosted runner within a bounded
-timeout. Swapping in `phi4-mini` only proves the OllamaSharp request path (client
+**Install policy** — Ollama is installed from a pinned, versioned GitHub release asset
+(`ollama-linux-amd64.tgz` for release `v0.12.11`), never from `curl https://ollama.com/install.sh
+| sh`. The download is verified against a hardcoded SHA-256 digest (taken from that release's own
+`sha256sum.txt` and independently confirmed by hashing the downloaded artifact) using
+`sha256sum --check --strict` before the archive is ever extracted; a digest mismatch aborts the
+job without extracting anything. The archive is unpacked into a runner-local temp directory and
+never installed as a system service, so nothing is ever executed as root or outside the job's own
+temp workspace. To move to a newer Ollama release, update `OLLAMA_RELEASE_VERSION`,
+`OLLAMA_RELEASE_ASSET`, and `OLLAMA_RELEASE_SHA256` together in the workflow, re-deriving the
+digest from that release's own `sha256sum.txt`.
+
+**Model policy** — the workflow pulls a single fixed pinned model, `phi4-mini`, defined once as
+the `OLLAMA_MODEL` workflow constant. It is **not** exposed as a `workflow_dispatch` input:
+allowing an arbitrary operator-supplied model tag would let an unpinned, unpulled model silently
+invalidate every assertion in this workflow (word-count thresholds, fallback-label check,
+context-carryover check) and would also select which model the `BasicChat-07Ollama-gpt-oss` temp
+copy substitutes in, defeating that step's own policy below. To test a different tag, change
+`OLLAMA_MODEL` in the workflow and this policy text together.
+
+**Substitution policy & model-tag drift risk** — `BasicChat-07Ollama-gpt-oss` is written against
+`gpt-oss:20b`, a much larger reasoning model that isn't practical to pull on a hosted runner
+within a bounded timeout. The workflow's temp copy substitutes the pinned `OLLAMA_MODEL`
+(`phi4-mini`) in place of `gpt-oss:20b`, which only proves the OllamaSharp request path (client
 construction, serialization, response parsing) works end-to-end — it does **not** validate
 `gpt-oss:20b`-specific reasoning quality or behavior. If OllamaSharp ever regresses in a way
 that's specific to larger/reasoning models, this substitution would not catch it; treat a green
@@ -237,18 +255,27 @@ run here as evidence for the shared client/serialization path only, not as a cla
 `gpt-oss:20b` itself.
 
 **Timeout behavior** — every step is individually bounded so a hang fails fast with a clear
-step name instead of consuming the whole job budget: readiness polling is capped at 60s
-(30 attempts × 2s), the model pull at 900s, and each sample run at 180s via `timeout`. The job
-itself has a 30-minute `timeout-minutes` ceiling. Step names and `GITHUB_STEP_SUMMARY` entries
-distinguish Ollama install/readiness/model-pull failures from sample-level regressions, and the
-Ollama daemon is stopped best-effort in an `if: always()` cleanup step regardless of outcome.
+step name instead of consuming the whole job budget: the pinned-release download is capped by
+`curl --connect-timeout 10 --max-time 120`, readiness polling combines a 60s outer bound
+(30 attempts × 2s) with a per-request `curl --connect-timeout 2 --max-time 5`, the model pull is
+capped at 900s via `timeout`, and each sample run at 180s via `timeout`. The job itself has a
+30-minute `timeout-minutes` ceiling. Step names and `GITHUB_STEP_SUMMARY` entries distinguish
+Ollama install/readiness/model-pull failures from sample-level regressions, and the Ollama
+daemon is stopped best-effort in an `if: always()` cleanup step regardless of outcome.
+
+**Least privilege** — the workflow declares `permissions: contents: read` at the top level (no
+broader default token permissions), and the checkout step sets `persist-credentials: false` so
+the job's `GITHUB_TOKEN` credential is never written to disk for later steps to pick up.
 
 **Assertions** — a sample only passes if it exits 0 **and** produces a model response of
 meaningful length (≥15 words) with no exception/serialization-error signatures in its output;
 for `BasicChat-10ConversationHistory` the check additionally confirms the Ollama fallback label
-was printed (proving no Azure secrets were picked up), that two streamed answers were produced,
-and that the second answer references the first question's topic (proving conversation history
-was actually carried across turns, not just that the process exited cleanly).
+was printed (proving no Azure secrets were picked up), parses the first and second streamed
+responses out of the exact piped-stdin output shape and validates each independently for
+substantive content (≥3 words), and checks that **only the second response** references the
+first question's topic (`france|paris|capital`) — proving conversation history was actually
+carried across turns, not just that the process exited cleanly or that the transcript as a whole
+happens to mention the topic somewhere.
 
 No repository/org/cloud secrets are used anywhere in this workflow, and nothing secret is ever
 printed.
