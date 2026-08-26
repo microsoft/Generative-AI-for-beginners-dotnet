@@ -1,34 +1,310 @@
 name: Squad Release
-# Project type was not detected — configure build, test, and release commands below
 
+# Manual, dispatch-only release. There is no push trigger: this repository has
+# no dev/preview/insider branches, so a release is a deliberate, human-invoked
+# action against the tip of main, gated on the exact validated commit SHA.
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: >-
+          Release tag (YYYY-MM-DD). Leave empty to use the current UTC date.
+        required: false
+        default: ''
+        type: string
+      notes_path:
+        description: >-
+          Repo-relative path to curated release notes, e.g.
+          docs/releases/2026-08-26.md. Must live directly under
+          docs/releases/ and end in .md. Leave empty to use
+          GitHub-generated notes.
+        required: false
+        default: ''
+        type: string
+      dry_run:
+        description: >-
+          Dry run: validate and print the plan without creating a tag or
+          release.
+        required: false
+        default: 'true'
+        type: choice
+        options: ['true', 'false']
+      mark_latest:
+        description: 'Mark this release as "Latest" on GitHub.'
+        required: false
+        default: 'true'
+        type: choice
+        options: ['true', 'false']
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  release:
+  resolve:
+    name: Resolve and validate release inputs
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      sha: ${{ steps.resolve.outputs.sha }}
+      tag: ${{ steps.resolve.outputs.tag }}
+      notes_path: ${{ steps.resolve.outputs.notes_path }}
+      use_generated_notes: ${{ steps.resolve.outputs.use_generated_notes }}
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          fetch-depth: 0
-
-      - name: Build and test
+      - name: Fail closed unless dispatched against main
+        shell: bash
         run: |
-          # TODO: Project type was not detected — add your build/test commands here
-          # Go:            go test ./...
-          # Python:        pip install -r requirements.txt && pytest
-          # .NET:          dotnet test
-          # Java (Maven):  mvn test
-          # Java (Gradle): ./gradlew test
-          echo "No build commands configured — update squad-release.yml"
+          set -euo pipefail
+          if [ "${{ github.event_name }}" != "workflow_dispatch" ]; then
+            echo "::error::This workflow may only run via workflow_dispatch."
+            exit 1
+          fi
+          if [ "${{ github.ref }}" != "refs/heads/main" ]; then
+            echo "::error::This workflow must be dispatched with 'main' selected as the branch, got '${{ github.ref }}'."
+            exit 1
+          fi
 
-      - name: Create release
+      - name: Checkout captured commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Resolve, validate, and lock inputs to an immutable SHA
+        id: resolve
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG_INPUT: ${{ inputs.tag }}
+          NOTES_PATH_INPUT: ${{ inputs.notes_path }}
+        run: |
+          set -euo pipefail
+
+          SHA="${{ github.sha }}"
+
+          # --- Guard: main must not have moved since the SHA was captured ---
+          # workflow_dispatch fixes github.sha to the tip of the selected ref
+          # at trigger time. Re-check against the *current* remote tip so a
+          # dispatch against a stale UI selection (or a race with a fresh
+          # push) is caught here, before any validation work starts. Every
+          # later job/step reuses this captured SHA verbatim — main moving
+          # again after this point cannot change what gets validated/released.
+          REMOTE_MAIN_SHA="$(gh api "repos/${{ github.repository }}/commits/main" --jq .sha)"
+          if [ "$REMOTE_MAIN_SHA" != "$SHA" ]; then
+            echo "::error::main has moved since this workflow was dispatched (dispatched SHA $SHA, current main $REMOTE_MAIN_SHA). Re-run the workflow to capture the new tip."
+            exit 1
+          fi
+
+          # --- Validate/compute tag ---
+          if [ -z "$TAG_INPUT" ]; then
+            TAG="$(date -u +%Y-%m-%d)"
+          else
+            TAG="$TAG_INPUT"
+            if [[ ! "$TAG" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+              echo "::error::tag '$TAG' must match the literal format YYYY-MM-DD."
+              exit 1
+            fi
+            # Reject shell/relative-date tricks and calendar-invalid dates
+            # (e.g. 2026-02-30) by round-tripping through `date -u` and
+            # requiring an exact match back to the literal input.
+            NORMALIZED="$(date -u -d "$TAG" +%Y-%m-%d 2>/dev/null)" || {
+              echo "::error::tag '$TAG' is not a valid calendar date."
+              exit 1
+            }
+            if [ "$NORMALIZED" != "$TAG" ]; then
+              echo "::error::tag '$TAG' is not a valid calendar date."
+              exit 1
+            fi
+          fi
+
+          # --- Validate notes path (empty => GitHub-generated notes) ---
+          USE_GENERATED_NOTES="true"
+          NOTES_PATH=""
+          if [ -n "$NOTES_PATH_INPUT" ]; then
+            USE_GENERATED_NOTES="false"
+            NOTES_PATH="$NOTES_PATH_INPUT"
+
+            # Single path component directly under docs/releases/, no
+            # traversal, no absolute paths, no backslashes, no shell
+            # metacharacters — enforced by the character class itself.
+            if [[ ! "$NOTES_PATH" =~ ^docs/releases/[A-Za-z0-9._-]+\.md$ ]]; then
+              echo "::error::notes_path '$NOTES_PATH' must be a repo-relative path of the form docs/releases/<name>.md."
+              exit 1
+            fi
+            case "$NOTES_PATH" in
+              *..*)
+                echo "::error::notes_path must not contain '..'."
+                exit 1
+                ;;
+            esac
+
+            if [ ! -e "$NOTES_PATH" ]; then
+              echo "::error::notes_path '$NOTES_PATH' does not exist in the validated commit."
+              exit 1
+            fi
+            if [ -L "$NOTES_PATH" ]; then
+              echo "::error::notes_path '$NOTES_PATH' must not be a symlink."
+              exit 1
+            fi
+
+            # Defense in depth: resolve the real path and confirm it did not
+            # escape docs/releases/ via a symlinked ancestor directory.
+            ALLOWED_DIR="$(readlink -f -- "docs/releases")"
+            RESOLVED="$(readlink -f -- "$NOTES_PATH")"
+            case "$RESOLVED" in
+              "$ALLOWED_DIR"/*) ;;
+              *)
+                echo "::error::notes_path '$NOTES_PATH' resolves outside docs/releases/."
+                exit 1
+                ;;
+            esac
+            if [ ! -f "$NOTES_PATH" ]; then
+              echo "::error::notes_path '$NOTES_PATH' must be a regular file."
+              exit 1
+            fi
+          fi
+
+          # --- Reject duplicate tag / release before any validation work ---
+          if git rev-parse -q --verify "refs/tags/$TAG" >/dev/null 2>&1; then
+            echo "::error::tag '$TAG' already exists locally at the validated commit's history."
+            exit 1
+          fi
+          if gh api "repos/${{ github.repository }}/git/ref/tags/$TAG" >/dev/null 2>&1; then
+            echo "::error::tag '$TAG' already exists on the remote."
+            exit 1
+          fi
+          if gh release view "$TAG" --repo "${{ github.repository }}" >/dev/null 2>&1; then
+            echo "::error::a GitHub release for tag '$TAG' already exists."
+            exit 1
+          fi
+
+          echo "Resolved release plan:"
+          echo "  sha:                  $SHA"
+          echo "  tag:                  $TAG"
+          echo "  notes source:         $([ "$USE_GENERATED_NOTES" = "true" ] && echo "GitHub-generated" || echo "$NOTES_PATH")"
+          echo "  dry_run:              ${{ inputs.dry_run }}"
+          echo "  mark_latest:          ${{ inputs.mark_latest }}"
+
+          {
+            echo "sha=$SHA"
+            echo "tag=$TAG"
+            echo "notes_path=$NOTES_PATH"
+            echo "use_generated_notes=$USE_GENERATED_NOTES"
+          } >> "$GITHUB_OUTPUT"
+
+  validate:
+    name: Validate release commit
+    needs: resolve
+    permissions:
+      contents: read
+    uses: ./.github/workflows/build-validation.yml
+    with:
+      ref: ${{ needs.resolve.outputs.sha }}
+
+  publish:
+    name: Publish release
+    needs: [resolve, validate]
+    if: ${{ inputs.dry_run == 'false' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      TAG: ${{ needs.resolve.outputs.tag }}
+      SHA: ${{ needs.resolve.outputs.sha }}
+      NOTES_PATH: ${{ needs.resolve.outputs.notes_path }}
+      USE_GENERATED_NOTES: ${{ needs.resolve.outputs.use_generated_notes }}
+      MARK_LATEST: ${{ inputs.mark_latest }}
+    steps:
+      - name: Checkout captured commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.resolve.outputs.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Re-check for a duplicate tag/release immediately before publishing
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # TODO: Add your release commands here (e.g., git tag, gh release create)
-          echo "No release commands configured — update squad-release.yml"
+          set -euo pipefail
+          if gh api "repos/${{ github.repository }}/git/ref/tags/$TAG" >/dev/null 2>&1; then
+            echo "::error::tag '$TAG' was created by another run since validation. Aborting."
+            exit 1
+          fi
+          if gh release view "$TAG" --repo "${{ github.repository }}" >/dev/null 2>&1; then
+            echo "::error::a GitHub release for tag '$TAG' was created by another run since validation. Aborting."
+            exit 1
+          fi
+
+      - name: Create tag and publish release atomically at the validated SHA
+        id: publish
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          NOTES_ARGS=(--generate-notes)
+          if [ "$USE_GENERATED_NOTES" = "false" ]; then
+            NOTES_ARGS=(--notes-file "$NOTES_PATH")
+          fi
+
+          LATEST_ARG="--latest=false"
+          if [ "$MARK_LATEST" = "true" ]; then
+            LATEST_ARG="--latest"
+          fi
+
+          # `--target <sha>` with a tag name that does not yet exist makes
+          # `gh release create` create the tag from that exact commit and
+          # publish the release as a single API-driven action, instead of a
+          # separate `git tag` + `git push` step. This avoids the failure
+          # mode where a tag is pushed but the release creation call then
+          # fails, leaving an orphaned tag with no release: here, either the
+          # whole call succeeds, or nothing is created remotely.
+          gh release create "$TAG" \
+            --repo "${{ github.repository }}" \
+            --target "$SHA" \
+            --title "$TAG" \
+            "$LATEST_ARG" \
+            "${NOTES_ARGS[@]}"
+
+          echo "created=true" >> "$GITHUB_OUTPUT"
+
+      - name: Clean up an orphaned tag if publish failed
+        if: ${{ failure() && steps.publish.outputs.created != 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          # Only ever touch the tag this run was responsible for, and only
+          # if it exists remotely with no matching release (i.e. gh created
+          # the tag ref but failed before/while publishing the release).
+          # No history is rewritten; this deletes a single tag ref at most.
+          if gh api "repos/${{ github.repository }}/git/ref/tags/$TAG" >/dev/null 2>&1; then
+            if ! gh release view "$TAG" --repo "${{ github.repository }}" >/dev/null 2>&1; then
+              echo "Removing orphaned tag '$TAG' left by a failed publish step."
+              gh api -X DELETE "repos/${{ github.repository }}/git/refs/tags/$TAG"
+            fi
+          fi
+
+  dry-run-summary:
+    name: Dry run summary
+    needs: [resolve, validate]
+    if: ${{ inputs.dry_run == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Print the proposed release plan (no tag/release created)
+        run: |
+          echo "### 🔍 Dry run — nothing was created" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Validated SHA:** \`${{ needs.resolve.outputs.sha }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Proposed tag:** \`${{ needs.resolve.outputs.tag }}\`" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${{ needs.resolve.outputs.use_generated_notes }}" = "true" ]; then
+            echo "- **Notes source:** GitHub-generated" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- **Notes source:** \`${{ needs.resolve.outputs.notes_path }}\`" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo "- **Mark as latest:** ${{ inputs.mark_latest }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Validation passed for this exact SHA. Re-run with \`dry_run: false\` to publish." >> "$GITHUB_STEP_SUMMARY"

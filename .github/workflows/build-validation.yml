@@ -11,6 +11,20 @@ name: .NET Build Validation
     - 'samples/**/*.razor'
     - 'samples/**/*.json'
     - '.github/workflows/build-validation.yml'
+  workflow_call:
+    inputs:
+      ref:
+        description: >-
+          Exact commit SHA (or ref) to validate. Defaults to the SHA that
+          triggered this workflow run when not provided, so callers MUST pass
+          an explicit, previously-captured SHA to guarantee validation runs
+          against an immutable commit rather than a branch tip that can move.
+        required: false
+        type: string
+        default: ''
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -35,6 +49,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        ref: ${{ inputs.ref || github.sha }}
 
     - name: Setup .NET 10.0
       uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
@@ -64,6 +80,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        ref: ${{ inputs.ref || github.sha }}
 
     - name: Discover tracked app.cs samples
       id: discover
@@ -119,6 +137,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        ref: ${{ inputs.ref || github.sha }}
 
     - name: Setup .NET 10.0
       uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0

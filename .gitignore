@@ -21,6 +21,10 @@ mono_crash.*
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
+# ...except this repo's committed release documentation, which is not a build
+# output directory despite matching the [Rr]eleases/ pattern above.
+!docs/releases/
+!docs/releases/**
 x64/
 x86/
 [Ww][Ii][Nn]32/
