@@ -202,6 +202,57 @@ credential-only file-based app), add its exact `git ls-files` path to the `EXCLU
 array in the `Discover tracked app.cs samples` step, with a comment explaining why. This list is
 empty today — every tracked file-based sample must compile secret-free.
 
+### Ollama Smoke Validation (opt-in, `workflow_dispatch` only)
+
+Compilation alone cannot catch runtime-only regressions in the OllamaSharp integration (see
+the serialization bug fixed by #528, which only surfaced on the first live model call).
+`.github/workflows/ollama-smoke-validation.yml` closes that gap with a **manually triggered**
+workflow — it has no `push`/`pull_request` trigger, so it never runs automatically and never
+adds a model download to normal PR validation. Trigger it from the Actions tab
+(**Ollama Smoke Validation (opt-in)** → **Run workflow**) or with
+`gh workflow run ollama-smoke-validation.yml`.
+
+**Sample scope** — exactly three file-based samples are exercised, each covering a distinct
+OllamaSharp code path:
+- `samples/CoreSamples/BasicChat-03Ollama/app.cs` — single-turn request path, run exactly as
+  committed.
+- `samples/CoreSamples/BasicChat-10ConversationHistory/app.cs` — run with no Azure user-secrets
+  configured, so the sample's own fallback logic (already in the committed source) selects the
+  local Ollama client. Two questions are piped over stdin to exercise the streaming
+  (`GetStreamingResponseAsync`) and multi-turn conversation-history paths in one run.
+- `samples/CoreSamples/BasicChat-07Ollama-gpt-oss/app.cs` — **the tracked file is never
+  modified.** The workflow copies it to a runner-local `$RUNNER_TEMP` directory and only there
+  substitutes the model tag before compiling/running the copy (see Substitution policy below).
+  The workflow step verifies with `git diff --quiet` that the tracked source is untouched.
+
+**Substitution policy & model-tag drift risk** — the workflow pulls a single small pinned
+model, `phi4-mini` (overridable via the `model` `workflow_dispatch` input for maintainers who
+need to test a different tag). `BasicChat-07Ollama-gpt-oss` is written against `gpt-oss:20b`,
+a much larger reasoning model that isn't practical to pull on a hosted runner within a bounded
+timeout. Swapping in `phi4-mini` only proves the OllamaSharp request path (client
+construction, serialization, response parsing) works end-to-end — it does **not** validate
+`gpt-oss:20b`-specific reasoning quality or behavior. If OllamaSharp ever regresses in a way
+that's specific to larger/reasoning models, this substitution would not catch it; treat a green
+run here as evidence for the shared client/serialization path only, not as a claim about
+`gpt-oss:20b` itself.
+
+**Timeout behavior** — every step is individually bounded so a hang fails fast with a clear
+step name instead of consuming the whole job budget: readiness polling is capped at 60s
+(30 attempts × 2s), the model pull at 900s, and each sample run at 180s via `timeout`. The job
+itself has a 30-minute `timeout-minutes` ceiling. Step names and `GITHUB_STEP_SUMMARY` entries
+distinguish Ollama install/readiness/model-pull failures from sample-level regressions, and the
+Ollama daemon is stopped best-effort in an `if: always()` cleanup step regardless of outcome.
+
+**Assertions** — a sample only passes if it exits 0 **and** produces a model response of
+meaningful length (≥15 words) with no exception/serialization-error signatures in its output;
+for `BasicChat-10ConversationHistory` the check additionally confirms the Ollama fallback label
+was printed (proving no Azure secrets were picked up), that two streamed answers were produced,
+and that the second answer references the first question's topic (proving conversation history
+was actually carried across turns, not just that the process exited cleanly).
+
+No repository/org/cloud secrets are used anywhere in this workflow, and nothing secret is ever
+printed.
+
 ### Manual Testing
 
 ```bash

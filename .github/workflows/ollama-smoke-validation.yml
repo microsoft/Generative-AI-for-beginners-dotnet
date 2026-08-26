@@ -1,0 +1,250 @@
+name: Ollama Smoke Validation (opt-in)
+
+# Manually triggered only. This workflow installs a real Ollama daemon, pulls a small
+# pinned model, and exercises the request + streaming paths of the three file-based
+# samples that talk to Ollama through OllamaSharp. It exists because compilation
+# (build-validation.yml) cannot catch runtime-only failures such as the OllamaSharp
+# serialization bug fixed in #528 — that bug only surfaced on the first live model call.
+#
+# Scope (see "Validated File-Based app.cs Samples — Ollama Smoke Validation" in
+# AGENTS.md for the full policy):
+#   - samples/CoreSamples/BasicChat-03Ollama/app.cs           (request path, as committed)
+#   - samples/CoreSamples/BasicChat-10ConversationHistory/app.cs
+#       (Ollama fallback path, streaming, multi-turn context — no Azure secrets set)
+#   - samples/CoreSamples/BasicChat-07Ollama-gpt-oss/app.cs
+#       (runner-local TEMP COPY only, with gpt-oss:20b swapped for phi4-mini;
+#        the tracked source file is never modified)
+#
+# No repository/org/cloud secrets are used. Nothing secret is ever printed.
+'on':
+  workflow_dispatch:
+    inputs:
+      model:
+        description: 'Ollama model tag to pull and smoke-test (small models only; default matches the pinned tag documented in AGENTS.md)'
+        required: false
+        default: 'phi4-mini'
+
+jobs:
+  ollama-smoke:
+    name: Ollama smoke validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    env:
+      OLLAMA_MODEL: ${{ inputs.model }}
+      OLLAMA_HOST_URL: http://127.0.0.1:11434
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+    - name: Setup .NET 10.0
+      uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+      with:
+        dotnet-version: '10.0.x'
+
+    - name: Install Ollama
+      id: install
+      shell: bash
+      run: |
+        set -euo pipefail
+        echo "### Ollama install" >> "$GITHUB_STEP_SUMMARY"
+        if curl -fsSL https://ollama.com/install.sh | sh; then
+          echo "- ✅ Ollama installed" >> "$GITHUB_STEP_SUMMARY"
+        else
+          echo "- ❌ Ollama install script failed" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+        ollama --version
+
+    - name: Start Ollama daemon
+      id: start
+      shell: bash
+      run: |
+        set -euo pipefail
+        nohup ollama serve > ollama-serve.log 2>&1 &
+        echo "$!" > ollama.pid
+        echo "Started Ollama daemon with PID $(cat ollama.pid)"
+
+    - name: Wait for Ollama readiness
+      id: readiness
+      shell: bash
+      run: |
+        set -euo pipefail
+        echo "### Ollama readiness" >> "$GITHUB_STEP_SUMMARY"
+        ready=false
+        for attempt in $(seq 1 30); do
+          if curl -fsS "$OLLAMA_HOST_URL/api/version" > /dev/null 2>&1; then
+            ready=true
+            break
+          fi
+          sleep 2
+        done
+        if [ "$ready" = true ]; then
+          echo "- ✅ Ollama API responded after ${attempt} attempt(s) (bounded to 60s)" >> "$GITHUB_STEP_SUMMARY"
+        else
+          echo "- ❌ Ollama API did not become ready within 60s" >> "$GITHUB_STEP_SUMMARY"
+          echo "---- ollama-serve.log ----"
+          cat ollama-serve.log || true
+          exit 1
+        fi
+
+    - name: Pull pinned model
+      id: pull-model
+      shell: bash
+      run: |
+        set -euo pipefail
+        echo "### Model pull" >> "$GITHUB_STEP_SUMMARY"
+        echo "Pulling model tag: $OLLAMA_MODEL"
+        if timeout 900 ollama pull "$OLLAMA_MODEL"; then
+          echo "- ✅ Pulled \`$OLLAMA_MODEL\` (bounded to 900s)" >> "$GITHUB_STEP_SUMMARY"
+        else
+          echo "- ❌ Failed to pull \`$OLLAMA_MODEL\` within 900s" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+
+    - name: Smoke test BasicChat-03Ollama (request path)
+      id: sample-03
+      shell: bash
+      working-directory: samples/CoreSamples/BasicChat-03Ollama
+      run: |
+        set -euo pipefail
+        echo "### Sample: BasicChat-03Ollama" >> "$GITHUB_STEP_SUMMARY"
+
+        output_file="$RUNNER_TEMP/basicchat-03-output.txt"
+        if timeout 180 dotnet run app.cs > "$output_file" 2>&1; then
+          exit_status=0
+        else
+          exit_status=$?
+        fi
+
+        cat "$output_file"
+
+        word_count=$(wc -w < "$output_file")
+        if [ "$exit_status" -ne 0 ]; then
+          echo "- ❌ Sample exited with status $exit_status" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+        if [ "$word_count" -lt 15 ]; then
+          echo "- ❌ Sample exited 0 but produced only $word_count word(s) — treating as no model response" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+        if grep -qiE "unhandled exception|System\.Exception|StackTrace|System\.Text\.Json" "$output_file"; then
+          echo "- ❌ Sample output contains an exception/serialization error signature" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+        echo "- ✅ Sample exited 0 with a ${word_count}-word model response, no exception signatures" >> "$GITHUB_STEP_SUMMARY"
+
+    - name: Smoke test BasicChat-10ConversationHistory (Ollama fallback, streaming, multi-turn)
+      id: sample-10
+      shell: bash
+      working-directory: samples/CoreSamples/BasicChat-10ConversationHistory
+      run: |
+        set -euo pipefail
+        echo "### Sample: BasicChat-10ConversationHistory" >> "$GITHUB_STEP_SUMMARY"
+
+        # No Azure user-secrets are configured on this runner, so the sample's own
+        # fallback logic selects the local Ollama client — we never touch source to
+        # force this. Two questions are piped in, then an empty line to exit the loop.
+        output_file="$RUNNER_TEMP/basicchat-10-output.txt"
+        if printf 'What is the capital of France?\nWhat did I just ask you about?\n\n' \
+          | timeout 180 dotnet run app.cs > "$output_file" 2>&1; then
+          exit_status=0
+        else
+          exit_status=$?
+        fi
+
+        cat "$output_file"
+
+        if [ "$exit_status" -ne 0 ]; then
+          echo "- ❌ Sample exited with status $exit_status" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+        if ! grep -q "Ollama · phi4-mini" "$output_file"; then
+          echo "- ❌ Sample did not report the expected Ollama fallback label — Azure path may have been selected" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+
+        answer_count=$(grep -c "^AI: " "$output_file" || true)
+        if [ "$answer_count" -lt 2 ]; then
+          echo "- ❌ Expected 2 streamed AI answers, found $answer_count — multi-turn context was not exercised" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+
+        if ! grep -qiE "france|paris|capital" "$output_file"; then
+          echo "- ❌ Second turn does not reference the first turn's topic — conversation history may not be carried across turns" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+
+        if grep -qiE "unhandled exception|System\.Exception|StackTrace" "$output_file"; then
+          echo "- ❌ Sample output contains an exception signature" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+        echo "- ✅ Ollama fallback selected, $answer_count streamed answers, second turn kept first turn's context" >> "$GITHUB_STEP_SUMMARY"
+
+    - name: Smoke test BasicChat-07Ollama-gpt-oss (runner-local phi4-mini copy)
+      id: sample-07
+      shell: bash
+      run: |
+        set -euo pipefail
+        echo "### Sample: BasicChat-07Ollama-gpt-oss (temp copy substitution)" >> "$GITHUB_STEP_SUMMARY"
+
+        # The tracked source is never modified. We copy it to a runner-local temp
+        # directory outside the repo working tree and only swap the model tag there.
+        src_dir="samples/CoreSamples/BasicChat-07Ollama-gpt-oss"
+        tmp_dir="$RUNNER_TEMP/basicchat-07-phi4mini"
+        rm -rf "$tmp_dir"
+        mkdir -p "$tmp_dir"
+        cp "$src_dir/app.cs" "$tmp_dir/app.cs"
+
+        # Model-tag drift risk: this substitution assumes phi4-mini's smaller size and
+        # non-reasoning profile is an acceptable stand-in for gpt-oss:20b's reasoning
+        # behavior purely to exercise the OllamaSharp request path. It does NOT validate
+        # gpt-oss:20b-specific reasoning output — see AGENTS.md for the documented policy.
+        sed -i 's/gpt-oss:20b/phi4-mini/' "$tmp_dir/app.cs"
+        if grep -q "gpt-oss:20b" "$tmp_dir/app.cs"; then
+          echo "- ❌ Model tag substitution failed on the temp copy" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+
+        # Confirm the tracked source file itself was never touched.
+        if ! git diff --quiet -- "$src_dir/app.cs"; then
+          echo "- ❌ Tracked source was modified — this must never happen" >> "$GITHUB_STEP_SUMMARY"
+          git diff -- "$src_dir/app.cs"
+          exit 1
+        fi
+
+        output_file="$RUNNER_TEMP/basicchat-07-output.txt"
+        if (cd "$tmp_dir" && timeout 180 dotnet run app.cs) > "$output_file" 2>&1; then
+          exit_status=0
+        else
+          exit_status=$?
+        fi
+
+        cat "$output_file"
+
+        word_count=$(wc -w < "$output_file")
+        if [ "$exit_status" -ne 0 ]; then
+          echo "- ❌ Sample exited with status $exit_status" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+        if [ "$word_count" -lt 15 ]; then
+          echo "- ❌ Sample exited 0 but produced only $word_count word(s) — treating as no model response" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+        if grep -qiE "unhandled exception|System\.Exception|StackTrace|System\.Text\.Json" "$output_file"; then
+          echo "- ❌ Sample output contains an exception/serialization error signature" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+        echo "- ✅ Temp copy compiled/ran against phi4-mini, tracked source untouched, ${word_count}-word response, no exception signatures" >> "$GITHUB_STEP_SUMMARY"
+
+    - name: Stop Ollama daemon
+      if: always()
+      shell: bash
+      run: |
+        set +e
+        if [ -f ollama.pid ]; then
+          kill "$(cat ollama.pid)" 2>/dev/null
+        fi
+        pkill -f "ollama serve" 2>/dev/null
+        exit 0
