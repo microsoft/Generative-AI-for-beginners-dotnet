@@ -185,8 +185,19 @@ jobs:
         # No Azure user-secrets are configured on this runner, so the sample's own
         # fallback logic selects the local Ollama client — we never touch source to
         # force this. Two questions are piped in, then an empty line to exit the loop.
+        #
+        # Probe design: turn 1 asks "What is the capital of France?" to establish
+        # history; turn 2 asks "Repeat your previous answer verbatim." to verify
+        # that the assistant-turn was appended to the conversation list.  Asking for
+        # verbatim repetition is far more deterministic than asking the model to
+        # paraphrase (e.g. "What did I just ask you about?") — paraphrase prompts
+        # allow small models to hallucinate off-topic preambles that omit the key
+        # topic words, which caused the post-merge failure in run 33176784855
+        # (issue #536).  A verbatim-repeat response must contain the word "Paris"
+        # (or the broader france|paris|capital pattern) because any reasonable
+        # first-turn answer to the France question does.
         output_file="$RUNNER_TEMP/basicchat-10-output.txt"
-        if printf 'What is the capital of France?\nWhat did I just ask you about?\n\n' \
+        if printf 'What is the capital of France?\nRepeat your previous answer verbatim.\n\n' \
           | timeout 180 dotnet run app.cs > "$output_file" 2>&1; then
           exit_status=0
         else
@@ -271,7 +282,7 @@ jobs:
           echo "- ❌ Sample output contains an exception signature" >> "$GITHUB_STEP_SUMMARY"
           exit 1
         fi
-        echo "- ✅ Ollama fallback selected, both responses non-empty ($response1_words / $response2_words words), second response carried the first turn's context" >> "$GITHUB_STEP_SUMMARY"
+        echo "- ✅ Ollama fallback selected, both responses non-empty ($response1_words / $response2_words words), verbatim-repeat turn carried 'paris' from first-turn answer" >> "$GITHUB_STEP_SUMMARY"
 
     - name: Smoke test BasicChat-07Ollama-gpt-oss (runner-local pinned-model copy)
       id: sample-07

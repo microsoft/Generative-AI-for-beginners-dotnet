@@ -1,13 +1,20 @@
 #!/usr/bin/env bash
-# Regression tests for the BasicChat-10 response-length check in
-# .github/workflows/ollama-smoke-validation.yml.
+# Regression tests for the BasicChat-10 response-length and context-carryover
+# checks in .github/workflows/ollama-smoke-validation.yml.
 #
-# Issue #536: the workflow previously rejected valid concise model responses
-# (e.g. "Paris") because it required >= 3 words. The fix accepts any
-# non-empty response; these tests prove:
-#   - A one-word answer ("Paris") passes.
-#   - A multi-word answer ("Paris is the capital of France.") passes.
-#   - An empty response fails.
+# Issue #536 (reopened): the post-merge run 33176784855 failed because turn 2
+# ("What did I just ask you about?") allowed phi4-mini to hallucinate off-topic
+# content that omitted France/Paris/capital.  The fix changes the turn-2 probe
+# to "Repeat your previous answer verbatim." — a verbatim-repeat instruction
+# constrains the model to echo its own prior output, which must contain 'paris'
+# if conversation history was correctly appended.
+#
+# These tests verify:
+#   1. Response-length check: non-empty responses pass; empty/whitespace fail.
+#   2. Context-carryover grep: responses that contain france|paris|capital pass;
+#      unrelated/hallucinated responses (off-topic sentences, refusals, model
+#      preambles without the key words) fail — proving the check would have
+#      caught the run-33176784855 regression.
 #
 # No network access, no real Ollama daemon, no cloud secrets.
 # Run with: bash .github/scripts/tests/test-ollama-smoke-response-check.sh
@@ -82,11 +89,14 @@ fi
 
 # ---------------------------------------------------------------------------
 # Context-carryover check (response2 must reference france/paris/capital).
-# This test is independent of word count: a one-word "France" must satisfy
-# the grep even though it would have been rejected by the old threshold.
+# With the verbatim-repeat probe ("Repeat your previous answer verbatim."),
+# any valid model response will echo the first-turn answer which necessarily
+# contains one of these keywords.  Off-topic hallucinations and refusal
+# phrases that omit all three keywords must fail — exactly the class of output
+# that caused the post-merge regression in run 33176784855 (issue #536).
 # ---------------------------------------------------------------------------
 echo
-echo "== Context-carryover grep check =="
+echo "== Context-carryover grep check (verbatim-repeat probe) =="
 
 check_context() {
   local content="$1"
@@ -107,16 +117,46 @@ else
   fail "one-word 'Paris': failed context check"
 fi
 
+if check_context "Paris is the capital of France."; then
+  pass "verbatim-repeat of full sentence: satisfies context check"
+else
+  fail "verbatim-repeat of full sentence: failed context check"
+fi
+
 if check_context "You asked about the capital of France."; then
   pass "sentence with 'capital of France': satisfies context check"
 else
   fail "sentence with 'capital of France': failed context check"
 fi
 
+# --- Rejection tests: responses that must FAIL the check ---
+# These simulate the class of hallucinations that caused run 33176784855 to fail
+# even though conversation history was present.  The verbatim-repeat probe should
+# produce a response containing 'paris', but the grep must also correctly reject
+# off-topic or evasive output if the model drifts.
+
 if check_context "I don't know."; then
-  fail "unrelated response: incorrectly satisfied context check"
+  fail "unrelated response ('I don't know.'): incorrectly satisfied context check"
 else
-  pass "unrelated response: correctly fails context check"
+  pass "unrelated response ('I don't know.'): correctly fails context check"
+fi
+
+if check_context "As an AI language model, I can help you with many things."; then
+  fail "off-topic preamble: incorrectly satisfied context check — regression of #536"
+else
+  pass "off-topic preamble without key words: correctly fails context check"
+fi
+
+if check_context "The weather forecast shows sunny skies all week."; then
+  fail "unrelated hallucination: incorrectly satisfied context check — regression of #536"
+else
+  pass "unrelated hallucination ('weather forecast'): correctly fails context check"
+fi
+
+if check_context "I am unable to repeat that information."; then
+  fail "refusal without topic keywords: incorrectly satisfied context check"
+else
+  pass "refusal without topic keywords: correctly fails context check"
 fi
 
 echo
