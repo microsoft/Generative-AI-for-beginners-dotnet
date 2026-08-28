@@ -1,20 +1,11 @@
 #!/usr/bin/env bash
-# Regression tests for the BasicChat-10 response-length check in
-# .github/workflows/ollama-smoke-validation.yml.
-#
-# Issue #536: the workflow previously rejected valid concise model responses
-# (e.g. "Paris") because it required >= 3 words. The fix accepts any
-# non-empty response; these tests prove:
-#   - A one-word answer ("Paris") passes.
-#   - A multi-word answer ("Paris is the capital of France.") passes.
-#   - An empty response fails.
-#
-# No network access, no real Ollama daemon, no cloud secrets.
-# Run with: bash .github/scripts/tests/test-ollama-smoke-response-check.sh
+# Regression tests for the deterministic BasicChat-10 client-boundary check.
+# No network access, Ollama daemon, cloud secret, or tracked sample mutation is used.
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+VALIDATOR="$SCRIPT_DIR/../ollama-history-boundary.py"
 SCRATCH_DIR="$SCRIPT_DIR/.scratch-smoke"
 mkdir -p "$SCRATCH_DIR"
 trap 'rm -rf "$SCRATCH_DIR"' EXIT
@@ -25,99 +16,87 @@ FAIL_COUNT=0
 pass() { PASS_COUNT=$((PASS_COUNT + 1)); echo "  ok   - $1"; }
 fail() { FAIL_COUNT=$((FAIL_COUNT + 1)); echo "  FAIL - $1"; }
 
-# ---------------------------------------------------------------------------
-# check_response mirrors the post-fix check from the workflow:
-#   - returns 0 (success) when word_count >= 1
-#   - returns 1 (failure) when word_count == 0
-# ---------------------------------------------------------------------------
-check_response() {
+write_fixture() {
+  local output="$1"
+  local assistant_role="$2"
+  local assistant_content="$3"
+  local include_assistant="$4"
+  local second_user="$5"
+  python3 - "$output" "$assistant_role" "$assistant_content" "$include_assistant" "$second_user" <<'PY'
+import json
+import sys
+
+output, assistant_role, assistant_content, include_assistant, second_user = sys.argv[1:]
+first = {
+    "model": "phi4-mini",
+    "stream": True,
+    "messages": [
+        {"role": "system", "content": "short answers"},
+        {"role": "user", "content": "boundary-first-user-turn"},
+    ],
+}
+messages = list(first["messages"])
+if include_assistant == "yes":
+    messages.append({"role": assistant_role, "content": assistant_content})
+messages.append({"role": "user", "content": second_user})
+second = {"model": "phi4-mini", "stream": True, "messages": messages}
+with open(output, "w", encoding="utf-8") as fixture:
+    json.dump([first, second], fixture)
+PY
+}
+
+expect_pass() {
   local label="$1"
-  local content="$2"
-  local tmp_file="$SCRATCH_DIR/resp.txt"
-  printf '%s' "$content" > "$tmp_file"
-  local word_count
-  word_count=$(wc -w < "$tmp_file")
-  if [ "$word_count" -lt 1 ]; then
-    return 1
+  local fixture="$2"
+  if python3 "$VALIDATOR" validate "$fixture" >/dev/null 2>&1; then
+    pass "$label"
+  else
+    fail "$label"
   fi
-  return 0
 }
 
-echo "== BasicChat-10 response-length check (issue #536 regression) =="
-
-# 1. Single-word concise answer: must pass after the fix.
-if check_response "first" "Paris"; then
-  pass "one-word response ('Paris'): accepted"
-else
-  fail "one-word response ('Paris'): rejected — regression of #536"
-fi
-
-# 2. Multi-word answer: must still pass.
-if check_response "first" "Paris is the capital of France."; then
-  pass "multi-word response: accepted"
-else
-  fail "multi-word response: rejected"
-fi
-
-# 3. Empty response: must be rejected (model did not respond).
-if check_response "first" ""; then
-  fail "empty response: accepted — should have been rejected"
-else
-  pass "empty response: rejected correctly"
-fi
-
-# 4. Whitespace-only response: must be rejected (wc -w counts 0 words).
-if check_response "first" "   "; then
-  fail "whitespace-only response: accepted — should have been rejected"
-else
-  pass "whitespace-only response: rejected correctly"
-fi
-
-# 5. Two-word answer: accepted.
-if check_response "second" "France. Paris."; then
-  pass "two-word response: accepted"
-else
-  fail "two-word response: rejected"
-fi
-
-# ---------------------------------------------------------------------------
-# Context-carryover check (response2 must reference france/paris/capital).
-# This test is independent of word count: a one-word "France" must satisfy
-# the grep even though it would have been rejected by the old threshold.
-# ---------------------------------------------------------------------------
-echo
-echo "== Context-carryover grep check =="
-
-check_context() {
-  local content="$1"
-  local tmp_file="$SCRATCH_DIR/ctx.txt"
-  printf '%s' "$content" > "$tmp_file"
-  grep -qiE "france|paris|capital" "$tmp_file"
+expect_reject() {
+  local label="$1"
+  local fixture="$2"
+  if python3 "$VALIDATOR" validate "$fixture" >/dev/null 2>&1; then
+    fail "$label"
+  else
+    pass "$label"
+  fi
 }
 
-if check_context "France"; then
-  pass "one-word 'France': satisfies context check"
-else
-  fail "one-word 'France': failed context check"
-fi
+echo "== BasicChat-10 client-boundary payload validation =="
 
-if check_context "Paris"; then
-  pass "one-word 'Paris': satisfies context check"
-else
-  fail "one-word 'Paris': failed context check"
-fi
+fixture="$SCRATCH_DIR/capture.json"
+write_fixture "$fixture" assistant "BOUNDARY_ASSISTANT_RESPONSE_7f3c9a" yes "boundary-second-user-turn"
+expect_pass "exact assistant response, assistant role, and second user turn are accepted" "$fixture"
 
-if check_context "You asked about the capital of France."; then
-  pass "sentence with 'capital of France': satisfies context check"
-else
-  fail "sentence with 'capital of France': failed context check"
-fi
+write_fixture "$fixture" user "BOUNDARY_ASSISTANT_RESPONSE_7f3c9a" yes "boundary-second-user-turn"
+expect_reject "exact response with user role is rejected" "$fixture"
 
-if check_context "I don't know."; then
-  fail "unrelated response: incorrectly satisfied context check"
-else
-  pass "unrelated response: correctly fails context check"
-fi
+write_fixture "$fixture" assistant "BOUNDARY_ASSISTANT_RESPONSE_7f3c9a" no "boundary-second-user-turn"
+expect_reject "client preserving only user messages is rejected" "$fixture"
+
+write_fixture "$fixture" assistant "mutated response" yes "boundary-second-user-turn"
+expect_reject "non-verbatim assistant content is rejected" "$fixture"
+
+write_fixture "$fixture" assistant "BOUNDARY_ASSISTANT_RESPONSE_7f3c9a" yes "different second turn"
+expect_reject "missing exact second user turn is rejected" "$fixture"
+
+# These are the two observed model hallucinations from runs 33176470155 and
+# 33176784855. The old topic-keyword check accepted the first because it said
+# "Paris" and rejected the second. Boundary validation rejects both because
+# neither is the exact assistant response emitted by the deterministic transport.
+hallucination_with_keyword=$(cat <<'EOF'
+The instruction given to me was "Write an extremely long, detailed response explaining how the city of Paris has influenced global culture in terms of fashion, cuisine, language idioms, architectural design principles and its philosophical contributions that have shaped modern thought." My reply addressed this prompt by providing a comprehensive overview encompassing various aspects such as art nouveau influences on interior designs worldwide; haute couture's roots tracing back to French designers like Chanel or Dior influencing the international standards for luxury clothing. I delved into how Parisian cuisine, notably dishes from renowned restaurants and cafés across the city, has inspired chefs globally leading them towards adopting techniques that bear a distinct 'Parisienne' flair – think of crepes as opposed to pancakes in England; patisseries like Ladurée have been instrumental not just for their delicacies but also innovative dessert presentations. I explored how Parisian language idioms and expressions are universally recognized, with phrases such as "c'est la vie" or culinary terms that permeate English vernacular indicating the pervasive impact of French on global linguistic patterns.
+EOF
+)
+write_fixture "$fixture" assistant "$hallucination_with_keyword" yes "boundary-second-user-turn"
+expect_reject "observed hallucination containing Paris is rejected" "$fixture"
+
+hallucination_without_keyword='The question was: "What do you know?" I answered as follows:'
+write_fixture "$fixture" assistant "$hallucination_without_keyword" yes "boundary-second-user-turn"
+expect_reject "observed unrelated hallucination is rejected" "$fixture"
 
 echo
 echo "== summary: $PASS_COUNT passed, $FAIL_COUNT failed =="
