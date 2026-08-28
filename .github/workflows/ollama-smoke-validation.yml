@@ -174,30 +174,19 @@ jobs:
         fi
         echo "- ✅ Sample exited 0 with a ${word_count}-word model response, no exception signatures" >> "$GITHUB_STEP_SUMMARY"
 
-    - name: Smoke test BasicChat-10ConversationHistory (Ollama fallback, streaming, multi-turn)
-      id: sample-10
+    - name: Smoke test BasicChat-10ConversationHistory (live Ollama streaming)
+      id: sample-10-live
       shell: bash
       working-directory: samples/CoreSamples/BasicChat-10ConversationHistory
       run: |
         set -euo pipefail
-        echo "### Sample: BasicChat-10ConversationHistory" >> "$GITHUB_STEP_SUMMARY"
+        echo "### Sample: BasicChat-10ConversationHistory (live provider)" >> "$GITHUB_STEP_SUMMARY"
 
         # No Azure user-secrets are configured on this runner, so the sample's own
-        # fallback logic selects the local Ollama client — we never touch source to
-        # force this. Two questions are piped in, then an empty line to exit the loop.
-        #
-        # Probe design: turn 1 asks "What is the capital of France?" to establish
-        # history; turn 2 asks "Repeat your previous answer verbatim." to verify
-        # that the assistant-turn was appended to the conversation list.  Asking for
-        # verbatim repetition is far more deterministic than asking the model to
-        # paraphrase (e.g. "What did I just ask you about?") — paraphrase prompts
-        # allow small models to hallucinate off-topic preambles that omit the key
-        # topic words, which caused the post-merge failure in run 33176784855
-        # (issue #536).  A verbatim-repeat response must contain the word "Paris"
-        # (or the broader france|paris|capital pattern) because any reasonable
-        # first-turn answer to the France question does.
+        # fallback logic selects the real local Ollama provider. This check remains
+        # deliberately separate from deterministic history-payload verification.
         output_file="$RUNNER_TEMP/basicchat-10-output.txt"
-        if printf 'What is the capital of France?\nRepeat your previous answer verbatim.\n\n' \
+        if printf 'Reply with one short word.\n\n' \
           | timeout 180 dotnet run app.cs > "$output_file" 2>&1; then
           exit_status=0
         else
@@ -215,66 +204,26 @@ jobs:
           exit 1
         fi
 
-        # Parse the two streamed responses out of the exact piped-stdin output shape:
-        # each turn is "Q (empty to exit): AI: <streamed text>\n", so splitting on the
-        # prompt marker isolates response 1 and response 2 even if the streamed text
-        # itself spans multiple lines. This deliberately does NOT just count "AI: "
-        # markers or grep the whole file — each response is validated on its own.
-        response1_file="$RUNNER_TEMP/basicchat-10-response1.txt"
-        response2_file="$RUNNER_TEMP/basicchat-10-response2.txt"
-        if ! python3 - "$output_file" "$response1_file" "$response2_file" <<'PY'
+        response_file="$RUNNER_TEMP/basicchat-10-live-response.txt"
+        if ! python3 - "$output_file" "$response_file" <<'PY'
         import sys
 
-        output_path, r1_path, r2_path = sys.argv[1:4]
+        output_path, response_path = sys.argv[1:3]
         text = open(output_path, encoding="utf-8", errors="replace").read()
-
-        MARKER = "Q (empty to exit): "
-        parts = text.split(MARKER)
-        # parts[0] is the banner before the first prompt; parts[1] and parts[2] are the
-        # two question/answer turns (each begins with "AI: "); anything after is the
-        # trailing empty-input exit prompt.
-        if len(parts) < 3:
-            print(f"Expected two prompt/answer turns, found {max(len(parts) - 1, 0)}.", file=sys.stderr)
+        parts = text.split("Q (empty to exit): ")
+        if len(parts) < 2 or not parts[1].startswith("AI: "):
+            print("Could not find the streamed response.", file=sys.stderr)
             sys.exit(1)
-
-        def extract_answer(turn_text):
-            prefix = "AI: "
-            if not turn_text.startswith(prefix):
-                return None
-            return turn_text[len(prefix):].strip()
-
-        answer1 = extract_answer(parts[1])
-        answer2 = extract_answer(parts[2])
-
-        if answer1 is None or answer2 is None:
-            print("One or both turns did not start with the expected 'AI: ' marker.", file=sys.stderr)
-            sys.exit(1)
-
-        open(r1_path, "w", encoding="utf-8").write(answer1)
-        open(r2_path, "w", encoding="utf-8").write(answer2)
+        open(response_path, "w", encoding="utf-8").write(parts[1][len("AI: "):].strip())
         PY
         then
-          echo "- ❌ Could not parse two distinct streamed responses out of the piped-stdin output" >> "$GITHUB_STEP_SUMMARY"
+          echo "- ❌ Could not parse a streamed response from the live provider" >> "$GITHUB_STEP_SUMMARY"
           exit 1
         fi
 
-        response1_words=$(wc -w < "$response1_file")
-        response2_words=$(wc -w < "$response2_file")
-
-        if [ "$response1_words" -lt 1 ]; then
-          echo "- ❌ First response was empty — model did not respond" >> "$GITHUB_STEP_SUMMARY"
-          exit 1
-        fi
-        if [ "$response2_words" -lt 1 ]; then
-          echo "- ❌ Second response was empty — model did not respond" >> "$GITHUB_STEP_SUMMARY"
-          exit 1
-        fi
-
-        # Context-carryover check applies ONLY to response 2 — response 1 is the
-        # answer to the France question itself, so checking it here would be
-        # tautological and wouldn't prove history was carried into turn 2.
-        if ! grep -qiE "france|paris|capital" "$response2_file"; then
-          echo "- ❌ Second response does not reference the first question's topic — conversation history may not be carried across turns" >> "$GITHUB_STEP_SUMMARY"
+        response_words=$(wc -w < "$response_file")
+        if [ "$response_words" -lt 1 ]; then
+          echo "- ❌ Live streamed response was empty" >> "$GITHUB_STEP_SUMMARY"
           exit 1
         fi
 
@@ -282,10 +231,106 @@ jobs:
           echo "- ❌ Sample output contains an exception signature" >> "$GITHUB_STEP_SUMMARY"
           exit 1
         fi
-        echo "- ✅ Ollama fallback selected, both responses non-empty ($response1_words / $response2_words words), verbatim-repeat turn carried 'paris' from first-turn answer" >> "$GITHUB_STEP_SUMMARY"
+        if ! git diff --quiet -- app.cs; then
+          echo "- ❌ Tracked BasicChat-10 source was modified" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+        echo "- ✅ Live Ollama fallback selected with a non-empty streamed response (${response_words} words), no exceptions, and no source mutation" >> "$GITHUB_STEP_SUMMARY"
+
+    - name: Stop Ollama before deterministic boundary check
+      id: stop-for-boundary
+      shell: bash
+      run: |
+        set -euo pipefail
+        kill "$(cat ollama.pid)"
+        for attempt in $(seq 1 30); do
+          if ! curl --silent --connect-timeout 1 "$OLLAMA_HOST_URL/api/version" >/dev/null 2>&1; then
+            rm -f ollama.pid
+            exit 0
+          fi
+          sleep 1
+        done
+        echo "Ollama did not release port 11434 within 30 seconds"
+        exit 1
+
+    - name: Verify BasicChat-10 conversation payload at client boundary
+      id: sample-10-boundary
+      continue-on-error: true
+      shell: bash
+      run: |
+        set -euo pipefail
+        echo "### Sample: BasicChat-10ConversationHistory (client boundary)" >> "$GITHUB_STEP_SUMMARY"
+
+        capture_file="$RUNNER_TEMP/basicchat-10-requests.json"
+        stub_log="$RUNNER_TEMP/basicchat-10-boundary.log"
+        python3 .github/scripts/ollama-history-boundary.py serve "$capture_file" >"$stub_log" 2>&1 &
+        stub_pid=$!
+        trap 'kill "$stub_pid" 2>/dev/null || true' EXIT
+        sleep 1
+        if ! kill -0 "$stub_pid" 2>/dev/null; then
+          cat "$stub_log"
+          echo "- ❌ Deterministic boundary stub did not start" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+
+        output_file="$RUNNER_TEMP/basicchat-10-boundary-output.txt"
+        if printf 'boundary-first-user-turn\nboundary-second-user-turn\n\n' \
+          | timeout 180 dotnet run samples/CoreSamples/BasicChat-10ConversationHistory/app.cs \
+            >"$output_file" 2>&1; then
+          sample_status=0
+        else
+          sample_status=$?
+        fi
+        if wait "$stub_pid"; then
+          boundary_status=0
+        else
+          boundary_status=$?
+        fi
+        trap - EXIT
+
+        cat "$output_file"
+        cat "$stub_log"
+        cat "$capture_file"
+        if [ "$sample_status" -ne 0 ]; then
+          echo "- ❌ Sample exited with status $sample_status against the boundary stub" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+        if [ "$boundary_status" -ne 0 ]; then
+          echo "- ❌ Second outbound request did not contain the exact first response with role assistant and the second user turn" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+        if grep -qiE "unhandled exception|System\.Exception|StackTrace" "$output_file"; then
+          echo "- ❌ Boundary run contains an exception signature" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+        if ! git diff --quiet -- samples/CoreSamples/BasicChat-10ConversationHistory/app.cs; then
+          echo "- ❌ Tracked BasicChat-10 source was modified" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+        fi
+        echo "- ✅ Observed the exact first assistant response with role assistant beside the second user turn in request 2" >> "$GITHUB_STEP_SUMMARY"
+
+    - name: Restart Ollama after deterministic boundary check
+      id: restart
+      if: always() && steps.stop-for-boundary.outcome == 'success'
+      shell: bash
+      run: |
+        set -euo pipefail
+        nohup ollama serve > ollama-serve-restarted.log 2>&1 &
+        echo "$!" > ollama.pid
+        for attempt in $(seq 1 30); do
+          if curl --fail --silent --show-error \
+            --connect-timeout 2 --max-time 5 \
+            "$OLLAMA_HOST_URL/api/version" > /dev/null 2>&1; then
+            exit 0
+          fi
+          sleep 2
+        done
+        cat ollama-serve-restarted.log || true
+        exit 1
 
     - name: Smoke test BasicChat-07Ollama-gpt-oss (runner-local pinned-model copy)
       id: sample-07
+      if: steps.restart.outcome == 'success'
       shell: bash
       run: |
         set -euo pipefail
@@ -353,3 +398,12 @@ jobs:
         fi
         pkill -f "ollama serve" 2>/dev/null
         exit 0
+
+    - name: Enforce conversation-boundary result
+      if: always()
+      shell: bash
+      run: |
+        if [ "${{ steps.sample-10-boundary.outcome }}" != "success" ]; then
+          echo "Deterministic conversation-history boundary verification failed."
+          exit 1
+        fi
