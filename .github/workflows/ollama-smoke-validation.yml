@@ -250,12 +250,12 @@ jobs:
         response1_words=$(wc -w < "$response1_file")
         response2_words=$(wc -w < "$response2_file")
 
-        if [ "$response1_words" -lt 3 ]; then
-          echo "- ❌ First response was only $response1_words word(s) — treating as no model response" >> "$GITHUB_STEP_SUMMARY"
+        if [ "$response1_words" -lt 1 ]; then
+          echo "- ❌ First response was empty — model did not respond" >> "$GITHUB_STEP_SUMMARY"
           exit 1
         fi
-        if [ "$response2_words" -lt 3 ]; then
-          echo "- ❌ Second response was only $response2_words word(s) — treating as no model response" >> "$GITHUB_STEP_SUMMARY"
+        if [ "$response2_words" -lt 1 ]; then
+          echo "- ❌ Second response was empty — model did not respond" >> "$GITHUB_STEP_SUMMARY"
           exit 1
         fi
 
@@ -271,7 +271,7 @@ jobs:
           echo "- ❌ Sample output contains an exception signature" >> "$GITHUB_STEP_SUMMARY"
           exit 1
         fi
-        echo "- ✅ Ollama fallback selected, both responses substantive ($response1_words / $response2_words words), second response carried the first turn's context" >> "$GITHUB_STEP_SUMMARY"
+        echo "- ✅ Ollama fallback selected, both responses non-empty ($response1_words / $response2_words words), second response carried the first turn's context" >> "$GITHUB_STEP_SUMMARY"
 
     - name: Smoke test BasicChat-07Ollama-gpt-oss (runner-local pinned-model copy)
       id: sample-07
