@@ -1,6 +1,6 @@
 # Foundry Local Samples - Running AI Models Locally from .NET
 
-This collection demonstrates how to run **Generative AI models locally** from .NET using **Microsoft Foundry Local**. These samples showcase practical techniques for local model inference—from simple chat completions and streaming responses to advanced scenarios like audio transcription and live speech-to-text—all powered by Foundry Local's OpenAI-compatible endpoint and native SDK.
+This collection contains 10 demos showing how to run **Generative AI models locally** from .NET using **Microsoft Foundry Local**. These samples showcase practical techniques for local model inference—from simple chat completions and streaming responses to advanced scenarios like audio transcription and multilingual live speech-to-text—all powered by Foundry Local's OpenAI-compatible endpoint and native SDK.
 
 ## Overview
 
