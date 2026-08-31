@@ -32,7 +32,7 @@ This folder contains fundamental samples demonstrating core Generative AI techni
 - **Agents** - Basic agent implementations with custom functions and OpenAPI integrations
 - **Image & Video Generation** - Creating visual content with Azure OpenAI image-generation models. Legacy Sora video-generation samples remain in the repo as reference material, but are not the recommended path for new walkthroughs.
 - **Model Context Protocol (MCP)** - Integrating with external services using MCP
-- **Local Model Runners** - Running AI models locally using AI Toolkit, Docker, and Microsoft Foundry Local
+- **Local Model Runners** - Running AI models locally using AI Toolkit, Docker, and Microsoft Foundry Local. Explore the [10 Foundry Local demos](./CoreSamples/FOUNDRY-LOCAL-SAMPLES-README.md), including multilingual live transcription.
 
 This folder includes over 40 samples demonstrating different techniques, providers, and integration patterns.
 

@@ -32,9 +32,9 @@ Don't forget to [star (🌟) this repo](https://docs.github.com/en/get-started/e
 
 We're constantly improving this course with the latest AI tools, models, and practical samples:
 
-- **🖥️ Local AI with Foundry Local — 9 new samples (July 2026)**
+- **🖥️ Local AI with Foundry Local — 10 samples (August 2026)**
 
-  Run Generative AI models locally from .NET using **Microsoft Foundry Local**. Nine production-ready samples demonstrate chat, streaming, practical scenarios, audio transcription, agent tools, and live speech-to-text—all with zero cloud costs and full offline capability.
+  Run Generative AI models locally from .NET using **Microsoft Foundry Local**. Ten production-ready samples demonstrate chat, streaming, practical scenarios, audio transcription, agent tools, and live speech-to-text—including multilingual transcription with automatic language detection and explicit locale selection—all with zero cloud costs and full offline capability.
 
   👉 [Explore the Foundry Local Samples](./samples/CoreSamples/FOUNDRY-LOCAL-SAMPLES-README.md)
 
