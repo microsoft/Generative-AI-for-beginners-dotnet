@@ -11,6 +11,20 @@ name: .NET Build Validation
     - 'samples/**/*.razor'
     - 'samples/**/*.json'
     - '.github/workflows/build-validation.yml'
+  workflow_call:
+    inputs:
+      ref:
+        description: >-
+          Exact commit SHA (or ref) to validate. Defaults to the SHA that
+          triggered this workflow run when not provided, so callers MUST pass
+          an explicit, previously-captured SHA to guarantee validation runs
+          against an immutable commit rather than a branch tip that can move.
+        required: false
+        type: string
+        default: ''
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -34,10 +48,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        ref: ${{ inputs.ref || github.sha }}
 
     - name: Setup .NET 10.0
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
       with:
         dotnet-version: '10.0.x'
 
@@ -46,7 +62,95 @@ jobs:
 
     - name: Build ${{ matrix.solution.name }}
       run: dotnet build "${{ matrix.solution.path }}" --no-restore --configuration Release --verbosity minimal -p:EnableWindowsTargeting=true
+    - name: Run tests for ${{ matrix.solution.name }}
+      if: matrix.solution.name == 'Core Samples'
+      run: dotnet test "samples/CoreSamples/AzFunction-BasicChat-01/AzFunction-BasicChat-01.Tests/AzFunction-BasicChat-01.Tests.csproj" --no-build --configuration Release --verbosity minimal
 
     - name: Display build result
       if: success()
       run: echo "✅ ${{ matrix.solution.name }} build succeeded"
+
+  discover-file-based-apps:
+    name: Discover file-based app.cs samples
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.discover.outputs.matrix }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        ref: ${{ inputs.ref || github.sha }}
+
+    - name: Discover tracked app.cs samples
+      id: discover
+      shell: bash
+      run: |
+        set -euo pipefail
+
+        # Exclusion list (documented, currently empty):
+        # Add repo-relative paths exactly as reported by `git ls-files` below, one per
+        # line, each with a comment explaining why the sample cannot be compiled here
+        # (for example, a future OS-specific or credential-only file-based app). Every
+        # tracked app.cs sample must compile secret-free today, so this list is empty.
+        EXCLUDED_SAMPLES=(
+        )
+
+        mapfile -t all_samples < <(git ls-files 'samples/**/app.cs' | sort)
+
+        samples=()
+        for sample in "${all_samples[@]}"; do
+          excluded=false
+          for excluded_sample in "${EXCLUDED_SAMPLES[@]:-}"; do
+            if [[ "$sample" == "$excluded_sample" ]]; then
+              excluded=true
+              break
+            fi
+          done
+          if [[ "$excluded" == false ]]; then
+            samples+=("$sample")
+          fi
+        done
+
+        if [ "${#samples[@]}" -eq 0 ]; then
+          echo "::error::No file-based app.cs samples discovered."
+          exit 1
+        fi
+
+        matrix_json=$(printf '%s\n' "${samples[@]}" | jq -R -s -c 'split("\n") | map(select(length > 0)) | {sample: .}')
+
+        echo "Discovered ${#samples[@]} file-based app.cs sample(s):"
+        printf '  - %s\n' "${samples[@]}"
+
+        echo "matrix=$matrix_json" >> "$GITHUB_OUTPUT"
+
+  compile-file-based-apps:
+    name: 'Compile file-based sample: ${{ matrix.sample }}'
+    needs: discover-file-based-apps
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false  # Show results for every file-based sample even if some fail
+      matrix: ${{ fromJson(needs.discover-file-based-apps.outputs.matrix) }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        ref: ${{ inputs.ref || github.sha }}
+
+    - name: Setup .NET 10.0
+      uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+      with:
+        dotnet-version: '10.0.x'
+
+    - name: Compile ${{ matrix.sample }}
+      env:
+        SAMPLE_PATH: ${{ matrix.sample }}
+      run: dotnet build "$SAMPLE_PATH" --verbosity minimal
+
+    - name: Display build result
+      if: success()
+      env:
+        SAMPLE_PATH: ${{ matrix.sample }}
+      run: echo "✅ $SAMPLE_PATH compiled successfully"

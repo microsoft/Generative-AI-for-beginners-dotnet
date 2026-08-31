@@ -384,6 +384,7 @@ Can you answer these questions?
 | [BasicChat-01MEAI](../samples/CoreSamples/BasicChat-01MEAI/) | Text completion with Azure OpenAI |
 | [BasicChat-03Ollama](../samples/CoreSamples/BasicChat-03Ollama/) | Chat with local Ollama |
 | [BasicChat-10ConversationHistory](../samples/CoreSamples/BasicChat-10ConversationHistory/) | Managing conversation history |
+| [AzFunction-BasicChat-01](../samples/CoreSamples/AzFunction-BasicChat-01/) | Hosting a single chat question/answer behind an HTTP-triggered Azure Function, deployed with keyless auth |
 
 ---
 

@@ -1,34 +1,386 @@
 name: Squad Release
-# Project type was not detected — configure build, test, and release commands below
 
+# Manual, dispatch-only release. There is no push trigger: this repository has
+# no dev/preview/insider branches, so a release is a deliberate, human-invoked
+# action against the tip of main, gated on the exact validated commit SHA.
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: >-
+          Release tag (2000-2099, YYYY-MM-DD). Leave empty to use the current UTC date.
+        required: false
+        default: ''
+        type: string
+      notes_path:
+        description: >-
+          Repo-relative path to curated release notes, e.g.
+          docs/releases/2026-08-26.md. Must live directly under
+          docs/releases/ and end in .md. Leave empty to use
+          GitHub-generated notes.
+        required: false
+        default: ''
+        type: string
+      dry_run:
+        description: >-
+          Dry run: validate and print the plan without creating a tag or
+          release.
+        required: false
+        default: 'true'
+        type: choice
+        options: ['true', 'false']
+      mark_latest:
+        description: 'Mark this release as "Latest" on GitHub.'
+        required: false
+        default: 'true'
+        type: choice
+        options: ['true', 'false']
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  release:
+  resolve:
+    name: Resolve and validate release inputs
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      sha: ${{ steps.resolve.outputs.sha }}
+      tag: ${{ steps.resolve.outputs.tag }}
+      notes_path: ${{ steps.resolve.outputs.notes_path }}
+      use_generated_notes: ${{ steps.resolve.outputs.use_generated_notes }}
+      ruleset_id: ${{ steps.ruleset.outputs.ruleset_id }}
+      ruleset_name: ${{ steps.ruleset.outputs.ruleset_name }}
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Build and test
+      - name: Fail closed unless dispatched against main
+        shell: bash
         run: |
-          # TODO: Project type was not detected — add your build/test commands here
-          # Go:            go test ./...
-          # Python:        pip install -r requirements.txt && pytest
-          # .NET:          dotnet test
-          # Java (Maven):  mvn test
-          # Java (Gradle): ./gradlew test
-          echo "No build commands configured — update squad-release.yml"
+          set -euo pipefail
+          if [ "${{ github.event_name }}" != "workflow_dispatch" ]; then
+            echo "::error::This workflow may only run via workflow_dispatch."
+            exit 1
+          fi
+          if [ "${{ github.ref }}" != "refs/heads/main" ]; then
+            echo "::error::This workflow must be dispatched with 'main' selected as the branch, got '${{ github.ref }}'."
+            exit 1
+          fi
 
-      - name: Create release
+      - name: Checkout captured commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Resolve, validate, and lock inputs to an immutable SHA
+        id: resolve
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG_INPUT: ${{ inputs.tag }}
+          NOTES_PATH_INPUT: ${{ inputs.notes_path }}
+        run: |
+          set -euo pipefail
+
+          SHA="${{ github.sha }}"
+
+          # --- Guard: main must not have moved since the SHA was captured ---
+          # workflow_dispatch fixes github.sha to the tip of the selected ref
+          # at trigger time. Re-check against the *current* remote tip so a
+          # dispatch against a stale UI selection (or a race with a fresh
+          # push) is caught here, before any validation work starts. Every
+          # later job/step reuses this captured SHA verbatim — main moving
+          # again after this point cannot change what gets validated/released.
+          REMOTE_MAIN_SHA="$(gh api "repos/${{ github.repository }}/commits/main" --jq .sha)"
+          if [ "$REMOTE_MAIN_SHA" != "$SHA" ]; then
+            echo "::error::main has moved since this workflow was dispatched (dispatched SHA $SHA, current main $REMOTE_MAIN_SHA). Re-run the workflow to capture the new tip."
+            exit 1
+          fi
+
+          # The active ruleset protects only 20xx date tags. Resolve and
+          # calendar-validate through the shared guard so the workflow cannot
+          # publish a syntactically valid but mutable 19xx/21xx tag.
+          TAG="$(bash .github/scripts/validate-release-tag.sh "$TAG_INPUT")"
+
+          # --- Validate notes path (empty => GitHub-generated notes) ---
+          USE_GENERATED_NOTES="true"
+          NOTES_PATH=""
+          if [ -n "$NOTES_PATH_INPUT" ]; then
+            USE_GENERATED_NOTES="false"
+            NOTES_PATH="$NOTES_PATH_INPUT"
+
+            # Single path component directly under docs/releases/, no
+            # traversal, no absolute paths, no backslashes, no shell
+            # metacharacters — enforced by the character class itself.
+            if [[ ! "$NOTES_PATH" =~ ^docs/releases/[A-Za-z0-9._-]+\.md$ ]]; then
+              echo "::error::notes_path '$NOTES_PATH' must be a repo-relative path of the form docs/releases/<name>.md."
+              exit 1
+            fi
+            case "$NOTES_PATH" in
+              *..*)
+                echo "::error::notes_path must not contain '..'."
+                exit 1
+                ;;
+            esac
+
+            if [ ! -e "$NOTES_PATH" ]; then
+              echo "::error::notes_path '$NOTES_PATH' does not exist in the validated commit."
+              exit 1
+            fi
+            if [ -L "$NOTES_PATH" ]; then
+              echo "::error::notes_path '$NOTES_PATH' must not be a symlink."
+              exit 1
+            fi
+
+            # Defense in depth: resolve the real path and confirm it did not
+            # escape docs/releases/ via a symlinked ancestor directory.
+            ALLOWED_DIR="$(readlink -f -- "docs/releases")"
+            RESOLVED="$(readlink -f -- "$NOTES_PATH")"
+            case "$RESOLVED" in
+              "$ALLOWED_DIR"/*) ;;
+              *)
+                echo "::error::notes_path '$NOTES_PATH' resolves outside docs/releases/."
+                exit 1
+                ;;
+            esac
+            if [ ! -f "$NOTES_PATH" ]; then
+              echo "::error::notes_path '$NOTES_PATH' must be a regular file."
+              exit 1
+            fi
+          fi
+
+          # --- Reject duplicate tag / release before any validation work ---
+          if git rev-parse -q --verify "refs/tags/$TAG" >/dev/null 2>&1; then
+            echo "::error::tag '$TAG' already exists locally at the validated commit's history."
+            exit 1
+          fi
+          if gh api "repos/${{ github.repository }}/git/ref/tags/$TAG" >/dev/null 2>&1; then
+            echo "::error::tag '$TAG' already exists on the remote."
+            exit 1
+          fi
+          if gh release view "$TAG" --repo "${{ github.repository }}" >/dev/null 2>&1; then
+            echo "::error::a GitHub release for tag '$TAG' already exists."
+            exit 1
+          fi
+
+          echo "Resolved release plan:"
+          echo "  sha:                  $SHA"
+          echo "  tag:                  $TAG"
+          echo "  notes source:         $([ "$USE_GENERATED_NOTES" = "true" ] && echo "GitHub-generated" || echo "$NOTES_PATH")"
+          echo "  dry_run:              ${{ inputs.dry_run }}"
+          echo "  mark_latest:          ${{ inputs.mark_latest }}"
+
+          {
+            echo "sha=$SHA"
+            echo "tag=$TAG"
+            echo "notes_path=$NOTES_PATH"
+            echo "use_generated_notes=$USE_GENERATED_NOTES"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Verify the immutable date-tag ruleset (fail closed, dry run and live alike)
+        id: ruleset
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # TODO: Add your release commands here (e.g., git tag, gh release create)
-          echo "No release commands configured — update squad-release.yml"
+          set -euo pipefail
+          # Neither a dry run nor a live run may proceed unless exactly one
+          # active repository tag ruleset protects this tag's namespace from
+          # update/deletion with zero bypass. This is the repository-level
+          # guarantee that closes the race gh release create --verify-tag
+          # cannot close on its own: GitHub has no conditional ref-delete
+          # API, and --verify-tag does not bind a mutable tag to a commit.
+          # See docs/releases/README.md#immutable-date-tag-ruleset.
+          source .github/scripts/verify-tag-ruleset.sh
+          find_protecting_ruleset "${{ github.repository }}" "${{ steps.resolve.outputs.tag }}" | tee -a "$GITHUB_OUTPUT"
+
+  validate:
+    name: Validate release commit
+    needs: resolve
+    permissions:
+      contents: read
+    uses: ./.github/workflows/build-validation.yml
+    with:
+      ref: ${{ needs.resolve.outputs.sha }}
+
+  publish:
+    name: Publish release
+    needs: [resolve, validate]
+    if: ${{ inputs.dry_run == 'false' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      TAG: ${{ needs.resolve.outputs.tag }}
+      SHA: ${{ needs.resolve.outputs.sha }}
+      NOTES_PATH: ${{ needs.resolve.outputs.notes_path }}
+      USE_GENERATED_NOTES: ${{ needs.resolve.outputs.use_generated_notes }}
+      MARK_LATEST: ${{ inputs.mark_latest }}
+    steps:
+      - name: Checkout captured commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.resolve.outputs.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Re-verify the immutable date-tag ruleset immediately before publishing
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          # Belt-and-suspenders: the `resolve` job already verified this, but
+          # `validate` can take a while and an admin could disable/edit the
+          # ruleset in that window. Fail closed again, right before any
+          # mutation, rather than trusting a check from earlier in the run.
+          source .github/scripts/verify-tag-ruleset.sh
+          RESULT="$(find_protecting_ruleset "${{ github.repository }}" "$TAG")"
+          echo "$RESULT"
+          if [ "$(echo "$RESULT" | grep '^ruleset_id=' | cut -d= -f2)" != "${{ needs.resolve.outputs.ruleset_id }}" ]; then
+            echo "::error::the protecting ruleset changed between resolve and publish (was id ${{ needs.resolve.outputs.ruleset_id }}, now different). Re-run the workflow from a fresh dispatch."
+            exit 1
+          fi
+
+      - name: Create and verify the annotated tag, then publish (no automatic cleanup)
+        id: publish
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          # This protocol no longer needs an ownership-tracking EXIT trap
+          # that deletes an orphaned tag on failure: the immutable date-tag
+          # ruleset (verified above, with zero bypass) makes refs/tags/$TAG
+          # un-updatable and un-deletable by *anyone*, including this
+          # workflow's own token, the instant the ref is created. There is
+          # nothing left to "clean up" — if release creation fails after the
+          # tag exists, that tag is retained on purpose, as immutable audit
+          # evidence of exactly what commit was validated and tagged. See
+          # docs/releases/README.md#recovery.
+          source .github/scripts/verify-tag-object.sh
+
+          REPO="${{ github.repository }}"
+
+          # --- Defense-in-depth pre-flight (not relied on for atomicity) ---
+          if gh api "repos/$REPO/git/ref/tags/$TAG" >/dev/null 2>&1; then
+            echo "::error::tag '$TAG' was created by another run since validation. Aborting without publishing."
+            exit 1
+          fi
+          if gh release view "$TAG" --repo "$REPO" >/dev/null 2>&1; then
+            echo "::error::a GitHub release for tag '$TAG' was created by another run since validation. Aborting without publishing."
+            exit 1
+          fi
+
+          # --- Step 1: create an annotated tag *object* at the validated SHA ---
+          # This does not create a ref and cannot race: tag objects are
+          # content-addressed and never collide with a concurrent actor's tag.
+          TAGGER_NAME="github-actions[bot]"
+          TAGGER_EMAIL="41898282+github-actions[bot]@users.noreply.github.com"
+          TAGGER_DATE="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
+          TAG_OBJECT_PAYLOAD="$(jq -n \
+            --arg tag "$TAG" \
+            --arg message "Release $TAG" \
+            --arg object "$SHA" \
+            --arg name "$TAGGER_NAME" \
+            --arg email "$TAGGER_EMAIL" \
+            --arg date "$TAGGER_DATE" \
+            '{tag: $tag, message: $message, object: $object, type: "commit", tagger: {name: $name, email: $email, date: $date}}')"
+
+          TAG_OBJECT_SHA="$(printf '%s' "$TAG_OBJECT_PAYLOAD" | gh api "repos/$REPO/git/tags" --input - --jq .sha)"
+          if [ -z "$TAG_OBJECT_SHA" ]; then
+            echo "::error::failed to create annotated tag object for '$TAG' at '$SHA'. Nothing was created; safe to re-run."
+            exit 1
+          fi
+          echo "Created annotated tag object $TAG_OBJECT_SHA ('$TAG' -> commit $SHA)."
+
+          # --- Step 2: atomically create refs/tags/$TAG -> tag object SHA ---
+          # The Git Refs API's create-ref call fails (422) if the ref already
+          # exists — it never overwrites. This is the actual atomicity
+          # boundary: whichever actor's create-ref call lands first wins, and
+          # every loser fails here, before publishing.
+          REF_PAYLOAD="$(jq -n --arg ref "refs/tags/$TAG" --arg sha "$TAG_OBJECT_SHA" '{ref: $ref, sha: $sha}')"
+          if ! REF_RESPONSE="$(printf '%s' "$REF_PAYLOAD" | gh api -X POST "repos/$REPO/git/refs" --input - 2>&1)"; then
+            if printf '%s' "$REF_RESPONSE" | grep -qi "already exists"; then
+              echo "::error::refs/tags/$TAG was created by another actor since validation (ref conflict). Aborting without publishing. This run's dangling tag *object* $TAG_OBJECT_SHA is unreachable (no ref points at it) and requires no cleanup."
+            else
+              echo "::error::failed to create refs/tags/$TAG: $REF_RESPONSE"
+            fi
+            exit 1
+          fi
+          echo "Created refs/tags/$TAG -> tag object $TAG_OBJECT_SHA (this run owns this ref)."
+
+          # --- Step 3: read back and verify the annotated tag object + ref ---
+          # Confirms tag name, target commit SHA, object type "commit", and
+          # the tag object's own SHA, then confirms the ref resolves to it,
+          # before this tag is ever handed to `gh release create --verify-tag`.
+          if ! verify_tag_object "$REPO" "$TAG" "$SHA" "$TAG_OBJECT_SHA"; then
+            echo "::error::annotated tag object/ref verification failed for '$TAG'. The tag ref now exists and is immutable under the date-tag ruleset; it is retained as audit evidence. Investigate, then cut the release under a new date tag."
+            exit 1
+          fi
+          echo "Verified: refs/tags/$TAG -> tag object $TAG_OBJECT_SHA -> commit $SHA (type commit)."
+
+          # --- Step 4: publish, verifying the existing tag rather than selecting code by --target ---
+          # Because the date-tag ruleset makes refs/tags/$TAG immutable the
+          # instant it was created above, and step 3 just proved that ref
+          # resolves to exactly the tag object this run created (pointing at
+          # the validated commit), `--verify-tag` is now safely bound to that
+          # object: nothing between here and publish can retarget or delete
+          # it out from under this call.
+          NOTES_ARGS=(--generate-notes)
+          if [ "$USE_GENERATED_NOTES" = "false" ]; then
+            NOTES_ARGS=(--notes-file "$NOTES_PATH")
+          fi
+
+          LATEST_ARG="--latest=false"
+          if [ "$MARK_LATEST" = "true" ]; then
+            LATEST_ARG="--latest"
+          fi
+
+          if ! gh release create "$TAG" \
+            --repo "$REPO" \
+            --verify-tag \
+            --title "$TAG" \
+            "$LATEST_ARG" \
+            "${NOTES_ARGS[@]}"; then
+            echo "::error::gh release create failed after refs/tags/$TAG (object $TAG_OBJECT_SHA) was created by this run."
+            echo "::error::This tag is now immutable under the date-tag ruleset and is intentionally NOT deleted or repaired automatically. It is retained as audit evidence of exactly what commit was validated. To publish this release: investigate why 'gh release create' failed, then either (a) re-run this workflow with a NEW date tag once the problem is fixed, or (b) have a repository admin manually publish a release from the existing tag '$TAG' via 'gh release create $TAG --verify-tag ...' after confirming it is safe to do so."
+            exit 1
+          fi
+          echo "Published release '$TAG' from tag object $TAG_OBJECT_SHA (commit $SHA)."
+
+          echo "tag_object_sha=$TAG_OBJECT_SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Re-read release, ref, and tag object; fail loudly on any mismatch (no repair)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          source .github/scripts/verify-tag-object.sh
+          if ! verify_release_published "${{ github.repository }}" "$TAG" "$SHA" "${{ steps.publish.outputs.tag_object_sha }}"; then
+            echo "::error::post-publish re-verification failed for release '$TAG'. The release and/or tag exist but do not fully match what was validated and published. This is left exactly as-is for manual investigation — no automatic repair or deletion is attempted, and the date-tag ruleset would block a delete/retarget attempt regardless."
+            exit 1
+          fi
+          echo "Post-publish verification passed: release, ref, and tag object for '$TAG' all match the validated commit $SHA."
+
+  dry-run-summary:
+    name: Dry run summary
+    needs: [resolve, validate]
+    if: ${{ inputs.dry_run == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Print the proposed release plan (no tag/release created)
+        run: |
+          echo "### 🔍 Dry run — nothing was created" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Validated SHA:** \`${{ needs.resolve.outputs.sha }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Proposed tag:** \`${{ needs.resolve.outputs.tag }}\`" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${{ needs.resolve.outputs.use_generated_notes }}" = "true" ]; then
+            echo "- **Notes source:** GitHub-generated" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- **Notes source:** \`${{ needs.resolve.outputs.notes_path }}\`" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo "- **Mark as latest:** ${{ inputs.mark_latest }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Protecting ruleset:** \`${{ needs.resolve.outputs.ruleset_name }}\` (id \`${{ needs.resolve.outputs.ruleset_id }}\`)" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Validation passed for this exact SHA, and the immutable date-tag ruleset was verified active with no bypass. Re-run with \`dry_run: false\` to publish." >> "$GITHUB_STEP_SUMMARY"
