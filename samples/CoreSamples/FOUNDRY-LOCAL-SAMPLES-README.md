@@ -24,6 +24,7 @@ All samples are production-ready and follow .NET best practices with proper erro
 | **07-foundrylocal-agent-tools** | [./07-foundrylocal-agent-tools/](./07-foundrylocal-agent-tools/) | Local agent-style chat using `ElBruno.MAF.FoundryLocal.Adapter` + Microsoft.Extensions.AI tool/function invocation. |
 | **10-live-speech-to-text** | [./10-live-speech-to-text/](./10-live-speech-to-text/) | ⚠️ **Windows-only** — Live microphone input to text transcription fully local (ONNX Whisper via ElBruno.Whisper + NAudio). |
 | **11-foundrylocal-live-transcription** | [./11-foundrylocal-live-transcription/](./11-foundrylocal-live-transcription/) | ⚠️ **Windows-only** — Native Foundry Local streaming speech-to-text (nemotron-speech-streaming ASR) with real-time interim + final results. |
+| **12-foundrylocal-multilingual-live-transcription** | [./12-foundrylocal-multilingual-live-transcription/](./12-foundrylocal-multilingual-live-transcription/) | ⚠️ **Windows-only** — Multilingual Foundry Local streaming speech-to-text with auto-detection, English, Spanish, Italian, and custom locale selection. |
 
 ## Prerequisites
 
@@ -52,7 +53,7 @@ FOUNDRY_LOCAL_API_KEY=<your-api-key>
 
 ### ⚠️ Platform-Specific Notes
 
-- **Samples 10 & 11** (live speech-to-text) are **Windows-only** due to NAudio and native audio codec dependencies.
+- **Samples 10–12** (live speech-to-text) are **Windows-only** due to NAudio and native audio codec dependencies.
 - **Linux/macOS**: Samples 01–09 (chat, streaming, scenarios, agent tools) work without restriction.
 
 ## Quick Start
