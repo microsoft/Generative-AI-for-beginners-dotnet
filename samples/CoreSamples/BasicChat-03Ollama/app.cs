@@ -6,12 +6,11 @@
 using OllamaSharp;
 using System.Text;
 
-var httpClient = new HttpClient
-{
-    BaseAddress = new Uri("http://localhost:11434/"),
-    Timeout = TimeSpan.FromMinutes(10)
-};
-IChatClient client = new OllamaApiClient(httpClient, "phi4-mini");
+// On a CPU-only machine (such as a Codespace), the first request can time out
+// while Ollama loads the model. Warm it up first by running this in the terminal:
+//   ollama run phi4-mini "Say hello in one sentence."
+IChatClient client =
+    new OllamaApiClient(new Uri("http://localhost:11434/"), "phi4-mini");
 
 // here we're building the prompt
 StringBuilder prompt = new StringBuilder();
