@@ -6,8 +6,12 @@
 using OllamaSharp;
 using System.Text;
 
-IChatClient client =
-    new OllamaApiClient(new Uri("http://localhost:11434/"), "phi4-mini");
+var httpClient = new HttpClient
+{
+    BaseAddress = new Uri("http://localhost:11434/"),
+    Timeout = TimeSpan.FromMinutes(10)
+};
+IChatClient client = new OllamaApiClient(httpClient, "phi4-mini");
 
 // here we're building the prompt
 StringBuilder prompt = new StringBuilder();
