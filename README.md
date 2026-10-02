@@ -32,6 +32,12 @@ Don't forget to [star (🌟) this repo](https://docs.github.com/en/get-started/e
 
 We're constantly improving this course with the latest AI tools, models, and practical samples:
 
+- **🤖 GitHub Copilot SDK with BYOK — new sample (October 2026)**
+
+  Use the **GitHub Copilot SDK** from .NET with your own model deployment hosted in **Microsoft Foundry** or **Azure OpenAI**. The sample shows the minimal BYOK (Bring Your Own Key) setup: routing inference through a `ProviderConfig`, authenticating with `AzureCliCredential` or an API key, and sending a single model request with tools and skills disabled.
+
+  👉 [Explore the Copilot SDK BYOK sample](./samples/CoreSamples/GitHubCopilotSDK-01-BYOK/)
+
 - **🖥️ Local AI with Foundry Local — 10 samples (August 2026)**
 
   Run Generative AI models locally from .NET using **Microsoft Foundry Local**. Ten production-ready samples demonstrate chat, streaming, practical scenarios, audio transcription, agent tools, and live speech-to-text—including multilingual transcription with automatic language detection and explicit locale selection—all with zero cloud costs and full offline capability.
