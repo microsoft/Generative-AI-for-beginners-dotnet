@@ -148,11 +148,12 @@ static string NormalizeEndpoint(string endpoint)
         throw new ArgumentException("The configured AzureOpenAI:Endpoint must be an HTTPS URL.");
     }
 
-    // Accept either the resource URL or a URL that already ends in /openai/v1/.
-    if (candidate.EndsWith("/openai/v1", StringComparison.OrdinalIgnoreCase) ||
-        candidate.EndsWith("/openai/v1/", StringComparison.OrdinalIgnoreCase))
+    // Accept the resource URL or a URL that already ends in /openai/v1.
+    // Trimming first means a trailing slash does not need a separate check.
+    var trimmed = candidate.TrimEnd('/');
+    if (trimmed.EndsWith("/openai/v1", StringComparison.OrdinalIgnoreCase))
     {
-        return candidate.TrimEnd('/') + "/";
+        return trimmed + "/";
     }
 
     return $"{uri.GetLeftPart(UriPartial.Authority).TrimEnd('/')}/openai/v1/";
