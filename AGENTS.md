@@ -202,6 +202,15 @@ credential-only file-based app), add its exact `git ls-files` path to the `EXCLU
 array in the `Discover tracked app.cs samples` step, with a comment explaining why. This list is
 empty today — every tracked file-based sample must compile secret-free.
 
+### Parallel Search MCP Validation
+
+The keyless `samples/CoreSamples/MCP-04-ParallelSearch/app.cs` sample targets .NET 10 and
+requires SDK 10.0.300 or later for its shared-source `#:include` directive. Its response-handling
+tests are registered in the Core Samples solution and run offline in build validation.
+Run `samples/CoreSamples/MCP-04-ParallelSearch/validate.ps1` for the Release build and tests.
+Add `-Live` only for an opt-in anonymous search/fetch check against the external Parallel service.
+Normal CI does not call Parallel or consume its free-tier quota.
+
 ### Ollama Smoke Validation (opt-in, `workflow_dispatch` only)
 
 Compilation alone cannot catch runtime-only regressions in the OllamaSharp integration (see
@@ -293,8 +302,8 @@ Key points for maintainers:
   `docs/releases/<name>.md` file, no traversal/absolute paths/symlink escape) before anything
   else runs.
 - Validation reuses `.github/workflows/build-validation.yml` via `workflow_call`, pinned to the
-  exact captured SHA (`ref` input) — the same five Release solution builds, six tests, and 13
-  file-based `app.cs` compiles used for PR validation, with no separate matrix to keep in sync.
+  exact captured SHA (`ref` input) — the same five Release solution builds, configured tests, and
+  every tracked file-based `app.cs` compile used for PR validation, with no separate matrix to keep in sync.
 - `dry_run` (default `true`) runs every validation and duplicate-tag/release check and prints the
   proposed SHA/tag/notes/latest plan, but creates nothing. Only a second dispatch with
   `dry_run: false` can publish, and only after validation succeeds again against the same
@@ -317,8 +326,10 @@ dotnet run
 
 ### Note on Test Coverage
 
-This repository is primarily educational with sample applications. There are currently no automated unit or integration tests. Validation is done through:
+This repository is primarily educational with sample applications. Focused automated tests cover
+selected sample behavior, including offline Parallel Search MCP response handling. Validation is done through:
 - Build verification in CI
+- Automated tests for samples with test projects
 - Manual testing of sample applications
 - Documentation review
 

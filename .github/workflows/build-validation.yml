@@ -10,6 +10,7 @@ name: .NET Build Validation
     - 'samples/**/*.slnx'
     - 'samples/**/*.razor'
     - 'samples/**/*.json'
+    - 'samples/CoreSamples/MCP-04-ParallelSearch/validate.ps1'
     - '.github/workflows/build-validation.yml'
   workflow_call:
     inputs:
@@ -69,6 +70,9 @@ jobs:
       if: matrix.solution.name == 'Core Samples'
       timeout-minutes: 5
       run: dotnet test "samples/CoreSamples/RAGSimple-05MEAIVectorsChroma.Tests/RAGSimple-05MEAIVectorsChroma.Tests.csproj" --no-build --configuration Release --verbosity minimal
+    - name: Test Parallel Search response handling offline
+      if: matrix.solution.name == 'Core Samples'
+      run: dotnet test "samples/CoreSamples/MCP-04-ParallelSearch.Tests/MCP-04-ParallelSearch.Tests.csproj" --no-build --configuration Release --verbosity minimal
 
     - name: Display build result
       if: success()
