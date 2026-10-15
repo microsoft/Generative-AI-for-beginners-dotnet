@@ -46,4 +46,4 @@ The sample uses:
 
 ## Alternative Providers
 
-See the other RAG samples (RAGSimple-03, RAGSimple-04) for Azure AI Search and Qdrant vector store examples.
+See the other RAG samples (RAGSimple-03, RAGSimple-04) for Azure AI Search and Qdrant vector store examples. [RAGSimple-05MEAIVectorsChroma](../RAGSimple-05MEAIVectorsChroma/) uses the same shared `MovieVectorRecord`, movie catalog, keyless embeddings, and search API with Chroma running in Docker.

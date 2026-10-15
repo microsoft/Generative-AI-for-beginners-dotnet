@@ -65,6 +65,10 @@ jobs:
     - name: Run tests for ${{ matrix.solution.name }}
       if: matrix.solution.name == 'Core Samples'
       run: dotnet test "samples/CoreSamples/AzFunction-BasicChat-01/AzFunction-BasicChat-01.Tests/AzFunction-BasicChat-01.Tests.csproj" --no-build --configuration Release --verbosity minimal
+    - name: Test Chroma movie retrieval in Docker
+      if: matrix.solution.name == 'Core Samples'
+      timeout-minutes: 5
+      run: dotnet test "samples/CoreSamples/RAGSimple-05MEAIVectorsChroma.Tests/RAGSimple-05MEAIVectorsChroma.Tests.csproj" --no-build --configuration Release --verbosity minimal
 
     - name: Display build result
       if: success()
