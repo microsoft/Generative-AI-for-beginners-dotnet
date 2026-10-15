@@ -372,6 +372,7 @@ IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator =
 | [DataIngestion-01-Simple](../samples/CoreSamples/DataIngestion-01-Simple/) | Document ingestion pipeline (read → chunk → embed → store) with sqlite-vec |
 | [RAGSimple-03MEAIVectorsAISearch](../samples/CoreSamples/RAGSimple-03MEAIVectorsAISearch/) | RAG with Azure AI Search |
 | [RAGSimple-04MEAIVectorsQdrant](../samples/CoreSamples/RAGSimple-04MEAIVectorsQdrant/) | RAG with Qdrant |
+| [RAGSimple-05MEAIVectorsChroma](../samples/CoreSamples/RAGSimple-05MEAIVectorsChroma/) | Chroma movie retrieval through VectorData, running in Docker |
 | [RAGSimple-15Ollama-DeepSeekR1](../samples/CoreSamples/RAGSimple-15Ollama-DeepSeekR1/) | RAG with DeepSeek reasoning |
 
 ---

@@ -73,6 +73,7 @@ All code samples for this lesson are located in the **[`samples/CoreSamples/`](.
 | **Embeddings & RAG** | [RAGSimple-02MEAIVectorsMemory](../samples/CoreSamples/RAGSimple-02MEAIVectorsMemory/) | Local sqlite-vec vector store |
 | | [RAGSimple-03MEAIVectorsAISearch](../samples/CoreSamples/RAGSimple-03MEAIVectorsAISearch/) | Azure AI Search |
 | | [RAGSimple-04MEAIVectorsQdrant](../samples/CoreSamples/RAGSimple-04MEAIVectorsQdrant/) | Qdrant vector store |
+| | [RAGSimple-05MEAIVectorsChroma](../samples/CoreSamples/RAGSimple-05MEAIVectorsChroma/) | Chroma in Docker through the VectorData abstraction |
 | **Vision** | [Vision-01MEAI-AzureOpenAI](../samples/CoreSamples/Vision-01MEAI-AzureOpenAI/) | Vision with Azure OpenAI |
 | | [Vision-02MEAI-Ollama](../samples/CoreSamples/Vision-02MEAI-Ollama/) | Local vision with Ollama |
 | | [Vision-03MEAI-AOAI](../samples/CoreSamples/Vision-03MEAI-AOAI/) | Vision with Azure OpenAI |
