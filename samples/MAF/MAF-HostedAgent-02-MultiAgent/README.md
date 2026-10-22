@@ -187,5 +187,5 @@ IChatClient chatClient = CreateChatClient();
 - [Microsoft.Extensions.AI](https://learn.microsoft.com/en-us/dotnet/ai/ai-extensions)
 - [MAF-HostedAgent-01-TimeZone](../MAF-HostedAgent-01-TimeZone/) — Single-agent Hosted Agent sample
 - [MAF-MultiAgents](../MAF-MultiAgents/) — Multi-model agent orchestration
-- [Azure OpenAI Setup](../../01-IntroductionToGenerativeAI/setup-azure-openai.md)
-- [Ollama Setup](../../01-IntroductionToGenerativeAI/setup-local-ollama.md)
+- [Azure OpenAI Setup](../../../01-IntroductionToGenerativeAI/setup-azure-openai.md)
+- [Ollama Setup](../../../01-IntroductionToGenerativeAI/setup-local-ollama.md)

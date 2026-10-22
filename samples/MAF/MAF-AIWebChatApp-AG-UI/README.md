@@ -332,4 +332,4 @@ This sample is part of the [Generative AI for Beginners - .NET Edition](../../RE
 
 For more Agent Framework samples, see:
 
-- [MAF Lesson 06](../../../06-MAF/readme.md)
+- [Lesson 4: AI Agents with Microsoft Agent Framework](../../../04-AgentsWithMAF/readme.md)
