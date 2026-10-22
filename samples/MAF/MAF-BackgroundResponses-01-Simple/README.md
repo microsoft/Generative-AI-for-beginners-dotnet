@@ -17,7 +17,7 @@ Files of interest
 
 Run
 
-1. Configure your provider credentials (user-secrets or environment variables) as described in the top-level lesson `06-MAF/readme.md`.
+1. Configure your provider credentials (user-secrets or environment variables) as described in the top-level lesson `04-AgentsWithMAF/readme.md`.
 
 2. Build and run:
 
@@ -29,7 +29,7 @@ dotnet run
 
 Related
 
-- Lesson guide: `06-MAF/README-BackgroundResponses.md`
+- Lesson guide: `04-AgentsWithMAF/02-agents-with-tools.md`
 - Persisted conversation samples: `../MAF-Persisting-01-Simple/` and `../MAF-Persisting-02-Menu/`
 
 License: MIT

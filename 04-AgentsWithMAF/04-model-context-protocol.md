@@ -417,7 +417,7 @@ Need to integrate with external service?
 | [MCP-03-MicrosoftLearn](../samples/CoreSamples/MCP-03-MicrosoftLearn/) | Before/after demo grounding answers with the Microsoft Learn MCP server |
 | [MCP-04-ParallelSearch](../samples/CoreSamples/MCP-04-ParallelSearch/) | Keyless web search and page fetching with the Parallel Search MCP server |
 | [MAF-MCP-01](../samples/MAF/MAF-MCP-01/) | A MAF agent that owns Microsoft Learn MCP tools |
-| Aspire MCP Sample | See [04-PracticalSamples](../04-PracticalSamples/) for Aspire + MCP integration |
+| Aspire MCP Sample | See [PracticalSamples](../samples/PracticalSamples/) for Aspire + MCP integration |
 
 ---
 

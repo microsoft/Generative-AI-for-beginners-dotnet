@@ -77,7 +77,6 @@ All code samples for this lesson are located in the **[`samples/CoreSamples/`](.
 | **Vision** | [Vision-01MEAI-AzureOpenAI](../samples/CoreSamples/Vision-01MEAI-AzureOpenAI/) | Vision with Azure OpenAI |
 | | [Vision-02MEAI-Ollama](../samples/CoreSamples/Vision-02MEAI-Ollama/) | Local vision with Ollama |
 | | [Vision-03MEAI-AOAI](../samples/CoreSamples/Vision-03MEAI-AOAI/) | Vision with Azure OpenAI |
-| **Documents** | [OpenAI-FileProcessing-Pdf-01](../samples/CoreSamples/OpenAI-FileProcessing-Pdf-01/) | PDF document processing |
 | **Local Models** | [AIToolkit-02-MEAI-Chat](../samples/CoreSamples/AIToolkit-02-MEAI-Chat/) | AI Toolkit with MEAI |
 | | [DockerModels-02-MEAI-Chat](../samples/CoreSamples/DockerModels-02-MEAI-Chat/) | Docker Model Runner with MEAI |
 | | [AIFoundryLocal-01-MEAI-Chat](../samples/CoreSamples/AIFoundryLocal-01-MEAI-Chat/) | Foundry Local with MEAI |

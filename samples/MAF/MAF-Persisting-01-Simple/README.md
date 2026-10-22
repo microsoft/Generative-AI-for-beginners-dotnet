@@ -41,7 +41,7 @@ Troubleshooting
 
 Related docs
 
-- Lesson guide: `06-MAF/README-PersistingConversations.md`
+- Lesson guide: `04-AgentsWithMAF/01-building-first-agent.md`
 - Microsoft Learn: [Persisting and Resuming Agent Conversations](https://learn.microsoft.com/agent-framework/tutorials/agents/persisted-conversation?pivots=programming-language-csharp)
 
 License: MIT
