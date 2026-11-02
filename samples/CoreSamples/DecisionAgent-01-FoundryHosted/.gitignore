@@ -1,0 +1,4 @@
+.azure/
+**/bin/
+**/obj/
+**/TestResults/

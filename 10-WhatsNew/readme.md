@@ -2,6 +2,35 @@
 
 This document contains historical updates to the Generative AI for Beginners .NET course.
 
+## 🎯 Decision-powered Hosted Agent (November 2026)
+
+A new .NET sample demonstrates a custom Microsoft Agent Framework `AIAgent`
+that calls **Microsoft-Decision-1** through Foundry's native decision endpoint
+and exposes a typed result through the Responses protocol. No chat model is
+used to make the routing decision.
+
+### Key Updates
+
+- **New Sample:** [DecisionAgent-01-FoundryHosted](../samples/CoreSamples/DecisionAgent-01-FoundryHosted/) routes synthetic support tickets to one of four teams or manual review.
+- **Provider-independent result:** confidence, per-option probabilities, and optional usage are preserved in a stable C# contract.
+- **Hosted and local paths:** the same agent implementation runs locally and as a .NET Foundry Hosted Agent.
+- **Remote C# caller:** checks the final Responses status before deserializing the typed decision.
+- **Offline tests:** cover validation, native request/authentication, usage semantics, provider failures, cancellation, and Responses handling without Azure credentials.
+- **Community dependency:** the current Foundry decision client is `ElBruno.AI.Decisions.Foundry`, not an official Microsoft.Extensions.AI API.
+
+### Resources
+
+- 📚 [Sample README](../samples/CoreSamples/DecisionAgent-01-FoundryHosted/README.md)
+- 📖 [Foundry Hosted Agents](https://learn.microsoft.com/azure/foundry/agents/concepts/hosted-agents?WT.mc_id=academic-105485-koreyst)
+- 📖 [Foundry endpoint authorization](https://learn.microsoft.com/azure/foundry/agents/how-to/configure-agent-endpoint-authorization?WT.mc_id=academic-105485-koreyst)
+- 📚 [Source attribution and notices](../samples/CoreSamples/DecisionAgent-01-FoundryHosted/THIRD-PARTY-NOTICES.md)
+
+Live deployment permissions and portal screenshots must be verified with a
+real authorized Foundry project before publication. Offline tests are not
+evidence of live inference or hosted identity access.
+
+---
+
 ## 🤖 GitHub Copilot SDK with BYOK (October 2026)
 
 A new sample demonstrates how to call the **GitHub Copilot SDK** from .NET using your own model deployment, hosted in **Microsoft Foundry** or **Azure OpenAI**.
