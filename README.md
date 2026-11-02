@@ -32,6 +32,12 @@ Don't forget to [star (🌟) this repo](https://docs.github.com/en/get-started/e
 
 We're constantly improving this course with the latest AI tools, models, and practical samples:
 
+- **🎯 Decision-powered Hosted Agent: new sample (November 2026)**
+
+  Route synthetic support tickets with a custom **Microsoft Agent Framework** `AIAgent` and the native **Microsoft-Decision-1** endpoint. The sample returns a typed decision through Foundry's Responses protocol, without adding a chat model, and includes offline tests plus a C# caller for a deployed Hosted Agent.
+
+  👉 [Explore the decision-powered Hosted Agent sample](./samples/CoreSamples/DecisionAgent-01-FoundryHosted/)
+
 - **🤖 GitHub Copilot SDK with BYOK — new sample (October 2026)**
 
   Use the **GitHub Copilot SDK** from .NET with your own model deployment hosted in **Microsoft Foundry** or **Azure OpenAI**. The sample shows the minimal BYOK (Bring Your Own Key) setup: routing inference through a `ProviderConfig`, authenticating with `AzureCliCredential` or an API key, and sending a single model request with tools and skills disabled.
