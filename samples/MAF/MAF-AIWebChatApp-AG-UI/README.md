@@ -150,7 +150,7 @@ builder.AddAIAgent("ChatAgent", (sp, key) =>
 {
     var chatClient = sp.GetRequiredService<IChatClient>();
     
-    var aiAgent = chatClient.CreateAIAgent(
+    var aiAgent = chatClient.AsAIAgent(
         name: key,
         instructions: "You are a useful agent that helps users with short and funny answers.",
         description: "An AI agent that helps users with short and funny answers."
@@ -164,14 +164,13 @@ builder.AddAIAgent("ChatAgent", (sp, key) =>
 });
 
 // Map AG-UI endpoint
-var aiAgent = app.Services.GetKeyedService<AIAgent>("ChatAgent");
-app.MapAGUI("/", aiAgent);
+app.MapAGUIServer("/", "ChatAgent");
 ```
 
 **Key Points:**
 
 - Hosts the AI agent as a web service
-- Exposes AG-UI endpoints via `app.MapAGUI()`
+- Exposes AG-UI endpoints via `app.MapAGUIServer()`
 - Configures Azure OpenAI chat client with function invocation support
 - Enables OpenTelemetry for observability
 
@@ -188,7 +187,7 @@ AGUIChatClient chatClient = new(agentService.HttpClient, "https+http://aichatweb
 var searchFunctions = sp.GetRequiredService<SearchFunctions>();
 AITool[] frontendTools = [AIFunctionFactory.Create(searchFunctions.SearchAsync)];
 
-var aiAgent = chatClient.CreateAIAgent(
+var aiAgent = chatClient.AsAIAgent(
     name: "ChatAgent",
     instructions: "You are a useful agent that helps users with short and funny answers.",
     description: "An AI agent that helps users with short and funny answers.",
@@ -253,7 +252,7 @@ The AG-UI feature enables a distributed agent architecture where:
 
 ### MapAGUI vs AGUIChatClient
 
-- **`MapAGUI()`**: Used in the backend to expose an agent via HTTP endpoints
+- **`MapAGUIServer()`**: Used in the backend to expose an agent via HTTP endpoints
 - **`AGUIChatClient`**: Used in the frontend to connect to a remote agent exposed via MapAGUI
 
 ## Key Technologies
@@ -270,23 +269,24 @@ The AG-UI feature enables a distributed agent architecture where:
 ### Backend (Agents Service)
 
 ```xml
-<PackageReference Include="Microsoft.Agents.AI" Version="1.0.0-preview.251114.1" />
-<PackageReference Include="Microsoft.Agents.AI.Hosting" Version="1.0.0-preview.251114.1" />
-<PackageReference Include="Microsoft.Agents.AI.Hosting.AGUI.AspNetCore" Version="1.0.0-preview.251114.1" />
-<PackageReference Include="Microsoft.Extensions.AI" Version="10.0.0" />
-<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.0.0-preview.1.25560.10" />
-<PackageReference Include="Aspire.Azure.AI.OpenAI" Version="13.0.0-preview.1.25560.3" />
+<PackageReference Include="Microsoft.Agents.AI" Version="1.27.0" />
+<PackageReference Include="Microsoft.Agents.AI.Hosting" Version="1.27.0-preview.261030.1" />
+<PackageReference Include="Microsoft.Agents.AI.Hosting.AGUI.AspNetCore" Version="1.27.0-preview.261030.1" />
+<PackageReference Include="Microsoft.Extensions.AI" Version="10.11.0" />
+<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.11.0" />
+<PackageReference Include="Aspire.Azure.AI.OpenAI" Version="13.6.4-preview.1.26523.11" />
 ```
 
 ### Frontend (Web App)
 
 ```xml
-<PackageReference Include="Microsoft.Agents.AI" Version="1.0.0-preview.251114.1" />
-<PackageReference Include="Microsoft.Agents.AI.AGUI" Version="1.0.0-preview.251114.1" />
-<PackageReference Include="Microsoft.Agents.AI.Hosting" Version="1.0.0-preview.251114.1" />
-<PackageReference Include="Microsoft.Extensions.AI" Version="10.0.0" />
-<PackageReference Include="ElBruno.Connectors.SqliteVec" Version="0.5.1-preview" />
-<PackageReference Include="PdfPig" Version="0.1.13-alpha-20251115-aef0a" />
+<PackageReference Include="Microsoft.Agents.AI" Version="1.27.0" />
+<PackageReference Include="Microsoft.Agents.AI.AGUI" Version="1.13.0-preview.260703.1" />
+<PackageReference Include="Microsoft.Agents.AI.Hosting" Version="1.27.0-preview.261030.1" />
+<PackageReference Include="Microsoft.Extensions.AI" Version="10.11.0" />
+<PackageReference Include="ElBruno.Connectors.SqliteVec" Version="0.5.3" />
+<PackageReference Include="SQLitePCLRaw.lib.e_sqlite3" Version="3.53.3" />
+<PackageReference Include="PdfPig" Version="0.1.16" />
 ```
 
 ## Learn More

@@ -1,12 +1,14 @@
 # Agents with Tools
 
+**Ollama route:** Run `dotnet run --project .\samples\MAF\MAF-Ollama-01 -- tools` from the repository root after pulling `llama3.2`. The [local librarian agent](../samples/MAF/MAF-Ollama-01/README.md) uses a read-only function and reports actual tool calls, without cloud services. Azure background-response and image-generation features below are optional. See the [local learning path](../docs/ollama-learning-path.md).
+
 In this lesson, you'll give your agents the ability to take actions in the real world—calling APIs, querying databases, and executing code.
 
 ---
 
-[![Agents with Tools](./images/LIM_GAN_08_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson4-tools)
+![Agents with Tools](./images/LIM_GAN_08_thumb_w480.png)
 
-_Click the image to watch the video_
+The previous video shortcut redirects to search, not a recording. Use the written walkthrough below and the [local learning path](../docs/ollama-learning-path.md).
 
 ---
 

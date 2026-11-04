@@ -48,7 +48,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 // Map the AG-UI agent endpoint
-var aiAgent = app.Services.GetKeyedService<AIAgent>("ChatAgent");
-app.MapAGUI("/", aiAgent);
+app.MapAGUIServer("/", "ChatAgent");
 
 app.Run();

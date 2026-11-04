@@ -26,14 +26,14 @@ result per utterance.
 
 ## Prerequisites
 
-- .NET SDK 8.0+ (this project targets `net8.0-windows10.0.18362`)
-- **Windows** — microphone capture uses NAudio's `WaveInEvent`, which is Windows-only
+- .NET SDK 10.0+ (this project targets `net10.0-windows10.0.18362`, required by the current NAudio package)
+- **Windows** — microphone capture uses NAudio's `WaveIn`, which is Windows-only
 - Foundry Local installed and available on this machine
 - A working microphone / input device
 - Internet access on the **first** run (to download the model)
 
 > The streaming ASR models are surfaced by the Foundry Local **SDK** (`Microsoft.AI.Foundry.Local.WinML`
-> 1.2.3). An older `foundry` CLI may not list them via `foundry model list`, but the SDK catalog
+> 1.2.4). An older `foundry` CLI may not list them via `foundry model list`, but the SDK catalog
 > resolves them.
 
 ## Configuration

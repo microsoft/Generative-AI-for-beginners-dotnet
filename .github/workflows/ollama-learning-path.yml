@@ -1,0 +1,36 @@
+name: Ollama Learning Path Checks
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'README.md'
+      - '01-IntroductionToGenerativeAI/**'
+      - '02-GenerativeAITechniques/**'
+      - '03-AIPatternsAndApplications/**'
+      - '04-AgentsWithMAF/**'
+      - '05-ResponsibleAI/**'
+      - 'docs/ollama-learning-path.md'
+      - 'samples/CoreSamples/**'
+      - 'samples/MAF/MAF-Ollama-01/**'
+      - 'scripts/test_ollama.py'
+      - '.github/workflows/ollama-learning-path.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-checks:
+    name: Documentation and offline regression checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: '10.0.x'
+      - name: Validate documentation and build local samples without inference
+        run: python3 scripts/test_ollama.py --build-only

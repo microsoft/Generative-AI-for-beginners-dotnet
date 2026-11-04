@@ -2,6 +2,8 @@
 
 This sample demonstrates semantic search / RAG building blocks using `Microsoft.Extensions.AI`, the official `Microsoft.Extensions.VectorData` abstractions, and a local sqlite-vec store backed by `ElBruno.Connectors.SqliteVec`.
 
+**Ollama-only learners:** the database here is local, but its embeddings use Azure. Use [Ollama-02RAG](../Ollama-02RAG/README.md) for fully local embeddings, search, and answer generation, or follow the [local learning path](../../../docs/ollama-learning-path.md).
+
 ## Prerequisites
 
 - .NET 10.0 SDK

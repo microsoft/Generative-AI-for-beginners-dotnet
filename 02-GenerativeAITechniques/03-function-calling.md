@@ -1,12 +1,14 @@
 # Function Calling
 
+**Ollama route:** Run `dotnet run --project .\samples\CoreSamples\MEAIFunctionsOllama` from the repository root after pulling `llama3.2`. The [sample guide](../samples/CoreSamples/MEAIFunctionsOllama/README.md) explains the read-only demo tool and observable invocation count. It uses `OllamaApiClient` with the same `UseFunctionInvocation()` middleware discussed here, without Azure credentials. Follow the [local learning path](../docs/ollama-learning-path.md).
+
 In this lesson, you'll learn how to extend AI capabilities by letting the model call your .NET functions. This is one of the most powerful patterns in AI development, enabling your AI to access real-time data, perform calculations, and interact with external systems.
 
 ---
 
-[![Function Calling](./images/LIM_GAN_04_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson2-functions)
+![Function Calling](./images/LIM_GAN_04_thumb_w480.png)
 
-_Click the image to watch the video_
+The previous video shortcut redirects to search, not a recording. Use the written walkthrough below and the [local learning path](../docs/ollama-learning-path.md).
 
 ---
 

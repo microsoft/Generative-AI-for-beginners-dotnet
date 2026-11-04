@@ -6,6 +6,8 @@ Everything you've learned (chat, function calling, RAG, vision) comes together h
 
 ## What You'll Learn
 
+**Ollama route:** [MAF-Ollama-01](../samples/MAF/MAF-Ollama-01/README.md) covers a basic agent, a read-only tool, and a local writer/editor sequence. [MCP-04-LocalTools](../samples/CoreSamples/MCP-04-LocalTools/README.md) adds a local MCP server. Use the [local learning path](../docs/ollama-learning-path.md) to avoid mixed-provider or hosted-cloud branches.
+
 | Concept | What It Means |
 |---------|---------------|
 | **Agents vs Chatbots** | Why agents are fundamentally different from chat applications |
@@ -77,7 +79,7 @@ User Input ────────►│  ┌───────────�
 
 ```bash
 # Install the Agent Framework
-dotnet add package Microsoft.Agents.AI.OpenAI --version 1.0.0
+dotnet add package Microsoft.Agents.AI.OpenAI --version 1.27.0
 ```
 
 ---

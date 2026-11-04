@@ -1,10 +1,11 @@
 #:package Azure.AI.OpenAI@2.9.0-beta.1
 #:package Azure.Identity@1.21.0
-#:package Microsoft.Extensions.AI@10.8.3
-#:package Microsoft.Extensions.AI.OpenAI@10.8.3
-#:package OllamaSharp@5.4.30
-#:package Microsoft.Extensions.Configuration.UserSecrets@10.0.10
+#:package Microsoft.Extensions.AI@10.11.0
+#:package Microsoft.Extensions.AI.OpenAI@10.11.0
+#:package OllamaSharp@5.5.0
+#:package Microsoft.Extensions.Configuration.UserSecrets@10.0.14
 #:property UserSecretsId=genai-beginners-dotnet
+#:property JsonSerializerIsReflectionEnabledByDefault=true
 
 using Azure.AI.OpenAI;
 using Azure.Identity;
@@ -18,18 +19,31 @@ using System.Text;
 // The point of this sample is the CONVERSATION HISTORY pattern, which is identical for
 // every provider because everything is an IChatClient. Set the Foundry secrets below and
 // it runs against Microsoft Foundry; leave them unset and it falls back to local Ollama.
+// Pass --ollama to select local inference explicitly without reading those secrets.
 //      dotnet user-secrets set "AzureOpenAI:Endpoint" "https://<your-endpoint>.openai.azure.com/"
 //      dotnet user-secrets set "AzureOpenAI:Deployment" "gpt-5-mini"
 // Then sign in with: az login
 
-var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
+bool useOllama = args.Contains("--ollama");
+if (args.Any(arg => arg != "--ollama"))
+{
+    throw new ArgumentException("Usage: dotnet run app.cs -- [--ollama]");
+}
+var config = useOllama
+    ? new ConfigurationBuilder().Build()
+    : new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 var endpoint = config["AzureOpenAI:Endpoint"];
 var deploymentName = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 
 // Same abstraction, different backend — the conversation code below never changes.
 IChatClient client;
 string modelLabel;
-if (!string.IsNullOrEmpty(endpoint))
+using var httpClient = new HttpClient
+{
+    BaseAddress = new Uri(Environment.GetEnvironmentVariable("OLLAMA_ENDPOINT") ?? "http://localhost:11434"),
+    Timeout = TimeSpan.FromMinutes(2)
+};
+if (!useOllama && !string.IsNullOrEmpty(endpoint))
 {
     client = new AzureOpenAIClient(new Uri(endpoint), new AzureCliCredential())
         .GetChatClient(deploymentName)
@@ -38,9 +52,11 @@ if (!string.IsNullOrEmpty(endpoint))
 }
 else
 {
-    client = new OllamaApiClient(new Uri("http://localhost:11434"), "phi4-mini");
-    modelLabel = "Ollama · phi4-mini";
+    var model = Environment.GetEnvironmentVariable("OLLAMA_MODEL") ?? "phi4-mini";
+    client = new OllamaApiClient(httpClient, model);
+    modelLabel = $"Ollama · {model}";
 }
+using var clientLifetime = client;
 
 Console.WriteLine($"Chat with history  ·  {modelLabel}");
 Console.WriteLine();
@@ -67,14 +83,18 @@ while (true)
     // Stream the answer token-by-token, accumulating it so the full turn can be stored.
     var sb = new StringBuilder();
     Console.Write("AI: ");
-    await foreach (var update in client.GetStreamingResponseAsync(conversation))
+    using var timeout = new CancellationTokenSource(TimeSpan.FromMinutes(2));
+    await foreach (var update in client.GetStreamingResponseAsync(conversation, cancellationToken: timeout.Token))
     {
         Console.Write(update.Text);
         sb.Append(update.Text);
     }
     Console.WriteLine();
+    if (sb.Length == 0)
+    {
+        throw new InvalidOperationException("The model returned no streaming text.");
+    }
 
-    // IMPORTANT: the response object exposes .Text and .Message — there is NO .Messages
-    // property. Append the assistant turn so the next question keeps the full context.
+    // Append the accumulated assistant turn so the next question keeps the full context.
     conversation.Add(new ChatMessage(ChatRole.Assistant, sb.ToString()));
 }

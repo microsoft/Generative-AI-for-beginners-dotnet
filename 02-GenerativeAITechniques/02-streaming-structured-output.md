@@ -4,13 +4,15 @@ In this lesson, you'll learn how to stream AI responses in real-time and how to 
 
 ---
 
-[![Streaming and Structured Output](./images/LIM_GAN_03_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson2-streaming)
+![Streaming and Structured Output](./images/LIM_GAN_03_thumb_w480.png)
 
-_Click the image to watch the video_
+The previous video shortcut redirects to search, not a recording. Use the written walkthrough below and the [local learning path](../docs/ollama-learning-path.md).
 
 ---
 
 ## Why Streaming Matters
+
+**Ollama route:** From the repository root, run `dotnet run --project .\samples\CoreSamples\Ollama-01Techniques -- stream`, then replace `stream` with `structured`. The [sample guide](../samples/CoreSamples/Ollama-01Techniques/README.md) lists prerequisites and expected outputs. Use an Ollama `IChatClient` in the patterns below; Azure initialization is an alternative, not a local requirement. See the [local learning path](../docs/ollama-learning-path.md).
 
 When you call `GetResponseAsync`, you wait for the entire response before displaying anything. For short responses, this is fine. But for longer responses, the user stares at a blank screen for several seconds.
 

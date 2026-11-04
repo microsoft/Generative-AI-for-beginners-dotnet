@@ -10,7 +10,7 @@ even ones written in a different language or framework. It's the "HTTP of agent 
 A single console app plays **both** roles:
 
 1. **Server** — builds a `writer-agent` (Azure OpenAI) and exposes it over A2A with
-   `app.MapA2A(writerAgent, "/a2a/writer-agent")`.
+   `app.MapA2AHttpJson(writerAgent, "/a2a/writer-agent")`.
 2. **Client** — connects to that same endpoint with an `A2AClient`, wraps it as a standard
    `AIAgent`, and calls `RunAsync(...)`. The client never references the agent's
    implementation — only its A2A endpoint.

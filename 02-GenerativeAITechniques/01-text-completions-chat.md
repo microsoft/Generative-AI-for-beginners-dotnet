@@ -64,6 +64,8 @@ Think of it like asking someone a question in passing. You're not starting a con
 
 ### Your First Completion
 
+**Ollama route:** Run `dotnet run .\samples\CoreSamples\BasicChat-03Ollama\app.cs` from the repository root. No credentials are needed. For the snippets in this chapter, initialize `IChatClient client = new OllamaApiClient(new Uri("http://localhost:11434"), "phi4-mini");` with `using OllamaSharp;` instead of the Azure initializer below. Use the [local setup guide](../01-IntroductionToGenerativeAI/setup-local-ollama.md) for packages and file-based serializer settings.
+
 Here's how to get a text completion with Microsoft.Extensions.AI:
 
 ```csharp
@@ -95,10 +97,10 @@ Console.WriteLine(response.Text);
 
 ### How to Run the Sample Code
 
-To run the sample code, you'll need to:
+The steps below run the **Azure alternative**. Local learners should use the Ollama command above, then `dotnet run .\samples\CoreSamples\BasicChat-10ConversationHistory\app.cs -- --ollama` for history. The explicit switch ignores existing Azure secrets without deleting them. See the [complete local route](../docs/ollama-learning-path.md).
 
 1. Make sure you have set up your development environment as described in the [Setup guide](../01-IntroductionToGenerativeAI/readme.md)
-2. Ensure you have configured your GitHub Token or other credentials
+2. Configure the Azure endpoint and deployment using the [Azure setup guide](../01-IntroductionToGenerativeAI/setup-azure-openai.md), then sign in with `az login`
 3. Open a terminal in your IDE
 4. Navigate to the sample code directory:
 

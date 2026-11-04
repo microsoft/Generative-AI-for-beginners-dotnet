@@ -1,12 +1,14 @@
 # Building Your First Agent
 
+**Ollama route:** Start with `dotnet run --project .\samples\MAF\MAF-Ollama-01` from the repository root after pulling `llama3.2`. The [local sample guide](../samples/MAF/MAF-Ollama-01/README.md) needs no Azure credentials. Use the Ollama initializer in [the provider section](#ollama-local) instead of the Azure setup below, and follow the [local learning path](../docs/ollama-learning-path.md).
+
 In this lesson, you'll create your first AI agent using Microsoft Agent Framework and understand what makes agents different from simple chat applications.
 
 ---
 
-[![Building Your First Agent](./images/LIM_GAN_08_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson4-first-agent)
+![Building Your First Agent](./images/LIM_GAN_08_thumb_w480.png)
 
-_Click the image to watch the video_
+The previous video shortcut redirects to search, not a recording. Use the written walkthrough below and the [local learning path](../docs/ollama-learning-path.md).
 
 ---
 
@@ -47,7 +49,7 @@ The agent abstracts away the complexity of managing conversations, tools, and mu
 ### Install the Agent Framework
 
 ```bash
-dotnet add package Microsoft.Agents.AI --version 1.0.0
+dotnet add package Microsoft.Agents.AI --version 1.27.0
 ```
 
 ### Create a Simple Agent
@@ -182,8 +184,12 @@ AIAgent agent = chatClient.AsAIAgent(
 
 ### Ollama (Local)
 
+From the repository root, run `dotnet run --project .\samples\MAF\MAF-Ollama-01` after `ollama pull llama3.2`. See the [sample guide](../samples/MAF/MAF-Ollama-01/README.md) for tools and sequential agents. No Azure credentials are needed; the Azure initializer elsewhere in this chapter is an alternative. Follow the [local learning path](../docs/ollama-learning-path.md).
+
 ```csharp
 using OllamaSharp;
+using Microsoft.Agents.AI;
+using Microsoft.Extensions.AI;
 
 IChatClient chatClient = new OllamaApiClient(
     new Uri("http://localhost:11434/"), 

@@ -1,13 +1,15 @@
 ﻿using NAudio.Wave;
+using System.Runtime.Versioning;
 
 /// <summary>
 /// Uses the NAudio library (https://github.com/naudio/NAudio) to provide a rudimentary abstraction to output
 /// BinaryData audio segments to the default output (speaker/headphone) device.
 /// </summary>
+[SupportedOSPlatform("windows")]
 public class SpeakerOutput : IDisposable
 {
     BufferedWaveProvider _waveProvider;
-    WaveOutEvent _waveOutEvent;
+    WaveOut _waveOutEvent;
 
     public SpeakerOutput()
     {
@@ -15,10 +17,7 @@ public class SpeakerOutput : IDisposable
             rate: 24000,
             bits: 16,
             channels: 1);
-        _waveProvider = new(outputAudioFormat)
-        {
-            BufferDuration = TimeSpan.FromMinutes(2),
-        };
+        _waveProvider = new(outputAudioFormat, TimeSpan.FromMinutes(2));
         _waveOutEvent = new();
         _waveOutEvent.Init(_waveProvider);
         _waveOutEvent.Play();

@@ -6,7 +6,7 @@
 // auto-downloaded from HuggingFace on first run via ElBruno.HuggingFace.Downloader
 // (used transitively by ElBruno.Whisper) and inference runs locally with ONNX Runtime.
 //
-// Microphone capture uses NAudio (Windows-only WaveInEvent). Audio is grouped into
+// Microphone capture uses NAudio (Windows-only WaveIn). Audio is grouped into
 // spoken utterances with a simple silence detector, then each utterance is transcribed.
 
 using System.Threading.Channels;
@@ -44,12 +44,12 @@ Console.WriteLine();
 
 if (!OperatingSystem.IsWindows())
 {
-    Console.Error.WriteLine("Microphone capture uses NAudio's WaveInEvent, which is Windows-only.");
+    Console.Error.WriteLine("Microphone capture uses NAudio's WaveIn, which is Windows-only.");
     Console.Error.WriteLine("Run this sample on Windows, or adapt it to another capture library.");
     return 1;
 }
 
-if (WaveInEvent.DeviceCount == 0)
+if (WaveIn.DeviceCount == 0)
 {
     Console.Error.WriteLine("No microphone/input device was detected. Connect a microphone and try again.");
     return 1;
@@ -90,7 +90,7 @@ var audioChannel = Channel.CreateBounded<byte[]>(new BoundedChannelOptions(200)
     FullMode = BoundedChannelFullMode.DropOldest
 });
 
-using var waveIn = new WaveInEvent
+using var waveIn = new WaveIn
 {
     WaveFormat = new WaveFormat(SampleRate, BitsPerSample, ChannelCount),
     BufferMilliseconds = 100

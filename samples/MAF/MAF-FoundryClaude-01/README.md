@@ -83,7 +83,7 @@ MAF-FoundryClaude-01/
 ### Installing the Package
 
 ```bash
-dotnet add package elbruno.Extensions.AI.Claude --version 0.1.0-preview.2
+dotnet add package elbruno.Extensions.AI.Claude --version 0.1.0-preview.6
 ```
 
 ### Creating the IChatClient with Claude

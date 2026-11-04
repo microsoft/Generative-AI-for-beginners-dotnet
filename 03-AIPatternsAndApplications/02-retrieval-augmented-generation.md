@@ -1,5 +1,7 @@
 # Retrieval-Augmented Generation (RAG)
 
+**Ollama route:** Use [Ollama-02RAG](../samples/CoreSamples/Ollama-02RAG/README.md) for a complete runnable local implementation of this chapter. The Azure examples remain alternatives. Follow the [local learning path](../docs/ollama-learning-path.md) for exact prerequisites and commands.
+
 In this lesson, you'll learn how to ground AI responses in your own data, making them accurate, current, and relevant to your domain.
 
 ---
@@ -323,19 +325,20 @@ Run RAG entirely locally with Ollama:
 
 ```csharp
 using OllamaSharp;
+using Microsoft.Extensions.AI;
 
-// Local Ollama client
-var ollamaClient = new OllamaApiClient("http://localhost:11434");
+// Separate clients prevent the embedding model from changing the chat model.
+using IChatClient chatClient =
+    new OllamaApiClient(new Uri("http://localhost:11434"), "phi4-mini");
 
-// Use as chat client
-IChatClient chatClient = ollamaClient.AsIChatClient("phi4-mini");
+using IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator =
+    new OllamaApiClient(new Uri("http://localhost:11434"), "all-minilm");
 
-// Use as embedding generator
-IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator = 
-    ollamaClient.AsIEmbeddingGenerator("all-minilm");
-
-// Rest of the RAG code stays the same!
+var vector = await embeddingGenerator.GenerateVectorAsync("The library opens at 9 AM.");
+Console.WriteLine(vector.Length); // 384
 ```
+
+`all-minilm` returns 384 dimensions, not the 1536 used in the Azure schema above. Change the vector record dimensions and rebuild the index whenever the embedding model changes. The [local sample](../samples/CoreSamples/Ollama-02RAG/README.md) includes the matching schema, retrieval, generation, citations, and a question that cannot be answered from the sources. A local vector store with Azure embeddings is still a cloud dependency.
 
 **Local Models for RAG:**
 
@@ -372,7 +375,7 @@ IEmbeddingGenerator<string, Embedding<float>> embeddingGenerator =
 | [DataIngestion-01-Simple](../samples/CoreSamples/DataIngestion-01-Simple/) | Document ingestion pipeline (read → chunk → embed → store) with sqlite-vec |
 | [RAGSimple-03MEAIVectorsAISearch](../samples/CoreSamples/RAGSimple-03MEAIVectorsAISearch/) | RAG with Azure AI Search |
 | [RAGSimple-04MEAIVectorsQdrant](../samples/CoreSamples/RAGSimple-04MEAIVectorsQdrant/) | RAG with Qdrant |
-| [RAGSimple-15Ollama-DeepSeekR1](../samples/CoreSamples/RAGSimple-15Ollama-DeepSeekR1/) | RAG with DeepSeek reasoning |
+| [Ollama-02RAG](../samples/CoreSamples/Ollama-02RAG/README.md) | Fully local embeddings, sqlite-vec retrieval, and grounded answers |
 
 ---
 

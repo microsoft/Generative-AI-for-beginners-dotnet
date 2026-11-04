@@ -1,6 +1,6 @@
-#:package Microsoft.Extensions.Configuration.UserSecrets@10.0.3
-#:package Azure.AI.OpenAI@2.8.0-beta.1
-#:package Azure.Identity@1.18.0
+#:package Microsoft.Extensions.Configuration.UserSecrets@10.0.14
+#:package Azure.AI.OpenAI@2.9.0-beta.1
+#:package Azure.Identity@1.21.0
 #:property UserSecretsId=genai-beginners-dotnet
 
 ﻿using Microsoft.Extensions.Configuration;

@@ -9,30 +9,34 @@ using System.ClientModel;
 
 public class Program
 {
-    private static string finishedConversationToolName = "user_wants_to_finish_conversation"; 
+    private static string finishedConversationToolName = "user_wants_to_finish_conversation";
 
     public static async Task Main(string[] args)
     {
+        if (!OperatingSystem.IsWindows())
+        {
+            throw new PlatformNotSupportedException("Microphone and speaker playback in this sample require Windows.");
+        }
         // First, we create a client according to configured environment variables (see end of file) and then start
         // a new conversation session.
         RealtimeClient client = GetConfiguredClient();
         var realtimeModel = GetModel();
-        using RealtimeSession session = await client.StartConversationSessionAsync(realtimeModel);
+        using RealtimeSessionClient session = await client.StartConversationSessionAsync(realtimeModel);
 
         // Now we configure the session using the tool we created along with transcription options that enable input
         // audio transcription with whisper.
         var prompt = "you are a useful chat that helps the user.";
-        ConversationSessionOptions conversationSessionOptions = CreateConversationSessionOptions(prompt);
+        RealtimeConversationSessionOptions conversationSessionOptions = CreateConversationSessionOptions(prompt);
         await session.ConfigureConversationSessionAsync(conversationSessionOptions);
 
         // For convenience, we'll proactively start playback to the speakers now. Nothing will play until it's enqueued.
-        SpeakerOutput speakerOutput = new();
+        using SpeakerOutput speakerOutput = new();
 
         // With the session configured, we start processing commands received from the service.
-        await foreach (RealtimeUpdate update in session.ReceiveUpdatesAsync())
+        await foreach (RealtimeServerUpdate update in session.ReceiveUpdatesAsync())
         {
             // session.created is the very first command on a session and lets us know that connection was successful.
-            if (update is ConversationSessionStartedUpdate)
+            if (update is RealtimeServerUpdateSessionCreated)
             {
                 Console.WriteLine($" <<< Connected: session started");
                 // This is a good time to start capturing microphone input and sending audio to the service. The
@@ -50,7 +54,7 @@ public class Program
 
             // input_audio_buffer.speech_started tells us that the beginning of speech was detected in the input audio
             // we're sending from the microphone.
-            if (update is InputAudioSpeechStartedUpdate speechStartedUpdate)
+            if (update is RealtimeServerUpdateInputAudioBufferSpeechStarted speechStartedUpdate)
             {
                 Console.WriteLine($" <<< Start of speech detected @ {speechStartedUpdate.AudioStartTime}");
                 // Like any good listener, we can use the cue that the user started speaking as a hint that the app
@@ -61,7 +65,7 @@ public class Program
 
             // input_audio_buffer.speech_stopped tells us that the end of speech was detected in the input audio sent
             // from the microphone. It'll automatically tell the model to start generating a response to reply back.
-            if (update is InputAudioSpeechFinishedUpdate speechFinishedUpdate)
+            if (update is RealtimeServerUpdateInputAudioBufferSpeechStopped speechFinishedUpdate)
             {
                 Console.WriteLine($" <<< End of speech detected @ {speechFinishedUpdate.AudioEndTime}");
             }
@@ -69,26 +73,33 @@ public class Program
             // conversation.item.input_audio_transcription.completed will only arrive if input transcription was
             // configured for the session. It provides a written representation of what the user said, which can
             // provide good feedback about what the model will use to respond.
-            if (update is InputAudioTranscriptionFinishedUpdate transcriptionFinishedUpdate)
+            if (update is RealtimeServerUpdateConversationItemInputAudioTranscriptionCompleted transcriptionFinishedUpdate)
             {
                 Console.WriteLine($" >>> USER: {transcriptionFinishedUpdate.Transcript}");
             }
 
             // Item streaming delta updates provide a combined view into incremental item data including output
             // the audio response transcript, function arguments, and audio data.
-            if (update is OutputDeltaUpdate deltaUpdate)
+            if (update is RealtimeServerUpdateResponseOutputAudioTranscriptDelta transcriptDelta)
             {
-                Console.Write(deltaUpdate.AudioTranscript);
-                Console.Write(deltaUpdate.Text);
-                speakerOutput.EnqueueForPlayback(deltaUpdate.AudioBytes);
+                Console.Write(transcriptDelta.Delta);
+            }
+            if (update is RealtimeServerUpdateResponseOutputTextDelta textDelta)
+            {
+                Console.Write(textDelta.Delta);
+            }
+            if (update is RealtimeServerUpdateResponseOutputAudioDelta audioDelta)
+            {
+                speakerOutput.EnqueueForPlayback(audioDelta.Delta);
             }
 
             // response.output_item.done tells us that a model-generated item with streaming content is completed.
             // That's a good signal to provide a visual break and perform final evaluation of tool calls.
-            if (update is OutputStreamingStartedUpdate itemFinishedUpdate)
+            if (update is RealtimeServerUpdateResponseOutputItemDone itemFinishedUpdate)
             {
                 Console.WriteLine();
-                if (itemFinishedUpdate.FunctionName == finishedConversationToolName)
+                if (itemFinishedUpdate.Item is RealtimeFunctionCallItem { FunctionName: var name }
+                    && name == finishedConversationToolName)
                 {
                     Console.WriteLine($" <<< Finish tool invoked -- ending conversation!");
                     break;
@@ -96,38 +107,42 @@ public class Program
             }
 
             // error commands, as the name implies, are raised when something goes wrong.
-            if (update is RealtimeErrorUpdate errorUpdate)
+            if (update is RealtimeServerUpdateError errorUpdate)
             {
                 Console.WriteLine();
                 Console.WriteLine();
-                Console.WriteLine($" <<< ERROR: {errorUpdate.Message}");
-                Console.WriteLine(errorUpdate.GetRawContent().ToString());
-                break;
+                throw new InvalidOperationException($"Realtime service error: {errorUpdate.Error.Message}");
             }
         }
     }
 
-    private static ConversationSessionOptions CreateConversationSessionOptions(string instructions)
+    private static RealtimeConversationSessionOptions CreateConversationSessionOptions(string instructions)
     {
-        ConversationSessionOptions sessionOptions = new()
+        RealtimeConversationSessionOptions sessionOptions = new()
         {
             Instructions = instructions,
-            Voice = ConversationVoice.Alloy,
-            InputAudioFormat = RealtimeAudioFormat.Pcm16,
-            OutputAudioFormat = RealtimeAudioFormat.Pcm16,
-            // Input transcription options must be provided to enable transcribed feedback for input audio
-            InputTranscriptionOptions = new()
+            AudioOptions = new()
             {
-                Model = "whisper-1",
-            },
+                InputAudioOptions = new()
+                {
+                    AudioFormat = new RealtimePcmAudioFormat { Rate = 24000 },
+                    AudioTranscriptionOptions = new() { Model = "whisper-1" },
+                    TurnDetection = new RealtimeServerVadTurnDetection()
+                },
+                OutputAudioOptions = new()
+                {
+                    AudioFormat = new RealtimePcmAudioFormat { Rate = 24000 },
+                    Voice = RealtimeVoice.Alloy
+                }
+            }
         };
 
         // We'll add a simple function tool that enables the model to interpret user input to figure out when it
         // might be a good time to stop the interaction.
-        ConversationFunctionTool finishConversationTool = new(finishedConversationToolName)
+        RealtimeFunctionTool finishConversationTool = new(finishedConversationToolName)
         {
-            Description = "Invoked when the user says goodbye, expresses being finished, or otherwise seems to want to stop the interaction.",
-            Parameters = BinaryData.FromString("{}")
+            FunctionDescription = "Invoked when the user says goodbye, expresses being finished, or otherwise seems to want to stop the interaction.",
+            FunctionParameters = BinaryData.FromString("""{"type":"object","properties":{},"additionalProperties":false}""")
         };
 
         sessionOptions.Tools.Add(finishConversationTool);
@@ -139,7 +154,7 @@ public class Program
     private static string GetModel()
     {
         string? aoaiDeployment = Environment.GetEnvironmentVariable("AZURE_OPENAI_DEPLOYMENT");
-        
+
 
         if (string.IsNullOrEmpty(aoaiDeployment))
         {

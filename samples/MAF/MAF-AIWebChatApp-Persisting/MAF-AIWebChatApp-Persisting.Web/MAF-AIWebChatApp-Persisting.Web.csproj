@@ -9,19 +9,20 @@
 
 	<ItemGroup>
 		<!-- Existing / updated packages -->
-		<PackageReference Include="Aspire.Azure.AI.OpenAI" Version="13.1.0-preview.1.25616.3" />
-		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.4.0" />
-		<PackageReference Include="Microsoft.Extensions.AI" Version="10.4.0" />
-		<PackageReference Include="ElBruno.Connectors.SqliteVec" Version="0.5.2" />
-		<PackageReference Include="PdfPig" Version="0.1.13" />
-		<PackageReference Include="System.Linq.Async" Version="7.0.0" />
+		<PackageReference Include="Aspire.Azure.AI.OpenAI" Version="13.6.4-preview.1.26523.11" />
+		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.11.0" />
+		<PackageReference Include="Microsoft.Extensions.AI" Version="10.11.0" />
+		<PackageReference Include="ElBruno.Connectors.SqliteVec" Version="0.5.3" />
+		<PackageReference Include="SQLitePCLRaw.lib.e_sqlite3" Version="3.53.3" />
+		<PackageReference Include="PdfPig" Version="0.1.16" />
+		<PackageReference Include="System.Linq.Async" Version="7.0.1" />
 
 		<!-- Microsoft Agent Framework packages -->
-		<PackageReference Include="Microsoft.Agents.AI" Version="1.0.0" />
-		<PackageReference Include="Microsoft.Agents.AI.Abstractions" Version="1.0.0" />
-		<PackageReference Include="Microsoft.Agents.AI.Hosting" Version="1.0.0-preview.260402.1" />
-		<PackageReference Include="Microsoft.Agents.AI.Hosting.OpenAI" Version="1.0.0-alpha.260402.1" />
-		<PackageReference Include="Microsoft.Agents.AI.OpenAI" Version="1.0.0" />
+		<PackageReference Include="Microsoft.Agents.AI" Version="1.27.0" />
+		<PackageReference Include="Microsoft.Agents.AI.Abstractions" Version="1.27.0" />
+		<PackageReference Include="Microsoft.Agents.AI.Hosting" Version="1.27.0-preview.261030.1" />
+		<PackageReference Include="Microsoft.Agents.AI.Hosting.OpenAI" Version="1.27.0-alpha.261030.1" />
+		<PackageReference Include="Microsoft.Agents.AI.OpenAI" Version="1.27.0" />
 	</ItemGroup>
 
   <ItemGroup>

@@ -43,7 +43,7 @@ AIAgent writerAgent = chatClient.AsAIAgent(
     instructions: "You are a creative writer. Keep answers short and vivid.");
 
 var app = builder.Build();
-app.MapA2A(writerAgent, a2aPath);
+app.MapA2AHttpJson(writerAgent, a2aPath);
 
 await app.StartAsync();
 Console.WriteLine($"A2A server is hosting '{agentName}' at {baseUrl}{a2aPath}");

@@ -42,7 +42,7 @@ jobs:
         dotnet-version: '10.0.x'
 
     - name: Restore dependencies for ${{ matrix.solution.name }}
-      run: dotnet restore "${{ matrix.solution.path }}" -p:EnableWindowsTargeting=true
+      run: dotnet restore "${{ matrix.solution.path }}" -p:EnableWindowsTargeting=true -p:NuGetAuditMode=all -warnaserror:NU1901,NU1902,NU1903,NU1904
 
     - name: Build ${{ matrix.solution.name }}
       run: dotnet build "${{ matrix.solution.path }}" --no-restore --configuration Release --verbosity minimal -p:EnableWindowsTargeting=true

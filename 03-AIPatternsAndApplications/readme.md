@@ -4,13 +4,15 @@ In this lesson you'll learn how to apply AI patterns to solve real problems. Thi
 
 ---
 
-[![AI Patterns and Applications](./images/LIM_GAN_07_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson3-patterns)
+![AI Patterns and Applications](./images/LIM_GAN_07_thumb_w480.png)
 
-_Click the image to watch the video_
+The previous video shortcut redirects to search, not a recording. Use the written walkthroughs below and the [local learning path](../docs/ollama-learning-path.md).
 
 ---
 
 ## What You'll Learn
+
+**Ollama route:** Continue with [fully local embeddings, semantic search, and RAG](../samples/CoreSamples/Ollama-02RAG/README.md). The [local learning path](../docs/ollama-learning-path.md) also identifies optional vision models and cloud-only branches. A local vector database does not imply the embedding model is local.
 
 - How embeddings represent meaning as numbers
 - Build semantic search that understands intent, not just keywords
@@ -70,7 +72,8 @@ All code samples for this lesson are located in the **[`samples/CoreSamples/`](.
 
 | Category | Samples | Description |
 |----------|---------|-------------|
-| **Embeddings & RAG** | [RAGSimple-02MEAIVectorsMemory](../samples/CoreSamples/RAGSimple-02MEAIVectorsMemory/) | Local sqlite-vec vector store |
+| **Fully Local RAG** | [Ollama-02RAG](../samples/CoreSamples/Ollama-02RAG/README.md) | Ollama embeddings and chat with sqlite-vec, no Azure |
+| **Embeddings & RAG** | [RAGSimple-02MEAIVectorsMemory](../samples/CoreSamples/RAGSimple-02MEAIVectorsMemory/) | Local sqlite-vec store with Azure embeddings |
 | | [RAGSimple-03MEAIVectorsAISearch](../samples/CoreSamples/RAGSimple-03MEAIVectorsAISearch/) | Azure AI Search |
 | | [RAGSimple-04MEAIVectorsQdrant](../samples/CoreSamples/RAGSimple-04MEAIVectorsQdrant/) | Qdrant vector store |
 | **Vision** | [Vision-01MEAI-AzureOpenAI](../samples/CoreSamples/Vision-01MEAI-AzureOpenAI/) | Vision with Azure OpenAI |

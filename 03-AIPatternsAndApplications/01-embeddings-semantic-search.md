@@ -4,9 +4,9 @@ In this lesson, you'll learn how AI represents meaning as numbers and how to bui
 
 ---
 
-[![Embeddings and Semantic Search](./images/LIM_GAN_07_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson3-embeddings)
+![Embeddings and Semantic Search](./images/LIM_GAN_07_thumb_w480.png)
 
-_Click the image to watch the video_
+The previous video shortcut redirects to search, not a recording. Use the written walkthrough below and the [local learning path](../docs/ollama-learning-path.md).
 
 ---
 
@@ -62,6 +62,22 @@ The vector for "king" minus "man" plus "woman" is close to the vector for "queen
 Microsoft.Extensions.AI provides the `IEmbeddingGenerator` interface for creating embeddings.
 
 ### Basic Embedding Generation
+
+**Ollama route:** The [local RAG sample](../samples/CoreSamples/Ollama-02RAG/README.md) first demonstrates embedding and semantic search, then grounded generation. Run `dotnet run --project .\samples\CoreSamples\Ollama-02RAG` from the repository root after pulling `all-minilm` and `phi4-mini`.
+
+For local embedding initialization, use a separate client:
+
+```csharp
+using Microsoft.Extensions.AI;
+using OllamaSharp;
+
+using IEmbeddingGenerator<string, Embedding<float>> generator =
+    new OllamaApiClient(new Uri("http://localhost:11434"), "all-minilm");
+var vector = await generator.GenerateVectorAsync("I love pizza");
+Console.WriteLine($"Embedding dimensions: {vector.Length}"); // 384 for all-minilm
+```
+
+The Azure alternative below uses a different model and dimension count. Do not mix the vectors in one index. See the [local learning path](../docs/ollama-learning-path.md).
 
 ```csharp
 using Microsoft.Extensions.AI;

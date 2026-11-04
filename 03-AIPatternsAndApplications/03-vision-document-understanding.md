@@ -1,5 +1,7 @@
 # Vision and Document Understanding
 
+**Ollama route:** Vision is optional and needs a vision-capable model, not the core text model. The [local vision sample guide](../samples/CoreSamples/Vision-02MEAI-Ollama/README.md) covers model download, hardware requirements, and images. Azure PDF/document services below are separate cloud capabilities. See the [local learning path](../docs/ollama-learning-path.md).
+
 In this lesson, you'll learn how to use AI to analyze images, extract information from documents, and build applications that can "see."
 
 ---
@@ -308,10 +310,11 @@ The best part? The MEAI abstraction means your code stays the same. Just swap th
 
 ```csharp
 using OllamaSharp;
+using Microsoft.Extensions.AI;
 
 // Vision-capable local models
-var client = new OllamaApiClient("http://localhost:11434");
-IChatClient chatClient = client.AsIChatClient("llava");  // or "llama3.2-vision"
+using IChatClient chatClient =
+    new OllamaApiClient(new Uri("http://localhost:11434"), "llama3.2-vision");
 
 // Same code works!
 var imageBytes = await File.ReadAllBytesAsync("photo.jpg");

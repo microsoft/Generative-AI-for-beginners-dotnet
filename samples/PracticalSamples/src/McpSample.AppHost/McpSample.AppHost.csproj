@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-	<Sdk Name="Aspire.AppHost.Sdk" Version="9.0.0" />
+	<Sdk Name="Aspire.AppHost.Sdk" Version="13.6.4" />
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -13,12 +13,12 @@
 
 
 	<ItemGroup>
-		<PackageReference Include="Aspire.Dashboard.Sdk.linux-x64" Version="13.1.2" />
-		<PackageReference Include="Aspire.Hosting.AppHost" Version="13.1.2" />
-		<PackageReference Include="Aspire.Hosting.Orchestration.linux-x64" Version="13.1.2" />
-		<PackageReference Include="ModelContextProtocol" Version="2.1.0" />
+		<PackageReference Include="Aspire.Dashboard.Sdk.linux-x64" Version="13.6.4" />
+		<PackageReference Include="Aspire.Hosting.AppHost" Version="13.6.4" />
+		<PackageReference Include="Aspire.Hosting.Orchestration.linux-x64" Version="13.6.4" />
+		<PackageReference Include="ModelContextProtocol" Version="2.3.1" />
 		<!-- Pin transitive MessagePack to a patched version to resolve NU1902/NU1903 advisories -->
-		<PackageReference Include="MessagePack" Version="2.5.301" />
+		<PackageReference Include="MessagePack" Version="3.1.12" />
 	</ItemGroup>
 
 	<ItemGroup>

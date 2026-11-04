@@ -1,12 +1,14 @@
 # Middleware Pipelines
 
+**Ollama route:** Run `dotnet run --project .\samples\CoreSamples\Ollama-01Techniques -- cache` from the repository root. The [local cache sample](../samples/CoreSamples/Ollama-01Techniques/README.md) demonstrates middleware ordering and verifies that two identical requests make only one model call. Use an Ollama `IChatClient` instead of the Azure initializer in the patterns below. See the [local learning path](../docs/ollama-learning-path.md).
+
 In this lesson, you'll learn how to build production-ready AI applications using middleware pipelines. This is a powerful pattern from Microsoft.Extensions.AI that lets you add caching, telemetry, rate limiting, and custom behaviors to your AI client.
 
 ---
 
-[![Middleware Pipelines](./images/LIM_GAN_03_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson2-middleware)
+![Middleware Pipelines](./images/LIM_GAN_03_thumb_w480.png)
 
-_Click the image to watch the video_
+The previous video shortcut redirects to search, not a recording. Use the written walkthrough below and the [local learning path](../docs/ollama-learning-path.md).
 
 ---
 

@@ -25,7 +25,7 @@ Everything runs on-device: **no cloud, no API keys.**
 
 1. **Auto-download** — `WhisperClient.CreateAsync` downloads the model from HuggingFace on first run
    (~75 MB for `whisper-tiny.en`) and caches it. Later runs load instantly from cache.
-2. **Capture** — [NAudio](https://www.nuget.org/packages/NAudio)'s `WaveInEvent` records the
+2. **Capture** — [NAudio](https://www.nuget.org/packages/NAudio)'s `WaveIn` records the
    microphone at 16 kHz / 16-bit / mono (Whisper's expected format).
 3. **Segment** — Whisper is not a streaming model, so raw PCM is grouped into spoken *utterances*
    using a simple silence detector (RMS energy). An utterance is flushed when a pause is detected or
@@ -35,8 +35,8 @@ Everything runs on-device: **no cloud, no API keys.**
 
 ## Prerequisites
 
-- .NET SDK 8.0+ (this project targets `net8.0-windows10.0.18362`)
-- **Windows** — microphone capture uses NAudio's `WaveInEvent`, which is Windows-only
+- .NET SDK 10.0+ (this project targets `net10.0-windows10.0.18362`, required by the current NAudio package)
+- **Windows** — microphone capture uses NAudio's `WaveIn`, which is Windows-only
 - A working microphone / input device
 - Internet access on the **first** run (to download the model)
 

@@ -1,12 +1,14 @@
 # Local Model Runners
 
+**Already using Ollama?** You do not need to install another model runner to finish the course. Follow the [Ollama-only learning path](../docs/ollama-learning-path.md). The runners below are optional alternatives.
+
 In this lesson, you'll learn how to run AI models locally using three popular approaches, and how to integrate them with your .NET applications.
 
 ---
 
-[![Local Model Runners](./images/LIM_GAN_07_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson3-patterns)
+![Local Model Runners](./images/LIM_GAN_07_thumb_w480.png)
 
-_Click the image to watch the video_
+The previous video shortcut redirects to search, not a recording. Use the written walkthrough below and the [local learning path](../docs/ollama-learning-path.md).
 
 ---
 

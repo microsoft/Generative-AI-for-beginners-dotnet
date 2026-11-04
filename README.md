@@ -68,7 +68,7 @@ We're constantly improving this course with the latest AI tools, models, and pra
 
 Generative AI is transforming software development, and .NET is no exception. This course aims to simplify the journey by offering:
 
-- Short 5-10 minute videos for each lesson.
+- Short videos for core concepts, alongside current written walkthroughs.
 - Fully functional .NET code samples you can run and explore.
 - Integration with tools, including **GitHub Codespaces** for seamless setup and fast time-to-code. You can use **Azure OpenAI Services** / **Microsoft Foundry** or **Ollama** for local model hosting.
 
@@ -76,7 +76,7 @@ You'll learn how to implement Generative AI into .NET projects, from basic text 
 
 ## 📦 Each Lesson Includes
 
-- **Short Video**: A quick overview of the lesson (5-10 minutes).
+- **Videos where available**: Recorded overviews complement the written lessons. Unavailable video shortcuts are marked rather than presented as working recordings.
 - **Complete Code Samples**: Fully functional and ready to run.
 - **Step-by-Step Guidance**: Simple instructions to help you learn and implement the concepts.
 - **Deep Dive References**: This course focuses on the practical implementation of GenAI, to get deeper into the theoretical we also provide links to explanations in [Generative AI for Beginners - A Course](https://github.com/microsoft/generative-ai-for-beginners) when needed.
@@ -110,28 +110,26 @@ You'll learn how to implement Generative AI into .NET projects, from basic text 
 
 To get started, you'll need:
 
-1. A **GitHub account** (free is fine!) to [fork this entire repo](https://github.com/microsoft/generative-ai-for-beginners-dotnet/fork) to your own GitHub account.
+1. The **.NET 10 SDK or later** and a basic understanding of .NET.
+2. A local clone of this repository. A GitHub account is needed only for forking, contributing, or using Codespaces.
+3. **One AI provider**: [Ollama on your machine](./01-IntroductionToGenerativeAI/setup-local-ollama.md), or [Azure OpenAI / Microsoft Foundry](./01-IntroductionToGenerativeAI/setup-azure-openai.md).
 
-1. **GitHub Codespaces enabled** for instant coding environments. You can enable GitHub Codespaces in your repository settings. Learn more about GitHub Codespaces [here](https://docs.github.com/en/codespaces).
+**Ollama learners do not need an Azure account, Azure CLI, API keys, or Codespaces.** The core local route covers chat, history, streaming, structured output, tools, caching, semantic search, RAG, and agents.
 
-1. Create your copy by [Forking this repo](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/fork), or use the `Fork` button at the top of this page.
+For the Azure route, you also need an Azure account and the tools described in the Azure setup guide. Azure Developer CLI (`azd`) is needed for automated resource provisioning. Cloud-specific services are optional branches, not local prerequisites.
 
-1. A basic understanding of **.NET development**. Learn more about .NET [here](https://dotnet.microsoft.com/learn/dotnet/what-is-dotnet).
+## Quick Start with Ollama
 
-1. **Azure Developer CLI (azd)** — [Install here](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd?WT.mc_id=academic-105485-koreyst) (required for automated Azure setup)
+Install and start [Ollama](https://ollama.com/download), then run these commands from the repository root:
 
-1. An **Azure account** — [Create a free account here](https://azure.microsoft.com/free/?WT.mc_id=academic-105485-koreyst) (a free account works!)
+```powershell
+ollama pull phi4-mini
+dotnet run .\samples\CoreSamples\BasicChat-03Ollama\app.cs
+```
 
-And that's it.
+Expect a sentiment analysis of four product reviews. First run restores NuGet packages; models and packages must be downloaded before offline use.
 
-We've designed this course to be as low-friction as possible. We make use of the following to help you get started quickly:
-
-- **Run in GitHub Codespaces**: With one click, you'll get a pre-configured environment to test and explore the lessons.
-- **Use Azure OpenAI / Microsoft Foundry**: Access powerful AI models through Azure for production-ready scenarios.
-
-Then when you're ready to expand we also have guides for:
-
-- Using **Ollama** to run models locally on your hardware for enhanced privacy and control.
+Continue with the [local setup and troubleshooting guide](./01-IntroductionToGenerativeAI/setup-local-ollama.md), then follow the [Ollama-only learning path](./docs/ollama-learning-path.md) through all five lessons. That path lists exact commands, models, expected results, and optional network dependencies.
 
 ---
 
@@ -198,7 +196,20 @@ This will:
 - Clear local configuration
 - Remove User Secrets
 
-**Learn more in [Azure Resource Setup Guide - Cleanup](./01-IntroductionToGenerativeAI/setup-azure-openai.md#resource-cleanup?WT.mc_id=academic-105485-koreyst).**
+**Learn more in [Azure Resource Setup Guide - Cleanup](./01-IntroductionToGenerativeAI/setup-azure-openai.md?WT.mc_id=academic-105485-koreyst#resource-cleanup).**
+
+## Dependency maintenance and validation
+
+Samples pin NuGet versions for reproducible builds. The dependency refresh targets current stable releases; preview-only integrations and samples that already require newer preview APIs retain explicit preview versions. Keeping packages current reduces exposure to known dependency issues, but is not a security guarantee.
+
+To check direct and transitive dependencies for a solution without calling an AI service:
+
+```powershell
+dotnet restore .\samples\CoreSamples\CoreGenerativeAITechniques.sln -p:EnableWindowsTargeting=true -p:NuGetAuditMode=all -warnaserror:NU1901,NU1902,NU1903,NU1904
+dotnet list .\samples\CoreSamples\CoreGenerativeAITechniques.sln package --vulnerable --include-transitive
+```
+
+Repeat for each affected solution. Build CI treats known NuGet vulnerability advisories as errors, and Dependabot monitors the current `samples` directories. For local inference and documentation checks, follow the [Ollama validation instructions](./docs/ollama-learning-path.md#validate-your-environment). Cloud services, microphones, cameras, and other model runtimes require their own configured environments; a successful build does not verify those runtime integrations.
 
 ## 🤝 Want to Help?
 

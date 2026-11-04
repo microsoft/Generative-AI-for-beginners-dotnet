@@ -6,6 +6,8 @@ In this lesson you'll learn practical skills for building AI-enabled .NET applic
 
 ## What You'll Learn
 
+**Using Ollama only?** Follow the [local learning path](../docs/ollama-learning-path.md) alongside this lesson. It includes runnable chat, history, streaming, structured output, functions, and caching examples without Azure credentials.
+
 - Text completions and chat conversations
 - Managing conversation history with chat roles
 - Streaming responses for real-time output
@@ -40,6 +42,7 @@ All code samples for this lesson are located in the **[`samples/CoreSamples/`](.
 - **Chat & Completions**: `BasicChat-01MEAI`, `BasicChat-02SK`, `BasicChat-03Ollama`, etc.
 - **Conversation History**: `BasicChat-10ConversationHistory`
 - **Function Calling**: `MEAIFunctions`, `MEAIFunctionsAzureOpenAI`, `MEAIFunctionsOllama`
+- **Local Streaming, Structured Output, and Cache**: [Ollama-01Techniques](../samples/CoreSamples/Ollama-01Techniques/README.md)
 
 Each lesson document links directly to the relevant samples in this centralized location.
 

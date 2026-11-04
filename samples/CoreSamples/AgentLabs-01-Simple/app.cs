@@ -1,7 +1,7 @@
-#:package Azure.AI.Agents.Persistent@1.2.0-beta.8
-#:package Azure.AI.Projects@1.1.0
-#:package Azure.Identity@1.18.0
-#:package Microsoft.Extensions.Configuration.UserSecrets@10.0.3
+#:package Azure.AI.Agents.Persistent@1.2.0-beta.10
+#:package Azure.AI.Projects@2.0.1
+#:package Azure.Identity@1.21.0
+#:package Microsoft.Extensions.Configuration.UserSecrets@10.0.14
 #:property UserSecretsId=genai-beginners-dotnet
 
 ﻿using Azure;

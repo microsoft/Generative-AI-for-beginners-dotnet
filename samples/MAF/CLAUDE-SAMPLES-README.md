@@ -129,10 +129,10 @@ dotnet add package elbruno.Extensions.AI.Claude
 Along with the required MAF and AI packages:
 
 ```bash
-dotnet add package Microsoft.Agents.AI --version 1.0.0
-dotnet add package Microsoft.Agents.AI.Foundry --version 1.0.0
-dotnet add package Microsoft.Extensions.AI --version 10.4.0
-dotnet add package Microsoft.Extensions.AI.OpenAI --version 10.4.0
+dotnet add package Microsoft.Agents.AI --version 1.27.0
+dotnet add package Microsoft.Agents.AI.Foundry --version 1.5.0
+dotnet add package Microsoft.Extensions.AI --version 10.11.0
+dotnet add package Microsoft.Extensions.AI.OpenAI --version 10.11.0
 ```
 
 ### Running Console Samples

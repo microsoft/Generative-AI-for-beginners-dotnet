@@ -1,60 +1,16 @@
 version: 2
 updates:
-  # 02-SetupDevEnvironment
+  # Cover the current centralized samples, including nested Aspire projects.
   - package-ecosystem: "nuget"
-    directory: "/02-SetupDevEnvironment/src"
+    directories:
+      - "/samples/**"
     schedule:
       interval: "weekly"
       day: "monday"
     target-branch: "main"
-
-  # 03-CoreGenerativeAITechniques
-  - package-ecosystem: "nuget"
-    directory: "/03-CoreGenerativeAITechniques/src"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-    target-branch: "main"
-
-  # 04-PracticalSamples
-  - package-ecosystem: "nuget"
-    directory: "/04-PracticalSamples/src"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-    target-branch: "main"
-
-  # 05-AppCreatedWithGenAI - HFMCP.GenImage
-  - package-ecosystem: "nuget"
-    directory: "/05-AppCreatedWithGenAI/HFMCP.GenImage"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-    target-branch: "main"
-
-  # 05-AppCreatedWithGenAI - SpaceAINet
-  - package-ecosystem: "nuget"
-    directory: "/05-AppCreatedWithGenAI/SpaceAINet"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-    target-branch: "main"
-
-  # 09-ResponsibleGenAI (in case future .NET projects are added)
-  - package-ecosystem: "nuget"
-    directory: "/09-ResponsibleGenAI"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-    target-branch: "main"
-
-  # 01-IntroToGenAI (in case future .NET projects are added)
-  - package-ecosystem: "nuget"
-    directory: "/01-IntroToGenAI"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-    target-branch: "main"
+    groups:
+      nuget:
+        patterns: ["*"]
   - package-ecosystem: "github-actions"
     directory: "/"
     groups:

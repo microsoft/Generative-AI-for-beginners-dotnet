@@ -1,12 +1,14 @@
 # Model Context Protocol (MCP)
 
+**Ollama route:** Start with [MCP-04-LocalTools](../samples/CoreSamples/MCP-04-LocalTools/README.md) for a local model and local stdio server. Remote HTTP servers discussed below are optional network dependencies, not offline examples. See the [local learning path](../docs/ollama-learning-path.md).
+
 In this lesson, you'll learn how to extend your agents with standardized tool servers using Model Context Protocol, enabling integration with external systems without custom code for each integration.
 
 ---
 
-[![Model Context Protocol](./images/LIM_GAN_08_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson4-mcp)
+![Model Context Protocol](./images/LIM_GAN_08_thumb_w480.png)
 
-_Click the image to watch the video_
+The previous video shortcut redirects to search, not a recording. Use the written walkthrough below and the [local learning path](../docs/ollama-learning-path.md).
 
 ---
 
@@ -191,6 +193,10 @@ Console.WriteLine($"AI response: {result}");
 
 ## Part 4: MCP with Local Models (Ollama)
 
+For a complete offline-capable protocol example, run `dotnet run --project .\samples\CoreSamples\MCP-04-LocalTools` from the repository root. The [local MCP sample](../samples/CoreSamples/MCP-04-LocalTools/README.md) starts a stdio server with a read-only library-hours tool. It needs no remote token or endpoint after package/model downloads.
+
+The HTTP example below instead connects to a **remote service**. Local inference does not make remote tools offline, private, or free. Review server permissions and any token/cost requirements. Follow the [local learning path](../docs/ollama-learning-path.md).
+
 MCP works with any AI provider. Here's how to use MCP tools with Ollama running locally:
 
 ```csharp
@@ -199,6 +205,8 @@ using ModelContextProtocol.Client;
 using OllamaSharp;
 
 // Connect to any MCP server
+var apiKey = Environment.GetEnvironmentVariable("MCP_API_TOKEN")
+    ?? throw new InvalidOperationException("Set MCP_API_TOKEN for your remote MCP server.");
 var clientTransport = new HttpClientTransport(
     new HttpClientTransportOptions
     {
@@ -214,9 +222,7 @@ var tools = await mcpClient.ListToolsAsync();
 
 // Create Ollama client with function invocation
 var uri = new Uri("http://localhost:11434");
-var client = new OllamaApiClient(uri, "llama3.2")
-    .AsChatCompletionService()
-    .AsChatClient()
+var client = ((IChatClient)new OllamaApiClient(uri, "llama3.2"))
     .AsBuilder()
     .UseFunctionInvocation()
     .Build();
@@ -416,7 +422,8 @@ Need to integrate with external service?
 | [MCP-02-HuggingFace-Ollama](../samples/CoreSamples/MCP-02-HuggingFace-Ollama/) | MCP with local Ollama models |
 | [MCP-03-MicrosoftLearn](../samples/CoreSamples/MCP-03-MicrosoftLearn/) | Before/after demo grounding answers with the Microsoft Learn MCP server |
 | [MAF-MCP-01](../samples/MAF/MAF-MCP-01/) | A MAF agent that owns Microsoft Learn MCP tools |
-| Aspire MCP Sample | See [04-PracticalSamples](../04-PracticalSamples/) for Aspire + MCP integration |
+| [MCP-04-LocalTools](../samples/CoreSamples/MCP-04-LocalTools/README.md) | Local Ollama inference and local stdio MCP server |
+| Aspire MCP Sample | See [PracticalSamples](../samples/PracticalSamples/) for Aspire + MCP integration |
 
 ---
 

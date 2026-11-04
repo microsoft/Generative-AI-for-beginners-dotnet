@@ -26,7 +26,7 @@ public class MovieVector<T> : Movie<T>
 
 public class MovieSQLite<T> : Movie<T>
 {
-    [VectorStoreVector(Dimensions: 4)]
+    [VectorStoreVector(4)]
     public ReadOnlyMemory<float>? DescriptionEmbedding { get; set; }
 
 }

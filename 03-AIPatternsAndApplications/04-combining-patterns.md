@@ -1,12 +1,14 @@
 # Combining Patterns
 
+**Ollama route:** [Ollama-02RAG](../samples/CoreSamples/Ollama-02RAG/README.md) combines local embeddings, retrieval, and chat; [Ollama-01Techniques](../samples/CoreSamples/Ollama-01Techniques/README.md) adds streaming, structured output, and caching. Apply the patterns below to an Ollama `IChatClient`; cloud services remain optional branches. See the [local learning path](../docs/ollama-learning-path.md).
+
 In this lesson, you'll learn how to combine the patterns you've learned to build sophisticated AI applications that solve complex real-world problems.
 
 ---
 
-[![Combining AI Patterns](./images/LIM_GAN_07_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson3-patterns)
+![Combining AI Patterns](./images/LIM_GAN_07_thumb_w480.png)
 
-_Click the image to watch the video_
+The previous video shortcut redirects to search, not a recording. Use the written walkthrough below and the [local learning path](../docs/ollama-learning-path.md).
 
 ---
 

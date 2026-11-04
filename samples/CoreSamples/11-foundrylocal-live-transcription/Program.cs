@@ -14,7 +14,7 @@
 // with catalog-specific metadata, so the model download must go through Foundry
 // itself — it can't be substituted with a raw HuggingFace download.
 //
-// Microphone capture uses NAudio (Windows-only WaveInEvent) at 16 kHz / 16-bit / mono.
+// Microphone capture uses NAudio (Windows-only WaveIn) at 16 kHz / 16-bit / mono.
 
 using Microsoft.AI.Foundry.Local;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -43,12 +43,12 @@ Console.WriteLine();
 
 if (!OperatingSystem.IsWindows())
 {
-    Console.Error.WriteLine("Microphone capture uses NAudio's WaveInEvent, which is Windows-only.");
+    Console.Error.WriteLine("Microphone capture uses NAudio's WaveIn, which is Windows-only.");
     Console.Error.WriteLine("Run this sample on Windows, or adapt it to another capture library.");
     return 1;
 }
 
-if (WaveInEvent.DeviceCount == 0)
+if (WaveIn.DeviceCount == 0)
 {
     Console.Error.WriteLine("No microphone/input device was detected. Connect a microphone and try again.");
     return 1;
@@ -170,7 +170,7 @@ try
     // --- Capture the microphone and stream PCM into the session ---
     // NAudio's DataAvailable callback is synchronous, so enqueue chunks into a
     // bounded channel and await AppendAsync on a dedicated task (respects backpressure).
-    using var waveIn = new WaveInEvent
+    using var waveIn = new WaveIn
     {
         WaveFormat = new WaveFormat(SampleRate, 16, 1),
         BufferMilliseconds = 100

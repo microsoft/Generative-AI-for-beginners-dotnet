@@ -96,6 +96,8 @@ Content safety isn't just about filtering bad words. It's about understanding th
 
 ### Azure OpenAI Built-in Filtering
 
+For Ollama, read [Local models and safety](#local-models-and-safety) below. Azure filtering is a provider-specific capability, not a prerequisite or a feature automatically inherited by local models.
+
 Azure OpenAI includes automatic content filtering that examines both inputs and outputs. This filtering runs on every request, providing a baseline level of protection for all applications. The system evaluates content across four main categories, each with severity levels from low to high:
 
 | Category | Description | Severity Levels |
@@ -126,6 +128,16 @@ Learn more:
 - [Prompt Shields](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/jailbreak-detection)
 
 ---
+
+## Local models and safety
+
+Ollama inference does not automatically include Azure OpenAI content filtering, Prompt Shields, or managed compliance controls. A system prompt is not a security boundary, and structured JSON is not proof that its contents are safe or correct.
+
+For the [local learning path](../docs/ollama-learning-path.md), start with synthetic data and read-only tools. Validate model output against application rules, expose only required functions, bound requests and tool execution, and require human approval before messages, purchases, deletions, or other consequential actions. Never give a learning agent unrestricted shell or file-system access.
+
+Check grounding and source citations for RAG answers. Test unanswered questions and prompt-injection attempts before using real data. Minimize logs and avoid sending private data to remote tools: local inference with a remote MCP service is not an entirely local data flow. Evaluate appropriate moderation and human review for your use case rather than claiming that a small local example replaces managed safety services.
+
+See the [local tools example](../samples/MAF/MAF-Ollama-01/README.md) and [local MCP example](../samples/CoreSamples/MCP-04-LocalTools/README.md) for deliberately restricted demo capabilities.
 
 ## Part 3: Transparency and Explainability
 

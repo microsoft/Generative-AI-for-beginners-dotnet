@@ -211,6 +211,8 @@ We have removed the setup barriers. Choose the path that fits your workflow:
 *   **Models:** **Phi-4**, **Llama 3**, etc.
 *   [**Access the Local Ollama Setup Guide**](./setup-local-ollama.md)
 
+**Staying local?** Follow the [Ollama-only learning path](../docs/ollama-learning-path.md) for exact commands through chat, streaming, tools, RAG, and agents. Azure, cloud credentials, and Codespaces are not required for this route. The setup video may show cloud steps; use the written local guide as its Ollama companion.
+
 ---
 
 ## What You Will Build in This Course
@@ -257,7 +259,7 @@ If you can answer all three, you're ready for the next lesson!
 
 You have two things to do:
 
-1. **Set up your environment** using one of the paths above (we recommend running `./setup.ps1` to get started quickly)
+1. **Set up your environment** using one of the paths above (`./setup.ps1` is for the Azure route only)
 2. **Move to the next lesson** where you'll write your first real AI application
 
 [Continue to Lesson 2: Generative AI Techniques →](../02-GenerativeAITechniques/readme.md)

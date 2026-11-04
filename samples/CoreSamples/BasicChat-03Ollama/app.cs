@@ -1,12 +1,18 @@
-#:package OllamaSharp@5.4.18
-#:package Microsoft.Extensions.Configuration.UserSecrets@10.0.3
+#:package OllamaSharp@5.5.0
+#:package Microsoft.Extensions.Configuration.UserSecrets@10.0.14
+#:property JsonSerializerIsReflectionEnabledByDefault=true
 
-﻿using Microsoft.Extensions.AI;
+using Microsoft.Extensions.AI;
 using OllamaSharp;
 using System.Text;
 
-IChatClient client =
-    new OllamaApiClient(new Uri("http://localhost:11434/"), "phi4-mini");
+using var httpClient = new HttpClient
+{
+    BaseAddress = new Uri(Environment.GetEnvironmentVariable("OLLAMA_ENDPOINT") ?? "http://localhost:11434"),
+    Timeout = TimeSpan.FromMinutes(2)
+};
+using IChatClient client =
+    new OllamaApiClient(httpClient, Environment.GetEnvironmentVariable("OLLAMA_MODEL") ?? "phi4-mini");
 
 // here we're building the prompt
 StringBuilder prompt = new StringBuilder();
@@ -17,6 +23,11 @@ prompt.AppendLine("I'm not sure about this product. It's okay.");
 prompt.AppendLine("I found this product based on the other reviews. It worked for a bit, and then it didn't.");
 
 // send the prompt to the model and wait for the text completion
-var response = await client.GetResponseAsync(prompt.ToString());
+using var timeout = new CancellationTokenSource(TimeSpan.FromMinutes(2));
+var response = await client.GetResponseAsync(prompt.ToString(), cancellationToken: timeout.Token);
+if (string.IsNullOrWhiteSpace(response.Text))
+{
+    throw new InvalidOperationException("The model returned no text.");
+}
 
 Console.WriteLine(response.Text);

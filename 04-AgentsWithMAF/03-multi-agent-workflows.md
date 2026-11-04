@@ -1,12 +1,14 @@
 # Multi-Agent Workflows
 
+**Ollama route:** Run `dotnet run --project .\samples\MAF\MAF-Ollama-01 -- workflow` from the repository root for a fully local writer/editor sequence. This [small example](../samples/MAF/MAF-Ollama-01/README.md) uses explicit C# orchestration, not the workflow-builder API shown later. `MAF-MultiAgents` and `MAF-MultiModel` use cloud providers; do not treat them as Ollama-only examples. See the [local learning path](../docs/ollama-learning-path.md).
+
 In this lesson, you'll learn how to orchestrate multiple specialized agents working together to accomplish complex tasks.
 
 ---
 
-[![Multi-Agent Workflows](./images/LIM_GAN_08_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson4-multiagent)
+![Multi-Agent Workflows](./images/LIM_GAN_08_thumb_w480.png)
 
-_Click the image to watch the video_
+The previous video shortcut redirects to search, not a recording. Use the written walkthrough below and the [local learning path](../docs/ollama-learning-path.md).
 
 ---
 

@@ -1,4 +1,5 @@
 ﻿using NAudio.Wave;
+using System.Runtime.Versioning;
 
 #nullable disable
 
@@ -6,6 +7,7 @@
 /// Uses the NAudio library (https://github.com/naudio/NAudio) to provide a rudimentary abstraction of microphone
 /// input as a stream.
 /// </summary>
+[SupportedOSPlatform("windows")]
 public class MicrophoneAudioStream : Stream, IDisposable
 {
     private const int SAMPLES_PER_SECOND = 24000;
@@ -18,7 +20,7 @@ public class MicrophoneAudioStream : Stream, IDisposable
     private int _bufferReadPos = 0;
     private int _bufferWritePos = 0;
 
-    private readonly WaveInEvent _waveInEvent;
+    private readonly WaveIn _waveInEvent;
 
     private MicrophoneAudioStream()
     {
