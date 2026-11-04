@@ -65,7 +65,7 @@ ollama run llama3.2
 This application uses .NET user secrets to store sensitive configuration. Navigate to the project directory and set the required secrets:
 
 ```bash
-cd 06-MAF/src/MAF-MultiAgents
+cd samples/MAF/MAF-MultiAgents
 ```
 
 #### Required: Microsoft Foundry Configuration (Agent 1 - Researcher)

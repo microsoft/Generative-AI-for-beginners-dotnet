@@ -139,5 +139,5 @@ Console.WriteLine($"Agent: {response.Text}");
 - [Microsoft Agent Framework Documentation](https://github.com/microsoft/agents)
 - [Hosted Agents Overview](https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/hosted-agents)
 - [Microsoft.Extensions.AI](https://learn.microsoft.com/en-us/dotnet/ai/ai-extensions)
-- [Azure OpenAI Setup](../../01-IntroductionToGenerativeAI/setup-azure-openai.md)
-- [Ollama Setup](../../01-IntroductionToGenerativeAI/setup-local-ollama.md)
+- [Azure OpenAI Setup](../../../01-IntroductionToGenerativeAI/setup-azure-openai.md)
+- [Ollama Setup](../../../01-IntroductionToGenerativeAI/setup-local-ollama.md)

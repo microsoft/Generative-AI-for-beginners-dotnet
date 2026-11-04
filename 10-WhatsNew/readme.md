@@ -2,6 +2,67 @@
 
 This document contains historical updates to the Generative AI for Beginners .NET course.
 
+## 🎯 Decision-powered Hosted Agent (November 2026)
+
+A new .NET sample demonstrates a custom Microsoft Agent Framework `AIAgent`
+that calls **Microsoft-Decision-1** through Foundry's native decision endpoint
+and exposes a typed result through the Responses protocol. No chat model is
+used to make the routing decision.
+
+### Key Updates
+
+- **New Sample:** [DecisionAgent-01-FoundryHosted](../samples/CoreSamples/DecisionAgent-01-FoundryHosted/) routes synthetic support tickets to one of four teams or manual review.
+- **Provider-independent result:** confidence, per-option probabilities, and optional usage are preserved in a stable C# contract.
+- **Hosted and local paths:** the same agent implementation runs locally and as a .NET Foundry Hosted Agent.
+- **Remote C# caller:** checks the final Responses status before deserializing the typed decision.
+- **Offline tests:** cover validation, native request/authentication, usage semantics, provider failures, cancellation, and Responses handling without Azure credentials.
+- **Community dependency:** the current Foundry decision client is `ElBruno.AI.Decisions.Foundry`, not an official Microsoft.Extensions.AI API.
+
+### Resources
+
+- 📚 [Sample README](../samples/CoreSamples/DecisionAgent-01-FoundryHosted/README.md)
+- 📖 [Foundry Hosted Agents](https://learn.microsoft.com/azure/foundry/agents/concepts/hosted-agents?WT.mc_id=academic-105485-koreyst)
+- 📖 [Foundry endpoint authorization](https://learn.microsoft.com/azure/foundry/agents/how-to/configure-agent-endpoint-authorization?WT.mc_id=academic-105485-koreyst)
+- 📚 [Source attribution and notices](../samples/CoreSamples/DecisionAgent-01-FoundryHosted/THIRD-PARTY-NOTICES.md)
+
+Live deployment permissions and portal screenshots must be verified with a
+real authorized Foundry project before publication. Offline tests are not
+evidence of live inference or hosted identity access.
+
+---
+
+## 🤖 GitHub Copilot SDK with BYOK (October 2026)
+
+A new sample demonstrates how to call the **GitHub Copilot SDK** from .NET using your own model deployment, hosted in **Microsoft Foundry** or **Azure OpenAI**.
+
+### Key Updates
+
+- **New Sample:** [GitHubCopilotSDK-01-BYOK](../samples/CoreSamples/GitHubCopilotSDK-01-BYOK/) — a minimal BYOK (Bring Your Own Key) console app
+- **Provider Routing:** `ProviderConfig` sends inference to any OpenAI-compatible endpoint
+- **Two Authentication Modes:**
+  - `AzureCliCredential` by default, reusing your `az login` session
+  - An optional API key that switches to the `api-key` header
+- **Focused Scope:** Tools, skills, configuration discovery, and Git operations are disabled so the sample isolates a single model request
+- **Shared Configuration:** Reuses the repository's `AzureOpenAI:*` user secrets, so the existing setup scripts configure it with no extra steps
+
+### Getting Started
+
+From the repository root, configure the shared secrets and run the sample:
+
+```powershell
+./setup-secrets.ps1 -Endpoint "https://<resource>.services.ai.azure.com" -Deployment "<your-deployment-name>"
+az login
+dotnet run --project ./samples/CoreSamples/GitHubCopilotSDK-01-BYOK/GitHubCopilotSDK-01-BYOK.csproj
+```
+
+### Resources
+
+- 📚 [Sample README](../samples/CoreSamples/GitHubCopilotSDK-01-BYOK/README.md)
+- 📖 [GitHub Copilot SDK documentation](https://docs.github.com/copilot)
+- 🏗️ [Microsoft Foundry](https://learn.microsoft.com/azure/ai-foundry/)
+
+---
+
 ## 🚀 Microsoft Agent Framework v1.0 GA (April 2026)
 
 All 28 MAF samples upgraded from preview to **stable v1.0** packages. This is a major milestone for the framework and our course!

@@ -400,18 +400,8 @@ FodyWeavers.xsd
 .venv/
 .env
 /pdf
-# Squad: ignore generated logs
-.squad/orchestration-log/
-.squad/log/
-.squad/decisions/inbox/
-.squad/sessions/
-.squad-workstream
 
 # IDE / build cache
 *.lscache
 .copilot/skills/
-# Squad: ignore runtime state (logs, inbox, sessions)
-# Note: .squad/casting/* is identity and MUST be committed to main, not ignored
-.squad/.scratch/
-.squad/.cache/
 commit_msg.txt

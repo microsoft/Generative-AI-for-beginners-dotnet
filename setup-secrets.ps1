@@ -1,5 +1,5 @@
 #!/usr/bin/env pwsh
-# setup-secrets.ps1 — Manually configure user secrets for all samples
+# setup-secrets.ps1 - Manually configure user secrets for all samples
 # Use this if you already have an Azure OpenAI resource and don't want to use azd.
 
 param(
@@ -18,7 +18,7 @@ $ErrorActionPreference = "Stop"
 
 $secretsId = "genai-beginners-dotnet"
 
-Write-Host "`n=== Generative AI for Beginners .NET — Secret Setup ===" -ForegroundColor Cyan
+Write-Host "`n=== Generative AI for Beginners .NET - Secret Setup ===" -ForegroundColor Cyan
 
 # Check prerequisites
 if (-not (Get-Command "dotnet" -ErrorAction SilentlyContinue)) {
@@ -62,5 +62,7 @@ Write-Host "  dotnet user-secrets set --id $secretsId `"AZURE_AISEARCH_SECRET`" 
 Write-Host "`nFor Azure AI Speech (Audio-01-SpeechMic), also run:" -ForegroundColor Yellow
 Write-Host "  dotnet user-secrets set --id $secretsId `"SPEECH_KEY`" `"<your-speech-key>`""
 Write-Host "  dotnet user-secrets set --id $secretsId `"SPEECH_REGION`" `"<your-speech-region>`""
+
+Write-Host "`nThe GitHub Copilot SDK BYOK sample (GitHubCopilotSDK-01-BYOK) reuses the secrets above." -ForegroundColor Yellow
 
 Write-Host "`nDone! Make sure to run 'az login' first, then run file-based samples with: dotnet run app.cs`n" -ForegroundColor Green

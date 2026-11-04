@@ -124,6 +124,7 @@ Explore these samples to see Hosted Agents in action:
 |--------|-------------|
 | [MAF-HostedAgent-01-TimeZone](../samples/MAF/MAF-HostedAgent-01-TimeZone/) | Simple Hosted Agent that provides timezone information |
 | [MAF-HostedAgent-02-MultiAgent](../samples/MAF/MAF-HostedAgent-02-MultiAgent/) | Multi-agent Hosted Agent deployment with specialized roles |
+| [DecisionAgent-01-FoundryHosted](../samples/CoreSamples/DecisionAgent-01-FoundryHosted/) | Decision-powered .NET Hosted Agent that routes synthetic support tickets with Microsoft-Decision-1 |
 
 **Learn more:** [Hosted Agents on Microsoft Learn](https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/hosted-agents)
 
@@ -131,7 +132,7 @@ Explore these samples to see Hosted Agents in action:
 
 ## Sample Code Reference
 
-All lesson code is in the [samples/MAF](../samples/MAF/) folder (28 total samples):
+Agent Framework samples are in [samples/MAF](../samples/MAF/). Course integrations also appear in [samples/CoreSamples](../samples/CoreSamples/):
 
 | Sample | Description |
 |--------|-------------|
@@ -143,6 +144,7 @@ All lesson code is in the [samples/MAF](../samples/MAF/) folder (28 total sample
 | [MAF-Persisting-*](../samples/MAF/) | Agents with conversation persistence |
 | [MAF-HostedAgent-01-TimeZone](../samples/MAF/MAF-HostedAgent-01-TimeZone/) | Hosted Agent: timezone information |
 | [MAF-HostedAgent-02-MultiAgent](../samples/MAF/MAF-HostedAgent-02-MultiAgent/) | Hosted Agent: multi-agent orchestration |
+| [DecisionAgent-01-FoundryHosted](../samples/CoreSamples/DecisionAgent-01-FoundryHosted/) | Hosted Agent: native decision-powered support routing |
 
 ---
 

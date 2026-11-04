@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: decision-agent-01-foundry-hosted
+services:
+  existing-project:
+    host: azure.ai.project
+    endpoint: ${AZURE_AI_PROJECT_ENDPOINT}
+  support-routing:
+    project: ./src/SupportRoutingAgent
+    host: azure.ai.agent
+    language: csharp
+    uses:
+      - existing-project
+    environmentVariables:
+      - name: Decision__Endpoint
+        value: ${DECISION_ENDPOINT}
+      - name: Decision__Deployment
+        value: ${DECISION_DEPLOYMENT}
+      - name: OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT
+        value: "false"
+    codeConfiguration:
+      dependencyResolution: remote_build
+      entryPoint: SupportRoutingAgent.dll
+      runtime: dotnet_10
+    container:
+      resources:
+        cpu: "0.5"
+        memory: 1Gi
+    kind: hosted
+    name: support-routing
+    protocols:
+      - protocol: responses
+        version: 2.0.0
+infra:
+  provider: microsoft.foundry
