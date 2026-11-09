@@ -14,7 +14,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.11.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.14" />
-    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.13.0.20260627" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.13.0.20261107" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\" />

@@ -1,5 +1,5 @@
 #!/usr/bin/env dotnet
-#:package ModelContextProtocol@2.1.0
+#:package ModelContextProtocol@2.4.0
 #:property TargetFramework=net10.0
 #:include ParallelSearchResults.cs
 

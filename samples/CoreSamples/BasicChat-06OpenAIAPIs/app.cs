@@ -3,7 +3,7 @@
 #:package Microsoft.Extensions.Configuration@10.0.14
 #:package Microsoft.Extensions.Configuration.Json@10.0.14
 #:package Microsoft.Extensions.Configuration.UserSecrets@10.0.14
-#:package OpenAI@2.14.0
+#:package OpenAI@2.15.0
 #:property UserSecretsId=genai-beginners-dotnet
 
 ﻿using Microsoft.Extensions.AI;
