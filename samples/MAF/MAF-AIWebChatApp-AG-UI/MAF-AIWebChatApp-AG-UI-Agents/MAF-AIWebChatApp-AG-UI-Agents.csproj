@@ -15,12 +15,12 @@
 		<PackageReference Include="Microsoft.Extensions.AI" Version="10.11.0" />
 
 		<!-- Microsoft Agent Framework packages -->
-		<PackageReference Include="Microsoft.Agents.AI" Version="1.27.0" />
-		<PackageReference Include="Microsoft.Agents.AI.Abstractions" Version="1.27.0" />
-		<PackageReference Include="Microsoft.Agents.AI.Hosting" Version="1.27.0-preview.261030.1" />
-		<PackageReference Include="Microsoft.Agents.AI.Hosting.OpenAI" Version="1.27.0-alpha.261030.1" />
-		<PackageReference Include="Microsoft.Agents.AI.OpenAI" Version="1.27.0" />
-		<PackageReference Include="Microsoft.Agents.AI.Hosting.AGUI.AspNetCore" Version="1.27.0-preview.261030.1" />
+		<PackageReference Include="Microsoft.Agents.AI" Version="1.28.0" />
+		<PackageReference Include="Microsoft.Agents.AI.Abstractions" Version="1.28.0" />
+		<PackageReference Include="Microsoft.Agents.AI.Hosting" Version="1.28.0-preview.261106.1" />
+		<PackageReference Include="Microsoft.Agents.AI.Hosting.OpenAI" Version="1.28.0-alpha.261106.1" />
+		<PackageReference Include="Microsoft.Agents.AI.OpenAI" Version="1.28.0" />
+		<PackageReference Include="Microsoft.Agents.AI.Hosting.AGUI.AspNetCore" Version="1.28.0-preview.261106.1" />
 
 	</ItemGroup>
 

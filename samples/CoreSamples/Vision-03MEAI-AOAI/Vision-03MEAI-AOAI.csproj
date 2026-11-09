@@ -18,8 +18,8 @@
 	  <PackageReference Include="Azure.AI.OpenAI" Version="2.9.0-beta.1" />
 <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.11.0" />
 	  <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.14" />
-	  <PackageReference Include="OpenCvSharp4" Version="4.13.0.20260627" />
-	  <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.13.0.20260627" />
+	  <PackageReference Include="OpenCvSharp4" Version="4.13.0.20261107" />
+	  <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.13.0.20261107" />
 	  <PackageReference Include="OpenCvSharp4_.runtime.ubuntu.20.04-x64" Version="4.10.0.20240616" />
 	</ItemGroup>
 

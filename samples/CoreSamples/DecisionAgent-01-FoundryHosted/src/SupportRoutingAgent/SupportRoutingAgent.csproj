@@ -8,7 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Azure.Identity" Version="1.21.0" />
     <PackageReference Include="ElBruno.AI.Decisions.Foundry" Version="0.8.0" />
-    <PackageReference Include="Microsoft.Agents.AI.Foundry.Hosting" Version="1.22.0-preview.260918.1" />
+    <PackageReference Include="Microsoft.Agents.AI.Foundry.Hosting" Version="1.28.0-preview.261106.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportRouting.Contracts\SupportRouting.Contracts.csproj" />

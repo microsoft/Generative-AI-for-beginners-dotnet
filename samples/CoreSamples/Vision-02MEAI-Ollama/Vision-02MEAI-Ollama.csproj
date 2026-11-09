@@ -22,11 +22,11 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.AI" Version="10.11.0" />
-		<PackageReference Include="OllamaSharp" Version="5.5.0" />
+		<PackageReference Include="OllamaSharp" Version="5.5.2" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.14">
 		  <TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
-		<PackageReference Include="OpenCvSharp4.runtime.win" Version="4.13.0.20260627" />
+		<PackageReference Include="OpenCvSharp4.runtime.win" Version="4.13.0.20261107" />
 	</ItemGroup>
 
 	<ItemGroup>
