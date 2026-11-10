@@ -38,7 +38,7 @@ All samples require:
 
 ### 2. Development Environment
 
-- **.NET 10 SDK** or later: [Download .NET](https://dotnet.microsoft.com/download?wt.mc_id=dotnet-35129-website)
+- **.NET 11 SDK** or later: [Download .NET](https://dotnet.microsoft.com/download?wt.mc_id=dotnet-35129-website)
 - **IDE**: Visual Studio 2022, VS Code, or Rider (optional but recommended)
 
 ### 3. Environment Variables & Configuration

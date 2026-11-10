@@ -11,6 +11,7 @@ name: .NET Build Validation
     - 'samples/**/*.razor'
     - 'samples/**/*.json'
     - 'samples/CoreSamples/MCP-04-ParallelSearch/validate.ps1'
+    - 'global.json'
     - '.github/workflows/build-validation.yml'
   workflow_call:
     inputs:
@@ -46,6 +47,20 @@ jobs:
           name: "SpaceAINet App"
         - path: "samples/MAF/MAF-Demos.slnx"
           name: "MAF Demos"
+        - path: "samples/AppsWithGenAI/ConsoleGpuViewer/ConsoleGpuViewer.slnx"
+          name: "Console GPU Viewer"
+        - path: "samples/CoreSamples/Vision-01MEAI-GitHubModels/Vision-01MEAI-GitHubModels.csproj"
+          name: "GitHub Models Vision"
+        - path: "samples/MAF/MAF-AIWebChatApp-AG-UI/MAF-AIWebChatApp-AG-UI.slnx"
+          name: "MAF Web Chat - AG-UI"
+        - path: "samples/MAF/MAF-AIWebChatApp-Middleware/MAF-AIWebChatApp-Middleware.slnx"
+          name: "MAF Web Chat - Middleware"
+        - path: "samples/MAF/MAF-AIWebChatApp-MutliAgent/MAF-AIWebChatApp-MutliAgent.slnx"
+          name: "MAF Web Chat - Multi-Agent"
+        - path: "samples/MAF/MAF-AIWebChatApp-Persisting/MAF-AIWebChatApp-Persisting.slnx"
+          name: "MAF Web Chat - Persisting"
+        - path: "samples/MAF/MAF-AIWebChatApp-Simple/MAF-AIWebChatApp-Simple.slnx"
+          name: "MAF Web Chat - Simple"
 
     steps:
     - name: Checkout code
@@ -53,13 +68,17 @@ jobs:
       with:
         ref: ${{ inputs.ref || github.sha }}
 
-    - name: Setup .NET 10.0
+    - name: Setup .NET 11.0
       uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
       with:
-        dotnet-version: '10.0.x'
+        dotnet-version: '11.0.x'
 
     - name: Restore dependencies for ${{ matrix.solution.name }}
       run: dotnet restore "${{ matrix.solution.path }}" -p:EnableWindowsTargeting=true -p:NuGetAuditMode=all -warnaserror:NU1901,NU1902,NU1903,NU1904
+
+    - name: Restore Azure Functions extensions
+      if: matrix.solution.name == 'Core Samples'
+      run: dotnet restore "samples/CoreSamples/AzFunction-BasicChat-01/AzFunction-BasicChat-01.csproj" -p:NuGetAuditMode=all -warnaserror:NU1901,NU1902,NU1903,NU1904
 
     - name: Build ${{ matrix.solution.name }}
       run: dotnet build "${{ matrix.solution.path }}" --no-restore --configuration Release --verbosity minimal -p:EnableWindowsTargeting=true
@@ -73,6 +92,9 @@ jobs:
     - name: Test Parallel Search response handling offline
       if: matrix.solution.name == 'Core Samples'
       run: dotnet test "samples/CoreSamples/MCP-04-ParallelSearch.Tests/MCP-04-ParallelSearch.Tests.csproj" --no-build --configuration Release --verbosity minimal
+    - name: Test hosted decision agent routing offline
+      if: matrix.solution.name == 'Core Samples'
+      run: dotnet test "samples/CoreSamples/DecisionAgent-01-FoundryHosted/tests/SupportRoutingAgent.Tests/SupportRoutingAgent.Tests.csproj" --no-build --configuration Release --verbosity minimal
 
     - name: Display build result
       if: success()
@@ -147,10 +169,10 @@ jobs:
       with:
         ref: ${{ inputs.ref || github.sha }}
 
-    - name: Setup .NET 10.0
+    - name: Setup .NET 11.0
       uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
       with:
-        dotnet-version: '10.0.x'
+        dotnet-version: '11.0.x'
 
     - name: Compile ${{ matrix.sample }}
       env:

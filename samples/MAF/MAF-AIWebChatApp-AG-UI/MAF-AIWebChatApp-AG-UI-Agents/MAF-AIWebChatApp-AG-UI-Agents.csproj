@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
-		<TargetFramework>net10.0</TargetFramework>
+		<TargetFramework>net11.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RootNamespace>MAF_AIWebChatApp_AG_UI_Agents</RootNamespace>
@@ -9,7 +9,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Azure.Identity" Version="1.21.0" />
-		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.14" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="11.0.0" />
 		<PackageReference Include="Aspire.Azure.AI.OpenAI" Version="13.6.4-preview.1.26523.11" />
 		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.11.0" />
 		<PackageReference Include="Microsoft.Extensions.AI" Version="10.11.0" />

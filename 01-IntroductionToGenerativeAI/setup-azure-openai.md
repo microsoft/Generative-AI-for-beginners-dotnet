@@ -7,7 +7,7 @@ Welcome! 👋 This guide walks you through setting up the Azure OpenAI resources
 Before you start, make sure you have:
 
 - ✅ **Azure subscription** — [Create a free account](https://azure.microsoft.com/free/?WT.mc_id=academic-105485-koreyst) (includes $200 in credits for 30 days)
-- ✅ **.NET 10 SDK or later** — [Download here](https://dotnet.microsoft.com/download?WT.mc_id=academic-105485-koreyst)
+- ✅ **.NET 11 SDK or later** — [Download here](https://dotnet.microsoft.com/download?WT.mc_id=academic-105485-koreyst)
 - ✅ **Azure Developer CLI (azd)** — Only needed for automated setup — [Install here](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd?WT.mc_id=academic-105485-koreyst)
 
 ---

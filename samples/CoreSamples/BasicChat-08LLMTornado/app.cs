@@ -1,8 +1,8 @@
 #:package LlmTornado@3.8.83
-#:package Microsoft.Extensions.Configuration.UserSecrets@10.0.14
+#:package Microsoft.Extensions.Configuration.UserSecrets@11.0.0
 #:property UserSecretsId=genai-beginners-dotnet
 
-﻿using LlmTornado;
+using LlmTornado;
 using LlmTornado.Chat;
 using LlmTornado.Chat.Models;
 using Microsoft.Extensions.Configuration;

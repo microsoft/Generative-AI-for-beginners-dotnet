@@ -24,7 +24,7 @@ Each request is independent. This sample does not store conversation history. A 
 
 ## What this sample demonstrates
 
-- A .NET 10 Azure Functions v4 app using the isolated worker model.
+- A .NET 11 Azure Functions v4 app using the isolated worker model.
 - An anonymous `POST /api/chat` HTTP trigger with a JSON request and response.
 - A provider-neutral `IChatClient` from Microsoft.Extensions.AI.
 - A Foundry model client created with `AzureOpenAIClient`.
@@ -50,14 +50,18 @@ The Function logs the deployment name but does not log the question or answer.
 
 ## Prerequisites
 
-- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0?wt.mc_id=generative-ai-dotnet)
-- [Azure Functions Core Tools v4](https://learn.microsoft.com/azure/azure-functions/functions-run-local?wt.mc_id=generative-ai-dotnet)
+- [.NET 11 SDK](https://dotnet.microsoft.com/download/dotnet/11.0?wt.mc_id=generative-ai-dotnet)
+- [Azure Functions Core Tools v4 with .NET 11 support](https://learn.microsoft.com/azure/azure-functions/functions-run-local?wt.mc_id=generative-ai-dotnet)
 - [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli?wt.mc_id=generative-ai-dotnet)
 - [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd?wt.mc_id=generative-ai-dotnet) for deployment
 - [Azurite](https://learn.microsoft.com/azure/storage/common/storage-use-azurite?wt.mc_id=generative-ai-dotnet), or another development storage connection, for local Functions storage
 - An existing Microsoft Foundry account with a deployed chat model
 
 The deployment template expects the existing Foundry account and the new Function resources to use the same Azure subscription.
+
+The project uses `Azure.Functions.Sdk` for .NET 11. When restoring the Core Samples
+solution, also run `dotnet restore` on this sample's `.csproj` before building with
+`--no-restore`, so the SDK can generate and restore its Functions extension project.
 
 Use the Azure OpenAI-compatible endpoint shown by the model deployment's code sample. It normally has this form:
 

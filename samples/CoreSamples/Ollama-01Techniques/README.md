@@ -1,6 +1,6 @@
 # Local streaming, structured output, and caching
 
-Requires .NET 10 or later, a running Ollama server, and `ollama pull phi4-mini`. No Azure setup or secrets are used.
+Requires .NET 11 or later, a running Ollama server, and `ollama pull phi4-mini`. No Azure setup or secrets are used.
 
 From the repository root:
 

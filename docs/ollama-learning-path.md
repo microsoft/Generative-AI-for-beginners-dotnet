@@ -1,6 +1,6 @@
 # Ollama-only learning path
 
-Start with the [local setup guide](../01-IntroductionToGenerativeAI/setup-local-ollama.md). You need .NET 10 or later and a running Ollama server, not Azure credentials. All commands below run in PowerShell from the repository root. Unless overridden, each sample uses the model shown in the table.
+Start with the [local setup guide](../01-IntroductionToGenerativeAI/setup-local-ollama.md). You need .NET 11 or later and a running Ollama server, not Azure credentials. All commands below run in PowerShell from the repository root. Unless overridden, each sample uses the model shown in the table.
 
 ## Your route through the lessons
 
@@ -74,4 +74,4 @@ ollama pull moondream
 python .\scripts\test_ollama.py --run --endpoint http://localhost:11434 --chat-model phi4-mini --tool-model llama3.2 --embedding-model all-minilm --vision-model moondream
 ```
 
-Missing models are reported as `SKIP`, not `PASS`; the summary distinguishes failed and skipped checks. A failed assertion, process error, or timeout returns nonzero. Core inference coverage is complete only when all core checks pass (optional vision can be skipped). Vision acceptance requires the description to identify runners or footwear in the supplied photo, not merely return text. A fake model that repeatedly requests the weather tool also verifies the middleware's iteration limit and final tool-free request. If multiple SDKs are installed, use `--sdk-version 10.0.403` with your installed .NET 10 SDK version to select it in a temporary directory, without changing repository SDK settings. `--timeout 240` sets the positive per-process limit in seconds.
+Missing models are reported as `SKIP`, not `PASS`; the summary distinguishes failed and skipped checks. A failed assertion, process error, or timeout returns nonzero. Core inference coverage is complete only when all core checks pass (optional vision can be skipped). Vision acceptance requires the description to identify runners or footwear in the supplied photo, not merely return text. A fake model that repeatedly requests the weather tool also verifies the middleware's iteration limit and final tool-free request. If multiple SDKs are installed, use `--sdk-version 11.0.100` with your installed .NET 11 SDK version to select it in a temporary directory, without changing repository SDK settings. `--timeout 240` sets the positive per-process limit in seconds.

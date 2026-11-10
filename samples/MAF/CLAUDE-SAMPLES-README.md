@@ -79,7 +79,7 @@ All samples require:
 
 ### 2. Development Environment
 
-- **.NET 10 SDK** or later: [Download](https://dotnet.microsoft.com/download)
+- **.NET 11 SDK** or later: [Download](https://dotnet.microsoft.com/download)
 - **IDE**: Visual Studio 2022, VS Code, or Rider (optional but recommended)
 
 ### 3. Claude Model Options

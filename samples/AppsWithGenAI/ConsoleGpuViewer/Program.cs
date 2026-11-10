@@ -1,7 +1,7 @@
 ﻿// nvsharptop - GPU monitoring console app (single-file)
 // This file implements a small GPU monitor that queries `nvidia-smi` and renders
 // a live terminal UI using Spectre.Console. It is intentionally self-contained
-// and uses top-level statements for .NET 10 convenience.
+// and uses top-level statements for .NET 11 convenience.
 
 using System;
 using System.Collections.Concurrent;

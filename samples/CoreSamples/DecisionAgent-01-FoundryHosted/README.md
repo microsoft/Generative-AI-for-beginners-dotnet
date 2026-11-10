@@ -1,6 +1,6 @@
 # DecisionAgent-01-FoundryHosted
 
-A .NET 10 sample that routes synthetic support tickets with
+A .NET 11 sample that routes synthetic support tickets with
 **Microsoft-Decision-1**, a native Microsoft Foundry decision model. A custom
 Microsoft Agent Framework `AIAgent` calls the model through the native
 SystemOne endpoint and returns a typed result through the Foundry Responses
@@ -34,7 +34,7 @@ public `RoutingDecision` contract is kept in its own project.
 ```text
 DecisionAgent-01-FoundryHosted/
 ├── azure.yaml
-├── global.json                      # Pinned .NET 10 SDK feature band
+├── global.json                      # Pinned .NET 11 SDK feature band
 ├── src/
 │   ├── SupportRouting.Contracts/     # Public, provider-independent result types
 │   ├── SupportRoutingAgent/          # AIAgent, native transport, Responses host
@@ -49,7 +49,7 @@ DecisionAgent-01-FoundryHosted/
 
 | Requirement | Purpose |
 |---|---|
-| .NET 10 SDK | Build the hosted agent, caller, and tests |
+| .NET 11 SDK | Build the hosted agent, caller, and tests |
 | Azure CLI | Local developer identity and hosted-agent caller identity |
 | Azure Developer CLI with `azure.ai.agents` extension | Deploy and invoke the Hosted Agent |
 | Existing Microsoft Foundry project | Hosts the agent, no new project is defined in this sample |
