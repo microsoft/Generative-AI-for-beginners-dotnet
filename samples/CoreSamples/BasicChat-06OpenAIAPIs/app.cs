@@ -1,5 +1,5 @@
-#:package Microsoft.Extensions.AI@10.11.0
-#:package Microsoft.Extensions.AI.OpenAI@10.11.0
+#:package Microsoft.Extensions.AI@11.0.0
+#:package Microsoft.Extensions.AI.OpenAI@11.0.0
 #:package Microsoft.Extensions.Configuration@11.0.0
 #:package Microsoft.Extensions.Configuration.Json@11.0.0
 #:package Microsoft.Extensions.Configuration.UserSecrets@11.0.0

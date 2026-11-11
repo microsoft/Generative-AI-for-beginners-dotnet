@@ -10,9 +10,9 @@
 	<ItemGroup>
 		<PackageReference Include="Azure.Identity" Version="1.21.0" />
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="11.0.0" />
-		<PackageReference Include="Aspire.Azure.AI.OpenAI" Version="13.6.4-preview.1.26523.11" />
-		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.11.0" />
-		<PackageReference Include="Microsoft.Extensions.AI" Version="10.11.0" />
+		<PackageReference Include="Aspire.Azure.AI.OpenAI" Version="13.6.5-preview.1.26559.7" />
+		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="11.0.0" />
+		<PackageReference Include="Microsoft.Extensions.AI" Version="11.0.0" />
 
 		<!-- Microsoft Agent Framework packages -->
 		<PackageReference Include="Microsoft.Agents.AI" Version="1.28.0" />

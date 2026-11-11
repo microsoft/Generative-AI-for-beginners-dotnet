@@ -272,9 +272,9 @@ The AG-UI feature enables a distributed agent architecture where:
 <PackageReference Include="Microsoft.Agents.AI" Version="1.27.0" />
 <PackageReference Include="Microsoft.Agents.AI.Hosting" Version="1.27.0-preview.261030.1" />
 <PackageReference Include="Microsoft.Agents.AI.Hosting.AGUI.AspNetCore" Version="1.27.0-preview.261030.1" />
-<PackageReference Include="Microsoft.Extensions.AI" Version="10.11.0" />
-<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.11.0" />
-<PackageReference Include="Aspire.Azure.AI.OpenAI" Version="13.6.4-preview.1.26523.11" />
+<PackageReference Include="Microsoft.Extensions.AI" Version="11.0.0" />
+<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="11.0.0" />
+<PackageReference Include="Aspire.Azure.AI.OpenAI" Version="13.6.5-preview.1.26559.7" />
 ```
 
 ### Frontend (Web App)
@@ -283,7 +283,7 @@ The AG-UI feature enables a distributed agent architecture where:
 <PackageReference Include="Microsoft.Agents.AI" Version="1.27.0" />
 <PackageReference Include="Microsoft.Agents.AI.AGUI" Version="1.13.0-preview.260703.1" />
 <PackageReference Include="Microsoft.Agents.AI.Hosting" Version="1.27.0-preview.261030.1" />
-<PackageReference Include="Microsoft.Extensions.AI" Version="10.11.0" />
+<PackageReference Include="Microsoft.Extensions.AI" Version="11.0.0" />
 <PackageReference Include="ElBruno.Connectors.SqliteVec" Version="0.5.3" />
 <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3" Version="3.53.3" />
 <PackageReference Include="PdfPig" Version="0.1.16" />

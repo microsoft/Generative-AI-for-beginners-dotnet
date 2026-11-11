@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Azure.Identity" Version="1.21.0" />
-    <PackageReference Include="GitHub.Copilot.SDK" Version="1.0.29" />
+    <PackageReference Include="GitHub.Copilot.SDK" Version="1.0.31" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="11.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="11.0.0" />
   </ItemGroup>

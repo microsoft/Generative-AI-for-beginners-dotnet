@@ -14,8 +14,8 @@
 		<PackageReference Include="Azure.Identity" Version="1.21.0" />
 		<PackageReference Include="Microsoft.Agents.AI" Version="1.28.0" />
 		<PackageReference Include="Microsoft.Agents.AI.OpenAI" Version="1.28.0" />
-		<PackageReference Include="Microsoft.Extensions.AI" Version="10.11.0" />
-		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.11.0" />
+		<PackageReference Include="Microsoft.Extensions.AI" Version="11.0.0" />
+		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="11.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="11.0.0" />
 		<PackageReference Include="OpenAI" Version="2.15.0" />
 	</ItemGroup>

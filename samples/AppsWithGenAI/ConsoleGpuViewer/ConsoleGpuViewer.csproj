@@ -19,7 +19,7 @@
     <!-- Spectre.Console for terminal UI (stable available on NuGet) -->
     <PackageReference Include="Spectre.Console" Version="0.57.2" />
   <!-- System.CommandLine for robust CLI parsing -->
-  <PackageReference Include="System.CommandLine" Version="2.0.14" />
+  <PackageReference Include="System.CommandLine" Version="3.0.0" />
   </ItemGroup>
 
 </Project>
