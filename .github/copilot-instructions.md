@@ -5,7 +5,7 @@
 - This repo is a hands-on .NET course for Generative AI, focused on real-world, runnable code and live coding.
 - Lessons are organized in numbered folders (`01-IntroductionToGenerativeAI/` through `05-ResponsibleAI/`), each with a `readme.md` for documentation.
 - All code samples live in the centralized `samples/` directory, organized by category: `CoreSamples/`, `MAF/`, `AppsWithGenAI/`, `PracticalSamples/`.
-- Key technologies: .NET 10+, Microsoft.Extensions.AI (MEAI), Microsoft Agent Framework, Azure OpenAI, Ollama (local models).
+- Key technologies: .NET 11+, Microsoft.Extensions.AI (MEAI), Microsoft Agent Framework, Azure OpenAI, Ollama (local models).
 - Multi-language support: see `translations/` for localized docs.
 
 ## Architecture & Patterns

@@ -79,7 +79,7 @@ All samples require:
 
 ### 2. Development Environment
 
-- **.NET 10 SDK** or later: [Download](https://dotnet.microsoft.com/download)
+- **.NET 11 SDK** or later: [Download](https://dotnet.microsoft.com/download)
 - **IDE**: Visual Studio 2022, VS Code, or Rider (optional but recommended)
 
 ### 3. Claude Model Options
@@ -131,8 +131,8 @@ Along with the required MAF and AI packages:
 ```bash
 dotnet add package Microsoft.Agents.AI --version 1.27.0
 dotnet add package Microsoft.Agents.AI.Foundry --version 1.5.0
-dotnet add package Microsoft.Extensions.AI --version 10.11.0
-dotnet add package Microsoft.Extensions.AI.OpenAI --version 10.11.0
+dotnet add package Microsoft.Extensions.AI --version 11.0.0
+dotnet add package Microsoft.Extensions.AI.OpenAI --version 11.0.0
 ```
 
 ### Running Console Samples

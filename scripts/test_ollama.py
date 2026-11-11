@@ -287,7 +287,7 @@ def verify_snippets(env, temporary, timeout):
                 references[reference.get("Include")] = reference.get("Version")
     (folder / "Snippets.csproj").write_text(
         '<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>Exe</OutputType>'
-        '<TargetFramework>net10.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings>'
+        '<TargetFramework>net11.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings>'
         '</PropertyGroup><ItemGroup>' +
         "".join(f'<PackageReference Include="{name}" Version="{version}" />' for name, version in references.items()) +
         '</ItemGroup></Project>', encoding="utf-8")

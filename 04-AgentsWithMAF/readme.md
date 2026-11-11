@@ -153,7 +153,7 @@ Agent Framework samples are in [samples/MAF](../samples/MAF/). Course integratio
 Before starting this lesson, ensure you have:
 
 - Completed Lessons 1-3 (or understand chat, function calling, and RAG concepts)
-- .NET 10 SDK installed
+- .NET 11 SDK installed
 - Access to at least one AI provider:
   - Azure OpenAI / Microsoft Foundry (recommended)
   - Azure OpenAI - Requires Azure subscription

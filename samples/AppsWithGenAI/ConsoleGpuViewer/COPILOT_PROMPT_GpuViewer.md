@@ -1,14 +1,14 @@
-# GitHub Copilot Prompt: Create a GPU-monitoring console app in C# (.NET 10)
+# GitHub Copilot Prompt: Create a GPU-monitoring console app in C# (.NET 11)
 
 Goal
 -----
 
-Generate a .NET 10 C# console application that monitors local NVIDIA GPU usage and displays a live terminal UI with graphs and a table, similar to `nvsharptop.cs` in this repository.
+Generate a .NET 11 C# console application that monitors local NVIDIA GPU usage and displays a live terminal UI with graphs and a table, similar to `nvsharptop.cs` in this repository.
 
 Requirements / Acceptance Criteria
 ---------------------------------
 
-- Buildable with .NET 10 SDK (using top-level statements or Program.cs). The project must run with `dotnet run` and should also be publishable as a single-file executable.
+- Buildable with .NET 11 SDK (using top-level statements or Program.cs). The project must run with `dotnet run` and should also be publishable as a single-file executable.
 - Use the `Spectre.Console` package to render the terminal UI (graphs, table, colors, markup).
 - Query local NVIDIA GPUs using the `nvidia-smi` command with the same fields: `index,name,temperature.gpu,utilization.gpu,memory.used,memory.total`.
 - Parse `nvidia-smi` CSV output safely and handle no-GPU cases without crashing.
@@ -66,8 +66,8 @@ Default vertical view settings (should be the app defaults):
 Project structure the prompt should ask the Copilot to create
 -----------------------------------------------------------
 
-- `nvsharptop.cs` (single-file top-level program) or `Program.cs` + `nvsharptop` classes — choose top-level for .NET 10 convenience.
-- `nvsharptop.csproj` with target framework `net10.0` and a `PackageReference` for `Spectre.Console`.
+- `nvsharptop.cs` (single-file top-level program) or `Program.cs` + `nvsharptop` classes — choose top-level for .NET 11 convenience.
+- `nvsharptop.csproj` with target framework `net11.0` and a `PackageReference` for `Spectre.Console`.
 - A minimal `README.md` with run and publish commands.
 
 Functional contract for main components (to include in the generated code)
@@ -122,15 +122,15 @@ Implementation notes for the Copilot prompt
 - Use `Spectre.Console` primitives: `Table`, `Grid`, `Markup`, and colored Markup tags.
 - Implement a welcome/start screen (interactive) that displays the current mode and instructions to start or quit.
 - Avoid external network calls. Read only `nvidia-smi` output locally.
-- Depend on `Spectre.Console` version compatible with .NET 10 (latest stable available).
+- Depend on `Spectre.Console` version compatible with .NET 11 (latest stable available).
 
 Prompt text (paste this into GitHub Copilot or GitHub Copilot Chat)
 ----------------------------------------------------------------
 
 """
-Create a .NET 10 C# console application (single-file `nvsharptop.cs` and `nvsharptop.csproj`) that monitors NVIDIA GPUs using `nvidia-smi` and renders a live terminal UI using Spectre.Console. The app must:
+Create a .NET 11 C# console application (single-file `nvsharptop.cs` and `nvsharptop.csproj`) that monitors NVIDIA GPUs using `nvidia-smi` and renders a live terminal UI using Spectre.Console. The app must:
 
-- Target `net10.0` and include a `PackageReference` to `Spectre.Console`.
+- Target `net11.0` and include a `PackageReference` to `Spectre.Console`.
 - Be runnable with `dotnet run nvsharptop.cs -- [args]` and publishable with `dotnet publish` as a single-file executable.
 - Parse command-line options `--sample-interval <seconds>` (double, default `0.1`), `--display-interval <seconds>` (double, default `3`), `--cleanup-screen <true|false>` (bool, default `true`), and `--help`/`-h`.
 - Parse command-line options `--sample-interval <seconds>` (double, default `1.0`), `--display-interval <seconds>` (double, default `3`), `--cleanup-screen <true|false>` (bool, default `true`), and `--help`/`-h`. Also support `--compact`, `--animate`, `--bar-char`, `--util-high`, `--util-warn`, `--bg-glyph`, and `--pixel`.

@@ -1,6 +1,6 @@
 # GitHub Copilot SDK — BYOK with Microsoft Foundry
 
-This .NET 10 console sample uses the GitHub Copilot SDK with a model hosted by
+This .NET 11 console sample uses the GitHub Copilot SDK with a model hosted by
 Microsoft Foundry or Azure OpenAI. It demonstrates a minimal BYOK (Bring Your Own Key)
 setup:
 
@@ -11,7 +11,7 @@ setup:
 
 ## Prerequisites
 
-- .NET 10 SDK
+- .NET 11 SDK
 - GitHub Copilot CLI available on `PATH` (`copilot --version`)
 - Azure CLI (only for the Entra ID authentication mode)
 - A model deployment in Microsoft Foundry or Azure OpenAI

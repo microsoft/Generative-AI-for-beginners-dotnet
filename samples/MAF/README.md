@@ -1,6 +1,6 @@
 # Microsoft Agent Framework Samples
 
-Welcome to the comprehensive guide for **Microsoft Agent Framework (MAF)** samples! These samples demonstrate how to build intelligent agents using .NET 10, Microsoft.Extensions.AI, and various AI providers (Azure OpenAI, Ollama, Microsoft Foundry, and optional provider-specific integrations).
+Welcome to the comprehensive guide for **Microsoft Agent Framework (MAF)** samples! These samples demonstrate how to build intelligent agents using .NET 11, Microsoft.Extensions.AI, and various AI providers (Azure OpenAI, Ollama, Microsoft Foundry, and optional provider-specific integrations).
 
 ## Overview
 
@@ -17,7 +17,7 @@ Microsoft Agent Framework v1.0 GA provides a modern, extensible foundation for b
 ## Prerequisites
 
 ### Required
-- **.NET 10 SDK** or later ([Download](https://dotnet.microsoft.com/download))
+- **.NET 11 SDK** or later ([Download](https://dotnet.microsoft.com/download))
 
 ### Choose at least one AI provider:
 - **Azure OpenAI** — Cloud-based GPT models (requires Azure subscription)

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
+    <TargetFramework>net11.0</TargetFramework>
     <RootNamespace>NET_NES.GameActionProcessor</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -10,10 +10,10 @@
 
 	<ItemGroup>
 		<PackageReference Include="Azure.AI.OpenAI" Version="2.9.0-beta.1" />
-		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="10.11.0" />
-	<PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.14" />
-	<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.14" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.14" />
+		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="11.0.0" />
+	<PackageReference Include="Microsoft.Extensions.Configuration" Version="11.0.0" />
+	<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="11.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="11.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 		<PackageReference Include="OllamaSharp" Version="5.5.2" />
 	</ItemGroup>

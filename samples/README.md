@@ -99,7 +99,7 @@ Each application is fully functional and can be run independently with proper AI
 
 ### Prerequisites
 
-- **.NET 10 SDK** or later
+- **.NET 11 SDK** or later
 - **AI Provider Access** (at least one):
   - Microsoft Foundry endpoint (with managed identity or API key)
   - Ollama installed locally
