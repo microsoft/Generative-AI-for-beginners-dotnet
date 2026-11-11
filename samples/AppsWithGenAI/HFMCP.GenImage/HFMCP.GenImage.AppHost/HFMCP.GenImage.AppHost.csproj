@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="Aspire.Dashboard.Sdk.linux-x64" Version="13.6.4" />
-    <PackageReference Include="Aspire.Hosting.AppHost" Version="13.6.4" />
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="13.6.5" />
     <PackageReference Include="Aspire.Hosting.Orchestration.linux-x64" Version="13.6.4" />
     <!-- Pin transitive MessagePack to a patched version to resolve NU1902/NU1903 advisories -->
     <PackageReference Include="MessagePack" Version="3.1.12" />
