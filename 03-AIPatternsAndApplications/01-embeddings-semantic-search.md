@@ -362,6 +362,7 @@ The code stays the same - just swap the vector store implementation!
 | [RAGSimple-03MEAIVectorsAISearch](../samples/CoreSamples/RAGSimple-03MEAIVectorsAISearch/) | Azure AI Search vector store |
 | [RAGSimple-04MEAIVectorsQdrant](../samples/CoreSamples/RAGSimple-04MEAIVectorsQdrant/) | Qdrant vector store |
 | [RAGSimple-05MEAIVectorsChroma](../samples/CoreSamples/RAGSimple-05MEAIVectorsChroma/) | Chroma in Docker with the same VectorData search API |
+| [RAGSimple-06MEAIVectorsMilvus](../samples/CoreSamples/RAGSimple-06MEAIVectorsMilvus/) | Milvus in Docker with the same VectorData search API |
 
 ---
 
