@@ -1,4 +1,4 @@
-#:package LlmTornado@3.8.83
+#:package LlmTornado@3.8.84
 #:package Microsoft.Extensions.Configuration.UserSecrets@11.0.0
 #:property UserSecretsId=genai-beginners-dotnet
 

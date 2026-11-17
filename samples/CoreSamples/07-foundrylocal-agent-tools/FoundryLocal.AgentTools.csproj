@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ElBruno.MAF.FoundryLocal.Adapter" Version="0.2.1" />
-    <PackageReference Include="Microsoft.AI.Foundry.Local" Version="2.4.1" />
+    <PackageReference Include="ElBruno.MAF.FoundryLocal.Adapter" Version="0.3.0" />
+    <PackageReference Include="Microsoft.AI.Foundry.Local" Version="2.5.0" />
     <PackageReference Include="Microsoft.Extensions.AI" Version="11.0.0" />
   </ItemGroup>
 
