@@ -19,7 +19,10 @@ var deployment = builder.Configuration["Decision:Deployment"]
 
 TokenCredential credential = string.IsNullOrEmpty(
     Environment.GetEnvironmentVariable("FOUNDRY_HOSTING_ENVIRONMENT"))
-    ? new AzureCliCredential()
+    ? new AzureCliCredential(new AzureCliCredentialOptions
+    {
+        ProcessTimeout = TimeSpan.FromSeconds(30)
+    })
     : new ManagedIdentityCredential(ManagedIdentityId.SystemAssigned);
 
 using var logs = LoggerFactory.Create(logging => logging.AddConsole());
