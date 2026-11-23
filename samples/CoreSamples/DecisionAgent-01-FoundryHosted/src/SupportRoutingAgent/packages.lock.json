@@ -13,12 +13,12 @@
       },
       "ElBruno.AI.Decisions.Foundry": {
         "type": "Direct",
-        "requested": "[0.8.0, )",
-        "resolved": "0.8.0",
-        "contentHash": "Wjl/rZaoYyBBPz4DN71PtGRdA7fxMvOZ/C0CnSos/TWx6lYBV7FWGAdqndkWd8mqxG/44Xfj60OzB9ip+5eyaw==",
+        "requested": "[0.9.0, )",
+        "resolved": "0.9.0",
+        "contentHash": "t+3jpuCkliudkZnljNZMstpJkmMYvUoFDWkl8808X2vO44vVXaVGJue0Y4PpFFc6hD1jx2z3Fgh5wRLN5RjgKg==",
         "dependencies": {
-          "Azure.Identity": "1.17.0",
-          "ElBruno.AI.Decisions": "0.8.0"
+          "Azure.Identity": "1.21.0",
+          "ElBruno.AI.Decisions": "0.9.0"
         }
       },
       "Microsoft.Agents.AI.Foundry.Hosting": {
@@ -129,10 +129,10 @@
       },
       "ElBruno.AI.Decisions": {
         "type": "Transitive",
-        "resolved": "0.8.0",
-        "contentHash": "06E9P8XsULpg0RwF0dE0E5H0tYDSxc54OVcL6W15xpeIIvqiNn1bnVX7PSsXlyVXOxo93zz2uYauYo7/3yyHnw==",
+        "resolved": "0.9.0",
+        "contentHash": "b05Vt8EaR5HInPQEb7SFwpi3BmvKQOYbCMxaBHKFUjAWxSts3uKW0G9SZqVZHgGjoEA8cTek1q/fOt+Try9GiA==",
         "dependencies": {
-          "Microsoft.Extensions.AI.Abstractions": "10.10.0"
+          "Microsoft.Extensions.AI.Abstractions": "11.0.0"
         }
       },
       "Google.Protobuf": {
@@ -217,8 +217,8 @@
       },
       "Microsoft.Extensions.AI.Abstractions": {
         "type": "Transitive",
-        "resolved": "10.11.0",
-        "contentHash": "h4DX/TdJU4fk1GGaf19n6Kujkj6VXbGeL4UEOsQ8+ZJC5fVApPauokCtvBP684BYbczUYZQNfo1mbmyHG4WVSg=="
+        "resolved": "11.0.0",
+        "contentHash": "UYZTudmTrGykWIRzcO/TKauTx/+L/h4MYpUBODCG7aIybRVkv2y6uhVwG6UHRS6uTzRqg0K8IJprC9/QhMZGsw=="
       },
       "Microsoft.Extensions.AI.Evaluation": {
         "type": "Transitive",
