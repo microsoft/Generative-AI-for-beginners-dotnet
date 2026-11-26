@@ -4,7 +4,7 @@ You can follow the core course without an Azure account, Azure login, cloud API 
 
 ## 1. Install and start the tools
 
-Install the [.NET 10 SDK](https://dotnet.microsoft.com/download?wt.mc_id=dotnet-0000-brunocapuano) or later and [Ollama](https://ollama.com/download). Clone or download this repository and open a terminal at its root.
+Install the [.NET 11 SDK](https://dotnet.microsoft.com/download?wt.mc_id=dotnet-0000-brunocapuano) or later and [Ollama](https://ollama.com/download). Clone or download this repository and open a terminal at its root.
 
 ```powershell
 dotnet --version

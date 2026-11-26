@@ -4,7 +4,7 @@ Use the community-maintained [ElBruno.AI.Decisions.Foundry.Local](https://www.nu
 
 ## Requirements
 
-- .NET 10 SDK
+- .NET 11 SDK and .NET 10 runtime (the project targets .NET 10)
 - Foundry Local installed
 - A cached model that advertises typed decision support
 

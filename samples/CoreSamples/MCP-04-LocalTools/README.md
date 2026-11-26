@@ -1,6 +1,6 @@
 # Ollama with a local MCP server
 
-Requires .NET 10 or later, Ollama, and `ollama pull llama3.2`. Run from the repository root:
+Requires .NET 11 or later, Ollama, and `ollama pull llama3.2`. Run from the repository root:
 
 ```powershell
 dotnet run --project .\samples\CoreSamples\MCP-04-LocalTools

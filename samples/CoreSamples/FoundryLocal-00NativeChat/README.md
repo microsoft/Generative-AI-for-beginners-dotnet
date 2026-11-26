@@ -1,6 +1,6 @@
 # Native Foundry Local Hello World
 
-Use .NET 10+; start with the [setup guide](../../../01-IntroductionToGenerativeAI/setup-foundry-local.md). From repository root:
+Use the .NET 11 SDK and .NET 10 runtime; start with the [setup guide](../../../01-IntroductionToGenerativeAI/setup-foundry-local.md). From the repository root:
 
 ```powershell
 dotnet run --project .\samples\CoreSamples\FoundryLocal-00NativeChat -- --prepare

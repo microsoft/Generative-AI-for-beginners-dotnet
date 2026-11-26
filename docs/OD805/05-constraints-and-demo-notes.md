@@ -12,7 +12,7 @@ Operational notes to make the OD805 demos reliable on stage.
 
 ## Environment / prerequisites
 
-- **.NET 10 SDK** (repo standard; verify `dotnet --version` ≥ 10.0).
+- **.NET 11 SDK** (repo standard; verify `dotnet --version` ≥ 11.0).
 - **Aspire** workload (`aspire start` for the Zava app; `dotnet workload list` to confirm).
 - **Python 3.10+** with a **virtual environment created before `aspire start`** (Aspire uses
   the venv's Python to run the NeMo agent): `python -m venv .venv` → activate →

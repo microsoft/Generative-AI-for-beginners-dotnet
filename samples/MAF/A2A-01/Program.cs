@@ -19,6 +19,7 @@ using A2A;
 using Azure.AI.OpenAI;
 using Azure.Identity;
 using Microsoft.Agents.AI;
+using Microsoft.Agents.AI.A2A;
 using Microsoft.Extensions.AI;
 
 const string agentName = "writer-agent";
@@ -52,8 +53,11 @@ Console.WriteLine();
 // 2. CLIENT — talk to the agent purely over the A2A protocol.
 var a2aClient = new A2AClient(new Uri(baseUrl + a2aPath));
 AIAgent remoteAgent = a2aClient.AsAIAgent(
-    name: "remote-writer",
-    description: "The writer agent, reached over A2A.");
+    new A2AAgentOptions
+    {
+        Name = "remote-writer",
+        Description = "The writer agent, reached over A2A."
+    });
 
 const string prompt = "Write a two-line poem about .NET and AI.";
 Console.WriteLine($"Client -> A2A: {prompt}");

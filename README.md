@@ -134,17 +134,22 @@ You'll learn how to implement Generative AI into .NET projects, from basic text 
 
 To get started, you'll need:
 
-1. The **.NET 10 SDK or later** and a basic understanding of .NET.
+1. The **.NET 11 SDK (11.0.100 or later)** and a basic understanding of .NET.
 2. A local clone of this repository. A GitHub account is needed only for forking, contributing, or using Codespaces.
 3. **One AI provider**: [Ollama](./01-IntroductionToGenerativeAI/setup-local-ollama.md), [Foundry Local](./01-IntroductionToGenerativeAI/setup-foundry-local.md), or [Azure OpenAI / Microsoft Foundry](./01-IntroductionToGenerativeAI/setup-azure-openai.md).
 
 **Ollama learners do not need an Azure account, Azure CLI, API keys, or Codespaces.** The core local route covers chat, history, streaming, structured output, tools, caching, semantic search, RAG, and agents.
 
+Most samples target .NET 11, including the file-based `app.cs` samples. The root
+`global.json` selects a stable .NET 11 SDK; the new local decision and Foundry Local
+learning samples target .NET 10 and also require its runtime. Windows-specific samples
+retain their Windows requirements. Existing user secrets IDs and configuration keys are unchanged.
+
 For the Azure route, you also need an Azure account and the tools described in the Azure setup guide. Azure Developer CLI (`azd`) is needed for automated resource provisioning. Cloud-specific services are optional branches, not local prerequisites.
 
 ## Quick Start with Foundry Local
 
-With .NET 10+ installed, run from repository root:
+With the .NET 11 SDK and .NET 10 runtime installed, run from the repository root:
 
 ```powershell
 dotnet run --project .\samples\CoreSamples\FoundryLocal-00NativeChat -- --prepare

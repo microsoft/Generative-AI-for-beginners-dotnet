@@ -14,7 +14,7 @@ This demonstrates the retrieval building block of RAG, not chat response generat
 
 ## Prerequisites
 
-- .NET 10 SDK or later
+- .NET 11 SDK or later
 - Docker running with Linux containers
 - An Azure OpenAI embedding deployment of `text-embedding-3-small`, using its default 1536 dimensions
 - Azure CLI, signed in with `az login`, and permission to use the deployment (for example, the **Cognitive Services OpenAI User** role)

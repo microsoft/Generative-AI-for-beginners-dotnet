@@ -26,7 +26,7 @@ result per utterance.
 
 ## Prerequisites
 
-- .NET SDK 10.0+ (this project targets `net10.0-windows10.0.18362`, required by the current NAudio package)
+- .NET SDK 11.0+ (this project targets `net11.0-windows10.0.18362`, required by the current NAudio package)
 - **Windows** — microphone capture uses NAudio's `WaveIn`, which is Windows-only
 - Foundry Local installed and available on this machine
 - A working microphone / input device

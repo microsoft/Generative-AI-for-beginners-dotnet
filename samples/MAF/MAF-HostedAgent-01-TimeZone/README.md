@@ -15,7 +15,7 @@ A .NET console agent built with the **Microsoft Agent Framework (MAF) v1.0** tha
 
 | Requirement | Details |
 |---|---|
-| **.NET 10 SDK** | [Download](https://dotnet.microsoft.com/download) |
+| **.NET 11 SDK** | [Download](https://dotnet.microsoft.com/download) |
 | **Docker** | Required for container build and Foundry deployment |
 | **Azure OpenAI** or **Ollama** | At least one AI provider configured |
 | **Azure subscription** | Required only for Azure OpenAI and Foundry deployment |

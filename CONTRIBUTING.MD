@@ -91,9 +91,9 @@ string deployment = config["AzureOpenAI:Deployment"] ?? "gpt-5-mini";
 string embeddingDeployment = config["AzureOpenAI:EmbeddingDeployment"] ?? "text-embedding-3-small";
 ```
 
-### File-Based Console Apps (.NET 10)
+### File-Based Console Apps (.NET 11)
 
-For simple console samples, use .NET 10 file-based programs to minimize boilerplate:
+For simple console samples, use .NET 11 file-based programs to minimize boilerplate:
 
 **Instead of a full project folder**, create a simple `.cs` file:
 ```powershell

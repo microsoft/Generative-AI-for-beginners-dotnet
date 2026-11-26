@@ -4,7 +4,7 @@ Use the community-maintained [ElBruno.AI.Decisions.Llama](https://www.nuget.org/
 
 ## Requirements
 
-- .NET 10 SDK
+- .NET 11 SDK and .NET 10 runtime (the project targets .NET 10)
 - Llama App running with a locally installed decision model
 
 The default model ID is `LiquidAI/d1-omni-600M-GGUF:Q8_0`. Check the model IDs available from your Llama App instance, then run the sample from the repository root:

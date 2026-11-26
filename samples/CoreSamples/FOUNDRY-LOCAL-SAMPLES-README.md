@@ -14,7 +14,7 @@ For typed decision examples across Foundry Local and Llama App, see the [decisio
 | [MAF-FoundryLocal-01](../MAF/MAF-FoundryLocal-01/README.md) | Actual Agent Framework agents, tools and sequential writer/editor |
 | [MCP-FoundryLocal-LocalTools](./MCP-FoundryLocal-LocalTools/README.md) | Local stdio server and observable model-to-tool invocation |
 
-From repository root, with .NET 10+:
+From the repository root, use the .NET 11 SDK selected by `global.json`. These samples target .NET 10:
 
 ```powershell
 dotnet run --project .\samples\CoreSamples\FoundryLocal-00NativeChat -- --prepare

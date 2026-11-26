@@ -1,6 +1,6 @@
 # Function calling with Ollama
 
-Requires .NET 10 or later, a running Ollama server, and `ollama pull llama3.2`.
+Requires .NET 11 or later, a running Ollama server, and `ollama pull llama3.2`.
 
 From the repository root:
 

@@ -10,7 +10,7 @@ This repository contains **Generative AI for Beginners .NET** - a hands-on cours
 - **Centralized samples**: All code samples live in the `samples/` directory, organized by category
 - **Multi-language support**: Course materials translated into 8 languages (located in `translations/`)
 - **Sample applications**: Full-featured AI-powered apps demonstrating practical GenAI integration
-- **Key technologies**: .NET 10+, Microsoft.Extensions.AI (MEAI), Microsoft Agent Framework, Azure OpenAI, Ollama
+- **Key technologies**: .NET 11+, Microsoft.Extensions.AI (MEAI), Microsoft Agent Framework, Azure OpenAI, Ollama
 
 ### Project Structure
 
@@ -46,7 +46,7 @@ Each lesson folder contains:
 
 ### Prerequisites
 
-- [.NET 10 SDK](https://dotnet.microsoft.com/download) or later
+- [.NET 11 SDK](https://dotnet.microsoft.com/download) or later
 - Access to at least one AI provider:
     - **Azure OpenAI** (requires Azure subscription)
   - **Ollama** (for local model execution)
@@ -59,7 +59,7 @@ git clone https://github.com/microsoft/Generative-AI-for-beginners-dotnet.git
 cd Generative-AI-for-beginners-dotnet
 
 # Verify .NET installation
-dotnet --version  # Should be 10.0 or higher
+dotnet --version  # Should be 11.0 or higher
 ```
 
 ### AI Provider Setup
@@ -111,7 +111,7 @@ dotnet restore samples/PracticalSamples/Aspire.MCP.Sample.sln
 1. Fork this repository to your GitHub account
 2. Create a new Codespace from your fork
 3. Select the appropriate dev container:
-   - Default: .NET 10 with Azure CLI and GitHub CLI
+   - Default: .NET 11 with Azure CLI and GitHub CLI
    - Ollama: Includes Ollama for local model execution
 4. The postCreateCommand will automatically set up .NET workloads and trust dev certificates
 
@@ -177,6 +177,7 @@ dotnet build <solution-path> --no-restore --configuration Release --verbosity mi
 
 # Example: Validate core samples
 dotnet restore samples/CoreSamples/CoreGenerativeAITechniques.sln
+dotnet restore samples/CoreSamples/AzFunction-BasicChat-01/AzFunction-BasicChat-01.csproj
 dotnet build samples/CoreSamples/CoreGenerativeAITechniques.sln --no-restore --configuration Release
 ```
 
@@ -188,6 +189,9 @@ The following solutions are validated in CI:
 - `samples/AppsWithGenAI/HFMCP.GenImage/HFMCP.GenImage.sln`
 - `samples/AppsWithGenAI/SpaceAINet/SpaceAINet.sln`
 - `samples/MAF/MAF-Demos.slnx`
+- `samples/AppsWithGenAI/ConsoleGpuViewer/ConsoleGpuViewer.slnx`
+- `samples/CoreSamples/Vision-01MEAI-GitHubModels/Vision-01MEAI-GitHubModels.csproj`
+- The AG-UI, Middleware, Multi-Agent, Persisting, and Simple web chat solutions under `samples/MAF/`
 
 ### Validated File-Based `app.cs` Samples
 
@@ -204,8 +208,8 @@ empty today — every tracked file-based sample must compile secret-free.
 
 ### Parallel Search MCP Validation
 
-The keyless `samples/CoreSamples/MCP-04-ParallelSearch/app.cs` sample targets .NET 10 and
-requires SDK 10.0.300 or later for its shared-source `#:include` directive. Its response-handling
+The keyless `samples/CoreSamples/MCP-04-ParallelSearch/app.cs` sample targets .NET 11 and
+requires SDK 11.0.100 or later for its shared-source `#:include` directive. Its response-handling
 tests are registered in the Core Samples solution and run offline in build validation.
 Run `samples/CoreSamples/MCP-04-ParallelSearch/validate.ps1` for the Release build and tests.
 Add `-Live` only for an opt-in anonymous search/fetch check against the external Parallel service.
@@ -425,7 +429,7 @@ Examples:
 ### PR Title Format
 
 Use descriptive titles that clearly indicate the change:
-- `docs: Update lesson 02 for .NET 10 compatibility`
+- `docs: Update lesson 02 for .NET 11 compatibility`
 - `feat: Add Agent Framework orchestration sample`
 - `fix: Resolve build errors in SpaceAINet project`
 
@@ -434,7 +438,7 @@ Use descriptive titles that clearly indicate the change:
 ### Common Issues and Solutions
 
 #### Build Errors
-- **Missing SDK**: Ensure .NET 10 SDK is installed (`dotnet --version`)
+- **Missing SDK**: Ensure .NET 11 SDK is installed (`dotnet --version`)
 - **Workload issues**: Run `dotnet workload update`
 - **Package restore fails**: Delete `bin/` and `obj/` folders, then `dotnet restore`
 

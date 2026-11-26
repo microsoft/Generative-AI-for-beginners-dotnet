@@ -1,6 +1,6 @@
 # Local agents with Ollama
 
-Requires .NET 10 or later, a running Ollama server, and `ollama pull llama3.2`. No cloud secrets or Azure services are used.
+Requires .NET 11 or later, a running Ollama server, and `ollama pull llama3.2`. No cloud secrets or Azure services are used.
 
 From the repository root, restore once and run:
 

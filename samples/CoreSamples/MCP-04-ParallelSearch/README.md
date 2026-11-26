@@ -1,6 +1,6 @@
 # MCP-04 - Parallel Search MCP Server
 
-This file-based .NET 10 console sample connects to the public
+This file-based .NET 11 console sample connects to the public
 [Parallel Search MCP Server](https://docs.parallel.ai/integrations/mcp/search-mcp) at
 `https://search.parallel.ai/mcp`. It discovers the server tools, searches for information
 about MCP, fetches the first result, and prints source URLs and excerpt previews.
@@ -13,8 +13,8 @@ search mode and are subject to lower rate limits than authenticated use.
 
 ## Run it
 
-Install the [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0?WT.mc_id=academic-105485-koreyst)
-(10.0.300 or later, for the shared-source `#:include` directive), then run from this directory:
+Install the [.NET 11 SDK](https://dotnet.microsoft.com/download/dotnet/11.0?WT.mc_id=academic-105485-koreyst)
+(11.0.100 or later, for the shared-source `#:include` directive), then run from this directory:
 
 ```bash
 dotnet run app.cs

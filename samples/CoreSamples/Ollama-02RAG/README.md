@@ -1,6 +1,6 @@
 # Fully local semantic search and RAG
 
-Requires .NET 10 or later and a running Ollama server. Download the models first:
+Requires .NET 11 or later and a running Ollama server. Download the models first:
 
 ```powershell
 ollama pull all-minilm

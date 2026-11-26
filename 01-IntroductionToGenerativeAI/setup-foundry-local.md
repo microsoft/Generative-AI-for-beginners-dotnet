@@ -1,6 +1,6 @@
 # Set up Foundry Local for the .NET course
 
-Foundry Local runs models on your computer. This route needs **.NET 10 or later**, but no Azure subscription, API key, Azure CLI, Ollama, Docker, or separate Foundry CLI/service installation.
+Foundry Local runs models on your computer. From this repository, this route needs the **.NET 11 SDK** selected by `global.json` and the **.NET 10 runtime** for its `net10.0` projects. It needs no Azure subscription, API key, Azure CLI, Ollama, Docker, or separate Foundry CLI/service installation.
 
 Start from the repository root in PowerShell. These examples use SDK **2.3.1** and were qualified on **Windows x64 CPU**. The SDK also packages Linux x64/ARM64, Windows ARM64 and macOS Apple Silicon runtimes; those course inference paths are not yet qualified. Use native hardware, not a Linux container expecting Windows acceleration.
 

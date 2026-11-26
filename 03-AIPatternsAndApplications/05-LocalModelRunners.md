@@ -97,7 +97,7 @@ docker run -d -p 12434:8080 \
 
 ### Getting Started - Foundry Local
 
-1. Follow [course setup](../01-IntroductionToGenerativeAI/setup-foundry-local.md) with .NET 10+.
+1. Follow [course setup](../01-IntroductionToGenerativeAI/setup-foundry-local.md) with the .NET 11 SDK and .NET 10 runtime.
 2. Explicitly prepare the model using `--prepare`.
 3. Use native `ChatSession` for the Hello World, or the SDK-managed loopback endpoint for MEAI.
 4. Continue through [local RAG, agents and MCP](../docs/foundry-local-learning-path.md).

@@ -86,5 +86,5 @@ dotnet run --project ConsoleGpuViewer\ConsoleGpuViewer.csproj -- --sample-interv
 Notes
 
 - Requires `nvidia-smi` to be available in PATH (NVIDIA drivers).
-- The app targets `net10.0`.
+- The app targets `net11.0`.
 - Use a Unicode-capable terminal for best visual results.

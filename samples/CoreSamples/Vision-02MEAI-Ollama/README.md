@@ -1,6 +1,6 @@
 # Optional local vision with Ollama
 
-Requires .NET 10 or later and a vision-capable Ollama model. The default `llama3.2-vision` is a much larger download than the core text models; check available RAM/VRAM before pulling it.
+Requires .NET 11 or later and a vision-capable Ollama model. The default `llama3.2-vision` is a much larger download than the core text models; check available RAM/VRAM before pulling it.
 
 ```powershell
 ollama pull llama3.2-vision

@@ -4,7 +4,7 @@ Use the community-maintained [ElBruno.AI.Decisions.Llama](https://www.nuget.org/
 
 ## Requirements
 
-- .NET 10 SDK
+- .NET 11 SDK and .NET 10 runtime (the project targets .NET 10)
 - Llama App running with an installed image-capable decision model
 - A PNG, JPEG, or WebP image no larger than 8 MiB
 

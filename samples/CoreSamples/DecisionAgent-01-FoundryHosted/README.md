@@ -1,7 +1,7 @@
 # DecisionAgent-01-FoundryHosted
 
 A .NET 10 sample that routes synthetic support tickets with
-**Microsoft-Decision-1**, a native Microsoft Foundry decision model. A custom
+**Microsoft-Decision-1.1**, a native Microsoft Foundry decision model. A custom
 Microsoft Agent Framework `AIAgent` calls the model through the native
 SystemOne endpoint and returns a typed result through the Foundry Responses
 protocol. No chat model is used to make or explain the routing decision.
@@ -49,12 +49,15 @@ DecisionAgent-01-FoundryHosted/
 
 | Requirement | Purpose |
 |---|---|
-| .NET 10 SDK | Build the hosted agent, caller, and tests |
+| .NET 10 SDK | Build the hosted agent, caller, and tests and match the Foundry source deployment runtime |
 | Azure CLI | Local developer identity and hosted-agent caller identity |
 | Azure Developer CLI with `azure.ai.agents` extension | Deploy and invoke the Hosted Agent |
 | Existing Microsoft Foundry project | Hosts the agent, no new project is defined in this sample |
-| Existing Microsoft-Decision-1 deployment | Native inference target, no chat model is created |
+| Existing Microsoft-Decision-1.1 deployment | Native inference target, no chat model is created |
 | Authorized Foundry identities | Local inference, agent deployment, agent runtime inference, and caller invocation use distinct identities |
+
+This sample targets .NET 10, rather than the repository's general .NET 11
+requirement, to match the Foundry `dotnet_10` source deployment runtime.
 
 Sign in manually with `az login` before running the local agent or caller.
 Never put credentials, endpoints, or tenant-specific configuration in source
@@ -68,13 +71,14 @@ Keep the four endpoints and identities distinct:
 |---|---|---|
 | `AZURE_AI_PROJECT_ENDPOINT` | Foundry project endpoint used by `azd` to host the agent | Deployment |
 | `DECISION_ENDPOINT` | Resource-root endpoint for native decision inference, such as `https://<resource>.services.ai.azure.com/` | Agent's decision client |
-| `DECISION_DEPLOYMENT` | Name of the existing Microsoft-Decision-1 deployment, not a chat model | Agent's decision client |
+| `DECISION_DEPLOYMENT` | Name of the existing Microsoft-Decision-1.1 deployment, not a chat model | Agent's decision client |
 | `AGENT_OPENAI_BASE_URL` | OpenAI-compatible base URL for the deployed Hosted Agent | C# caller |
 
 Locally, `AzureCliCredential` represents the developer. In Foundry, the agent
 uses its system-assigned managed identity for the native decision request. The
 C# caller uses the caller's Azure CLI identity to invoke the agent endpoint.
 An endpoint token does not itself grant permission to invoke that endpoint.
+The host allows up to 30 seconds for the local Azure CLI token process.
 
 For callers using Foundry's Azure RBAC authorization scheme, the current
 authorization guidance identifies **Foundry Agent Consumer** at the project or
@@ -266,13 +270,14 @@ protocol storage are separate controls. The native transport logger records no
 request body, response body, ticket text, or credentials. Do not commit `.azure`
 state, tokens, private endpoints, or logs.
 
-No live deployment or Foundry portal capture was performed while preparing this
-sample. Do not treat the offline tests as live inference evidence or fabricate
-screenshots. Before publication, run the sample in an authorized test project
-and capture genuine portal conversation and trace views with synthetic data,
-redacting tokens and personal identifiers. If Foundry does not expose a native
-decision-model span, document the supported instrumentation and capture the
-actual available view instead.
+The local Responses host was tested with an existing Microsoft-Decision-1.1
+deployment and synthetic tickets, including a streaming response. This does
+not verify hosted deployment or runtime identity permissions. Do not treat
+offline tests as live inference evidence or fabricate screenshots. For hosted
+verification, use an authorized test project and genuine portal conversation
+and trace views with synthetic data, redacting tokens and personal identifiers.
+If Foundry does not expose a native decision-model span, document the supported
+instrumentation and capture the actual available view instead.
 
 ## Decision API evolution
 

@@ -1,5 +1,5 @@
-#:package OllamaSharp@5.5.0
-#:package Microsoft.Extensions.Configuration.UserSecrets@10.0.14
+#:package OllamaSharp@5.5.2
+#:package Microsoft.Extensions.Configuration.UserSecrets@11.0.0
 #:property JsonSerializerIsReflectionEnabledByDefault=true
 
 using Microsoft.Extensions.AI;

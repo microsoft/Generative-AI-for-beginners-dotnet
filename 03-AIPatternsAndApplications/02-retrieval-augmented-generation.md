@@ -379,6 +379,7 @@ Console.WriteLine(vector.Length); // 384
 | [RAGSimple-04MEAIVectorsQdrant](../samples/CoreSamples/RAGSimple-04MEAIVectorsQdrant/) | RAG with Qdrant |
 | [Ollama-02RAG](../samples/CoreSamples/Ollama-02RAG/README.md) | Fully local embeddings, sqlite-vec retrieval, and grounded answers |
 | [RAGSimple-05MEAIVectorsChroma](../samples/CoreSamples/RAGSimple-05MEAIVectorsChroma/) | Chroma movie retrieval through VectorData, running in Docker |
+| [RAGSimple-06MEAIVectorsMilvus](../samples/CoreSamples/RAGSimple-06MEAIVectorsMilvus/) | Milvus movie retrieval through VectorData, running in Docker |
 
 ---
 

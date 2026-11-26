@@ -9,7 +9,7 @@ This sample uses a custom `ClaudeToOpenAIMessageHandler` to transform Azure Open
 ## Prerequisites
 
 1. A Microsoft Foundry resource with a deployed Claude model (e.g., Claude Haiku 4.5, Claude Sonnet 4.5, or Claude Opus 4.1)
-2. .NET 10.0 SDK or later
+2. .NET 11.0 SDK or later
 3. API key from your Microsoft Foundry Claude deployment
 
 ## Setup

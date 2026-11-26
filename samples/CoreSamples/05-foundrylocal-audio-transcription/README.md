@@ -4,7 +4,7 @@ Foundry Local **native SDK** sample (in-process manager flow) for streaming audi
 
 ## Prerequisites
 
-- .NET SDK 8.0+ (this project targets `net8.0-windows10.0.18362`)
+- .NET SDK 11.0+ (this project targets `net11.0-windows10.0.18362`)
 - Foundry Local installed and available on this machine
 - Windows package path (this sample uses `Microsoft.AI.Foundry.Local.WinML`)
 

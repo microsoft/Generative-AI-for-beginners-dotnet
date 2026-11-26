@@ -6,7 +6,7 @@ This sample demonstrates semantic search / RAG building blocks using `Microsoft.
 
 ## Prerequisites
 
-- .NET 10.0 SDK
+- .NET 11.0 SDK
 - Azure OpenAI / Microsoft Foundry endpoint
 - Azure CLI signed in with `az login`
 
