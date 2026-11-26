@@ -2,6 +2,8 @@
 
 **Already using Ollama?** You do not need to install another model runner to finish the course. Follow the [Ollama-only learning path](../docs/ollama-learning-path.md). The runners below are optional alternatives.
 
+**Prefer Foundry Local?** Follow its [five-lesson alternative route](../docs/foundry-local-learning-path.md), starting with [SDK setup](../01-IntroductionToGenerativeAI/setup-foundry-local.md). It needs neither Ollama nor Azure credentials.
+
 In this lesson, you'll learn how to run AI models locally using three popular approaches, and how to integrate them with your .NET applications.
 
 ---
@@ -16,16 +18,16 @@ The previous video shortcut redirects to search, not a recording. Use the writte
 
 Running models locally provides several benefits:
 
-- **Data privacy** – Your data never leaves your machine
+- **Data locality** – Inference can remain on-device; remote tools, downloads and telemetry require separate review
 - **Cost efficiency** – No usage charges for API calls
-- **Offline availability** – Use AI even without internet connectivity
+- **Offline availability** – Prepared models can run locally; verify cached startup and dependencies before promising air-gapped use
 - **Customization** – Fine-tune models for specific use cases
 
 This lesson covers three popular approaches:
 
 - **[AI Toolkit for Visual Studio Code](https://code.visualstudio.com/docs/intelligentapps/overview)** – A suite of tools for Visual Studio Code that enables running AI models locally
 - **[Docker Model Runner](https://docs.docker.com/model-runner/)** – A containerized approach for running AI models with Docker
-- **[Foundry Local](https://learn.microsoft.com/azure/ai-foundry/foundry-local/)** – A cross-platform, open-source solution for running Microsoft AI models locally
+- **[Foundry Local](https://learn.microsoft.com/azure/foundry-local/get-started?wt.mc_id=dotnet-0000-brunocapuano)** – A runtime and SDK for running catalog models locally
 
 ---
 
@@ -81,10 +83,10 @@ docker run -d -p 12434:8080 \
 
 ## Part 3: Foundry Local
 
-[Foundry Local](https://learn.microsoft.com/azure/ai-foundry/foundry-local/) is an open-source, cross-platform solution for running Microsoft AI models on your own hardware. It supports Windows, Linux, and macOS, and is designed for privacy, performance, and flexibility.
+[Foundry Local](https://learn.microsoft.com/azure/foundry-local/get-started?wt.mc_id=dotnet-0000-brunocapuano) runs catalog models on your own hardware. Its SDK supports native in-process inference and an optional OpenAI-compatible server. Product runtime packaging spans Windows, Linux and Apple Silicon macOS; the new course route is qualified on Windows x64 CPU.
 
-- **Official documentation:** <https://learn.microsoft.com/azure/ai-foundry/foundry-local/>
-- **GitHub repository:** <https://github.com/microsoft/Foundry-Local/tree/main>
+- **Official documentation:** [Foundry Local SDK](https://learn.microsoft.com/azure/foundry-local/reference/reference-sdk-current?wt.mc_id=dotnet-0000-brunocapuano)
+- **GitHub repository:** [Foundry Local](https://github.com/microsoft/Foundry-Local?wt.mc_id=dotnet-0000-brunocapuano)
 
 ### Key Features - Foundry Local
 
@@ -95,10 +97,14 @@ docker run -d -p 12434:8080 \
 
 ### Getting Started - Foundry Local
 
-1. [Read the official Foundry Local documentation](https://learn.microsoft.com/azure/ai-foundry/foundry-local/)
-2. Download and install Foundry Local for your OS
-3. Start the Foundry Local server and download a model
-4. Use the REST API to interact with the model
+1. Follow [course setup](../01-IntroductionToGenerativeAI/setup-foundry-local.md) with .NET 10+.
+2. Explicitly prepare the model using `--prepare`.
+3. Use native `ChatSession` for the Hello World, or the SDK-managed loopback endpoint for MEAI.
+4. Continue through [local RAG, agents and MCP](../docs/foundry-local-learning-path.md).
+
+No separate CLI/server installation or fixed port is required by this route.
+
+For an optional typed-decision example, see [Foundry Local decisions](../samples/CoreSamples/Decision-13-FoundryLocal/README.md). Unlike the route above, this sample requires the Foundry Local CLI to cache a compatible decision model. The [Llama App text and image samples](../samples/CoreSamples/DECISION-MODEL-SAMPLES-README.md) use a separate local server and model installation.
 
 ---
 
@@ -153,48 +159,19 @@ Console.WriteLine(response.Value.Content[0].Text);
 
 ### Microsoft Extensions for AI with Foundry Local
 
-The [AIFoundryLocal-01-MEAI-Chat](../samples/CoreSamples/AIFoundryLocal-01-MEAI-Chat/Program.cs) project demonstrates how to use Microsoft Extensions for AI to interact with Foundry Local models.
+Use [FoundryLocal-01Techniques](../samples/CoreSamples/FoundryLocal-01Techniques/README.md) for SDK-managed endpoint discovery and official OpenAI-to-MEAI adaptation. The complete [setup snippet](../01-IntroductionToGenerativeAI/setup-foundry-local.md#2-run-locally-through-meai) is compiled by the route's build checks.
 
-```csharp
-using OpenAI;
-using OpenAI.Chat;
-using System.ClientModel;
-using System.Text;
-
-var model = "Phi-3.5-mini-instruct-cuda-gpu";
-var baseUrl = "http://localhost:5273/v1";
-var apiKey = "unused";
-
-OpenAIClientOptions options = new OpenAIClientOptions();
-options.Endpoint = new Uri(baseUrl);
-ApiKeyCredential credential = new ApiKeyCredential(apiKey);
-
-ChatClient client = new OpenAIClient(credential, options).GetChatClient(model);
-
-// here we're building the prompt
-StringBuilder prompt = new StringBuilder();
-prompt.AppendLine("You will analyze the sentiment of the following product reviews. Each line is its own review. Output the sentiment of each review in a bulleted list and then provide a generate sentiment of all reviews. ");
-prompt.AppendLine("I bought this product and it's amazing. I love it!");
-prompt.AppendLine("This product is terrible. I hate it.");
-prompt.AppendLine("I'm not sure about this product. It's okay.");
-prompt.AppendLine("I found this product based on the other reviews. It worked for a bit, and then it didn't.");
-
-// send the prompt to the model and wait for the text completion
-var response = await client.CompleteChatAsync(prompt.ToString());
-
-// display the response
-Console.WriteLine(response.Value.Content[0].Text);
-```
+The earlier [AIFoundryLocal-01-MEAI-Chat](../samples/CoreSamples/AIFoundryLocal-01-MEAI-Chat/Program.cs) uses a raw OpenAI client with a fixed GPU ID/port. It remains reference material, not the current provider initializer.
 
 ---
 
 ## Running the Samples
 
-To run the samples in this repository:
+For the new Foundry Local route, use its [setup commands](../01-IntroductionToGenerativeAI/setup-foundry-local.md); the SDK owns lifecycle. For the other runner-specific reference samples:
 
 1. Install Docker Desktop, AI Toolkit for Visual Studio Code, or Foundry Local as needed
 2. Pull or download the required model
-3. Start the local model server (Docker, AI Toolkit, or Foundry Local)
+3. Start the local model server required by that particular reference sample
 4. Navigate to one of the sample project directories
 5. Run the project with `dotnet run`
 
@@ -205,8 +182,8 @@ To run the samples in this repository:
 | Feature | AI Toolkit for Visual Studio Code | Docker Model Runner | Foundry Local |
 |---------|-------------------------------|---------------------|--------------|
 | Platform | Windows, macOS, Linux | Cross-platform | Cross-platform |
-| Integration | Visual Studio Code APIs | REST API | REST API |
-| Deployment | VS Code Extension | Container-based | Local installation |
+| Integration | Visual Studio Code APIs | REST API | Native SDK or optional local API |
+| Deployment | VS Code Extension | Container-based | Embedded SDK; CLI optional |
 | Hardware Acceleration | DirectML, DirectX | CPU, GPU | CPU, GPU |
 | Models | Optimized for VS Code | Any containerized model | Microsoft Foundry models |
 
@@ -218,7 +195,7 @@ To run the samples in this repository:
 |--------|-------------|
 | [AIToolkit-02-MEAI-Chat](../samples/CoreSamples/AIToolkit-02-MEAI-Chat/) | AI Toolkit with Microsoft Extensions for AI |
 | [DockerModels-02-MEAI-Chat](../samples/CoreSamples/DockerModels-02-MEAI-Chat/) | Docker Model Runner with MEAI |
-| [AIFoundryLocal-01-MEAI-Chat](../samples/CoreSamples/AIFoundryLocal-01-MEAI-Chat/) | Foundry Local with MEAI |
+| [FoundryLocal-01Techniques](../samples/CoreSamples/FoundryLocal-01Techniques/README.md) | Foundry Local with MEAI and SDK-owned lifecycle |
 
 ---
 
@@ -226,8 +203,8 @@ To run the samples in this repository:
 
 - [AI Toolkit for Visual Studio Code Documentation](https://code.visualstudio.com/docs/intelligentapps/overview)
 - [Docker Model Runner Documentation](https://docs.docker.com/model-runner/)
-- [Foundry Local Documentation](https://learn.microsoft.com/azure/ai-foundry/foundry-local/)
-- [Foundry Local GitHub Repository](https://github.com/microsoft/Foundry-Local/tree/main)
+- [Foundry Local Documentation](https://learn.microsoft.com/azure/foundry-local/get-started?wt.mc_id=dotnet-0000-brunocapuano)
+- [Foundry Local GitHub Repository](https://github.com/microsoft/Foundry-Local?wt.mc_id=dotnet-0000-brunocapuano)
 - [Microsoft Extensions for AI Documentation](https://learn.microsoft.com/dotnet/ai/)
 
 ---

@@ -1,5 +1,7 @@
 # Agents with Tools
 
+**Foundry Local alternative:** [The local agent's tools mode](../samples/MAF/MAF-FoundryLocal-01/README.md) invokes a read-only library function, counts execution and validates the opening-time answer. It uses a bounded MEAI function stack.
+
 **Ollama route:** Run `dotnet run --project .\samples\MAF\MAF-Ollama-01 -- tools` from the repository root after pulling `llama3.2`. The [local librarian agent](../samples/MAF/MAF-Ollama-01/README.md) uses a read-only function and reports actual tool calls, without cloud services. Azure background-response and image-generation features below are optional. See the [local learning path](../docs/ollama-learning-path.md).
 
 In this lesson, you'll give your agents the ability to take actions in the real world—calling APIs, querying databases, and executing code.

@@ -1,5 +1,7 @@
 # Building Your First Agent
 
+**Foundry Local alternative:** [MAF-FoundryLocal-01](../samples/MAF/MAF-FoundryLocal-01/README.md) constructs an actual `AIAgent` through generic MEAI integration. Follow [the local route](../docs/foundry-local-learning-path.md), not hosted-agent provisioning.
+
 **Ollama route:** Start with `dotnet run --project .\samples\MAF\MAF-Ollama-01` from the repository root after pulling `llama3.2`. The [local sample guide](../samples/MAF/MAF-Ollama-01/README.md) needs no Azure credentials. Use the Ollama initializer in [the provider section](#ollama-local) instead of the Azure setup below, and follow the [local learning path](../docs/ollama-learning-path.md).
 
 In this lesson, you'll create your first AI agent using Microsoft Agent Framework and understand what makes agents different from simple chat applications.

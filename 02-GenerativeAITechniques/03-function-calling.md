@@ -1,5 +1,7 @@
 # Function Calling
 
+**Foundry Local alternative:** Run the observable read-only `tools` mode in [FoundryLocal-01Techniques](../samples/CoreSamples/FoundryLocal-01Techniques/README.md). Requests and middleware iterations are bounded; [setup](../01-IntroductionToGenerativeAI/setup-foundry-local.md) requires no cloud credentials.
+
 **Ollama route:** Run `dotnet run --project .\samples\CoreSamples\MEAIFunctionsOllama` from the repository root after pulling `llama3.2`. The [sample guide](../samples/CoreSamples/MEAIFunctionsOllama/README.md) explains the read-only demo tool and observable invocation count. It uses `OllamaApiClient` with the same `UseFunctionInvocation()` middleware discussed here, without Azure credentials. Follow the [local learning path](../docs/ollama-learning-path.md).
 
 In this lesson, you'll learn how to extend AI capabilities by letting the model call your .NET functions. This is one of the most powerful patterns in AI development, enabling your AI to access real-time data, perform calculations, and interact with external systems.

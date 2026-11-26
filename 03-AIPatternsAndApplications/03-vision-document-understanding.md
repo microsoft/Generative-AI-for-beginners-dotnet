@@ -1,6 +1,10 @@
 # Vision and Document Understanding
 
+**Foundry Local alternative:** Vision is an [optional branch](../docs/foundry-local-learning-path.md#optional-branches-and-limits), not part of the text route's inference qualification. A catalog vision flag is not evidence that an image was described correctly or that a managed document API has a local equivalent.
+
 **Ollama route:** Vision is optional and needs a vision-capable model, not the core text model. The [local vision sample guide](../samples/CoreSamples/Vision-02MEAI-Ollama/README.md) covers model download, hardware requirements, and images. Azure PDF/document services below are separate cloud capabilities. See the [local learning path](../docs/ollama-learning-path.md).
+
+**Llama App decision models:** For a typed choice and probabilities rather than a generated description, try the optional [image decision sample](../samples/CoreSamples/Decision-15-LlamaImage/README.md). It requires a running Llama App server and an image-capable decision model.
 
 In this lesson, you'll learn how to use AI to analyze images, extract information from documents, and build applications that can "see."
 

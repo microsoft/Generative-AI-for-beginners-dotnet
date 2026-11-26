@@ -1,5 +1,7 @@
 # Multi-Agent Workflows
 
+**Foundry Local alternative:** Run `workflow` in [MAF-FoundryLocal-01](../samples/MAF/MAF-FoundryLocal-01/README.md) for a local sequential writer/editor example. The application orchestrates two actual agents; it is not a hosted or persisted workflow service.
+
 **Ollama route:** Run `dotnet run --project .\samples\MAF\MAF-Ollama-01 -- workflow` from the repository root for a fully local writer/editor sequence. This [small example](../samples/MAF/MAF-Ollama-01/README.md) uses explicit C# orchestration, not the workflow-builder API shown later. `MAF-MultiAgents` and `MAF-MultiModel` use cloud providers; do not treat them as Ollama-only examples. See the [local learning path](../docs/ollama-learning-path.md).
 
 In this lesson, you'll learn how to orchestrate multiple specialized agents working together to accomplish complex tasks.

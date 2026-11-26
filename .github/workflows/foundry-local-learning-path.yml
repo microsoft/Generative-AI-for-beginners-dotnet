@@ -1,0 +1,68 @@
+name: Foundry Local Learning Path Checks
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'README.md'
+      - '01-IntroductionToGenerativeAI/**'
+      - '02-GenerativeAITechniques/**'
+      - '03-AIPatternsAndApplications/**'
+      - '04-AgentsWithMAF/**'
+      - '05-ResponsibleAI/**'
+      - 'docs/foundry-local-learning-path.md'
+      - 'samples/CoreSamples/Common/FoundryCourse*'
+      - 'samples/CoreSamples/Common/FoundryLocal.Course.props'
+      - 'samples/CoreSamples/FoundryLocal-*/**'
+      - 'samples/CoreSamples/FoundryLocal.Tests/**'
+      - 'samples/CoreSamples/FOUNDRY-LOCAL-SAMPLES-README.md'
+      - 'samples/CoreSamples/MCP-FoundryLocal-LocalTools/**'
+      - 'samples/MAF/MAF-FoundryLocal-01/**'
+      - 'scripts/test_foundry_local.py'
+      - 'scripts/test_ollama.py'
+      - '.github/workflows/foundry-local-learning-path.yml'
+  workflow_dispatch:
+    inputs:
+      inference:
+        description: Download models and run real Windows CPU inference
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  offline-build:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: '10.0.x'
+      - name: Offline contracts, documentation, builds and protocol
+        run: python scripts/test_foundry_local.py --build-only --log-dir "$env:RUNNER_TEMP\foundry-local-checks"
+      - name: Preserve build and contract evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: foundry-local-offline-build
+          path: ${{ runner.temp }}\foundry-local-checks
+
+  cpu-inference:
+    if: github.event_name == 'workflow_dispatch' && inputs.inference
+    runs-on: windows-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: '10.0.x'
+      - name: Explicitly prepare models and run core inference
+        run: python scripts/test_foundry_local.py --prepare --run --timeout 600 --log-dir "$env:RUNNER_TEMP\foundry-local-checks"
+      - name: Preserve model IDs, outputs and failure evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: foundry-local-cpu-inference
+          path: ${{ runner.temp }}\foundry-local-checks

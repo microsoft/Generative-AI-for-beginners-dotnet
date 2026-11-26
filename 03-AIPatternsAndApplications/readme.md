@@ -14,6 +14,8 @@ The previous video shortcut redirects to search, not a recording. Use the writte
 
 **Ollama route:** Continue with [fully local embeddings, semantic search, and RAG](../samples/CoreSamples/Ollama-02RAG/README.md). The [local learning path](../docs/ollama-learning-path.md) also identifies optional vision models and cloud-only branches. A local vector database does not imply the embedding model is local.
 
+**Foundry Local alternative:** [Local embeddings and RAG](../samples/CoreSamples/FoundryLocal-02RAG/README.md) use Foundry models for both vectors and answers. The [Foundry Local route](../docs/foundry-local-learning-path.md) explains dimension checks and optional vision/audio.
+
 - How embeddings represent meaning as numbers
 - Build semantic search that understands intent, not just keywords
 - Implement Retrieval-Augmented Generation (RAG) to ground AI in your data
@@ -83,6 +85,7 @@ All code samples for this lesson are located in the **[`samples/CoreSamples/`](.
 | **Local Models** | [AIToolkit-02-MEAI-Chat](../samples/CoreSamples/AIToolkit-02-MEAI-Chat/) | AI Toolkit with MEAI |
 | | [DockerModels-02-MEAI-Chat](../samples/CoreSamples/DockerModels-02-MEAI-Chat/) | Docker Model Runner with MEAI |
 | | [AIFoundryLocal-01-MEAI-Chat](../samples/CoreSamples/AIFoundryLocal-01-MEAI-Chat/) | Foundry Local with MEAI |
+| **Decision Models** | [Local decision model samples](../samples/CoreSamples/DECISION-MODEL-SAMPLES-README.md) | Typed text and image decisions with Foundry Local and Llama App |
 
 Each lesson document links directly to the relevant samples.
 

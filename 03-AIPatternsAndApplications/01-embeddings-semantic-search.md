@@ -1,5 +1,7 @@
 # Embeddings and Semantic Search
 
+**Foundry Local alternative:** [FoundryLocal-02RAG](../samples/CoreSamples/FoundryLocal-02RAG/README.md) generates real local embeddings and ranks documents by cosine similarity. Dimensions are derived and validated, not copied from another provider.
+
 In this lesson, you'll learn how AI represents meaning as numbers and how to build search that understands intent, not just keywords.
 
 ---

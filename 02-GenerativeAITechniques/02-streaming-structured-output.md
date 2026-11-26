@@ -1,5 +1,7 @@
 # Streaming and Structured Output
 
+**Foundry Local alternative:** [The techniques sample](../samples/CoreSamples/FoundryLocal-01Techniques/README.md) provides streaming and typed JSON validation. Its SDK 2.3.1 JSON-object mode is not a claim of standard OpenAI JSON-schema enforcement; see the [route's compatibility notes](../docs/foundry-local-learning-path.md#what-stays-the-same-and-what-changes).
+
 In this lesson, you'll learn how to stream AI responses in real-time and how to get strongly-typed structured output from AI models. These are essential techniques for building responsive, production-ready AI applications.
 
 ---

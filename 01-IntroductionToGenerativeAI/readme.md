@@ -1,5 +1,7 @@
 # Lesson 1: Introduction to Generative AI for .NET Developers
 
+**Choose your provider:** [Foundry Local setup](./setup-foundry-local.md) and its [five-lesson route](../docs/foundry-local-learning-path.md) are alternatives to [Ollama](./setup-local-ollama.md) and [Azure](./setup-azure-openai.md). Foundry Local needs neither Azure credentials nor a separate CLI/server installation.
+
 [![Introduction to Generative AI](./images/LIM_GAN_01_thumb_w480.png)](https://aka.ms/genainnet/videos/lesson1-genaireview)
 
 _Click the image to watch the video_
@@ -179,6 +181,7 @@ You have options:
 | Option | Best For | Cost |
 |--------|----------|------|
 | **Ollama (Local)** | Privacy, offline work, learning | Free |
+| **Foundry Local** | SDK-managed local inference, learning | No inference API charges |
 | **Azure OpenAI / Microsoft Foundry** | Production, enterprise, compliance | Pay-per-use |
 
 All of these work with the same `IChatClient` interface!
@@ -212,6 +215,12 @@ We have removed the setup barriers. Choose the path that fits your workflow:
 *   [**Access the Local Ollama Setup Guide**](./setup-local-ollama.md)
 
 **Staying local?** Follow the [Ollama-only learning path](../docs/ollama-learning-path.md) for exact commands through chat, streaming, tools, RAG, and agents. Azure, cloud credentials, and Codespaces are not required for this route. The setup video may show cloud steps; use the written local guide as its Ollama companion.
+
+### Path C: Local Development (Foundry Local)
+**Best for:** Local inference with an SDK-managed runtime, without installing Ollama or provisioning Azure.
+*   **Models:** `phi-4-mini` (chat/tools) and `qwen3-embedding-0.6b` (embeddings).
+*   **Baseline:** Windows x64 CPU with .NET 10+. Initial package, catalog and model acquisition requires internet.
+*   [**Access the Foundry Local Setup Guide**](./setup-foundry-local.md), then follow the [five-lesson Foundry Local learning path](../docs/foundry-local-learning-path.md).
 
 ---
 

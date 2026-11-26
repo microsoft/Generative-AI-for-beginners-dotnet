@@ -6,6 +6,7 @@ name: .NET Build Validation
     paths:
     - 'samples/**/*.cs'
     - 'samples/**/*.csproj'
+    - 'samples/**/*.props'
     - 'samples/**/*.sln'
     - 'samples/**/*.slnx'
     - 'samples/**/*.razor'
@@ -73,6 +74,9 @@ jobs:
     - name: Test Parallel Search response handling offline
       if: matrix.solution.name == 'Core Samples'
       run: dotnet test "samples/CoreSamples/MCP-04-ParallelSearch.Tests/MCP-04-ParallelSearch.Tests.csproj" --no-build --configuration Release --verbosity minimal
+    - name: Test Foundry Local contracts without native inference
+      if: matrix.solution.name == 'Core Samples'
+      run: dotnet test "samples/CoreSamples/FoundryLocal.Tests/FoundryLocal.Tests.csproj" --no-build --configuration Release --verbosity minimal
 
     - name: Display build result
       if: success()

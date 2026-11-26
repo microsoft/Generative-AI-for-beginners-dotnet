@@ -1,5 +1,7 @@
 # Retrieval-Augmented Generation (RAG)
 
+**Foundry Local alternative:** [The local RAG sample](../samples/CoreSamples/FoundryLocal-02RAG/README.md) uses Foundry for both embeddings and generation, including source citations, abstention and an injected-data fixture. No Azure service or Ollama model is needed.
+
 **Ollama route:** Use [Ollama-02RAG](../samples/CoreSamples/Ollama-02RAG/README.md) for a complete runnable local implementation of this chapter. The Azure examples remain alternatives. Follow the [local learning path](../docs/ollama-learning-path.md) for exact prerequisites and commands.
 
 In this lesson, you'll learn how to ground AI responses in your own data, making them accurate, current, and relevant to your domain.

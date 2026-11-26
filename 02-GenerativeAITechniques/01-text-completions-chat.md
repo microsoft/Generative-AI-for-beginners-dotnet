@@ -1,5 +1,7 @@
 # Text Completions and Chat Conversations
 
+**Foundry Local alternative:** Run `hello` and `history` in [FoundryLocal-01Techniques](../samples/CoreSamples/FoundryLocal-01Techniques/README.md). Follow the [Foundry route](../docs/foundry-local-learning-path.md) instead of copying Azure client setup.
+
 In this lesson, you'll learn the fundamentals of interacting with AI models in .NET. We'll start with the simplest interaction—text completions—and build up to full conversational applications.
 
 ---

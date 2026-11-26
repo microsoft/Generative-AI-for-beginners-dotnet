@@ -131,13 +131,19 @@ Learn more:
 
 ## Local models and safety
 
-Ollama inference does not automatically include Azure OpenAI content filtering, Prompt Shields, or managed compliance controls. A system prompt is not a security boundary, and structured JSON is not proof that its contents are safe or correct.
+Ollama and Foundry Local inference do not automatically include Azure OpenAI content filtering, Prompt Shields, or managed compliance controls. A system prompt is not a security boundary, and structured JSON is not proof that its contents are safe or correct.
 
 For the [local learning path](../docs/ollama-learning-path.md), start with synthetic data and read-only tools. Validate model output against application rules, expose only required functions, bound requests and tool execution, and require human approval before messages, purchases, deletions, or other consequential actions. Never give a learning agent unrestricted shell or file-system access.
 
 Check grounding and source citations for RAG answers. Test unanswered questions and prompt-injection attempts before using real data. Minimize logs and avoid sending private data to remote tools: local inference with a remote MCP service is not an entirely local data flow. Evaluate appropriate moderation and human review for your use case rather than claiming that a small local example replaces managed safety services.
 
 See the [local tools example](../samples/MAF/MAF-Ollama-01/README.md) and [local MCP example](../samples/CoreSamples/MCP-04-LocalTools/README.md) for deliberately restricted demo capabilities.
+
+### Foundry Local privacy and boundaries
+
+The [Foundry Local learning path](../docs/foundry-local-learning-path.md) uses synthetic data, read-only tools, bounded function loops and loopback-only listeners. Its SDK helper disables nonessential telemetry before initialization; see the [runtime privacy description](https://github.com/microsoft/Foundry-Local/blob/v2.3.1/sdk_v2/cpp/docs/Privacy.md?wt.mc_id=dotnet-0000-brunocapuano). Local inference does not mean first-run network isolation: package restore, catalog resolution and model/EP acquisition can need internet. Review model licenses separately from the course code's license.
+
+Model output, citations and tool arguments remain untrusted. Validate JSON types and application rules, do not treat citation checks as a complete grounding defense, and require human approval before side effects. A local model calling a remote MCP service still transmits data; the [course MCP example](../samples/CoreSamples/MCP-FoundryLocal-LocalTools/README.md) deliberately uses a local child server instead.
 
 ## Part 3: Transparency and Explainability
 

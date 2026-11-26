@@ -32,6 +32,18 @@ Don't forget to [star (🌟) this repo](https://docs.github.com/en/get-started/e
 
 We're constantly improving this course with the latest AI tools, models, and practical samples:
 
+- **🎯 Local decision models: three new samples (November 2026)**
+
+  Explore typed decisions with Foundry Local and Llama App, including text classification, scoring, assessments, and image-based choices.
+
+  👉 [Explore the local decision model samples](./samples/CoreSamples/DECISION-MODEL-SAMPLES-README.md)
+
+- **🧭 Milvus vector search with Microsoft.Extensions.VectorData (November 2026)**
+
+  Compare another vector database provider with the same movie-search sample and `Microsoft.Extensions.VectorData` API. The sample uses a local Milvus 2.6 Docker container, Azure OpenAI embeddings, and a Docker-backed integration test that needs no Azure credentials.
+
+  👉 [Explore the Milvus vector search sample](./samples/CoreSamples/RAGSimple-06MEAIVectorsMilvus/)
+
 - **🎯 Decision-powered Hosted Agent: new sample (November 2026)**
 
   Route synthetic support tickets with a custom **Microsoft Agent Framework** `AIAgent` and the native **Microsoft-Decision-1** endpoint. The sample returns a typed decision through Foundry's Responses protocol, without adding a chat model, and includes offline tests plus a C# caller for a deployed Hosted Agent.
@@ -44,11 +56,11 @@ We're constantly improving this course with the latest AI tools, models, and pra
 
   👉 [Explore the Copilot SDK BYOK sample](./samples/CoreSamples/GitHubCopilotSDK-01-BYOK/)
 
-- **🖥️ Local AI with Foundry Local — 10 samples (August 2026)**
+- **🖥️ Foundry Local alternative learning path**
 
-  Run Generative AI models locally from .NET using **Microsoft Foundry Local**. Ten production-ready samples demonstrate chat, streaming, practical scenarios, audio transcription, agent tools, and live speech-to-text—including multilingual transcription with automatic language detection and explicit locale selection—all with zero cloud costs and full offline capability.
+  Follow all five lessons with **Microsoft Foundry Local**: native Hello World, MEAI techniques, local embeddings/RAG, Agent Framework and local MCP. No Azure credentials or Ollama are required. Initial downloads need internet; vision/audio and platform-specific reference demos remain optional.
 
-  👉 [Explore the Foundry Local Samples](./samples/CoreSamples/FOUNDRY-LOCAL-SAMPLES-README.md)
+  👉 [Follow the Foundry Local learning path](./docs/foundry-local-learning-path.md)
 
 - **🚀 Microsoft Agent Framework v1.0 GA (April 2026)**
 
@@ -82,9 +94,9 @@ Generative AI is transforming software development, and .NET is no exception. Th
 
 - Short videos for core concepts, alongside current written walkthroughs.
 - Fully functional .NET code samples you can run and explore.
-- Integration with tools, including **GitHub Codespaces** for seamless setup and fast time-to-code. You can use **Azure OpenAI Services** / **Microsoft Foundry** or **Ollama** for local model hosting.
+- Integration with tools, including **GitHub Codespaces** for seamless setup and fast time-to-code. Choose **Azure OpenAI Services** / **Microsoft Foundry**, or local inference with **Ollama** or **Foundry Local**.
 
-You'll learn how to implement Generative AI into .NET projects, from basic text generation to building full-fledged solutions using **Azure OpenAI Services** and **local models with Ollama**.
+You'll learn how to implement Generative AI into .NET projects, from basic text generation to building full-fledged solutions using cloud or local providers.
 
 ## 📦 Each Lesson Includes
 
@@ -124,11 +136,21 @@ To get started, you'll need:
 
 1. The **.NET 10 SDK or later** and a basic understanding of .NET.
 2. A local clone of this repository. A GitHub account is needed only for forking, contributing, or using Codespaces.
-3. **One AI provider**: [Ollama on your machine](./01-IntroductionToGenerativeAI/setup-local-ollama.md), or [Azure OpenAI / Microsoft Foundry](./01-IntroductionToGenerativeAI/setup-azure-openai.md).
+3. **One AI provider**: [Ollama](./01-IntroductionToGenerativeAI/setup-local-ollama.md), [Foundry Local](./01-IntroductionToGenerativeAI/setup-foundry-local.md), or [Azure OpenAI / Microsoft Foundry](./01-IntroductionToGenerativeAI/setup-azure-openai.md).
 
 **Ollama learners do not need an Azure account, Azure CLI, API keys, or Codespaces.** The core local route covers chat, history, streaming, structured output, tools, caching, semantic search, RAG, and agents.
 
 For the Azure route, you also need an Azure account and the tools described in the Azure setup guide. Azure Developer CLI (`azd`) is needed for automated resource provisioning. Cloud-specific services are optional branches, not local prerequisites.
+
+## Quick Start with Foundry Local
+
+With .NET 10+ installed, run from repository root:
+
+```powershell
+dotnet run --project .\samples\CoreSamples\FoundryLocal-00NativeChat -- --prepare
+```
+
+`--prepare` permits the first model download; subsequent runs reuse the cache. No separately installed CLI/service or Azure key is needed. See [setup and hardware requirements](./01-IntroductionToGenerativeAI/setup-foundry-local.md) and the [Foundry Local learning path](./docs/foundry-local-learning-path.md) for all five lessons.
 
 ## Quick Start with Ollama
 

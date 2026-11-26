@@ -1,5 +1,7 @@
 # Model Context Protocol (MCP)
 
+**Foundry Local alternative:** [MCP-FoundryLocal-LocalTools](../samples/CoreSamples/MCP-FoundryLocal-LocalTools/README.md) runs model inference and a read-only stdio tool server locally. Remote MCP services remain separate data flows even when the model is local.
+
 **Ollama route:** Start with [MCP-04-LocalTools](../samples/CoreSamples/MCP-04-LocalTools/README.md) for a local model and local stdio server. Remote HTTP servers discussed below are optional network dependencies, not offline examples. See the [local learning path](../docs/ollama-learning-path.md).
 
 In this lesson, you'll learn how to extend your agents with standardized tool servers using Model Context Protocol, enabling integration with external systems without custom code for each integration.

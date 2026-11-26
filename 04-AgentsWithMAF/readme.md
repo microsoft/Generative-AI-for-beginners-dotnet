@@ -8,6 +8,8 @@ Everything you've learned (chat, function calling, RAG, vision) comes together h
 
 **Ollama route:** [MAF-Ollama-01](../samples/MAF/MAF-Ollama-01/README.md) covers a basic agent, a read-only tool, and a local writer/editor sequence. [MCP-04-LocalTools](../samples/CoreSamples/MCP-04-LocalTools/README.md) adds a local MCP server. Use the [local learning path](../docs/ollama-learning-path.md) to avoid mixed-provider or hosted-cloud branches.
 
+**Foundry Local alternative:** [Actual Agent Framework agents](../samples/MAF/MAF-FoundryLocal-01/README.md) and [local stdio MCP](../samples/CoreSamples/MCP-FoundryLocal-LocalTools/README.md) use generic MEAI integration, not a dedicated .NET Foundry Local provider. Follow the [Foundry Local route](../docs/foundry-local-learning-path.md).
+
 | Concept | What It Means |
 |---------|---------------|
 | **Agents vs Chatbots** | Why agents are fundamentally different from chat applications |

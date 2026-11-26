@@ -29,6 +29,7 @@ This folder contains fundamental samples demonstrating core Generative AI techni
 - **Function Calling** - Extending AI capabilities by allowing models to call custom functions and external tools
 - **Retrieval-Augmented Generation (RAG)** - Integrating external knowledge stores with AI models using different vector databases (in-memory, Azure AI Search, Qdrant)
 - **Vision & Audio** - Image analysis, speech-to-text, and real-time audio conversations
+- **Decision Models** - Typed text and image decisions with Foundry Local and Llama App. See the [decision model samples](./CoreSamples/DECISION-MODEL-SAMPLES-README.md).
 - **Agents** - Basic agent implementations with custom functions and OpenAPI integrations
 - **Image & Video Generation** - Creating visual content with Azure OpenAI image-generation models. Legacy Sora video-generation samples remain in the repo as reference material, but are not the recommended path for new walkthroughs.
 - **Model Context Protocol (MCP)** - Integrating with external services using MCP

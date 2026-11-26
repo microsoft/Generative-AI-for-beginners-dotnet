@@ -8,6 +8,8 @@ In this lesson you'll learn practical skills for building AI-enabled .NET applic
 
 **Using Ollama only?** Follow the [local learning path](../docs/ollama-learning-path.md) alongside this lesson. It includes runnable chat, history, streaming, structured output, functions, and caching examples without Azure credentials.
 
+**Foundry Local alternative:** [MEAI techniques](../samples/CoreSamples/FoundryLocal-01Techniques/README.md) cover the same outcomes using an SDK-owned local endpoint. Follow the [Foundry Local route](../docs/foundry-local-learning-path.md) for setup and JSON validation limits.
+
 - Text completions and chat conversations
 - Managing conversation history with chat roles
 - Streaming responses for real-time output

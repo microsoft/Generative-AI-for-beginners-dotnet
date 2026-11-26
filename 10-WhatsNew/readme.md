@@ -2,6 +2,39 @@
 
 This document contains historical updates to the Generative AI for Beginners .NET course.
 
+## 🎯 Local decision models (November 2026)
+
+Three .NET samples demonstrate typed decisions using local models instead of generated chat explanations:
+
+- [13. Foundry Local decisions](../samples/CoreSamples/Decision-13-FoundryLocal/README.md): choose, score, and assess with a cached compatible model.
+- [14. Llama App text decisions](../samples/CoreSamples/Decision-14-LlamaText/README.md): classify a support request, score urgency, and assess a proposition.
+- [15. Llama App image decisions](../samples/CoreSamples/Decision-15-LlamaImage/README.md): classify a local image with a vision-capable decision model.
+
+These use the community-maintained [ElBruno.AI.Decisions](https://github.com/elbruno/ElBruno.AI.Decisions?wt.mc_id=dotnet-0000-brunocapuano) provider packages. Models must be installed locally; the Llama App examples also require its running local server. Returned probabilities and confidence are estimates, not guarantees of correctness.
+
+📚 [Decision model sample guide](../samples/CoreSamples/DECISION-MODEL-SAMPLES-README.md)
+
+---
+
+## 🧭 Milvus Vector Search (November 2026)
+
+A new sample demonstrates movie search with **Milvus**, an open-source vector database, through the `Microsoft.Extensions.VectorData` abstraction.
+
+### Key Updates
+
+- **New Sample:** [RAGSimple-06MEAIVectorsMilvus](../samples/CoreSamples/RAGSimple-06MEAIVectorsMilvus/) uses the Community Toolkit Milvus provider and shares the movie records and Azure OpenAI embedding flow with the other VectorData samples.
+- **Local setup:** Run Milvus 2.6 in Docker, bound to the local machine; the sample uses Azure CLI authentication rather than a hardcoded API key.
+- **Integration coverage:** A deterministic Testcontainers test verifies collection lifecycle, metadata, cosine retrieval, and persistence without calling an embedding model.
+- **Data safety:** Each sample run recreates the `movies` collection. Use a dedicated local Milvus instance, as described in the sample README.
+
+### Resources
+
+- 📚 [Sample README](../samples/CoreSamples/RAGSimple-06MEAIVectorsMilvus/README.md)
+- 📖 [Milvus documentation](https://milvus.io/docs)
+- 📦 [CommunityToolkit.VectorData.Milvus](https://www.nuget.org/packages/CommunityToolkit.VectorData.Milvus)
+
+---
+
 ## 🎯 Decision-powered Hosted Agent (November 2026)
 
 A new .NET sample demonstrates a custom Microsoft Agent Framework `AIAgent`

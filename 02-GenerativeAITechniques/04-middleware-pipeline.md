@@ -1,5 +1,7 @@
 # Middleware Pipelines
 
+**Foundry Local alternative:** Run `cache` in [FoundryLocal-01Techniques](../samples/CoreSamples/FoundryLocal-01Techniques/README.md) to observe two answers with one real model invocation through MEAI middleware.
+
 **Ollama route:** Run `dotnet run --project .\samples\CoreSamples\Ollama-01Techniques -- cache` from the repository root. The [local cache sample](../samples/CoreSamples/Ollama-01Techniques/README.md) demonstrates middleware ordering and verifies that two identical requests make only one model call. Use an Ollama `IChatClient` instead of the Azure initializer in the patterns below. See the [local learning path](../docs/ollama-learning-path.md).
 
 In this lesson, you'll learn how to build production-ready AI applications using middleware pipelines. This is a powerful pattern from Microsoft.Extensions.AI that lets you add caching, telemetry, rate limiting, and custom behaviors to your AI client.
